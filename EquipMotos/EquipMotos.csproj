@@ -1,0 +1,767 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{C46C8884-2C22-4066-8D78-C8E0DB1830DE}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>EquipMotos</RootNamespace>
+    <AssemblyName>EquipMotos</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Activities" />
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.5.0\lib\netstandard2.0\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.DirectoryServices" />
+    <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.5.3\lib\netstandard2.0\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Messaging" />
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.5.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.6.0-preview5.19224.8\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.5.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.6.0-preview6.19259.10\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.1.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.6.0-preview.18571.3\lib\netstandard2.0\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net47\System.ValueTuple.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CONTROLLER\Controller.cs" />
+    <Compile Include="CONTROLLER\CtrlCategorias.cs" />
+    <Compile Include="CONTROLLER\CtrlCidades.cs" />
+    <Compile Include="CONTROLLER\CtrlClientes.cs" />
+    <Compile Include="CONTROLLER\CtrlCompras.cs" />
+    <Compile Include="CONTROLLER\CtrlCondicaoPagamento.cs" />
+    <Compile Include="CONTROLLER\CtrlContasPagar.cs" />
+    <Compile Include="CONTROLLER\CtrlEstados.cs" />
+    <Compile Include="CONTROLLER\CtrlFormaPagamentos.cs" />
+    <Compile Include="CONTROLLER\CtrlFornecedores.cs" />
+    <Compile Include="CONTROLLER\CtrlFuncionarios.cs" />
+    <Compile Include="CONTROLLER\CtrlMarcas.cs" />
+    <Compile Include="CONTROLLER\CtrlModelos.cs" />
+    <Compile Include="CONTROLLER\CtrlOrdemServico.cs" />
+    <Compile Include="CONTROLLER\CtrlPaises.cs" />
+    <Compile Include="CONTROLLER\CtrlProdutosServicos.cs" />
+    <Compile Include="DAO\CategoriasDAO.cs" />
+    <Compile Include="DAO\CidadesDAO.cs" />
+    <Compile Include="DAO\ClientesDAO.cs" />
+    <Compile Include="DAO\ComprasDAO.cs" />
+    <Compile Include="DAO\CondicaoPagamentoDAO.cs" />
+    <Compile Include="DAO\CondicaoParceladaDAO.cs" />
+    <Compile Include="DAO\ContasPagarDAO.cs" />
+    <Compile Include="DAO\DAO.cs" />
+    <Compile Include="DAO\EstadosDAO.cs" />
+    <Compile Include="DAO\FormaPagamentoDAO.cs" />
+    <Compile Include="DAO\FornecedoresDAO.cs" />
+    <Compile Include="DAO\FuncionariosDAO.cs" />
+    <Compile Include="DAO\MarcasDAO.cs" />
+    <Compile Include="DAO\ModelosDAO.cs" />
+    <Compile Include="DAO\OrdemServicosDAO.cs" />
+    <Compile Include="DAO\PaisesDAO.cs" />
+    <Compile Include="DAO\ProdutosServicosDAO.cs" />
+    <Compile Include="DAO\UsuariosDAO.cs" />
+    <Compile Include="frmLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLogin.Designer.cs">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MODEL\Base.cs" />
+    <Compile Include="MODEL\Cidades.cs" />
+    <Compile Include="MODEL\Clientes.cs" />
+    <Compile Include="MODEL\Compras.cs" />
+    <Compile Include="MODEL\CondicaoPagamentos.cs" />
+    <Compile Include="MODEL\CondicaoParcelada.cs" />
+    <Compile Include="MODEL\Conecta.cs" />
+    <Compile Include="MODEL\ContasPagar.cs" />
+    <Compile Include="MODEL\Estados.cs" />
+    <Compile Include="MODEL\FormaPagamentos.cs" />
+    <Compile Include="MODEL\Fornecedores.cs" />
+    <Compile Include="MODEL\Funcionarios.cs" />
+    <Compile Include="MODEL\ItensCompra.cs" />
+    <Compile Include="MODEL\Marcas.cs" />
+    <Compile Include="MODEL\Modelos.cs" />
+    <Compile Include="MODEL\OrdemServicos.cs" />
+    <Compile Include="MODEL\Paises.cs" />
+    <Compile Include="MODEL\Pessoa.cs" />
+    <Compile Include="MODEL\ProdutosServicos.cs" />
+    <Compile Include="MODEL\Usuarios.cs" />
+    <Compile Include="MODEL\Categorias.cs" />
+    <Compile Include="SistemaMoto2DataSetCategoria.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SistemaMoto2DataSetCategoria.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="SistemaMoto2DataSetCidade.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SistemaMoto2DataSetCidade.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="SistemaMoto2DataSetCliente.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SistemaMoto2DataSetCliente.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="SistemaMoto2DataSetCompra.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SistemaMoto2DataSetCompra.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="SistemaMoto2DataSetCondicaoPagamento.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SistemaMoto2DataSetCondicaoPagamento.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="SistemaMoto2DataSetContaPagar.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SistemaMoto2DataSetContaPagar.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="SistemaMoto2DataSetContasPagar.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SistemaMoto2DataSetContasPagar.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="SistemaMoto2DataSetEstado.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SistemaMoto2DataSetEstado.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="SistemaMoto2DataSetFormaPagamento.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SistemaMoto2DataSetFormaPagamento.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="SistemaMoto2DataSetFornecedor.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SistemaMoto2DataSetFornecedor.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="SistemaMoto2DataSetFuncionario.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SistemaMoto2DataSetFuncionario.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="SistemaMoto2DataSetMarca.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SistemaMoto2DataSetMarca.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="SistemaMoto2DataSetModelo.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SistemaMoto2DataSetModelo.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="SistemaMoto2DataSetOrdemServico.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SistemaMoto2DataSetOrdemServico.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="SistemaMoto2DataSetPais.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SistemaMoto2DataSetPais.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="SistemaMoto2DataSetProduto.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SistemaMoto2DataSetProduto.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="View\frmCadastro.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\frmCadastro.Designer.cs">
+      <DependentUpon>frmCadastro.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\frmCadastroCategoria.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\frmCadastroCategoria.Designer.cs">
+      <DependentUpon>frmCadastroCategoria.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\frmCadastroCidade.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\frmCadastroCidade.Designer.cs">
+      <DependentUpon>frmCadastroCidade.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\frmCadastroCompra.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\frmCadastroCompra.Designer.cs">
+      <DependentUpon>frmCadastroCompra.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\frmCadastroCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\frmCadastroCliente.Designer.cs">
+      <DependentUpon>frmCadastroCliente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\frmCadastroContaPagar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\frmCadastroContaPagar.Designer.cs">
+      <DependentUpon>frmCadastroContaPagar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\frmCadastroEstado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\frmCadastroEstado.Designer.cs">
+      <DependentUpon>frmCadastroEstado.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\frmCadastroFormaPagamento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\frmCadastroFormaPagamento.Designer.cs">
+      <DependentUpon>frmCadastroFormaPagamento.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\frmCadastroFornecedor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\frmCadastroFornecedor.Designer.cs">
+      <DependentUpon>frmCadastroFornecedor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\frmCadastroFuncionario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\frmCadastroFuncionario.Designer.cs">
+      <DependentUpon>frmCadastroFuncionario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\frmCadastroMarca.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\frmCadastroMarca.Designer.cs">
+      <DependentUpon>frmCadastroMarca.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\frmCadastroModelo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\frmCadastroModelo.Designer.cs">
+      <DependentUpon>frmCadastroModelo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\frmCadastroOrdemServico.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\frmCadastroOrdemServico.Designer.cs">
+      <DependentUpon>frmCadastroOrdemServico.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\frmCadastroPais.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\frmCadastroPais.Designer.cs">
+      <DependentUpon>frmCadastroPais.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\frmCadastroVenda.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\frmCadastroVenda.Designer.cs">
+      <DependentUpon>frmCadastroVenda.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\frmCadastroCondicaoPagamento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\frmCadastroCondicaoPagamento.Designer.cs">
+      <DependentUpon>frmCadastroCondicaoPagamento.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\frmConsultaCategoria.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\frmConsultaCategoria.Designer.cs">
+      <DependentUpon>frmConsultaCategoria.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\frmConsultaCidade.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\frmConsultaCidade.Designer.cs">
+      <DependentUpon>frmConsultaCidade.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\frmConsultaCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\frmConsultaCliente.Designer.cs">
+      <DependentUpon>frmConsultaCliente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MenuPrincipal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MenuPrincipal.Designer.cs">
+      <DependentUpon>MenuPrincipal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="View\frmConsultaCompra.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\frmConsultaCompra.Designer.cs">
+      <DependentUpon>frmConsultaCompra.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\frmConsultaCondicaoPagamento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\frmConsultaCondicaoPagamento.Designer.cs">
+      <DependentUpon>frmConsultaCondicaoPagamento.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\frmConsultaContaPagar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\frmConsultaContaPagar.Designer.cs">
+      <DependentUpon>frmConsultaContaPagar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\frmConsultaEstado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\frmConsultaEstado.Designer.cs">
+      <DependentUpon>frmConsultaEstado.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\frmConsultaFormaPagamento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\frmConsultaFormaPagamento.Designer.cs">
+      <DependentUpon>frmConsultaFormaPagamento.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\frmConsultaFornecedor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\frmConsultaFornecedor.Designer.cs">
+      <DependentUpon>frmConsultaFornecedor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\frmCadastroProdutoServico.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\frmCadastroProdutoServico.Designer.cs">
+      <DependentUpon>frmCadastroProdutoServico.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\frmConsultaFuncionario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\frmConsultaFuncionario.Designer.cs">
+      <DependentUpon>frmConsultaFuncionario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\frmConsultaMarca.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\frmConsultaMarca.Designer.cs">
+      <DependentUpon>frmConsultaMarca.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\frmConsultaModelo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\frmConsultaModelo.Designer.cs">
+      <DependentUpon>frmConsultaModelo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\frmConsultaOrdemServico.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\frmConsultaOrdemServico.Designer.cs">
+      <DependentUpon>frmConsultaOrdemServico.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\frmConsultaPais.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\frmConsultaPais.Designer.cs">
+      <DependentUpon>frmConsultaPais.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\frmConsultaProdutosServicos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\frmConsultaProdutosServicos.Designer.cs">
+      <DependentUpon>frmConsultaProdutosServicos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\frmConsultaVenda.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\frmConsultaVenda.Designer.cs">
+      <DependentUpon>frmConsultaVenda.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\helper\MaskForm.cs" />
+    <EmbeddedResource Include="frmLogin.resx">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\frmCadastro.resx">
+      <DependentUpon>frmCadastro.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\frmCadastroCategoria.resx">
+      <DependentUpon>frmCadastroCategoria.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\frmCadastroCidade.resx">
+      <DependentUpon>frmCadastroCidade.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\frmCadastroCliente.resx">
+      <DependentUpon>frmCadastroCliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\frmCadastroCompra.resx">
+      <DependentUpon>frmCadastroCompra.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\frmCadastroContaPagar.resx">
+      <DependentUpon>frmCadastroContaPagar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\frmCadastroEstado.resx">
+      <DependentUpon>frmCadastroEstado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\frmCadastroFormaPagamento.resx">
+      <DependentUpon>frmCadastroFormaPagamento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\frmCadastroFornecedor.resx">
+      <DependentUpon>frmCadastroFornecedor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\frmCadastroFuncionario.resx">
+      <DependentUpon>frmCadastroFuncionario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\frmCadastroMarca.resx">
+      <DependentUpon>frmCadastroMarca.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\frmCadastroModelo.resx">
+      <DependentUpon>frmCadastroModelo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\frmCadastroOrdemServico.resx">
+      <DependentUpon>frmCadastroOrdemServico.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\frmCadastroPais.resx">
+      <DependentUpon>frmCadastroPais.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\frmCadastroProdutoServico.resx">
+      <DependentUpon>frmCadastroProdutoServico.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\frmCadastroVenda.resx">
+      <DependentUpon>frmCadastroVenda.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\frmCadastroCondicaoPagamento.resx">
+      <DependentUpon>frmCadastroCondicaoPagamento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\frmConsultaCategoria.resx">
+      <DependentUpon>frmConsultaCategoria.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\frmConsultaCidade.resx">
+      <DependentUpon>frmConsultaCidade.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\frmConsultaCliente.resx">
+      <DependentUpon>frmConsultaCliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MenuPrincipal.resx">
+      <DependentUpon>MenuPrincipal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="View\frmConsultaCompra.resx">
+      <DependentUpon>frmConsultaCompra.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\frmConsultaCondicaoPagamento.resx">
+      <DependentUpon>frmConsultaCondicaoPagamento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\frmConsultaContaPagar.resx">
+      <DependentUpon>frmConsultaContaPagar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\frmConsultaEstado.resx">
+      <DependentUpon>frmConsultaEstado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\frmConsultaFormaPagamento.resx">
+      <DependentUpon>frmConsultaFormaPagamento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\frmConsultaFornecedor.resx">
+      <DependentUpon>frmConsultaFornecedor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\frmConsultaFuncionario.resx">
+      <DependentUpon>frmConsultaFuncionario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\frmConsultaMarca.resx">
+      <DependentUpon>frmConsultaMarca.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\frmConsultaModelo.resx">
+      <DependentUpon>frmConsultaModelo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\frmConsultaOrdemServico.resx">
+      <DependentUpon>frmConsultaOrdemServico.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\frmConsultaPais.resx">
+      <DependentUpon>frmConsultaPais.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\frmConsultaProdutosServicos.resx">
+      <DependentUpon>frmConsultaProdutosServicos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\frmConsultaVenda.resx">
+      <DependentUpon>frmConsultaVenda.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include=".editorconfig" />
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="SistemaMoto2DataSetCategoria.xsc">
+      <DependentUpon>SistemaMoto2DataSetCategoria.xsd</DependentUpon>
+    </None>
+    <None Include="SistemaMoto2DataSetCategoria.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SistemaMoto2DataSetCategoria.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="SistemaMoto2DataSetCategoria.xss">
+      <DependentUpon>SistemaMoto2DataSetCategoria.xsd</DependentUpon>
+    </None>
+    <None Include="SistemaMoto2DataSetCidade.xsc">
+      <DependentUpon>SistemaMoto2DataSetCidade.xsd</DependentUpon>
+    </None>
+    <None Include="SistemaMoto2DataSetCidade.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SistemaMoto2DataSetCidade.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="SistemaMoto2DataSetCidade.xss">
+      <DependentUpon>SistemaMoto2DataSetCidade.xsd</DependentUpon>
+    </None>
+    <None Include="SistemaMoto2DataSetCliente.xsc">
+      <DependentUpon>SistemaMoto2DataSetCliente.xsd</DependentUpon>
+    </None>
+    <None Include="SistemaMoto2DataSetCliente.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SistemaMoto2DataSetCliente.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="SistemaMoto2DataSetCliente.xss">
+      <DependentUpon>SistemaMoto2DataSetCliente.xsd</DependentUpon>
+    </None>
+    <None Include="SistemaMoto2DataSetCompra.xsc">
+      <DependentUpon>SistemaMoto2DataSetCompra.xsd</DependentUpon>
+    </None>
+    <None Include="SistemaMoto2DataSetCompra.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SistemaMoto2DataSetCompra.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="SistemaMoto2DataSetCompra.xss">
+      <DependentUpon>SistemaMoto2DataSetCompra.xsd</DependentUpon>
+    </None>
+    <None Include="SistemaMoto2DataSetCondicaoPagamento.xsc">
+      <DependentUpon>SistemaMoto2DataSetCondicaoPagamento.xsd</DependentUpon>
+    </None>
+    <None Include="SistemaMoto2DataSetCondicaoPagamento.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SistemaMoto2DataSetCondicaoPagamento.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="SistemaMoto2DataSetCondicaoPagamento.xss">
+      <DependentUpon>SistemaMoto2DataSetCondicaoPagamento.xsd</DependentUpon>
+    </None>
+    <None Include="SistemaMoto2DataSetContaPagar.xsc">
+      <DependentUpon>SistemaMoto2DataSetContaPagar.xsd</DependentUpon>
+    </None>
+    <None Include="SistemaMoto2DataSetContaPagar.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SistemaMoto2DataSetContaPagar.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="SistemaMoto2DataSetContaPagar.xss">
+      <DependentUpon>SistemaMoto2DataSetContaPagar.xsd</DependentUpon>
+    </None>
+    <None Include="SistemaMoto2DataSetContasPagar.xsc">
+      <DependentUpon>SistemaMoto2DataSetContasPagar.xsd</DependentUpon>
+    </None>
+    <None Include="SistemaMoto2DataSetContasPagar.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SistemaMoto2DataSetContasPagar.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="SistemaMoto2DataSetContasPagar.xss">
+      <DependentUpon>SistemaMoto2DataSetContasPagar.xsd</DependentUpon>
+    </None>
+    <None Include="SistemaMoto2DataSetEstado.xsc">
+      <DependentUpon>SistemaMoto2DataSetEstado.xsd</DependentUpon>
+    </None>
+    <None Include="SistemaMoto2DataSetEstado.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SistemaMoto2DataSetEstado.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="SistemaMoto2DataSetEstado.xss">
+      <DependentUpon>SistemaMoto2DataSetEstado.xsd</DependentUpon>
+    </None>
+    <None Include="SistemaMoto2DataSetFormaPagamento.xsc">
+      <DependentUpon>SistemaMoto2DataSetFormaPagamento.xsd</DependentUpon>
+    </None>
+    <None Include="SistemaMoto2DataSetFormaPagamento.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SistemaMoto2DataSetFormaPagamento.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="SistemaMoto2DataSetFormaPagamento.xss">
+      <DependentUpon>SistemaMoto2DataSetFormaPagamento.xsd</DependentUpon>
+    </None>
+    <None Include="SistemaMoto2DataSetFornecedor.xsc">
+      <DependentUpon>SistemaMoto2DataSetFornecedor.xsd</DependentUpon>
+    </None>
+    <None Include="SistemaMoto2DataSetFornecedor.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SistemaMoto2DataSetFornecedor.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="SistemaMoto2DataSetFornecedor.xss">
+      <DependentUpon>SistemaMoto2DataSetFornecedor.xsd</DependentUpon>
+    </None>
+    <None Include="SistemaMoto2DataSetFuncionario.xsc">
+      <DependentUpon>SistemaMoto2DataSetFuncionario.xsd</DependentUpon>
+    </None>
+    <None Include="SistemaMoto2DataSetFuncionario.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SistemaMoto2DataSetFuncionario.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="SistemaMoto2DataSetFuncionario.xss">
+      <DependentUpon>SistemaMoto2DataSetFuncionario.xsd</DependentUpon>
+    </None>
+    <None Include="SistemaMoto2DataSetMarca.xsc">
+      <DependentUpon>SistemaMoto2DataSetMarca.xsd</DependentUpon>
+    </None>
+    <None Include="SistemaMoto2DataSetMarca.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SistemaMoto2DataSetMarca.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="SistemaMoto2DataSetMarca.xss">
+      <DependentUpon>SistemaMoto2DataSetMarca.xsd</DependentUpon>
+    </None>
+    <None Include="SistemaMoto2DataSetModelo.xsc">
+      <DependentUpon>SistemaMoto2DataSetModelo.xsd</DependentUpon>
+    </None>
+    <None Include="SistemaMoto2DataSetModelo.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SistemaMoto2DataSetModelo.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="SistemaMoto2DataSetModelo.xss">
+      <DependentUpon>SistemaMoto2DataSetModelo.xsd</DependentUpon>
+    </None>
+    <None Include="SistemaMoto2DataSetOrdemServico.xsc">
+      <DependentUpon>SistemaMoto2DataSetOrdemServico.xsd</DependentUpon>
+    </None>
+    <None Include="SistemaMoto2DataSetOrdemServico.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SistemaMoto2DataSetOrdemServico.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="SistemaMoto2DataSetOrdemServico.xss">
+      <DependentUpon>SistemaMoto2DataSetOrdemServico.xsd</DependentUpon>
+    </None>
+    <None Include="SistemaMoto2DataSetPais.xsc">
+      <DependentUpon>SistemaMoto2DataSetPais.xsd</DependentUpon>
+    </None>
+    <None Include="SistemaMoto2DataSetPais.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SistemaMoto2DataSetPais.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="SistemaMoto2DataSetPais.xss">
+      <DependentUpon>SistemaMoto2DataSetPais.xsd</DependentUpon>
+    </None>
+    <None Include="SistemaMoto2DataSetProduto.xsc">
+      <DependentUpon>SistemaMoto2DataSetProduto.xsd</DependentUpon>
+    </None>
+    <None Include="SistemaMoto2DataSetProduto.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SistemaMoto2DataSetProduto.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="SistemaMoto2DataSetProduto.xss">
+      <DependentUpon>SistemaMoto2DataSetProduto.xsd</DependentUpon>
+    </None>
+    <None Include="View\Resources\1398756462_Modify.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="View\Resources\1398756346_1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="View\Resources\1398756469_Erase.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="View\Resources\1398754683_xmag.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.7.2 %28x86 e x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
