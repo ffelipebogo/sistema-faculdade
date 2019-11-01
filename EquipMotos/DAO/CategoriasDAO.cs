@@ -84,7 +84,6 @@ namespace EquipMotos.DAO
 
                 return dtCategorias;
             }
-
         }
 
         public override object BuscarPorID(object codigo)

@@ -1,4 +1,5 @@
-﻿using EquipMotos.DAO;
+﻿using EquipMotos.CONTROLLER;
+using EquipMotos.DAO;
 using EquipMotos.MODEL;
 using EquipMotos.View;
 using EquipMotos.View.helper;
@@ -11,8 +12,8 @@ namespace EquipMotos.Codigo.View
 {
     public partial class frmCadastroFornecedor : Form
     {
-        FornecedoresDAO dao = new FornecedoresDAO();
-        Fornecedores forn = new Fornecedores();
+        CtrlFornecedores CtrlFornecedor = new CtrlFornecedores();
+        Fornecedores Fornecedor = new Fornecedores();
         public static object cidade = null;
         public static object condPagamento = null;
         
@@ -38,63 +39,63 @@ namespace EquipMotos.Codigo.View
                     Cidades cid = new Cidades();
                     CondicaoPagamentos condPag = new CondicaoPagamentos();
 
-                    forn.fornecedor = txtFornecedor.Text;
-                    forn.nomeFantasia = txtNomeFantasia.Text;
-                    forn.dtFundacao = Convert.ToDateTime(txtDtFundacao.Text);
-                    forn.sexo = Convert.ToChar(txtSexo.Text);
-                    forn.endereco = txtEndereco.Text;
-                    forn.numero = Convert.ToInt32("0"+txtNumero.Text);
-                    forn.complemento = txtComplemento.Text;
-                    forn.bairro = txtBairro.Text;
-                    forn.cep = txtCep.Text;
+                    Fornecedor.fornecedor = txtFornecedor.Text;
+                    Fornecedor.nomeFantasia = txtNomeFantasia.Text;
+                    Fornecedor.dtFundacao = Convert.ToDateTime(txtDtFundacao.Text);
+                    Fornecedor.sexo = Convert.ToChar(txtSexo.Text);
+                    Fornecedor.endereco = txtEndereco.Text;
+                    Fornecedor.numero = Convert.ToInt32("0"+txtNumero.Text);
+                    Fornecedor.complemento = txtComplemento.Text;
+                    Fornecedor.bairro = txtBairro.Text;
+                    Fornecedor.cep = txtCep.Text;
 
                     cid.codigo = Convert.ToInt16("0"+txtIdCidade.Text);
-                    forn.Cidade = cid;
+                    Fornecedor.Cidade = cid;
                     
-                    forn.telefone = txtTelefone.Text;
-                    forn.celular = txtCelular.Text;
-                    forn.email = txtEmail.Text;
-                    forn.contato = txtContato.Text;
-                    forn.site = txtSite.Text;
+                    Fornecedor.telefone = txtTelefone.Text;
+                    Fornecedor.celular = txtCelular.Text;
+                    Fornecedor.email = txtEmail.Text;
+                    Fornecedor.contato = txtContato.Text;
+                    Fornecedor.site = txtSite.Text;
                     if (rbJuridica.Checked)
                     {
-                        forn.cnpj = txtCnpj.Text;
-                        forn.ie = txtIe.Text;
-                        forn.cpf = "";
-                        forn.rg = "";
+                        Fornecedor.cnpj = txtCnpj.Text;
+                        Fornecedor.ie = txtIe.Text;
+                        Fornecedor.cpf = "";
+                        Fornecedor.rg = "";
                     }
                     else
                     {
-                        forn.cpf = txtCnpj.Text;
-                        forn.rg = txtIe.Text;
-                        forn.cnpj = "";
-                        forn.ie = "";
+                        Fornecedor.cpf = txtCnpj.Text;
+                        Fornecedor.rg = txtIe.Text;
+                        Fornecedor.cnpj = "";
+                        Fornecedor.ie = "";
                     }
                     if (Convert.ToInt32("0" + txtCodCondicao.Text) != 0)
                     {
                         condPag.codigo = Convert.ToInt32("0" + txtCodCondicao.Text);
-                        forn.CondPagamento = condPag;
+                        Fornecedor.CondPagamento = condPag;
                     }
-                    forn.limiteCredito = Double.Parse(txtLimiteCredito.Text, NumberStyles.Any);
-                    forn.observacoes = txtObservacao.Text;
+                    Fornecedor.limiteCredito = Double.Parse(txtLimiteCredito.Text, NumberStyles.Any);
+                    Fornecedor.observacoes = txtObservacao.Text;
                     
-                    forn.usuario = txtUsuario.Text;
-                    forn.fisico = rbFisica.Checked;
+                    Fornecedor.usuario = txtUsuario.Text;
+                    Fornecedor.fisico = rbFisica.Checked;
 
                     if (btnSalvar.Text == "ALTERAR")
                     {
-                        forn.codigo = Convert.ToInt32("0"+txtCodigo.Text);
-                        forn.dtAlteracao = DateTime.Now;
-                        forn.dtCadastro = Convert.ToDateTime(txtDtCadastro.Text);
-                        dao.Editar(forn);
+                        Fornecedor.codigo = Convert.ToInt32("0"+txtCodigo.Text);
+                        Fornecedor.dtAlteracao = DateTime.Now;
+                        Fornecedor.dtCadastro = Convert.ToDateTime(txtDtCadastro.Text);
+                        CtrlFornecedor.Editar(Fornecedor);
 
                         MessageBox.Show("Fornecedor alterado com Sucesso!");
                     }
                     else
                     {
-                        forn.dtCadastro = DateTime.Now;
-                        forn.dtAlteracao = DateTime.Now;
-                        dao.Inserir(forn);
+                        Fornecedor.dtCadastro = DateTime.Now;
+                        Fornecedor.dtAlteracao = DateTime.Now;
+                        CtrlFornecedor.Inserir(Fornecedor);
 
                         MessageBox.Show("Fornecedor cadastrado com Sucesso!");
                     }
@@ -155,7 +156,6 @@ namespace EquipMotos.Codigo.View
 
         public void limparCampos()
         {
-
             txtCodigo.Text = "";
             txtFornecedor.Text = "";
             //rbFisica.Select();
@@ -183,12 +183,11 @@ namespace EquipMotos.Codigo.View
             txtDtCadastro.Text = "";
             txtDtAlteracao.Text = "";
             txtUsuario.Text = "";
-
         }
 
         public void Carregar(object id)
         {
-            Fornecedores forn = dao.BuscarPorID(id) as Fornecedores;
+            Fornecedores forn = CtrlFornecedor.BuscarPorID(id) as Fornecedores;
             
             txtCodigo.Text = Convert.ToString(forn.codigo);
             txtFornecedor.Text = forn.fornecedor;
@@ -286,7 +285,6 @@ namespace EquipMotos.Codigo.View
 
         public bool ValidaCampos()
         {
-
             if (txtFornecedor.Text.Length < 3)
             {
                 MessageBox.Show("Fornecedor inválido!", "Verefique o Fornecedor!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -346,7 +344,6 @@ namespace EquipMotos.Codigo.View
                 txtCodCondicao.Focus();
                 return false;
             }
-
             if (rbFisica.Checked)
             {
                 if (!IsCpf(txtCnpj.Text) || txtCnpj.Text.Length < 11)
@@ -555,7 +552,6 @@ namespace EquipMotos.Codigo.View
         {
             MaskForm.TxtMask_Moeda_KeyPress(sender, e);
         }
-
         private void TxtCodCondicao_KeyPress(object sender, KeyPressEventArgs e)
         {
             MaskForm.TxtMask_Moeda_KeyPress(sender, e);

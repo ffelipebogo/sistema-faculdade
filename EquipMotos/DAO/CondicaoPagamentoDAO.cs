@@ -10,17 +10,18 @@ using System.Windows.Forms;
 
 namespace EquipMotos.DAO
 {
-    class CondicaoPagamentoDAO : DAO, IDisposable
+    public class CondicaoPagamentoDAO : DAO, IDisposable
     {
         CondicaoPagamentos condicaoPagamento;
         FormaPagamentoDAO daoFormPagamento = new FormaPagamentoDAO();
 
-        public void InserirCondicaoPagamento(CondicaoPagamentos condPagamento)
+        public override void Inserir(object obj)
         {
             conexao.Open();
             SqlTransaction transaction = conexao.BeginTransaction("SampleTransacion");
             try
             {
+                CondicaoPagamentos condPagamento = obj as CondicaoPagamentos;
                 this.InsertCondicaoPagamento(condPagamento, transaction);
 
                 foreach (CondicaoParcelada parcela in condPagamento.listaParcela)
@@ -29,8 +30,9 @@ namespace EquipMotos.DAO
                 }
                 transaction.Commit();
             }
-            catch
+            catch(Exception ex)
             {
+                MessageBox.Show(ex.Message);
                 transaction.Rollback();
                 MessageBox.Show("Erro ao salvar a Condição de Pagamento!", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 conexao.Close();
@@ -42,8 +44,8 @@ namespace EquipMotos.DAO
             var IDcondPagamento = this.SelecionaUltimoID(transaction);
 
             SqlCommand comando = this.CreateCommandTransaction(transaction);
-            comando.CommandText = @"INSERT INTO parcelas( codCondPagamento, codFormaPagamento, nrParcela, nrDia , porcentagem, dtCadastro, dtAlteracao) 
-                                            VALUES (@codCondPagamento, @codFormaPagamento, @nrParcela,  @nrDia, @porcentagem, @dtCadastrop, @dtAlteracaop)";
+            comando.CommandText = @"INSERT INTO parcelas( codCondPagamento, codFormaPagamento, nrParcela, nrDia , porcentagem, dtCadastro, dtAlteracao, usuario) 
+                                            VALUES (@codCondPagamento, @codFormaPagamento, @nrParcela,  @nrDia, @porcentagem, @dtCadastrop, @dtAlteracaop, @usuario)";
 
             comando.Parameters.AddWithValue("@codCondPagamento", Convert.ToInt32(IDcondPagamento) ); //  para pegar o id condição deste insert
             comando.Parameters.AddWithValue("@codFormaPagamento", parcela.formaPagamento.codigo);
@@ -52,6 +54,7 @@ namespace EquipMotos.DAO
             comando.Parameters.AddWithValue("@porcentagem", parcela.porcentagem);
             comando.Parameters.AddWithValue("@dtCadastrop", parcela.dtCadastro);
             comando.Parameters.AddWithValue("@dtAlteracaop", parcela.dtAlteracao);
+            comando.Parameters.AddWithValue("@usuario", parcela.usuario);
 
             comando.ExecuteNonQuery();
         }
@@ -88,25 +91,27 @@ namespace EquipMotos.DAO
             comando.ExecuteNonQuery();
         }
 
-        public void EditarCondicaoPagamento(CondicaoPagamentos condPagamento)
+        public override void Editar(object obj)
         {
             conexao.Open();
             SqlTransaction transaction = conexao.BeginTransaction("SampleTransacion");
             try
             {
+                CondicaoPagamentos condPagamento = obj as CondicaoPagamentos;
                 this.UpdateCondicaoPagamento(condPagamento, transaction);
 
                 //this.ExcluirParcela(condPagamento.codigo, transaction);
 
                 foreach (CondicaoParcelada parcela in condPagamento.listaParcela)
                 {
-                    this.UpdateParcela(parcela, transaction);
+                    this.UpdateParcela(parcela, condPagamento.codigo, transaction);
                 }
                 transaction.Commit();
                 MessageBox.Show("Condição de Pagamento alterada com Sucesso!"); ;
             }
-            catch
+            catch (Exception ex)
             {
+                MessageBox.Show(ex.Message);
                 transaction.Rollback();
                 MessageBox.Show("Erro ao alterar a Condição de Pagamento!", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 conexao.Close();
@@ -130,12 +135,12 @@ namespace EquipMotos.DAO
             comando.ExecuteNonQuery();
         }
 
-        private void UpdateParcela(CondicaoParcelada parcela, SqlTransaction transaction)
+        private void UpdateParcela(CondicaoParcelada parcela, int codCondicao,  SqlTransaction transaction)
         {
             SqlCommand comando = this.CreateCommandTransaction(transaction);
 
-            comando.CommandText = @"UPDATE parcelas SET nrParcela = @nrParcela, nrDia = @nrDia, porcentagem = @porcentagem, codFormaPagamento = @codFormaPagamento,
-                                                                 dtAlteracao = @dtAlteracao, usuario = @usuario WHERE codigo = @codigo ";
+            comando.CommandText = @"UPDATE parcelas SET nrParcela = @nrParcela, nrDia = @nrDia, porcentagem = @porcentagem, codFormaPagamento = @codFormaPagamento, dtAlteracao = @dtAlteracao, usuario = @usuario 
+                                    WHERE codCondPagamento = @codigo ";
 
             comando.Parameters.AddWithValue("@nrParcela", parcela.nrParcela);
             comando.Parameters.AddWithValue("@nrDia", parcela.nrDia);
@@ -143,12 +148,12 @@ namespace EquipMotos.DAO
             comando.Parameters.AddWithValue("@codFormaPagamento", parcela.formaPagamento.codigo);
             comando.Parameters.AddWithValue("@dtAlteracao", parcela.dtAlteracao);
             comando.Parameters.AddWithValue("@usuario", parcela.usuario);
-            comando.Parameters.AddWithValue("@codigo", parcela.codigo);
+            comando.Parameters.AddWithValue("@codigo", codCondicao);
 
             comando.ExecuteNonQuery();
         }
 
-        public void ExcluirCondicaoPagamento(object id)
+        public override void Excluir(object id)
         {
             conexao.Open();
             SqlTransaction transaction = conexao.BeginTransaction("SampleTransacion");
@@ -157,7 +162,7 @@ namespace EquipMotos.DAO
                 SqlCommand comando = this.CreateCommandTransaction(transaction);
 
                 comando.CommandText = @"DELETE FROM condicaoPagamento WHERE codigo = @codigo;
-                                    DELETE FROM parcelas WHERE codCondPagamento = @codigo;";
+                                        DELETE FROM parcelas WHERE codCondPagamento = @codigo;";
                 comando.Parameters.AddWithValue("@codigo", id);
 
                 comando.ExecuteNonQuery();
@@ -175,14 +180,14 @@ namespace EquipMotos.DAO
         {
             SqlCommand comando = this.CreateCommandTransaction(transaction);
 
-            comando.CommandText = "DELETE FROM parcelas WHERE codCondPagamento = @codigo;";
+            comando.CommandText = "DELETE FROM parcelas WHERE codCondPagamento = @codigo";
             comando.Parameters.AddWithValue("@codigo", id);
 
             comando.ExecuteNonQuery();
          
         }
 
-        public DataTable ListarTodasCondicoes()
+        public override DataTable ListarTodos()
         {
             using (SqlConnection conexao = Conecta.CreateConnection())
             {
@@ -202,7 +207,7 @@ namespace EquipMotos.DAO
 
         }
 
-        internal CondicaoPagamentos BuscarCondicao_porID(object id)
+        public override object BuscarPorID(object id)
         {
             using (SqlConnection conexao = Conecta.CreateConnection())
             {
@@ -250,7 +255,7 @@ namespace EquipMotos.DAO
             }
         }
 
-        internal object pesquisaCondicao(string cond)
+        public override object Pesquisar(string cond)
         {
             using (SqlConnection conexao = Conecta.CreateConnection())
             {

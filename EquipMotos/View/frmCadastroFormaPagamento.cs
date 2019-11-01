@@ -1,4 +1,5 @@
-﻿using EquipMotos.DAO;
+﻿using EquipMotos.CONTROLLER;
+using EquipMotos.DAO;
 using EquipMotos.MODEL;
 using System;
 using System.Collections.Generic;
@@ -14,33 +15,28 @@ namespace EquipMotos.View
 {
     public partial class frmCadastroFormaPagamento : Form
     {
-
         FormaPagamentos formPag = new FormaPagamentos();
-        FormaPagamentoDAO dao = new FormaPagamentoDAO();
+        CtrlFormaPagamentos CtrlFormaPagamento = new CtrlFormaPagamentos();
         public frmCadastroFormaPagamento()
         {
             InitializeComponent();
         }
-
         private void BtnSalvar_Click(object sender, EventArgs e)
         {
             try
             {
                 if (ValidaCampo())
                 {
-
                     formPag.forma = txtForma.Text;
                     formPag.dtCadastro = DateTime.Now;
                     formPag.dtAlteracao = DateTime.Now;
                     formPag.usuario = txtUsuario.Text;
-                    //FormaPagamentoDAO dao = new FormaPagamentoDAO();
 
-                    
                     if (btnSalvar.Text == "ALTERAR")
                     {
                         formPag.codigo = Convert.ToInt32(txtCodigo.Text);
                         formPag.dtAlteracao = DateTime.Now;
-                        dao.Editar(formPag);
+                        CtrlFormaPagamento.Editar(formPag);
 
                         MessageBox.Show("Forma de Pagamento alterada com Sucesso!");
                     }
@@ -48,7 +44,7 @@ namespace EquipMotos.View
                     {
                         formPag.dtAlteracao = DateTime.Now;
                         formPag.dtCadastro = DateTime.Now;
-                        dao.Inserir(formPag);
+                        CtrlFormaPagamento.Inserir(formPag);
                         MessageBox.Show("Forma de Pagamento cadastrada com Sucesso!");
                     }
                     this.DialogResult = DialogResult.OK;
@@ -67,7 +63,7 @@ namespace EquipMotos.View
 
         public void Carregar(object id)
         {
-            formPag = dao.BuscarPorID(id) as FormaPagamentos;
+            formPag = CtrlFormaPagamento.BuscarPorID(id) as FormaPagamentos;
             txtCodigo.Text = Convert.ToString(formPag.codigo);
             txtForma.Text = Convert.ToString(formPag.forma);
             txtDtCadastro.Text = Convert.ToString(formPag.dtCadastro);

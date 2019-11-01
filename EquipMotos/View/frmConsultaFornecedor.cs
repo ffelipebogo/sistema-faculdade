@@ -1,4 +1,5 @@
 ﻿using EquipMotos.Codigo.View;
+using EquipMotos.CONTROLLER;
 using EquipMotos.DAO;
 using EquipMotos.MODEL;
 using System;
@@ -9,12 +10,12 @@ namespace EquipMotos.View
 {
     public partial class frmConsultaFornecedor : Form
     {
-        FornecedoresDAO dao = new FornecedoresDAO();
+        CtrlFornecedores CtrlFornecedor = new CtrlFornecedores();
         Fornecedores fornecedor;
         public frmConsultaFornecedor()
         {
             InitializeComponent();
-            gvFornecedor.DataSource = dao.ListarTodos();
+            gvFornecedor.DataSource = CtrlFornecedor.ListarTodos();
         }
 
         private void BtnNovo_Click(object sender, EventArgs e)
@@ -22,7 +23,7 @@ namespace EquipMotos.View
             frmCadastroFornecedor frmCadFornecedor = new frmCadastroFornecedor();
             if (frmCadFornecedor.ShowDialog() == DialogResult.OK)
             {
-                gvFornecedor.DataSource = dao.ListarTodos();
+                gvFornecedor.DataSource = CtrlFornecedor.ListarTodos();
             }
         }
 
@@ -48,14 +49,14 @@ namespace EquipMotos.View
         {
             fornecedor = null;
             var fornRow = gvFornecedor.CurrentRow.DataBoundItem as DataRowView;
-            fornecedor = dao.BuscarPorID(fornRow["codigo"]) as Fornecedores;
+            fornecedor = CtrlFornecedor.BuscarPorID(fornRow["codigo"]) as Fornecedores;
             return fornecedor;
         }
 
         private void BtnBuscarFornecedor_Click(object sender, EventArgs e)
         {
             string forn = txtPesquisar.Text;
-            gvFornecedor.DataSource = dao.Pesquisar(forn);
+            gvFornecedor.DataSource = CtrlFornecedor.Pesquisar(forn);
         }
 
         private void BtnAlterar_Click(object sender, EventArgs e)
@@ -68,7 +69,7 @@ namespace EquipMotos.View
                 frmCadFornecedor.Carregar(id);
                 if (frmCadFornecedor.ShowDialog() == DialogResult.OK)
                 {
-                    gvFornecedor.DataSource = dao.ListarTodos();
+                    gvFornecedor.DataSource = CtrlFornecedor.ListarTodos();
                 }
             }
             catch (Exception ex)
@@ -83,9 +84,9 @@ namespace EquipMotos.View
             {
                 var forRow = gvFornecedor.CurrentRow.DataBoundItem as DataRowView;
                 var id = forRow["codigo"];
-                dao.Excluir(id);
+                CtrlFornecedor.Excluir(id);
                 MessageBox.Show("Fornecedor foi excluido!");
-                gvFornecedor.DataSource = dao.ListarTodos();
+                gvFornecedor.DataSource = CtrlFornecedor.ListarTodos();
             }
             catch (Exception)
             {

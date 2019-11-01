@@ -1,4 +1,5 @@
-﻿using EquipMotos.DAO;
+﻿using EquipMotos.CONTROLLER;
+using EquipMotos.DAO;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,7 +14,7 @@ namespace EquipMotos.View
 {
     public partial class frmConsultaContaPagar : Form
     {
-        ContasPagarDAO dao = new ContasPagarDAO();
+        CtrlContasPagar CtrlContaPagar = new CtrlContasPagar();
 
         public frmConsultaContaPagar()
         {
@@ -24,7 +25,7 @@ namespace EquipMotos.View
         {
             // TODO: esta linha de código carrega dados na tabela 'sistemaMoto2DataSetContasPagar.contaPagar'. Você pode movê-la ou removê-la conforme necessário.
             this.contaPagarTableAdapter.Fill(this.sistemaMoto2DataSetContasPagar.contaPagar);
-            gvContaPagar.DataSource = dao.ListarTodasContasPagar();
+            gvContaPagar.DataSource = CtrlContaPagar.ListarTodos();
         }
 
         private void BtnNovo_Click(object sender, EventArgs e)
@@ -32,8 +33,8 @@ namespace EquipMotos.View
             frmCadastroContaPagar frmCadContaPagar= new frmCadastroContaPagar();
             if (frmCadContaPagar.ShowDialog() == DialogResult.OK)
             {
-                var lista = dao.ListarTodasContasPagar();
-                if(lista != null)
+                var lista = CtrlContaPagar.ListarTodos();
+                if (lista != null)
                 {
                     gvContaPagar.DataSource = lista;
                 } else
@@ -66,8 +67,8 @@ namespace EquipMotos.View
                 frmCadConta.Disable();
                 if (frmCadConta.ShowDialog() == DialogResult.OK)
                 {
-                    var lista = dao.ListarTodasContasPagar();
-                    if(lista != null)
+                    var lista = CtrlContaPagar.ListarTodos();
+                    if (lista != null)
                     {
                         gvContaPagar.DataSource = lista;
                     }
@@ -79,7 +80,6 @@ namespace EquipMotos.View
             }
         }
         
-
         private void BtnExcluir_Click(object sender, EventArgs e)
         {
             var contaRow = gvContaPagar.CurrentRow.DataBoundItem as DataRowView;
@@ -93,8 +93,8 @@ namespace EquipMotos.View
             if ((MessageBox.Show("Marcar como paga ?", "Atenção", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes) & modelo != null)
             {
                 
-                dao.MarcarPago(modelo, serie, nrNota, codFornecedor, nrParcela);
-                gvContaPagar.DataSource = dao.ListarTodasContasPagar();
+                CtrlContaPagar.MarcarPago(modelo, serie, nrNota, codFornecedor, nrParcela);
+                gvContaPagar.DataSource = CtrlContaPagar.ListarTodos();
             }
         }
     }

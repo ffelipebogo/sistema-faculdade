@@ -1,4 +1,5 @@
-﻿using EquipMotos.DAO;
+﻿using EquipMotos.CONTROLLER;
+using EquipMotos.DAO;
 using EquipMotos.MODEL;
 using System;
 using System.Collections.Generic;
@@ -15,7 +16,7 @@ namespace EquipMotos.View
     public partial class frmCadastroMarca : Form
     {
         Marcas mar = new Marcas();
-        MarcasDAO dao = new MarcasDAO();
+        CtrlMarcas CtrlMarca = new CtrlMarcas();
         public frmCadastroMarca()
         {
             InitializeComponent();
@@ -39,7 +40,7 @@ namespace EquipMotos.View
                     {
                         mar.codigo = Convert.ToInt32(txtCodMarca.Text);
                         mar.dtAlteracao = DateTime.Now;
-                        dao.Editar(mar);
+                        CtrlMarca.Editar(mar);
 
                         MessageBox.Show("Marca alterada com Sucesso!");
                     }
@@ -47,7 +48,7 @@ namespace EquipMotos.View
                     {
                         mar.dtAlteracao = DateTime.Now;
                         mar.dtCadastro = DateTime.Now;
-                        dao.Inserir(mar);
+                        CtrlMarca.Inserir(mar);
                         MessageBox.Show("Marca cadastrada com Sucesso!");
                     }
                     this.Close();
@@ -59,15 +60,17 @@ namespace EquipMotos.View
                 }
                
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                MessageBox.Show(ex.Message);
+
                 MessageBox.Show("Verifique se todos os campos foram preenchidos corretamente");
             }
         }
 
         internal void Carregar(object id)
         {
-            mar = dao.BuscarPorID(id) as Marcas;
+            mar = CtrlMarca.BuscarPorID(id) as Marcas;
             txtCodMarca.Text = Convert.ToString(mar.codigo);
             txtMarca.Text = mar.marca;
 

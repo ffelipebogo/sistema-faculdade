@@ -1,4 +1,5 @@
-﻿using EquipMotos.DAO;
+﻿using EquipMotos.CONTROLLER;
+using EquipMotos.DAO;
 using EquipMotos.MODEL;
 using System;
 using System.Collections.Generic;
@@ -14,8 +15,8 @@ namespace EquipMotos.View
 {
     public partial class frmCadastroPais : Form
     {
-        Paises pais = new Paises();
-        PaisesDAO dao = new PaisesDAO();
+        Paises Pais = new Paises();
+        CtrlPaises CtrlPais = new CtrlPaises();
         public frmCadastroPais()
         {
             InitializeComponent();
@@ -41,10 +42,10 @@ namespace EquipMotos.View
             {
                 if (ValidaCampo())
                 {
-                    pais.pais = txtPais.Text;
+                    Pais.pais = txtPais.Text;
                    // pais.dtCadastro = DateTime.Now;
                     //pais.dtAlteracao = DateTime.Now;
-                    pais.usuario = txtUsuario.Text;
+                    Pais.usuario = txtUsuario.Text;
 
 
 
@@ -52,17 +53,17 @@ namespace EquipMotos.View
 
                     if (btnSalvar.Text == "ALTERAR")
                     {
-                        pais.codigo = Convert.ToInt32(txtCodigoPais.Text);
-                        pais.dtAlteracao = DateTime.Now;
-                        dao.Editar(pais);
+                        Pais.codigo = Convert.ToInt32(txtCodigoPais.Text);
+                        Pais.dtAlteracao = DateTime.Now;
+                        CtrlPais.Editar(Pais);
 
                         MessageBox.Show("Pais alterado com Sucesso!");
                     }
                     else
                     {
-                        pais.dtAlteracao = DateTime.Now;
-                        pais.dtCadastro = DateTime.Now;
-                        dao.Inserir(pais);
+                        Pais.dtAlteracao = DateTime.Now;
+                        Pais.dtCadastro = DateTime.Now;
+                        CtrlPais.Inserir(Pais);
                         MessageBox.Show("Pais cadastrado com Sucesso!");
                     }
                     this.DialogResult = DialogResult.OK;
@@ -81,12 +82,12 @@ namespace EquipMotos.View
 
         internal void Carregar(object id)
         {
-            pais = dao.BuscarPorID(id) as Paises;
-            txtCodigoPais.Text = Convert.ToString(pais.codigo);
-            txtPais.Text = pais.pais;
-            txtDtCadastro.Text = Convert.ToString(pais.dtCadastro);
-            txtDtAlteracao.Text = Convert.ToString(pais.dtAlteracao);
-            txtUsuario.Text = pais.usuario;
+            Pais = CtrlPais.BuscarPorID(id) as Paises;
+            txtCodigoPais.Text = Convert.ToString(Pais.codigo);
+            txtPais.Text = Pais.pais;
+            txtDtCadastro.Text = Convert.ToString(Pais.dtCadastro);
+            txtDtAlteracao.Text = Convert.ToString(Pais.dtAlteracao);
+            txtUsuario.Text = Pais.usuario;
             btnSalvar.Text = "ALTERAR";
         }
 

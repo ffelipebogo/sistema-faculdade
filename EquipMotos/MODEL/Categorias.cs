@@ -8,7 +8,7 @@ namespace EquipMotos.MODEL
 {
     public class Categorias : Base
     {
-        //public int id { get; set; }
+        
         public string categoria { get; set; }
     }
 }

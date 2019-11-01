@@ -1,4 +1,5 @@
-﻿using EquipMotos.DAO;
+﻿using EquipMotos.CONTROLLER;
+using EquipMotos.DAO;
 using EquipMotos.MODEL;
 using System;
 using System.Collections.Generic;
@@ -16,7 +17,7 @@ namespace EquipMotos.View
     {
         //Paises paises = new Paises();
         Estados est = new Estados();
-        EstadosDAO dao = new EstadosDAO();
+        CtrlEstados CtrlEstado = new CtrlEstados();
         public static object paises;
         public frmCadastroEstado()
         {
@@ -49,7 +50,7 @@ namespace EquipMotos.View
                 {
                     est.codigo = Convert.ToInt32(txtCodigo.Text);
                     est.dtAlteracao = DateTime.Now;
-                    dao.Editar(est);
+                    CtrlEstado.Editar(est);
 
                     MessageBox.Show("Estado alterado com Sucesso!");
                 }
@@ -57,7 +58,7 @@ namespace EquipMotos.View
                 {
                     est.dtAlteracao = DateTime.Now;
                     est.dtCadastro = DateTime.Now;
-                    dao.Inserir(est);
+                    CtrlEstado.Inserir(est);
                     MessageBox.Show("Estado cadastrado com Sucesso!");
 
                 }
@@ -89,7 +90,7 @@ namespace EquipMotos.View
 
         internal void Carregar(object id)
         {
-            est = dao.BuscarPorID(id) as Estados;
+            est = CtrlEstado.BuscarPorID(id) as Estados;
             txtCodigo.Text = Convert.ToString(est.codigo);
             txtEstado.Text = est.estado;
             txtUf.Text = est.uf;

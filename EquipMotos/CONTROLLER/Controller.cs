@@ -4,11 +4,12 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Http;
 using EquipMotos.DAO;
 
 namespace EquipMotos.CONTROLLER
 {
-    public class Controller
+    public class Controller: ApiController
     {
         protected readonly DAO.DAO Dao;
 

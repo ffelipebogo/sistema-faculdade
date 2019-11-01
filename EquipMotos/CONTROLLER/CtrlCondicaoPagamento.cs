@@ -9,13 +9,11 @@ namespace EquipMotos.CONTROLLER
 {
     class CtrlCondicaoPagamento: Controller
     {
-        CondicaoPagamentoDAO DaoCondicao = null;
+       CondicaoPagamentoDAO DaoCondicao;
 
-        public CtrlCondicaoPagamento() : base(new CidadesDAO())
+        public CtrlCondicaoPagamento() : base(new CondicaoPagamentoDAO())
         {
             DaoCondicao = (CondicaoPagamentoDAO)this.Dao;
         }
-
-     
     }
 }

@@ -1,4 +1,5 @@
-﻿using EquipMotos.DAO;
+﻿using EquipMotos.CONTROLLER;
+using EquipMotos.DAO;
 using EquipMotos.MODEL;
 using EquipMotos.View.helper;
 using System;
@@ -16,8 +17,8 @@ namespace EquipMotos.View
     public partial class frmCadastroModelo : Form
     {
         public static object marca;
-        Modelos mod = new Modelos();
-        ModelosDAO dao = new ModelosDAO();
+        Modelos Modelo = new Modelos();
+        CtrlModelos CtrlModelo = new CtrlModelos();
         public frmCadastroModelo()
         {
             InitializeComponent();
@@ -27,7 +28,6 @@ namespace EquipMotos.View
         {
             Close();
         }
-
 
         private void BtnBuscarMarca_Click(object sender, EventArgs e)
         {
@@ -56,23 +56,23 @@ namespace EquipMotos.View
                 if (ValidaCompos())
                 {
                     Marcas mar = new Marcas();
-                    mod.modelo = txtModelo.Text;
+                    Modelo.modelo = txtModelo.Text;
                     mar.codigo = Convert.ToInt32(txtCodMarca.Text);
-                    mod.Marca = mar;
-                    mod.usuario = txtUsuario.Text;
+                    Modelo.Marca = mar;
+                    Modelo.usuario = txtUsuario.Text;
 
                     if (btnSalvar.Text == "ALTERAR")
                     {
-                        mod.codigo = Convert.ToInt32(txtCodModelo.Text);
-                        mod.dtAlteracao = DateTime.Now;
-                        dao.Editar(mod);
+                        Modelo.codigo = Convert.ToInt32(txtCodModelo.Text);
+                        Modelo.dtAlteracao = DateTime.Now;
+                        CtrlModelo.Editar(Modelo);
                         MessageBox.Show("Modelo alterado com Sucesso!");
                     }
                     else
                     {
-                        mod.dtAlteracao = DateTime.Now;
-                        mod.dtCadastro = DateTime.Now;
-                        dao.Inserir(mod);
+                        Modelo.dtAlteracao = DateTime.Now;
+                        Modelo.dtCadastro = DateTime.Now;
+                        CtrlModelo.Inserir(Modelo);
                         MessageBox.Show("Modelo cadastrado com Sucesso!");
                     }
                     this.DialogResult = DialogResult.OK;
@@ -104,14 +104,14 @@ namespace EquipMotos.View
 
         internal void Carregar(object id)
         {
-            mod = dao.BuscarPorID(id) as Modelos;
-            txtCodModelo.Text = Convert.ToString(mod.codigo);
-            txtModelo.Text = mod.modelo;
-            txtCodMarca.Text = Convert.ToString(mod.Marca.codigo);
-            txtMarca.Text = mod.Marca.marca;
-            txtDtCadastro.Text = Convert.ToString(mod.dtCadastro);
-            txtDtAlteracao.Text = Convert.ToString(mod.dtAlteracao);
-            txtUsuario.Text = mod.usuario;
+            Modelo = CtrlModelo.BuscarPorID(id) as Modelos;
+            txtCodModelo.Text = Convert.ToString(Modelo.codigo);
+            txtModelo.Text = Modelo.modelo;
+            txtCodMarca.Text = Convert.ToString(Modelo.Marca.codigo);
+            txtMarca.Text = Modelo.Marca.marca;
+            txtDtCadastro.Text = Convert.ToString(Modelo.dtCadastro);
+            txtDtAlteracao.Text = Convert.ToString(Modelo.dtAlteracao);
+            txtUsuario.Text = Modelo.usuario;
 
             btnSalvar.Text = "ALTERAR";
         }

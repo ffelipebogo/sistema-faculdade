@@ -1,4 +1,5 @@
-﻿using EquipMotos.DAO;
+﻿using EquipMotos.CONTROLLER;
+using EquipMotos.DAO;
 using EquipMotos.MODEL;
 using System;
 using System.Data;
@@ -10,7 +11,7 @@ namespace EquipMotos.View
     {
         ProdutosServicos prodServ;
 
-        ProdutosServicosDAO dao = new ProdutosServicosDAO();
+        CtrlProdutosServicos CtrlProdutoServico = new CtrlProdutosServicos();
         public frmConsultaProdutosServicos()
         {
             InitializeComponent();
@@ -29,7 +30,7 @@ namespace EquipMotos.View
             frmCadastroProdutoServico frmCadProServ = new frmCadastroProdutoServico();
             if (frmCadProServ.ShowDialog() == DialogResult.OK)
             {
-                gvProdutos.DataSource = dao.ListarTodos();
+                gvProdutos.DataSource = CtrlProdutoServico.ListarTodos();
             }
         }
 
@@ -45,7 +46,7 @@ namespace EquipMotos.View
                 frmCadProServ.Carregar(id);
                 if (frmCadProServ.ShowDialog() == DialogResult.OK)
                 {
-                    gvProdutos.DataSource = dao.ListarTodos();
+                    gvProdutos.DataSource = CtrlProdutoServico.ListarTodos();
                 }
             }
             catch (Exception ex)
@@ -62,6 +63,9 @@ namespace EquipMotos.View
                 if(prodServ != null)
                 {
                     frmCadastroCompra.prod = prodServ;
+                    frmCadastroVenda.Produto = prodServ;
+                    frmCadastroOrdemServico.Produto = prodServ;
+                    frmCadastroOrdemServico.Servico = prodServ;
                     this.DialogResult = DialogResult.OK;
                 }
                 Close();
@@ -83,7 +87,7 @@ namespace EquipMotos.View
             else
             {
                 var proRow = gvProdutos.CurrentRow.DataBoundItem as DataRowView;
-                var serv = dao.BuscarPorID(proRow["codigo"]) as ProdutosServicos;
+                var serv = CtrlProdutoServico.BuscarPorID(proRow["codigo"]) as ProdutosServicos;
 
                 return prodServ = serv ;
             }
@@ -97,10 +101,10 @@ namespace EquipMotos.View
                 var proRow = gvProdutos.CurrentRow.DataBoundItem as DataRowView;
                 var id = proRow["codigo"];
 
-                dao.Excluir(id);
+                CtrlProdutoServico.Excluir(id);
                 MessageBox.Show("Produto foi excluido!");
 
-                gvProdutos.DataSource = dao.ListarTodos();
+                gvProdutos.DataSource = CtrlProdutoServico.ListarTodos();
             }
             catch (Exception)
             {
@@ -111,18 +115,18 @@ namespace EquipMotos.View
         private void BtnBuscar_Click(object sender, EventArgs e)
         {
             string prod = txtPesquisar.Text;
-            gvProdutos.DataSource = dao.Pesquisar(prod);
+            gvProdutos.DataSource = CtrlProdutoServico.Pesquisar(prod);
         }
 
         private void RbProduto_CheckedChanged(object sender, EventArgs e)
         {
-            gvProdutos.DataSource = dao.ListarTodosProdutos();
+            gvProdutos.DataSource = CtrlProdutoServico.ListarTodosProdutos();
             this.prdutoGridViewTextBoxColumn.HeaderText = "Produtos";
         }
 
         private void RbServico_CheckedChanged(object sender, EventArgs e)
         {
-            gvProdutos.DataSource = dao.ListarTodosServicos();
+            gvProdutos.DataSource = CtrlProdutoServico.ListarTodosServicos();
             this.prdutoGridViewTextBoxColumn.HeaderText = "Serviços";
         }
     }

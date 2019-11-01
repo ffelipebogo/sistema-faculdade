@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EquipMotos.MODEL
 {
-    class Clientes : Pessoa
+    public class Clientes : Pessoa
     {
         public string cliente { get; set; }
         public string apelido { get; set; }

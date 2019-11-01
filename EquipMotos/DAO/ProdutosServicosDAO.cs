@@ -18,7 +18,6 @@ namespace EquipMotos.DAO
         #region Inserir ProdutosServicos 
         public override void Inserir(object obj)
         {
-
             {
                 SqlConnection conexao = Conecta.CreateConnection();
                 try
@@ -58,7 +57,7 @@ namespace EquipMotos.DAO
                         comando.Parameters.AddWithValue("@precoCusto", proServ.custo);
                         
                         comando.Parameters.AddWithValue("@codFornecedor", proServ.Fornecedor.codigo);
-                        comando.Parameters.AddWithValue("@codFuncionario", "");
+                        comando.Parameters.AddWithValue("@codFuncionario", DBNull.Value);
 
                         comando.Parameters.AddWithValue("@custoUltCompra", proServ.custoUltCompra);
                         comando.Parameters.AddWithValue("@dtUltCompra", proServ.dtUltCompra);
@@ -73,15 +72,15 @@ namespace EquipMotos.DAO
                     else
                     {
                         comando.Parameters.AddWithValue("@produto", proServ.produto);
-                        comando.Parameters.AddWithValue("@unidade", "");
-                        comando.Parameters.AddWithValue("@codBarra", "");
+                        comando.Parameters.AddWithValue("@unidade", DBNull.Value);
+                        comando.Parameters.AddWithValue("@codBarra", DBNull.Value);
                         comando.Parameters.AddWithValue("@codCategoria", proServ.Categoria.codigo);
-                        comando.Parameters.AddWithValue("@qtd", 0);
+                        comando.Parameters.AddWithValue("@qtd", DBNull.Value);
                         comando.Parameters.AddWithValue("@precoCusto", proServ.custo);
                        
                         comando.Parameters.AddWithValue("@codFuncionario", proServ.Funcionario.codigo);
-                        comando.Parameters.AddWithValue("@codFornecedor", 0);
-                        comando.Parameters.AddWithValue("@custoUltCompra", 0);
+                        comando.Parameters.AddWithValue("@codFornecedor", DBNull.Value);
+                        comando.Parameters.AddWithValue("@custoUltCompra", DBNull.Value);
                         comando.Parameters.AddWithValue("@dtUltCompra", "01/01/1900");
                         comando.Parameters.AddWithValue("@comissao", proServ.comissao);
 
@@ -101,14 +100,11 @@ namespace EquipMotos.DAO
                 {
                     MessageBox.Show(e.Message);
                 }
-
                 finally
                 {
                     conexao.Close();
-
                 }
             }
-
         }
         #endregion
 

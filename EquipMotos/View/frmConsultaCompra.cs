@@ -1,4 +1,5 @@
-﻿using EquipMotos.DAO;
+﻿using EquipMotos.CONTROLLER;
+using EquipMotos.DAO;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,7 +14,7 @@ namespace EquipMotos.View
 {
     public partial class frmConsultaCompra : Form
     {
-        ComprasDAO dao;
+        CtrlCompras CtrlCompra = new CtrlCompras();
         public frmConsultaCompra()
         {
             InitializeComponent();
@@ -31,7 +32,7 @@ namespace EquipMotos.View
             frmCadastroCompra frmCadCompra = new frmCadastroCompra();
             if (frmCadCompra.ShowDialog() == DialogResult.OK)
             {
-                var lista = dao.ListarTodos();
+                var lista = CtrlCompra.ListarTodos();
                 if(lista != null)
                 {
                     gvCompra.DataSource = lista;
@@ -43,8 +44,6 @@ namespace EquipMotos.View
         {
             try
             {
-                dao = new ComprasDAO();
-
                 frmCadastroCompra frmCadCompra = new frmCadastroCompra();
 
                 var compraRow = gvCompra.CurrentRow.DataBoundItem as DataRowView;
@@ -58,7 +57,7 @@ namespace EquipMotos.View
                 frmCadCompra.Disable();
                 if (frmCadCompra.ShowDialog() == DialogResult.OK)
                 {
-                    var lista = dao.ListarTodos();
+                    var lista = CtrlCompra.ListarTodos();
                     if(lista != null)
                     {
                         gvCompra.DataSource = lista;
@@ -87,16 +86,15 @@ namespace EquipMotos.View
 
             if ((MessageBox.Show("Desativar compra ?", "EXCLUIR", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes) & modelo != null)
             {
-
-                dao.Desativar(modelo, serie, nrNota, codFornecedor);
-                gvCompra.DataSource = dao.ListarTodos();
+                CtrlCompra.Desativar(modelo, serie, nrNota, codFornecedor);
+                gvCompra.DataSource = CtrlCompra.ListarTodos();
             }
         }
 
         private void BtnBuscarCompra_Click(object sender, EventArgs e)
         {
             string compra = txtPesquisar.Text;
-            gvCompra.DataSource = dao.Pesquisar(compra);
+            gvCompra.DataSource = CtrlCompra.Pesquisar(compra);
         }
     }
 }

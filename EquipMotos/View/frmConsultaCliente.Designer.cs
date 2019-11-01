@@ -38,27 +38,25 @@
             this.eventLog1 = new System.Diagnostics.EventLog();
             this.btnVoltar = new System.Windows.Forms.Button();
             this.gvClientes = new System.Windows.Forms.DataGridView();
-            this.cnpjDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ieDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.juridicoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clientesBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.sistemaMoto2DataSetCliente = new EquipMotos.SistemaMoto2DataSetCliente();
             this.btnBuscarCliente = new System.Windows.Forms.PictureBox();
             this.btnExcluir = new System.Windows.Forms.Button();
             this.btnAlterar = new System.Windows.Forms.Button();
             this.btnNovo = new System.Windows.Forms.Button();
-            this.sistemaMoto2DataSetCliente = new EquipMotos.SistemaMoto2DataSetCliente();
-            this.clientesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.clientesTableAdapter = new EquipMotos.SistemaMoto2DataSetClienteTableAdapters.clientesTableAdapter();
             this.codigoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dtNascimentoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.codCidadeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.complementoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.codCidadeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.juridicoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -78,9 +76,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.eventLog1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvClientes)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnBuscarCliente)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sistemaMoto2DataSetCliente)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.clientesBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sistemaMoto2DataSetCliente)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnBuscarCliente)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -152,20 +150,18 @@
             this.gvClientes.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.gvClientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gvClientes.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.cnpjDataGridViewTextBoxColumn,
-            this.ieDataGridViewTextBoxColumn,
-            this.juridicoDataGridViewTextBoxColumn,
             this.codigoDataGridViewTextBoxColumn,
             this.dataGridViewTextBoxColumn1,
             this.dataGridViewTextBoxColumn2,
             this.dtNascimentoDataGridViewTextBoxColumn,
             this.dataGridViewTextBoxColumn3,
+            this.codCidadeDataGridViewTextBoxColumn,
             this.dataGridViewTextBoxColumn4,
             this.dataGridViewTextBoxColumn5,
             this.complementoDataGridViewTextBoxColumn,
             this.dataGridViewTextBoxColumn6,
             this.dataGridViewTextBoxColumn7,
-            this.codCidadeDataGridViewTextBoxColumn,
+            this.juridicoDataGridViewTextBoxColumn,
             this.dataGridViewTextBoxColumn8,
             this.dataGridViewTextBoxColumn9,
             this.dataGridViewTextBoxColumn10,
@@ -192,32 +188,15 @@
             this.gvClientes.Size = new System.Drawing.Size(987, 497);
             this.gvClientes.TabIndex = 12;
             // 
-            // cnpjDataGridViewTextBoxColumn
+            // clientesBindingSource
             // 
-            this.cnpjDataGridViewTextBoxColumn.DataPropertyName = "cnpj";
-            this.cnpjDataGridViewTextBoxColumn.HeaderText = "CNPJ";
-            this.cnpjDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.cnpjDataGridViewTextBoxColumn.Name = "cnpjDataGridViewTextBoxColumn";
-            this.cnpjDataGridViewTextBoxColumn.ReadOnly = true;
-            this.cnpjDataGridViewTextBoxColumn.Width = 125;
+            this.clientesBindingSource.DataMember = "clientes";
+            this.clientesBindingSource.DataSource = this.sistemaMoto2DataSetCliente;
             // 
-            // ieDataGridViewTextBoxColumn
+            // sistemaMoto2DataSetCliente
             // 
-            this.ieDataGridViewTextBoxColumn.DataPropertyName = "ie";
-            this.ieDataGridViewTextBoxColumn.HeaderText = "I.E";
-            this.ieDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.ieDataGridViewTextBoxColumn.Name = "ieDataGridViewTextBoxColumn";
-            this.ieDataGridViewTextBoxColumn.ReadOnly = true;
-            this.ieDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // juridicoDataGridViewTextBoxColumn
-            // 
-            this.juridicoDataGridViewTextBoxColumn.DataPropertyName = "juridico";
-            this.juridicoDataGridViewTextBoxColumn.HeaderText = "é Juridica";
-            this.juridicoDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.juridicoDataGridViewTextBoxColumn.Name = "juridicoDataGridViewTextBoxColumn";
-            this.juridicoDataGridViewTextBoxColumn.ReadOnly = true;
-            this.juridicoDataGridViewTextBoxColumn.Width = 125;
+            this.sistemaMoto2DataSetCliente.DataSetName = "SistemaMoto2DataSetCliente";
+            this.sistemaMoto2DataSetCliente.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // btnBuscarCliente
             // 
@@ -282,16 +261,6 @@
             this.btnNovo.UseVisualStyleBackColor = true;
             this.btnNovo.Click += new System.EventHandler(this.BtnNovo_Click);
             // 
-            // sistemaMoto2DataSetCliente
-            // 
-            this.sistemaMoto2DataSetCliente.DataSetName = "SistemaMoto2DataSetCliente";
-            this.sistemaMoto2DataSetCliente.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // clientesBindingSource
-            // 
-            this.clientesBindingSource.DataMember = "clientes";
-            this.clientesBindingSource.DataSource = this.sistemaMoto2DataSetCliente;
-            // 
             // clientesTableAdapter
             // 
             this.clientesTableAdapter.ClearBeforeFill = true;
@@ -341,6 +310,15 @@
             this.dataGridViewTextBoxColumn3.ReadOnly = true;
             this.dataGridViewTextBoxColumn3.Width = 125;
             // 
+            // codCidadeDataGridViewTextBoxColumn
+            // 
+            this.codCidadeDataGridViewTextBoxColumn.DataPropertyName = "codCidade";
+            this.codCidadeDataGridViewTextBoxColumn.HeaderText = "codCidade";
+            this.codCidadeDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.codCidadeDataGridViewTextBoxColumn.Name = "codCidadeDataGridViewTextBoxColumn";
+            this.codCidadeDataGridViewTextBoxColumn.ReadOnly = true;
+            this.codCidadeDataGridViewTextBoxColumn.Width = 125;
+            // 
             // dataGridViewTextBoxColumn4
             // 
             this.dataGridViewTextBoxColumn4.DataPropertyName = "endereco";
@@ -386,14 +364,14 @@
             this.dataGridViewTextBoxColumn7.ReadOnly = true;
             this.dataGridViewTextBoxColumn7.Width = 125;
             // 
-            // codCidadeDataGridViewTextBoxColumn
+            // juridicoDataGridViewTextBoxColumn
             // 
-            this.codCidadeDataGridViewTextBoxColumn.DataPropertyName = "codCidade";
-            this.codCidadeDataGridViewTextBoxColumn.HeaderText = "codCidade";
-            this.codCidadeDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.codCidadeDataGridViewTextBoxColumn.Name = "codCidadeDataGridViewTextBoxColumn";
-            this.codCidadeDataGridViewTextBoxColumn.ReadOnly = true;
-            this.codCidadeDataGridViewTextBoxColumn.Width = 125;
+            this.juridicoDataGridViewTextBoxColumn.DataPropertyName = "juridico";
+            this.juridicoDataGridViewTextBoxColumn.HeaderText = "é Juridica";
+            this.juridicoDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.juridicoDataGridViewTextBoxColumn.Name = "juridicoDataGridViewTextBoxColumn";
+            this.juridicoDataGridViewTextBoxColumn.ReadOnly = true;
+            this.juridicoDataGridViewTextBoxColumn.Width = 125;
             // 
             // dataGridViewTextBoxColumn8
             // 
@@ -561,9 +539,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.eventLog1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvClientes)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnBuscarCliente)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sistemaMoto2DataSetCliente)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.clientesBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sistemaMoto2DataSetCliente)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnBuscarCliente)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -597,11 +575,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn contatoDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn cpfDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn rgDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cnpjDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ieDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn idPagamentoDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn limiteCreditoDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn juridicoDataGridViewTextBoxColumn;
         private SistemaMoto2DataSetCliente sistemaMoto2DataSetCliente;
         private System.Windows.Forms.BindingSource clientesBindingSource;
         private SistemaMoto2DataSetClienteTableAdapters.clientesTableAdapter clientesTableAdapter;
@@ -610,12 +585,13 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dtNascimentoDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn codCidadeDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
         private System.Windows.Forms.DataGridViewTextBoxColumn complementoDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
-        private System.Windows.Forms.DataGridViewTextBoxColumn codCidadeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn juridicoDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;

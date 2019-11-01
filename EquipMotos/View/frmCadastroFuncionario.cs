@@ -1,4 +1,5 @@
-﻿using EquipMotos.DAO;
+﻿using EquipMotos.CONTROLLER;
+using EquipMotos.DAO;
 using EquipMotos.MODEL;
 using EquipMotos.View.helper;
 using System;
@@ -17,7 +18,7 @@ namespace EquipMotos.View
     public partial class frmCadastroFuncionario : Form
     {
         Funcionarios func = new Funcionarios();
-        FuncionariosDAO dao = new FuncionariosDAO();
+        CtrlFuncionarios CtrlFuncionario = new CtrlFuncionarios();
         public static object cidade = null;
         public frmCadastroFuncionario()
         {
@@ -81,7 +82,7 @@ namespace EquipMotos.View
                     {
                         func.codigo = Convert.ToInt32(txtCodigo.Text);
                         func.dtAlteracao = DateTime.Now;
-                        dao.Editar(func);
+                        CtrlFuncionario.Editar(func);
 
                         MessageBox.Show("Funcionario alterado com Sucesso!");
                     }
@@ -89,7 +90,7 @@ namespace EquipMotos.View
                     {
                         func.dtCadastro = DateTime.Now;
                         func.dtAlteracao = DateTime.Now;
-                        dao.Inserir(func);
+                        CtrlFuncionario.Inserir(func);
 
                         MessageBox.Show("Funcionario cadastrado com Sucesso!");
                     }
@@ -273,7 +274,7 @@ namespace EquipMotos.View
                 return false;
             }else if (txtSexo.Text != "M" & txtSexo.Text != "F")
             {
-                MessageBox.Show("Sexo inválido", "Verefique o Sexo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Sexo inválido, o sexo deve ser ( M ou F)!", "Verefique o Sexo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txtSexo.Focus();
                 return false;
             }
@@ -336,7 +337,7 @@ namespace EquipMotos.View
                 txtPis.Focus();
                 return false;
             }
-            else if (Convert.ToInt64(txtPis.Text.Trim()) < 0)
+            else if (Convert.ToInt64(txtPis.Text) < 0)
             {
                 MessageBox.Show("Nº do PIS inválido", "Informe o Nº do PIS!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txtPis.Focus();
@@ -360,12 +361,10 @@ namespace EquipMotos.View
                 txtComissao.Text = "0";
             }
             return true;
-            
         }
 
         public void limparCampos()
         {
-
             txtCodigo.Text = "";
             txtFuncionario.Text = "";
             txtApelido.Text = "";
@@ -403,10 +402,7 @@ namespace EquipMotos.View
             txtDtCadastro.Text = "";
             txtDtAlteracao.Text = "";
             txtUsuario.Text = "";
-
-
         }
-
 
         private void BtnBuscarCidade_Click(object sender, EventArgs e)
         {
@@ -431,7 +427,7 @@ namespace EquipMotos.View
 
         public void Carregar(object id)
         {
-            func = dao.BuscarPorID(id) as Funcionarios;
+            func = CtrlFuncionario.BuscarPorID(id) as Funcionarios;
             txtCodigo.Text = Convert.ToString(func.codigo);
             txtFuncionario.Text = func.funcionario;
             
@@ -472,7 +468,6 @@ namespace EquipMotos.View
             txtDtAlteracao.Text = Convert.ToString(func.dtAlteracao);
             txtUsuario.Text = func.usuario;
             btnSalvar.Text = "ALTERAR";
-
         }
 
         public Boolean IsCpf(string cpf)

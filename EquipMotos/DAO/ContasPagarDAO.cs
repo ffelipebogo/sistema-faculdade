@@ -59,7 +59,7 @@ namespace EquipMotos.DAO
             }
 
         }
-        public DataTable ListarTodasContasPagar()
+        public override DataTable ListarTodos()
         {
             using (SqlConnection conexao = Conecta.CreateConnection())
             {
@@ -78,7 +78,7 @@ namespace EquipMotos.DAO
             }
         }
 
-        internal ContasPagar BuscarContasPagar_porID(object modelo, object serie, object nrNota, object codFornecedor, object nrParcela)
+        public object BuscarContasPagar_porID(object modelo, object serie, object nrNota, object codFornecedor, object nrParcela)
         {
             using (SqlConnection conexao = Conecta.CreateConnection())
             {

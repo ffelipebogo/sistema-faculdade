@@ -1,4 +1,5 @@
-﻿using EquipMotos.DAO;
+﻿using EquipMotos.CONTROLLER;
+using EquipMotos.DAO;
 using EquipMotos.MODEL;
 using EquipMotos.View.helper;
 using System;
@@ -16,11 +17,10 @@ namespace EquipMotos.View
 {
     public partial class frmCadastroContaPagar : Form
     {
-        ContasPagar conta = new ContasPagar();
-        ContasPagarDAO dao = new ContasPagarDAO();
+        ContasPagar ContaPagar = new ContasPagar();
+        CtrlContasPagar CtrlContaPagar = new CtrlContasPagar();
         public static object fornecedor = null;
         public static object condPagamento = null;
-        CondicaoPagamentos condPag = new CondicaoPagamentos();
         public static object formaPag;
         public frmCadastroContaPagar()
         {
@@ -39,22 +39,22 @@ namespace EquipMotos.View
             FornecedoresDAO daoFornecedor = new FornecedoresDAO();
             if (ValidaConta())
             {
-                conta.formaPagamento = daoFormaPagamento.BuscarPorID(Convert.ToInt32(txtCodFormaPagamento.Text)) as FormaPagamentos;
-                conta.fornecedor = daoFornecedor.BuscarPorID(Convert.ToInt32(txtCodFornecedor.Text)) as Fornecedores;
-                conta.modelo = txtModelo.Text;
-                conta.serie = txtSerie.Text;
-                conta.nrNota = txtNrNota.Text;
-                conta.nrParcela = Convert.ToInt32("0" + txtNrParcela.Text);
-                conta.dtVecimento = txtDtVencimento.Value;
-                conta.dtEmissao = txtDtEmissao.Value;
-                conta.vlrParcela = 1;
-                conta.observacoes = txtObeservacoes.Text;
-                conta.dtCadastro = DateTime.Now;
-                conta.dtAlteracao = DateTime.Now;
-                conta.usuario = txtUsuario.Text;
-                conta.pago = chkPaga.Checked;
+                ContaPagar.formaPagamento = daoFormaPagamento.BuscarPorID(Convert.ToInt32(txtCodFormaPagamento.Text)) as FormaPagamentos;
+                ContaPagar.fornecedor = daoFornecedor.BuscarPorID(Convert.ToInt32(txtCodFornecedor.Text)) as Fornecedores;
+                ContaPagar.modelo = txtModelo.Text;
+                ContaPagar.serie = txtSerie.Text;
+                ContaPagar.nrNota = txtNrNota.Text;
+                ContaPagar.nrParcela = Convert.ToInt32("0" + txtNrParcela.Text);
+                ContaPagar.dtVecimento = txtDtVencimento.Value;
+                ContaPagar.dtEmissao = txtDtEmissao.Value;
+                ContaPagar.vlrParcela = 1;
+                ContaPagar.observacoes = txtObeservacoes.Text;
+                ContaPagar.dtCadastro = DateTime.Now;
+                ContaPagar.dtAlteracao = DateTime.Now;
+                ContaPagar.usuario = txtUsuario.Text;
+                ContaPagar.pago = chkPaga.Checked;
 
-                dao.InserirContasPagar(conta);
+                CtrlContaPagar.Inserir(ContaPagar);
             }
         }
 
@@ -79,22 +79,22 @@ namespace EquipMotos.View
 
         internal void Carregar(object modelo, object serie, object nrNota, object idFornecedor, object nrParcela)
         {
-            conta = dao.BuscarContasPagar_porID(modelo, serie, nrNota, idFornecedor, nrParcela);
-            txtModelo.Text = conta.modelo;
-            txtSerie.Text = conta.serie;
-            txtNrNota.Text = conta.nrNota;
-            txtValor.Text = conta.vlrParcela.ToString("C", CultureInfo.CurrentCulture); 
-            txtFornecedor.Text = Convert.ToString(conta.fornecedor.codigo);
-            txtCodFornecedor.Text = conta.fornecedor.fornecedor;
-            txtDtEmissao.Text = Convert.ToString(conta.dtEmissao);
-            txtDtVencimento.Text = Convert.ToString(conta.dtVecimento);
-            txtCodFormaPagamento.Text = Convert.ToString(conta.formaPagamento.codigo);
-            txtFormaPagamento.Text = conta.formaPagamento.forma;
-            txtObeservacoes.Text = conta.observacoes;
-            txtDtCadastro.Text = Convert.ToString( conta.dtCadastro);
-            txtDtAlteracao.Text = Convert.ToString(conta.dtAlteracao);
-            txtUsuario.Text = conta.usuario;
-            chkPaga.Checked = conta.pago;
+            ContaPagar = CtrlContaPagar.BuscarContasPagar_porID(modelo, serie, nrNota, idFornecedor, nrParcela) as ContasPagar;
+            txtModelo.Text = ContaPagar.modelo;
+            txtSerie.Text = ContaPagar.serie;
+            txtNrNota.Text = ContaPagar.nrNota;
+            txtValor.Text = ContaPagar.vlrParcela.ToString("C", CultureInfo.CurrentCulture); 
+            txtFornecedor.Text = Convert.ToString(ContaPagar.fornecedor.codigo);
+            txtCodFornecedor.Text = ContaPagar.fornecedor.fornecedor;
+            txtDtEmissao.Text = Convert.ToString(ContaPagar.dtEmissao);
+            txtDtVencimento.Text = Convert.ToString(ContaPagar.dtVecimento);
+            txtCodFormaPagamento.Text = Convert.ToString(ContaPagar.formaPagamento.codigo);
+            txtFormaPagamento.Text = ContaPagar.formaPagamento.forma;
+            txtObeservacoes.Text = ContaPagar.observacoes;
+            txtDtCadastro.Text = Convert.ToString( ContaPagar.dtCadastro);
+            txtDtAlteracao.Text = Convert.ToString(ContaPagar.dtAlteracao);
+            txtUsuario.Text = ContaPagar.usuario;
+            chkPaga.Checked = ContaPagar.pago;
             //lvContaPagar.Visible = false;
             btnSalvar.Visible = false;
             btnLimpar.Visible = false;
@@ -191,15 +191,15 @@ namespace EquipMotos.View
             
         }
 
-        private void CarregaCondicao()
-        {
-            if (condPagamento != null)
-            {
-                condPag = condPagamento as CondicaoPagamentos;
-                txtCodFormaPagamento.Text = Convert.ToString(condPag.codigo);
-                txtFormaPagamento.Text = condPag.condicao;
-            }
-        }
+        //private void CarregaCondicao()
+        //{
+        //    if (condPagamento != null)
+        //    {
+        //        condPag = condPagamento as CondicaoPagamentos;
+        //        txtCodFormaPagamento.Text = Convert.ToString(condPag.codigo);
+        //        txtFormaPagamento.Text = condPag.condicao;
+        //    }
+        //}
 
         private void BtnBuscarFornecedor_Click(object sender, EventArgs e)
         {

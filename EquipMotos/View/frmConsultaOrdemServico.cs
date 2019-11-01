@@ -37,18 +37,16 @@ namespace EquipMotos.View
         {
             try
             {
-
                 frmCadastroOrdemServico frmCadOrdemServico = new frmCadastroOrdemServico();
                 var cliRow = gvOS.CurrentRow.DataBoundItem as DataRowView;
 
-                var id = cliRow["id"];
+                var codigo = cliRow["codigo"];
 
-                //frmCadOrdemServico.Carregar(id);
+                frmCadOrdemServico.Carregar(codigo);
                 if (frmCadOrdemServico.ShowDialog() == DialogResult.OK)
                 {
                     gvOS.DataSource = dao.ListarTodos();
                 }
-
             }
             catch (Exception ex)
             {
@@ -61,9 +59,9 @@ namespace EquipMotos.View
             try
             {
                 var osRow = gvOS.CurrentRow.DataBoundItem as DataRowView;
-                var id = osRow["id"];
+                var codigo = osRow["codigo"];
 
-                dao.Excluir(id);
+                dao.Excluir(codigo);
                 MessageBox.Show("Ordem de Serviço foi excluida!");
 
                 gvOS.DataSource = dao.ListarTodos();
@@ -82,7 +80,7 @@ namespace EquipMotos.View
         private void frmConsultaOrdemServico_Load(object sender, EventArgs e)
         {
             // TODO: esta linha de código carrega dados na tabela 'sistemaMoto2DataSetOrdemServico.ordemServicos'. Você pode movê-la ou removê-la conforme necessário.
-            this.ordemServicosTableAdapter.Fill(this.sistemaMoto2DataSetOrdemServico.ordemServicos);
+            //this.ordemServicosTableAdapter.Fill(this.sistemaMoto2DataSetOrdemServico.ordemServicos);
 
         }
     }

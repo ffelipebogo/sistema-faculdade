@@ -19,7 +19,7 @@ namespace EquipMotos.View
         public static object prod;
         Compras compra;
         //ComprasDAO dao;
-        ProdutosServicosDAO daoProduto;
+        CtrlProdutosServicos CtrlProduto = new CtrlProdutosServicos();
         List<ContasPagar> listContaPagar;
         List<ItensCompra> listItemCompra;
         CondicaoPagamentos condPag = new CondicaoPagamentos();
@@ -194,12 +194,11 @@ namespace EquipMotos.View
                 txtFornecedor.Text = Convert.ToString(compra.fornecedor.fornecedor);
                 txtFrete.Text = (compra.frete / 100).ToString("C", CultureInfo.CurrentCulture);
                 txtSeguro.Text = (compra.seguro / 100).ToString("C", CultureInfo.CurrentCulture);
-                txtOutrasDesp.Text = (compra.despesa / 100).ToString("C", CultureInfo.CurrentCulture);
+                txtOutrasDesp.Text = (compra.despesa).ToString("C", CultureInfo.CurrentCulture);
 
                 foreach (var item in compra.listaItem)
                 {
-                    daoProduto = new ProdutosServicosDAO();
-                    var prod = daoProduto.BuscarPorID(Convert.ToString(item.codigo)) as ProdutosServicos;
+                    var prod = CtrlProduto.BuscarPorID(Convert.ToString(item.codigo)) as ProdutosServicos;
                     var total = item.qtd * prod.custo;
                     string[] itens = { Convert.ToString(item.codigo), prod.produto, prod.unidade, Convert.ToString(item.qtd), Convert.ToString(prod.custo), Convert.ToString(total) };
                     var listItens = new ListViewItem(itens);
@@ -209,7 +208,7 @@ namespace EquipMotos.View
 
                     if (vlTotalincial <= 0)
                     {
-                        txtValorTotal.Text = lvItem.Items[0].SubItems[5].Text;
+                        txtValorTotal.Text = Double.Parse(lvItem.Items[0].SubItems[5].Text).ToString("C", CultureInfo.CurrentCulture);
                     }
                     else
                     {
@@ -218,10 +217,9 @@ namespace EquipMotos.View
                         {
                             txtValorTotal.Text = Double.Parse(lvItem.Items[i].SubItems[5].Text, NumberStyles.Any).ToString("C", CultureInfo.CurrentCulture);
                         }
-
                         var vlTotalGrid = Double.Parse(txtValorTotal.Text, NumberStyles.Any);
-                        var ValorTotal = vltotal + vlTotalGrid;
-                        txtValorTotal.Text = ValorTotal.ToString("C", CultureInfo.CurrentCulture);
+                        var ValorTotal = (vltotal + vlTotalGrid).ToString("C", CultureInfo.CurrentCulture);
+                        txtValorTotal.Text = ValorTotal;
                     }
                 }
 
@@ -241,7 +239,6 @@ namespace EquipMotos.View
                     lvContaPagar.Items.Add(lvi);
                 }
                 chkSituacao.Checked = compra.situacao;
-
                
                 if (compra.cfi == true)
                 {
@@ -256,7 +253,6 @@ namespace EquipMotos.View
             {
                 MessageBox.Show("Não foi possivel vizualizar a compra", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-           
         }
 
         private decimal getTotal()
@@ -498,15 +494,21 @@ namespace EquipMotos.View
                 txtCodProduto.Focus();
                 return false;
             }
-            if (txtUnidade.Text == string.Empty)
+            if (String.IsNullOrEmpty(txtUnidade.Text.Trim()))
             {
                 MessageBox.Show("Faltou informar a Unidade", "Informe a Unidade!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txtUnidade.Focus();
                 return false;
             }
-            if (txtQtd.Text == string.Empty)
+            if (String.IsNullOrEmpty(txtQtd.Text.Trim()))
             {
-                MessageBox.Show("Faltou informar o Produto", "Informe o Produto!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Faltou informar a quantidade", "Informe a quantidade!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtQtd.Focus();
+                return false;
+            }
+            else if (Convert.ToInt32("0" + txtQtd.Text) < 1)
+            {
+                MessageBox.Show("Informe uma quantidade maior que 0!", "Quantidade invalida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txtQtd.Focus();
                 return false;
             }
@@ -528,8 +530,8 @@ namespace EquipMotos.View
                 txtDtChegada.Value = txtDataEmissao.Value;
                 i++;
             }
-            
         }
+
         private void RbTipoFrete1_CheckedChanged(object sender, EventArgs e)
         {
             txtFrete.Enabled = false;
@@ -546,7 +548,6 @@ namespace EquipMotos.View
             {
                 if ((MessageBox.Show("Remover item ?", "EXCLUIR", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes) & (lvItem.SelectedIndices[0] != null))
                 {
-
                     lvItem.Items.RemoveAt(lvItem.SelectedIndices[0]);
                     for (int i = 0; i < lvItem.Items.Count; i++)
                     {
@@ -555,14 +556,12 @@ namespace EquipMotos.View
                     var vlTotalGrid = Double.Parse(txtValorTotal.Text, NumberStyles.Any);
 
                     txtValorTotal.Text = vlTotalGrid.ToString("C", CultureInfo.CurrentCulture);
-
                 }
             }
             catch
             {
                 MessageBox.Show("Selecione um item! ");
             }
-
         }
 
         #region Formatacão dos Campos de valores

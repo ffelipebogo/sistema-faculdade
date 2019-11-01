@@ -1,4 +1,5 @@
-﻿using EquipMotos.DAO;
+﻿using EquipMotos.CONTROLLER;
+using EquipMotos.DAO;
 using EquipMotos.MODEL;
 using System;
 using System.Collections.Generic;
@@ -15,11 +16,10 @@ namespace EquipMotos.View
     public partial class frmConsultaFuncionario : Form
     {
         Funcionarios func;
-        private FuncionariosDAO dao = new FuncionariosDAO();
-        public frmConsultaFuncionario(string pusuario)
+        private CtrlFuncionarios CtrlFuncionario = new CtrlFuncionarios();
+        public frmConsultaFuncionario()
         {
             InitializeComponent();
-
         }
 
         private void BtnNovo_Click(object sender, EventArgs e)
@@ -27,7 +27,7 @@ namespace EquipMotos.View
             frmCadastroFuncionario frmCadFuncionario = new frmCadastroFuncionario();
             if (frmCadFuncionario.ShowDialog() == DialogResult.OK)
             {
-                gvFuncionario.DataSource = dao.ListarTodos();
+                gvFuncionario.DataSource = CtrlFuncionario.ListarTodos();
             }
         }
 
@@ -35,7 +35,6 @@ namespace EquipMotos.View
         {
             try
             {
-
                 frmCadastroFuncionario frmCadFuncionario = new frmCadastroFuncionario();
                 var funRow = gvFuncionario.CurrentRow.DataBoundItem as DataRowView;
 
@@ -44,9 +43,8 @@ namespace EquipMotos.View
                 frmCadFuncionario.Carregar(codigo);
                 if (frmCadFuncionario.ShowDialog() == DialogResult.OK)
                 {
-                    gvFuncionario.DataSource = dao.ListarTodos();
+                    gvFuncionario.DataSource = CtrlFuncionario.ListarTodos();
                 }
-
             }
             catch (Exception ex)
             {
@@ -58,32 +56,36 @@ namespace EquipMotos.View
         {
             try
             {
-
                 var funcRow = gvFuncionario.CurrentRow.DataBoundItem as DataRowView;
                 var codigo = funcRow["codigo"];
 
-                dao.Excluir(codigo);
+                CtrlFuncionario.Excluir(codigo);
                 MessageBox.Show("Funcionario foi excluido!");
 
-                gvFuncionario.DataSource = dao.ListarTodos();
+                gvFuncionario.DataSource = CtrlFuncionario.ListarTodos();
             }
             catch (Exception )
             {
                 MessageBox.Show("Não foi possivel excluir o Funcionario!");
             }
-
         }
 
         private void BtnVoltar_Click(object sender, EventArgs e)
         {
             if (btnVoltar.Text == "SELECIONAR")
             {
-                SelecionaFuncionario();
-                frmCadastroProdutoServico.funcionario = func;
-                //frmCadastroFornecedor.cidade = this.cidade;
-                //frmCadastroFuncionario.cidade = this.cidade;
-                this.DialogResult = DialogResult.OK;
-                Close();
+                try 
+                { 
+                    SelecionaFuncionario();
+                    frmCadastroProdutoServico.funcionario = func;
+                    frmCadastroOrdemServico.Funcionario = func;
+                    this.DialogResult = DialogResult.OK;
+                    Close();
+                }
+                catch
+                {
+                    Close();
+                }
             }
             else
             {
@@ -98,7 +100,7 @@ namespace EquipMotos.View
 
             var funcRow = gvFuncionario.CurrentRow.DataBoundItem as DataRowView;
 
-            func = dao.BuscarPorID(funcRow["codigo"]) as Funcionarios;
+            func = CtrlFuncionario.BuscarPorID(funcRow["codigo"]) as Funcionarios;
             return func;
         }
 
@@ -106,13 +108,12 @@ namespace EquipMotos.View
         {
             // TODO: esta linha de código carrega dados na tabela 'sistemaMoto2DataSetFuncionario.funcionarios'. Você pode movê-la ou removê-la conforme necessário.
             this.funcionariosTableAdapter.Fill(this.sistemaMoto2DataSetFuncionario.funcionarios);
-
         }
 
         private void BtnBuscar_Click(object sender, EventArgs e)
         {
             string func = txtPesquisar.Text;
-            gvFuncionario.DataSource = dao.Pesquisar(func);
+            gvFuncionario.DataSource = CtrlFuncionario.Pesquisar(func);
         }
     }
 }

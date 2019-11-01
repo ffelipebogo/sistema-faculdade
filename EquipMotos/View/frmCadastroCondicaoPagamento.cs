@@ -1,4 +1,5 @@
-﻿using EquipMotos.DAO;
+﻿using EquipMotos.CONTROLLER;
+using EquipMotos.DAO;
 using EquipMotos.MODEL;
 using EquipMotos.Properties;
 using EquipMotos.View.helper;
@@ -19,7 +20,7 @@ namespace EquipMotos.View
     {
         
         CondicaoPagamentos condPagamento = new CondicaoPagamentos();
-        CondicaoPagamentoDAO dao = new CondicaoPagamentoDAO();
+        CtrlCondicaoPagamento CtrlCondPagamento = new CtrlCondicaoPagamento();
         public static object formaPag = null;
         List<CondicaoParcelada> listaParcela = new List<CondicaoParcelada>();
 
@@ -39,11 +40,6 @@ namespace EquipMotos.View
 
         private void FrmCondicaoPagamento_Load(object sender, EventArgs e)
         {
-            //if( listalblParcela.Count < 1)
-            //{
-
-            //    btnAdd.PerformClick();
-            //}
         }
 
         #region Buscar Forma Pagamento
@@ -75,9 +71,9 @@ namespace EquipMotos.View
             if (SomaPorcentagem() == 100) //TODO quando for 100 da true ainda
             {
                 condPagamento.condicao = txtCondicao.Text;
-                condPagamento.juros = Double.Parse(txtJuros.Text, NumberStyles.Any);
-                condPagamento.multa = Double.Parse(txtMulta.Text, NumberStyles.Any);
-                condPagamento.desconto = Double.Parse(txtDesconto.Text, NumberStyles.Any);
+                condPagamento.juros = Double.Parse(txtJuros.Text);
+                condPagamento.multa = Double.Parse(txtMulta.Text);
+                condPagamento.desconto = Double.Parse(txtDesconto.Text);
                 condPagamento.usuario = txtUsuario.Text;
                 if (btnSalvar.Text == "ALTERAR")
                 {
@@ -98,11 +94,12 @@ namespace EquipMotos.View
                             porcentagem = Double.Parse(listviewParcelas.Items[i].SubItems[2].Text),
                             formaPagamento = formaPag,
                             dtAlteracao = DateTime.Now,
-                            dtCadastro = condPagamento.dtCadastro
+                            dtCadastro = condPagamento.dtCadastro,
+                            usuario = txtUsuario.Text
                         }) ;
                     }
                     condPagamento.listaParcela = listaParcela;
-                    dao.EditarCondicaoPagamento(condPagamento);
+                    CtrlCondPagamento.Editar(condPagamento);
                     this.DialogResult = DialogResult.OK;
                 }
                 else
@@ -119,13 +116,14 @@ namespace EquipMotos.View
                             formaPagamento = formaPag,
                             condPagamento = condPagamento,
                             dtCadastro = DateTime.Now,
-                            dtAlteracao = DateTime.Now
+                            dtAlteracao = DateTime.Now,
+                            usuario = txtUsuario.Text
                         });
                     }
                     condPagamento.listaParcela = listaParcela;
                     condPagamento.dtAlteracao = DateTime.Now;
                     condPagamento.dtCadastro = DateTime.Now;
-                    dao.InserirCondicaoPagamento(condPagamento);
+                    CtrlCondPagamento.Inserir(condPagamento);
 
 
                 }
@@ -317,13 +315,13 @@ namespace EquipMotos.View
 
         private void TxtFormaPagamento_TextChanged(object sender, EventArgs e)
         {
-            txtCodFormaPagamento.Enabled = false;
-            txtFormaPagamento.Enabled = false;
+            //txtCodFormaPagamento.Enabled = false;
+            //txtFormaPagamento.Enabled = false;
         }
 
         public void Carregar(object id)
         {
-            condPagamento = dao.BuscarCondicao_porID(id);
+            condPagamento = CtrlCondPagamento.BuscarPorID(id) as CondicaoPagamentos;
 
             txtCodigo.Text = Convert.ToString(condPagamento.codigo);
             txtCondicao.Text = condPagamento.condicao;
@@ -341,6 +339,8 @@ namespace EquipMotos.View
             }
             btnSalvar.Text = "ALTERAR";
         }
+
+        #region Validate Filds
 
         private void TxtJuros_Leave(object sender, EventArgs e)
         {
@@ -446,5 +446,6 @@ namespace EquipMotos.View
         {
             MaskForm.TxtMask_Porcentagem_Leave(sender, e);
         }
+        #endregion 
     }
 }

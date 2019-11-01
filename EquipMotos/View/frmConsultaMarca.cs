@@ -1,4 +1,5 @@
-﻿using EquipMotos.DAO;
+﻿using EquipMotos.CONTROLLER;
+using EquipMotos.DAO;
 using EquipMotos.MODEL;
 using System;
 using System.Collections.Generic;
@@ -14,7 +15,7 @@ namespace EquipMotos.View
 {
     public partial class frmConsultaMarca : Form
     {
-        MarcasDAO dao = new MarcasDAO();
+        CtrlMarcas CtrlMarca = new CtrlMarcas();
         Marcas marca = new Marcas();
         public frmConsultaMarca()
         {
@@ -26,7 +27,7 @@ namespace EquipMotos.View
             frmCadastroMarca frmCadMarca = new frmCadastroMarca();
             if (frmCadMarca.ShowDialog() == DialogResult.OK)
             {
-                gvMarca.DataSource = dao.ListarTodos();
+                gvMarca.DataSource = CtrlMarca.ListarTodos();
             }
         }
 
@@ -42,7 +43,7 @@ namespace EquipMotos.View
                 frmCadMarca.Carregar(codigo);
                 if (frmCadMarca.ShowDialog() == DialogResult.OK)
                 {
-                    gvMarca.DataSource = dao.ListarTodos();
+                    gvMarca.DataSource = CtrlMarca.ListarTodos();
                 }
             }
             catch (Exception ex)
@@ -58,10 +59,10 @@ namespace EquipMotos.View
                 var marRow = gvMarca.CurrentRow.DataBoundItem as DataRowView;
                 var codigo = marRow["codigo"];
 
-                dao.Excluir(codigo);
+                CtrlMarca.Excluir(codigo);
                 MessageBox.Show("Marca foi excluida!");
 
-                gvMarca.DataSource = dao.ListarTodos();
+                gvMarca.DataSource = CtrlMarca.ListarTodos();
             }
             catch (Exception)
             {
@@ -91,7 +92,7 @@ namespace EquipMotos.View
 
             var marRow = gvMarca.CurrentRow.DataBoundItem as DataRowView;
 
-            marca = dao.BuscarPorID(marRow["codigo"]) as Marcas;
+            marca = CtrlMarca.BuscarPorID(marRow["codigo"]) as Marcas;
             return marca;
         }
 

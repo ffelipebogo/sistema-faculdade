@@ -186,7 +186,7 @@ namespace EquipMotos.DAO
                                     usuario = @usuario ,
                                     juridico = @juridico
 
-                                    where codido = @codido";
+                                    where codigo = @codigo";
 
                     SqlCommand comando = new SqlCommand(sql, conexao);
 
@@ -225,7 +225,7 @@ namespace EquipMotos.DAO
                         comando.Parameters.AddWithValue("@dtAlteracao", cliente.dtAlteracao);
                         comando.Parameters.AddWithValue("@usuario", cliente.usuario);
                         comando.Parameters.AddWithValue("@juridico", cliente.juridico);
-                        comando.Parameters.AddWithValue("@codido", cliente.codigo);
+                        comando.Parameters.AddWithValue("@codigo", cliente.codigo);
 
                     conexao.Open();
                     comando.ExecuteNonQuery();
@@ -285,11 +285,11 @@ namespace EquipMotos.DAO
             {
 
                 SqlDataAdapter da;
-                string sql = @"select * from clientes where codido = @codido";
+                string sql = @"select * from clientes where codigo = @codigo";
 
                 SqlCommand comando = new SqlCommand(sql, conexao);
 
-                comando.Parameters.AddWithValue("@codido", id);
+                comando.Parameters.AddWithValue("@codigo", id);
 
                 conexao.Open();
                 da = new SqlDataAdapter(comando);
@@ -302,7 +302,7 @@ namespace EquipMotos.DAO
                     Clientes cli = new Clientes();
                     
 
-                    cli.codigo = Convert.ToInt32(row["codido"]);
+                    cli.codigo = Convert.ToInt32(row["codigo"]);
                     cli.cliente = Convert.ToString(row["cliente"]);
                     cli.apelido = Convert.ToString(row["apelido"]);
                     cli.dtNascimento = Convert.ToDateTime(row["dtNascimento"]);
@@ -324,7 +324,7 @@ namespace EquipMotos.DAO
 
                     if (Convert.ToInt32("0" + row["codCondPagamento"]) != 0)
                     {
-                        cli.CondPagamento = daoCondPag.BuscarCondicao_porID(Convert.ToInt32(row["codCondPagamento"]));
+                        cli.CondPagamento = daoCondPag.BuscarPorID(Convert.ToInt32(row["codCondPagamento"])) as CondicaoPagamentos;
                     }
                     cli.limiteCredito = Convert.ToDouble(row["limiteCredito"]);
                     cli.observacoes = Convert.ToString(row["observacoes"]);

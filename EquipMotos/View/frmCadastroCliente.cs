@@ -3,6 +3,7 @@ using System.Activities.Expressions;
 using System.Globalization;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
+using EquipMotos.CONTROLLER;
 using EquipMotos.DAO;
 using EquipMotos.MODEL;
 using EquipMotos.View;
@@ -12,8 +13,8 @@ namespace EquipMotos.Codigo.View
 {
     public partial class frmCadastroCliente : Form
     {
-        Clientes cli = new Clientes();
-        ClientesDAO dao = new ClientesDAO();
+        Clientes Cliente = new Clientes();
+        CtrlClientes CtrlCliente = new CtrlClientes();
         CondicaoPagamentos condPag = new CondicaoPagamentos();
 
         public static object cidade = null;
@@ -37,68 +38,68 @@ namespace EquipMotos.Codigo.View
                 {
                     Cidades cid = new Cidades();
                 
-                    cli.cliente = txtCliente.Text;
-                    cli.apelido = txtApelido.Text;
-                    cli.dtNascimento = Convert.ToDateTime(txtDtNascimento.Text);
-                    cli.endereco = txtEndereco.Text;
+                    Cliente.cliente = txtCliente.Text;
+                    Cliente.apelido = txtApelido.Text;
+                    Cliente.dtNascimento = Convert.ToDateTime(txtDtNascimento.Text);
+                    Cliente.endereco = txtEndereco.Text;
                     if(Convert.ToInt32("0"+ txtNumero.Text) > 0)
                     {
-                     cli.numero = Convert.ToInt32(txtNumero.Text);
+                     Cliente.numero = Convert.ToInt32(txtNumero.Text);
                     }
-                    cli.complemento = txtComplemento.Text;
-                    cli.bairro = txtBairro.Text;
-                    cli.cep = txtCep.Text;
+                    Cliente.complemento = txtComplemento.Text;
+                    Cliente.bairro = txtBairro.Text;
+                    Cliente.cep = txtCep.Text;
 
                     cid.codigo = Convert.ToInt16(txtIdCidade.Text);
-                    cli.Cidade = cid;
+                    Cliente.Cidade = cid;
 
-                    cli.telefone = txtTelefone.Text;
-                    cli.celular = txtCelular.Text;
-                    cli.contato = txtContato.Text;
+                    Cliente.telefone = txtTelefone.Text;
+                    Cliente.celular = txtCelular.Text;
+                    Cliente.contato = txtContato.Text;
                     if (Convert.ToInt32("0" + txtCodCondicao.Text) != 0)
                     {
                         condPag.codigo = Convert.ToInt32("0" + txtCodCondicao.Text);
-                        cli.CondPagamento = condPag;
+                        Cliente.CondPagamento = condPag;
                     }
-                    cli.CondPagamento = condPag;
+                    Cliente.CondPagamento = condPag;
 
-                    cli.limiteCredito = Double.Parse(txtLimiteCredito.Text, NumberStyles.Any);
-                    cli.observacoes = txtObservacao.Text;
-                    cli.dtCadastro = DateTime.Now;
-                    cli.dtAlteracao = DateTime.Now;
-                    cli.usuario = txtUsuario.Text;
-                    cli.email = txtEmail.Text;
+                    Cliente.limiteCredito = Double.Parse(txtLimiteCredito.Text, NumberStyles.Any);
+                    Cliente.observacoes = txtObservacao.Text;
+                    Cliente.dtCadastro = DateTime.Now;
+                    Cliente.dtAlteracao = DateTime.Now;
+                    Cliente.usuario = txtUsuario.Text;
+                    Cliente.email = txtEmail.Text;
                     
-                    cli.juridico = rbJuridica.Checked;
+                    Cliente.juridico = rbJuridica.Checked;
                     if (rbJuridica.Checked)
                     {
-                        cli.email = txtEmail.Text;
-                        cli.site = txtSite.Text;
-                        cli.cnpj = txtCpf.Text;
-                        cli.ie = txtRg.Text;
-                        cli.cpf = "";
-                        cli.rg = "";
-                        cli.sexo = ' ';
+                        Cliente.email = txtEmail.Text;
+                        Cliente.site = txtSite.Text;
+                        Cliente.cnpj = txtCpf.Text;
+                        Cliente.ie = txtRg.Text;
+                        Cliente.cpf = "";
+                        Cliente.rg = "";
+                        Cliente.sexo = ' ';
                     }
                     else
                     {
-                        cli.cpf = txtCpf.Text;
-                        cli.rg = txtRg.Text;
-                        cli.site = txtSite.Text;
-                        cli.sexo = Convert.ToChar(txtSexo.Text);
+                        Cliente.cpf = txtCpf.Text;
+                        Cliente.rg = txtRg.Text;
+                        Cliente.site = txtSite.Text;
+                        Cliente.sexo = Convert.ToChar(txtSexo.Text);
                         
-                        cli.cnpj = "";
-                        cli.ie = "";
+                        Cliente.cnpj = "";
+                        Cliente.ie = "";
                     }
                     if (btnSalvar.Text == "ALTERAR")
                     {
-                        cli.codigo = Convert.ToInt32(txtCodigo.Text);
-                        dao.Editar(cli);
+                        Cliente.codigo = Convert.ToInt32(txtCodigo.Text);
+                        CtrlCliente.Editar(Cliente);
                         MessageBox.Show("Cliente alterado com Sucesso!");
                     }
                     else
                     {
-                        dao.Inserir(cli);
+                        CtrlCliente.Inserir(Cliente);
 
                         MessageBox.Show("Cliente cadastrado com Sucesso!");
                     }
@@ -312,14 +313,8 @@ namespace EquipMotos.Codigo.View
         {
             Regex rg = new Regex(@"^[A-Za-z0-9](([_\.\-]?[a-zA-Z0-9]+)*)@([A-Za-z0-9]+)(([\.\-]?[a-zA-Z0-9]+)*)\.([A-Za-z]{2,})$");
 
-            if (rg.IsMatch(email))
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            return rg.IsMatch(email);
+            
         }
 
         private void BtnBuscarCidade_Click(object sender, EventArgs e)
@@ -347,55 +342,55 @@ namespace EquipMotos.Codigo.View
 
         public void Carregar(object id)
         {
-            cli = dao.BuscarPorID(id) as Clientes;
-            if (cli.juridico)
+            Cliente = CtrlCliente.BuscarPorID(id) as Clientes;
+            if (Cliente.juridico)
             {
                 rbJuridica.Checked = true;
-                txtCpf.Text = cli.cnpj;
-                txtRg.Text = cli.ie;
-                txtSite.Text = cli.site;
+                txtCpf.Text = Cliente.cnpj;
+                txtRg.Text = Cliente.ie;
+                txtSite.Text = Cliente.site;
             }
             else
             {
                 rbFisica.Checked = true;
-                txtRg.Text = cli.rg;
-                txtCpf.Text = cli.cpf;
+                txtRg.Text = Cliente.rg;
+                txtCpf.Text = Cliente.cpf;
             }
-            txtCodigo.Text = Convert.ToString(cli.codigo);
-            txtCliente.Text = cli.cliente;
-            txtApelido.Text = cli.apelido;
-            txtDtNascimento.Text = Convert.ToString(cli.dtNascimento);
-            txtSexo.Text = Convert.ToString(cli.sexo);
-            txtEndereco.Text = cli.endereco;
-            txtNumero.Text = Convert.ToString(cli.numero);
-            txtComplemento.Text = cli.complemento;
-            txtCep.Text = cli.cep;
-            txtBairro.Text = cli.bairro;
-            txtIdCidade.Text = Convert.ToString(cli.Cidade.codigo);
-            txtCidade.Text = cli.Cidade.cidade;
-            txtUF.Text = Convert.ToString(cli.Cidade.Estado.uf);
-            txtTelefone.Text = cli.telefone;
-            txtCelular.Text = cli.celular;
-            txtEmail.Text = cli.email;
-            txtContato.Text = cli.contato;
+            txtCodigo.Text = Convert.ToString(Cliente.codigo);
+            txtCliente.Text = Cliente.cliente;
+            txtApelido.Text = Cliente.apelido;
+            txtDtNascimento.Text = Convert.ToString(Cliente.dtNascimento);
+            txtSexo.Text = Convert.ToString(Cliente.sexo);
+            txtEndereco.Text = Cliente.endereco;
+            txtNumero.Text = Convert.ToString(Cliente.numero);
+            txtComplemento.Text = Cliente.complemento;
+            txtCep.Text = Cliente.cep;
+            txtBairro.Text = Cliente.bairro;
+            txtIdCidade.Text = Convert.ToString(Cliente.Cidade.codigo);
+            txtCidade.Text = Cliente.Cidade.cidade;
+            txtUF.Text = Convert.ToString(Cliente.Cidade.Estado.uf);
+            txtTelefone.Text = Cliente.telefone;
+            txtCelular.Text = Cliente.celular;
+            txtEmail.Text = Cliente.email;
+            txtContato.Text = Cliente.contato;
             
             
-            if(cli.CondPagamento == null)
+            if(Cliente.CondPagamento == null)
             {
                 txtCodCondicao.Text = "";
                 txtCondicao.Text = "";
             }
             else
             {
-                txtCodCondicao.Text = Convert.ToString(cli.CondPagamento.codigo);
-                txtCondicao.Text = cli.CondPagamento.condicao;
+                txtCodCondicao.Text = Convert.ToString(Cliente.CondPagamento.codigo);
+                txtCondicao.Text = Cliente.CondPagamento.condicao;
             }
             
-            txtLimiteCredito.Text = cli.limiteCredito.ToString("C", CultureInfo.CurrentCulture);
-            txtObservacao.Text = cli.observacoes;
-            txtDtCadastro.Text = Convert.ToString(cli.dtCadastro);
-            txtDtAlteracao.Text = Convert.ToString(cli.dtAlteracao);
-            txtUsuario.Text = cli.usuario;
+            txtLimiteCredito.Text = Cliente.limiteCredito.ToString("C", CultureInfo.CurrentCulture);
+            txtObservacao.Text = Cliente.observacoes;
+            txtDtCadastro.Text = Convert.ToString(Cliente.dtCadastro);
+            txtDtAlteracao.Text = Convert.ToString(Cliente.dtAlteracao);
+            txtUsuario.Text = Cliente.usuario;
             btnSalvar.Text = "ALTERAR";
 
         }

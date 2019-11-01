@@ -1,4 +1,5 @@
-﻿using EquipMotos.DAO;
+﻿using EquipMotos.CONTROLLER;
+using EquipMotos.DAO;
 using EquipMotos.MODEL;
 using System;
 using System.Collections.Generic;
@@ -14,7 +15,7 @@ namespace EquipMotos.View
 {
     public partial class frmConsultaFormaPagamento : Form
     {
-        FormaPagamentoDAO dao = new FormaPagamentoDAO();
+        CtrlFormaPagamentos CtrlFormaPagamento = new CtrlFormaPagamentos();
         FormaPagamentos formaPag;
         public frmConsultaFormaPagamento()
         {
@@ -26,7 +27,7 @@ namespace EquipMotos.View
             frmCadastroFormaPagamento frmCadFormaPag = new frmCadastroFormaPagamento();
             if (frmCadFormaPag.ShowDialog() == DialogResult.OK)
             {
-                gvFormaPag.DataSource = dao.ListarTodos();
+                gvFormaPag.DataSource = CtrlFormaPagamento.ListarTodos();
             }
         }
 
@@ -42,7 +43,7 @@ namespace EquipMotos.View
                 frmCadFormaPag.Carregar(id);
                 if (frmCadFormaPag.ShowDialog() == DialogResult.OK)
                 {
-                    gvFormaPag.DataSource = dao.ListarTodos();
+                    gvFormaPag.DataSource = CtrlFormaPagamento.ListarTodos();
                 }
             }
             catch (Exception ex)
@@ -58,9 +59,9 @@ namespace EquipMotos.View
                 var formRow = gvFormaPag.CurrentRow.DataBoundItem as DataRowView;
                 var id = formRow["codigo"];
 
-                dao.Excluir(id);
+                CtrlFormaPagamento.Excluir(id);
                
-                gvFormaPag.DataSource = dao.ListarTodos();
+                gvFormaPag.DataSource = CtrlFormaPagamento.ListarTodos();
             }
             catch
             {
@@ -90,14 +91,14 @@ namespace EquipMotos.View
 
             var formaRow = gvFormaPag.CurrentRow.DataBoundItem as DataRowView;
             
-            formaPag = dao.BuscarPorID(formaRow["codigo"]) as FormaPagamentos;
+            formaPag = CtrlFormaPagamento.BuscarPorID(formaRow["codigo"]) as FormaPagamentos;
             return formaPag;
         }
 
         private void BtnBuscarFormaPag_Click(object sender, EventArgs e)
         {
             string form = txtPesquisar.Text;
-            gvFormaPag.DataSource = dao.Pesquisar(form);
+            gvFormaPag.DataSource = CtrlFormaPagamento.Pesquisar(form);
         }
 
         private void FrmConsultaFormaPagamento_Load(object sender, EventArgs e)

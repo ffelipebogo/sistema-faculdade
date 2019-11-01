@@ -1,4 +1,5 @@
-﻿using EquipMotos.DAO;
+﻿using EquipMotos.CONTROLLER;
+using EquipMotos.DAO;
 using EquipMotos.MODEL;
 using EquipMotos.View.helper;
 using System;
@@ -10,8 +11,8 @@ namespace EquipMotos.View
     public partial class frmCadastroProdutoServico : Form
     {
         String pusuario;
-        ProdutosServicos proServ = new ProdutosServicos();
-        ProdutosServicosDAO dao = new ProdutosServicosDAO();
+        ProdutosServicos ProdutoServico = new ProdutosServicos();
+        CtrlProdutosServicos CtrlProdutoServico = new CtrlProdutosServicos();
         public static object categoria;
         public static object fornecedor;
         public static object funcionario;
@@ -42,38 +43,38 @@ namespace EquipMotos.View
 
                     if (rbProduto.Checked)
                     {
-                        proServ.produto = txtProdutoServico.Text;
-                        proServ.unidade = txtUnidade.Text;
-                        proServ.codBarra = txtCodBarra.Text;
-                        proServ.qtd = Convert.ToInt32("0");
+                        ProdutoServico.produto = txtProdutoServico.Text;
+                        ProdutoServico.unidade = txtUnidade.Text;
+                        ProdutoServico.codBarra = txtCodBarra.Text;
+                        ProdutoServico.qtd = Convert.ToInt32("0");
                         cat.codigo = Convert.ToInt32("0" + txtCodCategoria.Text);
-                        proServ.Categoria = cat;
+                        ProdutoServico.Categoria = cat;
                         forn.codigo = Convert.ToInt32("0" + txtCodFornecedor.Text);
-                        proServ.Fornecedor = forn;
-                        proServ.custoUltCompra = Convert.ToDecimal(Decimal.Parse("0").ToString("N2"));
-                        proServ.dtUltCompra = DateTime.Now;
-                        proServ.observacoes = txtObservacao.Text;
-                        proServ.usuario = txtUsuario.Text;
-                        proServ.servico = Convert.ToBoolean(rbServico.Checked);
+                        ProdutoServico.Fornecedor = forn;
+                        ProdutoServico.custoUltCompra = Convert.ToDecimal(Decimal.Parse("0").ToString("N2"));
+                        ProdutoServico.dtUltCompra = DateTime.Now;
+                        ProdutoServico.observacoes = txtObservacao.Text;
+                        ProdutoServico.usuario = txtUsuario.Text;
+                        ProdutoServico.servico = Convert.ToBoolean(rbServico.Checked);
                     }
                     else
                     {
-                        proServ.produto = txtProdutoServico.Text;
+                        ProdutoServico.produto = txtProdutoServico.Text;
                         cat.codigo = Convert.ToInt32(txtCodCategoria.Text);
-                        proServ.Categoria = cat;
+                        ProdutoServico.Categoria = cat;
                         func.codigo = Convert.ToInt32(txtCodFornecedor.Text);
-                        proServ.Funcionario = func;
-                        proServ.servico = Convert.ToBoolean(rbServico.Checked);
+                        ProdutoServico.Funcionario = func;
+                        ProdutoServico.servico = Convert.ToBoolean(rbServico.Checked);
                     }
-                    proServ.comissao = Double.Parse(txtComissao.Text, NumberStyles.Any);
-                    proServ.observacoes = txtObservacao.Text;
-                    proServ.usuario = txtUsuario.Text;
+                    ProdutoServico.comissao = Double.Parse(txtComissao.Text, NumberStyles.Any);
+                    ProdutoServico.observacoes = txtObservacao.Text;
+                    ProdutoServico.usuario = txtUsuario.Text;
 
                     if (btnSalvar.Text == "ALTERAR")
                     {
-                        proServ.codigo = Convert.ToInt32(txtCodigo.Text);
-                        proServ.dtAlteracao = DateTime.Now;
-                        dao.Editar(proServ);
+                        ProdutoServico.codigo = Convert.ToInt32(txtCodigo.Text);
+                        ProdutoServico.dtAlteracao = DateTime.Now;
+                        CtrlProdutoServico.Editar(ProdutoServico);
                         if (rbProduto.Checked)
                         {
                             MessageBox.Show("Produto alterado com Sucesso!");
@@ -85,9 +86,9 @@ namespace EquipMotos.View
                     }
                     else
                     {
-                        proServ.dtCadastro = DateTime.Now;
-                        proServ.dtAlteracao = DateTime.Now;
-                        dao.Inserir(proServ);
+                        ProdutoServico.dtCadastro = DateTime.Now;
+                        ProdutoServico.dtAlteracao = DateTime.Now;
+                        CtrlProdutoServico.Inserir(ProdutoServico);
                         if (rbProduto.Checked)
                         {
                             MessageBox.Show("Produto salvo com Sucesso!");
@@ -100,7 +101,6 @@ namespace EquipMotos.View
                     limparCampos();
                     this.DialogResult = DialogResult.OK;
                     this.Close();
-
                 }
                 else
                 {
@@ -116,35 +116,34 @@ namespace EquipMotos.View
         }
         public void Carregar(object id)
         {
-            proServ = dao.BuscarPorID(id) as ProdutosServicos;
-            if(proServ.servico == false)
+            ProdutoServico = CtrlProdutoServico.BuscarPorID(id) as ProdutosServicos;
+            if(ProdutoServico.servico == false)
             {
                 rbProduto.Checked = true;
-                txtUnidade.Text = proServ.unidade;
-                txtCodBarra.Text = Convert.ToString(proServ.codBarra);
-                txtCodFornecedor.Text = Convert.ToString(proServ.Fornecedor.codigo);
-                txtFornecedor.Text = Convert.ToString(proServ.Fornecedor.fornecedor);
-                txtCustoUltCompra.Text = Convert.ToString(proServ.custoUltCompra);
-                txtDtUltCompra.Text = Convert.ToString(proServ.dtUltCompra);
+                txtUnidade.Text = ProdutoServico.unidade;
+                txtCodBarra.Text = Convert.ToString(ProdutoServico.codBarra);
+                txtCodFornecedor.Text = Convert.ToString(ProdutoServico.Fornecedor.codigo);
+                txtFornecedor.Text = Convert.ToString(ProdutoServico.Fornecedor.fornecedor);
+                txtCustoUltCompra.Text = Convert.ToString(ProdutoServico.custoUltCompra);
+                txtDtUltCompra.Text = Convert.ToString(ProdutoServico.dtUltCompra);
             }
             else
             {
                 rbServico.Checked = true;
-                txtCodFornecedor.Text = Convert.ToString(proServ.Funcionario.codigo);
-                txtFornecedor.Text = Convert.ToString(proServ.Funcionario.funcionario);
+                txtCodFornecedor.Text = Convert.ToString(ProdutoServico.Funcionario.codigo);
+                txtFornecedor.Text = Convert.ToString(ProdutoServico.Funcionario.funcionario);
 
             }
-            txtCodigo.Text = Convert.ToString(proServ.codigo);
-            txtProdutoServico.Text = proServ.produto;
-            txtCodCategoria.Text = Convert.ToString(proServ.Categoria.codigo);
-            txtCategoriaGrupo.Text = Convert.ToString(proServ.Categoria.categoria);
-            txtComissao.Text = Convert.ToString(proServ.comissao);
-            txtObservacao.Text = proServ.observacoes;
-            txtDtCadastro.Text = Convert.ToString(proServ.dtCadastro);
-            txtDtAlteracao.Text = Convert.ToString(proServ.dtAlteracao);
-            txtUsuario.Text = proServ.usuario;
+            txtCodigo.Text = Convert.ToString(ProdutoServico.codigo);
+            txtProdutoServico.Text = ProdutoServico.produto;
+            txtCodCategoria.Text = Convert.ToString(ProdutoServico.Categoria.codigo);
+            txtCategoriaGrupo.Text = Convert.ToString(ProdutoServico.Categoria.categoria);
+            txtComissao.Text = Convert.ToString(ProdutoServico.comissao);
+            txtObservacao.Text = ProdutoServico.observacoes;
+            txtDtCadastro.Text = Convert.ToString(ProdutoServico.dtCadastro);
+            txtDtAlteracao.Text = Convert.ToString(ProdutoServico.dtAlteracao);
+            txtUsuario.Text = ProdutoServico.usuario;
             btnSalvar.Text = "ALTERAR";
-
         }
         public void limparCampos()
         {
@@ -183,7 +182,7 @@ namespace EquipMotos.View
             }
             else
             {
-                frmConsultaFuncionario frmConFuncionario = new frmConsultaFuncionario(pusuario);
+                frmConsultaFuncionario frmConFuncionario = new frmConsultaFuncionario();
                 frmConFuncionario.btnVoltar.Text = "SELECIONAR";
                 if (frmConFuncionario.ShowDialog() == DialogResult.OK)
                 {
@@ -220,7 +219,6 @@ namespace EquipMotos.View
             {
                 CarregaCategoria();
             }
-
         }
 
         private void CarregaCategoria()

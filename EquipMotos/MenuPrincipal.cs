@@ -22,7 +22,7 @@ namespace EquipMotos
 
         private void ClientesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmConsultaCliente frmConCliente = new frmConsultaCliente(status_usuario.Text);
+            frmConsultaCliente frmConCliente = new frmConsultaCliente();
             frmConCliente.ShowDialog();
             
         }
@@ -46,7 +46,7 @@ namespace EquipMotos
 
         private void FuncionariosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmConsultaFuncionario frmConFuncionario = new frmConsultaFuncionario(status_usuario.Text);
+            frmConsultaFuncionario frmConFuncionario = new frmConsultaFuncionario();
             frmConFuncionario.ShowDialog();
         }
 
@@ -115,14 +115,26 @@ namespace EquipMotos
 
         private void VendasToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmCadastroVenda frmCadVenda = new frmCadastroVenda();
-            frmCadVenda.ShowDialog();
+            frmConsultaVenda frmConVenda = new frmConsultaVenda();
+            frmConVenda.ShowDialog();
         }
 
         private void ContasÀPagarToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmConsultaContaPagar frmConContaPagar = new frmConsultaContaPagar();
             frmConContaPagar.ShowDialog();
+        }
+
+        private void OrdemDeServiçoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmConsultaOrdemServico frmConOrdemServico = new frmConsultaOrdemServico();
+            frmConOrdemServico.ShowDialog();
+        }
+
+        private void contasÀReceberToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmConsultaContaReceber frmConContaReceber = new frmConsultaContaReceber();
+            frmConContaReceber.ShowDialog();
         }
     }
 }

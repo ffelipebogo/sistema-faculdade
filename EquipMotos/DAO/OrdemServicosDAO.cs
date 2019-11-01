@@ -108,7 +108,7 @@ namespace EquipMotos.DAO
 
                     os.km = Convert.ToString(row["km"]);
                     os.cor = Convert.ToString(row["cor"]);
-                    os.CondPagamento = daoCondPag.BuscarCondicao_porID(Convert.ToInt32(row["codCondPagamento"]));
+                    os.CondPagamento = daoCondPag.BuscarPorID(Convert.ToInt32(row["codCondPagamento"])) as CondicaoPagamentos;
                     os.observacoes = Convert.ToString(row["observacoes"]);
                     os.dtCadastro = Convert.ToDateTime(row["dtCadastro"]);
                     os.dtAlteracao = Convert.ToDateTime(row["dtAlteracao"]);

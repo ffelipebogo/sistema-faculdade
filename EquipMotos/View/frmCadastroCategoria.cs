@@ -16,7 +16,7 @@ namespace EquipMotos.View
     public partial class frmCadastroCategoria : frmCadastro
     {
         CtrlCategorias CtrlCategoria = new CtrlCategorias();
-        Categorias cat = new Categorias();
+        Categorias categoria = new Categorias();
 
         public frmCadastroCategoria()
         {
@@ -27,24 +27,24 @@ namespace EquipMotos.View
         {
             if (ValidaCampo())
             {
-                cat.categoria = txtCategoria.Text;
-                cat.dtAlteracao = DateTime.Now;
-                cat.dtCadastro = DateTime.Now;
-                cat.usuario = "";
+                categoria.categoria = txtCategoria.Text;
+                categoria.dtAlteracao = DateTime.Now;
+                categoria.dtCadastro = DateTime.Now;
+                categoria.usuario = "";
 
                 if (btnSalvar.Text == "ALTERAR")
                 {
-                    cat.codigo = Convert.ToInt32("0" + txtCodigo.Text);
-                    cat.dtAlteracao = DateTime.Now;
-                    CtrlCategoria.Editar(cat);
+                    categoria.codigo = Convert.ToInt32("0" + txtCodigo.Text);
+                    categoria.dtAlteracao = DateTime.Now;
+                    CtrlCategoria.Editar(categoria);
 
                     MessageBox.Show("Categoria alterada com Sucesso!");
                 }
                 else
                 {
-                    cat.dtAlteracao = DateTime.Now;
-                    cat.dtCadastro = DateTime.Now;
-                    CtrlCategoria.Inserir(cat);
+                    categoria.dtAlteracao = DateTime.Now;
+                    categoria.dtCadastro = DateTime.Now;
+                    CtrlCategoria.Inserir(categoria);
                     MessageBox.Show("Categoria cadastrada com Sucesso!");
                 }
                 this.Close();

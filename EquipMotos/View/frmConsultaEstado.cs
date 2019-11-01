@@ -1,4 +1,5 @@
-﻿using EquipMotos.DAO;
+﻿using EquipMotos.CONTROLLER;
+using EquipMotos.DAO;
 using EquipMotos.MODEL;
 using System;
 using System.Collections.Generic;
@@ -15,7 +16,7 @@ namespace EquipMotos.View
     public partial class frmConsultaEstado : Form
     {
         Estados estado;
-        EstadosDAO dao = new EstadosDAO();
+        CtrlEstados CtrlEstado = new CtrlEstados();
         public frmConsultaEstado()
         {
             InitializeComponent();
@@ -42,7 +43,7 @@ namespace EquipMotos.View
             estado = null;
             var estRow = gvEstado.CurrentRow.DataBoundItem as DataRowView;
             
-            estado = dao.BuscarPorID(estRow["codigo"]) as Estados;
+            estado = CtrlEstado.BuscarPorID(estRow["codigo"]) as Estados;
             return estado;
         }
 
@@ -53,10 +54,10 @@ namespace EquipMotos.View
                 var estRow = gvEstado.CurrentRow.DataBoundItem as DataRowView;
                 var id = estRow["codigo"];
 
-                dao.Excluir(id);
+                CtrlEstado.Excluir(id);
                 MessageBox.Show("Estado foi excluido!");
 
-                gvEstado.DataSource = dao.ListarTodos();
+                gvEstado.DataSource = CtrlEstado.ListarTodos();
             }
             catch (Exception)
             {
@@ -68,7 +69,6 @@ namespace EquipMotos.View
         {
             try
             {
-
                 frmCadastroEstado frmCadEstado = new frmCadastroEstado();
                 var estRow = gvEstado.CurrentRow.DataBoundItem as DataRowView;
 
@@ -77,10 +77,8 @@ namespace EquipMotos.View
                 frmCadEstado.Carregar(id);
                 if (frmCadEstado.ShowDialog() == DialogResult.OK)
                 {
-                    gvEstado.DataSource = dao.ListarTodos();
+                    gvEstado.DataSource = CtrlEstado.ListarTodos();
                 }
-                
-
             }
             catch (Exception ex)
             {
@@ -93,7 +91,7 @@ namespace EquipMotos.View
             frmCadastroEstado frmCadEstado = new frmCadastroEstado();
             if (frmCadEstado.ShowDialog() == DialogResult.OK)
             {
-                gvEstado.DataSource = dao.ListarTodos();
+                gvEstado.DataSource = CtrlEstado.ListarTodos();
             }
         }
 
@@ -101,13 +99,12 @@ namespace EquipMotos.View
         {
             // TODO: esta linha de código carrega dados na tabela 'sistemaMoto2DataSetEstado.estados'. Você pode movê-la ou removê-la conforme necessário.
             this.estadosTableAdapter.Fill(this.sistemaMoto2DataSetEstado.estados);
-
         }
 
         private void BtnBuscarEstado_Click(object sender, EventArgs e)
         {
             string est = txtPesquisar.Text;
-            gvEstado.DataSource = dao.Pesquisar(est);
+            gvEstado.DataSource = CtrlEstado.Pesquisar(est);
         }
     }
 }

@@ -24,13 +24,13 @@ namespace EquipMotos.DAO
                 {
                     Funcionarios funcionario = obj as Funcionarios;
                     string sql = @"INSERT INTO funcionarios (
-                                        funcionario, apelido, dtNascimento, sexo, cpf, rg, email, telefone, celular, endereco, complemento, numero, bairro, cep, idCidade,
+                                        funcionario, apelido, dtNascimento, sexo, cpf, rg, email, telefone, celular, endereco, complemento, numero, bairro, cep, codCidade,
                                         cargo, salario, comissao,
                                         carteiraTrabalho, serie, ufCt, dtEmissaoCt, pis,
                                         cnh, emissor, ufCnh, dtExpedicao, dtValidade, dtPrimeiraCnh, categoria,
                                         observacoes, dtCadastro, dtAlteracao, usuario) 
                                   VALUES ( 
-                                  @funcionario, @apelido, @dtNascimento, @sexo, @cpf, @rg, @email, @telefone, @celular, @endereco, @complemento, @numero, @bairro, @cep, @idCidade,
+                                  @funcionario, @apelido, @dtNascimento, @sexo, @cpf, @rg, @email, @telefone, @celular, @endereco, @complemento, @numero, @bairro, @cep, @codCidade,
                                   @cargo, @salario, @comissao,
                                   @carteiraTrabalho, @serie, @ufCt, @dtEmissaoCt, @pis,
                                   @cnh, @emissor, @ufCnh, @dtExpedicao, @dtValidade, @dtPrimeiraCnh, @categoria,
@@ -52,7 +52,7 @@ namespace EquipMotos.DAO
                     comando.Parameters.AddWithValue("@numero", funcionario.numero);
                     comando.Parameters.AddWithValue("@bairro", funcionario.bairro);
                     comando.Parameters.AddWithValue("@cep", funcionario.cep);
-                    comando.Parameters.AddWithValue("@idCidade", funcionario.Cidade.codigo);
+                    comando.Parameters.AddWithValue("@codCidade", funcionario.Cidade.codigo);
                     
                     comando.Parameters.AddWithValue("@cargo", funcionario.cargo);
                     comando.Parameters.AddWithValue("@salario", funcionario.salario);

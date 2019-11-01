@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 
 namespace EquipMotos.CONTROLLER
 {
-    class CtrlOrdemServico: Controller
+    class CtrlOrdemServicos: Controller
     {
         OrdemServicosDAO DaoOrdemServico = null;
-        public CtrlOrdemServico() : base(new OrdemServicosDAO())
+        public CtrlOrdemServicos() : base(new OrdemServicosDAO())
         {
             this.DaoOrdemServico = (OrdemServicosDAO)this.Dao;
         }

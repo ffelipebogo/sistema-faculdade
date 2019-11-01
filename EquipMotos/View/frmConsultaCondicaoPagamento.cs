@@ -1,4 +1,5 @@
 ﻿using EquipMotos.Codigo.View;
+using EquipMotos.CONTROLLER;
 using EquipMotos.DAO;
 using EquipMotos.MODEL;
 using System;
@@ -17,7 +18,7 @@ namespace EquipMotos.View
     {
 
         CondicaoPagamentos condPagamento = new CondicaoPagamentos();
-        private CondicaoPagamentoDAO dao = new CondicaoPagamentoDAO();
+        private CtrlCondicaoPagamento CtrlCondPagamento = new CtrlCondicaoPagamento();
         public frmConsultaCondicaoPagamento()
         {
             InitializeComponent();
@@ -29,14 +30,14 @@ namespace EquipMotos.View
             
             if (frmCadCondPagamento.ShowDialog() == DialogResult.OK)
             {
-                gvCondPagamento.DataSource = dao.ListarTodasCondicoes();
+                gvCondPagamento.DataSource = CtrlCondPagamento.ListarTodos();
             }
         }
 
         private void BtnBuscarCondPag_Click(object sender, EventArgs e)
         {
             string cond = txtPesquisar.Text;
-            gvCondPagamento.DataSource = dao.pesquisaCondicao(cond);
+            gvCondPagamento.DataSource = CtrlCondPagamento.Pesquisar(cond);
         }
 
         private void BtnAlterar_Click(object sender, EventArgs e)
@@ -50,7 +51,7 @@ namespace EquipMotos.View
                 frmCadCondPagamento.Carregar(codigo);
                 if (frmCadCondPagamento.ShowDialog() == DialogResult.OK)
                 {
-                    gvCondPagamento.DataSource = dao.ListarTodasCondicoes();
+                    gvCondPagamento.DataSource = CtrlCondPagamento.ListarTodos();
                 }
                 //gvCondPagamento.DataSource = dao.ListarTodasCondicoes();
             }
@@ -69,7 +70,7 @@ namespace EquipMotos.View
                 if ((MessageBox.Show("Remover condição ?", "EXCLUIR", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes) & codigo != null)
                 {
                     
-                    dao.ExcluirCondicaoPagamento(codigo);
+                    CtrlCondPagamento.Excluir(codigo);
                 }
             }
             catch  
@@ -77,7 +78,7 @@ namespace EquipMotos.View
             }
             finally
             {
-                gvCondPagamento.DataSource = dao.ListarTodasCondicoes();
+                gvCondPagamento.DataSource = CtrlCondPagamento.ListarTodos();
             }
         }
 
@@ -106,7 +107,7 @@ namespace EquipMotos.View
 
             var condRow = gvCondPagamento.CurrentRow.DataBoundItem as DataRowView;
             CondicaoPagamentoDAO dao = new CondicaoPagamentoDAO();
-            condPagamento = dao.BuscarCondicao_porID(condRow["codigo"]);
+            condPagamento = dao.BuscarPorID(condRow["codigo"]) as CondicaoPagamentos;
             return condPagamento;
 
         }

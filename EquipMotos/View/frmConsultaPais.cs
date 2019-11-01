@@ -1,4 +1,5 @@
-﻿using EquipMotos.DAO;
+﻿using EquipMotos.CONTROLLER;
+using EquipMotos.DAO;
 using EquipMotos.MODEL;
 using System;
 using System.Collections.Generic;
@@ -15,7 +16,7 @@ namespace EquipMotos.View
     public partial class frmConsultaPais : Form
     {
         Paises pais;
-        PaisesDAO dao = new PaisesDAO();
+        CtrlPaises CtrlPais = new CtrlPaises();
         public frmConsultaPais()
         {
             InitializeComponent();
@@ -26,7 +27,7 @@ namespace EquipMotos.View
             frmCadastroPais frmCadPais = new frmCadastroPais();
             if (frmCadPais.ShowDialog() == DialogResult.OK)
             {
-                gvPais.DataSource = dao.ListarTodos();
+                gvPais.DataSource = CtrlPais.ListarTodos();
             }
         }
 
@@ -34,16 +35,15 @@ namespace EquipMotos.View
         {
             try
             {
-
                 frmCadastroPais frmCadPais = new frmCadastroPais();
                 var paisRow = gvPais.CurrentRow.DataBoundItem as DataRowView;
 
-                var id = paisRow["id"];
+                var codigo = paisRow["codigo"];
 
-                frmCadPais.Carregar(id);
+                frmCadPais.Carregar(codigo);
                 if (frmCadPais.ShowDialog() == DialogResult.OK)
                 {
-                    gvPais.DataSource = dao.ListarTodos();
+                    gvPais.DataSource = CtrlPais.ListarTodos();
                 }
 
             }
@@ -59,12 +59,12 @@ namespace EquipMotos.View
             {
 
                 var paisRow = gvPais.CurrentRow.DataBoundItem as DataRowView;
-                var id = paisRow["id"];
+                var codigo = paisRow["codigo"];
 
-                dao.Excluir(id);
+                CtrlPais.Excluir(codigo);
                 MessageBox.Show("Pais foi excluido!");
 
-                gvPais.DataSource = dao.ListarTodos();
+                gvPais.DataSource = CtrlPais.ListarTodos();
             }
             catch (Exception)
             {
@@ -94,7 +94,7 @@ namespace EquipMotos.View
             pais = null;
 
             var paisRow = gvPais.CurrentRow.DataBoundItem as DataRowView;
-            pais = dao.BuscarPorID(paisRow["codigo"]) as Paises;
+            pais = CtrlPais.BuscarPorID(paisRow["codigo"]) as Paises;
             return pais;
         }
 
@@ -108,7 +108,7 @@ namespace EquipMotos.View
         private void BtnBuscarPais_Click(object sender, EventArgs e)
         {
             string pais = txtPesquisar.Text;
-            gvPais.DataSource = dao.Pesquisar(pais);
+            gvPais.DataSource = CtrlPais.Pesquisar(pais);
         }
     }
 }

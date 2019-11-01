@@ -25,8 +25,8 @@ namespace EquipMotos.MODEL
         public double valorServ { get; set; }
         public double valorTotal { get; set; }
         public CondicaoPagamentos CondPagamento { get; set; }
-        public List<ProdutosServicos> ListaProduto { get; set; }
-        public List<ProdutosServicos> ListaServico { get; set; }
+        public List<ItensVenda> ListaProduto { get; set; }
+        public List<ItensVenda> ListaServico { get; set; }
 
     }
 }

@@ -1,4 +1,5 @@
-﻿using EquipMotos.DAO;
+﻿using EquipMotos.CONTROLLER;
+using EquipMotos.DAO;
 using EquipMotos.MODEL;
 using System;
 using System.Collections.Generic;
@@ -15,7 +16,7 @@ namespace EquipMotos.View
     public partial class frmConsultaModelo : Form
     {
         Modelos modelo;
-        ModelosDAO dao = new ModelosDAO(); 
+        CtrlModelos CtrlModelo = new CtrlModelos(); 
         public frmConsultaModelo()
         {
             InitializeComponent();
@@ -26,7 +27,7 @@ namespace EquipMotos.View
             frmCadastroModelo frmCadModelo = new frmCadastroModelo();
             if (frmCadModelo.ShowDialog() == DialogResult.OK)
             {
-                gvModelo.DataSource = dao.ListarTodos();
+                gvModelo.DataSource = CtrlModelo.ListarTodos();
             }
         }
 
@@ -38,12 +39,12 @@ namespace EquipMotos.View
                 frmCadastroModelo frmCadModelo = new frmCadastroModelo();
                 var modRow = gvModelo.CurrentRow.DataBoundItem as DataRowView;
 
-                var id = modRow["id"];
+                var codigo = modRow["codigo"];
 
-                frmCadModelo.Carregar(id);
+                frmCadModelo.Carregar(codigo);
                 if (frmCadModelo.ShowDialog() == DialogResult.OK)
                 {
-                    gvModelo.DataSource = dao.ListarTodos();
+                    gvModelo.DataSource = CtrlModelo.ListarTodos();
                 }
 
             }
@@ -58,12 +59,12 @@ namespace EquipMotos.View
             try
             {
                 var modRow = gvModelo.CurrentRow.DataBoundItem as DataRowView;
-                var id = modRow["id"];
+                var codigo = modRow["codigo"];
 
-                dao.Excluir(id);
+                CtrlModelo.Excluir(codigo);
                 MessageBox.Show("Modelo foi excluido!");
 
-                gvModelo.DataSource = dao.ListarTodos();
+                gvModelo.DataSource = CtrlModelo.ListarTodos();
             }
             catch (Exception)
             {
@@ -92,7 +93,7 @@ namespace EquipMotos.View
             {
                 modelo = null;
                 var modRow = gvModelo.CurrentRow.DataBoundItem as DataRowView;
-                modelo = dao.BuscarPorID(modRow["codigo"]) as Modelos;
+                modelo = CtrlModelo.BuscarPorID(modRow["codigo"]) as Modelos;
                 return modelo;
             }
             catch
@@ -111,7 +112,7 @@ namespace EquipMotos.View
         private void BtnBuscarModelo_Click(object sender, EventArgs e)
         {
             string mod = txtPesquisar.Text;
-            gvModelo.DataSource = dao.Pesquisar(mod);
+            gvModelo.DataSource = CtrlModelo.Pesquisar(mod);
         }
     }
 }

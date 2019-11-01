@@ -59,7 +59,7 @@ namespace EquipMotos.View
             {
 
                 var cidRow = gvCidade.CurrentRow.DataBoundItem as DataRowView;
-                var id = cidRow["id"];
+                var id = cidRow["codigo"];
 
                 CtrlCidade.Excluir(id);
                 MessageBox.Show("Cidade foi excluida!");
@@ -80,7 +80,7 @@ namespace EquipMotos.View
                 frmCadastroCidade frmCadCidade = new frmCadastroCidade();
                 var cidRow = gvCidade.CurrentRow.DataBoundItem as DataRowView;
 
-                var id = cidRow["id"];
+                var id = cidRow["codigo"];
 
                 frmCadCidade.Carregar(id);
                 if (frmCadCidade.ShowDialog() == DialogResult.OK)

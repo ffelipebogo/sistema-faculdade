@@ -1,4 +1,5 @@
-﻿using EquipMotos.DAO;
+﻿using EquipMotos.CONTROLLER;
+using EquipMotos.DAO;
 using EquipMotos.MODEL;
 using EquipMotos.View;
 using System;
@@ -15,20 +16,18 @@ namespace EquipMotos.Codigo.View
     {
         Clientes cliente;
         private readonly string usuario;
-        private ClientesDAO dao = new ClientesDAO();
+        private CtrlClientes CtrlCliente = new CtrlClientes();
         
 
-        public frmConsultaCliente(string pusuario)
+        public frmConsultaCliente()
         {
             InitializeComponent();
-            this.usuario = pusuario;
         }
 
         private void BtnAlterar_Click(object sender, EventArgs e)
         {
             try
             {
-
                 frmCadastroCliente frmCadCliente = new frmCadastroCliente(usuario);
                 var cliRow = gvClientes.CurrentRow.DataBoundItem as DataRowView;
 
@@ -37,7 +36,7 @@ namespace EquipMotos.Codigo.View
                 frmCadCliente.Carregar(codigo);
                 if (frmCadCliente.ShowDialog() == DialogResult.OK)
                 {
-                    gvClientes.DataSource = dao.ListarTodos();
+                    gvClientes.DataSource = CtrlCliente.ListarTodos();
                 }
 
             }
@@ -49,26 +48,20 @@ namespace EquipMotos.Codigo.View
             
         }
 
-
         private void BtnExcluir_Click(object sender, EventArgs e)
         {
             try
             {
-                
                 var cliRow = gvClientes.CurrentRow.DataBoundItem as DataRowView;
                 var codigo = cliRow["codigo"];
-                
-                dao.Excluir(codigo);
+                CtrlCliente.Excluir(codigo);
                 MessageBox.Show("Cliente foi excluido!");
-
-                gvClientes.DataSource = dao.ListarTodos();
+                gvClientes.DataSource = CtrlCliente.ListarTodos();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
-           
-
         }
 
         private void BtnNovo_Click(object sender, EventArgs e)
@@ -76,7 +69,7 @@ namespace EquipMotos.Codigo.View
             frmCadastroCliente frmCadCliente = new frmCadastroCliente(usuario);
             if (frmCadCliente.ShowDialog() == DialogResult.OK)
             {
-                gvClientes.DataSource = dao.ListarTodos();
+                gvClientes.DataSource = CtrlCliente.ListarTodos();
             }
         }
 
@@ -86,7 +79,11 @@ namespace EquipMotos.Codigo.View
             if (btnVoltar.Text == "SELECIONAR")
             {
                 SelecionaCliente();
-                this.DialogResult = DialogResult.OK;
+                if (cliente != null)
+                {
+                    frmCadastroVenda.Cliente = cliente;
+                    this.DialogResult = DialogResult.OK;
+                }
                 Close();
             }
             else
@@ -104,7 +101,7 @@ namespace EquipMotos.Codigo.View
 
                 var cliRow = gvClientes.CurrentRow.DataBoundItem as DataRowView;
 
-                cliente = dao.BuscarPorID(cliRow["codigo"]) as Clientes;
+                cliente = CtrlCliente.BuscarPorID(cliRow["codigo"]) as Clientes;
                 return cliente;
             }
             catch
@@ -118,13 +115,13 @@ namespace EquipMotos.Codigo.View
         {
             // TODO: esta linha de código carrega dados na tabela 'sistemaMoto2DataSetCliente.clientes'. Você pode movê-la ou removê-la conforme necessário.
             this.clientesTableAdapter.Fill(this.sistemaMoto2DataSetCliente.clientes);
-            gvClientes.DataSource = dao.ListarTodos();
+            gvClientes.DataSource = CtrlCliente.ListarTodos();
         }
 
         private void BtnBuscarCliente_Click(object sender, EventArgs e)
         {
             string cli = txtPesquisar.Text;
-            gvClientes.DataSource = dao.Pesquisar(cli);
+            gvClientes.DataSource = CtrlCliente.Pesquisar(cli);
         }
 
        
