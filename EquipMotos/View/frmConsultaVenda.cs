@@ -29,15 +29,22 @@ namespace EquipMotos.View
 
         private void BtnAlterar_Click(object sender, EventArgs e)
         {
-            frmCadastroVenda frmCadVenda = new frmCadastroVenda();
-            var vendaRow = gvVendas.CurrentRow.DataBoundItem as DataRowView;
-
-            var codigo = vendaRow["codigo"];
-
-            frmCadVenda.Carregar(codigo);
-            if (frmCadVenda.ShowDialog() == DialogResult.OK)
+            try
             {
-                // gvVendas.DataSource = CtrlVenda.ListarTodos();
+                frmCadastroVenda frmCadVenda = new frmCadastroVenda();
+                var vendaRow = gvVendas.CurrentRow.DataBoundItem as DataRowView;
+
+                var codigo = vendaRow["codigo"];
+
+                frmCadVenda.Carregar(codigo);
+                if (frmCadVenda.ShowDialog() == DialogResult.OK)
+                {
+                    // gvVendas.DataSource = CtrlVenda.ListarTodos();
+                }
+            }
+            catch
+            {
+
             }
         }
 

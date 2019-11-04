@@ -80,18 +80,18 @@ namespace EquipMotos.View
         private object SelecionaProdutoServico()
         {
             prodServ = null;
-            if(gvProdutos.CurrentRow == null)
+            if(gvProdutos.CurrentRow != null)
             {
-                return null;
-            }
-            else
-            {
+           
                 var proRow = gvProdutos.CurrentRow.DataBoundItem as DataRowView;
                 var serv = CtrlProdutoServico.BuscarPorID(proRow["codigo"]) as ProdutosServicos;
 
                 return prodServ = serv ;
             }
-            
+            else
+            {
+                return null;
+            }
         }
 
         private void BtnExcluir_Click(object sender, EventArgs e)

@@ -10,7 +10,7 @@ namespace WebApplication2.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class WeatherForecastController : ControllerBase
+    public class WeatherForecastController : Controller
     {
         private static readonly string[] Summaries = new[]
         {
@@ -30,6 +30,7 @@ namespace WebApplication2.Controllers
             ContasReceber contasReceber = new ContasReceber();
             contasReceber.nome = "teste";
             return contasReceber;
+
         }
     }
 }

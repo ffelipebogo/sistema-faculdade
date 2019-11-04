@@ -73,12 +73,44 @@ namespace EquipMotos.DAO
 
         private void InserirItemVenda(ItensCompra item, SqlTransaction transaction)
         {
-            throw new NotImplementedException();
+            //SqlCommand comando = this.CreateCommandTransaction(transaction);
+            //comando.CommandText = @"INSERT INTO itemVenda (  modelo, serie, nrNota, codFornecedor, codProduto, qtd, custoUnitario, dtCadastro, dtAlteracao) 
+            //                                        values ( @modelo, @serie, @nrNota, @codFornecedor,  @codProduto, @qtd ,  @custoUnitario,  @dtCadastro, @dtAlteracao);
+            //                        UPDATE  produtos set qtd = @qtd, custoUltCompra = @custoUnitario, precoCusto = @custoUnitario, codFornecedor = @codFornecedor, dtUltCompra = @dtCadastro WHERE codigo = @codProduto ";
+
+            //comando.Parameters.AddWithValue("@modelo", item.modelo);
+            //comando.Parameters.AddWithValue("@serie", item.serie);
+            //comando.Parameters.AddWithValue("@nrNota", item.nrNota);
+            //comando.Parameters.AddWithValue("@codFornecedor", item.Fornecedor.codigo);
+            //comando.Parameters.AddWithValue("@codProduto", item.codigo);
+            //comando.Parameters.AddWithValue("@qtd", item.qtd);
+            //comando.Parameters.AddWithValue("@custoUnitario", item.custoUnitario);
+            //comando.Parameters.AddWithValue("@dtCadastro", item.dtCadastro);
+            //comando.Parameters.AddWithValue("@dtAlteracao", item.dtAlteracao);
+
+            //comando.ExecuteNonQuery();
         }
 
         private void InserirContasReceber(ContasReceber conta, SqlTransaction transaction)
         {
-            throw new NotImplementedException();
+            SqlCommand comando = this.CreateCommandTransaction(transaction);
+
+            comando.CommandText = @"INSERT INTO contaReceber ( modelo, serie, nrNota, nrParcela, codCliente, valorParcela, dtVencimento, dtEmissao, dtCadastro, dtAlteracao, usuario) 
+                                                    values ( @modelo, @serie, @nrNota,  @nrParcela, @codCliente, @valorParcela, @dtVencimento, @dtEmissao, @dtCadastro, @dtAlteracao, @usuario)";
+
+            comando.Parameters.AddWithValue("@modelo", conta.modelo);
+            comando.Parameters.AddWithValue("@serie", conta.serie);
+            comando.Parameters.AddWithValue("@nrNota", conta.nrNota);
+            comando.Parameters.AddWithValue("@nrParcela", conta.nrParcela);
+            comando.Parameters.AddWithValue("@codCliente", conta.cliente.codigo);
+            comando.Parameters.AddWithValue("@valorParcela", conta.vlrParcela);
+            comando.Parameters.AddWithValue("@dtVencimento", conta.dtVecimento);
+            comando.Parameters.AddWithValue("@dtEmissao", conta.dtEmissao);
+            comando.Parameters.AddWithValue("@dtCadastro", conta.dtCadastro);
+            comando.Parameters.AddWithValue("@dtAlteracao", conta.dtAlteracao);
+            comando.Parameters.AddWithValue("@usuario", conta.usuario);
+
+            comando.ExecuteNonQuery();
         }
 
     }

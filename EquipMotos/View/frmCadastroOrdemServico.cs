@@ -87,7 +87,7 @@ namespace EquipMotos.View
                         {
                             var idItem = Convert.ToInt32(lvProduto.Items[i].SubItems[0].Text);
                             var qtdItem = Convert.ToInt32(lvProduto.Items[i].SubItems[3].Text);
-                            var custoItem = Convert.ToDecimal(Double.Parse(lvProduto.Items[i].SubItems[4].Text, NumberStyles.Any).ToString("N2"));
+                            var custoItem = Decimal.Parse(lvProduto.Items[i].SubItems[4].Text, NumberStyles.Any);
                             //var totalItens = getTotal();
                             //var totalDespesas = Convert.ToDecimal(OrdemServico.frete + OrdemServico.seguro + OrdemServico.despesa);
                             //var porcentagemItem = ((custoItem * qtdItem) / totalItens);
@@ -114,7 +114,7 @@ namespace EquipMotos.View
                         {
                             var idItem = Convert.ToInt32(lvProduto.Items[i].SubItems[0].Text);
                             var qtdItem = Convert.ToInt32(lvProduto.Items[i].SubItems[3].Text);
-                            var custoItem = Convert.ToDecimal(Double.Parse(lvProduto.Items[i].SubItems[4].Text, NumberStyles.Any).ToString("N2"));
+                            var custoItem = Decimal.Parse(lvProduto.Items[i].SubItems[4].Text, NumberStyles.Any);
                             //var totalItens = getTotal();
                             //var totalDespesas = Convert.ToDecimal(OrdemServico.frete + OrdemServico.seguro + OrdemServico.despesa);
                             //var porcentagemItem = ((custoItem * qtdItem) / totalItens);

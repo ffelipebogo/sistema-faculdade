@@ -12,6 +12,7 @@ namespace EquipMotos.View
 {
     public partial class frmConsultaContaReceber : Form
     {
+        frmCadastroContaReceber frmCadContaReceber;
         public frmConsultaContaReceber()
         {
             InitializeComponent();
@@ -19,12 +20,21 @@ namespace EquipMotos.View
 
         private void btnNovo_Click(object sender, EventArgs e)
         {
-
+            frmCadContaReceber = new frmCadastroContaReceber();
+            if (frmCadContaReceber.ShowDialog() == DialogResult.OK)
+            {
+                //gvContaPagar.DataSource = dao.ListarTodos();
+            }
         }
 
         private void btnAlterar_Click(object sender, EventArgs e)
         {
-
+            frmCadContaReceber = new frmCadastroContaReceber();
+            frmCadContaReceber.Carrega();
+            if (frmCadContaReceber.ShowDialog() == DialogResult.OK)
+            {
+                //gvContaPagar.DataSource = dao.ListarTodos();
+            }
         }
 
         private void btnExcluir_Click(object sender, EventArgs e)

@@ -91,6 +91,7 @@ namespace EquipMotos.View
                 frmCadastroCliente.condPagamento = this.condPagamento;
                 frmCadastroFornecedor.condPagamento = this.condPagamento;
                 frmCadastroCompra.condPagamento = this.condPagamento;
+                frmCadastroVenda.CondPagamento = this.condPagamento;
                 this.DialogResult = DialogResult.OK;
                 Close();
             }

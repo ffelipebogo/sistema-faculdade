@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.28803.352
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EquipMotos", "EquipMotos\EquipMotos.csproj", "{C46C8884-2C22-4066-8D78-C8E0DB1830DE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApplication2", "WebApplication2\WebApplication2.csproj", "{EE1E13D6-F1AE-4ADF-BFE1-9378A46171DF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EquipMotosWeb", "WebApplication2\EquipMotosWeb.csproj", "{EE1E13D6-F1AE-4ADF-BFE1-9378A46171DF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

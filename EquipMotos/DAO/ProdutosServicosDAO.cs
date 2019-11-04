@@ -30,6 +30,7 @@ namespace EquipMotos.DAO
                                         codBarra,
                                         qtd,
                                         precoCusto,
+                                        precoVenda,
                                         codFornecedor,
                                         codFuncionario,
                                         custoUltCompra,
@@ -41,7 +42,7 @@ namespace EquipMotos.DAO
                                         usuario,
                                         servico
                                 
-                                        ) values (@produto, @unidade, @codCategoria, @codBarra, @qtd, @precoCusto, @codFornecedor,@codFuncionario, @custoUltCompra, @dtUltCompra, @comissao,
+                                        ) values (@produto, @unidade, @codCategoria, @codBarra, @qtd, @precoCusto, @precoVenda, @codFornecedor,@codFuncionario, @custoUltCompra, @dtUltCompra, @comissao,
                                           @observacoes, @dtCadastro, @dtAlteracao, @usuario, @servico )";
 
 
@@ -55,6 +56,7 @@ namespace EquipMotos.DAO
                         comando.Parameters.AddWithValue("@codCategoria", proServ.Categoria.codigo);
                         comando.Parameters.AddWithValue("@qtd", proServ.qtd);
                         comando.Parameters.AddWithValue("@precoCusto", proServ.custo);
+                        comando.Parameters.AddWithValue("@precoVenda", proServ.precoVenda);
                         
                         comando.Parameters.AddWithValue("@codFornecedor", proServ.Fornecedor.codigo);
                         comando.Parameters.AddWithValue("@codFuncionario", DBNull.Value);
@@ -77,6 +79,7 @@ namespace EquipMotos.DAO
                         comando.Parameters.AddWithValue("@codCategoria", proServ.Categoria.codigo);
                         comando.Parameters.AddWithValue("@qtd", DBNull.Value);
                         comando.Parameters.AddWithValue("@precoCusto", proServ.custo);
+                        comando.Parameters.AddWithValue("@precoVenda", proServ.precoVenda);
                        
                         comando.Parameters.AddWithValue("@codFuncionario", proServ.Funcionario.codigo);
                         comando.Parameters.AddWithValue("@codFornecedor", DBNull.Value);
@@ -91,10 +94,8 @@ namespace EquipMotos.DAO
                         comando.Parameters.AddWithValue("@servico", proServ.servico);
 
                     }
-
                     conexao.Open();
                     comando.ExecuteNonQuery();
-
                 }
                 catch (SqlException e)
                 {
@@ -163,6 +164,7 @@ namespace EquipMotos.DAO
 
                                 qtd = @qtd,
                                 precoCusto = @precoCusto,
+                                precoVenda = @precoVenda,
                                
                                 codFornecedor = @codFornecedor,
                                 codFuncionario = @codFuncionario,
@@ -188,6 +190,7 @@ namespace EquipMotos.DAO
                         comando.Parameters.AddWithValue("@codCategoria", proServ.Categoria.codigo);
                         comando.Parameters.AddWithValue("@qtd", proServ.qtd);
                         comando.Parameters.AddWithValue("@precoCusto", proServ.custo);
+                        comando.Parameters.AddWithValue("@precoVenda", proServ.precoVenda);
                         
                         comando.Parameters.AddWithValue("@codFornecedor", proServ.Fornecedor.codigo);
                         comando.Parameters.AddWithValue("@codFuncionario", 0);
@@ -210,6 +213,7 @@ namespace EquipMotos.DAO
                         comando.Parameters.AddWithValue("@codCategoria", proServ.Categoria.codigo);
                         comando.Parameters.AddWithValue("@qtd", 0);
                         comando.Parameters.AddWithValue("@precoCusto", proServ.custo);
+                        comando.Parameters.AddWithValue("@precoVenda", proServ.precoVenda);
                         
                         comando.Parameters.AddWithValue("@codFuncionario", proServ.Funcionario.codigo);
                         comando.Parameters.AddWithValue("@codFornecedor", 0);
@@ -298,6 +302,7 @@ namespace EquipMotos.DAO
                         proServ.Categoria = CtrlCategoria.BuscarPorID(Convert.ToInt32(row["codCategoria"])) as Categorias;
                         proServ.qtd = Convert.ToInt32(row["qtd"]);
                         proServ.custo = Convert.ToDecimal(row["precoCusto"]);
+                        proServ.precoVenda = Convert.ToDecimal(row["precoVenda"]);
 
                         proServ.Fornecedor = daoForn.BuscarPorID(Convert.ToInt32(row["codFornecedor"])) as Fornecedores;
                         proServ.custoUltCompra = Convert.ToDecimal(row["custoUltCompra"]);

@@ -51,6 +51,7 @@ namespace EquipMotos.View
                         ProdutoServico.Categoria = cat;
                         forn.codigo = Convert.ToInt32("0" + txtCodFornecedor.Text);
                         ProdutoServico.Fornecedor = forn;
+                        ProdutoServico.precoVenda = Convert.ToDecimal(Decimal.Parse(txtPrecoVenda.Text).ToString("N2"));
                         ProdutoServico.custoUltCompra = Convert.ToDecimal(Decimal.Parse("0").ToString("N2"));
                         ProdutoServico.dtUltCompra = DateTime.Now;
                         ProdutoServico.observacoes = txtObservacao.Text;
@@ -139,6 +140,7 @@ namespace EquipMotos.View
             txtCodCategoria.Text = Convert.ToString(ProdutoServico.Categoria.codigo);
             txtCategoriaGrupo.Text = Convert.ToString(ProdutoServico.Categoria.categoria);
             txtComissao.Text = Convert.ToString(ProdutoServico.comissao);
+            txtPrecoVenda.Text = Convert.ToString(ProdutoServico.precoVenda);
             txtObservacao.Text = ProdutoServico.observacoes;
             txtDtCadastro.Text = Convert.ToString(ProdutoServico.dtCadastro);
             txtDtAlteracao.Text = Convert.ToString(ProdutoServico.dtAlteracao);
@@ -155,6 +157,7 @@ namespace EquipMotos.View
             txtCategoriaGrupo.Text = "";
             txtCodFornecedor.Text = "";
             txtFornecedor.Text = "";
+            txtPrecoVenda.Text = "R$0.00";
             txtCustoUltCompra.Text = "";
             txtDtUltCompra.Text = "";
             txtComissao.Text = "";
