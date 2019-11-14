@@ -1,13 +1,15 @@
 ﻿using EquipMotos.CONTROLLER;
 using EquipMotos.MODEL;
 using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace EquipMotos.DAO
 {
-    class ProdutosServicosDAO: DAO
+    class ProdutosServicosDAO : DAO
     {
 
         ProdutosServicos produtoServico = new ProdutosServicos();
@@ -57,7 +59,7 @@ namespace EquipMotos.DAO
                         comando.Parameters.AddWithValue("@qtd", proServ.qtd);
                         comando.Parameters.AddWithValue("@precoCusto", proServ.custo);
                         comando.Parameters.AddWithValue("@precoVenda", proServ.precoVenda);
-                        
+
                         comando.Parameters.AddWithValue("@codFornecedor", proServ.Fornecedor.codigo);
                         comando.Parameters.AddWithValue("@codFuncionario", DBNull.Value);
 
@@ -80,7 +82,7 @@ namespace EquipMotos.DAO
                         comando.Parameters.AddWithValue("@qtd", DBNull.Value);
                         comando.Parameters.AddWithValue("@precoCusto", proServ.custo);
                         comando.Parameters.AddWithValue("@precoVenda", proServ.precoVenda);
-                       
+
                         comando.Parameters.AddWithValue("@codFuncionario", proServ.Funcionario.codigo);
                         comando.Parameters.AddWithValue("@codFornecedor", DBNull.Value);
                         comando.Parameters.AddWithValue("@custoUltCompra", DBNull.Value);
@@ -125,11 +127,11 @@ namespace EquipMotos.DAO
                 {
                     if (isNumeric)
                     {
-                        sql = @"SELECT * FROM produtos WHERE cpf like '%'+ @proServ +'%'";
+                        sql = @"SELECT * FROM produtos WHERE produto like '%'+ @proServ +'%'";
                     }
                     else
                     {
-                        sql = @"SELECT * FROM produtos WHERE proServ like '%'+ @proServ + '%' ";
+                        sql = @"SELECT * FROM produtos WHERE produto like '%'+ @proServ + '%' ";
                     }
                 }
                 SqlCommand comando = new SqlCommand(sql, conexao);
@@ -145,6 +147,58 @@ namespace EquipMotos.DAO
                 return dtProdutoServico;
             }
         }
+
+        public object Pesquisar(string proServ, List<string> filterID, int isProduto)
+        {
+            using (SqlConnection conexao = Conecta.CreateConnection())
+            {
+                SqlDataAdapter da;
+                string sql = null;
+                bool isNumeric = int.TryParse(proServ, out int n);
+
+                var filterIDaux = "";
+                for (int i = 0; i < filterID.Count; i++)
+                {
+                    filterIDaux += filterID[i] + (filterID.Count - 1 > i ? ", " : "");
+                }
+
+                if (string.IsNullOrEmpty(proServ))
+                {
+                    proServ = "";
+                    sql = $@"SELECT * FROM produtos WHERE 1=1  
+                        {(isProduto == 3 ? "" : $" AND servico = {isProduto} ")} 
+                        { (filterID == null || filterID.Count == 0 ? "" : $" AND not codigo in ({ filterIDaux}) ") } ";
+
+                }
+                else if (proServ.Length <= 4 && isNumeric)
+                {
+                    sql = @"SELECT * FROM produtos WHERE codigo = @proServ";
+                }
+                else
+                {
+                    if (isNumeric)
+                    {
+                        sql = @"SELECT * FROM produtos WHERE produto like '%'+ @proServ +'%'";
+                    }
+                    else
+                    {
+                        sql = @"SELECT * FROM produtos WHERE produto like '%'+ @proServ + '%' ";
+                    }
+                }
+                SqlCommand comando = new SqlCommand(sql, conexao);
+
+                comando.Parameters.AddWithValue("@proServ", proServ);
+
+                conexao.Open();
+
+                da = new SqlDataAdapter(comando);
+                DataTable dtProdutoServico = new DataTable();
+                da.Fill(dtProdutoServico);
+
+                return dtProdutoServico;
+            }
+        }
+
 
         #endregion
 
@@ -191,7 +245,7 @@ namespace EquipMotos.DAO
                         comando.Parameters.AddWithValue("@qtd", proServ.qtd);
                         comando.Parameters.AddWithValue("@precoCusto", proServ.custo);
                         comando.Parameters.AddWithValue("@precoVenda", proServ.precoVenda);
-                        
+
                         comando.Parameters.AddWithValue("@codFornecedor", proServ.Fornecedor.codigo);
                         comando.Parameters.AddWithValue("@codFuncionario", 0);
 
@@ -214,7 +268,7 @@ namespace EquipMotos.DAO
                         comando.Parameters.AddWithValue("@qtd", 0);
                         comando.Parameters.AddWithValue("@precoCusto", proServ.custo);
                         comando.Parameters.AddWithValue("@precoVenda", proServ.precoVenda);
-                        
+
                         comando.Parameters.AddWithValue("@codFuncionario", proServ.Funcionario.codigo);
                         comando.Parameters.AddWithValue("@codFornecedor", 0);
                         comando.Parameters.AddWithValue("@custoUltCompra", 0);
@@ -229,7 +283,7 @@ namespace EquipMotos.DAO
 
                     }
                     comando.Parameters.AddWithValue("@codigo", proServ.codigo);
-                    
+
                     conexao.Open();
                     comando.ExecuteNonQuery();
                 }
@@ -247,7 +301,7 @@ namespace EquipMotos.DAO
         #endregion
 
         #region Excluir Produto Servico
-        public  override void Excluir(object id)
+        public override void Excluir(object id)
         {
             using (SqlConnection conexao = Conecta.CreateConnection())
             {
@@ -292,7 +346,7 @@ namespace EquipMotos.DAO
                 {
                     ProdutosServicos proServ = new ProdutosServicos();
                     proServ.servico = Convert.ToBoolean(row["servico"]);
-                    if(!proServ.servico)
+                    if (!proServ.servico)
                     {
                         proServ.codigo = Convert.ToInt32(row["codigo"]);
                         proServ.produto = Convert.ToString(row["produto"]);
@@ -320,14 +374,15 @@ namespace EquipMotos.DAO
                         proServ.produto = Convert.ToString(row["produto"]);
                         proServ.Categoria = CtrlCategoria.BuscarPorID(Convert.ToInt32(row["codCategoria"])) as Categorias;
                         proServ.custo = Convert.ToDecimal(row["precoCusto"]);
-                       
+                        proServ.precoVenda = Convert.ToDecimal(row["precoVenda"]);
+
                         proServ.Funcionario = daoFunc.BuscarPorID(Convert.ToInt32(row["codFuncionario"])) as Funcionarios;
                         proServ.comissao = Convert.ToDouble(row["comissao"]);
                         proServ.observacoes = Convert.ToString(row["observacoes"]);
                         proServ.dtCadastro = Convert.ToDateTime(row["dtCadastro"]);
                         proServ.dtAlteracao = Convert.ToDateTime(row["dtAlteracao"]);
                         proServ.usuario = Convert.ToString(row["usuario"]);
-                        
+
                         this.produtoServico = proServ;
                     }
                 }
@@ -337,7 +392,7 @@ namespace EquipMotos.DAO
         #endregion
 
         #region ListarTodosProdutosServicos
-        public override DataTable ListarTodos ()
+        public override DataTable ListarTodos()
         {
             using (SqlConnection conexao = Conecta.CreateConnection())
             {

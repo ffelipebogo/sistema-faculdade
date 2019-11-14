@@ -29,18 +29,18 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label2 = new System.Windows.Forms.Label();
             this.btnVoltar = new System.Windows.Forms.Button();
             this.gvPais = new System.Windows.Forms.DataGridView();
+            this.paisesBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.sistemaMoto2DataSetPais = new EquipMotos.SistemaMoto2DataSetPais();
             this.label1 = new System.Windows.Forms.Label();
             this.txtPesquisar = new System.Windows.Forms.TextBox();
             this.btnExcluir = new System.Windows.Forms.Button();
             this.btnAlterar = new System.Windows.Forms.Button();
             this.btnNovo = new System.Windows.Forms.Button();
             this.btnBuscarPais = new System.Windows.Forms.PictureBox();
-            this.sistemaMoto2DataSetPais = new EquipMotos.SistemaMoto2DataSetPais();
-            this.paisesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.paisesTableAdapter = new EquipMotos.SistemaMoto2DataSetPaisTableAdapters.paisesTableAdapter();
             this.codigoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -48,9 +48,9 @@
             this.dtAlteracaoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.usuarioDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gvPais)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnBuscarPais)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sistemaMoto2DataSetPais)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.paisesBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sistemaMoto2DataSetPais)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnBuscarPais)).BeginInit();
             this.SuspendLayout();
             // 
             // label2
@@ -67,7 +67,7 @@
             // 
             this.btnVoltar.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnVoltar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnVoltar.Location = new System.Drawing.Point(484, 435);
+            this.btnVoltar.Location = new System.Drawing.Point(484, 438);
             this.btnVoltar.Margin = new System.Windows.Forms.Padding(4);
             this.btnVoltar.Name = "btnVoltar";
             this.btnVoltar.Size = new System.Drawing.Size(152, 42);
@@ -85,14 +85,14 @@
             this.gvPais.BackgroundColor = System.Drawing.SystemColors.Control;
             this.gvPais.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.gvPais.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.ControlDark;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.gvPais.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.ControlDark;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.gvPais.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.gvPais.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gvPais.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.codigoDataGridViewTextBoxColumn,
@@ -110,6 +110,16 @@
             this.gvPais.RowTemplate.Height = 24;
             this.gvPais.Size = new System.Drawing.Size(612, 303);
             this.gvPais.TabIndex = 278;
+            // 
+            // paisesBindingSource
+            // 
+            this.paisesBindingSource.DataMember = "paises";
+            this.paisesBindingSource.DataSource = this.sistemaMoto2DataSetPais;
+            // 
+            // sistemaMoto2DataSetPais
+            // 
+            this.sistemaMoto2DataSetPais.DataSetName = "SistemaMoto2DataSetPais";
+            this.sistemaMoto2DataSetPais.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // label1
             // 
@@ -197,16 +207,6 @@
             this.btnBuscarPais.TabStop = false;
             this.btnBuscarPais.Click += new System.EventHandler(this.BtnBuscarPais_Click);
             // 
-            // sistemaMoto2DataSetPais
-            // 
-            this.sistemaMoto2DataSetPais.DataSetName = "SistemaMoto2DataSetPais";
-            this.sistemaMoto2DataSetPais.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // paisesBindingSource
-            // 
-            this.paisesBindingSource.DataMember = "paises";
-            this.paisesBindingSource.DataSource = this.sistemaMoto2DataSetPais;
-            // 
             // paisesTableAdapter
             // 
             this.paisesTableAdapter.ClearBeforeFill = true;
@@ -214,7 +214,7 @@
             // codigoDataGridViewTextBoxColumn
             // 
             this.codigoDataGridViewTextBoxColumn.DataPropertyName = "codigo";
-            this.codigoDataGridViewTextBoxColumn.HeaderText = "codigo";
+            this.codigoDataGridViewTextBoxColumn.HeaderText = "Codigo";
             this.codigoDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.codigoDataGridViewTextBoxColumn.Name = "codigoDataGridViewTextBoxColumn";
             this.codigoDataGridViewTextBoxColumn.ReadOnly = true;
@@ -223,7 +223,7 @@
             // dataGridViewTextBoxColumn1
             // 
             this.dataGridViewTextBoxColumn1.DataPropertyName = "pais";
-            this.dataGridViewTextBoxColumn1.HeaderText = "pais";
+            this.dataGridViewTextBoxColumn1.HeaderText = "Pais";
             this.dataGridViewTextBoxColumn1.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
             this.dataGridViewTextBoxColumn1.ReadOnly = true;
@@ -232,7 +232,7 @@
             // dtCadastroDataGridViewTextBoxColumn
             // 
             this.dtCadastroDataGridViewTextBoxColumn.DataPropertyName = "dtCadastro";
-            this.dtCadastroDataGridViewTextBoxColumn.HeaderText = "dtCadastro";
+            this.dtCadastroDataGridViewTextBoxColumn.HeaderText = "Data Cadastro";
             this.dtCadastroDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.dtCadastroDataGridViewTextBoxColumn.Name = "dtCadastroDataGridViewTextBoxColumn";
             this.dtCadastroDataGridViewTextBoxColumn.ReadOnly = true;
@@ -241,7 +241,7 @@
             // dtAlteracaoDataGridViewTextBoxColumn
             // 
             this.dtAlteracaoDataGridViewTextBoxColumn.DataPropertyName = "dtAlteracao";
-            this.dtAlteracaoDataGridViewTextBoxColumn.HeaderText = "dtAlteracao";
+            this.dtAlteracaoDataGridViewTextBoxColumn.HeaderText = "Data Alteração";
             this.dtAlteracaoDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.dtAlteracaoDataGridViewTextBoxColumn.Name = "dtAlteracaoDataGridViewTextBoxColumn";
             this.dtAlteracaoDataGridViewTextBoxColumn.ReadOnly = true;
@@ -250,7 +250,7 @@
             // usuarioDataGridViewTextBoxColumn
             // 
             this.usuarioDataGridViewTextBoxColumn.DataPropertyName = "usuario";
-            this.usuarioDataGridViewTextBoxColumn.HeaderText = "usuario";
+            this.usuarioDataGridViewTextBoxColumn.HeaderText = "Usuario";
             this.usuarioDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.usuarioDataGridViewTextBoxColumn.Name = "usuarioDataGridViewTextBoxColumn";
             this.usuarioDataGridViewTextBoxColumn.ReadOnly = true;
@@ -277,9 +277,9 @@
             this.Text = "Consultar Paises";
             this.Load += new System.EventHandler(this.FrmConsultaPais_Load);
             ((System.ComponentModel.ISupportInitialize)(this.gvPais)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnBuscarPais)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sistemaMoto2DataSetPais)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.paisesBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sistemaMoto2DataSetPais)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnBuscarPais)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

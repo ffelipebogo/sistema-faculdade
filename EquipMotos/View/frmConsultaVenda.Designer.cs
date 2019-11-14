@@ -32,18 +32,9 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnBuscarVenda = new System.Windows.Forms.PictureBox();
             this.gvVendas = new System.Windows.Forms.DataGridView();
-            this.btnExcluir = new System.Windows.Forms.Button();
-            this.btnVoltar = new System.Windows.Forms.Button();
-            this.btnNovo = new System.Windows.Forms.Button();
-            this.txtPesquisar = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.btnAlterar = new System.Windows.Forms.Button();
-            this.sistemaMoto2DataSetVenda = new EquipMotos.SistemaMoto2DataSetVenda();
-            this.vendasBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.vendasTableAdapter = new EquipMotos.SistemaMoto2DataSetVendaTableAdapters.vendasTableAdapter();
+            this.nrNotaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.modeloDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.serieDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nrNotaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.codClienteDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.codCondPagamentoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dtEmissaoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -52,10 +43,19 @@
             this.dtCadastroDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dtAlteracaoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.usuarioDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.vendasBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.sistemaMoto2DataSetVenda = new EquipMotos.SistemaMoto2DataSetVenda();
+            this.btnExcluir = new System.Windows.Forms.Button();
+            this.btnVoltar = new System.Windows.Forms.Button();
+            this.btnNovo = new System.Windows.Forms.Button();
+            this.txtPesquisar = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.btnAlterar = new System.Windows.Forms.Button();
+            this.vendasTableAdapter = new EquipMotos.SistemaMoto2DataSetVendaTableAdapters.vendasTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.btnBuscarVenda)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvVendas)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sistemaMoto2DataSetVenda)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.vendasBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sistemaMoto2DataSetVenda)).BeginInit();
             this.SuspendLayout();
             // 
             // btnBuscarVenda
@@ -72,6 +72,7 @@
             this.btnBuscarVenda.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.btnBuscarVenda.TabIndex = 265;
             this.btnBuscarVenda.TabStop = false;
+            this.btnBuscarVenda.Click += new System.EventHandler(this.btnBuscarVenda_Click);
             // 
             // gvVendas
             // 
@@ -93,9 +94,9 @@
             this.gvVendas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.gvVendas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gvVendas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.nrNotaDataGridViewTextBoxColumn,
             this.modeloDataGridViewTextBoxColumn,
             this.serieDataGridViewTextBoxColumn,
-            this.nrNotaDataGridViewTextBoxColumn,
             this.codClienteDataGridViewTextBoxColumn,
             this.codCondPagamentoDataGridViewTextBoxColumn,
             this.dtEmissaoDataGridViewTextBoxColumn,
@@ -111,8 +112,117 @@
             this.gvVendas.Name = "gvVendas";
             this.gvVendas.ReadOnly = true;
             this.gvVendas.RowHeadersWidth = 51;
-            this.gvVendas.Size = new System.Drawing.Size(987, 497);
+            this.gvVendas.Size = new System.Drawing.Size(983, 497);
             this.gvVendas.TabIndex = 264;
+            // 
+            // nrNotaDataGridViewTextBoxColumn
+            // 
+            this.nrNotaDataGridViewTextBoxColumn.DataPropertyName = "nrNota";
+            this.nrNotaDataGridViewTextBoxColumn.HeaderText = "Nrº Nota";
+            this.nrNotaDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.nrNotaDataGridViewTextBoxColumn.Name = "nrNotaDataGridViewTextBoxColumn";
+            this.nrNotaDataGridViewTextBoxColumn.ReadOnly = true;
+            this.nrNotaDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // modeloDataGridViewTextBoxColumn
+            // 
+            this.modeloDataGridViewTextBoxColumn.DataPropertyName = "modelo";
+            this.modeloDataGridViewTextBoxColumn.HeaderText = "Modelo";
+            this.modeloDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.modeloDataGridViewTextBoxColumn.Name = "modeloDataGridViewTextBoxColumn";
+            this.modeloDataGridViewTextBoxColumn.ReadOnly = true;
+            this.modeloDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // serieDataGridViewTextBoxColumn
+            // 
+            this.serieDataGridViewTextBoxColumn.DataPropertyName = "serie";
+            this.serieDataGridViewTextBoxColumn.HeaderText = "Serie";
+            this.serieDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.serieDataGridViewTextBoxColumn.Name = "serieDataGridViewTextBoxColumn";
+            this.serieDataGridViewTextBoxColumn.ReadOnly = true;
+            this.serieDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // codClienteDataGridViewTextBoxColumn
+            // 
+            this.codClienteDataGridViewTextBoxColumn.DataPropertyName = "codCliente";
+            this.codClienteDataGridViewTextBoxColumn.HeaderText = "Codigo Cliente";
+            this.codClienteDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.codClienteDataGridViewTextBoxColumn.Name = "codClienteDataGridViewTextBoxColumn";
+            this.codClienteDataGridViewTextBoxColumn.ReadOnly = true;
+            this.codClienteDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // codCondPagamentoDataGridViewTextBoxColumn
+            // 
+            this.codCondPagamentoDataGridViewTextBoxColumn.DataPropertyName = "codCondPagamento";
+            this.codCondPagamentoDataGridViewTextBoxColumn.HeaderText = "Codigo Condição Pagamento";
+            this.codCondPagamentoDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.codCondPagamentoDataGridViewTextBoxColumn.Name = "codCondPagamentoDataGridViewTextBoxColumn";
+            this.codCondPagamentoDataGridViewTextBoxColumn.ReadOnly = true;
+            this.codCondPagamentoDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // dtEmissaoDataGridViewTextBoxColumn
+            // 
+            this.dtEmissaoDataGridViewTextBoxColumn.DataPropertyName = "dtEmissao";
+            this.dtEmissaoDataGridViewTextBoxColumn.HeaderText = "Data Emissão";
+            this.dtEmissaoDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.dtEmissaoDataGridViewTextBoxColumn.Name = "dtEmissaoDataGridViewTextBoxColumn";
+            this.dtEmissaoDataGridViewTextBoxColumn.ReadOnly = true;
+            this.dtEmissaoDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // descontoDataGridViewTextBoxColumn
+            // 
+            this.descontoDataGridViewTextBoxColumn.DataPropertyName = "desconto";
+            this.descontoDataGridViewTextBoxColumn.HeaderText = "Desconto";
+            this.descontoDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.descontoDataGridViewTextBoxColumn.Name = "descontoDataGridViewTextBoxColumn";
+            this.descontoDataGridViewTextBoxColumn.ReadOnly = true;
+            this.descontoDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // observacoesDataGridViewTextBoxColumn
+            // 
+            this.observacoesDataGridViewTextBoxColumn.DataPropertyName = "observacoes";
+            this.observacoesDataGridViewTextBoxColumn.HeaderText = "Observações";
+            this.observacoesDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.observacoesDataGridViewTextBoxColumn.Name = "observacoesDataGridViewTextBoxColumn";
+            this.observacoesDataGridViewTextBoxColumn.ReadOnly = true;
+            this.observacoesDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // dtCadastroDataGridViewTextBoxColumn
+            // 
+            this.dtCadastroDataGridViewTextBoxColumn.DataPropertyName = "dtCadastro";
+            this.dtCadastroDataGridViewTextBoxColumn.HeaderText = "Data Cadastro";
+            this.dtCadastroDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.dtCadastroDataGridViewTextBoxColumn.Name = "dtCadastroDataGridViewTextBoxColumn";
+            this.dtCadastroDataGridViewTextBoxColumn.ReadOnly = true;
+            this.dtCadastroDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // dtAlteracaoDataGridViewTextBoxColumn
+            // 
+            this.dtAlteracaoDataGridViewTextBoxColumn.DataPropertyName = "dtAlteracao";
+            this.dtAlteracaoDataGridViewTextBoxColumn.HeaderText = "Data Alteração";
+            this.dtAlteracaoDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.dtAlteracaoDataGridViewTextBoxColumn.Name = "dtAlteracaoDataGridViewTextBoxColumn";
+            this.dtAlteracaoDataGridViewTextBoxColumn.ReadOnly = true;
+            this.dtAlteracaoDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // usuarioDataGridViewTextBoxColumn
+            // 
+            this.usuarioDataGridViewTextBoxColumn.DataPropertyName = "usuario";
+            this.usuarioDataGridViewTextBoxColumn.HeaderText = "Usuario";
+            this.usuarioDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.usuarioDataGridViewTextBoxColumn.Name = "usuarioDataGridViewTextBoxColumn";
+            this.usuarioDataGridViewTextBoxColumn.ReadOnly = true;
+            this.usuarioDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // vendasBindingSource
+            // 
+            this.vendasBindingSource.DataMember = "vendas";
+            this.vendasBindingSource.DataSource = this.sistemaMoto2DataSetVenda;
+            // 
+            // sistemaMoto2DataSetVenda
+            // 
+            this.sistemaMoto2DataSetVenda.DataSetName = "SistemaMoto2DataSetVenda";
+            this.sistemaMoto2DataSetVenda.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // btnExcluir
             // 
@@ -128,6 +238,7 @@
             this.btnExcluir.Text = "EXCLUIR";
             this.btnExcluir.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnExcluir.UseVisualStyleBackColor = true;
+            this.btnExcluir.Visible = false;
             this.btnExcluir.Click += new System.EventHandler(this.BtnExcluir_Click);
             // 
             // btnVoltar
@@ -184,130 +295,20 @@
             // 
             this.btnAlterar.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnAlterar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAlterar.Image = global::EquipMotos.Properties.Resources._1398756462_Modify;
             this.btnAlterar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnAlterar.Location = new System.Drawing.Point(545, 625);
             this.btnAlterar.Margin = new System.Windows.Forms.Padding(4);
             this.btnAlterar.Name = "btnAlterar";
             this.btnAlterar.Size = new System.Drawing.Size(130, 42);
             this.btnAlterar.TabIndex = 261;
-            this.btnAlterar.Text = "ALTERAR";
+            this.btnAlterar.Text = "VISUALIZAR";
             this.btnAlterar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnAlterar.UseVisualStyleBackColor = true;
             this.btnAlterar.Click += new System.EventHandler(this.BtnAlterar_Click);
             // 
-            // sistemaMoto2DataSetVenda
-            // 
-            this.sistemaMoto2DataSetVenda.DataSetName = "SistemaMoto2DataSetVenda";
-            this.sistemaMoto2DataSetVenda.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // vendasBindingSource
-            // 
-            this.vendasBindingSource.DataMember = "vendas";
-            this.vendasBindingSource.DataSource = this.sistemaMoto2DataSetVenda;
-            // 
             // vendasTableAdapter
             // 
             this.vendasTableAdapter.ClearBeforeFill = true;
-            // 
-            // modeloDataGridViewTextBoxColumn
-            // 
-            this.modeloDataGridViewTextBoxColumn.DataPropertyName = "modelo";
-            this.modeloDataGridViewTextBoxColumn.HeaderText = "modelo";
-            this.modeloDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.modeloDataGridViewTextBoxColumn.Name = "modeloDataGridViewTextBoxColumn";
-            this.modeloDataGridViewTextBoxColumn.ReadOnly = true;
-            this.modeloDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // serieDataGridViewTextBoxColumn
-            // 
-            this.serieDataGridViewTextBoxColumn.DataPropertyName = "serie";
-            this.serieDataGridViewTextBoxColumn.HeaderText = "serie";
-            this.serieDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.serieDataGridViewTextBoxColumn.Name = "serieDataGridViewTextBoxColumn";
-            this.serieDataGridViewTextBoxColumn.ReadOnly = true;
-            this.serieDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // nrNotaDataGridViewTextBoxColumn
-            // 
-            this.nrNotaDataGridViewTextBoxColumn.DataPropertyName = "nrNota";
-            this.nrNotaDataGridViewTextBoxColumn.HeaderText = "nrNota";
-            this.nrNotaDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.nrNotaDataGridViewTextBoxColumn.Name = "nrNotaDataGridViewTextBoxColumn";
-            this.nrNotaDataGridViewTextBoxColumn.ReadOnly = true;
-            this.nrNotaDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // codClienteDataGridViewTextBoxColumn
-            // 
-            this.codClienteDataGridViewTextBoxColumn.DataPropertyName = "codCliente";
-            this.codClienteDataGridViewTextBoxColumn.HeaderText = "codCliente";
-            this.codClienteDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.codClienteDataGridViewTextBoxColumn.Name = "codClienteDataGridViewTextBoxColumn";
-            this.codClienteDataGridViewTextBoxColumn.ReadOnly = true;
-            this.codClienteDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // codCondPagamentoDataGridViewTextBoxColumn
-            // 
-            this.codCondPagamentoDataGridViewTextBoxColumn.DataPropertyName = "codCondPagamento";
-            this.codCondPagamentoDataGridViewTextBoxColumn.HeaderText = "codCondPagamento";
-            this.codCondPagamentoDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.codCondPagamentoDataGridViewTextBoxColumn.Name = "codCondPagamentoDataGridViewTextBoxColumn";
-            this.codCondPagamentoDataGridViewTextBoxColumn.ReadOnly = true;
-            this.codCondPagamentoDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // dtEmissaoDataGridViewTextBoxColumn
-            // 
-            this.dtEmissaoDataGridViewTextBoxColumn.DataPropertyName = "dtEmissao";
-            this.dtEmissaoDataGridViewTextBoxColumn.HeaderText = "dtEmissao";
-            this.dtEmissaoDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.dtEmissaoDataGridViewTextBoxColumn.Name = "dtEmissaoDataGridViewTextBoxColumn";
-            this.dtEmissaoDataGridViewTextBoxColumn.ReadOnly = true;
-            this.dtEmissaoDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // descontoDataGridViewTextBoxColumn
-            // 
-            this.descontoDataGridViewTextBoxColumn.DataPropertyName = "desconto";
-            this.descontoDataGridViewTextBoxColumn.HeaderText = "desconto";
-            this.descontoDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.descontoDataGridViewTextBoxColumn.Name = "descontoDataGridViewTextBoxColumn";
-            this.descontoDataGridViewTextBoxColumn.ReadOnly = true;
-            this.descontoDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // observacoesDataGridViewTextBoxColumn
-            // 
-            this.observacoesDataGridViewTextBoxColumn.DataPropertyName = "observacoes";
-            this.observacoesDataGridViewTextBoxColumn.HeaderText = "observacoes";
-            this.observacoesDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.observacoesDataGridViewTextBoxColumn.Name = "observacoesDataGridViewTextBoxColumn";
-            this.observacoesDataGridViewTextBoxColumn.ReadOnly = true;
-            this.observacoesDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // dtCadastroDataGridViewTextBoxColumn
-            // 
-            this.dtCadastroDataGridViewTextBoxColumn.DataPropertyName = "dtCadastro";
-            this.dtCadastroDataGridViewTextBoxColumn.HeaderText = "dtCadastro";
-            this.dtCadastroDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.dtCadastroDataGridViewTextBoxColumn.Name = "dtCadastroDataGridViewTextBoxColumn";
-            this.dtCadastroDataGridViewTextBoxColumn.ReadOnly = true;
-            this.dtCadastroDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // dtAlteracaoDataGridViewTextBoxColumn
-            // 
-            this.dtAlteracaoDataGridViewTextBoxColumn.DataPropertyName = "dtAlteracao";
-            this.dtAlteracaoDataGridViewTextBoxColumn.HeaderText = "dtAlteracao";
-            this.dtAlteracaoDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.dtAlteracaoDataGridViewTextBoxColumn.Name = "dtAlteracaoDataGridViewTextBoxColumn";
-            this.dtAlteracaoDataGridViewTextBoxColumn.ReadOnly = true;
-            this.dtAlteracaoDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // usuarioDataGridViewTextBoxColumn
-            // 
-            this.usuarioDataGridViewTextBoxColumn.DataPropertyName = "usuario";
-            this.usuarioDataGridViewTextBoxColumn.HeaderText = "usuario";
-            this.usuarioDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.usuarioDataGridViewTextBoxColumn.Name = "usuarioDataGridViewTextBoxColumn";
-            this.usuarioDataGridViewTextBoxColumn.ReadOnly = true;
-            this.usuarioDataGridViewTextBoxColumn.Width = 125;
             // 
             // frmConsultaVenda
             // 
@@ -330,8 +331,8 @@
             this.Load += new System.EventHandler(this.frmConsultaVenda_Load);
             ((System.ComponentModel.ISupportInitialize)(this.btnBuscarVenda)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvVendas)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sistemaMoto2DataSetVenda)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.vendasBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sistemaMoto2DataSetVenda)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -349,9 +350,10 @@
         private SistemaMoto2DataSetVenda sistemaMoto2DataSetVenda;
         private System.Windows.Forms.BindingSource vendasBindingSource;
         private SistemaMoto2DataSetVendaTableAdapters.vendasTableAdapter vendasTableAdapter;
+        public System.Windows.Forms.DataGridView gvVendas;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nrNotaDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn modeloDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn serieDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nrNotaDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn codClienteDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn codCondPagamentoDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn dtEmissaoDataGridViewTextBoxColumn;
@@ -360,6 +362,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dtCadastroDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn dtAlteracaoDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn usuarioDataGridViewTextBoxColumn;
-        public System.Windows.Forms.DataGridView gvVendas;
     }
 }

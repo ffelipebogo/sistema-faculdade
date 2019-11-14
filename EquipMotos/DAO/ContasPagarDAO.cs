@@ -29,7 +29,7 @@ namespace EquipMotos.DAO
                 comando.Parameters.AddWithValue("@codFormaPagamento", conta.formaPagamento.codigo);
                 comando.Parameters.AddWithValue("@codFornecedor", conta.fornecedor.codigo);
                 comando.Parameters.AddWithValue("@valorParcela", conta.vlrParcela);
-                comando.Parameters.AddWithValue("@dtVencimento", conta.dtVecimento);
+                comando.Parameters.AddWithValue("@dtVencimento", conta.dtVencimento);
                 comando.Parameters.AddWithValue("@dtEmissao", conta.dtEmissao);
                 comando.Parameters.AddWithValue("@dtCadastro", conta.dtCadastro);
                 comando.Parameters.AddWithValue("@dtAlteracao", conta.dtAlteracao);
@@ -113,7 +113,7 @@ namespace EquipMotos.DAO
                     contas.fornecedor = daoFornecedor.BuscarPorID(Convert.ToInt64(row["codFornecedor"])) as Fornecedores;
                     contas.formaPagamento = daoFormaPag.BuscarPorID(Convert.ToInt64(row["codFormaPagamento"])) as FormaPagamentos;
                     contas.nrParcela = Convert.ToInt32(row["nrParcela"]);
-                    contas.dtVecimento = Convert.ToDateTime(row["dtVencimento"]);
+                    contas.dtVencimento = Convert.ToDateTime(row["dtVencimento"]);
                     contas.vlrParcela = Convert.ToDouble(row["valorParcela"]);
                     contas.dtEmissao = Convert.ToDateTime(row["dtEmissao"]);
                     contas.observacoes = Convert.ToString(row["observacoes"]);
@@ -149,7 +149,7 @@ namespace EquipMotos.DAO
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                //MessageBox.Show(ex.Message);
                 transaction.Rollback();
                 conexao.Close();
                 MessageBox.Show("Nao foi possivel marcar como pago!");
@@ -159,6 +159,36 @@ namespace EquipMotos.DAO
                 conexao.Close();
             }
 
+        }
+
+        public override object Pesquisar(string conta)
+        {
+            using (SqlConnection conexao = Conecta.CreateConnection())
+            {
+                SqlDataAdapter da;
+                string sql = null;
+                bool isNumeric = int.TryParse(conta, out int n);
+                if (conta.Length > 1 )
+                {
+                    sql = @"SELECT * FROM contaPagar WHERE modelo = @conta or serie = @conta or nrNota = @conta";
+                }
+                else
+                {
+                    sql = "SELECT * From contaPagar";
+                }
+               
+                SqlCommand comando = new SqlCommand(sql, conexao);
+
+                comando.Parameters.AddWithValue("@conta", conta);
+
+                conexao.Open();
+                da = new SqlDataAdapter(comando);
+
+                DataTable dtContaPAgar = new DataTable();
+                da.Fill(dtContaPAgar);
+
+                return dtContaPAgar;
+            }
         }
     }
 }

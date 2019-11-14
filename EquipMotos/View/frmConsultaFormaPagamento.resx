@@ -226,7 +226,7 @@
     <value>None</value>
   </data>
   <data name="codigoDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
-    <value>codigo</value>
+    <value>Codigo</value>
   </data>
   <data name="codigoDataGridViewTextBoxColumn.MinimumWidth" type="System.Int32, mscorlib">
     <value>6</value>
@@ -235,7 +235,7 @@
     <value>125</value>
   </data>
   <data name="dataGridViewTextBoxColumn1.HeaderText" xml:space="preserve">
-    <value>forma</value>
+    <value>Forma</value>
   </data>
   <data name="dataGridViewTextBoxColumn1.MinimumWidth" type="System.Int32, mscorlib">
     <value>6</value>
@@ -244,7 +244,7 @@
     <value>125</value>
   </data>
   <data name="dataGridViewTextBoxColumn2.HeaderText" xml:space="preserve">
-    <value>dtCadastro</value>
+    <value>Data Cadastro</value>
   </data>
   <data name="dataGridViewTextBoxColumn2.MinimumWidth" type="System.Int32, mscorlib">
     <value>6</value>
@@ -253,7 +253,7 @@
     <value>125</value>
   </data>
   <data name="dataGridViewTextBoxColumn3.HeaderText" xml:space="preserve">
-    <value>dtAlteracao</value>
+    <value>Data Alteração</value>
   </data>
   <data name="dataGridViewTextBoxColumn3.MinimumWidth" type="System.Int32, mscorlib">
     <value>6</value>
@@ -262,7 +262,7 @@
     <value>125</value>
   </data>
   <data name="dataGridViewTextBoxColumn4.HeaderText" xml:space="preserve">
-    <value>usuario</value>
+    <value>Usuario</value>
   </data>
   <data name="dataGridViewTextBoxColumn4.MinimumWidth" type="System.Int32, mscorlib">
     <value>6</value>
@@ -483,17 +483,17 @@
   <data name="$this.Text" xml:space="preserve">
     <value>Consultar Forma de Pagamento</value>
   </data>
-  <data name="&gt;&gt;sistemaMoto2DataSetFormaPagamento.Name" xml:space="preserve">
-    <value>sistemaMoto2DataSetFormaPagamento</value>
-  </data>
-  <data name="&gt;&gt;sistemaMoto2DataSetFormaPagamento.Type" xml:space="preserve">
-    <value>EquipMotos.SistemaMoto2DataSetFormaPagamento, SistemaMoto2DataSetFormaPagamento.Designer.cs.dll, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
   <data name="&gt;&gt;formaPagamentoBindingSource.Name" xml:space="preserve">
     <value>formaPagamentoBindingSource</value>
   </data>
   <data name="&gt;&gt;formaPagamentoBindingSource.Type" xml:space="preserve">
     <value>System.Windows.Forms.BindingSource, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;sistemaMoto2DataSetFormaPagamento.Name" xml:space="preserve">
+    <value>sistemaMoto2DataSetFormaPagamento</value>
+  </data>
+  <data name="&gt;&gt;sistemaMoto2DataSetFormaPagamento.Type" xml:space="preserve">
+    <value>EquipMotos.SistemaMoto2DataSetFormaPagamento, SistemaMoto2DataSetFormaPagamento.Designer.cs.dll, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;formaPagamentoTableAdapter.Name" xml:space="preserve">
     <value>formaPagamentoTableAdapter</value>

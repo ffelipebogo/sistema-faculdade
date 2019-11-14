@@ -16,6 +16,10 @@ namespace EquipMotos.View
     public partial class frmCadastroContaReceber : Form
     {
         CtrlFormaPagamentos ctrlFormaPagamento = new CtrlFormaPagamentos();
+        ContasReceber ContaReceber = new ContasReceber();
+        CtrlContasReceber CtrlContaReceber = new CtrlContasReceber();
+        public static object Cliente = null;
+        public static object FormaPag = null;
         public frmCadastroContaReceber()
         {
             InitializeComponent();
@@ -33,7 +37,7 @@ namespace EquipMotos.View
 
         private void btnVoltar_Click(object sender, EventArgs e)
         {
-
+            this.Close();
         }
 
         private void btnBuscarCliente_Click(object sender, EventArgs e)
@@ -46,23 +50,48 @@ namespace EquipMotos.View
 
         }
 
-        public void Carrega()
+        public void Carregar(object modelo, object serie, object nrNota, object idCliente, object nrParcela)
         {
-            ContasReceber ContaReceber = new ContasReceber();
-            FormaPagamentos Forma = new FormaPagamentos();
+            ContaReceber = CtrlContaReceber.BuscarContasPagar_porID(modelo, serie, nrNota, idCliente, nrParcela) as ContasReceber;
             txtModelo.Text = ContaReceber.modelo;
             txtSerie.Text = ContaReceber.serie;
             txtNrNota.Text = ContaReceber.nrNota;
             txtNrParcela.Text = Convert.ToString(ContaReceber.nrParcela);
-            txtValor.Text = Convert.ToString(ContaReceber.vlrParcela);
-            txtDtEmissao.Value = ContaReceber.dtEmissao;
-            txtDtVencimento.Value = ContaReceber.dtVecimento;
-            Forma = ctrlFormaPagamento.BuscarPorID(ContaReceber.formaPagamento.codigo) as FormaPagamentos;
-            txtCodFormaPagamento.Text = Convert.ToString(Forma.codigo);
-            txtFormaPagamento.Text = Forma.forma;
+            txtValor.Text = ContaReceber.vlrParcela.ToString("C", CultureInfo.CurrentCulture);
+            txtFornecedor.Text = Convert.ToString(ContaReceber.cliente.codigo);
+            txtCodFornecedor.Text = ContaReceber.cliente.cliente;
+            txtDtEmissao.Text = Convert.ToString(ContaReceber.dtEmissao);
+            txtDtVencimento.Text = Convert.ToString(ContaReceber.dtVencimento);
+            txtCodFormaPagamento.Text = Convert.ToString(ContaReceber.formaPagamento.codigo);
+            txtFormaPagamento.Text = ContaReceber.formaPagamento.forma;
+            txtObeservacoes.Text = ContaReceber.observacoes;
             txtDtCadastro.Text = Convert.ToString(ContaReceber.dtCadastro);
             txtDtAlteracao.Text = Convert.ToString(ContaReceber.dtAlteracao);
             txtUsuario.Text = ContaReceber.usuario;
+            chkPaga.Checked = ContaReceber.pago;
+            //lvContaPagar.Visible = false;
+            btnSalvar.Visible = false;
+            btnLimpar.Visible = false;
+        }
+
+        internal void Disable()
+        {
+            txtModelo.Enabled = false;
+            txtSerie.Enabled = false;
+            txtNrNota.Enabled = false;
+            txtValor.Enabled = false;
+            txtNrParcela.Enabled = false;
+            txtFornecedor.Enabled = false;
+            txtCodFornecedor.Enabled = false;
+            txtDtEmissao.Enabled = false;
+            txtDtVencimento.Enabled = false;
+            txtCodFormaPagamento.Enabled = false;
+            txtFormaPagamento.Enabled = false;
+            txtObeservacoes.Enabled = false;
+            txtDtCadastro.Enabled = false;
+            txtDtAlteracao.Enabled = false;
+            txtUsuario.Enabled = false;
+            chkPaga.Enabled = false;
         }
     }
 }

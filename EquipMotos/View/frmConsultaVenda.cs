@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EquipMotos.CONTROLLER;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,7 +13,7 @@ namespace EquipMotos.View
 {
     public partial class frmConsultaVenda : Form
     {
-        //VendasDAO dao =  new VendasDAO();
+        CtrlVendas CtrlVenda =  new CtrlVendas();
         public frmConsultaVenda()
         {
             InitializeComponent();
@@ -23,7 +24,7 @@ namespace EquipMotos.View
             frmCadastroVenda frmCadVenda = new frmCadastroVenda();
             if (frmCadVenda.ShowDialog() == DialogResult.OK)
             {
-                //gvVendas.DataSource = dao.ListarTodos();
+                gvVendas.DataSource = CtrlVenda.ListarTodos();
             }
         }
 
@@ -39,7 +40,7 @@ namespace EquipMotos.View
                 frmCadVenda.Carregar(codigo);
                 if (frmCadVenda.ShowDialog() == DialogResult.OK)
                 {
-                    // gvVendas.DataSource = CtrlVenda.ListarTodos();
+                     gvVendas.DataSource = CtrlVenda.ListarTodos();
                 }
             }
             catch
@@ -50,19 +51,19 @@ namespace EquipMotos.View
 
         private void BtnExcluir_Click(object sender, EventArgs e)
         {
-            try
-            {
-                var venRow = gvVendas.CurrentRow.DataBoundItem as DataRowView;
-                var id = venRow["codigo"];
-                //dao.ExcluirCondicaoPagamento(id);
-                MessageBox.Show("Condição de Pagamento foi excluida!");
+            //try
+            //{
+            //    var venRow = gvVendas.CurrentRow.DataBoundItem as DataRowView;
+            //    var id = venRow["codigo"];
+            //    CtrlVenda.Marca(id);
+            //    MessageBox.Show("Condição de Pagamento foi excluida!");
 
-               // gvVendas.DataSource = dao.ListarTodasVendas();
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Não foi possivel excluir a Condição de Pagamento!");
-            }
+            //    gvVendas.DataSource = CtrlVenda.ListarTodasVendas();
+            //}
+            //catch (Exception)
+            //{
+            //    MessageBox.Show("Não foi possivel excluir a Condição de Pagamento!");
+            //}
         }
 
         private void BtnVoltar_Click(object sender, EventArgs e)
@@ -74,6 +75,12 @@ namespace EquipMotos.View
         {
             // TODO: esta linha de código carrega dados na tabela 'sistemaMoto2DataSetVenda.vendas'. Você pode movê-la ou removê-la conforme necessário.
             this.vendasTableAdapter.Fill(this.sistemaMoto2DataSetVenda.vendas);
+        }
+
+        private void btnBuscarVenda_Click(object sender, EventArgs e)
+        {
+            string venda = txtPesquisar.Text;
+            gvVendas.DataSource = CtrlVenda.Pesquisar(venda);
         }
     }
 }

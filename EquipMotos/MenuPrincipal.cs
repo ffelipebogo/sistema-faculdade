@@ -136,5 +136,11 @@ namespace EquipMotos
             frmConsultaContaReceber frmConContaReceber = new frmConsultaContaReceber();
             frmConContaReceber.ShowDialog();
         }
+
+        private void statusUser_Click(object sender, EventArgs e)
+        {
+
+        }
+
     }
 }

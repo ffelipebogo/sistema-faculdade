@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace EquipMotos.CONTROLLER
 {
-    class CtrlClientes:Controller
+    public class CtrlClientes:Controller
     {
         ClientesDAO DaoCliente = null;
         public CtrlClientes() : base(new ClientesDAO())

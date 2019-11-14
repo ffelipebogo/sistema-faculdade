@@ -88,7 +88,7 @@ namespace EquipMotos.DAO
 
         #endregion
 
-        public void EfetuarLogin(Usuarios user)
+        public bool EfetuarLogin(Usuarios user)
         {
             using (SqlConnection conexao = Conecta.CreateConnection())
             {
@@ -108,36 +108,47 @@ namespace EquipMotos.DAO
                     if (dados.Read())
                     {
                         //recebe  dados do cargo do usuario
+                        string usuario = dados.GetString(0);
                         string cargo = dados.GetString(2);
-
-                        string usuariologado = user.usuario;
-
-                        MessageBox.Show("Bem vindo ao Sistema");
-
-                        //Define as permissoes
-                        if (cargo.Equals("gerente"))
+                        if (usuario != null)
                         {
-                            MenuPrincipal telamenu = new MenuPrincipal(usuariologado.ToString());
-
-                            telamenu.Show();
+                            return true;
                         }
-                        else if (cargo.Equals("vendedor"))
+                        else
                         {
-                            MenuPrincipal telamenu = new MenuPrincipal(usuariologado.ToString());
-                            //telamenu.menuvenda.Enabled = false;
-                            //  telamenu.menurelatorios.Enabled = false;
-                            telamenu.Show();
+                            return false;
                         }
+
+                        //string usuariologado = user.usuario;
+
+                        //MessageBox.Show("Bem vindo ao Sistema");
+
+                        ////Define as permissoes
+                        //if (cargo.Equals("gerente"))
+                        //{
+                        //    MenuPrincipal telamenu = new MenuPrincipal(usuariologado.ToString());
+
+                        //    telamenu.Show();
+                        //}
+                        //else if (cargo.Equals("vendedor"))
+                        //{
+                        //    MenuPrincipal telamenu = new MenuPrincipal(usuariologado.ToString());
+                        //    //telamenu.menuvenda.Enabled = false;
+                        //    //  telamenu.menurelatorios.Enabled = false;
+                        //    telamenu.Show();
+                        //}
                     }
                     else
                     {
                         MessageBox.Show("Usuário ou Senha Inválidos. Contate o suporte", "Atenção", MessageBoxButtons.OK);
+                        return false;
                     }
                 }
                 catch (SqlException e)
                 {
 
                     MessageBox.Show(e.Message);
+                    return false;
                 }
                 finally
                 {

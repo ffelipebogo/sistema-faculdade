@@ -47,10 +47,17 @@ namespace EquipMotos.View
 
         public object SelecionaFornecedor()
         {
-            fornecedor = null;
-            var fornRow = gvFornecedor.CurrentRow.DataBoundItem as DataRowView;
-            fornecedor = CtrlFornecedor.BuscarPorID(fornRow["codigo"]) as Fornecedores;
-            return fornecedor;
+            try
+            {
+                fornecedor = null;
+                var fornRow = gvFornecedor.CurrentRow.DataBoundItem as DataRowView;
+                fornecedor = CtrlFornecedor.BuscarPorID(fornRow["codigo"]) as Fornecedores;
+                return fornecedor;
+            }
+            catch
+            {
+                return null;
+            }
         }
 
         private void BtnBuscarFornecedor_Click(object sender, EventArgs e)

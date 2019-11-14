@@ -44,12 +44,21 @@ namespace EquipMotos.View
         }
         public object SelecionaCidade()
         {
-            cidade = null;
+            try
+            {
+                cidade = null;
 
-            var cidRow = gvCidade.CurrentRow.DataBoundItem as DataRowView;
+                var cidRow = gvCidade.CurrentRow.DataBoundItem as DataRowView;
             
-            cidade = CtrlCidade.BuscarPorID(cidRow["codigo"]) as Cidades;
-            return cidade;
+                cidade = CtrlCidade.BuscarPorID(cidRow["codigo"]) as Cidades;
+                return cidade;
+
+            }
+            catch
+            {
+                return null;
+
+            }
 
         }
 

@@ -2,6 +2,7 @@
 using EquipMotos.DAO;
 using EquipMotos.MODEL;
 using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Windows.Forms;
 
@@ -9,19 +10,44 @@ namespace EquipMotos.View
 {
     public partial class frmConsultaProdutosServicos : Form
     {
+        public int isProduto { get; set; } = 3;
         ProdutosServicos prodServ;
-
         CtrlProdutosServicos CtrlProdutoServico = new CtrlProdutosServicos();
+        public List<string> FilterID { get; set; } = new List<string>();
         public frmConsultaProdutosServicos()
         {
-            InitializeComponent();
-            rbProduto.Checked = true;
+
+            if (isProduto == 1)
+            {
+                InitializeComponent();
+                rbProduto.Checked = true;
+                rbServico.Checked = false;
+                rbServico.Enabled = false;
+                //isProduto = 3;
+            }
+            else if (isProduto == 2)
+            {
+                InitializeComponent();
+                rbServico.Checked = true;
+                rbProduto.Checked = false;
+                rbProduto.Enabled = false;
+                //isProduto = 3;
+            }
+            else
+            {
+                InitializeComponent();
+                rbProduto.Checked = true;
+                rbServico.Enabled = true;
+                rbProduto.Enabled = true;
+            }
+
         }
 
         private void FrmConsultaProdutosServicos_Load(object sender, EventArgs e)
         {
             // TODO: esta linha de código carrega dados na tabela 'sistemaMoto2DataSetProduto.produtos'. Você pode movê-la ou removê-la conforme necessário.
-            this.produtosTableAdapter.Fill(this.sistemaMoto2DataSetProduto.produtos);
+            //this.produtosTableAdapter.Fill(this.sistemaMoto2DataSetProduto.produtos);
+            gvProdutos.DataSource = CtrlProdutoServico.Pesquisar(null, FilterID, isProduto);
 
         }
 
@@ -60,7 +86,7 @@ namespace EquipMotos.View
             if (btnVoltar.Text == "SELECIONAR")
             {
                 SelecionaProdutoServico();
-                if(prodServ != null)
+                if (prodServ != null)
                 {
                     frmCadastroCompra.prod = prodServ;
                     frmCadastroVenda.Produto = prodServ;
@@ -80,13 +106,13 @@ namespace EquipMotos.View
         private object SelecionaProdutoServico()
         {
             prodServ = null;
-            if(gvProdutos.CurrentRow != null)
+            if (gvProdutos.CurrentRow != null)
             {
-           
+
                 var proRow = gvProdutos.CurrentRow.DataBoundItem as DataRowView;
                 var serv = CtrlProdutoServico.BuscarPorID(proRow["codigo"]) as ProdutosServicos;
 
-                return prodServ = serv ;
+                return prodServ = serv;
             }
             else
             {
@@ -115,7 +141,7 @@ namespace EquipMotos.View
         private void BtnBuscar_Click(object sender, EventArgs e)
         {
             string prod = txtPesquisar.Text;
-            gvProdutos.DataSource = CtrlProdutoServico.Pesquisar(prod);
+            gvProdutos.DataSource = CtrlProdutoServico.Pesquisar(prod, FilterID, isProduto);
         }
 
         private void RbProduto_CheckedChanged(object sender, EventArgs e)
@@ -129,5 +155,6 @@ namespace EquipMotos.View
             gvProdutos.DataSource = CtrlProdutoServico.ListarTodosServicos();
             this.prdutoGridViewTextBoxColumn.HeaderText = "Serviços";
         }
+
     }
 }

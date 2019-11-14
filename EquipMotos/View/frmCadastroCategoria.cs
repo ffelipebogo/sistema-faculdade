@@ -30,7 +30,7 @@ namespace EquipMotos.View
                 categoria.categoria = txtCategoria.Text;
                 categoria.dtAlteracao = DateTime.Now;
                 categoria.dtCadastro = DateTime.Now;
-                categoria.usuario = "";
+                categoria.usuario = UsuarioLogado.Usuario;
 
                 if (btnSalvar.Text == "ALTERAR")
                 {
@@ -70,10 +70,22 @@ namespace EquipMotos.View
 
         public bool ValidaCampo()
         {
-            if (txtCategoria.Text == String.Empty)
+            if (String.IsNullOrEmpty(txtCategoria.Text.Trim()))
             {
                 MessageBox.Show("Faltou informar a Categoria", "Informe a Categoria!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txtCategoria.Focus();
+                return false;
+            }
+            if(txtCategoria.Text.Trim().Length > 100)
+            {
+                MessageBox.Show("Não é possivel inserir esta categoria", "Informe a categoria com menos de 100 caracteres!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtCategoria.Focus();
+                return false;
+            }
+            if (txtObeservacoes.Text.Trim().Length > 100)
+            {
+                MessageBox.Show("Não é possivel inserir esta observação", "Informe a observação com menos de 100 caracteres!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtObeservacoes.Focus();
                 return false;
             }
             return true;

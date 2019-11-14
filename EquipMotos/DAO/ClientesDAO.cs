@@ -6,7 +6,7 @@ using System;
 
 namespace EquipMotos.DAO
 {
-    class ClientesDAO : DAO
+    public class ClientesDAO : DAO
     {
         Clientes cliente = new Clientes();
         CidadesDAO daoCid = new CidadesDAO();
@@ -30,36 +30,11 @@ namespace EquipMotos.DAO
                 Clientes cli = obj as Clientes;
 
                 string sql = @"INSERT into clientes (
-                                    cliente,
-                                    apelido,
-                                    dtNascimento,
-                                    sexo,
-                                    cnpj,
-                                    ie,
-                                    cpf,
-                                    rg,
-                                    email,
-                                    telefone,
-                                    celular,
-                                    contato,
-                                    site,
-                                    endereco,
-                                    complemento,
-                                    numero,
-                                    bairro,
-                                    cep,
-                                    codCidade,
-                                
-                                    codCondPagamento,
-                                    limiteCredito,
-                                    observacoes,
-                                    dtCadastro,
-                                    dtAlteracao,
-                                    usuario,
-                                    juridico
-                                
+                                    cliente, apelido, dtNascimento, sexo, cnpj, ie,
+                                    cpf, rg, email, telefone, celular, contato, site, endereco, complemento, numero, bairro, cep, codCidade,
+                                    codCondPagamento, limiteCredito, observacoes, dtCadastro, dtAlteracao, usuario, juridico, estrangeiro
                             ) values (@cliente, @apelido, @dtNascimento, @sexo, @cnpj, @ie, @cpf, @rg, @email, @telefone, @celular, @contato, @site, @endereco, @complemento,
-                                        @numero, @bairro, @cep, @codCidade, @codCondPagamento, @limiteCredito, @observacoes, @dtCadastro, @dtAlteracao, @usuario, @juridico )";
+                                        @numero, @bairro, @cep, @codCidade, @codCondPagamento, @limiteCredito, @observacoes, @dtCadastro, @dtAlteracao, @usuario, @juridico, @estrangeiro )";
                         SqlCommand comando = new SqlCommand(sql, conexao);
 
                         comando.Parameters.AddWithValue("@cliente", cli.cliente);
@@ -77,9 +52,15 @@ namespace EquipMotos.DAO
                         comando.Parameters.AddWithValue("@site", cli.site);
                         comando.Parameters.AddWithValue("@endereco", cli.endereco);
                         comando.Parameters.AddWithValue("@complemento", cli.complemento);
-                        comando.Parameters.AddWithValue("@numero", cli.numero);
+                        if(cli.numero == 0)
+                        {
+                            comando.Parameters.AddWithValue("@numero", cli.numero);
+                        }   
                         comando.Parameters.AddWithValue("@bairro", cli.bairro);
-                        comando.Parameters.AddWithValue("@cep", cli.cep);
+                        if (cli.cep == "0")
+                        {
+                            comando.Parameters.AddWithValue("@cep", cli.cep);
+                        }
                         comando.Parameters.AddWithValue("@codCidade", cli.Cidade.codigo);
                         if (cli.CondPagamento.codigo != 0)
                         {
@@ -95,7 +76,8 @@ namespace EquipMotos.DAO
                         comando.Parameters.AddWithValue("@dtAlteracao", cli.dtAlteracao);
                         comando.Parameters.AddWithValue("@usuario", cli.usuario);
                         comando.Parameters.AddWithValue("@juridico", cli.juridico);
-               
+                        comando.Parameters.AddWithValue("@estrangeiro", cli.estrangeiro);
+
                         conexao.Open();
                         comando.ExecuteNonQuery();
             } 
@@ -110,6 +92,7 @@ namespace EquipMotos.DAO
                 conexao.Close();
             }
         }
+        #endregion
 
         public override object Pesquisar(string cli)
         {
@@ -121,19 +104,19 @@ namespace EquipMotos.DAO
                 if (cli.Length <= 4 && isNumeric)
                 {
                         int id = Convert.ToInt32(cli);
-                        sql = @"select * from clientes where codido = @cli";
+                        sql = @"SELECT * FROM clientes WHERE codigo = @cli";
                 }
                 else
                 {
                     if (isNumeric)
                     {
                         string cpf = cli;
-                        sql = @"select * from clientes where cpf like '%'+ @cli +'%'";
+                        sql = @"SELECT * FROM clientes WHERE cpf like '%'+ @cli +'%'";
                     }
                     else
                     {
                         string cliente = cli;
-                        sql = @"select * from clientes where cliente like '%'+ @cli + '%' ";
+                        sql = @"SELECT * FROM clientes WHERE cliente like '%'+ @cli + '%' ";
 
                     }
                 }
@@ -147,7 +130,84 @@ namespace EquipMotos.DAO
                 return dtCliente;
             }
         }
-        #endregion
+
+        public object PesquisaLogin(string cpf, string senha)
+        {
+            SqlConnection conexao = Conecta.CreateConnection();
+            {
+                SqlDataAdapter da;
+                string sql = null;
+                bool isNumeric = int.TryParse(cpf, out int n);
+             
+                if (!isNumeric)
+                {
+                    sql = @"SELECT * FROM clientes WHERE cpf = @cli and cpf = @senha";
+                }
+                else
+                {
+                    return null;
+                }
+
+                SqlCommand comando = new SqlCommand(sql, conexao);
+
+                comando.Parameters.AddWithValue("@cli", cpf);
+                comando.Parameters.AddWithValue("@senha", senha);
+                conexao.Open();
+                da = new SqlDataAdapter(comando);
+                DataTable dtCliente = new DataTable();
+                da.Fill(dtCliente);
+
+                if(dtCliente.Rows.Count > 0)
+                {
+                    foreach (DataRow row in dtCliente.Rows)
+                    {
+                        Clientes Cliente = new Clientes();
+
+
+                        Cliente.codigo = Convert.ToInt32(row["codigo"]);
+                        Cliente.cliente = Convert.ToString(row["cliente"]);
+                        Cliente.apelido = Convert.ToString(row["apelido"]);
+                        Cliente.dtNascimento = Convert.ToDateTime(row["dtNascimento"]);
+                        Cliente.sexo = Convert.ToChar(row["sexo"]);
+                        Cliente.endereco = Convert.ToString(row["endereco"]);
+                        Cliente.numero = Convert.ToInt32(row["numero"]);
+                        Cliente.complemento = Convert.ToString(row["complemento"]);
+                        Cliente.bairro = Convert.ToString(row["bairro"]);
+                        Cliente.cep = Convert.ToString(row["cep"]);
+
+                        Cliente.Cidade = daoCid.BuscarPorID(Convert.ToInt32(row["codCidade"])) as Cidades;
+                        Cliente.telefone = Convert.ToString(row["telefone"]);
+                        Cliente.celular = Convert.ToString(row["celular"]);
+                        Cliente.contato = Convert.ToString(row["contato"]);
+                        Cliente.email = Convert.ToString(row["email"]);
+                        Cliente.site = Convert.ToString(row["site"]);
+                        Cliente.cpf = Convert.ToString(row["cpf"]);
+                        Cliente.rg = Convert.ToString(row["rg"]);
+
+                        if (Convert.ToInt32("0" + row["codCondPagamento"]) != 0)
+                        {
+                            Cliente.CondPagamento = daoCondPag.BuscarPorID(Convert.ToInt32(row["codCondPagamento"])) as CondicaoPagamentos;
+                        }
+                        Cliente.limiteCredito = Convert.ToDouble(row["limiteCredito"]);
+                        Cliente.observacoes = Convert.ToString(row["observacoes"]);
+                        Cliente.dtCadastro = Convert.ToDateTime(row["dtCadastro"]);
+                        Cliente.dtAlteracao = Convert.ToDateTime(row["dtAlteracao"]);
+                        Cliente.usuario = Convert.ToString(row["usuario"]);
+                        Cliente.cnpj = Convert.ToString(row["cnpj"]);
+                        Cliente.ie = Convert.ToString(row["ie"]);
+                        Cliente.juridico = Convert.ToBoolean(row["juridico"]);
+                        Cliente.estrangeiro = Convert.ToBoolean(row["estrangeiro"]);
+
+                        this.cliente = Cliente;
+                    }
+                    return cliente;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+        }
 
         #region Alterar Cliente
         public override void Editar(object obj)
@@ -184,9 +244,10 @@ namespace EquipMotos.DAO
                                     dtCadastro = @dtCadastro,
                                     dtAlteracao = @dtAlteracao,
                                     usuario = @usuario ,
-                                    juridico = @juridico
+                                    juridico = @juridico,
+                                    estrangeiro = @estrangeiro
 
-                                    where codigo = @codigo";
+                                    WHERE codigo = @codigo";
 
                     SqlCommand comando = new SqlCommand(sql, conexao);
 
@@ -225,6 +286,7 @@ namespace EquipMotos.DAO
                         comando.Parameters.AddWithValue("@dtAlteracao", cliente.dtAlteracao);
                         comando.Parameters.AddWithValue("@usuario", cliente.usuario);
                         comando.Parameters.AddWithValue("@juridico", cliente.juridico);
+                        comando.Parameters.AddWithValue("@estrangeiro", cliente.estrangeiro);
                         comando.Parameters.AddWithValue("@codigo", cliente.codigo);
 
                     conexao.Open();
@@ -285,7 +347,7 @@ namespace EquipMotos.DAO
             {
 
                 SqlDataAdapter da;
-                string sql = @"select * from clientes where codigo = @codigo";
+                string sql = @"SELECT * FROM clientes WHERE codigo = @codigo";
 
                 SqlCommand comando = new SqlCommand(sql, conexao);
 
@@ -301,7 +363,6 @@ namespace EquipMotos.DAO
                 {
                     Clientes cli = new Clientes();
                     
-
                     cli.codigo = Convert.ToInt32(row["codigo"]);
                     cli.cliente = Convert.ToString(row["cliente"]);
                     cli.apelido = Convert.ToString(row["apelido"]);
@@ -321,7 +382,6 @@ namespace EquipMotos.DAO
                     cli.site = Convert.ToString(row["site"]);
                     cli.cpf = Convert.ToString(row["cpf"]);
                     cli.rg = Convert.ToString(row["rg"]);
-
                     if (Convert.ToInt32("0" + row["codCondPagamento"]) != 0)
                     {
                         cli.CondPagamento = daoCondPag.BuscarPorID(Convert.ToInt32(row["codCondPagamento"])) as CondicaoPagamentos;
@@ -334,7 +394,7 @@ namespace EquipMotos.DAO
                     cli.cnpj = Convert.ToString(row["cnpj"]);
                     cli.ie = Convert.ToString(row["ie"]);
                     cli.juridico = Convert.ToBoolean(row["juridico"]);
-                    
+                    cli.estrangeiro = Convert.ToBoolean(row["estrangeiro"]);
                     cliente = cli;
                 }
                 return cliente;
@@ -349,7 +409,7 @@ namespace EquipMotos.DAO
             {
 
                 SqlDataAdapter da;
-                string sql = @"select * from clientes";
+                string sql = @"SELECT * FROM clientes";
 
                 SqlCommand comando = new SqlCommand(sql, conexao);
 

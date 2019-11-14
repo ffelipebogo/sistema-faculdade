@@ -268,7 +268,7 @@
             // codigoDataGridViewTextBoxColumn
             // 
             this.codigoDataGridViewTextBoxColumn.DataPropertyName = "codigo";
-            this.codigoDataGridViewTextBoxColumn.HeaderText = "codigo";
+            this.codigoDataGridViewTextBoxColumn.HeaderText = "Codigo";
             this.codigoDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.codigoDataGridViewTextBoxColumn.Name = "codigoDataGridViewTextBoxColumn";
             this.codigoDataGridViewTextBoxColumn.ReadOnly = true;
@@ -277,7 +277,7 @@
             // dataGridViewTextBoxColumn1
             // 
             this.dataGridViewTextBoxColumn1.DataPropertyName = "cliente";
-            this.dataGridViewTextBoxColumn1.HeaderText = "cliente";
+            this.dataGridViewTextBoxColumn1.HeaderText = "Cliente";
             this.dataGridViewTextBoxColumn1.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
             this.dataGridViewTextBoxColumn1.ReadOnly = true;
@@ -286,7 +286,7 @@
             // dataGridViewTextBoxColumn2
             // 
             this.dataGridViewTextBoxColumn2.DataPropertyName = "apelido";
-            this.dataGridViewTextBoxColumn2.HeaderText = "apelido";
+            this.dataGridViewTextBoxColumn2.HeaderText = "Apelido";
             this.dataGridViewTextBoxColumn2.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
             this.dataGridViewTextBoxColumn2.ReadOnly = true;
@@ -295,7 +295,7 @@
             // dtNascimentoDataGridViewTextBoxColumn
             // 
             this.dtNascimentoDataGridViewTextBoxColumn.DataPropertyName = "dtNascimento";
-            this.dtNascimentoDataGridViewTextBoxColumn.HeaderText = "dtNascimento";
+            this.dtNascimentoDataGridViewTextBoxColumn.HeaderText = "Data de Nascimento";
             this.dtNascimentoDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.dtNascimentoDataGridViewTextBoxColumn.Name = "dtNascimentoDataGridViewTextBoxColumn";
             this.dtNascimentoDataGridViewTextBoxColumn.ReadOnly = true;
@@ -304,7 +304,7 @@
             // dataGridViewTextBoxColumn3
             // 
             this.dataGridViewTextBoxColumn3.DataPropertyName = "sexo";
-            this.dataGridViewTextBoxColumn3.HeaderText = "sexo";
+            this.dataGridViewTextBoxColumn3.HeaderText = "Sexo";
             this.dataGridViewTextBoxColumn3.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
             this.dataGridViewTextBoxColumn3.ReadOnly = true;
@@ -313,7 +313,7 @@
             // codCidadeDataGridViewTextBoxColumn
             // 
             this.codCidadeDataGridViewTextBoxColumn.DataPropertyName = "codCidade";
-            this.codCidadeDataGridViewTextBoxColumn.HeaderText = "codCidade";
+            this.codCidadeDataGridViewTextBoxColumn.HeaderText = "Codigo Cidade";
             this.codCidadeDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.codCidadeDataGridViewTextBoxColumn.Name = "codCidadeDataGridViewTextBoxColumn";
             this.codCidadeDataGridViewTextBoxColumn.ReadOnly = true;
@@ -322,7 +322,7 @@
             // dataGridViewTextBoxColumn4
             // 
             this.dataGridViewTextBoxColumn4.DataPropertyName = "endereco";
-            this.dataGridViewTextBoxColumn4.HeaderText = "endereco";
+            this.dataGridViewTextBoxColumn4.HeaderText = "Endereco";
             this.dataGridViewTextBoxColumn4.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
             this.dataGridViewTextBoxColumn4.ReadOnly = true;
@@ -331,7 +331,7 @@
             // dataGridViewTextBoxColumn5
             // 
             this.dataGridViewTextBoxColumn5.DataPropertyName = "numero";
-            this.dataGridViewTextBoxColumn5.HeaderText = "numero";
+            this.dataGridViewTextBoxColumn5.HeaderText = "Numero";
             this.dataGridViewTextBoxColumn5.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
             this.dataGridViewTextBoxColumn5.ReadOnly = true;
@@ -340,7 +340,7 @@
             // complementoDataGridViewTextBoxColumn
             // 
             this.complementoDataGridViewTextBoxColumn.DataPropertyName = "complemento";
-            this.complementoDataGridViewTextBoxColumn.HeaderText = "complemento";
+            this.complementoDataGridViewTextBoxColumn.HeaderText = "Complemento";
             this.complementoDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.complementoDataGridViewTextBoxColumn.Name = "complementoDataGridViewTextBoxColumn";
             this.complementoDataGridViewTextBoxColumn.ReadOnly = true;
@@ -349,7 +349,7 @@
             // dataGridViewTextBoxColumn6
             // 
             this.dataGridViewTextBoxColumn6.DataPropertyName = "bairro";
-            this.dataGridViewTextBoxColumn6.HeaderText = "bairro";
+            this.dataGridViewTextBoxColumn6.HeaderText = "Bairro";
             this.dataGridViewTextBoxColumn6.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
             this.dataGridViewTextBoxColumn6.ReadOnly = true;
@@ -358,7 +358,7 @@
             // dataGridViewTextBoxColumn7
             // 
             this.dataGridViewTextBoxColumn7.DataPropertyName = "cep";
-            this.dataGridViewTextBoxColumn7.HeaderText = "cep";
+            this.dataGridViewTextBoxColumn7.HeaderText = "Cep";
             this.dataGridViewTextBoxColumn7.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
             this.dataGridViewTextBoxColumn7.ReadOnly = true;
@@ -367,7 +367,7 @@
             // juridicoDataGridViewTextBoxColumn
             // 
             this.juridicoDataGridViewTextBoxColumn.DataPropertyName = "juridico";
-            this.juridicoDataGridViewTextBoxColumn.HeaderText = "é Juridica";
+            this.juridicoDataGridViewTextBoxColumn.HeaderText = "Juridica";
             this.juridicoDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.juridicoDataGridViewTextBoxColumn.Name = "juridicoDataGridViewTextBoxColumn";
             this.juridicoDataGridViewTextBoxColumn.ReadOnly = true;
@@ -376,7 +376,7 @@
             // dataGridViewTextBoxColumn8
             // 
             this.dataGridViewTextBoxColumn8.DataPropertyName = "telefone";
-            this.dataGridViewTextBoxColumn8.HeaderText = "telefone";
+            this.dataGridViewTextBoxColumn8.HeaderText = "Telefone";
             this.dataGridViewTextBoxColumn8.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
             this.dataGridViewTextBoxColumn8.ReadOnly = true;
@@ -385,7 +385,7 @@
             // dataGridViewTextBoxColumn9
             // 
             this.dataGridViewTextBoxColumn9.DataPropertyName = "celular";
-            this.dataGridViewTextBoxColumn9.HeaderText = "celular";
+            this.dataGridViewTextBoxColumn9.HeaderText = "Celular";
             this.dataGridViewTextBoxColumn9.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
             this.dataGridViewTextBoxColumn9.ReadOnly = true;
@@ -394,7 +394,7 @@
             // dataGridViewTextBoxColumn10
             // 
             this.dataGridViewTextBoxColumn10.DataPropertyName = "email";
-            this.dataGridViewTextBoxColumn10.HeaderText = "email";
+            this.dataGridViewTextBoxColumn10.HeaderText = "Email";
             this.dataGridViewTextBoxColumn10.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
             this.dataGridViewTextBoxColumn10.ReadOnly = true;
@@ -403,7 +403,7 @@
             // dataGridViewTextBoxColumn11
             // 
             this.dataGridViewTextBoxColumn11.DataPropertyName = "contato";
-            this.dataGridViewTextBoxColumn11.HeaderText = "contato";
+            this.dataGridViewTextBoxColumn11.HeaderText = "Contato";
             this.dataGridViewTextBoxColumn11.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn11.Name = "dataGridViewTextBoxColumn11";
             this.dataGridViewTextBoxColumn11.ReadOnly = true;
@@ -412,7 +412,7 @@
             // siteDataGridViewTextBoxColumn
             // 
             this.siteDataGridViewTextBoxColumn.DataPropertyName = "site";
-            this.siteDataGridViewTextBoxColumn.HeaderText = "site";
+            this.siteDataGridViewTextBoxColumn.HeaderText = "Site";
             this.siteDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.siteDataGridViewTextBoxColumn.Name = "siteDataGridViewTextBoxColumn";
             this.siteDataGridViewTextBoxColumn.ReadOnly = true;
@@ -421,7 +421,7 @@
             // dataGridViewTextBoxColumn12
             // 
             this.dataGridViewTextBoxColumn12.DataPropertyName = "cpf";
-            this.dataGridViewTextBoxColumn12.HeaderText = "cpf";
+            this.dataGridViewTextBoxColumn12.HeaderText = "CPF";
             this.dataGridViewTextBoxColumn12.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn12.Name = "dataGridViewTextBoxColumn12";
             this.dataGridViewTextBoxColumn12.ReadOnly = true;
@@ -430,7 +430,7 @@
             // dataGridViewTextBoxColumn13
             // 
             this.dataGridViewTextBoxColumn13.DataPropertyName = "rg";
-            this.dataGridViewTextBoxColumn13.HeaderText = "rg";
+            this.dataGridViewTextBoxColumn13.HeaderText = "RG";
             this.dataGridViewTextBoxColumn13.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn13.Name = "dataGridViewTextBoxColumn13";
             this.dataGridViewTextBoxColumn13.ReadOnly = true;
@@ -439,7 +439,7 @@
             // codCondPagamentoDataGridViewTextBoxColumn
             // 
             this.codCondPagamentoDataGridViewTextBoxColumn.DataPropertyName = "codCondPagamento";
-            this.codCondPagamentoDataGridViewTextBoxColumn.HeaderText = "codCondPagamento";
+            this.codCondPagamentoDataGridViewTextBoxColumn.HeaderText = "Codigo Condição Pagamento";
             this.codCondPagamentoDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.codCondPagamentoDataGridViewTextBoxColumn.Name = "codCondPagamentoDataGridViewTextBoxColumn";
             this.codCondPagamentoDataGridViewTextBoxColumn.ReadOnly = true;
@@ -448,7 +448,7 @@
             // dataGridViewTextBoxColumn14
             // 
             this.dataGridViewTextBoxColumn14.DataPropertyName = "limiteCredito";
-            this.dataGridViewTextBoxColumn14.HeaderText = "limiteCredito";
+            this.dataGridViewTextBoxColumn14.HeaderText = "Limite Crédito";
             this.dataGridViewTextBoxColumn14.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn14.Name = "dataGridViewTextBoxColumn14";
             this.dataGridViewTextBoxColumn14.ReadOnly = true;
@@ -457,7 +457,7 @@
             // observacoesDataGridViewTextBoxColumn
             // 
             this.observacoesDataGridViewTextBoxColumn.DataPropertyName = "observacoes";
-            this.observacoesDataGridViewTextBoxColumn.HeaderText = "observacoes";
+            this.observacoesDataGridViewTextBoxColumn.HeaderText = "Observações";
             this.observacoesDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.observacoesDataGridViewTextBoxColumn.Name = "observacoesDataGridViewTextBoxColumn";
             this.observacoesDataGridViewTextBoxColumn.ReadOnly = true;
@@ -466,7 +466,7 @@
             // dtCadastroDataGridViewTextBoxColumn
             // 
             this.dtCadastroDataGridViewTextBoxColumn.DataPropertyName = "dtCadastro";
-            this.dtCadastroDataGridViewTextBoxColumn.HeaderText = "dtCadastro";
+            this.dtCadastroDataGridViewTextBoxColumn.HeaderText = "Data Cadastro";
             this.dtCadastroDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.dtCadastroDataGridViewTextBoxColumn.Name = "dtCadastroDataGridViewTextBoxColumn";
             this.dtCadastroDataGridViewTextBoxColumn.ReadOnly = true;
@@ -475,7 +475,7 @@
             // dtAlteracaoDataGridViewTextBoxColumn
             // 
             this.dtAlteracaoDataGridViewTextBoxColumn.DataPropertyName = "dtAlteracao";
-            this.dtAlteracaoDataGridViewTextBoxColumn.HeaderText = "dtAlteracao";
+            this.dtAlteracaoDataGridViewTextBoxColumn.HeaderText = "Data Alteração";
             this.dtAlteracaoDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.dtAlteracaoDataGridViewTextBoxColumn.Name = "dtAlteracaoDataGridViewTextBoxColumn";
             this.dtAlteracaoDataGridViewTextBoxColumn.ReadOnly = true;
@@ -484,7 +484,7 @@
             // usuarioDataGridViewTextBoxColumn
             // 
             this.usuarioDataGridViewTextBoxColumn.DataPropertyName = "usuario";
-            this.usuarioDataGridViewTextBoxColumn.HeaderText = "usuario";
+            this.usuarioDataGridViewTextBoxColumn.HeaderText = "Usuario";
             this.usuarioDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.usuarioDataGridViewTextBoxColumn.Name = "usuarioDataGridViewTextBoxColumn";
             this.usuarioDataGridViewTextBoxColumn.ReadOnly = true;
@@ -502,7 +502,7 @@
             // cnpjDataGridViewTextBoxColumn1
             // 
             this.cnpjDataGridViewTextBoxColumn1.DataPropertyName = "cnpj";
-            this.cnpjDataGridViewTextBoxColumn1.HeaderText = "cnpj";
+            this.cnpjDataGridViewTextBoxColumn1.HeaderText = "CNPJ";
             this.cnpjDataGridViewTextBoxColumn1.MinimumWidth = 6;
             this.cnpjDataGridViewTextBoxColumn1.Name = "cnpjDataGridViewTextBoxColumn1";
             this.cnpjDataGridViewTextBoxColumn1.ReadOnly = true;
@@ -511,7 +511,7 @@
             // ieDataGridViewTextBoxColumn1
             // 
             this.ieDataGridViewTextBoxColumn1.DataPropertyName = "ie";
-            this.ieDataGridViewTextBoxColumn1.HeaderText = "ie";
+            this.ieDataGridViewTextBoxColumn1.HeaderText = "IE";
             this.ieDataGridViewTextBoxColumn1.MinimumWidth = 6;
             this.ieDataGridViewTextBoxColumn1.Name = "ieDataGridViewTextBoxColumn1";
             this.ieDataGridViewTextBoxColumn1.ReadOnly = true;

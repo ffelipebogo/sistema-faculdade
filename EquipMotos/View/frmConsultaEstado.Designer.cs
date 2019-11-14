@@ -39,22 +39,22 @@
             this.btnNovo = new System.Windows.Forms.Button();
             this.btnBuscarEstado = new System.Windows.Forms.PictureBox();
             this.gvEstado = new System.Windows.Forms.DataGridView();
-            this.sistemaMoto2DataSetCategoria = new EquipMotos.SistemaMoto2DataSetCategoria();
-            this.sistemaMoto2DataSetEstado = new EquipMotos.SistemaMoto2DataSetEstado();
             this.estadosBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.sistemaMoto2DataSetEstado = new EquipMotos.SistemaMoto2DataSetEstado();
+            this.sistemaMoto2DataSetCategoria = new EquipMotos.SistemaMoto2DataSetCategoria();
             this.estadosTableAdapter = new EquipMotos.SistemaMoto2DataSetEstadoTableAdapters.estadosTableAdapter();
             this.codigoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.codPaisDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.codPaisDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dtAlteracaoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dtCadastroDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.usuarioDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.btnBuscarEstado)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvEstado)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sistemaMoto2DataSetCategoria)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sistemaMoto2DataSetEstado)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.estadosBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sistemaMoto2DataSetEstado)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sistemaMoto2DataSetCategoria)).BeginInit();
             this.SuspendLayout();
             // 
             // label2
@@ -188,8 +188,8 @@
             this.gvEstado.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.codigoDataGridViewTextBoxColumn,
             this.dataGridViewTextBoxColumn1,
-            this.codPaisDataGridViewTextBoxColumn,
             this.dataGridViewTextBoxColumn2,
+            this.codPaisDataGridViewTextBoxColumn,
             this.dtAlteracaoDataGridViewTextBoxColumn,
             this.dtCadastroDataGridViewTextBoxColumn,
             this.usuarioDataGridViewTextBoxColumn});
@@ -200,23 +200,23 @@
             this.gvEstado.ReadOnly = true;
             this.gvEstado.RowHeadersWidth = 51;
             this.gvEstado.RowTemplate.Height = 24;
-            this.gvEstado.Size = new System.Drawing.Size(532, 304);
+            this.gvEstado.Size = new System.Drawing.Size(589, 304);
             this.gvEstado.TabIndex = 275;
             // 
-            // sistemaMoto2DataSetCategoria
+            // estadosBindingSource
             // 
-            this.sistemaMoto2DataSetCategoria.DataSetName = "SistemaMoto2DataSetCategoria";
-            this.sistemaMoto2DataSetCategoria.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            this.estadosBindingSource.DataMember = "estados";
+            this.estadosBindingSource.DataSource = this.sistemaMoto2DataSetEstado;
             // 
             // sistemaMoto2DataSetEstado
             // 
             this.sistemaMoto2DataSetEstado.DataSetName = "SistemaMoto2DataSetEstado";
             this.sistemaMoto2DataSetEstado.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
-            // estadosBindingSource
+            // sistemaMoto2DataSetCategoria
             // 
-            this.estadosBindingSource.DataMember = "estados";
-            this.estadosBindingSource.DataSource = this.sistemaMoto2DataSetEstado;
+            this.sistemaMoto2DataSetCategoria.DataSetName = "SistemaMoto2DataSetCategoria";
+            this.sistemaMoto2DataSetCategoria.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // estadosTableAdapter
             // 
@@ -225,7 +225,7 @@
             // codigoDataGridViewTextBoxColumn
             // 
             this.codigoDataGridViewTextBoxColumn.DataPropertyName = "codigo";
-            this.codigoDataGridViewTextBoxColumn.HeaderText = "codigo";
+            this.codigoDataGridViewTextBoxColumn.HeaderText = "Codigo";
             this.codigoDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.codigoDataGridViewTextBoxColumn.Name = "codigoDataGridViewTextBoxColumn";
             this.codigoDataGridViewTextBoxColumn.ReadOnly = true;
@@ -234,34 +234,34 @@
             // dataGridViewTextBoxColumn1
             // 
             this.dataGridViewTextBoxColumn1.DataPropertyName = "uf";
-            this.dataGridViewTextBoxColumn1.HeaderText = "uf";
+            this.dataGridViewTextBoxColumn1.HeaderText = "UF";
             this.dataGridViewTextBoxColumn1.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
             this.dataGridViewTextBoxColumn1.ReadOnly = true;
             this.dataGridViewTextBoxColumn1.Width = 125;
             // 
-            // codPaisDataGridViewTextBoxColumn
-            // 
-            this.codPaisDataGridViewTextBoxColumn.DataPropertyName = "codPais";
-            this.codPaisDataGridViewTextBoxColumn.HeaderText = "codPais";
-            this.codPaisDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.codPaisDataGridViewTextBoxColumn.Name = "codPaisDataGridViewTextBoxColumn";
-            this.codPaisDataGridViewTextBoxColumn.ReadOnly = true;
-            this.codPaisDataGridViewTextBoxColumn.Width = 125;
-            // 
             // dataGridViewTextBoxColumn2
             // 
             this.dataGridViewTextBoxColumn2.DataPropertyName = "estado";
-            this.dataGridViewTextBoxColumn2.HeaderText = "estado";
+            this.dataGridViewTextBoxColumn2.HeaderText = "Estado";
             this.dataGridViewTextBoxColumn2.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
             this.dataGridViewTextBoxColumn2.ReadOnly = true;
             this.dataGridViewTextBoxColumn2.Width = 125;
             // 
+            // codPaisDataGridViewTextBoxColumn
+            // 
+            this.codPaisDataGridViewTextBoxColumn.DataPropertyName = "codPais";
+            this.codPaisDataGridViewTextBoxColumn.HeaderText = "Codigo Pais";
+            this.codPaisDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.codPaisDataGridViewTextBoxColumn.Name = "codPaisDataGridViewTextBoxColumn";
+            this.codPaisDataGridViewTextBoxColumn.ReadOnly = true;
+            this.codPaisDataGridViewTextBoxColumn.Width = 125;
+            // 
             // dtAlteracaoDataGridViewTextBoxColumn
             // 
             this.dtAlteracaoDataGridViewTextBoxColumn.DataPropertyName = "dtAlteracao";
-            this.dtAlteracaoDataGridViewTextBoxColumn.HeaderText = "dtAlteracao";
+            this.dtAlteracaoDataGridViewTextBoxColumn.HeaderText = "Data Alteração";
             this.dtAlteracaoDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.dtAlteracaoDataGridViewTextBoxColumn.Name = "dtAlteracaoDataGridViewTextBoxColumn";
             this.dtAlteracaoDataGridViewTextBoxColumn.ReadOnly = true;
@@ -270,7 +270,7 @@
             // dtCadastroDataGridViewTextBoxColumn
             // 
             this.dtCadastroDataGridViewTextBoxColumn.DataPropertyName = "dtCadastro";
-            this.dtCadastroDataGridViewTextBoxColumn.HeaderText = "dtCadastro";
+            this.dtCadastroDataGridViewTextBoxColumn.HeaderText = "Data Cadastro";
             this.dtCadastroDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.dtCadastroDataGridViewTextBoxColumn.Name = "dtCadastroDataGridViewTextBoxColumn";
             this.dtCadastroDataGridViewTextBoxColumn.ReadOnly = true;
@@ -279,7 +279,7 @@
             // usuarioDataGridViewTextBoxColumn
             // 
             this.usuarioDataGridViewTextBoxColumn.DataPropertyName = "usuario";
-            this.usuarioDataGridViewTextBoxColumn.HeaderText = "usuario";
+            this.usuarioDataGridViewTextBoxColumn.HeaderText = "Usuario";
             this.usuarioDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.usuarioDataGridViewTextBoxColumn.Name = "usuarioDataGridViewTextBoxColumn";
             this.usuarioDataGridViewTextBoxColumn.ReadOnly = true;
@@ -306,9 +306,9 @@
             this.Load += new System.EventHandler(this.FrmConsultaEstado_Load);
             ((System.ComponentModel.ISupportInitialize)(this.btnBuscarEstado)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvEstado)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sistemaMoto2DataSetCategoria)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sistemaMoto2DataSetEstado)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.estadosBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sistemaMoto2DataSetEstado)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sistemaMoto2DataSetCategoria)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -335,8 +335,8 @@
         private SistemaMoto2DataSetEstadoTableAdapters.estadosTableAdapter estadosTableAdapter;
         private System.Windows.Forms.DataGridViewTextBoxColumn codigoDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn codPaisDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn codPaisDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn dtAlteracaoDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn dtCadastroDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn usuarioDataGridViewTextBoxColumn;

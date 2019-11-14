@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.28803.352
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EquipMotos", "EquipMotos\EquipMotos.csproj", "{C46C8884-2C22-4066-8D78-C8E0DB1830DE}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EquipMotosWeb", "WebApplication2\EquipMotosWeb.csproj", "{EE1E13D6-F1AE-4ADF-BFE1-9378A46171DF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebEquipMoto", "WebApplication4\WebEquipMoto.csproj", "{517D9EF5-A98D-4C4D-9C71-6E8FEEB4532C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +17,10 @@ Global
 		{C46C8884-2C22-4066-8D78-C8E0DB1830DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C46C8884-2C22-4066-8D78-C8E0DB1830DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C46C8884-2C22-4066-8D78-C8E0DB1830DE}.Release|Any CPU.Build.0 = Release|Any CPU
-		{EE1E13D6-F1AE-4ADF-BFE1-9378A46171DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{EE1E13D6-F1AE-4ADF-BFE1-9378A46171DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{EE1E13D6-F1AE-4ADF-BFE1-9378A46171DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{EE1E13D6-F1AE-4ADF-BFE1-9378A46171DF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{517D9EF5-A98D-4C4D-9C71-6E8FEEB4532C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{517D9EF5-A98D-4C4D-9C71-6E8FEEB4532C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{517D9EF5-A98D-4C4D-9C71-6E8FEEB4532C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{517D9EF5-A98D-4C4D-9C71-6E8FEEB4532C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

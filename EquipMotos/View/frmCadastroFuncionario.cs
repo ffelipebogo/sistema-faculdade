@@ -76,7 +76,7 @@ namespace EquipMotos.View
                     func.cnhCategoria = txtCategoria.Text;
 
                     func.observacoes = txtObservacao.Text;
-                    func.usuario = txtUsuario.Text;
+                    func.usuario = UsuarioLogado.Usuario;
 
                     if (btnSalvar.Text == "ALTERAR")
                     {
@@ -110,7 +110,12 @@ namespace EquipMotos.View
 
         public bool ValidaCampos()
         {
-
+            if (txtFuncionario.Text.Trim().Length > 100)
+            {
+                MessageBox.Show("Não é possivel inserir este funcionario", "Informe o funcionario com menos de 100 caracteres!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtFuncionario.Focus();
+                return false;
+            }
             if (txtFuncionario.Text.Trim().Length < 3)
             {
                 MessageBox.Show("Funcionario inválido!", "Verefique o Funcionario!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -118,14 +123,20 @@ namespace EquipMotos.View
                 return false;
             }
 
-            if (txtFuncionario.Text.Trim() == String.Empty)
+            if (String.IsNullOrEmpty(txtFuncionario.Text.Trim()))
             {
                 MessageBox.Show("Faltou informar o Funcionario", "Informe o Funcionario!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txtFuncionario.Focus();
                 return false;
             }
+            if (!MaskForm.ValidaTexto(txtFuncionario.Text))
+            {
+                MessageBox.Show("Funcionario inválido!", "Funcionario não pode conter numeros!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtFuncionario.Focus();
+                return false;
+            }
 
-            if (txtNumero.Text.Trim() == String.Empty)
+            if (String.IsNullOrEmpty(txtNumero.Text.Trim()))
             {
                 txtNumero.Text = "0";
             }
@@ -136,7 +147,7 @@ namespace EquipMotos.View
                 return false;
             }
 
-            if (txtNumero.Text.Trim() == String.Empty)
+            if (String.IsNullOrEmpty(txtNumero.Text.Trim()))
             {
                 txtNumero.Text = "0";
             }
@@ -146,22 +157,45 @@ namespace EquipMotos.View
                 txtNumero.Focus();
                 return false;
             }
-
-            if (txtEndereco.Text == String.Empty)
+            if (txtEndereco.Text.Trim().Length > 100)
+            {
+                MessageBox.Show("Não é possivel inserir este endereco", "Informe o endereco com menos de 100 caracteres!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtEndereco.Focus();
+                return false;
+            }
+            if (String.IsNullOrEmpty(txtEndereco.Text))
             {
                 MessageBox.Show("Faltou informar o Endereço", "Informe o Endereço!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txtEndereco.Focus();
                 return false;
             }
+            if (!MaskForm.ValidaTexto(txtEndereco.Text))
+            {
+                MessageBox.Show("Endereço inválido!", "Endereço não pode conter numeros!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtEndereco.Focus();
+                return false;
+            }
 
-            if (txtBairro.Text.Trim() == String.Empty)
+            if (txtBairro.Text.Trim().Length > 100)
+            {
+                MessageBox.Show("Não é possivel inserir este bairro", "Informe o bairro com menos de 100 caracteres!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtBairro.Focus();
+                return false;
+            }
+            if (!MaskForm.ValidaTexto(txtBairro.Text))
+            {
+                MessageBox.Show("Bairro inválido!", "Bairro não pode conter numeros!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtBairro.Focus();
+                return false;
+            }
+            if (String.IsNullOrEmpty(txtBairro.Text.Trim()))
             {
                 MessageBox.Show("Faltou informar o Bairro", "Informe o Bairro!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txtBairro.Focus();
                 return false;
             }
 
-            if (txtCep.Text.Trim() == String.Empty)
+            if (String.IsNullOrEmpty(txtCep.Text.Trim()))
             {
                 txtCep.Text = "0";
             }
@@ -185,7 +219,7 @@ namespace EquipMotos.View
                 return false;
             }
 
-            if (txtIdCidade.Text.Trim() == String.Empty & txtIdCidade.Text.Length < 0)
+            if (String.IsNullOrEmpty(txtIdCidade.Text.Trim()) & txtIdCidade.Text.Length < 0)
             {
                 MessageBox.Show("Faltou informar o Cidade", "Informe o Cidade!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txtIdCidade.Focus();
@@ -198,7 +232,7 @@ namespace EquipMotos.View
                 return false;
             }
 
-            if (txtCelular.Text.Trim() == String.Empty & txtCelular.Text.Length < 11)
+            if (String.IsNullOrEmpty(txtCelular.Text.Trim()) & txtCelular.Text.Length < 11)
             {
                 MessageBox.Show("Faltou informar o Celular", "Informe o Celular!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txtCelular.Focus();
@@ -260,14 +294,14 @@ namespace EquipMotos.View
                 txtCpf.Focus();
                 return false;
             }
-            if (txtRg.Text == String.Empty)
+            if (String.IsNullOrEmpty(txtRg.Text))
             {
                 MessageBox.Show("Faltou informar o RG", "Informe o RG!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txtRg.Focus();
                 return false;
             }
 
-            if (txtSexo.Text.Trim() == String.Empty)
+            if (String.IsNullOrEmpty(txtSexo.Text.Trim()))
             {
                 MessageBox.Show("Faltou informar o Sexo", "Informe o Sexo!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txtSexo.Focus();
@@ -279,9 +313,9 @@ namespace EquipMotos.View
                 return false;
             }
 
-            if (txtSalario.Text == String.Empty)
+            if (String.IsNullOrEmpty(txtSalario.Text))
             {
-                MessageBox.Show("Faltou informar oSalario", "Informe o Salario!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Faltou informar o Salario", "Informe o Salario!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txtSalario.Focus();
                 return false;
             }
@@ -292,7 +326,7 @@ namespace EquipMotos.View
                 return false;
             }
 
-            if (txtSerie.Text.Trim() == String.Empty)
+            if (String.IsNullOrEmpty(txtSerie.Text.Trim()))
             {
                 MessageBox.Show("Faltou informar o Nº de Serie", "Informe o Nº de Serie!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txtSerie.Focus();
@@ -305,7 +339,7 @@ namespace EquipMotos.View
                 return false;
             }
 
-            if (txtCarteiraTrabalho.Text.Trim() == String.Empty)
+            if (String.IsNullOrEmpty(txtCarteiraTrabalho.Text.Trim()))
             {
                 MessageBox.Show("Faltou informar o Nº da Carteira de Trabalho", "Informe o Nº da Carteira de Trabalho!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txtCarteiraTrabalho.Focus();
@@ -318,7 +352,7 @@ namespace EquipMotos.View
                 return false;
             }
 
-            if (txtCnh.Text.Trim() == String.Empty)
+            if (String.IsNullOrEmpty(txtCnh.Text.Trim()))
             {
                 MessageBox.Show("Faltou informar o Nº da CNH", "Informe o Nº da CNH!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txtCnh.Focus();
@@ -331,7 +365,7 @@ namespace EquipMotos.View
                 return false;
             }
 
-            if (txtPis.Text.Trim() == String.Empty)
+            if (String.IsNullOrEmpty(txtPis.Text.Trim()))
             {
                 MessageBox.Show("Faltou informar o Nº do PIS", "Informe o Nº do PIS!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txtPis.Focus();
@@ -344,19 +378,19 @@ namespace EquipMotos.View
                 return false;
             }
 
-            if (txtEmissor.Text.Trim() == String.Empty)
+            if (String.IsNullOrEmpty(txtEmissor.Text.Trim()))
             {
                 MessageBox.Show("Faltou informar o Orgão Emissor", "Informe o Orgão Emissor!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txtEmissor.Focus();
                 return false;
             }
-            if (txtCategoria.Text.Trim() == String.Empty)
+            if (String.IsNullOrEmpty(txtCategoria.Text.Trim() ))
             {
                 MessageBox.Show("Faltou informar a Categoria", "Informe a Categoria!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txtCategoria.Focus();
                 return false;
             }
-            if (txtComissao.Text.Trim() == String.Empty)
+            if (String.IsNullOrEmpty(txtComissao.Text.Trim()))
             {
                 txtComissao.Text = "0";
             }

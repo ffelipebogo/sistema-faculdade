@@ -31,6 +31,11 @@
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.gvModelo = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.sistemaMoto2DataSetModelo = new EquipMotos.SistemaMoto2DataSetModelo();
             this.btnVoltar = new System.Windows.Forms.Button();
             this.txtPesquisar = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -38,14 +43,11 @@
             this.btnAlterar = new System.Windows.Forms.Button();
             this.btnNovo = new System.Windows.Forms.Button();
             this.btnBuscar = new System.Windows.Forms.PictureBox();
-            this.sistemaMoto2DataSetModelo = new EquipMotos.SistemaMoto2DataSetModelo();
             this.modelosTableAdapter = new EquipMotos.SistemaMoto2DataSetModeloTableAdapters.modelosTableAdapter();
-            this.codigoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.codMarcaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gvModelo)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnBuscar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sistemaMoto2DataSetModelo)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnBuscar)).BeginInit();
             this.SuspendLayout();
             // 
             // gvModelo
@@ -68,23 +70,61 @@
             this.gvModelo.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.gvModelo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gvModelo.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.codigoDataGridViewTextBoxColumn,
-            this.dataGridViewTextBoxColumn4,
-            this.codMarcaDataGridViewTextBoxColumn});
+            this.dataGridViewTextBoxColumn5,
+            this.dataGridViewTextBoxColumn6,
+            this.dataGridViewTextBoxColumn7});
+            this.gvModelo.DataSource = this.bindingSource1;
             this.gvModelo.EnableHeadersVisualStyles = false;
             this.gvModelo.Location = new System.Drawing.Point(17, 97);
             this.gvModelo.Margin = new System.Windows.Forms.Padding(4);
             this.gvModelo.Name = "gvModelo";
             this.gvModelo.ReadOnly = true;
             this.gvModelo.RowHeadersWidth = 51;
-            this.gvModelo.Size = new System.Drawing.Size(796, 307);
+            this.gvModelo.Size = new System.Drawing.Size(599, 307);
             this.gvModelo.TabIndex = 0;
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            this.dataGridViewTextBoxColumn5.DataPropertyName = "codigo";
+            this.dataGridViewTextBoxColumn5.HeaderText = "Codigo";
+            this.dataGridViewTextBoxColumn5.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            this.dataGridViewTextBoxColumn5.ReadOnly = true;
+            this.dataGridViewTextBoxColumn5.Width = 125;
+            // 
+            // dataGridViewTextBoxColumn6
+            // 
+            this.dataGridViewTextBoxColumn6.DataPropertyName = "modelo";
+            this.dataGridViewTextBoxColumn6.HeaderText = "Modelo";
+            this.dataGridViewTextBoxColumn6.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            this.dataGridViewTextBoxColumn6.ReadOnly = true;
+            this.dataGridViewTextBoxColumn6.Width = 125;
+            // 
+            // dataGridViewTextBoxColumn7
+            // 
+            this.dataGridViewTextBoxColumn7.DataPropertyName = "codMarca";
+            this.dataGridViewTextBoxColumn7.HeaderText = "Codigo Marca";
+            this.dataGridViewTextBoxColumn7.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
+            this.dataGridViewTextBoxColumn7.ReadOnly = true;
+            this.dataGridViewTextBoxColumn7.Width = 125;
+            // 
+            // bindingSource1
+            // 
+            this.bindingSource1.DataMember = "modelos";
+            this.bindingSource1.DataSource = this.sistemaMoto2DataSetModelo;
+            // 
+            // sistemaMoto2DataSetModelo
+            // 
+            this.sistemaMoto2DataSetModelo.DataSetName = "SistemaMoto2DataSetModelo";
+            this.sistemaMoto2DataSetModelo.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // btnVoltar
             // 
             this.btnVoltar.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnVoltar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnVoltar.Location = new System.Drawing.Point(664, 443);
+            this.btnVoltar.Location = new System.Drawing.Point(467, 443);
             this.btnVoltar.Margin = new System.Windows.Forms.Padding(4);
             this.btnVoltar.Name = "btnVoltar";
             this.btnVoltar.Size = new System.Drawing.Size(149, 42);
@@ -120,7 +160,7 @@
             this.btnExcluir.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnExcluir.Image = global::EquipMotos.Properties.Resources._1398756469_Erase;
             this.btnExcluir.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnExcluir.Location = new System.Drawing.Point(500, 443);
+            this.btnExcluir.Location = new System.Drawing.Point(303, 443);
             this.btnExcluir.Margin = new System.Windows.Forms.Padding(4);
             this.btnExcluir.Name = "btnExcluir";
             this.btnExcluir.Size = new System.Drawing.Size(130, 42);
@@ -136,7 +176,7 @@
             this.btnAlterar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAlterar.Image = global::EquipMotos.Properties.Resources._1398756462_Modify;
             this.btnAlterar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAlterar.Location = new System.Drawing.Point(362, 443);
+            this.btnAlterar.Location = new System.Drawing.Point(165, 443);
             this.btnAlterar.Margin = new System.Windows.Forms.Padding(4);
             this.btnAlterar.Name = "btnAlterar";
             this.btnAlterar.Size = new System.Drawing.Size(130, 42);
@@ -152,7 +192,7 @@
             this.btnNovo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnNovo.Image = global::EquipMotos.Properties.Resources._1398756346_1;
             this.btnNovo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnNovo.Location = new System.Drawing.Point(224, 443);
+            this.btnNovo.Location = new System.Drawing.Point(27, 443);
             this.btnNovo.Margin = new System.Windows.Forms.Padding(4);
             this.btnNovo.Name = "btnNovo";
             this.btnNovo.Size = new System.Drawing.Size(130, 42);
@@ -175,48 +215,17 @@
             this.btnBuscar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.btnBuscar.TabIndex = 260;
             this.btnBuscar.TabStop = false;
-            // 
-            // sistemaMoto2DataSetModelo
-            // 
-            this.sistemaMoto2DataSetModelo.DataSetName = "SistemaMoto2DataSetModelo";
-            this.sistemaMoto2DataSetModelo.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
             // modelosTableAdapter
             // 
             this.modelosTableAdapter.ClearBeforeFill = true;
             // 
-            // codigoDataGridViewTextBoxColumn
-            // 
-            this.codigoDataGridViewTextBoxColumn.DataPropertyName = "codigo";
-            this.codigoDataGridViewTextBoxColumn.HeaderText = "codigo";
-            this.codigoDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.codigoDataGridViewTextBoxColumn.Name = "codigoDataGridViewTextBoxColumn";
-            this.codigoDataGridViewTextBoxColumn.ReadOnly = true;
-            this.codigoDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            this.dataGridViewTextBoxColumn4.DataPropertyName = "modelo";
-            this.dataGridViewTextBoxColumn4.HeaderText = "modelo";
-            this.dataGridViewTextBoxColumn4.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            this.dataGridViewTextBoxColumn4.ReadOnly = true;
-            this.dataGridViewTextBoxColumn4.Width = 125;
-            // 
-            // codMarcaDataGridViewTextBoxColumn
-            // 
-            this.codMarcaDataGridViewTextBoxColumn.DataPropertyName = "codMarca";
-            this.codMarcaDataGridViewTextBoxColumn.HeaderText = "codMarca";
-            this.codMarcaDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.codMarcaDataGridViewTextBoxColumn.Name = "codMarcaDataGridViewTextBoxColumn";
-            this.codMarcaDataGridViewTextBoxColumn.ReadOnly = true;
-            this.codMarcaDataGridViewTextBoxColumn.Width = 125;
-            // 
             // frmConsultaModelo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(846, 498);
+            this.ClientSize = new System.Drawing.Size(640, 498);
             this.ControlBox = false;
             this.Controls.Add(this.btnBuscar);
             this.Controls.Add(this.btnExcluir);
@@ -232,8 +241,9 @@
             this.Text = "Consulta Modelo";
             this.Load += new System.EventHandler(this.FrmConsultaModelo_Load);
             ((System.ComponentModel.ISupportInitialize)(this.gvModelo)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnBuscar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.sistemaMoto2DataSetModelo)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnBuscar)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -265,5 +275,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn codigoDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
         private System.Windows.Forms.DataGridViewTextBoxColumn codMarcaDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
+        private System.Windows.Forms.BindingSource bindingSource1;
     }
 }

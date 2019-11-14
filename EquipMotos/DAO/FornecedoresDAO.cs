@@ -325,11 +325,11 @@ namespace EquipMotos.DAO
                 bool isNumeric = int.TryParse(forn, out int n);
                 if (forn.Length <= 4 && isNumeric)
                 {
-                    sql = @"select * from fornecedores where id = @forn";
+                    sql = @"select * from fornecedores where codigo = @forn";
                 }
                 else
                 {
-                    sql = @"select * from fornecedores where fornededor like '%'+ @forn + '%' ";
+                    sql = @"select * from fornecedores where fornecedor like '%'+ @forn + '%' ";
                 }
                 comando = new SqlCommand(sql, conexao);
                 comando.Parameters.AddWithValue("@forn", forn);

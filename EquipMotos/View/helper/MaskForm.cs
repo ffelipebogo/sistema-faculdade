@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -10,6 +11,12 @@ namespace EquipMotos.View.helper
 {
     static class MaskForm
     {
+        public static bool ValidaTexto(String texto)
+        {
+            Regex rg = new Regex("[A-Z]");
+
+            return rg.IsMatch(texto);
+        }
 
         public static void TxtMask_Porcentagem_KeyUp(object senderEvent, KeyEventArgs e)
         {

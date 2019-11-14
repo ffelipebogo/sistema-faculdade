@@ -57,7 +57,6 @@
             this.txtDtAlteracao.Name = "txtDtAlteracao";
             this.txtDtAlteracao.Size = new System.Drawing.Size(104, 21);
             this.txtDtAlteracao.TabIndex = 274;
-            this.txtDtAlteracao.UseWaitCursor = true;
             this.txtDtAlteracao.ValidatingType = typeof(System.DateTime);
             // 
             // txtDtCadastro
@@ -72,7 +71,6 @@
             this.txtDtCadastro.Name = "txtDtCadastro";
             this.txtDtCadastro.Size = new System.Drawing.Size(104, 21);
             this.txtDtCadastro.TabIndex = 273;
-            this.txtDtCadastro.UseWaitCursor = true;
             this.txtDtCadastro.ValidatingType = typeof(System.DateTime);
             // 
             // txtUsuario
@@ -87,7 +85,6 @@
             this.txtUsuario.Name = "txtUsuario";
             this.txtUsuario.Size = new System.Drawing.Size(189, 21);
             this.txtUsuario.TabIndex = 269;
-            this.txtUsuario.UseWaitCursor = true;
             // 
             // lblUsuario
             // 
@@ -101,7 +98,6 @@
             this.lblUsuario.Size = new System.Drawing.Size(125, 15);
             this.lblUsuario.TabIndex = 268;
             this.lblUsuario.Text = "Alterado pelo Usuário";
-            this.lblUsuario.UseWaitCursor = true;
             // 
             // lblDtAlteracao
             // 
@@ -115,7 +111,6 @@
             this.lblDtAlteracao.Size = new System.Drawing.Size(87, 15);
             this.lblDtAlteracao.TabIndex = 267;
             this.lblDtAlteracao.Text = "Data Alteração";
-            this.lblDtAlteracao.UseWaitCursor = true;
             // 
             // lblDtCadastro
             // 
@@ -129,7 +124,6 @@
             this.lblDtCadastro.Size = new System.Drawing.Size(85, 15);
             this.lblDtCadastro.TabIndex = 266;
             this.lblDtCadastro.Text = "Data Cadastro";
-            this.lblDtCadastro.UseWaitCursor = true;
             // 
             // lblObservacoes
             // 
@@ -143,7 +137,6 @@
             this.lblObservacoes.Size = new System.Drawing.Size(108, 20);
             this.lblObservacoes.TabIndex = 265;
             this.lblObservacoes.Text = "Observações";
-            this.lblObservacoes.UseWaitCursor = true;
             // 
             // txtCodigo
             // 
@@ -156,7 +149,6 @@
             this.txtCodigo.Name = "txtCodigo";
             this.txtCodigo.Size = new System.Drawing.Size(80, 26);
             this.txtCodigo.TabIndex = 263;
-            this.txtCodigo.UseWaitCursor = true;
             // 
             // lblCodigo
             // 
@@ -170,7 +162,6 @@
             this.lblCodigo.Size = new System.Drawing.Size(61, 20);
             this.lblCodigo.TabIndex = 262;
             this.lblCodigo.Text = "Código";
-            this.lblCodigo.UseWaitCursor = true;
             // 
             // label1
             // 
@@ -184,7 +175,6 @@
             this.label1.Size = new System.Drawing.Size(81, 20);
             this.label1.TabIndex = 276;
             this.label1.Text = "Categoria";
-            this.label1.UseWaitCursor = true;
             // 
             // txtCategoria
             // 
@@ -272,9 +262,11 @@
             this.Controls.Add(this.lblObservacoes);
             this.Controls.Add(this.txtCodigo);
             this.Controls.Add(this.lblCodigo);
+            this.Cursor = System.Windows.Forms.Cursors.Default;
             this.Margin = new System.Windows.Forms.Padding(5);
             this.Name = "frmCadastroCategoria";
             this.Text = "Cadastro de Categoria";
+            this.UseWaitCursor = false;
             this.ResumeLayout(false);
             this.PerformLayout();
 

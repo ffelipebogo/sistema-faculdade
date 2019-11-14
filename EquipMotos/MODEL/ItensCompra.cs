@@ -12,6 +12,7 @@ namespace EquipMotos.MODEL
         public string serie { get; set; }
         public string nrNota { get; set; }
         public decimal custoUnitario { get; set; }
+        public decimal valorUnitario { get; set; }
 
     }
 }

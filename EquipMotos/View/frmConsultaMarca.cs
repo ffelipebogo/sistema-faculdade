@@ -88,12 +88,19 @@ namespace EquipMotos.View
 
         public object SelecionaMarca()
         {
+            try
+            {
             marca = null;
 
             var marRow = gvMarca.CurrentRow.DataBoundItem as DataRowView;
 
             marca = CtrlMarca.BuscarPorID(marRow["codigo"]) as Marcas;
             return marca;
+            }
+            catch
+            {
+                return null;
+            }
         }
 
         private void FrmConsultaMarca_Load(object sender, EventArgs e)
@@ -101,6 +108,12 @@ namespace EquipMotos.View
             // TODO: esta linha de código carrega dados na tabela 'sistemaMoto2DataSetMarca.marcas'. Você pode movê-la ou removê-la conforme necessário.
             this.marcasTableAdapter.Fill(this.sistemaMoto2DataSetMarca.marcas);
 
+        }
+
+        private void btnBuscarMarca_Click(object sender, EventArgs e)
+        {
+            string marca = txtPesquisar.Text;
+            gvMarca.DataSource = CtrlMarca.Pesquisar(marca);
         }
     }
 }

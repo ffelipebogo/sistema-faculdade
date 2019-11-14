@@ -18,6 +18,7 @@ namespace EquipMotos.MODEL
         public string complemento { get; set; }
         public string bairro { get; set; }
         public string cep { get; set; }
+        public bool estrangeiro { get; set; }
         public Cidades Cidade { get; set; }
         public CondicaoPagamentos CondPagamento { get; set; }
         public double limiteCredito { get; set; }

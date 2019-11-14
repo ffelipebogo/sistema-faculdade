@@ -92,6 +92,7 @@ namespace EquipMotos.View
                 frmCadastroFornecedor.condPagamento = this.condPagamento;
                 frmCadastroCompra.condPagamento = this.condPagamento;
                 frmCadastroVenda.CondPagamento = this.condPagamento;
+                frmCadastroOrdemServico.CondPagamento = this.condPagamento;
                 this.DialogResult = DialogResult.OK;
                 Close();
             }
@@ -104,14 +105,20 @@ namespace EquipMotos.View
 
         public object SelecionaCondicao()
         {
-            condPagamento = null;
-
-            var condRow = gvCondPagamento.CurrentRow.DataBoundItem as DataRowView;
-            CondicaoPagamentoDAO dao = new CondicaoPagamentoDAO();
-            condPagamento = dao.BuscarPorID(condRow["codigo"]) as CondicaoPagamentos;
-            return condPagamento;
-
+            try
+            {
+                condPagamento = null;
+                var condRow = gvCondPagamento.CurrentRow.DataBoundItem as DataRowView;
+                CondicaoPagamentoDAO dao = new CondicaoPagamentoDAO();
+                condPagamento = dao.BuscarPorID(condRow["codigo"]) as CondicaoPagamentos;
+                return condPagamento;
+            }
+            catch
+            {
+                return null;
+            }
         }
+
         private void FrmConsultaCondicaoPagamento_Load(object sender, EventArgs e)
         {
             // TODO: esta linha de código carrega dados na tabela 'sistemaMoto2DataSetCondicaoPagamento.condicaoPagamento'. Você pode movê-la ou removê-la conforme necessário.

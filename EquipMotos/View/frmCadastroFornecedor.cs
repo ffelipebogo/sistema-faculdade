@@ -16,7 +16,6 @@ namespace EquipMotos.Codigo.View
         Fornecedores Fornecedor = new Fornecedores();
         public static object cidade = null;
         public static object condPagamento = null;
-        
         public frmCadastroFornecedor()
         {
             InitializeComponent();
@@ -79,7 +78,7 @@ namespace EquipMotos.Codigo.View
                     Fornecedor.limiteCredito = Double.Parse(txtLimiteCredito.Text, NumberStyles.Any);
                     Fornecedor.observacoes = txtObservacao.Text;
                     
-                    Fornecedor.usuario = txtUsuario.Text;
+                    Fornecedor.usuario = UsuarioLogado.Usuario;
                     Fornecedor.fisico = rbFisica.Checked;
 
                     if (btnSalvar.Text == "ALTERAR")
@@ -291,17 +290,46 @@ namespace EquipMotos.Codigo.View
                 txtFornecedor.Focus();
                 return false;
             }
+            if (txtFornecedor.Text.Trim().Length > 100)
+            {
+                MessageBox.Show("Não é possivel inserir este fornecedor", "Informe o fornecedor com menos de 100 caracteres!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtFornecedor.Focus();
+                return false;
+            }
             if (String.IsNullOrEmpty(txtFornecedor.Text.Trim()))
             {
                 MessageBox.Show("Faltou informar o Fornecedor", "Informe o Fornecedor!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txtFornecedor.Focus();
                 return false;
             }
-
+            if (!MaskForm.ValidaTexto(txtFornecedor.Text))
+            {
+                MessageBox.Show("Fornecedor inválido!", "Fornecedor não pode conter numeros!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtFornecedor.Focus();
+                return false;
+            }
+            if (txtEndereco.Text.Trim().Length > 100)
+            {
+                MessageBox.Show("Não é possivel inserir este endereço", "Informe o endereço com menos de 100 caracteres!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtEndereco.Focus();
+                return false;
+            }
             if (String.IsNullOrEmpty(txtEndereco.Text.Trim()))
             {
                 MessageBox.Show("Faltou informar o Endereço", "Informe o Endereço!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txtEndereco.Focus();
+                return false;
+            }
+            if (!MaskForm.ValidaTexto(txtEndereco.Text))
+            {
+                MessageBox.Show("Endereço inválido!", "Endereço não pode conter numeros!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtEndereco.Focus();
+                return false;
+            }
+            if (txtBairro.Text.Trim().Length > 100)
+            {
+                MessageBox.Show("Não é possivel inserir este bairro", "Informe o bairro com menos de 100 caracteres!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtBairro.Focus();
                 return false;
             }
             if (String.IsNullOrEmpty(txtBairro.Text.Trim()))
@@ -310,19 +338,25 @@ namespace EquipMotos.Codigo.View
                 txtBairro.Focus();
                 return false;
             }
-            if (txtCep.Text.Trim().Length < 8)
+            if (!MaskForm.ValidaTexto(txtBairro.Text))
             {
-                MessageBox.Show("CEP inválido, é necessário no minímo 8 números.", "Informe o CEP!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Bairro inválido!", "Bairro não pode conter numeros!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtBairro.Focus();
+                return false;
+            }
+            if (txtCep.Text.Trim().Length > 8)
+            {
+                MessageBox.Show("CEP inválido, é necessário no minímo 10 números.", "Informe o CEP!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txtCep.Focus();
                 return false;
             }
-            if (txtIdCidade.Text.Trim() == String.Empty & txtIdCidade.Text.Length < 0)
+            if (String.IsNullOrEmpty(txtIdCidade.Text.Trim()) & txtIdCidade.Text.Length < 0)
             {
                 MessageBox.Show("Faltou informar o Cidade", "Informe o Cidade!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txtIdCidade.Focus();
                 return false;
             }
-            if (txtCelular.Text.Trim() == String.Empty & txtCelular.Text.Length < 11)
+            if (String.IsNullOrEmpty(txtCelular.Text.Trim()) & txtCelular.Text.Length < 11)
             {
                 MessageBox.Show("Faltou informar o Celular", "Informe o Celular!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txtCelular.Focus();
@@ -334,7 +368,7 @@ namespace EquipMotos.Codigo.View
                 txtLimiteCredito.Focus();
                 return false;
             }
-            if (txtCodCondicao.Text.Trim() == String.Empty)
+            if (string.IsNullOrEmpty(txtCodCondicao.Text.Trim()))
             {
                 txtCodCondicao.Text = "0";
             }

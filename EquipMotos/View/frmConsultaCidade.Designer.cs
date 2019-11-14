@@ -34,13 +34,13 @@
             this.btnBuscarCidade = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.gvCidade = new System.Windows.Forms.DataGridView();
+            this.cidadesBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.sistemaMoto2DataSetCidade = new EquipMotos.SistemaMoto2DataSetCidade();
             this.btnExcluir = new System.Windows.Forms.Button();
             this.btnVoltar = new System.Windows.Forms.Button();
             this.btnAlterar = new System.Windows.Forms.Button();
             this.btnNovo = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
-            this.sistemaMoto2DataSetCidade = new EquipMotos.SistemaMoto2DataSetCidade();
-            this.cidadesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.cidadesTableAdapter = new EquipMotos.SistemaMoto2DataSetCidadeTableAdapters.cidadesTableAdapter();
             this.codigoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -50,8 +50,8 @@
             this.usuarioDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.btnBuscarCidade)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvCidade)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sistemaMoto2DataSetCidade)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cidadesBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sistemaMoto2DataSetCidade)).BeginInit();
             this.SuspendLayout();
             // 
             // txtPesquisar
@@ -128,6 +128,16 @@
             this.gvCidade.Size = new System.Drawing.Size(602, 303);
             this.gvCidade.TabIndex = 260;
             // 
+            // cidadesBindingSource
+            // 
+            this.cidadesBindingSource.DataMember = "cidades";
+            this.cidadesBindingSource.DataSource = this.sistemaMoto2DataSetCidade;
+            // 
+            // sistemaMoto2DataSetCidade
+            // 
+            this.sistemaMoto2DataSetCidade.DataSetName = "SistemaMoto2DataSetCidade";
+            this.sistemaMoto2DataSetCidade.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
             // btnExcluir
             // 
             this.btnExcluir.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -199,16 +209,6 @@
             this.label2.TabIndex = 265;
             this.label2.Text = "Lista de Cidades";
             // 
-            // sistemaMoto2DataSetCidade
-            // 
-            this.sistemaMoto2DataSetCidade.DataSetName = "SistemaMoto2DataSetCidade";
-            this.sistemaMoto2DataSetCidade.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // cidadesBindingSource
-            // 
-            this.cidadesBindingSource.DataMember = "cidades";
-            this.cidadesBindingSource.DataSource = this.sistemaMoto2DataSetCidade;
-            // 
             // cidadesTableAdapter
             // 
             this.cidadesTableAdapter.ClearBeforeFill = true;
@@ -216,7 +216,7 @@
             // codigoDataGridViewTextBoxColumn
             // 
             this.codigoDataGridViewTextBoxColumn.DataPropertyName = "codigo";
-            this.codigoDataGridViewTextBoxColumn.HeaderText = "codigo";
+            this.codigoDataGridViewTextBoxColumn.HeaderText = "Codigo";
             this.codigoDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.codigoDataGridViewTextBoxColumn.Name = "codigoDataGridViewTextBoxColumn";
             this.codigoDataGridViewTextBoxColumn.ReadOnly = true;
@@ -225,7 +225,7 @@
             // dataGridViewTextBoxColumn1
             // 
             this.dataGridViewTextBoxColumn1.DataPropertyName = "cidade";
-            this.dataGridViewTextBoxColumn1.HeaderText = "cidade";
+            this.dataGridViewTextBoxColumn1.HeaderText = "Cidade";
             this.dataGridViewTextBoxColumn1.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
             this.dataGridViewTextBoxColumn1.ReadOnly = true;
@@ -234,7 +234,7 @@
             // codEstadoDataGridViewTextBoxColumn
             // 
             this.codEstadoDataGridViewTextBoxColumn.DataPropertyName = "codEstado";
-            this.codEstadoDataGridViewTextBoxColumn.HeaderText = "codEstado";
+            this.codEstadoDataGridViewTextBoxColumn.HeaderText = "Codigo Estado";
             this.codEstadoDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.codEstadoDataGridViewTextBoxColumn.Name = "codEstadoDataGridViewTextBoxColumn";
             this.codEstadoDataGridViewTextBoxColumn.ReadOnly = true;
@@ -243,7 +243,7 @@
             // dtAlteracaoDataGridViewTextBoxColumn
             // 
             this.dtAlteracaoDataGridViewTextBoxColumn.DataPropertyName = "dtAlteracao";
-            this.dtAlteracaoDataGridViewTextBoxColumn.HeaderText = "dtAlteracao";
+            this.dtAlteracaoDataGridViewTextBoxColumn.HeaderText = "Data Alteração";
             this.dtAlteracaoDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.dtAlteracaoDataGridViewTextBoxColumn.Name = "dtAlteracaoDataGridViewTextBoxColumn";
             this.dtAlteracaoDataGridViewTextBoxColumn.ReadOnly = true;
@@ -252,7 +252,7 @@
             // dtCadastroDataGridViewTextBoxColumn
             // 
             this.dtCadastroDataGridViewTextBoxColumn.DataPropertyName = "dtCadastro";
-            this.dtCadastroDataGridViewTextBoxColumn.HeaderText = "dtCadastro";
+            this.dtCadastroDataGridViewTextBoxColumn.HeaderText = "Data Cadastro";
             this.dtCadastroDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.dtCadastroDataGridViewTextBoxColumn.Name = "dtCadastroDataGridViewTextBoxColumn";
             this.dtCadastroDataGridViewTextBoxColumn.ReadOnly = true;
@@ -261,7 +261,7 @@
             // usuarioDataGridViewTextBoxColumn
             // 
             this.usuarioDataGridViewTextBoxColumn.DataPropertyName = "usuario";
-            this.usuarioDataGridViewTextBoxColumn.HeaderText = "usuario";
+            this.usuarioDataGridViewTextBoxColumn.HeaderText = "Usuario";
             this.usuarioDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.usuarioDataGridViewTextBoxColumn.Name = "usuarioDataGridViewTextBoxColumn";
             this.usuarioDataGridViewTextBoxColumn.ReadOnly = true;
@@ -290,8 +290,8 @@
             this.Load += new System.EventHandler(this.FrmConsultaCidade_Load);
             ((System.ComponentModel.ISupportInitialize)(this.btnBuscarCidade)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvCidade)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sistemaMoto2DataSetCidade)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cidadesBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sistemaMoto2DataSetCidade)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

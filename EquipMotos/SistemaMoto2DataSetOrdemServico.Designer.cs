@@ -279,19 +279,17 @@ namespace EquipMotos {
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
         public partial class ordemServicosDataTable : global::System.Data.TypedTableBase<ordemServicosRow> {
             
-            private global::System.Data.DataColumn columnnumeroOS;
+            private global::System.Data.DataColumn columnnrNota;
             
-            private global::System.Data.DataColumn columndataOS;
+            private global::System.Data.DataColumn columnmodelo;
+            
+            private global::System.Data.DataColumn columnserie;
             
             private global::System.Data.DataColumn columncodCliente;
             
             private global::System.Data.DataColumn columncodVeiculo;
             
-            private global::System.Data.DataColumn columncodProduto;
-            
-            private global::System.Data.DataColumn columncodServico;
-            
-            private global::System.Data.DataColumn columncodFuncionario;
+            private global::System.Data.DataColumn columndata;
             
             private global::System.Data.DataColumn columnano;
             
@@ -301,13 +299,11 @@ namespace EquipMotos {
             
             private global::System.Data.DataColumn columncor;
             
-            private global::System.Data.DataColumn columnqtd;
-            
-            private global::System.Data.DataColumn columnvalorProd;
+            private global::System.Data.DataColumn columnvalorProduto;
             
             private global::System.Data.DataColumn columndesconto;
             
-            private global::System.Data.DataColumn columnvalorServ;
+            private global::System.Data.DataColumn columnvalorServico;
             
             private global::System.Data.DataColumn columnvalorTotal;
             
@@ -356,17 +352,25 @@ namespace EquipMotos {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn numeroOSColumn {
+            public global::System.Data.DataColumn nrNotaColumn {
                 get {
-                    return this.columnnumeroOS;
+                    return this.columnnrNota;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn dataOSColumn {
+            public global::System.Data.DataColumn modeloColumn {
                 get {
-                    return this.columndataOS;
+                    return this.columnmodelo;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn serieColumn {
+                get {
+                    return this.columnserie;
                 }
             }
             
@@ -388,25 +392,9 @@ namespace EquipMotos {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn codProdutoColumn {
+            public global::System.Data.DataColumn dataColumn {
                 get {
-                    return this.columncodProduto;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn codServicoColumn {
-                get {
-                    return this.columncodServico;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn codFuncionarioColumn {
-                get {
-                    return this.columncodFuncionario;
+                    return this.columndata;
                 }
             }
             
@@ -444,17 +432,9 @@ namespace EquipMotos {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn qtdColumn {
+            public global::System.Data.DataColumn valorProdutoColumn {
                 get {
-                    return this.columnqtd;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn valorProdColumn {
-                get {
-                    return this.columnvalorProd;
+                    return this.columnvalorProduto;
                 }
             }
             
@@ -468,9 +448,9 @@ namespace EquipMotos {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn valorServColumn {
+            public global::System.Data.DataColumn valorServicoColumn {
                 get {
-                    return this.columnvalorServ;
+                    return this.columnvalorServico;
                 }
             }
             
@@ -560,21 +540,19 @@ namespace EquipMotos {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public ordemServicosRow AddordemServicosRow(
-                        System.DateTime dataOS, 
+                        string modelo, 
+                        string serie, 
                         int codCliente, 
                         int codVeiculo, 
-                        int codProduto, 
-                        int codServico, 
-                        int codFuncionario, 
+                        System.DateTime data, 
                         string ano, 
                         string placa, 
                         string km, 
                         string cor, 
-                        int qtd, 
-                        double valorProd, 
-                        double desconto, 
-                        double valorServ, 
-                        double valorTotal, 
+                        decimal valorProduto, 
+                        decimal desconto, 
+                        decimal valorServico, 
+                        decimal valorTotal, 
                         int codCondPagamento, 
                         string observacoes, 
                         System.DateTime dtCadastro, 
@@ -583,20 +561,18 @@ namespace EquipMotos {
                 ordemServicosRow rowordemServicosRow = ((ordemServicosRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
-                        dataOS,
+                        modelo,
+                        serie,
                         codCliente,
                         codVeiculo,
-                        codProduto,
-                        codServico,
-                        codFuncionario,
+                        data,
                         ano,
                         placa,
                         km,
                         cor,
-                        qtd,
-                        valorProd,
+                        valorProduto,
                         desconto,
-                        valorServ,
+                        valorServico,
                         valorTotal,
                         codCondPagamento,
                         observacoes,
@@ -610,9 +586,9 @@ namespace EquipMotos {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public ordemServicosRow FindBynumeroOS(int numeroOS) {
+            public ordemServicosRow FindBynrNota(int nrNota) {
                 return ((ordemServicosRow)(this.Rows.Find(new object[] {
-                            numeroOS})));
+                            nrNota})));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -632,21 +608,19 @@ namespace EquipMotos {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             internal void InitVars() {
-                this.columnnumeroOS = base.Columns["numeroOS"];
-                this.columndataOS = base.Columns["dataOS"];
+                this.columnnrNota = base.Columns["nrNota"];
+                this.columnmodelo = base.Columns["modelo"];
+                this.columnserie = base.Columns["serie"];
                 this.columncodCliente = base.Columns["codCliente"];
                 this.columncodVeiculo = base.Columns["codVeiculo"];
-                this.columncodProduto = base.Columns["codProduto"];
-                this.columncodServico = base.Columns["codServico"];
-                this.columncodFuncionario = base.Columns["codFuncionario"];
+                this.columndata = base.Columns["data"];
                 this.columnano = base.Columns["ano"];
                 this.columnplaca = base.Columns["placa"];
                 this.columnkm = base.Columns["km"];
                 this.columncor = base.Columns["cor"];
-                this.columnqtd = base.Columns["qtd"];
-                this.columnvalorProd = base.Columns["valorProd"];
+                this.columnvalorProduto = base.Columns["valorProduto"];
                 this.columndesconto = base.Columns["desconto"];
-                this.columnvalorServ = base.Columns["valorServ"];
+                this.columnvalorServico = base.Columns["valorServico"];
                 this.columnvalorTotal = base.Columns["valorTotal"];
                 this.columncodCondPagamento = base.Columns["codCondPagamento"];
                 this.columnobservacoes = base.Columns["observacoes"];
@@ -658,20 +632,18 @@ namespace EquipMotos {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             private void InitClass() {
-                this.columnnumeroOS = new global::System.Data.DataColumn("numeroOS", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnnumeroOS);
-                this.columndataOS = new global::System.Data.DataColumn("dataOS", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columndataOS);
+                this.columnnrNota = new global::System.Data.DataColumn("nrNota", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnnrNota);
+                this.columnmodelo = new global::System.Data.DataColumn("modelo", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnmodelo);
+                this.columnserie = new global::System.Data.DataColumn("serie", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnserie);
                 this.columncodCliente = new global::System.Data.DataColumn("codCliente", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columncodCliente);
                 this.columncodVeiculo = new global::System.Data.DataColumn("codVeiculo", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columncodVeiculo);
-                this.columncodProduto = new global::System.Data.DataColumn("codProduto", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columncodProduto);
-                this.columncodServico = new global::System.Data.DataColumn("codServico", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columncodServico);
-                this.columncodFuncionario = new global::System.Data.DataColumn("codFuncionario", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columncodFuncionario);
+                this.columndata = new global::System.Data.DataColumn("data", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columndata);
                 this.columnano = new global::System.Data.DataColumn("ano", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnano);
                 this.columnplaca = new global::System.Data.DataColumn("placa", typeof(string), null, global::System.Data.MappingType.Element);
@@ -680,15 +652,13 @@ namespace EquipMotos {
                 base.Columns.Add(this.columnkm);
                 this.columncor = new global::System.Data.DataColumn("cor", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columncor);
-                this.columnqtd = new global::System.Data.DataColumn("qtd", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnqtd);
-                this.columnvalorProd = new global::System.Data.DataColumn("valorProd", typeof(double), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnvalorProd);
-                this.columndesconto = new global::System.Data.DataColumn("desconto", typeof(double), null, global::System.Data.MappingType.Element);
+                this.columnvalorProduto = new global::System.Data.DataColumn("valorProduto", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnvalorProduto);
+                this.columndesconto = new global::System.Data.DataColumn("desconto", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columndesconto);
-                this.columnvalorServ = new global::System.Data.DataColumn("valorServ", typeof(double), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnvalorServ);
-                this.columnvalorTotal = new global::System.Data.DataColumn("valorTotal", typeof(double), null, global::System.Data.MappingType.Element);
+                this.columnvalorServico = new global::System.Data.DataColumn("valorServico", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnvalorServico);
+                this.columnvalorTotal = new global::System.Data.DataColumn("valorTotal", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnvalorTotal);
                 this.columncodCondPagamento = new global::System.Data.DataColumn("codCondPagamento", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columncodCondPagamento);
@@ -701,20 +671,26 @@ namespace EquipMotos {
                 this.columnusuario = new global::System.Data.DataColumn("usuario", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnusuario);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
-                                this.columnnumeroOS}, true));
-                this.columnnumeroOS.AutoIncrement = true;
-                this.columnnumeroOS.AutoIncrementSeed = -1;
-                this.columnnumeroOS.AutoIncrementStep = -1;
-                this.columnnumeroOS.AllowDBNull = false;
-                this.columnnumeroOS.ReadOnly = true;
-                this.columnnumeroOS.Unique = true;
-                this.columndataOS.AllowDBNull = false;
+                                this.columnnrNota}, true));
+                this.columnnrNota.AutoIncrement = true;
+                this.columnnrNota.AutoIncrementSeed = -1;
+                this.columnnrNota.AutoIncrementStep = -1;
+                this.columnnrNota.AllowDBNull = false;
+                this.columnnrNota.ReadOnly = true;
+                this.columnnrNota.Unique = true;
+                this.columnmodelo.AllowDBNull = false;
+                this.columnmodelo.MaxLength = 3;
+                this.columnserie.AllowDBNull = false;
+                this.columnserie.MaxLength = 2;
+                this.columncodCliente.AllowDBNull = false;
+                this.columncodVeiculo.AllowDBNull = false;
+                this.columndata.AllowDBNull = false;
                 this.columnano.MaxLength = 4;
                 this.columnplaca.MaxLength = 12;
-                this.columnkm.MaxLength = 2147483647;
-                this.columncor.MaxLength = 2147483647;
-                this.columnobservacoes.MaxLength = 2147483647;
-                this.columnusuario.MaxLength = 2147483647;
+                this.columnkm.MaxLength = 100;
+                this.columncor.MaxLength = 50;
+                this.columnobservacoes.MaxLength = 100;
+                this.columnusuario.MaxLength = 100;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -857,23 +833,34 @@ namespace EquipMotos {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public int numeroOS {
+            public int nrNota {
                 get {
-                    return ((int)(this[this.tableordemServicos.numeroOSColumn]));
+                    return ((int)(this[this.tableordemServicos.nrNotaColumn]));
                 }
                 set {
-                    this[this.tableordemServicos.numeroOSColumn] = value;
+                    this[this.tableordemServicos.nrNotaColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public System.DateTime dataOS {
+            public string modelo {
                 get {
-                    return ((global::System.DateTime)(this[this.tableordemServicos.dataOSColumn]));
+                    return ((string)(this[this.tableordemServicos.modeloColumn]));
                 }
                 set {
-                    this[this.tableordemServicos.dataOSColumn] = value;
+                    this[this.tableordemServicos.modeloColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string serie {
+                get {
+                    return ((string)(this[this.tableordemServicos.serieColumn]));
+                }
+                set {
+                    this[this.tableordemServicos.serieColumn] = value;
                 }
             }
             
@@ -881,12 +868,7 @@ namespace EquipMotos {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public int codCliente {
                 get {
-                    try {
-                        return ((int)(this[this.tableordemServicos.codClienteColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("O valor da coluna \'codCliente\' na tabela \'ordemServicos\' é DBNull.", e);
-                    }
+                    return ((int)(this[this.tableordemServicos.codClienteColumn]));
                 }
                 set {
                     this[this.tableordemServicos.codClienteColumn] = value;
@@ -897,12 +879,7 @@ namespace EquipMotos {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public int codVeiculo {
                 get {
-                    try {
-                        return ((int)(this[this.tableordemServicos.codVeiculoColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("O valor da coluna \'codVeiculo\' na tabela \'ordemServicos\' é DBNull.", e);
-                    }
+                    return ((int)(this[this.tableordemServicos.codVeiculoColumn]));
                 }
                 set {
                     this[this.tableordemServicos.codVeiculoColumn] = value;
@@ -911,49 +888,12 @@ namespace EquipMotos {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public int codProduto {
+            public System.DateTime data {
                 get {
-                    try {
-                        return ((int)(this[this.tableordemServicos.codProdutoColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("O valor da coluna \'codProduto\' na tabela \'ordemServicos\' é DBNull.", e);
-                    }
+                    return ((global::System.DateTime)(this[this.tableordemServicos.dataColumn]));
                 }
                 set {
-                    this[this.tableordemServicos.codProdutoColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public int codServico {
-                get {
-                    try {
-                        return ((int)(this[this.tableordemServicos.codServicoColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("O valor da coluna \'codServico\' na tabela \'ordemServicos\' é DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableordemServicos.codServicoColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public int codFuncionario {
-                get {
-                    try {
-                        return ((int)(this[this.tableordemServicos.codFuncionarioColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("O valor da coluna \'codFuncionario\' na tabela \'ordemServicos\' é DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableordemServicos.codFuncionarioColumn] = value;
+                    this[this.tableordemServicos.dataColumn] = value;
                 }
             }
             
@@ -1023,42 +963,26 @@ namespace EquipMotos {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public int qtd {
+            public decimal valorProduto {
                 get {
                     try {
-                        return ((int)(this[this.tableordemServicos.qtdColumn]));
+                        return ((decimal)(this[this.tableordemServicos.valorProdutoColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("O valor da coluna \'qtd\' na tabela \'ordemServicos\' é DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("O valor da coluna \'valorProduto\' na tabela \'ordemServicos\' é DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableordemServicos.qtdColumn] = value;
+                    this[this.tableordemServicos.valorProdutoColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public double valorProd {
+            public decimal desconto {
                 get {
                     try {
-                        return ((double)(this[this.tableordemServicos.valorProdColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("O valor da coluna \'valorProd\' na tabela \'ordemServicos\' é DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableordemServicos.valorProdColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public double desconto {
-                get {
-                    try {
-                        return ((double)(this[this.tableordemServicos.descontoColumn]));
+                        return ((decimal)(this[this.tableordemServicos.descontoColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("O valor da coluna \'desconto\' na tabela \'ordemServicos\' é DBNull.", e);
@@ -1071,26 +995,26 @@ namespace EquipMotos {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public double valorServ {
+            public decimal valorServico {
                 get {
                     try {
-                        return ((double)(this[this.tableordemServicos.valorServColumn]));
+                        return ((decimal)(this[this.tableordemServicos.valorServicoColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("O valor da coluna \'valorServ\' na tabela \'ordemServicos\' é DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("O valor da coluna \'valorServico\' na tabela \'ordemServicos\' é DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableordemServicos.valorServColumn] = value;
+                    this[this.tableordemServicos.valorServicoColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public double valorTotal {
+            public decimal valorTotal {
                 get {
                     try {
-                        return ((double)(this[this.tableordemServicos.valorTotalColumn]));
+                        return ((decimal)(this[this.tableordemServicos.valorTotalColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("O valor da coluna \'valorTotal\' na tabela \'ordemServicos\' é DBNull.", e);
@@ -1183,66 +1107,6 @@ namespace EquipMotos {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IscodClienteNull() {
-                return this.IsNull(this.tableordemServicos.codClienteColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetcodClienteNull() {
-                this[this.tableordemServicos.codClienteColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IscodVeiculoNull() {
-                return this.IsNull(this.tableordemServicos.codVeiculoColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetcodVeiculoNull() {
-                this[this.tableordemServicos.codVeiculoColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IscodProdutoNull() {
-                return this.IsNull(this.tableordemServicos.codProdutoColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetcodProdutoNull() {
-                this[this.tableordemServicos.codProdutoColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IscodServicoNull() {
-                return this.IsNull(this.tableordemServicos.codServicoColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetcodServicoNull() {
-                this[this.tableordemServicos.codServicoColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IscodFuncionarioNull() {
-                return this.IsNull(this.tableordemServicos.codFuncionarioColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetcodFuncionarioNull() {
-                this[this.tableordemServicos.codFuncionarioColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool IsanoNull() {
                 return this.IsNull(this.tableordemServicos.anoColumn);
             }
@@ -1291,26 +1155,14 @@ namespace EquipMotos {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsqtdNull() {
-                return this.IsNull(this.tableordemServicos.qtdColumn);
+            public bool IsvalorProdutoNull() {
+                return this.IsNull(this.tableordemServicos.valorProdutoColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetqtdNull() {
-                this[this.tableordemServicos.qtdColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsvalorProdNull() {
-                return this.IsNull(this.tableordemServicos.valorProdColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetvalorProdNull() {
-                this[this.tableordemServicos.valorProdColumn] = global::System.Convert.DBNull;
+            public void SetvalorProdutoNull() {
+                this[this.tableordemServicos.valorProdutoColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1327,14 +1179,14 @@ namespace EquipMotos {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsvalorServNull() {
-                return this.IsNull(this.tableordemServicos.valorServColumn);
+            public bool IsvalorServicoNull() {
+                return this.IsNull(this.tableordemServicos.valorServicoColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetvalorServNull() {
-                this[this.tableordemServicos.valorServColumn] = global::System.Convert.DBNull;
+            public void SetvalorServicoNull() {
+                this[this.tableordemServicos.valorServicoColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1569,21 +1421,19 @@ namespace EquipMotos.SistemaMoto2DataSetOrdemServicoTableAdapters {
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
             tableMapping.DataSetTable = "ordemServicos";
-            tableMapping.ColumnMappings.Add("numeroOS", "numeroOS");
-            tableMapping.ColumnMappings.Add("dataOS", "dataOS");
+            tableMapping.ColumnMappings.Add("nrNota", "nrNota");
+            tableMapping.ColumnMappings.Add("modelo", "modelo");
+            tableMapping.ColumnMappings.Add("serie", "serie");
             tableMapping.ColumnMappings.Add("codCliente", "codCliente");
             tableMapping.ColumnMappings.Add("codVeiculo", "codVeiculo");
-            tableMapping.ColumnMappings.Add("codProduto", "codProduto");
-            tableMapping.ColumnMappings.Add("codServico", "codServico");
-            tableMapping.ColumnMappings.Add("codFuncionario", "codFuncionario");
+            tableMapping.ColumnMappings.Add("data", "data");
             tableMapping.ColumnMappings.Add("ano", "ano");
             tableMapping.ColumnMappings.Add("placa", "placa");
             tableMapping.ColumnMappings.Add("km", "km");
             tableMapping.ColumnMappings.Add("cor", "cor");
-            tableMapping.ColumnMappings.Add("qtd", "qtd");
-            tableMapping.ColumnMappings.Add("valorProd", "valorProd");
+            tableMapping.ColumnMappings.Add("valorProduto", "valorProduto");
             tableMapping.ColumnMappings.Add("desconto", "desconto");
-            tableMapping.ColumnMappings.Add("valorServ", "valorServ");
+            tableMapping.ColumnMappings.Add("valorServico", "valorServico");
             tableMapping.ColumnMappings.Add("valorTotal", "valorTotal");
             tableMapping.ColumnMappings.Add("codCondPagamento", "codCondPagamento");
             tableMapping.ColumnMappings.Add("observacoes", "observacoes");
@@ -1593,78 +1443,58 @@ namespace EquipMotos.SistemaMoto2DataSetOrdemServicoTableAdapters {
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = "DELETE FROM [dbo].[ordemServicos] WHERE (([numeroOS] = @Original_numeroOS) AND ([" +
-                "dataOS] = @Original_dataOS) AND ((@IsNull_codCliente = 1 AND [codCliente] IS NUL" +
-                "L) OR ([codCliente] = @Original_codCliente)) AND ((@IsNull_codVeiculo = 1 AND [c" +
-                "odVeiculo] IS NULL) OR ([codVeiculo] = @Original_codVeiculo)) AND ((@IsNull_codP" +
-                "roduto = 1 AND [codProduto] IS NULL) OR ([codProduto] = @Original_codProduto)) A" +
-                "ND ((@IsNull_codServico = 1 AND [codServico] IS NULL) OR ([codServico] = @Origin" +
-                "al_codServico)) AND ((@IsNull_codFuncionario = 1 AND [codFuncionario] IS NULL) O" +
-                "R ([codFuncionario] = @Original_codFuncionario)) AND ((@IsNull_ano = 1 AND [ano]" +
-                " IS NULL) OR ([ano] = @Original_ano)) AND ((@IsNull_placa = 1 AND [placa] IS NUL" +
-                "L) OR ([placa] = @Original_placa)) AND ((@IsNull_qtd = 1 AND [qtd] IS NULL) OR (" +
-                "[qtd] = @Original_qtd)) AND ((@IsNull_valorProd = 1 AND [valorProd] IS NULL) OR " +
-                "([valorProd] = @Original_valorProd)) AND ((@IsNull_desconto = 1 AND [desconto] I" +
-                "S NULL) OR ([desconto] = @Original_desconto)) AND ((@IsNull_valorServ = 1 AND [v" +
-                "alorServ] IS NULL) OR ([valorServ] = @Original_valorServ)) AND ((@IsNull_valorTo" +
-                "tal = 1 AND [valorTotal] IS NULL) OR ([valorTotal] = @Original_valorTotal)) AND " +
-                "((@IsNull_codCondPagamento = 1 AND [codCondPagamento] IS NULL) OR ([codCondPagam" +
-                "ento] = @Original_codCondPagamento)) AND ((@IsNull_dtCadastro = 1 AND [dtCadastr" +
-                "o] IS NULL) OR ([dtCadastro] = @Original_dtCadastro)) AND ((@IsNull_dtAlteracao " +
-                "= 1 AND [dtAlteracao] IS NULL) OR ([dtAlteracao] = @Original_dtAlteracao)))";
+            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [dbo].[ordemServicos] WHERE (([nrNota] = @Original_nrNota) AND ([modelo] = @Original_modelo) AND ([serie] = @Original_serie) AND ([codCliente] = @Original_codCliente) AND ([codVeiculo] = @Original_codVeiculo) AND ([data] = @Original_data) AND ((@IsNull_ano = 1 AND [ano] IS NULL) OR ([ano] = @Original_ano)) AND ((@IsNull_placa = 1 AND [placa] IS NULL) OR ([placa] = @Original_placa)) AND ((@IsNull_km = 1 AND [km] IS NULL) OR ([km] = @Original_km)) AND ((@IsNull_cor = 1 AND [cor] IS NULL) OR ([cor] = @Original_cor)) AND ((@IsNull_valorProduto = 1 AND [valorProduto] IS NULL) OR ([valorProduto] = @Original_valorProduto)) AND ((@IsNull_desconto = 1 AND [desconto] IS NULL) OR ([desconto] = @Original_desconto)) AND ((@IsNull_valorServico = 1 AND [valorServico] IS NULL) OR ([valorServico] = @Original_valorServico)) AND ((@IsNull_valorTotal = 1 AND [valorTotal] IS NULL) OR ([valorTotal] = @Original_valorTotal)) AND ((@IsNull_codCondPagamento = 1 AND [codCondPagamento] IS NULL) OR ([codCondPagamento] = @Original_codCondPagamento)) AND ((@IsNull_observacoes = 1 AND [observacoes] IS NULL) OR ([observacoes] = @Original_observacoes)) AND ((@IsNull_dtCadastro = 1 AND [dtCadastro] IS NULL) OR ([dtCadastro] = @Original_dtCadastro)) AND ((@IsNull_dtAlteracao = 1 AND [dtAlteracao] IS NULL) OR ([dtAlteracao] = @Original_dtAlteracao)) AND ((@IsNull_usuario = 1 AND [usuario] IS NULL) OR ([usuario] = @Original_usuario)))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_numeroOS", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "numeroOS", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_dataOS", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "dataOS", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_codCliente", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "codCliente", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_nrNota", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "nrNota", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_modelo", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "modelo", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_serie", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "serie", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_codCliente", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "codCliente", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_codVeiculo", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "codVeiculo", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_codVeiculo", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "codVeiculo", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_codProduto", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "codProduto", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_codProduto", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "codProduto", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_codServico", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "codServico", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_codServico", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "codServico", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_codFuncionario", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "codFuncionario", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_codFuncionario", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "codFuncionario", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_data", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "data", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_ano", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ano", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ano", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ano", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_placa", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "placa", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_placa", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "placa", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_qtd", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "qtd", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_qtd", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "qtd", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_valorProd", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "valorProd", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_valorProd", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "valorProd", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_km", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "km", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_km", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "km", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_cor", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "cor", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_cor", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "cor", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_valorProduto", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "valorProduto", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_valorProduto", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "valorProduto", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_desconto", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "desconto", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_desconto", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "desconto", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_valorServ", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "valorServ", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_valorServ", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "valorServ", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_desconto", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "desconto", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_valorServico", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "valorServico", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_valorServico", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "valorServico", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_valorTotal", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "valorTotal", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_valorTotal", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "valorTotal", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_valorTotal", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "valorTotal", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_codCondPagamento", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "codCondPagamento", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_codCondPagamento", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "codCondPagamento", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_observacoes", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "observacoes", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_observacoes", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "observacoes", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_dtCadastro", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "dtCadastro", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_dtCadastro", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "dtCadastro", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_dtAlteracao", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "dtAlteracao", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_dtAlteracao", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "dtAlteracao", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_usuario", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "usuario", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_usuario", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "usuario", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[ordemServicos] ([dataOS], [codCliente], [codVeiculo], [codProduto], [codServico], [codFuncionario], [ano], [placa], [km], [cor], [qtd], [valorProd], [desconto], [valorServ], [valorTotal], [codCondPagamento], [observacoes], [dtCadastro], [dtAlteracao], [usuario]) VALUES (@dataOS, @codCliente, @codVeiculo, @codProduto, @codServico, @codFuncionario, @ano, @placa, @km, @cor, @qtd, @valorProd, @desconto, @valorServ, @valorTotal, @codCondPagamento, @observacoes, @dtCadastro, @dtAlteracao, @usuario);
-SELECT numeroOS, dataOS, codCliente, codVeiculo, codProduto, codServico, codFuncionario, ano, placa, km, cor, qtd, valorProd, desconto, valorServ, valorTotal, codCondPagamento, observacoes, dtCadastro, dtAlteracao, usuario FROM ordemServicos WHERE (numeroOS = SCOPE_IDENTITY())";
+            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[ordemServicos] ([modelo], [serie], [codCliente], [codVeiculo], [data], [ano], [placa], [km], [cor], [valorProduto], [desconto], [valorServico], [valorTotal], [codCondPagamento], [observacoes], [dtCadastro], [dtAlteracao], [usuario]) VALUES (@modelo, @serie, @codCliente, @codVeiculo, @data, @ano, @placa, @km, @cor, @valorProduto, @desconto, @valorServico, @valorTotal, @codCondPagamento, @observacoes, @dtCadastro, @dtAlteracao, @usuario);
+SELECT nrNota, modelo, serie, codCliente, codVeiculo, data, ano, placa, km, cor, valorProduto, desconto, valorServico, valorTotal, codCondPagamento, observacoes, dtCadastro, dtAlteracao, usuario FROM ordemServicos WHERE (nrNota = SCOPE_IDENTITY())";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@dataOS", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "dataOS", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@modelo", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "modelo", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@serie", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "serie", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@codCliente", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "codCliente", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@codVeiculo", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "codVeiculo", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@codProduto", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "codProduto", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@codServico", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "codServico", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@codFuncionario", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "codFuncionario", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@data", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "data", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ano", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ano", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@placa", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "placa", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@km", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "km", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@cor", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "cor", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@qtd", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "qtd", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@valorProd", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "valorProd", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@desconto", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "desconto", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@valorServ", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "valorServ", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@valorTotal", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "valorTotal", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@valorProduto", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "valorProduto", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@desconto", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "desconto", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@valorServico", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "valorServico", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@valorTotal", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "valorTotal", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@codCondPagamento", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "codCondPagamento", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@observacoes", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "observacoes", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@dtCadastro", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "dtCadastro", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -1672,89 +1502,85 @@ SELECT numeroOS, dataOS, codCliente, codVeiculo, codProduto, codServico, codFunc
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@usuario", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "usuario", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = "UPDATE [dbo].[ordemServicos] SET [dataOS] = @dataOS, [codCliente] = @codCliente, " +
-                "[codVeiculo] = @codVeiculo, [codProduto] = @codProduto, [codServico] = @codServi" +
-                "co, [codFuncionario] = @codFuncionario, [ano] = @ano, [placa] = @placa, [km] = @" +
-                "km, [cor] = @cor, [qtd] = @qtd, [valorProd] = @valorProd, [desconto] = @desconto" +
-                ", [valorServ] = @valorServ, [valorTotal] = @valorTotal, [codCondPagamento] = @co" +
-                "dCondPagamento, [observacoes] = @observacoes, [dtCadastro] = @dtCadastro, [dtAlt" +
-                "eracao] = @dtAlteracao, [usuario] = @usuario WHERE (([numeroOS] = @Original_nume" +
-                "roOS) AND ([dataOS] = @Original_dataOS) AND ((@IsNull_codCliente = 1 AND [codCli" +
-                "ente] IS NULL) OR ([codCliente] = @Original_codCliente)) AND ((@IsNull_codVeicul" +
-                "o = 1 AND [codVeiculo] IS NULL) OR ([codVeiculo] = @Original_codVeiculo)) AND ((" +
-                "@IsNull_codProduto = 1 AND [codProduto] IS NULL) OR ([codProduto] = @Original_co" +
-                "dProduto)) AND ((@IsNull_codServico = 1 AND [codServico] IS NULL) OR ([codServic" +
-                "o] = @Original_codServico)) AND ((@IsNull_codFuncionario = 1 AND [codFuncionario" +
-                "] IS NULL) OR ([codFuncionario] = @Original_codFuncionario)) AND ((@IsNull_ano =" +
-                " 1 AND [ano] IS NULL) OR ([ano] = @Original_ano)) AND ((@IsNull_placa = 1 AND [p" +
-                "laca] IS NULL) OR ([placa] = @Original_placa)) AND ((@IsNull_qtd = 1 AND [qtd] I" +
-                "S NULL) OR ([qtd] = @Original_qtd)) AND ((@IsNull_valorProd = 1 AND [valorProd] " +
-                "IS NULL) OR ([valorProd] = @Original_valorProd)) AND ((@IsNull_desconto = 1 AND " +
-                "[desconto] IS NULL) OR ([desconto] = @Original_desconto)) AND ((@IsNull_valorSer" +
-                "v = 1 AND [valorServ] IS NULL) OR ([valorServ] = @Original_valorServ)) AND ((@Is" +
-                "Null_valorTotal = 1 AND [valorTotal] IS NULL) OR ([valorTotal] = @Original_valor" +
-                "Total)) AND ((@IsNull_codCondPagamento = 1 AND [codCondPagamento] IS NULL) OR ([" +
-                "codCondPagamento] = @Original_codCondPagamento)) AND ((@IsNull_dtCadastro = 1 AN" +
-                "D [dtCadastro] IS NULL) OR ([dtCadastro] = @Original_dtCadastro)) AND ((@IsNull_" +
-                "dtAlteracao = 1 AND [dtAlteracao] IS NULL) OR ([dtAlteracao] = @Original_dtAlter" +
-                "acao)));\r\nSELECT numeroOS, dataOS, codCliente, codVeiculo, codProduto, codServic" +
-                "o, codFuncionario, ano, placa, km, cor, qtd, valorProd, desconto, valorServ, val" +
-                "orTotal, codCondPagamento, observacoes, dtCadastro, dtAlteracao, usuario FROM or" +
-                "demServicos WHERE (numeroOS = @numeroOS)";
+            this._adapter.UpdateCommand.CommandText = "UPDATE [dbo].[ordemServicos] SET [modelo] = @modelo, [serie] = @serie, [codClient" +
+                "e] = @codCliente, [codVeiculo] = @codVeiculo, [data] = @data, [ano] = @ano, [pla" +
+                "ca] = @placa, [km] = @km, [cor] = @cor, [valorProduto] = @valorProduto, [descont" +
+                "o] = @desconto, [valorServico] = @valorServico, [valorTotal] = @valorTotal, [cod" +
+                "CondPagamento] = @codCondPagamento, [observacoes] = @observacoes, [dtCadastro] =" +
+                " @dtCadastro, [dtAlteracao] = @dtAlteracao, [usuario] = @usuario WHERE (([nrNota" +
+                "] = @Original_nrNota) AND ([modelo] = @Original_modelo) AND ([serie] = @Original" +
+                "_serie) AND ([codCliente] = @Original_codCliente) AND ([codVeiculo] = @Original_" +
+                "codVeiculo) AND ([data] = @Original_data) AND ((@IsNull_ano = 1 AND [ano] IS NUL" +
+                "L) OR ([ano] = @Original_ano)) AND ((@IsNull_placa = 1 AND [placa] IS NULL) OR (" +
+                "[placa] = @Original_placa)) AND ((@IsNull_km = 1 AND [km] IS NULL) OR ([km] = @O" +
+                "riginal_km)) AND ((@IsNull_cor = 1 AND [cor] IS NULL) OR ([cor] = @Original_cor)" +
+                ") AND ((@IsNull_valorProduto = 1 AND [valorProduto] IS NULL) OR ([valorProduto] " +
+                "= @Original_valorProduto)) AND ((@IsNull_desconto = 1 AND [desconto] IS NULL) OR" +
+                " ([desconto] = @Original_desconto)) AND ((@IsNull_valorServico = 1 AND [valorSer" +
+                "vico] IS NULL) OR ([valorServico] = @Original_valorServico)) AND ((@IsNull_valor" +
+                "Total = 1 AND [valorTotal] IS NULL) OR ([valorTotal] = @Original_valorTotal)) AN" +
+                "D ((@IsNull_codCondPagamento = 1 AND [codCondPagamento] IS NULL) OR ([codCondPag" +
+                "amento] = @Original_codCondPagamento)) AND ((@IsNull_observacoes = 1 AND [observ" +
+                "acoes] IS NULL) OR ([observacoes] = @Original_observacoes)) AND ((@IsNull_dtCada" +
+                "stro = 1 AND [dtCadastro] IS NULL) OR ([dtCadastro] = @Original_dtCadastro)) AND" +
+                " ((@IsNull_dtAlteracao = 1 AND [dtAlteracao] IS NULL) OR ([dtAlteracao] = @Origi" +
+                "nal_dtAlteracao)) AND ((@IsNull_usuario = 1 AND [usuario] IS NULL) OR ([usuario]" +
+                " = @Original_usuario)));\r\nSELECT nrNota, modelo, serie, codCliente, codVeiculo, " +
+                "data, ano, placa, km, cor, valorProduto, desconto, valorServico, valorTotal, cod" +
+                "CondPagamento, observacoes, dtCadastro, dtAlteracao, usuario FROM ordemServicos " +
+                "WHERE (nrNota = @nrNota)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@dataOS", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "dataOS", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@modelo", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "modelo", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@serie", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "serie", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@codCliente", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "codCliente", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@codVeiculo", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "codVeiculo", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@codProduto", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "codProduto", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@codServico", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "codServico", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@codFuncionario", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "codFuncionario", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@data", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "data", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ano", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ano", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@placa", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "placa", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@km", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "km", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@cor", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "cor", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@qtd", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "qtd", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@valorProd", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "valorProd", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@desconto", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "desconto", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@valorServ", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "valorServ", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@valorTotal", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "valorTotal", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@valorProduto", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "valorProduto", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@desconto", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "desconto", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@valorServico", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "valorServico", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@valorTotal", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "valorTotal", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@codCondPagamento", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "codCondPagamento", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@observacoes", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "observacoes", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@dtCadastro", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "dtCadastro", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@dtAlteracao", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "dtAlteracao", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@usuario", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "usuario", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_numeroOS", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "numeroOS", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_dataOS", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "dataOS", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_codCliente", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "codCliente", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_nrNota", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "nrNota", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_modelo", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "modelo", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_serie", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "serie", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_codCliente", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "codCliente", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_codVeiculo", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "codVeiculo", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_codVeiculo", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "codVeiculo", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_codProduto", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "codProduto", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_codProduto", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "codProduto", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_codServico", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "codServico", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_codServico", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "codServico", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_codFuncionario", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "codFuncionario", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_codFuncionario", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "codFuncionario", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_data", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "data", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_ano", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ano", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ano", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ano", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_placa", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "placa", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_placa", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "placa", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_qtd", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "qtd", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_qtd", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "qtd", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_valorProd", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "valorProd", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_valorProd", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "valorProd", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_km", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "km", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_km", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "km", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_cor", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "cor", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_cor", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "cor", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_valorProduto", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "valorProduto", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_valorProduto", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "valorProduto", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_desconto", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "desconto", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_desconto", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "desconto", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_valorServ", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "valorServ", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_valorServ", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "valorServ", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_desconto", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "desconto", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_valorServico", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "valorServico", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_valorServico", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "valorServico", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_valorTotal", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "valorTotal", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_valorTotal", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "valorTotal", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_valorTotal", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "valorTotal", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_codCondPagamento", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "codCondPagamento", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_codCondPagamento", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "codCondPagamento", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_observacoes", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "observacoes", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_observacoes", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "observacoes", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_dtCadastro", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "dtCadastro", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_dtCadastro", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "dtCadastro", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_dtAlteracao", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "dtAlteracao", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_dtAlteracao", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "dtAlteracao", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@numeroOS", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "numeroOS", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_usuario", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "usuario", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_usuario", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "usuario", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@nrNota", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "nrNota", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1770,10 +1596,9 @@ SELECT numeroOS, dataOS, codCliente, codVeiculo, codProduto, codServico, codFunc
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT numeroOS, dataOS, codCliente, codVeiculo, codProduto, codServico, codFunci" +
-                "onario, ano, placa, km, cor, qtd, valorProd, desconto, valorServ, valorTotal, co" +
-                "dCondPagamento, observacoes, dtCadastro, dtAlteracao, usuario FROM dbo.ordemServ" +
-                "icos";
+            this._commandCollection[0].CommandText = "SELECT nrNota, modelo, serie, codCliente, codVeiculo, data, ano, placa, km, cor, " +
+                "valorProduto, desconto, valorServico, valorTotal, codCondPagamento, observacoes," +
+                " dtCadastro, dtAlteracao, usuario FROM dbo.ordemServicos";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -1835,144 +1660,144 @@ SELECT numeroOS, dataOS, codCliente, codVeiculo, codProduto, codServico, codFunc
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
         public virtual int Delete(
-                    int Original_numeroOS, 
-                    System.DateTime Original_dataOS, 
-                    global::System.Nullable<int> Original_codCliente, 
-                    global::System.Nullable<int> Original_codVeiculo, 
-                    global::System.Nullable<int> Original_codProduto, 
-                    global::System.Nullable<int> Original_codServico, 
-                    global::System.Nullable<int> Original_codFuncionario, 
+                    int Original_nrNota, 
+                    string Original_modelo, 
+                    string Original_serie, 
+                    int Original_codCliente, 
+                    int Original_codVeiculo, 
+                    System.DateTime Original_data, 
                     string Original_ano, 
                     string Original_placa, 
-                    global::System.Nullable<int> Original_qtd, 
-                    global::System.Nullable<double> Original_valorProd, 
-                    global::System.Nullable<double> Original_desconto, 
-                    global::System.Nullable<double> Original_valorServ, 
-                    global::System.Nullable<double> Original_valorTotal, 
+                    string Original_km, 
+                    string Original_cor, 
+                    global::System.Nullable<decimal> Original_valorProduto, 
+                    global::System.Nullable<decimal> Original_desconto, 
+                    global::System.Nullable<decimal> Original_valorServico, 
+                    global::System.Nullable<decimal> Original_valorTotal, 
                     global::System.Nullable<int> Original_codCondPagamento, 
+                    string Original_observacoes, 
                     global::System.Nullable<global::System.DateTime> Original_dtCadastro, 
-                    global::System.Nullable<global::System.DateTime> Original_dtAlteracao) {
-            this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_numeroOS));
-            this.Adapter.DeleteCommand.Parameters[1].Value = ((System.DateTime)(Original_dataOS));
-            if ((Original_codCliente.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[2].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[3].Value = ((int)(Original_codCliente.Value));
+                    global::System.Nullable<global::System.DateTime> Original_dtAlteracao, 
+                    string Original_usuario) {
+            this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_nrNota));
+            if ((Original_modelo == null)) {
+                throw new global::System.ArgumentNullException("Original_modelo");
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[2].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[3].Value = global::System.DBNull.Value;
+                this.Adapter.DeleteCommand.Parameters[1].Value = ((string)(Original_modelo));
             }
-            if ((Original_codVeiculo.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[4].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[5].Value = ((int)(Original_codVeiculo.Value));
+            if ((Original_serie == null)) {
+                throw new global::System.ArgumentNullException("Original_serie");
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[4].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[5].Value = global::System.DBNull.Value;
+                this.Adapter.DeleteCommand.Parameters[2].Value = ((string)(Original_serie));
             }
-            if ((Original_codProduto.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[6].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[7].Value = ((int)(Original_codProduto.Value));
-            }
-            else {
+            this.Adapter.DeleteCommand.Parameters[3].Value = ((int)(Original_codCliente));
+            this.Adapter.DeleteCommand.Parameters[4].Value = ((int)(Original_codVeiculo));
+            this.Adapter.DeleteCommand.Parameters[5].Value = ((System.DateTime)(Original_data));
+            if ((Original_ano == null)) {
                 this.Adapter.DeleteCommand.Parameters[6].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[7].Value = global::System.DBNull.Value;
             }
-            if ((Original_codServico.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[8].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[9].Value = ((int)(Original_codServico.Value));
-            }
             else {
+                this.Adapter.DeleteCommand.Parameters[6].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[7].Value = ((string)(Original_ano));
+            }
+            if ((Original_placa == null)) {
                 this.Adapter.DeleteCommand.Parameters[8].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[9].Value = global::System.DBNull.Value;
             }
-            if ((Original_codFuncionario.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[10].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[11].Value = ((int)(Original_codFuncionario.Value));
-            }
             else {
+                this.Adapter.DeleteCommand.Parameters[8].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[9].Value = ((string)(Original_placa));
+            }
+            if ((Original_km == null)) {
                 this.Adapter.DeleteCommand.Parameters[10].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[11].Value = global::System.DBNull.Value;
             }
-            if ((Original_ano == null)) {
+            else {
+                this.Adapter.DeleteCommand.Parameters[10].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[11].Value = ((string)(Original_km));
+            }
+            if ((Original_cor == null)) {
                 this.Adapter.DeleteCommand.Parameters[12].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[13].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.DeleteCommand.Parameters[12].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[13].Value = ((string)(Original_ano));
+                this.Adapter.DeleteCommand.Parameters[13].Value = ((string)(Original_cor));
             }
-            if ((Original_placa == null)) {
+            if ((Original_valorProduto.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[14].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[15].Value = ((decimal)(Original_valorProduto.Value));
+            }
+            else {
                 this.Adapter.DeleteCommand.Parameters[14].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[15].Value = global::System.DBNull.Value;
             }
-            else {
-                this.Adapter.DeleteCommand.Parameters[14].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[15].Value = ((string)(Original_placa));
-            }
-            if ((Original_qtd.HasValue == true)) {
+            if ((Original_desconto.HasValue == true)) {
                 this.Adapter.DeleteCommand.Parameters[16].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[17].Value = ((int)(Original_qtd.Value));
+                this.Adapter.DeleteCommand.Parameters[17].Value = ((decimal)(Original_desconto.Value));
             }
             else {
                 this.Adapter.DeleteCommand.Parameters[16].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[17].Value = global::System.DBNull.Value;
             }
-            if ((Original_valorProd.HasValue == true)) {
+            if ((Original_valorServico.HasValue == true)) {
                 this.Adapter.DeleteCommand.Parameters[18].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[19].Value = ((double)(Original_valorProd.Value));
+                this.Adapter.DeleteCommand.Parameters[19].Value = ((decimal)(Original_valorServico.Value));
             }
             else {
                 this.Adapter.DeleteCommand.Parameters[18].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[19].Value = global::System.DBNull.Value;
             }
-            if ((Original_desconto.HasValue == true)) {
+            if ((Original_valorTotal.HasValue == true)) {
                 this.Adapter.DeleteCommand.Parameters[20].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[21].Value = ((double)(Original_desconto.Value));
+                this.Adapter.DeleteCommand.Parameters[21].Value = ((decimal)(Original_valorTotal.Value));
             }
             else {
                 this.Adapter.DeleteCommand.Parameters[20].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[21].Value = global::System.DBNull.Value;
             }
-            if ((Original_valorServ.HasValue == true)) {
+            if ((Original_codCondPagamento.HasValue == true)) {
                 this.Adapter.DeleteCommand.Parameters[22].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[23].Value = ((double)(Original_valorServ.Value));
+                this.Adapter.DeleteCommand.Parameters[23].Value = ((int)(Original_codCondPagamento.Value));
             }
             else {
                 this.Adapter.DeleteCommand.Parameters[22].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[23].Value = global::System.DBNull.Value;
             }
-            if ((Original_valorTotal.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[24].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[25].Value = ((double)(Original_valorTotal.Value));
-            }
-            else {
+            if ((Original_observacoes == null)) {
                 this.Adapter.DeleteCommand.Parameters[24].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[25].Value = global::System.DBNull.Value;
             }
-            if ((Original_codCondPagamento.HasValue == true)) {
+            else {
+                this.Adapter.DeleteCommand.Parameters[24].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[25].Value = ((string)(Original_observacoes));
+            }
+            if ((Original_dtCadastro.HasValue == true)) {
                 this.Adapter.DeleteCommand.Parameters[26].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[27].Value = ((int)(Original_codCondPagamento.Value));
+                this.Adapter.DeleteCommand.Parameters[27].Value = ((System.DateTime)(Original_dtCadastro.Value));
             }
             else {
                 this.Adapter.DeleteCommand.Parameters[26].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[27].Value = global::System.DBNull.Value;
             }
-            if ((Original_dtCadastro.HasValue == true)) {
+            if ((Original_dtAlteracao.HasValue == true)) {
                 this.Adapter.DeleteCommand.Parameters[28].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[29].Value = ((System.DateTime)(Original_dtCadastro.Value));
+                this.Adapter.DeleteCommand.Parameters[29].Value = ((System.DateTime)(Original_dtAlteracao.Value));
             }
             else {
                 this.Adapter.DeleteCommand.Parameters[28].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[29].Value = global::System.DBNull.Value;
             }
-            if ((Original_dtAlteracao.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[30].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[31].Value = ((System.DateTime)(Original_dtAlteracao.Value));
-            }
-            else {
+            if ((Original_usuario == null)) {
                 this.Adapter.DeleteCommand.Parameters[30].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[31].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[30].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[31].Value = ((string)(Original_usuario));
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -1995,140 +1820,116 @@ SELECT numeroOS, dataOS, codCliente, codVeiculo, codProduto, codServico, codFunc
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
         public virtual int Insert(
-                    System.DateTime dataOS, 
-                    global::System.Nullable<int> codCliente, 
-                    global::System.Nullable<int> codVeiculo, 
-                    global::System.Nullable<int> codProduto, 
-                    global::System.Nullable<int> codServico, 
-                    global::System.Nullable<int> codFuncionario, 
+                    string modelo, 
+                    string serie, 
+                    int codCliente, 
+                    int codVeiculo, 
+                    System.DateTime data, 
                     string ano, 
                     string placa, 
                     string km, 
                     string cor, 
-                    global::System.Nullable<int> qtd, 
-                    global::System.Nullable<double> valorProd, 
-                    global::System.Nullable<double> desconto, 
-                    global::System.Nullable<double> valorServ, 
-                    global::System.Nullable<double> valorTotal, 
+                    global::System.Nullable<decimal> valorProduto, 
+                    global::System.Nullable<decimal> desconto, 
+                    global::System.Nullable<decimal> valorServico, 
+                    global::System.Nullable<decimal> valorTotal, 
                     global::System.Nullable<int> codCondPagamento, 
                     string observacoes, 
                     global::System.Nullable<global::System.DateTime> dtCadastro, 
                     global::System.Nullable<global::System.DateTime> dtAlteracao, 
                     string usuario) {
-            this.Adapter.InsertCommand.Parameters[0].Value = ((System.DateTime)(dataOS));
-            if ((codCliente.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[1].Value = ((int)(codCliente.Value));
+            if ((modelo == null)) {
+                throw new global::System.ArgumentNullException("modelo");
             }
             else {
-                this.Adapter.InsertCommand.Parameters[1].Value = global::System.DBNull.Value;
+                this.Adapter.InsertCommand.Parameters[0].Value = ((string)(modelo));
             }
-            if ((codVeiculo.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[2].Value = ((int)(codVeiculo.Value));
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[2].Value = global::System.DBNull.Value;
-            }
-            if ((codProduto.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[3].Value = ((int)(codProduto.Value));
+            if ((serie == null)) {
+                throw new global::System.ArgumentNullException("serie");
             }
             else {
-                this.Adapter.InsertCommand.Parameters[3].Value = global::System.DBNull.Value;
+                this.Adapter.InsertCommand.Parameters[1].Value = ((string)(serie));
             }
-            if ((codServico.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[4].Value = ((int)(codServico.Value));
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[4].Value = global::System.DBNull.Value;
-            }
-            if ((codFuncionario.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[5].Value = ((int)(codFuncionario.Value));
-            }
-            else {
+            this.Adapter.InsertCommand.Parameters[2].Value = ((int)(codCliente));
+            this.Adapter.InsertCommand.Parameters[3].Value = ((int)(codVeiculo));
+            this.Adapter.InsertCommand.Parameters[4].Value = ((System.DateTime)(data));
+            if ((ano == null)) {
                 this.Adapter.InsertCommand.Parameters[5].Value = global::System.DBNull.Value;
             }
-            if ((ano == null)) {
+            else {
+                this.Adapter.InsertCommand.Parameters[5].Value = ((string)(ano));
+            }
+            if ((placa == null)) {
                 this.Adapter.InsertCommand.Parameters[6].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[6].Value = ((string)(ano));
+                this.Adapter.InsertCommand.Parameters[6].Value = ((string)(placa));
             }
-            if ((placa == null)) {
+            if ((km == null)) {
                 this.Adapter.InsertCommand.Parameters[7].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[7].Value = ((string)(placa));
+                this.Adapter.InsertCommand.Parameters[7].Value = ((string)(km));
             }
-            if ((km == null)) {
+            if ((cor == null)) {
                 this.Adapter.InsertCommand.Parameters[8].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[8].Value = ((string)(km));
+                this.Adapter.InsertCommand.Parameters[8].Value = ((string)(cor));
             }
-            if ((cor == null)) {
-                this.Adapter.InsertCommand.Parameters[9].Value = global::System.DBNull.Value;
+            if ((valorProduto.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[9].Value = ((decimal)(valorProduto.Value));
             }
             else {
-                this.Adapter.InsertCommand.Parameters[9].Value = ((string)(cor));
+                this.Adapter.InsertCommand.Parameters[9].Value = global::System.DBNull.Value;
             }
-            if ((qtd.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[10].Value = ((int)(qtd.Value));
+            if ((desconto.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[10].Value = ((decimal)(desconto.Value));
             }
             else {
                 this.Adapter.InsertCommand.Parameters[10].Value = global::System.DBNull.Value;
             }
-            if ((valorProd.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[11].Value = ((double)(valorProd.Value));
+            if ((valorServico.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[11].Value = ((decimal)(valorServico.Value));
             }
             else {
                 this.Adapter.InsertCommand.Parameters[11].Value = global::System.DBNull.Value;
             }
-            if ((desconto.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[12].Value = ((double)(desconto.Value));
+            if ((valorTotal.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[12].Value = ((decimal)(valorTotal.Value));
             }
             else {
                 this.Adapter.InsertCommand.Parameters[12].Value = global::System.DBNull.Value;
             }
-            if ((valorServ.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[13].Value = ((double)(valorServ.Value));
+            if ((codCondPagamento.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[13].Value = ((int)(codCondPagamento.Value));
             }
             else {
                 this.Adapter.InsertCommand.Parameters[13].Value = global::System.DBNull.Value;
             }
-            if ((valorTotal.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[14].Value = ((double)(valorTotal.Value));
-            }
-            else {
+            if ((observacoes == null)) {
                 this.Adapter.InsertCommand.Parameters[14].Value = global::System.DBNull.Value;
             }
-            if ((codCondPagamento.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[15].Value = ((int)(codCondPagamento.Value));
+            else {
+                this.Adapter.InsertCommand.Parameters[14].Value = ((string)(observacoes));
+            }
+            if ((dtCadastro.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[15].Value = ((System.DateTime)(dtCadastro.Value));
             }
             else {
                 this.Adapter.InsertCommand.Parameters[15].Value = global::System.DBNull.Value;
             }
-            if ((observacoes == null)) {
+            if ((dtAlteracao.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[16].Value = ((System.DateTime)(dtAlteracao.Value));
+            }
+            else {
                 this.Adapter.InsertCommand.Parameters[16].Value = global::System.DBNull.Value;
             }
-            else {
-                this.Adapter.InsertCommand.Parameters[16].Value = ((string)(observacoes));
-            }
-            if ((dtCadastro.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[17].Value = ((System.DateTime)(dtCadastro.Value));
-            }
-            else {
+            if ((usuario == null)) {
                 this.Adapter.InsertCommand.Parameters[17].Value = global::System.DBNull.Value;
             }
-            if ((dtAlteracao.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[18].Value = ((System.DateTime)(dtAlteracao.Value));
-            }
             else {
-                this.Adapter.InsertCommand.Parameters[18].Value = global::System.DBNull.Value;
-            }
-            if ((usuario == null)) {
-                this.Adapter.InsertCommand.Parameters[19].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[19].Value = ((string)(usuario));
+                this.Adapter.InsertCommand.Parameters[17].Value = ((string)(usuario));
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -2151,282 +1952,258 @@ SELECT numeroOS, dataOS, codCliente, codVeiculo, codProduto, codServico, codFunc
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
         public virtual int Update(
-                    System.DateTime dataOS, 
-                    global::System.Nullable<int> codCliente, 
-                    global::System.Nullable<int> codVeiculo, 
-                    global::System.Nullable<int> codProduto, 
-                    global::System.Nullable<int> codServico, 
-                    global::System.Nullable<int> codFuncionario, 
+                    string modelo, 
+                    string serie, 
+                    int codCliente, 
+                    int codVeiculo, 
+                    System.DateTime data, 
                     string ano, 
                     string placa, 
                     string km, 
                     string cor, 
-                    global::System.Nullable<int> qtd, 
-                    global::System.Nullable<double> valorProd, 
-                    global::System.Nullable<double> desconto, 
-                    global::System.Nullable<double> valorServ, 
-                    global::System.Nullable<double> valorTotal, 
+                    global::System.Nullable<decimal> valorProduto, 
+                    global::System.Nullable<decimal> desconto, 
+                    global::System.Nullable<decimal> valorServico, 
+                    global::System.Nullable<decimal> valorTotal, 
                     global::System.Nullable<int> codCondPagamento, 
                     string observacoes, 
                     global::System.Nullable<global::System.DateTime> dtCadastro, 
                     global::System.Nullable<global::System.DateTime> dtAlteracao, 
                     string usuario, 
-                    int Original_numeroOS, 
-                    System.DateTime Original_dataOS, 
-                    global::System.Nullable<int> Original_codCliente, 
-                    global::System.Nullable<int> Original_codVeiculo, 
-                    global::System.Nullable<int> Original_codProduto, 
-                    global::System.Nullable<int> Original_codServico, 
-                    global::System.Nullable<int> Original_codFuncionario, 
+                    int Original_nrNota, 
+                    string Original_modelo, 
+                    string Original_serie, 
+                    int Original_codCliente, 
+                    int Original_codVeiculo, 
+                    System.DateTime Original_data, 
                     string Original_ano, 
                     string Original_placa, 
-                    global::System.Nullable<int> Original_qtd, 
-                    global::System.Nullable<double> Original_valorProd, 
-                    global::System.Nullable<double> Original_desconto, 
-                    global::System.Nullable<double> Original_valorServ, 
-                    global::System.Nullable<double> Original_valorTotal, 
+                    string Original_km, 
+                    string Original_cor, 
+                    global::System.Nullable<decimal> Original_valorProduto, 
+                    global::System.Nullable<decimal> Original_desconto, 
+                    global::System.Nullable<decimal> Original_valorServico, 
+                    global::System.Nullable<decimal> Original_valorTotal, 
                     global::System.Nullable<int> Original_codCondPagamento, 
+                    string Original_observacoes, 
                     global::System.Nullable<global::System.DateTime> Original_dtCadastro, 
                     global::System.Nullable<global::System.DateTime> Original_dtAlteracao, 
-                    int numeroOS) {
-            this.Adapter.UpdateCommand.Parameters[0].Value = ((System.DateTime)(dataOS));
-            if ((codCliente.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[1].Value = ((int)(codCliente.Value));
+                    string Original_usuario, 
+                    int nrNota) {
+            if ((modelo == null)) {
+                throw new global::System.ArgumentNullException("modelo");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[1].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[0].Value = ((string)(modelo));
             }
-            if ((codVeiculo.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[2].Value = ((int)(codVeiculo.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[2].Value = global::System.DBNull.Value;
-            }
-            if ((codProduto.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[3].Value = ((int)(codProduto.Value));
+            if ((serie == null)) {
+                throw new global::System.ArgumentNullException("serie");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[3].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(serie));
             }
-            if ((codServico.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[4].Value = ((int)(codServico.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[4].Value = global::System.DBNull.Value;
-            }
-            if ((codFuncionario.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[5].Value = ((int)(codFuncionario.Value));
-            }
-            else {
+            this.Adapter.UpdateCommand.Parameters[2].Value = ((int)(codCliente));
+            this.Adapter.UpdateCommand.Parameters[3].Value = ((int)(codVeiculo));
+            this.Adapter.UpdateCommand.Parameters[4].Value = ((System.DateTime)(data));
+            if ((ano == null)) {
                 this.Adapter.UpdateCommand.Parameters[5].Value = global::System.DBNull.Value;
             }
-            if ((ano == null)) {
+            else {
+                this.Adapter.UpdateCommand.Parameters[5].Value = ((string)(ano));
+            }
+            if ((placa == null)) {
                 this.Adapter.UpdateCommand.Parameters[6].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[6].Value = ((string)(ano));
+                this.Adapter.UpdateCommand.Parameters[6].Value = ((string)(placa));
             }
-            if ((placa == null)) {
+            if ((km == null)) {
                 this.Adapter.UpdateCommand.Parameters[7].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[7].Value = ((string)(placa));
+                this.Adapter.UpdateCommand.Parameters[7].Value = ((string)(km));
             }
-            if ((km == null)) {
+            if ((cor == null)) {
                 this.Adapter.UpdateCommand.Parameters[8].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[8].Value = ((string)(km));
+                this.Adapter.UpdateCommand.Parameters[8].Value = ((string)(cor));
             }
-            if ((cor == null)) {
-                this.Adapter.UpdateCommand.Parameters[9].Value = global::System.DBNull.Value;
+            if ((valorProduto.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[9].Value = ((decimal)(valorProduto.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[9].Value = ((string)(cor));
+                this.Adapter.UpdateCommand.Parameters[9].Value = global::System.DBNull.Value;
             }
-            if ((qtd.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[10].Value = ((int)(qtd.Value));
+            if ((desconto.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[10].Value = ((decimal)(desconto.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[10].Value = global::System.DBNull.Value;
             }
-            if ((valorProd.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[11].Value = ((double)(valorProd.Value));
+            if ((valorServico.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[11].Value = ((decimal)(valorServico.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[11].Value = global::System.DBNull.Value;
             }
-            if ((desconto.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[12].Value = ((double)(desconto.Value));
+            if ((valorTotal.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[12].Value = ((decimal)(valorTotal.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[12].Value = global::System.DBNull.Value;
             }
-            if ((valorServ.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[13].Value = ((double)(valorServ.Value));
+            if ((codCondPagamento.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[13].Value = ((int)(codCondPagamento.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[13].Value = global::System.DBNull.Value;
             }
-            if ((valorTotal.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[14].Value = ((double)(valorTotal.Value));
-            }
-            else {
+            if ((observacoes == null)) {
                 this.Adapter.UpdateCommand.Parameters[14].Value = global::System.DBNull.Value;
             }
-            if ((codCondPagamento.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[15].Value = ((int)(codCondPagamento.Value));
+            else {
+                this.Adapter.UpdateCommand.Parameters[14].Value = ((string)(observacoes));
+            }
+            if ((dtCadastro.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[15].Value = ((System.DateTime)(dtCadastro.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[15].Value = global::System.DBNull.Value;
             }
-            if ((observacoes == null)) {
+            if ((dtAlteracao.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[16].Value = ((System.DateTime)(dtAlteracao.Value));
+            }
+            else {
                 this.Adapter.UpdateCommand.Parameters[16].Value = global::System.DBNull.Value;
             }
-            else {
-                this.Adapter.UpdateCommand.Parameters[16].Value = ((string)(observacoes));
-            }
-            if ((dtCadastro.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[17].Value = ((System.DateTime)(dtCadastro.Value));
-            }
-            else {
+            if ((usuario == null)) {
                 this.Adapter.UpdateCommand.Parameters[17].Value = global::System.DBNull.Value;
             }
-            if ((dtAlteracao.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[18].Value = ((System.DateTime)(dtAlteracao.Value));
+            else {
+                this.Adapter.UpdateCommand.Parameters[17].Value = ((string)(usuario));
+            }
+            this.Adapter.UpdateCommand.Parameters[18].Value = ((int)(Original_nrNota));
+            if ((Original_modelo == null)) {
+                throw new global::System.ArgumentNullException("Original_modelo");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[18].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[19].Value = ((string)(Original_modelo));
             }
-            if ((usuario == null)) {
-                this.Adapter.UpdateCommand.Parameters[19].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[19].Value = ((string)(usuario));
-            }
-            this.Adapter.UpdateCommand.Parameters[20].Value = ((int)(Original_numeroOS));
-            this.Adapter.UpdateCommand.Parameters[21].Value = ((System.DateTime)(Original_dataOS));
-            if ((Original_codCliente.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[22].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[23].Value = ((int)(Original_codCliente.Value));
+            if ((Original_serie == null)) {
+                throw new global::System.ArgumentNullException("Original_serie");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[22].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[23].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[20].Value = ((string)(Original_serie));
             }
-            if ((Original_codVeiculo.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[24].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[25].Value = ((int)(Original_codVeiculo.Value));
-            }
-            else {
+            this.Adapter.UpdateCommand.Parameters[21].Value = ((int)(Original_codCliente));
+            this.Adapter.UpdateCommand.Parameters[22].Value = ((int)(Original_codVeiculo));
+            this.Adapter.UpdateCommand.Parameters[23].Value = ((System.DateTime)(Original_data));
+            if ((Original_ano == null)) {
                 this.Adapter.UpdateCommand.Parameters[24].Value = ((object)(1));
                 this.Adapter.UpdateCommand.Parameters[25].Value = global::System.DBNull.Value;
             }
-            if ((Original_codProduto.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[26].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[27].Value = ((int)(Original_codProduto.Value));
-            }
             else {
+                this.Adapter.UpdateCommand.Parameters[24].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[25].Value = ((string)(Original_ano));
+            }
+            if ((Original_placa == null)) {
                 this.Adapter.UpdateCommand.Parameters[26].Value = ((object)(1));
                 this.Adapter.UpdateCommand.Parameters[27].Value = global::System.DBNull.Value;
             }
-            if ((Original_codServico.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[28].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[29].Value = ((int)(Original_codServico.Value));
-            }
             else {
+                this.Adapter.UpdateCommand.Parameters[26].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[27].Value = ((string)(Original_placa));
+            }
+            if ((Original_km == null)) {
                 this.Adapter.UpdateCommand.Parameters[28].Value = ((object)(1));
                 this.Adapter.UpdateCommand.Parameters[29].Value = global::System.DBNull.Value;
             }
-            if ((Original_codFuncionario.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[30].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[31].Value = ((int)(Original_codFuncionario.Value));
-            }
             else {
+                this.Adapter.UpdateCommand.Parameters[28].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[29].Value = ((string)(Original_km));
+            }
+            if ((Original_cor == null)) {
                 this.Adapter.UpdateCommand.Parameters[30].Value = ((object)(1));
                 this.Adapter.UpdateCommand.Parameters[31].Value = global::System.DBNull.Value;
             }
-            if ((Original_ano == null)) {
+            else {
+                this.Adapter.UpdateCommand.Parameters[30].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[31].Value = ((string)(Original_cor));
+            }
+            if ((Original_valorProduto.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[32].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[33].Value = ((decimal)(Original_valorProduto.Value));
+            }
+            else {
                 this.Adapter.UpdateCommand.Parameters[32].Value = ((object)(1));
                 this.Adapter.UpdateCommand.Parameters[33].Value = global::System.DBNull.Value;
             }
-            else {
-                this.Adapter.UpdateCommand.Parameters[32].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[33].Value = ((string)(Original_ano));
+            if ((Original_desconto.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[34].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[35].Value = ((decimal)(Original_desconto.Value));
             }
-            if ((Original_placa == null)) {
+            else {
                 this.Adapter.UpdateCommand.Parameters[34].Value = ((object)(1));
                 this.Adapter.UpdateCommand.Parameters[35].Value = global::System.DBNull.Value;
             }
-            else {
-                this.Adapter.UpdateCommand.Parameters[34].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[35].Value = ((string)(Original_placa));
-            }
-            if ((Original_qtd.HasValue == true)) {
+            if ((Original_valorServico.HasValue == true)) {
                 this.Adapter.UpdateCommand.Parameters[36].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[37].Value = ((int)(Original_qtd.Value));
+                this.Adapter.UpdateCommand.Parameters[37].Value = ((decimal)(Original_valorServico.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[36].Value = ((object)(1));
                 this.Adapter.UpdateCommand.Parameters[37].Value = global::System.DBNull.Value;
             }
-            if ((Original_valorProd.HasValue == true)) {
+            if ((Original_valorTotal.HasValue == true)) {
                 this.Adapter.UpdateCommand.Parameters[38].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[39].Value = ((double)(Original_valorProd.Value));
+                this.Adapter.UpdateCommand.Parameters[39].Value = ((decimal)(Original_valorTotal.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[38].Value = ((object)(1));
                 this.Adapter.UpdateCommand.Parameters[39].Value = global::System.DBNull.Value;
             }
-            if ((Original_desconto.HasValue == true)) {
+            if ((Original_codCondPagamento.HasValue == true)) {
                 this.Adapter.UpdateCommand.Parameters[40].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[41].Value = ((double)(Original_desconto.Value));
+                this.Adapter.UpdateCommand.Parameters[41].Value = ((int)(Original_codCondPagamento.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[40].Value = ((object)(1));
                 this.Adapter.UpdateCommand.Parameters[41].Value = global::System.DBNull.Value;
             }
-            if ((Original_valorServ.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[42].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[43].Value = ((double)(Original_valorServ.Value));
-            }
-            else {
+            if ((Original_observacoes == null)) {
                 this.Adapter.UpdateCommand.Parameters[42].Value = ((object)(1));
                 this.Adapter.UpdateCommand.Parameters[43].Value = global::System.DBNull.Value;
             }
-            if ((Original_valorTotal.HasValue == true)) {
+            else {
+                this.Adapter.UpdateCommand.Parameters[42].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[43].Value = ((string)(Original_observacoes));
+            }
+            if ((Original_dtCadastro.HasValue == true)) {
                 this.Adapter.UpdateCommand.Parameters[44].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[45].Value = ((double)(Original_valorTotal.Value));
+                this.Adapter.UpdateCommand.Parameters[45].Value = ((System.DateTime)(Original_dtCadastro.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[44].Value = ((object)(1));
                 this.Adapter.UpdateCommand.Parameters[45].Value = global::System.DBNull.Value;
             }
-            if ((Original_codCondPagamento.HasValue == true)) {
+            if ((Original_dtAlteracao.HasValue == true)) {
                 this.Adapter.UpdateCommand.Parameters[46].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[47].Value = ((int)(Original_codCondPagamento.Value));
+                this.Adapter.UpdateCommand.Parameters[47].Value = ((System.DateTime)(Original_dtAlteracao.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[46].Value = ((object)(1));
                 this.Adapter.UpdateCommand.Parameters[47].Value = global::System.DBNull.Value;
             }
-            if ((Original_dtCadastro.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[48].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[49].Value = ((System.DateTime)(Original_dtCadastro.Value));
-            }
-            else {
+            if ((Original_usuario == null)) {
                 this.Adapter.UpdateCommand.Parameters[48].Value = ((object)(1));
                 this.Adapter.UpdateCommand.Parameters[49].Value = global::System.DBNull.Value;
             }
-            if ((Original_dtAlteracao.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[50].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[51].Value = ((System.DateTime)(Original_dtAlteracao.Value));
-            }
             else {
-                this.Adapter.UpdateCommand.Parameters[50].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[51].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[48].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[49].Value = ((string)(Original_usuario));
             }
-            this.Adapter.UpdateCommand.Parameters[52].Value = ((int)(numeroOS));
+            this.Adapter.UpdateCommand.Parameters[50].Value = ((int)(nrNota));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -2448,44 +2225,44 @@ SELECT numeroOS, dataOS, codCliente, codVeiculo, codProduto, codServico, codFunc
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
         public virtual int Update(
-                    System.DateTime dataOS, 
-                    global::System.Nullable<int> codCliente, 
-                    global::System.Nullable<int> codVeiculo, 
-                    global::System.Nullable<int> codProduto, 
-                    global::System.Nullable<int> codServico, 
-                    global::System.Nullable<int> codFuncionario, 
+                    string modelo, 
+                    string serie, 
+                    int codCliente, 
+                    int codVeiculo, 
+                    System.DateTime data, 
                     string ano, 
                     string placa, 
                     string km, 
                     string cor, 
-                    global::System.Nullable<int> qtd, 
-                    global::System.Nullable<double> valorProd, 
-                    global::System.Nullable<double> desconto, 
-                    global::System.Nullable<double> valorServ, 
-                    global::System.Nullable<double> valorTotal, 
+                    global::System.Nullable<decimal> valorProduto, 
+                    global::System.Nullable<decimal> desconto, 
+                    global::System.Nullable<decimal> valorServico, 
+                    global::System.Nullable<decimal> valorTotal, 
                     global::System.Nullable<int> codCondPagamento, 
                     string observacoes, 
                     global::System.Nullable<global::System.DateTime> dtCadastro, 
                     global::System.Nullable<global::System.DateTime> dtAlteracao, 
                     string usuario, 
-                    int Original_numeroOS, 
-                    System.DateTime Original_dataOS, 
-                    global::System.Nullable<int> Original_codCliente, 
-                    global::System.Nullable<int> Original_codVeiculo, 
-                    global::System.Nullable<int> Original_codProduto, 
-                    global::System.Nullable<int> Original_codServico, 
-                    global::System.Nullable<int> Original_codFuncionario, 
+                    int Original_nrNota, 
+                    string Original_modelo, 
+                    string Original_serie, 
+                    int Original_codCliente, 
+                    int Original_codVeiculo, 
+                    System.DateTime Original_data, 
                     string Original_ano, 
                     string Original_placa, 
-                    global::System.Nullable<int> Original_qtd, 
-                    global::System.Nullable<double> Original_valorProd, 
-                    global::System.Nullable<double> Original_desconto, 
-                    global::System.Nullable<double> Original_valorServ, 
-                    global::System.Nullable<double> Original_valorTotal, 
+                    string Original_km, 
+                    string Original_cor, 
+                    global::System.Nullable<decimal> Original_valorProduto, 
+                    global::System.Nullable<decimal> Original_desconto, 
+                    global::System.Nullable<decimal> Original_valorServico, 
+                    global::System.Nullable<decimal> Original_valorTotal, 
                     global::System.Nullable<int> Original_codCondPagamento, 
+                    string Original_observacoes, 
                     global::System.Nullable<global::System.DateTime> Original_dtCadastro, 
-                    global::System.Nullable<global::System.DateTime> Original_dtAlteracao) {
-            return this.Update(dataOS, codCliente, codVeiculo, codProduto, codServico, codFuncionario, ano, placa, km, cor, qtd, valorProd, desconto, valorServ, valorTotal, codCondPagamento, observacoes, dtCadastro, dtAlteracao, usuario, Original_numeroOS, Original_dataOS, Original_codCliente, Original_codVeiculo, Original_codProduto, Original_codServico, Original_codFuncionario, Original_ano, Original_placa, Original_qtd, Original_valorProd, Original_desconto, Original_valorServ, Original_valorTotal, Original_codCondPagamento, Original_dtCadastro, Original_dtAlteracao, Original_numeroOS);
+                    global::System.Nullable<global::System.DateTime> Original_dtAlteracao, 
+                    string Original_usuario) {
+            return this.Update(modelo, serie, codCliente, codVeiculo, data, ano, placa, km, cor, valorProduto, desconto, valorServico, valorTotal, codCondPagamento, observacoes, dtCadastro, dtAlteracao, usuario, Original_nrNota, Original_modelo, Original_serie, Original_codCliente, Original_codVeiculo, Original_data, Original_ano, Original_placa, Original_km, Original_cor, Original_valorProduto, Original_desconto, Original_valorServico, Original_valorTotal, Original_codCondPagamento, Original_observacoes, Original_dtCadastro, Original_dtAlteracao, Original_usuario, Original_nrNota);
         }
     }
     

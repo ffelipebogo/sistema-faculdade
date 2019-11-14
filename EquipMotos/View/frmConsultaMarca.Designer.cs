@@ -34,19 +34,19 @@
             this.txtPesquisar = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.gvMarca = new System.Windows.Forms.DataGridView();
+            this.codigoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.marcasBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.sistemaMoto2DataSetMarca = new EquipMotos.SistemaMoto2DataSetMarca();
             this.btnExcluir = new System.Windows.Forms.Button();
             this.btnAlterar = new System.Windows.Forms.Button();
             this.btnNovo = new System.Windows.Forms.Button();
             this.btnBuscarMarca = new System.Windows.Forms.PictureBox();
-            this.sistemaMoto2DataSetMarca = new EquipMotos.SistemaMoto2DataSetMarca();
-            this.marcasBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.marcasTableAdapter = new EquipMotos.SistemaMoto2DataSetMarcaTableAdapters.marcasTableAdapter();
-            this.codigoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gvMarca)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnBuscarMarca)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sistemaMoto2DataSetMarca)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.marcasBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sistemaMoto2DataSetMarca)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnBuscarMarca)).BeginInit();
             this.SuspendLayout();
             // 
             // btnVoltar
@@ -115,6 +115,34 @@
             this.gvMarca.Size = new System.Drawing.Size(602, 306);
             this.gvMarca.TabIndex = 19;
             // 
+            // codigoDataGridViewTextBoxColumn
+            // 
+            this.codigoDataGridViewTextBoxColumn.DataPropertyName = "codigo";
+            this.codigoDataGridViewTextBoxColumn.HeaderText = "Codigo";
+            this.codigoDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.codigoDataGridViewTextBoxColumn.Name = "codigoDataGridViewTextBoxColumn";
+            this.codigoDataGridViewTextBoxColumn.ReadOnly = true;
+            this.codigoDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "marca";
+            this.dataGridViewTextBoxColumn1.HeaderText = "Marca";
+            this.dataGridViewTextBoxColumn1.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.Width = 125;
+            // 
+            // marcasBindingSource
+            // 
+            this.marcasBindingSource.DataMember = "marcas";
+            this.marcasBindingSource.DataSource = this.sistemaMoto2DataSetMarca;
+            // 
+            // sistemaMoto2DataSetMarca
+            // 
+            this.sistemaMoto2DataSetMarca.DataSetName = "SistemaMoto2DataSetMarca";
+            this.sistemaMoto2DataSetMarca.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
             // btnExcluir
             // 
             this.btnExcluir.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -177,38 +205,11 @@
             this.btnBuscarMarca.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.btnBuscarMarca.TabIndex = 277;
             this.btnBuscarMarca.TabStop = false;
-            // 
-            // sistemaMoto2DataSetMarca
-            // 
-            this.sistemaMoto2DataSetMarca.DataSetName = "SistemaMoto2DataSetMarca";
-            this.sistemaMoto2DataSetMarca.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // marcasBindingSource
-            // 
-            this.marcasBindingSource.DataMember = "marcas";
-            this.marcasBindingSource.DataSource = this.sistemaMoto2DataSetMarca;
+            this.btnBuscarMarca.Click += new System.EventHandler(this.btnBuscarMarca_Click);
             // 
             // marcasTableAdapter
             // 
             this.marcasTableAdapter.ClearBeforeFill = true;
-            // 
-            // codigoDataGridViewTextBoxColumn
-            // 
-            this.codigoDataGridViewTextBoxColumn.DataPropertyName = "codigo";
-            this.codigoDataGridViewTextBoxColumn.HeaderText = "codigo";
-            this.codigoDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.codigoDataGridViewTextBoxColumn.Name = "codigoDataGridViewTextBoxColumn";
-            this.codigoDataGridViewTextBoxColumn.ReadOnly = true;
-            this.codigoDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "marca";
-            this.dataGridViewTextBoxColumn1.HeaderText = "marca";
-            this.dataGridViewTextBoxColumn1.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            this.dataGridViewTextBoxColumn1.Width = 125;
             // 
             // frmConsultaMarca
             // 
@@ -229,9 +230,9 @@
             this.Text = "Consultar Marcas";
             this.Load += new System.EventHandler(this.FrmConsultaMarca_Load);
             ((System.ComponentModel.ISupportInitialize)(this.gvMarca)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnBuscarMarca)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sistemaMoto2DataSetMarca)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.marcasBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sistemaMoto2DataSetMarca)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnBuscarMarca)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

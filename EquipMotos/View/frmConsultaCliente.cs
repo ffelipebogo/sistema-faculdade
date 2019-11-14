@@ -82,6 +82,7 @@ namespace EquipMotos.Codigo.View
                 if (cliente != null)
                 {
                     frmCadastroVenda.Cliente = cliente;
+                    frmCadastroOrdemServico.Cliente = cliente;
                     this.DialogResult = DialogResult.OK;
                 }
                 Close();

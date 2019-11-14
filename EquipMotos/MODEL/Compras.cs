@@ -16,6 +16,8 @@ namespace EquipMotos.MODEL
         public double frete { get; set; }
         public double seguro { get; set; }
         public double despesa { get; set; }
+        public double totalProduto { get; set; }
+        public double totalPagar { get; set; }
         public bool situacao { get; set; }
         public List<ContasPagar> listaContasPagar{ get; set; }
         public List<ItensCompra> listaItem{ get; set; }

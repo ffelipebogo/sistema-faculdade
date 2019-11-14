@@ -45,13 +45,13 @@ namespace EquipMotos.View
                 ContaPagar.serie = txtSerie.Text;
                 ContaPagar.nrNota = txtNrNota.Text;
                 ContaPagar.nrParcela = Convert.ToInt32("0" + txtNrParcela.Text);
-                ContaPagar.dtVecimento = txtDtVencimento.Value;
+                ContaPagar.dtVencimento = txtDtVencimento.Value;
                 ContaPagar.dtEmissao = txtDtEmissao.Value;
                 ContaPagar.vlrParcela = 1;
                 ContaPagar.observacoes = txtObeservacoes.Text;
                 ContaPagar.dtCadastro = DateTime.Now;
                 ContaPagar.dtAlteracao = DateTime.Now;
-                ContaPagar.usuario = txtUsuario.Text;
+                ContaPagar.usuario = UsuarioLogado.Usuario;
                 ContaPagar.pago = chkPaga.Checked;
 
                 CtrlContaPagar.Inserir(ContaPagar);
@@ -64,6 +64,7 @@ namespace EquipMotos.View
             txtSerie.Enabled = false;
             txtNrNota.Enabled = false;
             txtValor.Enabled = false;
+            txtNrParcela.Enabled = false;
             txtFornecedor.Enabled = false;
             txtCodFornecedor.Enabled = false;
             txtDtEmissao.Enabled = false;
@@ -83,11 +84,12 @@ namespace EquipMotos.View
             txtModelo.Text = ContaPagar.modelo;
             txtSerie.Text = ContaPagar.serie;
             txtNrNota.Text = ContaPagar.nrNota;
+            txtNrParcela.Text = Convert.ToString(ContaPagar.nrParcela);
             txtValor.Text = ContaPagar.vlrParcela.ToString("C", CultureInfo.CurrentCulture); 
             txtFornecedor.Text = Convert.ToString(ContaPagar.fornecedor.codigo);
             txtCodFornecedor.Text = ContaPagar.fornecedor.fornecedor;
             txtDtEmissao.Text = Convert.ToString(ContaPagar.dtEmissao);
-            txtDtVencimento.Text = Convert.ToString(ContaPagar.dtVecimento);
+            txtDtVencimento.Text = Convert.ToString(ContaPagar.dtVencimento);
             txtCodFormaPagamento.Text = Convert.ToString(ContaPagar.formaPagamento.codigo);
             txtFormaPagamento.Text = ContaPagar.formaPagamento.forma;
             txtObeservacoes.Text = ContaPagar.observacoes;
@@ -123,6 +125,12 @@ namespace EquipMotos.View
 
         private bool ValidaConta()
         {
+            if (txtModelo.Text.Trim().Length > 3)
+            {
+                MessageBox.Show("Não é possivel inserir este modelo", "Informe o modelo com menos de 3 caracteres!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtModelo.Focus();
+                return false;
+            }
             if (txtModelo.Text.Length < 2 || String.IsNullOrEmpty(txtModelo.Text.Trim()))
             {
                 MessageBox.Show("Modelo não pode ter menos de 2 caracteres!", "Verefique o Modelo!", MessageBoxButtons.OK, MessageBoxIcon.Warning);

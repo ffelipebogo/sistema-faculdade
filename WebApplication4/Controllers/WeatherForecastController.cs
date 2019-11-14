@@ -2,15 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using EquipMotos.MODEL;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
-namespace WebApplication2.Controllers
+namespace WebApplication4.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class WeatherForecastController : Controller
+    public class WeatherForecastController : ControllerBase
     {
         private static readonly string[] Summaries = new[]
         {
@@ -25,12 +24,16 @@ namespace WebApplication2.Controllers
         }
 
         [HttpGet]
-        public ContasReceber Get()
+        public IEnumerable<WeatherForecast> Get()
         {
-            ContasReceber contasReceber = new ContasReceber();
-            contasReceber.nome = "teste";
-            return contasReceber;
-
+            var rng = new Random();
+            return Enumerable.Range(1, 5).Select(index => new WeatherForecast
+            {
+                Date = DateTime.Now.AddDays(index),
+                TemperatureC = rng.Next(-20, 55),
+                Summary = Summaries[rng.Next(Summaries.Length)]
+            })
+            .ToArray();
         }
     }
 }

@@ -37,9 +37,9 @@
             this.btnAlterar = new System.Windows.Forms.Button();
             this.btnNovo = new System.Windows.Forms.Button();
             this.gvFornecedor = new System.Windows.Forms.DataGridView();
-            this.btnBuscarFornecedor = new System.Windows.Forms.PictureBox();
-            this.sistemaMoto2DataSetFornecedor = new EquipMotos.SistemaMoto2DataSetFornecedor();
             this.fornecedoresBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.sistemaMoto2DataSetFornecedor = new EquipMotos.SistemaMoto2DataSetFornecedor();
+            this.btnBuscarFornecedor = new System.Windows.Forms.PictureBox();
             this.fornecedoresTableAdapter = new EquipMotos.SistemaMoto2DataSetFornecedorTableAdapters.fornecedoresTableAdapter();
             this.codigoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -69,9 +69,9 @@
             this.cpfDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.rgDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gvFornecedor)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnBuscarFornecedor)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sistemaMoto2DataSetFornecedor)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fornecedoresBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sistemaMoto2DataSetFornecedor)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnBuscarFornecedor)).BeginInit();
             this.SuspendLayout();
             // 
             // btnVoltar
@@ -213,6 +213,16 @@
             this.gvFornecedor.Size = new System.Drawing.Size(1052, 495);
             this.gvFornecedor.TabIndex = 24;
             // 
+            // fornecedoresBindingSource
+            // 
+            this.fornecedoresBindingSource.DataMember = "fornecedores";
+            this.fornecedoresBindingSource.DataSource = this.sistemaMoto2DataSetFornecedor;
+            // 
+            // sistemaMoto2DataSetFornecedor
+            // 
+            this.sistemaMoto2DataSetFornecedor.DataSetName = "SistemaMoto2DataSetFornecedor";
+            this.sistemaMoto2DataSetFornecedor.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
             // btnBuscarFornecedor
             // 
             this.btnBuscarFornecedor.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -228,16 +238,6 @@
             this.btnBuscarFornecedor.TabStop = false;
             this.btnBuscarFornecedor.Click += new System.EventHandler(this.BtnBuscarFornecedor_Click);
             // 
-            // sistemaMoto2DataSetFornecedor
-            // 
-            this.sistemaMoto2DataSetFornecedor.DataSetName = "SistemaMoto2DataSetFornecedor";
-            this.sistemaMoto2DataSetFornecedor.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // fornecedoresBindingSource
-            // 
-            this.fornecedoresBindingSource.DataMember = "fornecedores";
-            this.fornecedoresBindingSource.DataSource = this.sistemaMoto2DataSetFornecedor;
-            // 
             // fornecedoresTableAdapter
             // 
             this.fornecedoresTableAdapter.ClearBeforeFill = true;
@@ -245,7 +245,7 @@
             // codigoDataGridViewTextBoxColumn
             // 
             this.codigoDataGridViewTextBoxColumn.DataPropertyName = "codigo";
-            this.codigoDataGridViewTextBoxColumn.HeaderText = "codigo";
+            this.codigoDataGridViewTextBoxColumn.HeaderText = "Codigo";
             this.codigoDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.codigoDataGridViewTextBoxColumn.Name = "codigoDataGridViewTextBoxColumn";
             this.codigoDataGridViewTextBoxColumn.ReadOnly = true;
@@ -254,7 +254,7 @@
             // dataGridViewTextBoxColumn2
             // 
             this.dataGridViewTextBoxColumn2.DataPropertyName = "fornecedor";
-            this.dataGridViewTextBoxColumn2.HeaderText = "fornecedor";
+            this.dataGridViewTextBoxColumn2.HeaderText = "Fornecedor";
             this.dataGridViewTextBoxColumn2.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
             this.dataGridViewTextBoxColumn2.ReadOnly = true;
@@ -263,7 +263,7 @@
             // dataGridViewTextBoxColumn3
             // 
             this.dataGridViewTextBoxColumn3.DataPropertyName = "nomeFantasia";
-            this.dataGridViewTextBoxColumn3.HeaderText = "nomeFantasia";
+            this.dataGridViewTextBoxColumn3.HeaderText = "Nome Fantasia";
             this.dataGridViewTextBoxColumn3.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
             this.dataGridViewTextBoxColumn3.ReadOnly = true;
@@ -272,7 +272,7 @@
             // dataGridViewTextBoxColumn4
             // 
             this.dataGridViewTextBoxColumn4.DataPropertyName = "dtFundacao";
-            this.dataGridViewTextBoxColumn4.HeaderText = "dtFundacao";
+            this.dataGridViewTextBoxColumn4.HeaderText = "Data Fundação";
             this.dataGridViewTextBoxColumn4.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
             this.dataGridViewTextBoxColumn4.ReadOnly = true;
@@ -281,7 +281,7 @@
             // dataGridViewTextBoxColumn5
             // 
             this.dataGridViewTextBoxColumn5.DataPropertyName = "sexo";
-            this.dataGridViewTextBoxColumn5.HeaderText = "sexo";
+            this.dataGridViewTextBoxColumn5.HeaderText = "Sexo";
             this.dataGridViewTextBoxColumn5.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
             this.dataGridViewTextBoxColumn5.ReadOnly = true;
@@ -290,7 +290,7 @@
             // dataGridViewTextBoxColumn6
             // 
             this.dataGridViewTextBoxColumn6.DataPropertyName = "endereco";
-            this.dataGridViewTextBoxColumn6.HeaderText = "endereco";
+            this.dataGridViewTextBoxColumn6.HeaderText = "Endereco";
             this.dataGridViewTextBoxColumn6.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
             this.dataGridViewTextBoxColumn6.ReadOnly = true;
@@ -299,7 +299,7 @@
             // dataGridViewTextBoxColumn7
             // 
             this.dataGridViewTextBoxColumn7.DataPropertyName = "numero";
-            this.dataGridViewTextBoxColumn7.HeaderText = "numero";
+            this.dataGridViewTextBoxColumn7.HeaderText = "Numero";
             this.dataGridViewTextBoxColumn7.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
             this.dataGridViewTextBoxColumn7.ReadOnly = true;
@@ -308,7 +308,7 @@
             // dataGridViewTextBoxColumn8
             // 
             this.dataGridViewTextBoxColumn8.DataPropertyName = "complemento";
-            this.dataGridViewTextBoxColumn8.HeaderText = "complemento";
+            this.dataGridViewTextBoxColumn8.HeaderText = "Complemento";
             this.dataGridViewTextBoxColumn8.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
             this.dataGridViewTextBoxColumn8.ReadOnly = true;
@@ -317,7 +317,7 @@
             // dataGridViewTextBoxColumn9
             // 
             this.dataGridViewTextBoxColumn9.DataPropertyName = "bairro";
-            this.dataGridViewTextBoxColumn9.HeaderText = "bairro";
+            this.dataGridViewTextBoxColumn9.HeaderText = "Bairro";
             this.dataGridViewTextBoxColumn9.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
             this.dataGridViewTextBoxColumn9.ReadOnly = true;
@@ -326,7 +326,7 @@
             // dataGridViewTextBoxColumn10
             // 
             this.dataGridViewTextBoxColumn10.DataPropertyName = "cep";
-            this.dataGridViewTextBoxColumn10.HeaderText = "cep";
+            this.dataGridViewTextBoxColumn10.HeaderText = "CEP";
             this.dataGridViewTextBoxColumn10.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
             this.dataGridViewTextBoxColumn10.ReadOnly = true;
@@ -335,7 +335,7 @@
             // codCidadeDataGridViewTextBoxColumn
             // 
             this.codCidadeDataGridViewTextBoxColumn.DataPropertyName = "codCidade";
-            this.codCidadeDataGridViewTextBoxColumn.HeaderText = "codCidade";
+            this.codCidadeDataGridViewTextBoxColumn.HeaderText = "Codigo Cidade";
             this.codCidadeDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.codCidadeDataGridViewTextBoxColumn.Name = "codCidadeDataGridViewTextBoxColumn";
             this.codCidadeDataGridViewTextBoxColumn.ReadOnly = true;
@@ -344,7 +344,7 @@
             // dataGridViewTextBoxColumn11
             // 
             this.dataGridViewTextBoxColumn11.DataPropertyName = "telefone";
-            this.dataGridViewTextBoxColumn11.HeaderText = "telefone";
+            this.dataGridViewTextBoxColumn11.HeaderText = "Telefone";
             this.dataGridViewTextBoxColumn11.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn11.Name = "dataGridViewTextBoxColumn11";
             this.dataGridViewTextBoxColumn11.ReadOnly = true;
@@ -353,7 +353,7 @@
             // dataGridViewTextBoxColumn12
             // 
             this.dataGridViewTextBoxColumn12.DataPropertyName = "celular";
-            this.dataGridViewTextBoxColumn12.HeaderText = "celular";
+            this.dataGridViewTextBoxColumn12.HeaderText = "Celular";
             this.dataGridViewTextBoxColumn12.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn12.Name = "dataGridViewTextBoxColumn12";
             this.dataGridViewTextBoxColumn12.ReadOnly = true;
@@ -362,7 +362,7 @@
             // dataGridViewTextBoxColumn13
             // 
             this.dataGridViewTextBoxColumn13.DataPropertyName = "email";
-            this.dataGridViewTextBoxColumn13.HeaderText = "email";
+            this.dataGridViewTextBoxColumn13.HeaderText = "Email";
             this.dataGridViewTextBoxColumn13.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn13.Name = "dataGridViewTextBoxColumn13";
             this.dataGridViewTextBoxColumn13.ReadOnly = true;
@@ -371,7 +371,7 @@
             // dataGridViewTextBoxColumn14
             // 
             this.dataGridViewTextBoxColumn14.DataPropertyName = "contato";
-            this.dataGridViewTextBoxColumn14.HeaderText = "contato";
+            this.dataGridViewTextBoxColumn14.HeaderText = "Contato";
             this.dataGridViewTextBoxColumn14.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn14.Name = "dataGridViewTextBoxColumn14";
             this.dataGridViewTextBoxColumn14.ReadOnly = true;
@@ -380,7 +380,7 @@
             // dataGridViewTextBoxColumn15
             // 
             this.dataGridViewTextBoxColumn15.DataPropertyName = "site";
-            this.dataGridViewTextBoxColumn15.HeaderText = "site";
+            this.dataGridViewTextBoxColumn15.HeaderText = "Site";
             this.dataGridViewTextBoxColumn15.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn15.Name = "dataGridViewTextBoxColumn15";
             this.dataGridViewTextBoxColumn15.ReadOnly = true;
@@ -389,7 +389,7 @@
             // dataGridViewTextBoxColumn16
             // 
             this.dataGridViewTextBoxColumn16.DataPropertyName = "cnpj";
-            this.dataGridViewTextBoxColumn16.HeaderText = "cnpj";
+            this.dataGridViewTextBoxColumn16.HeaderText = "CNPJ";
             this.dataGridViewTextBoxColumn16.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn16.Name = "dataGridViewTextBoxColumn16";
             this.dataGridViewTextBoxColumn16.ReadOnly = true;
@@ -398,7 +398,7 @@
             // dataGridViewTextBoxColumn17
             // 
             this.dataGridViewTextBoxColumn17.DataPropertyName = "ie";
-            this.dataGridViewTextBoxColumn17.HeaderText = "ie";
+            this.dataGridViewTextBoxColumn17.HeaderText = "IE";
             this.dataGridViewTextBoxColumn17.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn17.Name = "dataGridViewTextBoxColumn17";
             this.dataGridViewTextBoxColumn17.ReadOnly = true;
@@ -407,7 +407,7 @@
             // dataGridViewTextBoxColumn18
             // 
             this.dataGridViewTextBoxColumn18.DataPropertyName = "limiteCredito";
-            this.dataGridViewTextBoxColumn18.HeaderText = "limiteCredito";
+            this.dataGridViewTextBoxColumn18.HeaderText = "Limite Credito";
             this.dataGridViewTextBoxColumn18.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn18.Name = "dataGridViewTextBoxColumn18";
             this.dataGridViewTextBoxColumn18.ReadOnly = true;
@@ -416,7 +416,7 @@
             // dataGridViewTextBoxColumn19
             // 
             this.dataGridViewTextBoxColumn19.DataPropertyName = "observacoes";
-            this.dataGridViewTextBoxColumn19.HeaderText = "observacoes";
+            this.dataGridViewTextBoxColumn19.HeaderText = "Observações";
             this.dataGridViewTextBoxColumn19.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn19.Name = "dataGridViewTextBoxColumn19";
             this.dataGridViewTextBoxColumn19.ReadOnly = true;
@@ -425,7 +425,7 @@
             // dataGridViewTextBoxColumn20
             // 
             this.dataGridViewTextBoxColumn20.DataPropertyName = "dtCadastro";
-            this.dataGridViewTextBoxColumn20.HeaderText = "dtCadastro";
+            this.dataGridViewTextBoxColumn20.HeaderText = "Data Cadastro";
             this.dataGridViewTextBoxColumn20.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn20.Name = "dataGridViewTextBoxColumn20";
             this.dataGridViewTextBoxColumn20.ReadOnly = true;
@@ -434,7 +434,7 @@
             // dataGridViewTextBoxColumn21
             // 
             this.dataGridViewTextBoxColumn21.DataPropertyName = "dtAlteracao";
-            this.dataGridViewTextBoxColumn21.HeaderText = "dtAlteracao";
+            this.dataGridViewTextBoxColumn21.HeaderText = "Data Alteração";
             this.dataGridViewTextBoxColumn21.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn21.Name = "dataGridViewTextBoxColumn21";
             this.dataGridViewTextBoxColumn21.ReadOnly = true;
@@ -443,7 +443,7 @@
             // dataGridViewTextBoxColumn22
             // 
             this.dataGridViewTextBoxColumn22.DataPropertyName = "usuario";
-            this.dataGridViewTextBoxColumn22.HeaderText = "usuario";
+            this.dataGridViewTextBoxColumn22.HeaderText = "Usuario";
             this.dataGridViewTextBoxColumn22.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn22.Name = "dataGridViewTextBoxColumn22";
             this.dataGridViewTextBoxColumn22.ReadOnly = true;
@@ -452,7 +452,7 @@
             // codCondPagamentoDataGridViewTextBoxColumn
             // 
             this.codCondPagamentoDataGridViewTextBoxColumn.DataPropertyName = "codCondPagamento";
-            this.codCondPagamentoDataGridViewTextBoxColumn.HeaderText = "codCondPagamento";
+            this.codCondPagamentoDataGridViewTextBoxColumn.HeaderText = "Codigo Condição Pagamento";
             this.codCondPagamentoDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.codCondPagamentoDataGridViewTextBoxColumn.Name = "codCondPagamentoDataGridViewTextBoxColumn";
             this.codCondPagamentoDataGridViewTextBoxColumn.ReadOnly = true;
@@ -461,7 +461,7 @@
             // fisicoDataGridViewCheckBoxColumn
             // 
             this.fisicoDataGridViewCheckBoxColumn.DataPropertyName = "fisico";
-            this.fisicoDataGridViewCheckBoxColumn.HeaderText = "fisico";
+            this.fisicoDataGridViewCheckBoxColumn.HeaderText = "Fisico";
             this.fisicoDataGridViewCheckBoxColumn.MinimumWidth = 6;
             this.fisicoDataGridViewCheckBoxColumn.Name = "fisicoDataGridViewCheckBoxColumn";
             this.fisicoDataGridViewCheckBoxColumn.ReadOnly = true;
@@ -470,7 +470,7 @@
             // cpfDataGridViewTextBoxColumn
             // 
             this.cpfDataGridViewTextBoxColumn.DataPropertyName = "cpf";
-            this.cpfDataGridViewTextBoxColumn.HeaderText = "cpf";
+            this.cpfDataGridViewTextBoxColumn.HeaderText = "CPF";
             this.cpfDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.cpfDataGridViewTextBoxColumn.Name = "cpfDataGridViewTextBoxColumn";
             this.cpfDataGridViewTextBoxColumn.ReadOnly = true;
@@ -479,7 +479,7 @@
             // rgDataGridViewTextBoxColumn
             // 
             this.rgDataGridViewTextBoxColumn.DataPropertyName = "rg";
-            this.rgDataGridViewTextBoxColumn.HeaderText = "rg";
+            this.rgDataGridViewTextBoxColumn.HeaderText = "RG";
             this.rgDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.rgDataGridViewTextBoxColumn.Name = "rgDataGridViewTextBoxColumn";
             this.rgDataGridViewTextBoxColumn.ReadOnly = true;
@@ -505,9 +505,9 @@
             this.Text = "Consultar Fornecedores";
             this.Load += new System.EventHandler(this.frmConsultaFornecedor_Load);
             ((System.ComponentModel.ISupportInitialize)(this.gvFornecedor)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnBuscarFornecedor)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sistemaMoto2DataSetFornecedor)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.fornecedoresBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sistemaMoto2DataSetFornecedor)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnBuscarFornecedor)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

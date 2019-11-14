@@ -37,9 +37,9 @@
             this.txtPesquisar = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.gvCategoria = new System.Windows.Forms.DataGridView();
-            this.btnBuscarCategoria = new System.Windows.Forms.PictureBox();
-            this.sistemaMoto2DataSetCategoria = new EquipMotos.SistemaMoto2DataSetCategoria();
             this.categoriasBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.sistemaMoto2DataSetCategoria = new EquipMotos.SistemaMoto2DataSetCategoria();
+            this.btnBuscarCategoria = new System.Windows.Forms.PictureBox();
             this.categoriasTableAdapter = new EquipMotos.SistemaMoto2DataSetCategoriaTableAdapters.categoriasTableAdapter();
             this.codigoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -47,9 +47,9 @@
             this.dtCadastroDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.usuarioDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gvCategoria)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnBuscarCategoria)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sistemaMoto2DataSetCategoria)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.categoriasBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sistemaMoto2DataSetCategoria)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnBuscarCategoria)).BeginInit();
             this.SuspendLayout();
             // 
             // btnExcluir
@@ -171,6 +171,16 @@
             this.gvCategoria.Size = new System.Drawing.Size(671, 307);
             this.gvCategoria.TabIndex = 27;
             // 
+            // categoriasBindingSource
+            // 
+            this.categoriasBindingSource.DataMember = "categorias";
+            this.categoriasBindingSource.DataSource = this.sistemaMoto2DataSetCategoria;
+            // 
+            // sistemaMoto2DataSetCategoria
+            // 
+            this.sistemaMoto2DataSetCategoria.DataSetName = "SistemaMoto2DataSetCategoria";
+            this.sistemaMoto2DataSetCategoria.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
             // btnBuscarCategoria
             // 
             this.btnBuscarCategoria.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -187,16 +197,6 @@
             this.btnBuscarCategoria.TabStop = false;
             this.btnBuscarCategoria.Click += new System.EventHandler(this.BtnBuscarCategoria_Click);
             // 
-            // sistemaMoto2DataSetCategoria
-            // 
-            this.sistemaMoto2DataSetCategoria.DataSetName = "SistemaMoto2DataSetCategoria";
-            this.sistemaMoto2DataSetCategoria.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // categoriasBindingSource
-            // 
-            this.categoriasBindingSource.DataMember = "categorias";
-            this.categoriasBindingSource.DataSource = this.sistemaMoto2DataSetCategoria;
-            // 
             // categoriasTableAdapter
             // 
             this.categoriasTableAdapter.ClearBeforeFill = true;
@@ -204,7 +204,7 @@
             // codigoDataGridViewTextBoxColumn
             // 
             this.codigoDataGridViewTextBoxColumn.DataPropertyName = "codigo";
-            this.codigoDataGridViewTextBoxColumn.HeaderText = "codigo";
+            this.codigoDataGridViewTextBoxColumn.HeaderText = "Codigo";
             this.codigoDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.codigoDataGridViewTextBoxColumn.Name = "codigoDataGridViewTextBoxColumn";
             this.codigoDataGridViewTextBoxColumn.ReadOnly = true;
@@ -213,7 +213,7 @@
             // dataGridViewTextBoxColumn1
             // 
             this.dataGridViewTextBoxColumn1.DataPropertyName = "categoria";
-            this.dataGridViewTextBoxColumn1.HeaderText = "categoria";
+            this.dataGridViewTextBoxColumn1.HeaderText = "Categoria";
             this.dataGridViewTextBoxColumn1.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
             this.dataGridViewTextBoxColumn1.ReadOnly = true;
@@ -222,7 +222,7 @@
             // dtAlteracaoDataGridViewTextBoxColumn
             // 
             this.dtAlteracaoDataGridViewTextBoxColumn.DataPropertyName = "dtAlteracao";
-            this.dtAlteracaoDataGridViewTextBoxColumn.HeaderText = "dtAlteracao";
+            this.dtAlteracaoDataGridViewTextBoxColumn.HeaderText = "Data Alteração";
             this.dtAlteracaoDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.dtAlteracaoDataGridViewTextBoxColumn.Name = "dtAlteracaoDataGridViewTextBoxColumn";
             this.dtAlteracaoDataGridViewTextBoxColumn.ReadOnly = true;
@@ -231,7 +231,7 @@
             // dtCadastroDataGridViewTextBoxColumn
             // 
             this.dtCadastroDataGridViewTextBoxColumn.DataPropertyName = "dtCadastro";
-            this.dtCadastroDataGridViewTextBoxColumn.HeaderText = "dtCadastro";
+            this.dtCadastroDataGridViewTextBoxColumn.HeaderText = "Data Cadastro";
             this.dtCadastroDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.dtCadastroDataGridViewTextBoxColumn.Name = "dtCadastroDataGridViewTextBoxColumn";
             this.dtCadastroDataGridViewTextBoxColumn.ReadOnly = true;
@@ -240,7 +240,7 @@
             // usuarioDataGridViewTextBoxColumn
             // 
             this.usuarioDataGridViewTextBoxColumn.DataPropertyName = "usuario";
-            this.usuarioDataGridViewTextBoxColumn.HeaderText = "usuario";
+            this.usuarioDataGridViewTextBoxColumn.HeaderText = "Usuario";
             this.usuarioDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.usuarioDataGridViewTextBoxColumn.Name = "usuarioDataGridViewTextBoxColumn";
             this.usuarioDataGridViewTextBoxColumn.ReadOnly = true;
@@ -265,9 +265,9 @@
             this.Text = "Consultar Categorias";
             this.Load += new System.EventHandler(this.FrmConsultaCategoria_Load);
             ((System.ComponentModel.ISupportInitialize)(this.gvCategoria)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnBuscarCategoria)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sistemaMoto2DataSetCategoria)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.categoriasBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sistemaMoto2DataSetCategoria)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnBuscarCategoria)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

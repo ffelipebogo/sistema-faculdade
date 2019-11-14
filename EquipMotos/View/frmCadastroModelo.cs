@@ -59,7 +59,7 @@ namespace EquipMotos.View
                     Modelo.modelo = txtModelo.Text;
                     mar.codigo = Convert.ToInt32(txtCodMarca.Text);
                     Modelo.Marca = mar;
-                    Modelo.usuario = txtUsuario.Text;
+                    Modelo.usuario = UsuarioLogado.Usuario;
 
                     if (btnSalvar.Text == "ALTERAR")
                     {
@@ -87,13 +87,25 @@ namespace EquipMotos.View
 
         private bool ValidaCompos()
         {
-            if (txtModelo.Text.Trim() == String.Empty)
+            if (txtModelo.Text.Trim().Length > 100)
+            {
+                MessageBox.Show("Não é possivel inserir este modelo", "Informe o modelo com menos de 100 caracteres!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtModelo.Focus();
+                return false;
+            }
+            if (String.IsNullOrEmpty(txtModelo.Text.Trim()))
             {
                 MessageBox.Show("Faltou informar o Modelo", "Informe o Modelo!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txtMarca.Focus();
                 return false;
             }
-            if (txtMarca.Text.Trim() == String.Empty)
+            if (txtMarca.Text.Trim().Length > 100)
+            {
+                MessageBox.Show("Não é possivel inserir esta marca", "Informe a marca com menos de 100 caracteres!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtMarca.Focus();
+                return false;
+            }
+            if (String.IsNullOrEmpty(txtMarca.Text.Trim()))
             {
                 MessageBox.Show("Faltou informar a Marca", "Informe a Marca!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txtMarca.Focus();

@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace EquipMotos.MODEL
 {
-    public class ContasReceber
+    public static class UsuarioLogado
     {
-        public string nome { get; set; }
+        public static string Usuario { get; set; } = "ADM";
     }
 }

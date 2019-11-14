@@ -30,5 +30,9 @@ namespace EquipMotos.CONTROLLER
             return DaoProdutoServico.ListarTodosProdutosServicos_porNome(obj);        
         }
 
+        public object Pesquisar(string proServ, List<string> filterID, int isProduto)
+        {
+            return DaoProdutoServico.Pesquisar(proServ, filterID, isProduto);
+        }
     }
 }

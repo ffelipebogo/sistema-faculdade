@@ -75,6 +75,7 @@ namespace EquipMotos.View
             {
                 SelecionaForma();
                 frmCadastroCondicaoPagamento.formaPag = formaPag;
+                frmCadastroContaPagar.formaPag = formaPag;
                 this.DialogResult = DialogResult.OK;
                 Close();
             }
@@ -104,7 +105,7 @@ namespace EquipMotos.View
         private void FrmConsultaFormaPagamento_Load(object sender, EventArgs e)
         {
             // TODO: esta linha de código carrega dados na tabela 'sistemaMoto2DataSetFormaPagamento.formaPagamento'. Você pode movê-la ou removê-la conforme necessário.
-            this.formaPagamentoTableAdapter.Fill(this.sistemaMoto2DataSetFormaPagamento.formaPagamento);
+            //this.formaPagamentoTableAdapter.Fill(this.sistemaMoto2DataSetFormaPagamento.formaPagamento);
         }
     }
 }

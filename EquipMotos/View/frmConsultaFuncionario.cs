@@ -110,7 +110,7 @@ namespace EquipMotos.View
             this.funcionariosTableAdapter.Fill(this.sistemaMoto2DataSetFuncionario.funcionarios);
         }
 
-        private void BtnBuscar_Click(object sender, EventArgs e)
+        private void btnBuscar_Click_1(object sender, EventArgs e)
         {
             string func = txtPesquisar.Text;
             gvFuncionario.DataSource = CtrlFuncionario.Pesquisar(func);

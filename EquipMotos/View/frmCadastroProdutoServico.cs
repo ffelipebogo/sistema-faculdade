@@ -51,8 +51,8 @@ namespace EquipMotos.View
                         ProdutoServico.Categoria = cat;
                         forn.codigo = Convert.ToInt32("0" + txtCodFornecedor.Text);
                         ProdutoServico.Fornecedor = forn;
-                        ProdutoServico.precoVenda = Convert.ToDecimal(Decimal.Parse(txtPrecoVenda.Text).ToString("N2"));
-                        ProdutoServico.custoUltCompra = Convert.ToDecimal(Decimal.Parse("0").ToString("N2"));
+                        ProdutoServico.precoVenda =Decimal.Parse(txtPrecoVenda.Text, NumberStyles.Any);
+                        ProdutoServico.custoUltCompra = Decimal.Parse("0", NumberStyles.Any);
                         ProdutoServico.dtUltCompra = DateTime.Now;
                         ProdutoServico.observacoes = txtObservacao.Text;
                         ProdutoServico.usuario = txtUsuario.Text;
@@ -64,10 +64,11 @@ namespace EquipMotos.View
                         cat.codigo = Convert.ToInt32(txtCodCategoria.Text);
                         ProdutoServico.Categoria = cat;
                         func.codigo = Convert.ToInt32(txtCodFornecedor.Text);
+                        ProdutoServico.precoVenda = Decimal.Parse(txtPrecoVenda.Text, NumberStyles.Any);
                         ProdutoServico.Funcionario = func;
                         ProdutoServico.servico = Convert.ToBoolean(rbServico.Checked);
                     }
-                    ProdutoServico.comissao = Double.Parse(txtComissao.Text, NumberStyles.Any);
+                    ProdutoServico.comissao = Double.Parse("0" + txtComissao.Text, NumberStyles.Any);
                     ProdutoServico.observacoes = txtObservacao.Text;
                     ProdutoServico.usuario = txtUsuario.Text;
 
@@ -92,11 +93,11 @@ namespace EquipMotos.View
                         CtrlProdutoServico.Inserir(ProdutoServico);
                         if (rbProduto.Checked)
                         {
-                            MessageBox.Show("Produto salvo com Sucesso!");
+                            MessageBox.Show("Produto salvo com sucesso!");
                         }
                         else
                         {
-                            MessageBox.Show("Serviço salvo com Sucesso!");
+                            MessageBox.Show("Serviço salvo com sucesso!");
                         }
                     }
                     limparCampos();
@@ -107,7 +108,6 @@ namespace EquipMotos.View
                 {
                     MessageBox.Show("Verifique se os campos foram preenchidos corretamente");
                 }
-
             }
             catch (Exception)
             {
@@ -157,7 +157,7 @@ namespace EquipMotos.View
             txtCategoriaGrupo.Text = "";
             txtCodFornecedor.Text = "";
             txtFornecedor.Text = "";
-            txtPrecoVenda.Text = "R$0.00";
+            txtPrecoVenda.Text = "R$ 0.00";
             txtCustoUltCompra.Text = "";
             txtDtUltCompra.Text = "";
             txtComissao.Text = "";
@@ -238,38 +238,49 @@ namespace EquipMotos.View
         {
             if (rbProduto.Checked)
             {
+                if (String.IsNullOrEmpty(txtPrecoVenda.Text) || Decimal.Parse(txtPrecoVenda.Text, NumberStyles.Any) < 0)
+                {
+                    MessageBox.Show("Preço inválido!", "Informe o Preço!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    txtPrecoVenda.Focus();
+                    return false;
+                }
                 if (txtProdutoServico.Text.Length < 3)
                 {
                     MessageBox.Show("Produto inválido!", "Verefique o Produto!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     txtProdutoServico.Focus();
                     return false;
                 }
-                if (txtProdutoServico.Text.Trim() == String.Empty)
+                if (String.IsNullOrEmpty(txtProdutoServico.Text.Trim()))
                 {
                     MessageBox.Show("Faltou informar o Produto", "Informe o Produto!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     txtProdutoServico.Focus();
                     return false;
                 }
-
-                if (txtUnidade.Text.Trim() == String.Empty)
+                if (!MaskForm.ValidaTexto(txtProdutoServico.Text))
+                {
+                    MessageBox.Show("Produto inválido!", "Produto não pode conter numeros!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    txtProdutoServico.Focus();
+                    return false;
+                }
+                if (String.IsNullOrEmpty(txtUnidade.Text.Trim()))
                 {
                     MessageBox.Show("Faltou informar o Unidade", "Informe a Unidade!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     txtUnidade.Focus();
                     return false;
                 }
-                if (txtCategoriaGrupo.Text.Trim() == String.Empty)
+                if (String.IsNullOrEmpty(txtCategoriaGrupo.Text.Trim()))
                 {
                     MessageBox.Show("Faltou informar a Categoria", "Informe a Categoria!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     txtCategoriaGrupo.Focus();
                     return false;
                 }
-                if (txtCodFornecedor.Text.Trim() == String.Empty)
+                if (String.IsNullOrEmpty(txtCodFornecedor.Text.Trim()))
                 {
                     MessageBox.Show("Faltou informar o Código do Fornecedor", "Informe o Código do Fornecedor!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     txtCodFornecedor.Focus();
                     return false;
                 }
-                if (txtFornecedor.Text.Trim() == String.Empty )
+                if (String.IsNullOrEmpty(txtFornecedor.Text.Trim()))
                 {
                     MessageBox.Show("Faltou informar o Fornecedor", "Informe o Fornecedor!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     txtFornecedor.Focus();
@@ -284,14 +295,20 @@ namespace EquipMotos.View
                     txtProdutoServico.Focus();
                     return false;
                 }
-                if (txtProdutoServico.Text.Trim() == String.Empty)
+                if (!MaskForm.ValidaTexto(txtProdutoServico.Text))
+                {
+                    MessageBox.Show("Serviço inválido!", "Serviço não pode conter numeros!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    txtProdutoServico.Focus();
+                    return false;
+                }
+                if (String.IsNullOrEmpty(txtProdutoServico.Text.Trim()))
                 {
                     MessageBox.Show("Faltou informar o Serviço", "Informe o Serviço!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     txtProdutoServico.Focus();
                     return false;
                 }
 
-                if (txtCategoriaGrupo.Text.Trim() == String.Empty)
+                if (String.IsNullOrEmpty(txtCategoriaGrupo.Text.Trim()))
                 {
                     MessageBox.Show("Faltou informar a Categoria", "Informe a Categoria!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     txtCategoriaGrupo.Focus();
@@ -303,7 +320,7 @@ namespace EquipMotos.View
                     txtCodFornecedor.Focus();
                     return false;
                 }
-                if (txtFornecedor.Text.Trim() == String.Empty & txtFornecedor.Text.Length < 2)
+                if (String.IsNullOrEmpty(txtFornecedor.Text.Trim()) & txtFornecedor.Text.Length < 2)
                 {
                     MessageBox.Show("Faltou informar o Funcionario", "Informe o Funcionario!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     txtFornecedor.Focus();
@@ -329,8 +346,7 @@ namespace EquipMotos.View
             txtCustoUltCompra.Visible = true;
             lblDtUltCompra.Visible = true;
             txtDtUltCompra.Visible = true;
-            lblPrecoVenda.Visible = true;
-            txtPrecoVenda.Visible = true;
+           
         }
 
         private void RbServico_CheckedChanged(object sender, EventArgs e)
@@ -341,8 +357,7 @@ namespace EquipMotos.View
             lblCodigoBarra.Visible = false;
             txtCodBarra.Visible = false;
             lblFornecedor.Text = "Mecanico *";
-            lblPrecoVenda.Visible = false;
-            txtPrecoVenda.Visible = false;
+           
             lblCustoUltCompra.Visible = false;
             txtCustoUltCompra.Visible = false;
             lblDtUltCompra.Visible = false;

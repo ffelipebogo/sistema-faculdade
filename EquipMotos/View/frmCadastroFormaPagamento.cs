@@ -1,6 +1,7 @@
 ﻿using EquipMotos.CONTROLLER;
 using EquipMotos.DAO;
 using EquipMotos.MODEL;
+using EquipMotos.View.helper;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -30,7 +31,7 @@ namespace EquipMotos.View
                     formPag.forma = txtForma.Text;
                     formPag.dtCadastro = DateTime.Now;
                     formPag.dtAlteracao = DateTime.Now;
-                    formPag.usuario = txtUsuario.Text;
+                    formPag.usuario = UsuarioLogado.Usuario;
 
                     if (btnSalvar.Text == "ALTERAR")
                     {
@@ -93,9 +94,21 @@ namespace EquipMotos.View
 
         public bool ValidaCampo()
         {
-            if (txtForma.Text == String.Empty)
+            if (txtForma.Text.Trim().Length > 100)
             {
-                MessageBox.Show("Faltou informar a Descrição", "Informe a Descrição!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Não é possivel inserir esta forma", "Informe a forma com menos de 100 caracteres!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtForma.Focus();
+                return false;
+            }
+            if (String.IsNullOrEmpty(txtForma.Text))
+            {
+                MessageBox.Show("Faltou informar a forma", "Informe a forma!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtForma.Focus();
+                return false;
+            }
+            if (!MaskForm.ValidaTexto(txtForma.Text))
+            {
+                MessageBox.Show("Forma invalida", "Forma não pode conter numeros!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txtForma.Focus();
                 return false;
             }

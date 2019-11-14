@@ -1,6 +1,7 @@
 ﻿using EquipMotos.CONTROLLER;
 using EquipMotos.DAO;
 using EquipMotos.MODEL;
+using EquipMotos.View.helper;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -93,9 +94,15 @@ namespace EquipMotos.View
 
         public bool ValidaCampo()
         {
-            if (txtPais.Text.Trim() == String.Empty)
+            if (String.IsNullOrEmpty(txtPais.Text.Trim()))
             {
                 MessageBox.Show("Faltou informar o Pais", "Informe Pais!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtPais.Focus();
+                return false;
+            }
+            if (!MaskForm.ValidaTexto(txtPais.Text))
+            {
+                MessageBox.Show("Pais invalido", "Nome Pais não pode conter numeros!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txtPais.Focus();
                 return false;
             }

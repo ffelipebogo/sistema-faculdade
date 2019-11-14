@@ -170,6 +170,7 @@
     <Compile Include="CONTROLLER\CtrlClientes.cs" />
     <Compile Include="CONTROLLER\CtrlCompras.cs" />
     <Compile Include="CONTROLLER\CtrlCondicaoPagamento.cs" />
+    <Compile Include="CONTROLLER\CtrlContasReceber.cs" />
     <Compile Include="CONTROLLER\CtrlContasPagar.cs" />
     <Compile Include="CONTROLLER\CtrlEstados.cs" />
     <Compile Include="CONTROLLER\CtrlFormaPagamentos.cs" />
@@ -180,6 +181,7 @@
     <Compile Include="CONTROLLER\CtrlOrdemServicos.cs" />
     <Compile Include="CONTROLLER\CtrlPaises.cs" />
     <Compile Include="CONTROLLER\CtrlProdutosServicos.cs" />
+    <Compile Include="CONTROLLER\CtrlVendas.cs" />
     <Compile Include="DAO\CategoriasDAO.cs" />
     <Compile Include="DAO\CidadesDAO.cs" />
     <Compile Include="DAO\ClientesDAO.cs" />
@@ -187,6 +189,7 @@
     <Compile Include="DAO\CondicaoPagamentoDAO.cs" />
     <Compile Include="DAO\CondicaoParceladaDAO.cs" />
     <Compile Include="DAO\ContasPagarDAO.cs" />
+    <Compile Include="DAO\ContasReceberDAO.cs" />
     <Compile Include="DAO\DAO.cs" />
     <Compile Include="DAO\EstadosDAO.cs" />
     <Compile Include="DAO\FormaPagamentoDAO.cs" />
@@ -226,7 +229,9 @@
     <Compile Include="MODEL\OrdemServicos.cs" />
     <Compile Include="MODEL\Paises.cs" />
     <Compile Include="MODEL\Pessoa.cs" />
+    <Compile Include="MODEL\ItensOrdemServico.cs" />
     <Compile Include="MODEL\ProdutosServicos.cs" />
+    <Compile Include="MODEL\UsuarioLogado.cs" />
     <Compile Include="MODEL\Usuarios.cs" />
     <Compile Include="MODEL\Categorias.cs" />
     <Compile Include="MODEL\Vendas.cs" />
@@ -908,6 +913,9 @@
     <Analyzer Include="..\packages\Microsoft.NetCore.Analyzers.2.9.6\analyzers\dotnet\cs\Microsoft.NetCore.CSharp.Analyzers.dll" />
     <Analyzer Include="..\packages\Microsoft.NetFramework.Analyzers.2.9.6\analyzers\dotnet\cs\Microsoft.NetFramework.Analyzers.dll" />
     <Analyzer Include="..\packages\Microsoft.NetFramework.Analyzers.2.9.6\analyzers\dotnet\cs\Microsoft.NetFramework.CSharp.Analyzers.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="View\Resources\383662.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

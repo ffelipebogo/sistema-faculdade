@@ -14,7 +14,7 @@ namespace EquipMotos.MODEL
         public FormaPagamentos formaPagamento { get; set; }
         public int nrParcela { get; set; }
         public double vlrParcela { get; set; }
-        public DateTime dtVecimento { get; set; }
+        public DateTime dtVencimento { get; set; }
         public DateTime dtEmissao { get; set; }
         public bool pago { get; set; }
     }

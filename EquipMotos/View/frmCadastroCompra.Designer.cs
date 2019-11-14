@@ -108,12 +108,12 @@
             // 
             this.label16.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(741, 146);
+            this.label16.Location = new System.Drawing.Point(741, 145);
             this.label16.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(64, 20);
+            this.label16.Size = new System.Drawing.Size(59, 20);
             this.label16.TabIndex = 117;
-            this.label16.Text = "Custo *";
+            this.label16.Text = "Valor *";
             // 
             // txtCusto
             // 

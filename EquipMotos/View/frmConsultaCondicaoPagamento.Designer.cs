@@ -31,6 +31,8 @@
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.gvCondPagamento = new System.Windows.Forms.DataGridView();
+            this.condicaoPagamentoBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.sistemaMoto2DataSetCondicaoPagamento = new EquipMotos.SistemaMoto2DataSetCondicaoPagamento();
             this.btnVoltar = new System.Windows.Forms.Button();
             this.txtPesquisar = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -38,8 +40,6 @@
             this.btnExcluir = new System.Windows.Forms.Button();
             this.btnAlterar = new System.Windows.Forms.Button();
             this.btnNovo = new System.Windows.Forms.Button();
-            this.sistemaMoto2DataSetCondicaoPagamento = new EquipMotos.SistemaMoto2DataSetCondicaoPagamento();
-            this.condicaoPagamentoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.condicaoPagamentoTableAdapter = new EquipMotos.SistemaMoto2DataSetCondicaoPagamentoTableAdapters.condicaoPagamentoTableAdapter();
             this.codigoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -50,9 +50,9 @@
             this.dataGridViewTextBoxColumn14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gvCondPagamento)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnBuscarCondPag)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sistemaMoto2DataSetCondicaoPagamento)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.condicaoPagamentoBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sistemaMoto2DataSetCondicaoPagamento)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnBuscarCondPag)).BeginInit();
             this.SuspendLayout();
             // 
             // gvCondPagamento
@@ -92,6 +92,16 @@
             this.gvCondPagamento.RowHeadersWidth = 51;
             this.gvCondPagamento.Size = new System.Drawing.Size(882, 362);
             this.gvCondPagamento.TabIndex = 0;
+            // 
+            // condicaoPagamentoBindingSource
+            // 
+            this.condicaoPagamentoBindingSource.DataMember = "condicaoPagamento";
+            this.condicaoPagamentoBindingSource.DataSource = this.sistemaMoto2DataSetCondicaoPagamento;
+            // 
+            // sistemaMoto2DataSetCondicaoPagamento
+            // 
+            this.sistemaMoto2DataSetCondicaoPagamento.DataSetName = "SistemaMoto2DataSetCondicaoPagamento";
+            this.sistemaMoto2DataSetCondicaoPagamento.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // btnVoltar
             // 
@@ -192,16 +202,6 @@
             this.btnNovo.UseVisualStyleBackColor = true;
             this.btnNovo.Click += new System.EventHandler(this.BtnNovo_Click);
             // 
-            // sistemaMoto2DataSetCondicaoPagamento
-            // 
-            this.sistemaMoto2DataSetCondicaoPagamento.DataSetName = "SistemaMoto2DataSetCondicaoPagamento";
-            this.sistemaMoto2DataSetCondicaoPagamento.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // condicaoPagamentoBindingSource
-            // 
-            this.condicaoPagamentoBindingSource.DataMember = "condicaoPagamento";
-            this.condicaoPagamentoBindingSource.DataSource = this.sistemaMoto2DataSetCondicaoPagamento;
-            // 
             // condicaoPagamentoTableAdapter
             // 
             this.condicaoPagamentoTableAdapter.ClearBeforeFill = true;
@@ -209,7 +209,7 @@
             // codigoDataGridViewTextBoxColumn
             // 
             this.codigoDataGridViewTextBoxColumn.DataPropertyName = "codigo";
-            this.codigoDataGridViewTextBoxColumn.HeaderText = "codigo";
+            this.codigoDataGridViewTextBoxColumn.HeaderText = "Codigo";
             this.codigoDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.codigoDataGridViewTextBoxColumn.Name = "codigoDataGridViewTextBoxColumn";
             this.codigoDataGridViewTextBoxColumn.ReadOnly = true;
@@ -218,7 +218,7 @@
             // dataGridViewTextBoxColumn9
             // 
             this.dataGridViewTextBoxColumn9.DataPropertyName = "condicao";
-            this.dataGridViewTextBoxColumn9.HeaderText = "condicao";
+            this.dataGridViewTextBoxColumn9.HeaderText = "Condição";
             this.dataGridViewTextBoxColumn9.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
             this.dataGridViewTextBoxColumn9.ReadOnly = true;
@@ -227,7 +227,7 @@
             // dataGridViewTextBoxColumn10
             // 
             this.dataGridViewTextBoxColumn10.DataPropertyName = "multa";
-            this.dataGridViewTextBoxColumn10.HeaderText = "multa";
+            this.dataGridViewTextBoxColumn10.HeaderText = "Multa";
             this.dataGridViewTextBoxColumn10.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
             this.dataGridViewTextBoxColumn10.ReadOnly = true;
@@ -236,7 +236,7 @@
             // dataGridViewTextBoxColumn11
             // 
             this.dataGridViewTextBoxColumn11.DataPropertyName = "juros";
-            this.dataGridViewTextBoxColumn11.HeaderText = "juros";
+            this.dataGridViewTextBoxColumn11.HeaderText = "Juros";
             this.dataGridViewTextBoxColumn11.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn11.Name = "dataGridViewTextBoxColumn11";
             this.dataGridViewTextBoxColumn11.ReadOnly = true;
@@ -245,7 +245,7 @@
             // dataGridViewTextBoxColumn12
             // 
             this.dataGridViewTextBoxColumn12.DataPropertyName = "desconto";
-            this.dataGridViewTextBoxColumn12.HeaderText = "desconto";
+            this.dataGridViewTextBoxColumn12.HeaderText = "Desconto";
             this.dataGridViewTextBoxColumn12.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn12.Name = "dataGridViewTextBoxColumn12";
             this.dataGridViewTextBoxColumn12.ReadOnly = true;
@@ -254,7 +254,7 @@
             // dataGridViewTextBoxColumn13
             // 
             this.dataGridViewTextBoxColumn13.DataPropertyName = "dtCadastro";
-            this.dataGridViewTextBoxColumn13.HeaderText = "dtCadastro";
+            this.dataGridViewTextBoxColumn13.HeaderText = "Data Cadastro";
             this.dataGridViewTextBoxColumn13.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn13.Name = "dataGridViewTextBoxColumn13";
             this.dataGridViewTextBoxColumn13.ReadOnly = true;
@@ -263,7 +263,7 @@
             // dataGridViewTextBoxColumn14
             // 
             this.dataGridViewTextBoxColumn14.DataPropertyName = "dtAlteracao";
-            this.dataGridViewTextBoxColumn14.HeaderText = "dtAlteracao";
+            this.dataGridViewTextBoxColumn14.HeaderText = "Data Alteração";
             this.dataGridViewTextBoxColumn14.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn14.Name = "dataGridViewTextBoxColumn14";
             this.dataGridViewTextBoxColumn14.ReadOnly = true;
@@ -272,7 +272,7 @@
             // dataGridViewTextBoxColumn15
             // 
             this.dataGridViewTextBoxColumn15.DataPropertyName = "usuario";
-            this.dataGridViewTextBoxColumn15.HeaderText = "usuario";
+            this.dataGridViewTextBoxColumn15.HeaderText = "Usuario";
             this.dataGridViewTextBoxColumn15.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn15.Name = "dataGridViewTextBoxColumn15";
             this.dataGridViewTextBoxColumn15.ReadOnly = true;
@@ -298,9 +298,9 @@
             this.Text = "Consulta Condicao de Pagamento";
             this.Load += new System.EventHandler(this.FrmConsultaCondicaoPagamento_Load);
             ((System.ComponentModel.ISupportInitialize)(this.gvCondPagamento)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnBuscarCondPag)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sistemaMoto2DataSetCondicaoPagamento)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.condicaoPagamentoBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sistemaMoto2DataSetCondicaoPagamento)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnBuscarCondPag)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

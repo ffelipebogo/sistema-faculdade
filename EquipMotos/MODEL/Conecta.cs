@@ -10,10 +10,12 @@ namespace EquipMotos.MODEL
         //metodo para conectar o banco de dados
         public static SqlConnection CreateConnection()
         {
-
             SqlConnection conexao = new SqlConnection();
             //acessando a string de conexão
-            conexao.ConnectionString = ConfigurationManager.ConnectionStrings["Sistema"].ConnectionString;
+            conexao.ConnectionString = "Server=localhost;Database=SistemaMoto2;Trusted_Connection=True;";
+                
+           // ConfigurationManager.ConnectionStrings["Sistema"].ConnectionString;
+            
 
             return conexao;
         }

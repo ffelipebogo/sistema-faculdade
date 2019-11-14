@@ -46,12 +46,23 @@ namespace EquipMotos
 
                 UsuariosDAO dao = new UsuariosDAO();
 
-                dao.EfetuarLogin(user);
-                Hide();
+                if (dao.EfetuarLogin(user))
+                {
+                    MessageBox.Show("Bem vindo " +user.usuario, "Sistema Equip Moto", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    this.Hide();
+                    UsuarioLogado.Usuario = user.usuario;
+                    MenuPrincipal Menu = new MenuPrincipal(user.usuario);
+                    Menu.Show();
+                }
+                else
+                {
+                    MessageBox.Show("Usuario ou Senha invalido!", "Falha no login", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                
             }
             catch (Exception)
             {
-                MessageBox.Show("Erro");
+                MessageBox.Show("Erro ao iniciar o sistema!", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             
         }

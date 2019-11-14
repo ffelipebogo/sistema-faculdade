@@ -339,6 +339,7 @@
             this.chkPaga.TabIndex = 284;
             this.chkPaga.Text = "Paga";
             this.chkPaga.UseVisualStyleBackColor = true;
+            this.chkPaga.Visible = false;
             // 
             // btnBuscarCondPagamento
             // 

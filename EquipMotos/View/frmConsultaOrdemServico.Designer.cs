@@ -41,21 +41,19 @@
             this.sistemaMoto2DataSetOrdemServico = new EquipMotos.SistemaMoto2DataSetOrdemServico();
             this.ordemServicosBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.ordemServicosTableAdapter = new EquipMotos.SistemaMoto2DataSetOrdemServicoTableAdapters.ordemServicosTableAdapter();
-            this.numeroOSDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataOSDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nrNotaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.modeloDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.serieDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.codClienteDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.codVeiculoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.codProdutoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.codServicoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.codFuncionarioDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.anoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.placaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.kmDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.corDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.qtdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.valorProdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.valorProdutoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.descontoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.valorServDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.valorServicoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.valorTotalDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.codCondPagamentoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.observacoesDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -75,7 +73,7 @@
             this.btnBuscarOS.ErrorImage = global::EquipMotos.Properties.Resources._1398754683_xmag;
             this.btnBuscarOS.Image = global::EquipMotos.Properties.Resources._1398754683_xmag;
             this.btnBuscarOS.InitialImage = global::EquipMotos.Properties.Resources._1398754683_xmag;
-            this.btnBuscarOS.Location = new System.Drawing.Point(551, 10);
+            this.btnBuscarOS.Location = new System.Drawing.Point(516, 11);
             this.btnBuscarOS.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnBuscarOS.Name = "btnBuscarOS";
             this.btnBuscarOS.Size = new System.Drawing.Size(75, 62);
@@ -104,21 +102,19 @@
             this.gvOS.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.gvOS.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gvOS.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.numeroOSDataGridViewTextBoxColumn,
-            this.dataOSDataGridViewTextBoxColumn,
+            this.nrNotaDataGridViewTextBoxColumn,
+            this.modeloDataGridViewTextBoxColumn,
+            this.serieDataGridViewTextBoxColumn,
             this.codClienteDataGridViewTextBoxColumn,
             this.codVeiculoDataGridViewTextBoxColumn,
-            this.codProdutoDataGridViewTextBoxColumn,
-            this.codServicoDataGridViewTextBoxColumn,
-            this.codFuncionarioDataGridViewTextBoxColumn,
+            this.dataDataGridViewTextBoxColumn,
             this.anoDataGridViewTextBoxColumn,
             this.placaDataGridViewTextBoxColumn,
             this.kmDataGridViewTextBoxColumn,
             this.corDataGridViewTextBoxColumn,
-            this.qtdDataGridViewTextBoxColumn,
-            this.valorProdDataGridViewTextBoxColumn,
+            this.valorProdutoDataGridViewTextBoxColumn,
             this.descontoDataGridViewTextBoxColumn,
-            this.valorServDataGridViewTextBoxColumn,
+            this.valorServicoDataGridViewTextBoxColumn,
             this.valorTotalDataGridViewTextBoxColumn,
             this.codCondPagamentoDataGridViewTextBoxColumn,
             this.observacoesDataGridViewTextBoxColumn,
@@ -231,23 +227,32 @@
             // 
             this.ordemServicosTableAdapter.ClearBeforeFill = true;
             // 
-            // numeroOSDataGridViewTextBoxColumn
+            // nrNotaDataGridViewTextBoxColumn
             // 
-            this.numeroOSDataGridViewTextBoxColumn.DataPropertyName = "numeroOS";
-            this.numeroOSDataGridViewTextBoxColumn.HeaderText = "numeroOS";
-            this.numeroOSDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.numeroOSDataGridViewTextBoxColumn.Name = "numeroOSDataGridViewTextBoxColumn";
-            this.numeroOSDataGridViewTextBoxColumn.ReadOnly = true;
-            this.numeroOSDataGridViewTextBoxColumn.Width = 125;
+            this.nrNotaDataGridViewTextBoxColumn.DataPropertyName = "nrNota";
+            this.nrNotaDataGridViewTextBoxColumn.HeaderText = "nrNota";
+            this.nrNotaDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.nrNotaDataGridViewTextBoxColumn.Name = "nrNotaDataGridViewTextBoxColumn";
+            this.nrNotaDataGridViewTextBoxColumn.ReadOnly = true;
+            this.nrNotaDataGridViewTextBoxColumn.Width = 125;
             // 
-            // dataOSDataGridViewTextBoxColumn
+            // modeloDataGridViewTextBoxColumn
             // 
-            this.dataOSDataGridViewTextBoxColumn.DataPropertyName = "dataOS";
-            this.dataOSDataGridViewTextBoxColumn.HeaderText = "dataOS";
-            this.dataOSDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.dataOSDataGridViewTextBoxColumn.Name = "dataOSDataGridViewTextBoxColumn";
-            this.dataOSDataGridViewTextBoxColumn.ReadOnly = true;
-            this.dataOSDataGridViewTextBoxColumn.Width = 125;
+            this.modeloDataGridViewTextBoxColumn.DataPropertyName = "modelo";
+            this.modeloDataGridViewTextBoxColumn.HeaderText = "modelo";
+            this.modeloDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.modeloDataGridViewTextBoxColumn.Name = "modeloDataGridViewTextBoxColumn";
+            this.modeloDataGridViewTextBoxColumn.ReadOnly = true;
+            this.modeloDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // serieDataGridViewTextBoxColumn
+            // 
+            this.serieDataGridViewTextBoxColumn.DataPropertyName = "serie";
+            this.serieDataGridViewTextBoxColumn.HeaderText = "serie";
+            this.serieDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.serieDataGridViewTextBoxColumn.Name = "serieDataGridViewTextBoxColumn";
+            this.serieDataGridViewTextBoxColumn.ReadOnly = true;
+            this.serieDataGridViewTextBoxColumn.Width = 125;
             // 
             // codClienteDataGridViewTextBoxColumn
             // 
@@ -267,32 +272,14 @@
             this.codVeiculoDataGridViewTextBoxColumn.ReadOnly = true;
             this.codVeiculoDataGridViewTextBoxColumn.Width = 125;
             // 
-            // codProdutoDataGridViewTextBoxColumn
+            // dataDataGridViewTextBoxColumn
             // 
-            this.codProdutoDataGridViewTextBoxColumn.DataPropertyName = "codProduto";
-            this.codProdutoDataGridViewTextBoxColumn.HeaderText = "codProduto";
-            this.codProdutoDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.codProdutoDataGridViewTextBoxColumn.Name = "codProdutoDataGridViewTextBoxColumn";
-            this.codProdutoDataGridViewTextBoxColumn.ReadOnly = true;
-            this.codProdutoDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // codServicoDataGridViewTextBoxColumn
-            // 
-            this.codServicoDataGridViewTextBoxColumn.DataPropertyName = "codServico";
-            this.codServicoDataGridViewTextBoxColumn.HeaderText = "codServico";
-            this.codServicoDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.codServicoDataGridViewTextBoxColumn.Name = "codServicoDataGridViewTextBoxColumn";
-            this.codServicoDataGridViewTextBoxColumn.ReadOnly = true;
-            this.codServicoDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // codFuncionarioDataGridViewTextBoxColumn
-            // 
-            this.codFuncionarioDataGridViewTextBoxColumn.DataPropertyName = "codFuncionario";
-            this.codFuncionarioDataGridViewTextBoxColumn.HeaderText = "codFuncionario";
-            this.codFuncionarioDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.codFuncionarioDataGridViewTextBoxColumn.Name = "codFuncionarioDataGridViewTextBoxColumn";
-            this.codFuncionarioDataGridViewTextBoxColumn.ReadOnly = true;
-            this.codFuncionarioDataGridViewTextBoxColumn.Width = 125;
+            this.dataDataGridViewTextBoxColumn.DataPropertyName = "data";
+            this.dataDataGridViewTextBoxColumn.HeaderText = "data";
+            this.dataDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.dataDataGridViewTextBoxColumn.Name = "dataDataGridViewTextBoxColumn";
+            this.dataDataGridViewTextBoxColumn.ReadOnly = true;
+            this.dataDataGridViewTextBoxColumn.Width = 125;
             // 
             // anoDataGridViewTextBoxColumn
             // 
@@ -330,23 +317,14 @@
             this.corDataGridViewTextBoxColumn.ReadOnly = true;
             this.corDataGridViewTextBoxColumn.Width = 125;
             // 
-            // qtdDataGridViewTextBoxColumn
+            // valorProdutoDataGridViewTextBoxColumn
             // 
-            this.qtdDataGridViewTextBoxColumn.DataPropertyName = "qtd";
-            this.qtdDataGridViewTextBoxColumn.HeaderText = "qtd";
-            this.qtdDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.qtdDataGridViewTextBoxColumn.Name = "qtdDataGridViewTextBoxColumn";
-            this.qtdDataGridViewTextBoxColumn.ReadOnly = true;
-            this.qtdDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // valorProdDataGridViewTextBoxColumn
-            // 
-            this.valorProdDataGridViewTextBoxColumn.DataPropertyName = "valorProd";
-            this.valorProdDataGridViewTextBoxColumn.HeaderText = "valorProd";
-            this.valorProdDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.valorProdDataGridViewTextBoxColumn.Name = "valorProdDataGridViewTextBoxColumn";
-            this.valorProdDataGridViewTextBoxColumn.ReadOnly = true;
-            this.valorProdDataGridViewTextBoxColumn.Width = 125;
+            this.valorProdutoDataGridViewTextBoxColumn.DataPropertyName = "valorProduto";
+            this.valorProdutoDataGridViewTextBoxColumn.HeaderText = "valorProduto";
+            this.valorProdutoDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.valorProdutoDataGridViewTextBoxColumn.Name = "valorProdutoDataGridViewTextBoxColumn";
+            this.valorProdutoDataGridViewTextBoxColumn.ReadOnly = true;
+            this.valorProdutoDataGridViewTextBoxColumn.Width = 125;
             // 
             // descontoDataGridViewTextBoxColumn
             // 
@@ -357,14 +335,14 @@
             this.descontoDataGridViewTextBoxColumn.ReadOnly = true;
             this.descontoDataGridViewTextBoxColumn.Width = 125;
             // 
-            // valorServDataGridViewTextBoxColumn
+            // valorServicoDataGridViewTextBoxColumn
             // 
-            this.valorServDataGridViewTextBoxColumn.DataPropertyName = "valorServ";
-            this.valorServDataGridViewTextBoxColumn.HeaderText = "valorServ";
-            this.valorServDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.valorServDataGridViewTextBoxColumn.Name = "valorServDataGridViewTextBoxColumn";
-            this.valorServDataGridViewTextBoxColumn.ReadOnly = true;
-            this.valorServDataGridViewTextBoxColumn.Width = 125;
+            this.valorServicoDataGridViewTextBoxColumn.DataPropertyName = "valorServico";
+            this.valorServicoDataGridViewTextBoxColumn.HeaderText = "valorServico";
+            this.valorServicoDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.valorServicoDataGridViewTextBoxColumn.Name = "valorServicoDataGridViewTextBoxColumn";
+            this.valorServicoDataGridViewTextBoxColumn.ReadOnly = true;
+            this.valorServicoDataGridViewTextBoxColumn.Width = 125;
             // 
             // valorTotalDataGridViewTextBoxColumn
             // 
@@ -434,7 +412,8 @@
             this.Controls.Add(this.txtPesquisar);
             this.Controls.Add(this.label1);
             this.Name = "frmConsultaOrdemServico";
-            this.Text = "frmConsultaOrdemServico";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Consultar Ordem de Serviço";
             this.Load += new System.EventHandler(this.frmConsultaOrdemServico_Load);
             ((System.ComponentModel.ISupportInitialize)(this.btnBuscarOS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvOS)).EndInit();
@@ -458,21 +437,19 @@
         private SistemaMoto2DataSetOrdemServico sistemaMoto2DataSetOrdemServico;
         private System.Windows.Forms.BindingSource ordemServicosBindingSource;
         private SistemaMoto2DataSetOrdemServicoTableAdapters.ordemServicosTableAdapter ordemServicosTableAdapter;
-        private System.Windows.Forms.DataGridViewTextBoxColumn numeroOSDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataOSDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nrNotaDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn modeloDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn serieDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn codClienteDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn codVeiculoDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn codProdutoDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn codServicoDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn codFuncionarioDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn anoDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn placaDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn kmDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn corDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn qtdDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn valorProdDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn valorProdutoDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn descontoDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn valorServDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn valorServicoDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn valorTotalDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn codCondPagamentoDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn observacoesDataGridViewTextBoxColumn;

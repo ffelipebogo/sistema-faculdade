@@ -60,8 +60,10 @@
             this.status_data = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripProgressBar1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.statusUser = new System.Windows.Forms.ToolStripStatusLabel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.menuStrip1.SuspendLayout();
             this.statusPrincipal.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -225,6 +227,7 @@
             this.financeiroToolStripMenuItem.Name = "financeiroToolStripMenuItem";
             this.financeiroToolStripMenuItem.Size = new System.Drawing.Size(91, 24);
             this.financeiroToolStripMenuItem.Text = "Financeiro";
+            
             // 
             // caixaToolStripMenuItem
             // 
@@ -311,18 +314,31 @@
             this.statusUser.Name = "statusUser";
             this.statusUser.Size = new System.Drawing.Size(128, 20);
             this.statusUser.Text = "ADMINISTRADOR";
+            this.statusUser.Click += new System.EventHandler(this.statusUser_Click);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::EquipMotos.Properties.Resources._383662;
+            this.pictureBox1.Location = new System.Drawing.Point(0, 29);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(1920, 1200);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox1.TabIndex = 2;
+            this.pictureBox1.TabStop = false;
             // 
             // MenuPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(812, 469);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.statusPrincipal);
             this.Controls.Add(this.menuStrip1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.MainMenuStrip = this.menuStrip1;
             this.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.Name = "MenuPrincipal";
+            this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Tag = "";
             this.Text = "Equip Motos";
@@ -331,6 +347,7 @@
             this.menuStrip1.PerformLayout();
             this.statusPrincipal.ResumeLayout(false);
             this.statusPrincipal.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -370,6 +387,7 @@
         private System.Windows.Forms.ToolStripMenuItem contasÀReceberToolStripMenuItem;
         private System.Windows.Forms.ToolStripStatusLabel statusUser;
         private System.Windows.Forms.ToolStripMenuItem OrdemDeServiçoToolStripMenuItem;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
 

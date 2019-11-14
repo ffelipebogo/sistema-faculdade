@@ -51,7 +51,6 @@
             this.produto = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.qtd = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.precoVenda = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.desconto = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.total = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.label16 = new System.Windows.Forms.Label();
             this.txtValorProd = new System.Windows.Forms.TextBox();
@@ -256,6 +255,7 @@
             // 
             this.txtValorTotal.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtValorTotal.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtValorTotal.Enabled = false;
             this.txtValorTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtValorTotal.Location = new System.Drawing.Point(575, 362);
             this.txtValorTotal.Name = "txtValorTotal";
@@ -291,6 +291,7 @@
             // 
             this.txtValorItens.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtValorItens.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtValorItens.Enabled = false;
             this.txtValorItens.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtValorItens.Location = new System.Drawing.Point(208, 362);
             this.txtValorItens.Name = "txtValorItens";
@@ -310,7 +311,6 @@
             this.produto,
             this.qtd,
             this.precoVenda,
-            this.desconto,
             this.total});
             this.lvProdutosVenda.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lvProdutosVenda.FullRowSelect = true;
@@ -342,11 +342,6 @@
             this.precoVenda.DisplayIndex = 2;
             this.precoVenda.Text = "Preço Venda";
             this.precoVenda.Width = 113;
-            // 
-            // desconto
-            // 
-            this.desconto.Text = "Desconto";
-            this.desconto.Width = 80;
             // 
             // total
             // 
@@ -506,22 +501,23 @@
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(12, 13);
+            this.label1.Location = new System.Drawing.Point(277, 13);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(79, 20);
+            this.label1.Size = new System.Drawing.Size(84, 20);
             this.label1.TabIndex = 158;
-            this.label1.Text = "Nº Venda";
+            this.label1.Text = "Nrº Nota *";
+            this.label1.Visible = false;
             // 
             // txtNumeroVenda
             // 
             this.txtNumeroVenda.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtNumeroVenda.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtNumeroVenda.Enabled = false;
             this.txtNumeroVenda.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNumeroVenda.Location = new System.Drawing.Point(15, 33);
+            this.txtNumeroVenda.Location = new System.Drawing.Point(280, 33);
             this.txtNumeroVenda.Name = "txtNumeroVenda";
             this.txtNumeroVenda.Size = new System.Drawing.Size(99, 27);
-            this.txtNumeroVenda.TabIndex = 157;
+            this.txtNumeroVenda.TabIndex = 293;
+            this.txtNumeroVenda.Visible = false;
             // 
             // txtDtCadastro
             // 
@@ -557,6 +553,7 @@
             this.btnRemProduto.Size = new System.Drawing.Size(53, 43);
             this.btnRemProduto.TabIndex = 178;
             this.btnRemProduto.UseVisualStyleBackColor = true;
+            this.btnRemProduto.Click += new System.EventHandler(this.btnRemProduto_Click);
             // 
             // btnAddProduto
             // 
@@ -623,7 +620,7 @@
             this.btnBuscarCondPagamento.Location = new System.Drawing.Point(389, 400);
             this.btnBuscarCondPagamento.Margin = new System.Windows.Forms.Padding(4);
             this.btnBuscarCondPagamento.Name = "btnBuscarCondPagamento";
-            this.btnBuscarCondPagamento.Size = new System.Drawing.Size(71, 49);
+            this.btnBuscarCondPagamento.Size = new System.Drawing.Size(71, 55);
             this.btnBuscarCondPagamento.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.btnBuscarCondPagamento.TabIndex = 274;
             this.btnBuscarCondPagamento.TabStop = false;
@@ -693,42 +690,42 @@
             this.label8.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(140, 13);
+            this.label8.Location = new System.Drawing.Point(12, 13);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(63, 20);
+            this.label8.Size = new System.Drawing.Size(74, 20);
             this.label8.TabIndex = 292;
-            this.label8.Text = "Modelo";
+            this.label8.Text = "Modelo *";
             // 
             // txtModelo
             // 
             this.txtModelo.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtModelo.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtModelo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtModelo.Location = new System.Drawing.Point(143, 33);
+            this.txtModelo.Location = new System.Drawing.Point(15, 33);
             this.txtModelo.Name = "txtModelo";
             this.txtModelo.Size = new System.Drawing.Size(101, 27);
-            this.txtModelo.TabIndex = 291;
+            this.txtModelo.TabIndex = 157;
             // 
             // label9
             // 
             this.label9.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(274, 13);
+            this.label9.Location = new System.Drawing.Point(146, 13);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(48, 20);
+            this.label9.Size = new System.Drawing.Size(59, 20);
             this.label9.TabIndex = 294;
-            this.label9.Text = "Série";
+            this.label9.Text = "Série *";
             // 
             // txtSerie
             // 
             this.txtSerie.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtSerie.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtSerie.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSerie.Location = new System.Drawing.Point(277, 33);
+            this.txtSerie.Location = new System.Drawing.Point(149, 33);
             this.txtSerie.Name = "txtSerie";
             this.txtSerie.Size = new System.Drawing.Size(102, 27);
-            this.txtSerie.TabIndex = 293;
+            this.txtSerie.TabIndex = 291;
             // 
             // label11
             // 
@@ -808,6 +805,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtNumeroVenda);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             this.Name = "frmCadastroVenda";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Registrar Venda";
@@ -868,7 +866,6 @@
         private System.Windows.Forms.ColumnHeader produto;
         private System.Windows.Forms.ColumnHeader qtd;
         private System.Windows.Forms.ColumnHeader precoVenda;
-        private System.Windows.Forms.ColumnHeader desconto;
         private System.Windows.Forms.ColumnHeader total;
         private System.Windows.Forms.ListView lvContaReceber;
         private System.Windows.Forms.ColumnHeader columnHeader1;

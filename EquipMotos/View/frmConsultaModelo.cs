@@ -77,6 +77,7 @@ namespace EquipMotos.View
             if (btnVoltar.Text == "SELECIONAR")
             {
                 SelecionaModelo();
+                frmCadastroOrdemServico.Modelo = modelo;
                 this.DialogResult = DialogResult.OK;
                 Close();
             }
@@ -113,6 +114,12 @@ namespace EquipMotos.View
         {
             string mod = txtPesquisar.Text;
             gvModelo.DataSource = CtrlModelo.Pesquisar(mod);
+        }
+
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            string modelo = txtPesquisar.Text;
+            gvModelo.DataSource = CtrlModelo.Pesquisar(modelo);
         }
     }
 }

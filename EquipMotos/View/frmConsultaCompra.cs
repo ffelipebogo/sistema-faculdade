@@ -54,7 +54,7 @@ namespace EquipMotos.View
                 var codFornecedor = compraRow["codFornecedor"];
 
                 frmCadCompra.Carregar(modelo, serie, nrNota, codFornecedor);
-                frmCadCompra.Disable();
+                frmCadCompra.DisableView();
                 if (frmCadCompra.ShowDialog() == DialogResult.OK)
                 {
                     var lista = CtrlCompra.ListarTodos();
@@ -84,7 +84,7 @@ namespace EquipMotos.View
             var nrNota = compraRow["nrNota"];
             var codFornecedor = compraRow["codFornecedor"];
 
-            if ((MessageBox.Show("Desativar compra ?", "EXCLUIR", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes) & modelo != null)
+            if ((MessageBox.Show("Não terá acesso a esta compra.", "Desativar compra ?",  MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes) & modelo != null)
             {
                 CtrlCompra.Desativar(modelo, serie, nrNota, codFornecedor);
                 gvCompra.DataSource = CtrlCompra.ListarTodos();

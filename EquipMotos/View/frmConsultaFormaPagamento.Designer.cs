@@ -35,12 +35,12 @@
             this.label1 = new System.Windows.Forms.Label();
             this.btnVoltar = new System.Windows.Forms.Button();
             this.gvFormaPag = new System.Windows.Forms.DataGridView();
+            this.formaPagamentoBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.sistemaMoto2DataSetFormaPagamento = new EquipMotos.SistemaMoto2DataSetFormaPagamento();
             this.btnBuscarFormaPag = new System.Windows.Forms.PictureBox();
             this.btnExcluir = new System.Windows.Forms.Button();
             this.btnAlterar = new System.Windows.Forms.Button();
             this.btnNovo = new System.Windows.Forms.Button();
-            this.sistemaMoto2DataSetFormaPagamento = new EquipMotos.SistemaMoto2DataSetFormaPagamento();
-            this.formaPagamentoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.formaPagamentoTableAdapter = new EquipMotos.SistemaMoto2DataSetFormaPagamentoTableAdapters.formaPagamentoTableAdapter();
             this.codigoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -48,9 +48,9 @@
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gvFormaPag)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnBuscarFormaPag)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sistemaMoto2DataSetFormaPagamento)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.formaPagamentoBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sistemaMoto2DataSetFormaPagamento)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnBuscarFormaPag)).BeginInit();
             this.SuspendLayout();
             // 
             // txtPesquisar
@@ -100,6 +100,16 @@
             this.gvFormaPag.Name = "gvFormaPag";
             this.gvFormaPag.ReadOnly = true;
             // 
+            // formaPagamentoBindingSource
+            // 
+            this.formaPagamentoBindingSource.DataMember = "formaPagamento";
+            this.formaPagamentoBindingSource.DataSource = this.sistemaMoto2DataSetFormaPagamento;
+            // 
+            // sistemaMoto2DataSetFormaPagamento
+            // 
+            this.sistemaMoto2DataSetFormaPagamento.DataSetName = "SistemaMoto2DataSetFormaPagamento";
+            this.sistemaMoto2DataSetFormaPagamento.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
             // btnBuscarFormaPag
             // 
             resources.ApplyResources(this.btnBuscarFormaPag, "btnBuscarFormaPag");
@@ -134,16 +144,6 @@
             this.btnNovo.Name = "btnNovo";
             this.btnNovo.UseVisualStyleBackColor = true;
             this.btnNovo.Click += new System.EventHandler(this.BtnNovo_Click);
-            // 
-            // sistemaMoto2DataSetFormaPagamento
-            // 
-            this.sistemaMoto2DataSetFormaPagamento.DataSetName = "SistemaMoto2DataSetFormaPagamento";
-            this.sistemaMoto2DataSetFormaPagamento.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // formaPagamentoBindingSource
-            // 
-            this.formaPagamentoBindingSource.DataMember = "formaPagamento";
-            this.formaPagamentoBindingSource.DataSource = this.sistemaMoto2DataSetFormaPagamento;
             // 
             // formaPagamentoTableAdapter
             // 
@@ -200,9 +200,9 @@
             this.Name = "frmConsultaFormaPagamento";
             this.Load += new System.EventHandler(this.FrmConsultaFormaPagamento_Load);
             ((System.ComponentModel.ISupportInitialize)(this.gvFormaPag)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnBuscarFormaPag)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sistemaMoto2DataSetFormaPagamento)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.formaPagamentoBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sistemaMoto2DataSetFormaPagamento)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnBuscarFormaPag)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -52,7 +52,7 @@ namespace EquipMotos.View
                 cid.cidade = txtCidade.Text;
                 est.codigo = Convert.ToInt32(txtCodEstado.Text);
                 cid.Estado = est;
-                cid.usuario = txtUsuario.Text;
+                cid.usuario = UsuarioLogado.Usuario;
 
                 if (btnSalvar.Text == "ALTERAR")
                 {

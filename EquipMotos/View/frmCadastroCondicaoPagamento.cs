@@ -74,7 +74,7 @@ namespace EquipMotos.View
                 condPagamento.juros = Double.Parse(txtJuros.Text);
                 condPagamento.multa = Double.Parse(txtMulta.Text);
                 condPagamento.desconto = Double.Parse(txtDesconto.Text);
-                condPagamento.usuario = txtUsuario.Text;
+                condPagamento.usuario = UsuarioLogado.Usuario;
                 if (btnSalvar.Text == "ALTERAR")
                 {
                     condPagamento.codigo = Convert.ToInt32(txtCodigo.Text);
@@ -95,7 +95,7 @@ namespace EquipMotos.View
                             formaPagamento = formaPag,
                             dtAlteracao = DateTime.Now,
                             dtCadastro = condPagamento.dtCadastro,
-                            usuario = txtUsuario.Text
+                            usuario = UsuarioLogado.Usuario
                         }) ;
                     }
                     condPagamento.listaParcela = listaParcela;
@@ -117,15 +117,13 @@ namespace EquipMotos.View
                             condPagamento = condPagamento,
                             dtCadastro = DateTime.Now,
                             dtAlteracao = DateTime.Now,
-                            usuario = txtUsuario.Text
+                            usuario = UsuarioLogado.Usuario
                         });
                     }
                     condPagamento.listaParcela = listaParcela;
                     condPagamento.dtAlteracao = DateTime.Now;
                     condPagamento.dtCadastro = DateTime.Now;
                     CtrlCondPagamento.Inserir(condPagamento);
-
-
                 }
                 this.DialogResult = DialogResult.OK;
                 this.Close();
@@ -304,7 +302,6 @@ namespace EquipMotos.View
             }
         }
         #endregion
-
         private void ListviewParcelas_Click(object sender, EventArgs e)
         {
             if (listviewParcelas.Items.Count <= 12)
@@ -312,13 +309,11 @@ namespace EquipMotos.View
                 btnAdd.Enabled = true;
             }
         }
-
         private void TxtFormaPagamento_TextChanged(object sender, EventArgs e)
         {
             //txtCodFormaPagamento.Enabled = false;
             //txtFormaPagamento.Enabled = false;
         }
-
         public void Carregar(object id)
         {
             condPagamento = CtrlCondPagamento.BuscarPorID(id) as CondicaoPagamentos;

@@ -1,6 +1,7 @@
 ﻿using EquipMotos.CONTROLLER;
 using EquipMotos.DAO;
 using EquipMotos.MODEL;
+using EquipMotos.View.helper;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -38,37 +39,69 @@ namespace EquipMotos.View
         {
             try
             {
-
-                Paises paises = new Paises();
-                est.estado = txtEstado.Text;
-                est.uf = txtUf.Text;
-                paises.codigo = Convert.ToInt32(txtCodPais.Text);
-                est.Pais = paises;
-                est.usuario = txtUsuario.Text;
-
-                if (btnSalvar.Text == "ALTERAR")
+                if (ValidaCampos())
                 {
-                    est.codigo = Convert.ToInt32(txtCodigo.Text);
-                    est.dtAlteracao = DateTime.Now;
-                    CtrlEstado.Editar(est);
+                    Paises paises = new Paises();
+                    est.estado = txtEstado.Text;
+                    est.uf = txtUf.Text;
+                    paises.codigo = Convert.ToInt32(txtCodPais.Text);
+                    est.Pais = paises;
+                    est.usuario = UsuarioLogado.Usuario;
 
-                    MessageBox.Show("Estado alterado com Sucesso!");
-                }
-                else
-                {
-                    est.dtAlteracao = DateTime.Now;
-                    est.dtCadastro = DateTime.Now;
-                    CtrlEstado.Inserir(est);
-                    MessageBox.Show("Estado cadastrado com Sucesso!");
+                    if (btnSalvar.Text == "ALTERAR")
+                    {
+                        est.codigo = Convert.ToInt32(txtCodigo.Text);
+                        est.dtAlteracao = DateTime.Now;
+                        CtrlEstado.Editar(est);
 
+                        MessageBox.Show("Estado alterado com Sucesso!");
+                    }
+                    else
+                    {
+                        est.dtAlteracao = DateTime.Now;
+                        est.dtCadastro = DateTime.Now;
+                        CtrlEstado.Inserir(est);
+                        MessageBox.Show("Estado cadastrado com Sucesso!");
+
+                    }
+                    this.DialogResult = DialogResult.OK;
+                    this.Close();
                 }
-                this.DialogResult = DialogResult.OK;
-                this.Close();
             }
             catch (Exception)
             {
                 MessageBox.Show("Verifique se todos os campos foram preenchidos corretamente");
             }
+        }
+
+        private bool ValidaCampos()
+        {
+            if (String.IsNullOrEmpty(txtEstado.Text))
+            {
+                MessageBox.Show("Faltou informar o Estado", "Informe o Estado!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtEstado.Focus();
+                return false;
+            }
+            if (!MaskForm.ValidaTexto(txtEstado.Text))
+            {
+                MessageBox.Show("Estado invalido", "Estado não pode conter numeros!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtEstado.Focus();
+                return false;
+            }
+            if (String.IsNullOrEmpty(txtUf.Text))
+            {
+                MessageBox.Show("Faltou informar o UF", "Informe o UF!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtUf.Focus();
+                return false;
+            }
+            if (!MaskForm.ValidaTexto(txtUf.Text))
+            {
+                MessageBox.Show("UF invalido", "UF não pode conter numeros!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtUf.Focus();
+                return false;
+            }
+
+            return true;
         }
 
         private void BtnBuscarPais_Click(object sender, EventArgs e)

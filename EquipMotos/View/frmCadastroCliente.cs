@@ -67,9 +67,9 @@ namespace EquipMotos.Codigo.View
                     Cliente.observacoes = txtObservacao.Text;
                     Cliente.dtCadastro = DateTime.Now;
                     Cliente.dtAlteracao = DateTime.Now;
-                    Cliente.usuario = txtUsuario.Text;
+                    Cliente.usuario = UsuarioLogado.Usuario;
                     Cliente.email = txtEmail.Text;
-                    
+                    Cliente.estrangeiro = chkEstrangeiro.Checked;
                     Cliente.juridico = rbJuridica.Checked;
                     if (rbJuridica.Checked)
                     {
@@ -80,6 +80,7 @@ namespace EquipMotos.Codigo.View
                         Cliente.cpf = "";
                         Cliente.rg = "";
                         Cliente.sexo = ' ';
+                        
                     }
                     else
                     {
@@ -123,7 +124,7 @@ namespace EquipMotos.Codigo.View
         {
             lblSexo.Visible = false;
             txtSexo.Visible = false;
-
+            chkEstrangeiro.Visible = false;
             lblApelido.Text = "Nome Fantasia";
             lblDtNascimento.Text = "Fundação";
             lblCpf.Text = "CNPJ *";
@@ -140,7 +141,7 @@ namespace EquipMotos.Codigo.View
         {
             lblSexo.Visible = true;
             txtSexo.Visible = true;
-
+            chkEstrangeiro.Visible = true;
             lblApelido.Text = "Apelido";
             lblDtNascimento.Text = "Data Nascimento";
             lblCpf.Text = "CPF *";
@@ -155,9 +156,21 @@ namespace EquipMotos.Codigo.View
         {
             try
             {
+                if (txtCliente.Text.Trim().Length > 100)
+                {
+                    MessageBox.Show("Não é possivel inserir este cliente", "Informe o cliente com menos de 100 caracteres!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    txtCliente.Focus();
+                    return false;
+                }
                 if (txtCliente.Text.Length < 3)
                 {
                     MessageBox.Show("Cliente inválido!", "Verefique o Cliente!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    txtCliente.Focus();
+                    return false;
+                }
+                if (!MaskForm.ValidaTexto(txtCliente.Text))
+                {
+                    MessageBox.Show("Cliente inválido!", "Cliente não pode conter numeros!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     txtCliente.Focus();
                     return false;
                 }
@@ -187,16 +200,42 @@ namespace EquipMotos.Codigo.View
                     return false;
                 }
 
+               
+                if (txtEndereco.Text.Trim().Length > 100)
+                {
+                    MessageBox.Show("Não é possivel inserir este endereço", "Informe o endereço com menos de 100 caracteres!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    txtEndereco.Focus();
+                    return false;
+                }
+
                 if (String.IsNullOrEmpty(txtEndereco.Text.Trim()))
                 {
                     MessageBox.Show("Faltou informar o Endereço", "Informe o Endereço!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     txtEndereco.Focus();
                     return false;
                 }
+                if (!MaskForm.ValidaTexto(txtEndereco.Text))
+                {
+                    MessageBox.Show("Endereço inválido!", "Endereço não pode conter numeros!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    txtEndereco.Focus();
+                    return false;
+                }
 
+                if (txtBairro.Text.Trim().Length > 100)
+                {
+                    MessageBox.Show("Não é possivel inserir este bairro", "Informe o bairro com menos de 100 caracteres!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    txtBairro.Focus();
+                    return false;
+                }
                 if (String.IsNullOrEmpty(txtBairro.Text.Trim()))
                 {
                     MessageBox.Show("Faltou informar o Bairro", "Informe o Bairro!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    txtBairro.Focus();
+                    return false;
+                }
+                if (!MaskForm.ValidaTexto(txtBairro.Text))
+                {
+                    MessageBox.Show("Bairro inválido!", "Bairro não pode conter numeros!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     txtBairro.Focus();
                     return false;
                 }
@@ -205,7 +244,7 @@ namespace EquipMotos.Codigo.View
                 {
                     txtCep.Text = "0";
                 }
-                else if(txtCep.Text.Length < 8)
+                else if(txtCep.Text.Length < 8 & txtCep.Text.Length > 2 )
                 {
                     MessageBox.Show("CEP inválido, é necessário no minímo 8 números.", "Informe o CEP!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     txtCep.Focus();
@@ -263,8 +302,38 @@ namespace EquipMotos.Codigo.View
                         return false;
                     }
                 }
+                if (txtEmail.Text.Trim().Length > 30)
+                {
+                    MessageBox.Show("Não é possivel inserir este email", "Informe o email com menos de 30 caracteres!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    txtEmail.Focus();
+                    return false;
+                }
 
-                if (rbFisica.Checked)
+                if (rbFisica.Checked && chkEstrangeiro.Checked)
+                {
+                    if (String.IsNullOrEmpty(txtRg.Text.Trim()))
+                    {
+                        MessageBox.Show("Faltou informar o RG", "Informe o RG!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        txtRg.Focus();
+                        return false;
+                    }
+
+                    if (String.IsNullOrEmpty(txtSexo.Text.Trim()))
+                    {
+                        MessageBox.Show("Faltou informar o Sexo", "Informe o Sexo!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        txtSexo.Focus();
+                        return false;
+                    }
+
+                    if (txtSexo.Text != "M" & txtSexo.Text != "F")
+                    {
+                        MessageBox.Show("Sexo inválido, deve ser 'M' ou 'F' ", "Verefique o Sexo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        txtSexo.Focus();
+                        return false;
+                    }
+                    return true;
+                }
+                else if (rbFisica.Checked && !chkEstrangeiro.Checked)
                 {
                     if (!IsCpf(txtCpf.Text) || txtCpf.Text.Length < 11)
                     {
@@ -287,9 +356,9 @@ namespace EquipMotos.Codigo.View
                         return false;
                     }
                     return true;
-                    }
-                    else if (rbJuridica.Checked)
-                    {
+                }
+                else if (rbJuridica.Checked)
+                {
                     if (!IsCnpj(txtCpf.Text) || txtCpf.Text.Length < 14)
                     {
                         MessageBox.Show("CNPJ Inválido!", "Verefique o CNPJ!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -303,7 +372,7 @@ namespace EquipMotos.Codigo.View
             }
             catch(Exception)
             {
-                MessageBox.Show("Verefique se os dados são validos!");
+                //MessageBox.Show("Verefique se os dados são validos!");
                 return false;
             }
            
@@ -353,9 +422,11 @@ namespace EquipMotos.Codigo.View
             else
             {
                 rbFisica.Checked = true;
+                
                 txtRg.Text = Cliente.rg;
                 txtCpf.Text = Cliente.cpf;
             }
+            chkEstrangeiro.Checked = Cliente.estrangeiro;
             txtCodigo.Text = Convert.ToString(Cliente.codigo);
             txtCliente.Text = Cliente.cliente;
             txtApelido.Text = Cliente.apelido;
@@ -424,6 +495,7 @@ namespace EquipMotos.Codigo.View
             txtDtCadastro.Text = "";
             txtDtAlteracao.Text = "";
             txtUsuario.Text = "";
+            chkEstrangeiro.Checked = false;
         }
 
         public Boolean IsCpf(string cpf)

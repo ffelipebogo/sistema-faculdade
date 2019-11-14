@@ -34,7 +34,7 @@ namespace EquipMotos.View
                 if (ValidaCampo())
                 {
                     mar.marca = txtMarca.Text;
-                    mar.usuario = txtUsuario.Text;
+                    mar.usuario = UsuarioLogado.Usuario;
 
                     if (btnSalvar.Text == "ALTERAR")
                     {
@@ -95,6 +95,12 @@ namespace EquipMotos.View
         }
         public bool ValidaCampo()
         {
+            if (txtMarca.Text.Trim().Length > 100)
+            {
+                MessageBox.Show("Não é possivel inserir esta marca", "Informe a marca com menos de 100 caracteres!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtMarca.Focus();
+                return false;
+            }
             if (txtMarca.Text.Trim() == String.Empty)
             {
                 MessageBox.Show("Faltou informar a Marca", "Informe a Marca!", MessageBoxButtons.OK, MessageBoxIcon.Warning);

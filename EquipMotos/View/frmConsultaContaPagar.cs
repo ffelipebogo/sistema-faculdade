@@ -24,7 +24,7 @@ namespace EquipMotos.View
         private void FrmConsultaContaPagar_Load(object sender, EventArgs e)
         {
             // TODO: esta linha de código carrega dados na tabela 'sistemaMoto2DataSetContasPagar.contaPagar'. Você pode movê-la ou removê-la conforme necessário.
-            this.contaPagarTableAdapter.Fill(this.sistemaMoto2DataSetContasPagar.contaPagar);
+           //this.contaPagarTableAdapter.Fill(this.sistemaMoto2DataSetContasPagar.contaPagar);
             gvContaPagar.DataSource = CtrlContaPagar.ListarTodos();
         }
 
@@ -92,10 +92,15 @@ namespace EquipMotos.View
 
             if ((MessageBox.Show("Marcar como paga ?", "Atenção", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes) & modelo != null)
             {
-                
                 CtrlContaPagar.MarcarPago(modelo, serie, nrNota, codFornecedor, nrParcela);
                 gvContaPagar.DataSource = CtrlContaPagar.ListarTodos();
             }
+        }
+
+        private void btnBuscarContaPagar_Click(object sender, EventArgs e)
+        {
+            string conta = txtPesquisar.Text;
+            gvContaPagar.DataSource = CtrlContaPagar.Pesquisar(conta);
         }
     }
 }

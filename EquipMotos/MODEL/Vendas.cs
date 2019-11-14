@@ -17,6 +17,10 @@ namespace EquipMotos.MODEL
         public double desconto { get; set; }
         public bool situacao { get; set; }
         public List<ContasReceber> listaContasReceber { get; set; }
+        public List<ContasReceber> listaContasReceberProdutos { get; set; }
+        public List<ContasReceber> listaContasReceberServicos { get; set; }
         public List<ItensVenda> listaItem { get; set; }
+        public List<ItensOrdemServico> listaItemProdutos { get; set; }
+        public List<ItensOrdemServico> listaItemServico { get; set; }
     }
 }

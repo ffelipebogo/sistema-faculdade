@@ -31,6 +31,23 @@
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.gvProdutos = new System.Windows.Forms.DataGridView();
+            this.codigoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.prdutoGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.unidadeGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.codBarraGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.codCategoriaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.qtdGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.precoCustoGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.codFornecedorDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.codFuncionarioDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.custoUltCompraGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dtUltCompraGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.comissaoGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.servicoDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.obeservacoesGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.produtosBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.sistemaMoto2DataSetProduto = new EquipMotos.SistemaMoto2DataSetProduto();
             this.btnVoltar = new System.Windows.Forms.Button();
@@ -43,23 +60,6 @@
             this.rbProduto = new System.Windows.Forms.RadioButton();
             this.rbServico = new System.Windows.Forms.RadioButton();
             this.produtosTableAdapter = new EquipMotos.SistemaMoto2DataSetProdutoTableAdapters.produtosTableAdapter();
-            this.codigoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.prdutoGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.unidadeGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.codBarraGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.codCategoriaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.qtdGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.precoCustoGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.codFornecedorDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.custoUltCompraGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dtUltCompraGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.comissaoGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.obeservacoesGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.servicoDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.codFuncionarioDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gvProdutos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.produtosBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sistemaMoto2DataSetProduto)).BeginInit();
@@ -94,15 +94,15 @@
             this.qtdGridViewTextBoxColumn,
             this.precoCustoGridViewTextBoxColumn,
             this.codFornecedorDataGridViewTextBoxColumn,
+            this.codFuncionarioDataGridViewTextBoxColumn,
             this.custoUltCompraGridViewTextBoxColumn,
             this.dtUltCompraGridViewTextBoxColumn,
             this.comissaoGridViewTextBoxColumn,
+            this.servicoDataGridViewCheckBoxColumn,
             this.obeservacoesGridViewTextBoxColumn,
             this.dataGridViewTextBoxColumn10,
             this.dataGridViewTextBoxColumn11,
-            this.dataGridViewTextBoxColumn12,
-            this.servicoDataGridViewCheckBoxColumn,
-            this.codFuncionarioDataGridViewTextBoxColumn});
+            this.dataGridViewTextBoxColumn12});
             this.gvProdutos.DataSource = this.produtosBindingSource;
             this.gvProdutos.EnableHeadersVisualStyles = false;
             this.gvProdutos.Location = new System.Drawing.Point(29, 96);
@@ -112,6 +112,159 @@
             this.gvProdutos.RowHeadersWidth = 51;
             this.gvProdutos.Size = new System.Drawing.Size(1171, 497);
             this.gvProdutos.TabIndex = 20;
+            // 
+            // codigoDataGridViewTextBoxColumn
+            // 
+            this.codigoDataGridViewTextBoxColumn.DataPropertyName = "codigo";
+            this.codigoDataGridViewTextBoxColumn.HeaderText = "Codigo";
+            this.codigoDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.codigoDataGridViewTextBoxColumn.Name = "codigoDataGridViewTextBoxColumn";
+            this.codigoDataGridViewTextBoxColumn.ReadOnly = true;
+            this.codigoDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // prdutoGridViewTextBoxColumn
+            // 
+            this.prdutoGridViewTextBoxColumn.DataPropertyName = "produto";
+            this.prdutoGridViewTextBoxColumn.HeaderText = "Produto";
+            this.prdutoGridViewTextBoxColumn.MinimumWidth = 6;
+            this.prdutoGridViewTextBoxColumn.Name = "prdutoGridViewTextBoxColumn";
+            this.prdutoGridViewTextBoxColumn.ReadOnly = true;
+            this.prdutoGridViewTextBoxColumn.Width = 125;
+            // 
+            // unidadeGridViewTextBoxColumn
+            // 
+            this.unidadeGridViewTextBoxColumn.DataPropertyName = "unidade";
+            this.unidadeGridViewTextBoxColumn.HeaderText = "Unidade";
+            this.unidadeGridViewTextBoxColumn.MinimumWidth = 6;
+            this.unidadeGridViewTextBoxColumn.Name = "unidadeGridViewTextBoxColumn";
+            this.unidadeGridViewTextBoxColumn.ReadOnly = true;
+            this.unidadeGridViewTextBoxColumn.Width = 125;
+            // 
+            // codBarraGridViewTextBoxColumn
+            // 
+            this.codBarraGridViewTextBoxColumn.DataPropertyName = "codBarra";
+            this.codBarraGridViewTextBoxColumn.HeaderText = "Codigo Barra";
+            this.codBarraGridViewTextBoxColumn.MinimumWidth = 6;
+            this.codBarraGridViewTextBoxColumn.Name = "codBarraGridViewTextBoxColumn";
+            this.codBarraGridViewTextBoxColumn.ReadOnly = true;
+            this.codBarraGridViewTextBoxColumn.Width = 125;
+            // 
+            // codCategoriaDataGridViewTextBoxColumn
+            // 
+            this.codCategoriaDataGridViewTextBoxColumn.DataPropertyName = "codCategoria";
+            this.codCategoriaDataGridViewTextBoxColumn.HeaderText = "Codigo Categoria";
+            this.codCategoriaDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.codCategoriaDataGridViewTextBoxColumn.Name = "codCategoriaDataGridViewTextBoxColumn";
+            this.codCategoriaDataGridViewTextBoxColumn.ReadOnly = true;
+            this.codCategoriaDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // qtdGridViewTextBoxColumn
+            // 
+            this.qtdGridViewTextBoxColumn.DataPropertyName = "qtd";
+            this.qtdGridViewTextBoxColumn.HeaderText = "QTD";
+            this.qtdGridViewTextBoxColumn.MinimumWidth = 6;
+            this.qtdGridViewTextBoxColumn.Name = "qtdGridViewTextBoxColumn";
+            this.qtdGridViewTextBoxColumn.ReadOnly = true;
+            this.qtdGridViewTextBoxColumn.Width = 125;
+            // 
+            // precoCustoGridViewTextBoxColumn
+            // 
+            this.precoCustoGridViewTextBoxColumn.DataPropertyName = "precoCusto";
+            this.precoCustoGridViewTextBoxColumn.HeaderText = "Preço Custo";
+            this.precoCustoGridViewTextBoxColumn.MinimumWidth = 6;
+            this.precoCustoGridViewTextBoxColumn.Name = "precoCustoGridViewTextBoxColumn";
+            this.precoCustoGridViewTextBoxColumn.ReadOnly = true;
+            this.precoCustoGridViewTextBoxColumn.Width = 125;
+            // 
+            // codFornecedorDataGridViewTextBoxColumn
+            // 
+            this.codFornecedorDataGridViewTextBoxColumn.DataPropertyName = "codFornecedor";
+            this.codFornecedorDataGridViewTextBoxColumn.HeaderText = "Codigo Fornecedor";
+            this.codFornecedorDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.codFornecedorDataGridViewTextBoxColumn.Name = "codFornecedorDataGridViewTextBoxColumn";
+            this.codFornecedorDataGridViewTextBoxColumn.ReadOnly = true;
+            this.codFornecedorDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // codFuncionarioDataGridViewTextBoxColumn
+            // 
+            this.codFuncionarioDataGridViewTextBoxColumn.DataPropertyName = "codFuncionario";
+            this.codFuncionarioDataGridViewTextBoxColumn.HeaderText = "Codigo Funcionario";
+            this.codFuncionarioDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.codFuncionarioDataGridViewTextBoxColumn.Name = "codFuncionarioDataGridViewTextBoxColumn";
+            this.codFuncionarioDataGridViewTextBoxColumn.ReadOnly = true;
+            this.codFuncionarioDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // custoUltCompraGridViewTextBoxColumn
+            // 
+            this.custoUltCompraGridViewTextBoxColumn.DataPropertyName = "custoUltCompra";
+            this.custoUltCompraGridViewTextBoxColumn.HeaderText = "Custo Ultima Compra";
+            this.custoUltCompraGridViewTextBoxColumn.MinimumWidth = 6;
+            this.custoUltCompraGridViewTextBoxColumn.Name = "custoUltCompraGridViewTextBoxColumn";
+            this.custoUltCompraGridViewTextBoxColumn.ReadOnly = true;
+            this.custoUltCompraGridViewTextBoxColumn.Width = 125;
+            // 
+            // dtUltCompraGridViewTextBoxColumn
+            // 
+            this.dtUltCompraGridViewTextBoxColumn.DataPropertyName = "dtUltCompra";
+            this.dtUltCompraGridViewTextBoxColumn.HeaderText = "Data Ultima Compra";
+            this.dtUltCompraGridViewTextBoxColumn.MinimumWidth = 6;
+            this.dtUltCompraGridViewTextBoxColumn.Name = "dtUltCompraGridViewTextBoxColumn";
+            this.dtUltCompraGridViewTextBoxColumn.ReadOnly = true;
+            this.dtUltCompraGridViewTextBoxColumn.Width = 125;
+            // 
+            // comissaoGridViewTextBoxColumn
+            // 
+            this.comissaoGridViewTextBoxColumn.DataPropertyName = "comissao";
+            this.comissaoGridViewTextBoxColumn.HeaderText = "Comissão";
+            this.comissaoGridViewTextBoxColumn.MinimumWidth = 6;
+            this.comissaoGridViewTextBoxColumn.Name = "comissaoGridViewTextBoxColumn";
+            this.comissaoGridViewTextBoxColumn.ReadOnly = true;
+            this.comissaoGridViewTextBoxColumn.Width = 125;
+            // 
+            // servicoDataGridViewCheckBoxColumn
+            // 
+            this.servicoDataGridViewCheckBoxColumn.DataPropertyName = "servico";
+            this.servicoDataGridViewCheckBoxColumn.HeaderText = "Serviço";
+            this.servicoDataGridViewCheckBoxColumn.MinimumWidth = 6;
+            this.servicoDataGridViewCheckBoxColumn.Name = "servicoDataGridViewCheckBoxColumn";
+            this.servicoDataGridViewCheckBoxColumn.ReadOnly = true;
+            this.servicoDataGridViewCheckBoxColumn.Width = 125;
+            // 
+            // obeservacoesGridViewTextBoxColumn
+            // 
+            this.obeservacoesGridViewTextBoxColumn.DataPropertyName = "observacoes";
+            this.obeservacoesGridViewTextBoxColumn.HeaderText = "Observações";
+            this.obeservacoesGridViewTextBoxColumn.MinimumWidth = 6;
+            this.obeservacoesGridViewTextBoxColumn.Name = "obeservacoesGridViewTextBoxColumn";
+            this.obeservacoesGridViewTextBoxColumn.ReadOnly = true;
+            this.obeservacoesGridViewTextBoxColumn.Width = 125;
+            // 
+            // dataGridViewTextBoxColumn10
+            // 
+            this.dataGridViewTextBoxColumn10.DataPropertyName = "dtCadastro";
+            this.dataGridViewTextBoxColumn10.HeaderText = "Data Cadastro";
+            this.dataGridViewTextBoxColumn10.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
+            this.dataGridViewTextBoxColumn10.ReadOnly = true;
+            this.dataGridViewTextBoxColumn10.Width = 125;
+            // 
+            // dataGridViewTextBoxColumn11
+            // 
+            this.dataGridViewTextBoxColumn11.DataPropertyName = "dtAlteracao";
+            this.dataGridViewTextBoxColumn11.HeaderText = "Data Alteração";
+            this.dataGridViewTextBoxColumn11.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn11.Name = "dataGridViewTextBoxColumn11";
+            this.dataGridViewTextBoxColumn11.ReadOnly = true;
+            this.dataGridViewTextBoxColumn11.Width = 125;
+            // 
+            // dataGridViewTextBoxColumn12
+            // 
+            this.dataGridViewTextBoxColumn12.DataPropertyName = "usuario";
+            this.dataGridViewTextBoxColumn12.HeaderText = "Usuario";
+            this.dataGridViewTextBoxColumn12.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn12.Name = "dataGridViewTextBoxColumn12";
+            this.dataGridViewTextBoxColumn12.ReadOnly = true;
+            this.dataGridViewTextBoxColumn12.Width = 125;
             // 
             // produtosBindingSource
             // 
@@ -224,9 +377,10 @@
             // rbProduto
             // 
             this.rbProduto.AutoSize = true;
+            this.rbProduto.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rbProduto.Location = new System.Drawing.Point(844, 26);
             this.rbProduto.Name = "rbProduto";
-            this.rbProduto.Size = new System.Drawing.Size(125, 21);
+            this.rbProduto.Size = new System.Drawing.Size(145, 24);
             this.rbProduto.TabIndex = 278;
             this.rbProduto.TabStop = true;
             this.rbProduto.Text = "Listar Produtos";
@@ -236,9 +390,10 @@
             // rbServico
             // 
             this.rbServico.AutoSize = true;
+            this.rbServico.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rbServico.Location = new System.Drawing.Point(844, 53);
             this.rbServico.Name = "rbServico";
-            this.rbServico.Size = new System.Drawing.Size(122, 21);
+            this.rbServico.Size = new System.Drawing.Size(143, 24);
             this.rbServico.TabIndex = 279;
             this.rbServico.TabStop = true;
             this.rbServico.Text = "Listar Serviços";
@@ -248,159 +403,6 @@
             // produtosTableAdapter
             // 
             this.produtosTableAdapter.ClearBeforeFill = true;
-            // 
-            // codigoDataGridViewTextBoxColumn
-            // 
-            this.codigoDataGridViewTextBoxColumn.DataPropertyName = "codigo";
-            this.codigoDataGridViewTextBoxColumn.HeaderText = "codigo";
-            this.codigoDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.codigoDataGridViewTextBoxColumn.Name = "codigoDataGridViewTextBoxColumn";
-            this.codigoDataGridViewTextBoxColumn.ReadOnly = true;
-            this.codigoDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // prdutoGridViewTextBoxColumn
-            // 
-            this.prdutoGridViewTextBoxColumn.DataPropertyName = "produto";
-            this.prdutoGridViewTextBoxColumn.HeaderText = "produto";
-            this.prdutoGridViewTextBoxColumn.MinimumWidth = 6;
-            this.prdutoGridViewTextBoxColumn.Name = "prdutoGridViewTextBoxColumn";
-            this.prdutoGridViewTextBoxColumn.ReadOnly = true;
-            this.prdutoGridViewTextBoxColumn.Width = 125;
-            // 
-            // unidadeGridViewTextBoxColumn
-            // 
-            this.unidadeGridViewTextBoxColumn.DataPropertyName = "unidade";
-            this.unidadeGridViewTextBoxColumn.HeaderText = "unidade";
-            this.unidadeGridViewTextBoxColumn.MinimumWidth = 6;
-            this.unidadeGridViewTextBoxColumn.Name = "unidadeGridViewTextBoxColumn";
-            this.unidadeGridViewTextBoxColumn.ReadOnly = true;
-            this.unidadeGridViewTextBoxColumn.Width = 125;
-            // 
-            // codBarraGridViewTextBoxColumn
-            // 
-            this.codBarraGridViewTextBoxColumn.DataPropertyName = "codBarra";
-            this.codBarraGridViewTextBoxColumn.HeaderText = "codBarra";
-            this.codBarraGridViewTextBoxColumn.MinimumWidth = 6;
-            this.codBarraGridViewTextBoxColumn.Name = "codBarraGridViewTextBoxColumn";
-            this.codBarraGridViewTextBoxColumn.ReadOnly = true;
-            this.codBarraGridViewTextBoxColumn.Width = 125;
-            // 
-            // codCategoriaDataGridViewTextBoxColumn
-            // 
-            this.codCategoriaDataGridViewTextBoxColumn.DataPropertyName = "codCategoria";
-            this.codCategoriaDataGridViewTextBoxColumn.HeaderText = "codCategoria";
-            this.codCategoriaDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.codCategoriaDataGridViewTextBoxColumn.Name = "codCategoriaDataGridViewTextBoxColumn";
-            this.codCategoriaDataGridViewTextBoxColumn.ReadOnly = true;
-            this.codCategoriaDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // qtdGridViewTextBoxColumn
-            // 
-            this.qtdGridViewTextBoxColumn.DataPropertyName = "qtd";
-            this.qtdGridViewTextBoxColumn.HeaderText = "qtd";
-            this.qtdGridViewTextBoxColumn.MinimumWidth = 6;
-            this.qtdGridViewTextBoxColumn.Name = "qtdGridViewTextBoxColumn";
-            this.qtdGridViewTextBoxColumn.ReadOnly = true;
-            this.qtdGridViewTextBoxColumn.Width = 125;
-            // 
-            // precoCustoGridViewTextBoxColumn
-            // 
-            this.precoCustoGridViewTextBoxColumn.DataPropertyName = "precoCusto";
-            this.precoCustoGridViewTextBoxColumn.HeaderText = "precoCusto";
-            this.precoCustoGridViewTextBoxColumn.MinimumWidth = 6;
-            this.precoCustoGridViewTextBoxColumn.Name = "precoCustoGridViewTextBoxColumn";
-            this.precoCustoGridViewTextBoxColumn.ReadOnly = true;
-            this.precoCustoGridViewTextBoxColumn.Width = 125;
-            // 
-            // codFornecedorDataGridViewTextBoxColumn
-            // 
-            this.codFornecedorDataGridViewTextBoxColumn.DataPropertyName = "codFornecedor";
-            this.codFornecedorDataGridViewTextBoxColumn.HeaderText = "codFornecedor";
-            this.codFornecedorDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.codFornecedorDataGridViewTextBoxColumn.Name = "codFornecedorDataGridViewTextBoxColumn";
-            this.codFornecedorDataGridViewTextBoxColumn.ReadOnly = true;
-            this.codFornecedorDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // custoUltCompraGridViewTextBoxColumn
-            // 
-            this.custoUltCompraGridViewTextBoxColumn.DataPropertyName = "custoUltCompra";
-            this.custoUltCompraGridViewTextBoxColumn.HeaderText = "custoUltCompra";
-            this.custoUltCompraGridViewTextBoxColumn.MinimumWidth = 6;
-            this.custoUltCompraGridViewTextBoxColumn.Name = "custoUltCompraGridViewTextBoxColumn";
-            this.custoUltCompraGridViewTextBoxColumn.ReadOnly = true;
-            this.custoUltCompraGridViewTextBoxColumn.Width = 125;
-            // 
-            // dtUltCompraGridViewTextBoxColumn
-            // 
-            this.dtUltCompraGridViewTextBoxColumn.DataPropertyName = "dtUltCompra";
-            this.dtUltCompraGridViewTextBoxColumn.HeaderText = "dtUltCompra";
-            this.dtUltCompraGridViewTextBoxColumn.MinimumWidth = 6;
-            this.dtUltCompraGridViewTextBoxColumn.Name = "dtUltCompraGridViewTextBoxColumn";
-            this.dtUltCompraGridViewTextBoxColumn.ReadOnly = true;
-            this.dtUltCompraGridViewTextBoxColumn.Width = 125;
-            // 
-            // comissaoGridViewTextBoxColumn
-            // 
-            this.comissaoGridViewTextBoxColumn.DataPropertyName = "comissao";
-            this.comissaoGridViewTextBoxColumn.HeaderText = "comissao";
-            this.comissaoGridViewTextBoxColumn.MinimumWidth = 6;
-            this.comissaoGridViewTextBoxColumn.Name = "comissaoGridViewTextBoxColumn";
-            this.comissaoGridViewTextBoxColumn.ReadOnly = true;
-            this.comissaoGridViewTextBoxColumn.Width = 125;
-            // 
-            // obeservacoesGridViewTextBoxColumn
-            // 
-            this.obeservacoesGridViewTextBoxColumn.DataPropertyName = "observacoes";
-            this.obeservacoesGridViewTextBoxColumn.HeaderText = "observacoes";
-            this.obeservacoesGridViewTextBoxColumn.MinimumWidth = 6;
-            this.obeservacoesGridViewTextBoxColumn.Name = "obeservacoesGridViewTextBoxColumn";
-            this.obeservacoesGridViewTextBoxColumn.ReadOnly = true;
-            this.obeservacoesGridViewTextBoxColumn.Width = 125;
-            // 
-            // dataGridViewTextBoxColumn10
-            // 
-            this.dataGridViewTextBoxColumn10.DataPropertyName = "dtCadastro";
-            this.dataGridViewTextBoxColumn10.HeaderText = "dtCadastro";
-            this.dataGridViewTextBoxColumn10.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
-            this.dataGridViewTextBoxColumn10.ReadOnly = true;
-            this.dataGridViewTextBoxColumn10.Width = 125;
-            // 
-            // dataGridViewTextBoxColumn11
-            // 
-            this.dataGridViewTextBoxColumn11.DataPropertyName = "dtAlteracao";
-            this.dataGridViewTextBoxColumn11.HeaderText = "dtAlteracao";
-            this.dataGridViewTextBoxColumn11.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn11.Name = "dataGridViewTextBoxColumn11";
-            this.dataGridViewTextBoxColumn11.ReadOnly = true;
-            this.dataGridViewTextBoxColumn11.Width = 125;
-            // 
-            // dataGridViewTextBoxColumn12
-            // 
-            this.dataGridViewTextBoxColumn12.DataPropertyName = "usuario";
-            this.dataGridViewTextBoxColumn12.HeaderText = "usuario";
-            this.dataGridViewTextBoxColumn12.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn12.Name = "dataGridViewTextBoxColumn12";
-            this.dataGridViewTextBoxColumn12.ReadOnly = true;
-            this.dataGridViewTextBoxColumn12.Width = 125;
-            // 
-            // servicoDataGridViewCheckBoxColumn
-            // 
-            this.servicoDataGridViewCheckBoxColumn.DataPropertyName = "servico";
-            this.servicoDataGridViewCheckBoxColumn.HeaderText = "servico";
-            this.servicoDataGridViewCheckBoxColumn.MinimumWidth = 6;
-            this.servicoDataGridViewCheckBoxColumn.Name = "servicoDataGridViewCheckBoxColumn";
-            this.servicoDataGridViewCheckBoxColumn.ReadOnly = true;
-            this.servicoDataGridViewCheckBoxColumn.Width = 125;
-            // 
-            // codFuncionarioDataGridViewTextBoxColumn
-            // 
-            this.codFuncionarioDataGridViewTextBoxColumn.DataPropertyName = "codFuncionario";
-            this.codFuncionarioDataGridViewTextBoxColumn.HeaderText = "codFuncionario";
-            this.codFuncionarioDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.codFuncionarioDataGridViewTextBoxColumn.Name = "codFuncionarioDataGridViewTextBoxColumn";
-            this.codFuncionarioDataGridViewTextBoxColumn.ReadOnly = true;
-            this.codFuncionarioDataGridViewTextBoxColumn.Width = 125;
             // 
             // frmConsultaProdutosServicos
             // 
@@ -455,14 +457,14 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn qtdGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn precoCustoGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn codFornecedorDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn codFuncionarioDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn custoUltCompraGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn dtUltCompraGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn comissaoGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn servicoDataGridViewCheckBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn obeservacoesGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn11;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn12;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn servicoDataGridViewCheckBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn codFuncionarioDataGridViewTextBoxColumn;
     }
 }

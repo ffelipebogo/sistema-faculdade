@@ -1,4 +1,5 @@
-﻿using EquipMotos.DAO;
+﻿using EquipMotos.CONTROLLER;
+using EquipMotos.DAO;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,7 +14,8 @@ namespace EquipMotos.View
 {
     public partial class frmConsultaOrdemServico : Form
     {
-        OrdemServicosDAO dao = new OrdemServicosDAO();
+        
+        CtrlOrdemServicos CtrlOrdemServico = new CtrlOrdemServicos();
         public frmConsultaOrdemServico()
         {
             InitializeComponent();
@@ -21,7 +23,8 @@ namespace EquipMotos.View
 
         private void btnBuscarOS_Click(object sender, EventArgs e)
         {
-
+            string os = txtPesquisar.Text;
+            gvOS.DataSource = CtrlOrdemServico.Pesquisar(os);
         }
 
         private void btnNovo_Click(object sender, EventArgs e)
@@ -29,7 +32,7 @@ namespace EquipMotos.View
             frmCadastroOrdemServico frmCadOS = new frmCadastroOrdemServico();
             if (frmCadOS.ShowDialog() == DialogResult.OK)
             {
-                gvOS.DataSource = dao.ListarTodos();
+                gvOS.DataSource = CtrlOrdemServico.ListarTodos();
             }
         }
 
@@ -40,12 +43,12 @@ namespace EquipMotos.View
                 frmCadastroOrdemServico frmCadOrdemServico = new frmCadastroOrdemServico();
                 var cliRow = gvOS.CurrentRow.DataBoundItem as DataRowView;
 
-                var codigo = cliRow["codigo"];
+                var codigo = cliRow["nrNota"];
 
                 frmCadOrdemServico.Carregar(codigo);
                 if (frmCadOrdemServico.ShowDialog() == DialogResult.OK)
                 {
-                    gvOS.DataSource = dao.ListarTodos();
+                    gvOS.DataSource = CtrlOrdemServico.ListarTodos();
                 }
             }
             catch (Exception ex)
@@ -61,10 +64,10 @@ namespace EquipMotos.View
                 var osRow = gvOS.CurrentRow.DataBoundItem as DataRowView;
                 var codigo = osRow["codigo"];
 
-                dao.Excluir(codigo);
+                CtrlOrdemServico.Excluir(codigo);
                 MessageBox.Show("Ordem de Serviço foi excluida!");
 
-                gvOS.DataSource = dao.ListarTodos();
+                gvOS.DataSource = CtrlOrdemServico.ListarTodos();
             }
             catch (Exception)
             {
@@ -79,8 +82,9 @@ namespace EquipMotos.View
 
         private void frmConsultaOrdemServico_Load(object sender, EventArgs e)
         {
+           
             // TODO: esta linha de código carrega dados na tabela 'sistemaMoto2DataSetOrdemServico.ordemServicos'. Você pode movê-la ou removê-la conforme necessário.
-            //this.ordemServicosTableAdapter.Fill(this.sistemaMoto2DataSetOrdemServico.ordemServicos);
+            this.ordemServicosTableAdapter.Fill(this.sistemaMoto2DataSetOrdemServico.ordemServicos);
 
         }
     }

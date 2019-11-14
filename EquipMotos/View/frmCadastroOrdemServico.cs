@@ -2,6 +2,7 @@
 using EquipMotos.CONTROLLER;
 using EquipMotos.DAO;
 using EquipMotos.MODEL;
+using EquipMotos.View.helper;
 using Microsoft.AspNetCore.Rewrite.Internal;
 using Microsoft.Extensions.FileSystemGlobbing;
 using System;
@@ -26,6 +27,8 @@ namespace EquipMotos.View
         CondicaoPagamentos CondicaoPagamento = new CondicaoPagamentos();
         CtrlProdutosServicos CtrlProdutoServico = new CtrlProdutosServicos();
         CtrlClientes CtrlCliente = new CtrlClientes();
+        CtrlVendas CtrlVenda = new CtrlVendas();
+
         List<ProdutosServicos> ListaProdutos;
         List<ProdutosServicos> ListaServicos;
 
@@ -46,124 +49,98 @@ namespace EquipMotos.View
             try
             {
                 OrdemServico = new OrdemServicos();
-                var listContaReceber = new List<ContasReceber>();
-                var listItemVenda = new List<ItensVenda>();
-                var listItemServico = new List<ItensVenda>();
-                // using (dao = new ComprasDAO())
+                var listItemProdutoOS = new List<ItensOrdemServico>();
+                var listItemServicoOS = new List<ItensOrdemServico>();
+                var modeloOs = "55";
+                var serieOs = "1";
                 {
-                    //var clietenDao = new ClientesDAO(dao.conexao);
-
                     if (ValidaCampos())
                     {
-                        OrdemServico.dataOS = txtData.Value;
                         var cliente = new Clientes();
                         cliente.codigo = Convert.ToInt32(txtCodCliente.Text);
                         OrdemServico.Cliente = cliente;
 
                         var modelo = new Modelos();
                         modelo.codigo = Convert.ToInt32(txtCodVeiculo.Text);
-                        OrdemServico.Modelo = modelo;
-
-                        var produto = new ProdutosServicos();
-                        produto.codigo = Convert.ToInt32(txtCodProduto.Text);
-                        OrdemServico.Produto = produto;
+                        OrdemServico.Veiculo = modelo;
 
                         var condPag = new CondicaoPagamentos();
-
                         condPag.codigo = Convert.ToInt32(txtCodCondPagamento.Text);
+                        OrdemServico.CondPagamento = condPag;
 
+                        OrdemServico.modelo = modeloOs;
+                        OrdemServico.serie = serieOs;
+                        
+                        OrdemServico.data = txtData.Value;
                         OrdemServico.ano = txtAno.Text;
                         OrdemServico.placa = txtPlaca.Text;
                         OrdemServico.km = txtKm.Text;
                         OrdemServico.cor = txtCor.Text;
-
                         OrdemServico.observacoes = txtObservacoes.Text;
+                        OrdemServico.valorProduto = Decimal.Parse(txtValorProdutos.Text, NumberStyles.Any);
+                        OrdemServico.valorServico = Decimal.Parse(txtValorServicos.Text, NumberStyles.Any);
+                        OrdemServico.valorTotal = Decimal.Parse(txtValorTotal.Text, NumberStyles.Any);
+                        OrdemServico.desconto = Decimal.Parse(txtDescontos.Text, NumberStyles.Any);
                         OrdemServico.dtCadastro = DateTime.Now;
                         OrdemServico.dtAlteracao = DateTime.Now;
-                        var dtEmissao = txtData.Value;
-                        OrdemServico.usuario = txtUsuario.Text;
-                       // ProdutosServicos produto = new ProdutosServicos();
+                        OrdemServico.usuario = UsuarioLogado.Usuario;
+
                         for (int i = 0; i < lvProduto.Items.Count; i++)
                         {
                             var idItem = Convert.ToInt32(lvProduto.Items[i].SubItems[0].Text);
-                            var qtdItem = Convert.ToInt32(lvProduto.Items[i].SubItems[3].Text);
+                            var qtdItem = Convert.ToInt32(lvProduto.Items[i].SubItems[2].Text);
                             var custoItem = Decimal.Parse(lvProduto.Items[i].SubItems[4].Text, NumberStyles.Any);
-                            //var totalItens = getTotal();
-                            //var totalDespesas = Convert.ToDecimal(OrdemServico.frete + OrdemServico.seguro + OrdemServico.despesa);
-                            //var porcentagemItem = ((custoItem * qtdItem) / totalItens);
-                            //var vlrFinal = totalDespesas * porcentagemItem;
-                            //vlrFinal /= qtdItem;
 
-                            listItemVenda.Add(new ItensVenda()
+                            listItemProdutoOS.Add(new ItensOrdemServico()
                             {
-                                //modelo = OrdemServico.modelo,
-                                //serie = OrdemServico.serie,
-                                //nrNota = OrdemServico.nrNota,
-                                //Fornecedor = OrdemServico.fornecedor,
+                                modelo = OrdemServico.modelo,
+                                serie = OrdemServico.serie,
+                                nrNota = OrdemServico.NrNota,
+                                cliente = OrdemServico.Cliente,
+                                Veiculo = OrdemServico.Veiculo,
                                 codigo = idItem,
                                 qtd = qtdItem,
-                                //custo = custoItem,
-                                precoVenda = custoItem ,//+ vlrFinal,
+                                precoVenda = custoItem,
                                 dtCadastro = OrdemServico.dtCadastro,
                                 dtAlteracao = OrdemServico.dtAlteracao,
                             });
                         }
-                        OrdemServico.ListaProduto = listItemVenda;
+                        OrdemServico.ListaProduto = listItemProdutoOS;
 
-                        for (int i = 0; i < lvProduto.Items.Count; i++)
+                        var Mecanico = new Funcionarios();
+                        for (int i = 0; i < lvServico.Items.Count; i++)
                         {
-                            var idItem = Convert.ToInt32(lvProduto.Items[i].SubItems[0].Text);
-                            var qtdItem = Convert.ToInt32(lvProduto.Items[i].SubItems[3].Text);
-                            var custoItem = Decimal.Parse(lvProduto.Items[i].SubItems[4].Text, NumberStyles.Any);
-                            //var totalItens = getTotal();
-                            //var totalDespesas = Convert.ToDecimal(OrdemServico.frete + OrdemServico.seguro + OrdemServico.despesa);
-                            //var porcentagemItem = ((custoItem * qtdItem) / totalItens);
-                            //var vlrFinal = totalDespesas * porcentagemItem;
-                            //vlrFinal /= qtdItem;
-                            listItemServico.Add(new ItensVenda()
-                            {
-                                //modelo = OrdemServico.modelo,
-                                //serie = OrdemServico.serie,
-                                //nrNota = OrdemServico.nrNota,
-                                //Fornecedor = OrdemServico.fornecedor,
-                                codigo = idItem,
-                                //qtd = qtdItem,
-                                //custo = custoItem,
-                                precoVenda = custoItem,//+ vlrFinal,
-                                dtCadastro = OrdemServico.dtCadastro,
-                                dtAlteracao = OrdemServico.dtAlteracao,
-                            });
-                        }
-                        OrdemServico.ListaServico = listItemServico;
+                            var idItem = Convert.ToInt32(lvServico.Items[i].SubItems[0].Text);
+                            var custoItem = Decimal.Parse(lvServico.Items[i].SubItems[4].Text, NumberStyles.Any);
+                            var codMecanico = Convert.ToInt32(lvServico.Items[i].SubItems[2].Text);
+                            Mecanico.codigo = codMecanico;
 
-                        for (int i = 0; i < lvContaReceber.Items.Count; i++)
-                        {
-                            listContaReceber.Add(new ContasReceber()
+                            listItemServicoOS.Add(new ItensOrdemServico()
                             {
-                                //modelo = OrdemServico.modelo,
-                                //serie = OrdemServico.serie,
-                                //nrNota = OrdemServico.nrNota,
+                                modelo = OrdemServico.modelo,
+                                serie = OrdemServico.serie,
+                                nrNota = OrdemServico.NrNota,
                                 cliente = OrdemServico.Cliente,
-                                nrParcela = i + 1,
-                                dtVecimento = Convert.ToDateTime(lvContaReceber.Items[i].SubItems[1].Text),
-                                vlrParcela = Double.Parse(lvContaReceber.Items[i].SubItems[2].Text, NumberStyles.Any),
-                                dtAlteracao = DateTime.Now,
-                                dtCadastro = DateTime.Now,
-                                dtEmissao = dtEmissao,
-                                usuario = txtUsuario.Text
+                                Veiculo = OrdemServico.Veiculo,
+                                Mecanico = Mecanico,
+                                codigo = idItem,
+                                precoVenda = custoItem,
+                                dtCadastro = OrdemServico.dtCadastro,
+                                dtAlteracao = OrdemServico.dtAlteracao,
                             });
                         }
-                        //OrdemServico.lista = listContaReceber;
-                        //OrdemServico.situacao = chkSituacao.Checked;
+                        OrdemServico.ListaServico = listItemServicoOS;
+
                         CtrlOrdemServico.Inserir(OrdemServico);
+                        this.DialogResult = DialogResult.OK;
                     }
                     else
                     {
-                        MessageBox.Show("Não foi possivel gerar a OrdemServico.", "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Não foi possivel gerar a OrdemServico", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         OrdemServico.ListaServico = null;
                         OrdemServico.ListaProduto = null;
                     }
-                    this.DialogResult = DialogResult.OK;
+                    // this.DialogResult = DialogResult.OK;
                 }
             }
             catch (Exception ex)
@@ -172,7 +149,7 @@ namespace EquipMotos.View
             }
             finally
             {
-                this.LimparCampos();
+                //this.LimparCampos();
             }
         }
 
@@ -221,6 +198,7 @@ namespace EquipMotos.View
         {
             try
             {
+
                 if (txtData.Value > DateTime.Now && txtData.Value < DateTime.Now)
                 {
                     MessageBox.Show("Data inválida, data não pode ser menor ou maior que hoje!", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -228,6 +206,12 @@ namespace EquipMotos.View
                     return false;
                 }
 
+                if (txtCliente.Text.Trim().Length > 100)
+                {
+                    MessageBox.Show("Não é possivel inserir este cliente", "Informe o cliente com menos de 100 caracteres!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    txtCliente.Focus();
+                    return false;
+                }
                 if (String.IsNullOrEmpty(txtCliente.Text.Trim()))
                 {
                     MessageBox.Show("Faltou informar o Cliente", "Informe o Cliente!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -240,8 +224,13 @@ namespace EquipMotos.View
                     txtCodCliente.Focus();
                     return false;
                 }
-
-                if ( String.IsNullOrEmpty(txtVeiculo.Text.Trim()))
+                if (txtVeiculo.Text.Trim().Length > 100)
+                {
+                    MessageBox.Show("Não é possivel inserir este veiculo", "Informe o veiculo com menos de 100 caracteres!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    txtVeiculo.Focus();
+                    return false;
+                }
+                if (String.IsNullOrEmpty(txtVeiculo.Text.Trim()))
                 {
                     MessageBox.Show("Faltou informar o Veiculo", "Informe o Veiculo!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     txtVeiculo.Focus();
@@ -283,7 +272,7 @@ namespace EquipMotos.View
                 {
                     txtAno.Text = "0";
                 }
-                else if (Convert.ToInt32(txtAno.Text) < 0)
+                else if (Convert.ToInt32("0" + txtAno.Text) < 0)
                 {
                     MessageBox.Show("Ano inválido", "Informe um Ano!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     txtAno.Focus();
@@ -306,7 +295,7 @@ namespace EquipMotos.View
         }
 
         public bool ValidaPlaca(String placa)
-        { 
+        {
             Regex rg = new Regex("[A-Z]{3}[0-9]{1}[A-Z]{1}[0-9]{2}|[A-Z]{3}-[0-9]{4}");
 
             return rg.IsMatch(placa);
@@ -314,31 +303,31 @@ namespace EquipMotos.View
 
         private bool ValidaProduto()
         {
-            if (txtCodProduto.Text == String.Empty & txtCodProduto.Text.Length < 0)
+            if (String.IsNullOrEmpty(txtCodProduto.Text) & txtCodProduto.Text.Length < 1)
             {
                 MessageBox.Show("Faltou informar o Código Produto", "Informe o Código Produto!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txtCodProduto.Focus();
                 return false;
             }
-            else if (Convert.ToInt32(txtCodProduto.Text) < 0)
+            else if (Convert.ToInt32("0" + txtCodProduto.Text) < 1)
             {
                 MessageBox.Show("Código Produto inválido", "Informe o Código do Produto!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txtCodProduto.Focus();
                 return false;
             }
-            if (txtProduto.Text == String.Empty)
+            if (String.IsNullOrEmpty(txtProduto.Text))
             {
                 MessageBox.Show("Faltou informar o Produto", "Informe o Produto!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txtProduto.Focus();
                 return false;
             }
-            if (txtQtd.Text == String.Empty)
+            if (String.IsNullOrEmpty(txtQtd.Text))
             {
                 MessageBox.Show("Faltou informar a Quantidade", "Informe uma Quantidade!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txtQtd.Focus();
                 return false;
             }
-            else if (Convert.ToInt32(txtQtd.Text) < 0)
+            else if (Convert.ToInt32(txtQtd.Text) < 1)
             {
                 MessageBox.Show("Quantidade inválida", "Informe a Quantidade!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txtQtd.Focus();
@@ -349,38 +338,50 @@ namespace EquipMotos.View
 
         private bool ValidaServico()
         {
-            if (txtCodServico.Text == String.Empty & txtCodServico.Text.Length < 0)
+            if (String.IsNullOrEmpty(txtCodServico.Text) & txtCodServico.Text.Length < 1)
             {
                 MessageBox.Show("Faltou informar o Código Serviço", "Informe o Código Serviço!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txtCodServico.Focus();
                 return false;
             }
-            else if (Convert.ToInt32(txtCodServico.Text) < 0)
+            else if (Convert.ToInt32("0" + txtCodServico.Text) < 1)
             {
                 MessageBox.Show("Código Serviço inválido", "Informe o Código do Serviço!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txtCodServico.Focus();
                 return false;
             }
-            if (txtServico.Text == String.Empty)
+            if (txtServico.Text.Trim().Length > 100)
+            {
+                MessageBox.Show("Não é possivel inserir este servico", "Informe o serviço com menos de 100 caracteres!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtServico.Focus();
+                return false;
+            }
+            if (String.IsNullOrEmpty(txtServico.Text))
             {
                 MessageBox.Show("Faltou informar o Serviço", "Informe o Serviço!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txtServico.Focus();
                 return false;
             }
 
-            if (txtCodMecanico.Text == String.Empty & txtCodMecanico.Text.Length < 0)
+            if (String.IsNullOrEmpty(txtCodMecanico.Text) & txtCodMecanico.Text.Length < 1)
             {
                 MessageBox.Show("Faltou informar o Código Mecanico", "Informe o Código Mecanico!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txtCodMecanico.Focus();
                 return false;
             }
-            else if (Convert.ToInt32(txtCodMecanico.Text) < 0)
+            else if (Convert.ToInt32("0" + txtCodMecanico.Text) < 1)
             {
-                MessageBox.Show("Código Serviço Mecanico", "Informe o Código do Mecanico!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Código Mecanico", "Informe o Código do Mecanico!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txtCodMecanico.Focus();
                 return false;
             }
-            if (txtMecanico.Text == String.Empty)
+            if (txtMecanico.Text.Trim().Length > 100)
+            {
+                MessageBox.Show("Não é possivel inserir este servico", "Informe o serviço com menos de 100 caracteres!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtMecanico.Focus();
+                return false;
+            }
+            if (String.IsNullOrEmpty(txtMecanico.Text))
             {
                 MessageBox.Show("Faltou informar o Mecanico", "Informe o Mecanico!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txtMecanico.Focus();
@@ -395,27 +396,7 @@ namespace EquipMotos.View
             frmConCondPag.btnVoltar.Text = "SELECIONAR";
             if (frmConCondPag.ShowDialog() == DialogResult.OK)
             {
-                if (Double.Parse(txtValorTotal.Text, NumberStyles.Any) <= 0)
-                {
-                    MessageBox.Show("É necessario informar o valor total para gerar contas à receber", "Valor total inválido!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    txtValorTotal.Focus();
-                }
-                else
-                {
-                    CarregaCondicao();
-                    lvContaReceber.Items.Clear();
-                    for (int i = 0; i < CondicaoPagamento.listaParcela.Count; i++)
-                    {
-                        var parcela = CondicaoPagamento.listaParcela.ElementAt(i);
-                        var dtVencimento = Convert.ToDateTime(txtData.Text);
-                        dtVencimento = dtVencimento.AddDays(parcela.nrDia);
-                        var valorTot = Double.Parse(txtValorTotal.Text, NumberStyles.Any) - Double.Parse(txtDescontos.Text, NumberStyles.Any);
-                        var valorParcela = valorTot * (parcela.porcentagem / 100);
-                        string[] row = { txtCliente.Text + "/" + Convert.ToString(parcela.nrParcela), dtVencimento.ToString("dd/MM/yyyy"), valorParcela.ToString("C", CultureInfo.CurrentCulture) };
-                        var lvi = new ListViewItem(row);
-                        lvContaReceber.Items.Add(lvi);
-                    }
-                }
+                CarregaCondicao();
             }
         }
 
@@ -438,7 +419,7 @@ namespace EquipMotos.View
                 CarregaCliente();
             }
         }
-       
+
         private void CarregaCliente()
         {
             if (Cliente != null)
@@ -449,7 +430,7 @@ namespace EquipMotos.View
                 txtCelular.Text = cli.celular;
             }
         }
-        
+
         private void btnBuscarVeiculo_Click(object sender, EventArgs e)
         {
             frmConsultaModelo frmConModelo = new frmConsultaModelo();
@@ -474,6 +455,11 @@ namespace EquipMotos.View
         private void btnBuscarProduto_Click(object sender, EventArgs e)
         {
             frmConsultaProdutosServicos frmConProd = new frmConsultaProdutosServicos();
+            frmConProd.isProduto = 1;
+            for (int i = 0; i < lvProduto.Items.Count; i++)
+            {
+                frmConProd.FilterID.Add( lvProduto.Items[i].SubItems[0].Text);
+            }
             frmConProd.btnVoltar.Text = "SELECIONAR";
             if (frmConProd.ShowDialog() == DialogResult.OK)
             {
@@ -495,6 +481,7 @@ namespace EquipMotos.View
         private void btnBuscarServico_Click(object sender, EventArgs e)
         {
             frmConsultaProdutosServicos frmConServ = new frmConsultaProdutosServicos();
+            frmConServ.isProduto = 2;
             frmConServ.btnVoltar.Text = "SELECIONAR";
             if (frmConServ.ShowDialog() == DialogResult.OK)
             {
@@ -509,7 +496,10 @@ namespace EquipMotos.View
                 ProdutosServicos pro = Servico as ProdutosServicos;
                 txtCodServico.Text = Convert.ToString(pro.codigo);
                 txtServico.Text = pro.produto;
-                Produto = null;
+                txtCodMecanico.Text = Convert.ToString(pro.Funcionario.codigo);
+                txtMecanico.Text = pro.Funcionario.funcionario;
+                Funcionario = pro.Funcionario;
+                // Produto = null;
             }
         }
 
@@ -538,26 +528,26 @@ namespace EquipMotos.View
             try
             {
                 ProdutosServicos prod = Produto as ProdutosServicos;
-                if (ValidaProduto())
+                if (ValidaProduto() || prod != null)
                 {
                     var qtd = Convert.ToInt32(txtQtd.Text);
-                    var totalRow = Convert.ToString(qtd * prod.custo);
+                    var totalRow = Convert.ToString(qtd * prod.precoVenda);
 
-                    string[] row = { Convert.ToString(prod.codigo), prod.produto, prod.unidade, txtQtd.Text, Convert.ToString(prod.custo), Convert.ToString(totalRow) };
+                    string[] row = { Convert.ToString(prod.codigo), prod.produto, txtQtd.Text, Convert.ToString(prod.precoVenda), Convert.ToString(totalRow) };
                     var lvi = new ListViewItem(row);
                     lvProduto.Items.Add(lvi);
 
                     var vlTotalincial = Double.Parse(txtValorProdutos.Text, NumberStyles.Any);
                     if (vlTotalincial <= 0)
                     {
-                        txtValorProdutos.Text = lvProduto.Items[0].SubItems[5].Text;
+                        txtValorProdutos.Text = lvProduto.Items[0].SubItems[4].Text;
                     }
                     else
                     {
                         var vltotal = Double.Parse(txtValorProdutos.Text, NumberStyles.Any);
                         for (int i = 0; i < lvProduto.Items.Count; i++)
                         {
-                            txtValorProdutos.Text = Double.Parse(lvProduto.Items[i].SubItems[5].Text, NumberStyles.Any).ToString("C", CultureInfo.CurrentCulture);
+                            txtValorProdutos.Text = Double.Parse(lvProduto.Items[i].SubItems[4].Text, NumberStyles.Any).ToString("C", CultureInfo.CurrentCulture);
                         }
                         //vltotal + txtvalortoal
                         var vlTotalGrid = Double.Parse(txtValorProdutos.Text, NumberStyles.Any);
@@ -568,13 +558,34 @@ namespace EquipMotos.View
                     txtCodProduto.Text = "";
                     txtProduto.Text = "";
                     txtQtd.Text = "";
-                    Produto = null;
+                    //Produto = null;
                 }
+                else
+                {
+                    MessageBox.Show("Produto inválido!", "Informe um produto", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                ValidaEstoque();
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("Não foi possivel adicionar o produto");
             }
+        }
+
+        private bool ValidaEstoque()
+        {
+            for (int i = 0; i < lvProduto.Items.Count; i++)
+            {
+                var idItem = Convert.ToInt32(lvProduto.Items[i].SubItems[0].Text);
+                var qtdItem = Convert.ToInt32(lvProduto.Items[i].SubItems[2].Text);
+                var Produto = CtrlProdutoServico.BuscarPorID(idItem) as ProdutosServicos;
+                if (Produto.qtd < qtdItem)
+                {
+                    MessageBox.Show("Não há estoque para a venda de " + Produto.produto + ", o estoque atual é de " + Produto.qtd, "Quantidade inválida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return false;
+                }
+            }
+            return true;
         }
 
         private void btnAddServico_Click(object sender, EventArgs e)
@@ -585,22 +596,22 @@ namespace EquipMotos.View
                 Funcionarios func = Funcionario as Funcionarios;
                 if (ValidaServico())
                 {
-                    var totalRow = Convert.ToString(serv.custo);
-                    string[] row = { Convert.ToString(serv.codigo), serv.produto, func.funcionario, Convert.ToString(totalRow) };
+                    var totalRow = Convert.ToString(serv.precoVenda);
+                    string[] row = { Convert.ToString(serv.codigo),  Convert.ToString(func.codigo), serv.produto, func.funcionario, Convert.ToString(totalRow) };
                     var lvi = new ListViewItem(row);
                     lvServico.Items.Add(lvi);
 
                     var vlTotalincial = Double.Parse(txtValorServicos.Text, NumberStyles.Any);
                     if (vlTotalincial <= 0)
                     {
-                        txtValorServicos.Text = lvServico.Items[0].SubItems[3].Text;
+                        txtValorServicos.Text = lvServico.Items[0].SubItems[4].Text;
                     }
                     else
                     {
                         var vltotal = Double.Parse(txtValorServicos.Text, NumberStyles.Any);
                         for (int i = 0; i < lvServico.Items.Count; i++)
                         {
-                            txtValorServicos.Text = Double.Parse(lvServico.Items[i].SubItems[3].Text, NumberStyles.Any).ToString("C", CultureInfo.CurrentCulture);
+                            txtValorServicos.Text = Double.Parse(lvServico.Items[i].SubItems[4].Text, NumberStyles.Any).ToString("C", CultureInfo.CurrentCulture);
                         }
                         //vltotal + txtvalortoal
                         var vlTotalGrid = Double.Parse(txtValorServicos.Text, NumberStyles.Any);
@@ -614,10 +625,14 @@ namespace EquipMotos.View
                     txtMecanico.Text = "";
                     Servico = null;
                 }
+                else
+                {
+                    MessageBox.Show("Verifique os campos obrigatorios em branco!");
+                }
             }
             catch
             {
-                MessageBox.Show("Algo de errado não está certo!");
+                MessageBox.Show("Não foi possivel adicionar o serviço");
             }
         }
 
@@ -627,11 +642,10 @@ namespace EquipMotos.View
             var totalServico = Double.Parse(txtValorServicos.Text, NumberStyles.Any);
             var totalProduto = Double.Parse(txtValorProdutos.Text, NumberStyles.Any);
 
-            if (totalServico > 0 && totalProduto > 0)
+            if (totalServico > 0 || totalProduto > 0)
             {
                 total = totalServico + totalProduto;
             }
-
             txtValorTotal.Text = total.ToString("C", CultureInfo.CurrentCulture);
         }
 
@@ -642,6 +656,18 @@ namespace EquipMotos.View
                 if ((MessageBox.Show("Remover produto ?", "EXCLUIR", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes) & (lvProduto.SelectedIndices[0] != null))
                 {
                     lvProduto.Items.RemoveAt(lvProduto.SelectedIndices[0]);
+                    if (lvProduto.Items.Count > 0)
+                    {
+                        for (int i = 0; i < lvProduto.Items.Count; i++)
+                        {
+                            txtValorProdutos.Text = Double.Parse(lvProduto.Items[i].SubItems[4].Text, NumberStyles.Any).ToString("C", CultureInfo.CurrentCulture);
+                        }
+                    }
+                    else
+                    {
+                        txtValorProdutos.Text = Double.Parse("0", NumberStyles.Any).ToString("C", CultureInfo.CurrentCulture);
+                    }
+                    SomaTotal();
                 }
             }
             catch
@@ -657,6 +683,18 @@ namespace EquipMotos.View
                 if ((MessageBox.Show("Remover serviço ?", "EXCLUIR", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes) & (lvServico.SelectedIndices[0] != null))
                 {
                     lvServico.Items.RemoveAt(lvServico.SelectedIndices[0]);
+                    if (lvServico.Items.Count > 0)
+                    {
+                        for (int i = 0; i < lvServico.Items.Count; i++)
+                        {
+                            txtValorServicos.Text = Double.Parse(lvServico.Items[i].SubItems[4].Text, NumberStyles.Any).ToString("C", CultureInfo.CurrentCulture);
+                        }
+                    }
+                    else
+                    {
+                        txtValorServicos.Text = Double.Parse("0", NumberStyles.Any).ToString("C", CultureInfo.CurrentCulture);
+                    }
+                    SomaTotal();
                 }
             }
             catch
@@ -669,28 +707,20 @@ namespace EquipMotos.View
         {
             OrdemServico = CtrlOrdemServico.BuscarPorID(codigo) as OrdemServicos;
 
-            txtNumeroOS.Text = Convert.ToString(OrdemServico.numeroOS);
-            txtData.Text = Convert.ToString(OrdemServico.dataOS);
+            txtNumeroOS.Text = Convert.ToString(OrdemServico.NrNota);
+            txtData.Value = OrdemServico.data;
             txtCodCliente.Text = Convert.ToString(OrdemServico.Cliente.codigo);
             txtCliente.Text = OrdemServico.Cliente.cliente;
-            txtCodVeiculo.Text = Convert.ToString(OrdemServico.Modelo.codigo);
-            txtVeiculo.Text = OrdemServico.Modelo.modelo;
+            txtCodVeiculo.Text = Convert.ToString(OrdemServico.Veiculo.codigo);
+            txtVeiculo.Text = OrdemServico.Veiculo.modelo;
             txtAno.Text = OrdemServico.ano;
             txtPlaca.Text = Convert.ToString(OrdemServico.placa);
             txtKm.Text = Convert.ToString(OrdemServico.km);
             txtCor.Text = OrdemServico.cor;
-            txtCodProduto.Text = Convert.ToString(OrdemServico.Produto.codigo);
-            txtProduto.Text = OrdemServico.Produto.produto;
-            txtQtd.Text = Convert.ToString(OrdemServico.qtd);
-            txtCodServico.Text = Convert.ToString(OrdemServico.Servico.codigo);
-            txtServico.Text = OrdemServico.Servico.produto;
-            txtCodMecanico.Text = Convert.ToString(OrdemServico.Funcionario.codigo);
-            txtMecanico.Text = OrdemServico.Funcionario.funcionario;
-            txtValorProdutos.Text = Convert.ToString(OrdemServico.valorProd);
-            txtValorServicos.Text = Convert.ToString(OrdemServico.valorServ);
-            txtDescontos.Text = Convert.ToString(OrdemServico.desconto);
-            txtValorTotal.Text = Convert.ToString(OrdemServico.valorTotal);
-
+            txtValorProdutos.Text = (OrdemServico.valorProduto).ToString("C", CultureInfo.CurrentCulture);
+            txtValorServicos.Text = (OrdemServico.valorServico).ToString("C", CultureInfo.CurrentCulture);
+            txtDescontos.Text = (OrdemServico.desconto).ToString("C", CultureInfo.CurrentCulture);
+            txtValorTotal.Text = (OrdemServico.valorTotal).ToString("C", CultureInfo.CurrentCulture);
             if (OrdemServico.CondPagamento == null)
             {
                 txtCodCondPagamento.Text = "";
@@ -701,11 +731,232 @@ namespace EquipMotos.View
                 txtCodCondPagamento.Text = Convert.ToString(OrdemServico.CondPagamento.codigo);
                 txtCondPagamento.Text = OrdemServico.CondPagamento.condicao;
             }
+            foreach (var produto in OrdemServico.ListaProduto)
+            {
+                string[] row = { Convert.ToString(produto.codigo), produto.produto, Convert.ToString(produto.qtd), (produto.precoVenda/produto.qtd).ToString("C", CultureInfo.CurrentCulture), Convert.ToString(produto.precoVenda) };
+                var lvi = new ListViewItem(row);
+                lvProduto.Items.Add(lvi);
+            }
+
+            foreach (var servico in OrdemServico.ListaServico)
+            {
+                string[] row = { Convert.ToString(servico.codigo),  Convert.ToString(servico.Mecanico.codigo), servico.produto, servico.Mecanico.funcionario, servico.precoVenda.ToString("C", CultureInfo.CurrentCulture) };
+                var lvi = new ListViewItem(row);
+                lvServico.Items.Add(lvi);
+            }
+
             txtObservacoes.Text = OrdemServico.observacoes;
             txtDtCadastro.Text = Convert.ToString(OrdemServico.dtCadastro);
             txtDtAlteracao.Text = Convert.ToString(OrdemServico.dtAlteracao);
             txtUsuario.Text = OrdemServico.usuario;
             btnSalvar.Text = "ALTERAR";
         }
+
+        private void frmCadastroOrdemServico_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtValorProdutos_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            MaskForm.TxtMask_Moeda_KeyPress(sender, e);
+        }
+
+        private void txtValorProdutos_KeyUp(object sender, KeyEventArgs e)
+        {
+            MaskForm.TxtMask_Moeda_KeyUp(sender, e);
+        }
+
+        private void txtValorProdutos_Leave(object sender, EventArgs e)
+        {
+            MaskForm.TxtMask_Moeda_Leave(sender, e);
+        }
+
+        private void txtValorServicos_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            MaskForm.TxtMask_Moeda_KeyPress(sender, e);
+        }
+
+        private void txtValorServicos_KeyUp(object sender, KeyEventArgs e)
+        {
+            MaskForm.TxtMask_Moeda_KeyUp(sender, e);
+        }
+
+        private void txtValorServicos_Leave(object sender, EventArgs e)
+        {
+            MaskForm.TxtMask_Moeda_Leave(sender, e);
+        }
+
+        private void txtDescontos_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            MaskForm.TxtMask_Moeda_KeyPress(sender, e);
+
+        }
+
+        private void txtDescontos_KeyUp(object sender, KeyEventArgs e)
+        {
+            MaskForm.TxtMask_Moeda_KeyUp(sender, e);
+
+        }
+
+        private void txtDescontos_Leave(object sender, EventArgs e)
+        {
+            MaskForm.TxtMask_Moeda_Leave(sender, e);
+
+        }
+
+        private void txtValorTotal_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            MaskForm.TxtMask_Moeda_KeyPress(sender, e);
+        }
+
+        private void txtValorTotal_KeyUp(object sender, KeyEventArgs e)
+        {
+            MaskForm.TxtMask_Moeda_KeyUp(sender, e);
+        }
+
+        private void txtValorTotal_Leave(object sender, EventArgs e)
+        {
+            MaskForm.TxtMask_Moeda_Leave(sender, e);
+        }
+
+        private void btnFinalizar_Click(object sender, EventArgs e)
+        {
+            GerarVenda();
+        }
+
+        private void GerarVenda()
+        {
+            Vendas Venda = new Vendas();
+            CtrlCondicaoPagamento CtrlCondPag = new CtrlCondicaoPagamento();
+            var listItemProdutoOS = new List<ItensOrdemServico>();
+            var listItemServicoOS = new List<ItensOrdemServico>();
+            try
+            {
+                Venda.modelo = "65";
+                Venda.serie = "E";
+                //Venda.nrNota = txtNumeroOS.Text;
+                Venda.dtEmissao = txtData.Value;
+                Venda.desconto = Double.Parse(txtDescontos.Text, NumberStyles.Any);
+                Venda.cliente = CtrlCliente.BuscarPorID(txtCodCliente.Text.Trim()) as Clientes;
+                Venda.condPagamento = CtrlCondPag.BuscarPorID(Convert.ToInt32(txtCodCondPagamento.Text.Trim())) as CondicaoPagamentos;
+                Venda.observacoes = txtObservacoes.Text;
+                Venda.dtCadastro = DateTime.Now;
+                Venda.dtAlteracao = DateTime.Now;
+                var dtEmissao = txtData.Value;
+                Venda.usuario = UsuarioLogado.Usuario;
+
+                var veiculo = new Modelos();
+                for (int i = 0; i < lvProduto.Items.Count; i++)
+                {
+                    var idItem = Convert.ToInt32(lvProduto.Items[i].SubItems[0].Text);
+                    var qtdItem = Convert.ToInt32(lvProduto.Items[i].SubItems[2].Text);
+                    var custoItem = Decimal.Parse(lvProduto.Items[i].SubItems[4].Text, NumberStyles.Any);
+                    veiculo.codigo = Convert.ToInt32(txtCodVeiculo.Text);
+                    listItemProdutoOS.Add(new ItensOrdemServico()
+                    {
+                        modelo = Venda.modelo,
+                        serie = Venda.serie,
+                        //nrNota = Venda.nrNota,
+                        cliente = Venda.cliente,
+                        Veiculo = veiculo,
+                        codigo = idItem,
+                        qtd = qtdItem,
+                        precoVenda = custoItem,
+                        dtCadastro = Venda.dtCadastro,
+                        dtAlteracao = Venda.dtAlteracao,
+                    });
+                }
+                Venda.listaItemProdutos = listItemProdutoOS;
+
+                var mecanico = new Funcionarios();
+                for (int i = 0; i < lvServico.Items.Count; i++)
+                {
+                    var idItem = Convert.ToInt32(lvServico.Items[i].SubItems[0].Text);
+                    var custoItem = Decimal.Parse(lvServico.Items[i].SubItems[4].Text, NumberStyles.Any);
+                    var codMecanico = Convert.ToInt32(lvServico.Items[i].SubItems[2].Text);
+                    mecanico.codigo = codMecanico;
+                    veiculo.codigo = Convert.ToInt32(txtCodVeiculo.Text);
+
+                    listItemServicoOS.Add(new ItensOrdemServico()
+                    {
+                        modelo = Venda.modelo,
+                        serie = Venda.serie,
+                        //nrNota = Venda.nrNota,
+                        cliente = Venda.cliente,
+                        Mecanico = mecanico,
+                        Veiculo = veiculo,
+                        codigo = idItem,
+                        precoVenda = custoItem,
+                        dtCadastro = Venda.dtCadastro,
+                        dtAlteracao = Venda.dtAlteracao,
+                    }) ;
+                }
+                Venda.listaItemServico = listItemServicoOS;
+
+                if(lvProduto.Items.Count > 0)
+                {
+                    var listContaReceberProdutos = new List<ContasReceber>();
+                    for (int i = 0; i < lvProduto.Items.Count; i++)
+                    {
+                        var forma = Venda.condPagamento.listaParcela.ElementAt(i).formaPagamento;
+                        var Parcela = Venda.condPagamento.listaParcela.ElementAt(i);
+                        var valorParcelaProduto = Double.Parse(txtValorProdutos.Text, NumberStyles.Any) * (Parcela.porcentagem / 100);
+                        listContaReceberProdutos.Add(new ContasReceber()
+                        {
+                            modelo = Venda.modelo,
+                            serie = Venda.serie,
+                            //nrNota = Venda.nrNota,
+                            cliente = Venda.cliente,
+                            formaPagamento = forma,
+                            nrParcela = i + 1,
+                            dtVencimento = DateTime.Now.AddDays(Parcela.nrDia),
+                            vlrParcela = valorParcelaProduto,
+                            dtAlteracao = DateTime.Now,
+                            dtCadastro = DateTime.Now,
+                            dtEmissao = dtEmissao,
+                            usuario = UsuarioLogado.Usuario
+                        });
+                    }
+                    Venda.listaContasReceberProdutos = listContaReceberProdutos;
+                }
+
+                var listContaReceberServicos = new List<ContasReceber>();
+                for (int i = 0; i < lvServico.Items.Count; i++)
+                {
+                    var forma = Venda.condPagamento.listaParcela.ElementAt(i).formaPagamento;
+                    var Parcela = Venda.condPagamento.listaParcela.ElementAt(i);
+                    var valorParcelaServico = Double.Parse(txtValorServicos.Text, NumberStyles.Any) * (Parcela.porcentagem / 100);
+                    listContaReceberServicos.Add(new ContasReceber()
+                    {
+                        modelo = Venda.modelo,
+                        serie = Venda.serie,
+                        //nrNota = Venda.nrNota,
+                        cliente = Venda.cliente,
+                        formaPagamento = forma,
+                        nrParcela = i + 1,
+                        dtVencimento = DateTime.Now.AddDays(Parcela.nrDia),
+                        vlrParcela = valorParcelaServico,
+                        dtAlteracao = DateTime.Now,
+                        dtCadastro = DateTime.Now,
+                        dtEmissao = dtEmissao,
+                        usuario = UsuarioLogado.Usuario
+                    });
+                }
+                Venda.listaContasReceberServicos = listContaReceberServicos;
+
+                //Venda.situacao = chkSituacao.Checked;
+
+                CtrlVenda.InserirVendaOs(Venda);
+                MessageBox.Show("Venda salva com sucesso", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.DialogResult = DialogResult.OK;
+
+            }
+            catch{
+                MessageBox.Show("Erro ao gerar a venda", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
     }
 }
+
