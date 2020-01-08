@@ -26,10 +26,11 @@ namespace EquipMotos.CONTROLLER
             DaoVenda.InserirVendaOS(obj);
         }
 
-        //public object BuscarPorID(object modelo, object serie, object nrNota, object idFornecedor)
-        //{
-        //    return DaoVenda.BuscarVendas_porID(modelo, serie, nrNota, idFornecedor);
-        //}
+
+        public object BuscarPorID( object nrNota)
+        {
+            return DaoVenda.BuscarVenda_porID(nrNota);
+        }
 
     }
 }

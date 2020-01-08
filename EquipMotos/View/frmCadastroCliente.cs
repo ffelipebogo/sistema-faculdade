@@ -15,7 +15,9 @@ namespace EquipMotos.Codigo.View
     {
         Clientes Cliente = new Clientes();
         CtrlClientes CtrlCliente = new CtrlClientes();
-        CondicaoPagamentos condPag = new CondicaoPagamentos();
+        CtrlCidades CtrlCidade = new CtrlCidades();
+        CtrlCondicaoPagamento CtrlCondicao = new CtrlCondicaoPagamento();
+        CondicaoPagamentos CondicaoPag = new CondicaoPagamentos();
 
         public static object cidade = null;
         public static object condPagamento = null;
@@ -31,6 +33,7 @@ namespace EquipMotos.Codigo.View
         {
 
         }
+
         #region Salvar
         private void BtnSalvar_Click(object sender, System.EventArgs e)
         {
@@ -44,7 +47,7 @@ namespace EquipMotos.Codigo.View
                     Cliente.endereco = txtEndereco.Text;
                     if(Convert.ToInt32("0"+ txtNumero.Text) > 0)
                     {
-                     Cliente.numero = Convert.ToInt32(txtNumero.Text);
+                     Cliente.numero = Convert.ToString(txtNumero.Text);
                     }
                     Cliente.complemento = txtComplemento.Text;
                     Cliente.bairro = txtBairro.Text;
@@ -58,10 +61,10 @@ namespace EquipMotos.Codigo.View
                     Cliente.contato = txtContato.Text;
                     if (Convert.ToInt32("0" + txtCodCondicao.Text) != 0)
                     {
-                        condPag.codigo = Convert.ToInt32("0" + txtCodCondicao.Text);
-                        Cliente.CondPagamento = condPag;
+                        CondicaoPag.codigo = Convert.ToInt32("0" + txtCodCondicao.Text);
+                        Cliente.CondPagamento = CondicaoPag;
                     }
-                    Cliente.CondPagamento = condPag;
+                    Cliente.CondPagamento = CondicaoPag;
 
                     Cliente.limiteCredito = Double.Parse(txtLimiteCredito.Text, NumberStyles.Any);
                     Cliente.observacoes = txtObservacao.Text;
@@ -125,16 +128,14 @@ namespace EquipMotos.Codigo.View
             lblSexo.Visible = false;
             txtSexo.Visible = false;
             chkEstrangeiro.Visible = false;
+            chkEstrangeiro.Checked = false;
             lblApelido.Text = "Nome Fantasia";
             lblDtNascimento.Text = "Fundação";
             lblCpf.Text = "CNPJ *";
             txtCpf.Mask = "00.000.000/0000-00";
             lblRg.Text = "I.E";
-            
-
             lblSite.Visible = true;
             txtSite.Visible = true;
-
         }
 
         private void RbFisica_CheckedChanged(object sender, EventArgs e)
@@ -147,7 +148,6 @@ namespace EquipMotos.Codigo.View
             lblCpf.Text = "CPF *";
             txtCpf.Mask = "000.000.000-00";
             lblRg.Text = "RG";
-
             lblSite.Visible = false;
             txtSite.Visible = false;
         }
@@ -182,15 +182,17 @@ namespace EquipMotos.Codigo.View
                     return false;
                 }
 
-                if (String.IsNullOrEmpty(txtNumero.Text))
+                if (!string.IsNullOrEmpty(txtNumero.Text))
                 {
-                    //txtNumero.Text = "0";
-                }
-                else if (Convert.ToInt32(txtNumero.Text.Trim()) < 0)
-                {
-                    MessageBox.Show("Numero inválido", "Informe um Numero!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    txtNumero.Focus();
-                    return false;
+                    if (!MaskForm.ValidaNumero(txtNumero.Text))
+                    {
+                        //if (Convert.ToInt32(txtNumero.Text.Trim()) < 0)
+                        //{
+                        MessageBox.Show("Numero inválido", "Informe um Numero!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        txtNumero.Focus();
+                        return false;
+                    }
+                   // }
                 }
 
                 if ( Double.Parse(txtLimiteCredito.Text,  NumberStyles.Any) < 0)
@@ -199,7 +201,6 @@ namespace EquipMotos.Codigo.View
                     txtLimiteCredito.Focus();
                     return false;
                 }
-
                
                 if (txtEndereco.Text.Trim().Length > 100)
                 {
@@ -308,23 +309,22 @@ namespace EquipMotos.Codigo.View
                     txtEmail.Focus();
                     return false;
                 }
-
                 if (rbFisica.Checked && chkEstrangeiro.Checked)
                 {
-                    if (String.IsNullOrEmpty(txtRg.Text.Trim()))
-                    {
-                        MessageBox.Show("Faltou informar o RG", "Informe o RG!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        txtRg.Focus();
-                        return false;
+                    if (!string.IsNullOrEmpty(txtCpf.Text)){
+                        if (!IsCpf(txtCpf.Text) || txtCpf.Text.Length < 11)
+                        {
+                            MessageBox.Show("CPF Inválido!", "Verefique o CPF!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            txtCpf.Focus();
+                            return false;
+                        }
                     }
-
                     if (String.IsNullOrEmpty(txtSexo.Text.Trim()))
                     {
                         MessageBox.Show("Faltou informar o Sexo", "Informe o Sexo!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         txtSexo.Focus();
                         return false;
                     }
-
                     if (txtSexo.Text != "M" & txtSexo.Text != "F")
                     {
                         MessageBox.Show("Sexo inválido, deve ser 'M' ou 'F' ", "Verefique o Sexo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -341,14 +341,12 @@ namespace EquipMotos.Codigo.View
                         txtCpf.Focus();
                         return false;
                     }
-
                     if (String.IsNullOrEmpty(txtSexo.Text.Trim()))
                     {
                         MessageBox.Show("Faltou informar o Sexo", "Informe o Sexo!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         txtSexo.Focus();
                         return false;
                     }
-
                     if (txtSexo.Text != "M" & txtSexo.Text != "F")
                     {
                         MessageBox.Show("Sexo inválido, deve ser 'M' ou 'F' ", "Verefique o Sexo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -367,15 +365,12 @@ namespace EquipMotos.Codigo.View
                     }
                     return true;
                 }
-
                 return true;
             }
-            catch(Exception)
+            catch (Exception)
             {
-                //MessageBox.Show("Verefique se os dados são validos!");
                 return false;
             }
-           
         }
 
         public Boolean ValidaEmail(string email)
@@ -394,18 +389,19 @@ namespace EquipMotos.Codigo.View
             {
                 CarregaCidade();
             }
-           
         }
 
         public void CarregaCidade()
         {
-            
             if (cidade != null)
             {
                 Cidades cid = cidade as Cidades;
                 txtIdCidade.Text = Convert.ToString(cid.codigo);
                 txtCidade.Text = cid.cidade;
                 txtUF.Text = Convert.ToString(cid.Estado.uf);
+                txtIdCidade.Enabled = false;
+                txtCidade.Enabled = false;
+                txtUF.Enabled = false;
             }
         }
 
@@ -418,13 +414,16 @@ namespace EquipMotos.Codigo.View
                 txtCpf.Text = Cliente.cnpj;
                 txtRg.Text = Cliente.ie;
                 txtSite.Text = Cliente.site;
+                rbFisica.Visible = false;
             }
             else
             {
                 rbFisica.Checked = true;
-                
                 txtRg.Text = Cliente.rg;
                 txtCpf.Text = Cliente.cpf;
+                rbJuridica.Visible = false;
+                chkEstrangeiro.Visible = Cliente.estrangeiro;
+                chkEstrangeiro.Checked = Cliente.estrangeiro;
             }
             chkEstrangeiro.Checked = Cliente.estrangeiro;
             txtCodigo.Text = Convert.ToString(Cliente.codigo);
@@ -433,9 +432,23 @@ namespace EquipMotos.Codigo.View
             txtDtNascimento.Text = Convert.ToString(Cliente.dtNascimento);
             txtSexo.Text = Convert.ToString(Cliente.sexo);
             txtEndereco.Text = Cliente.endereco;
-            txtNumero.Text = Convert.ToString(Cliente.numero);
+            if(Cliente.numero == "0")
+            {
+                txtNumero.Text = "";
+            }
+            else
+            {
+                txtNumero.Text = Convert.ToString(Cliente.numero);
+            }
             txtComplemento.Text = Cliente.complemento;
-            txtCep.Text = Cliente.cep;
+            if (Cliente.cep == "0")
+            {
+                txtCep.Text = "";
+            }
+            else
+            {
+                txtCep.Text = Cliente.cep;
+            }
             txtBairro.Text = Cliente.bairro;
             txtIdCidade.Text = Convert.ToString(Cliente.Cidade.codigo);
             txtCidade.Text = Cliente.Cidade.cidade;
@@ -444,7 +457,6 @@ namespace EquipMotos.Codigo.View
             txtCelular.Text = Cliente.celular;
             txtEmail.Text = Cliente.email;
             txtContato.Text = Cliente.contato;
-            
             
             if(Cliente.CondPagamento == null)
             {
@@ -456,19 +468,16 @@ namespace EquipMotos.Codigo.View
                 txtCodCondicao.Text = Convert.ToString(Cliente.CondPagamento.codigo);
                 txtCondicao.Text = Cliente.CondPagamento.condicao;
             }
-            
             txtLimiteCredito.Text = Cliente.limiteCredito.ToString("C", CultureInfo.CurrentCulture);
             txtObservacao.Text = Cliente.observacoes;
             txtDtCadastro.Text = Convert.ToString(Cliente.dtCadastro);
             txtDtAlteracao.Text = Convert.ToString(Cliente.dtAlteracao);
             txtUsuario.Text = Cliente.usuario;
             btnSalvar.Text = "ALTERAR";
-
         }
 
         public void limparCampos()
         {
-
             txtCodigo.Text = "";
             txtCliente.Text = "";
             txtApelido.Text = "";
@@ -573,12 +582,12 @@ namespace EquipMotos.Codigo.View
         {
             frmConsultaCondicaoPagamento frmConCondPag = new frmConsultaCondicaoPagamento();
             frmConCondPag.btnVoltar.Text = "SELECIONAR";
-            // frmConCidade.Show();
             if (frmConCondPag.ShowDialog() == DialogResult.OK)
             {
                 CarregaCondPagamento();
             }
         }
+
         public void CarregaCondPagamento()
         {
 
@@ -587,31 +596,11 @@ namespace EquipMotos.Codigo.View
                 CondicaoPagamentos condPag = condPagamento as CondicaoPagamentos;
                 txtCodCondicao.Text = Convert.ToString(condPag.codigo);
                 txtCondicao.Text = condPag.condicao;
-                
+                txtCodCondicao.Enabled = false;
+                txtCondicao.Enabled = false;
             }
         }
 
-        private void TxtIdCidade_TextChanged(object sender, EventArgs e)
-        {
-            if (string.IsNullOrEmpty(txtIdCidade.Text))
-                return;
-
-            CidadesDAO daoCid = new CidadesDAO();
-            Cidades cid = new Cidades();
-            cid = daoCid.BuscarPorID(Convert.ToInt32(txtIdCidade.Text)) as Cidades;
-            if(cid == null)
-            {
-                MessageBox.Show("Nenhum resultado");
-                txtCidade.Text = "";
-                txtUF.Text = "";
-            }
-            else
-            {
-                txtCidade.Text = cid.cidade;
-                txtUF.Text = cid.Estado.uf;
-            }
-        }
-        
         private void TxtLimiteCredito_Leave(object sender, EventArgs e)
         {
             MaskForm.TxtMask_Moeda_Leave(sender, e);
@@ -629,7 +618,11 @@ namespace EquipMotos.Codigo.View
 
         private void TxtIdCidade_KeyPress(object sender, KeyPressEventArgs e)
         {
-            MaskForm.TxtMask_Valida_KeyPress(sender, e);
+            if (MaskForm.ValidaNumero(txtIdCidade.Text.Trim()))
+            {
+                MessageBox.Show("Codigo cidade inválido!", "Codigo do cidade dever ser numerico!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtIdCidade.Focus();
+            }
         }
 
         private void TxtCep_KeyPress(object sender, KeyPressEventArgs e)
@@ -639,42 +632,311 @@ namespace EquipMotos.Codigo.View
 
         private void TxtCodCondicao_KeyPress(object sender, KeyPressEventArgs e)
         {
-            MaskForm.TxtMask_Valida_KeyPress(sender, e);
+            if (MaskForm.ValidaNumero(txtCodCondicao.Text.Trim()))
+            {
+                MessageBox.Show("Codigo da condição inválido!", "Codigo da condição dever ser numerico!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtCodCondicao.Focus();
+            }
         }
 
         private void chkEstrangeiro_CheckedChanged(object sender, EventArgs e)
         {
-            if (rbFisica.Checked)
+            if (chkEstrangeiro.Checked)
             {
-                txtCpf.Enabled = !chkEstrangeiro.Checked;
+                lblCpf.Text = "CPF";
+            }
+            else if (rbFisica.Checked)
+            {
+                 lblCpf.Text = "CPF *";
+            }
+        }
 
-                if (!txtCpf.Enabled)
+        private void txtCliente_Leave(object sender, EventArgs e)
+        {
+            if (txtCliente.Text.Trim().Length > 100)
+            {
+                MessageBox.Show("Não é possivel inserir este cliente", "Informe o cliente com menos de 100 caracteres!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtCliente.Focus();
+               // return false;
+            }
+            else if (txtCliente.Text.Length < 3)
+            {
+                MessageBox.Show("Cliente inválido!", "Verefique o Cliente!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtCliente.Focus();
+                //return false;
+            }
+            else if (!MaskForm.ValidaTexto(txtCliente.Text))
+            {
+                MessageBox.Show("Cliente inválido!", "Cliente não pode conter numeros!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtCliente.Focus();
+               // return false;
+            }
+
+            else if (String.IsNullOrEmpty(txtCliente.Text.Trim()))
+            {
+                MessageBox.Show("Faltou informar o Cliente", "Informe o Cliente!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtCliente.Focus();
+                //return false;
+            }
+        }
+
+        private void txtApelido_Leave(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(txtApelido.Text))
+            {
+                if (!MaskForm.ValidaTexto(txtApelido.Text))
                 {
-                    lblRg.Text = "RG *";
-                    lblCpf.Text = "CPF";
+                    MessageBox.Show("Apelido inválido!", "Apelido não pode conter numeros!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    txtApelido.Focus();
+                    // return false;
                 }
-                else
+                else if (txtApelido.Text.Length > 100)
                 {
-                    lblRg.Text = "RG";
-                    lblCpf.Text = "CPF *";
+                    MessageBox.Show("Não é possivel inserir este apelido", "Informe o apelido com menos de 100 caracteres!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    txtApelido.Focus();
+                    // return false;
                 }
             }
-            else
-            {
-                txtCpf.Enabled = !chkEstrangeiro.Checked;
+        }
 
-                if (!txtCpf.Enabled)
-                {
-                    lblRg.Text = "IE";
-                    lblCpf.Text = "CNPJ";
-                }
-                else
-                {
-                    lblRg.Text = "IE";
-                    lblCpf.Text = "CNPJ *";
-                }
+        private void txtSexo_Leave(object sender, EventArgs e)
+        {
+            if (txtSexo.Text != "M" & txtSexo.Text != "F")
+            {
+                MessageBox.Show("Sexo inválido, deve ser 'M' ou 'F' ", "Verefique o Sexo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtSexo.Focus();
+            }
+        }
+
+        private void txtEndereco_Leave(object sender, EventArgs e)
+        {
+            if (txtEndereco.Text.Trim().Length > 100)
+            {
+                MessageBox.Show("Não é possivel inserir este endereço", "Informe o endereço com menos de 100 caracteres!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtEndereco.Focus();
+            }
+            else if (String.IsNullOrEmpty(txtEndereco.Text.Trim()))
+            {
+                MessageBox.Show("Faltou informar o Endereço", "Informe o Endereço!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtEndereco.Focus();
+            }
+            else if (!MaskForm.ValidaTexto(txtEndereco.Text))
+            {
+                MessageBox.Show("Endereço inválido!", "Endereço não pode conter numeros!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtEndereco.Focus();
+            }
+        }
+
+        private void txtNumero_Leave(object sender, EventArgs e)
+        {
+
+            if (txtNumero.Text.Trim().Length > 6)
+            {
+                MessageBox.Show("Numero inválido!", "Numero não pode conter mais de 10 caracteres!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtNumero.Focus();
+
+            }
+            else if (!MaskForm.ValidaNumero(txtNumero.Text.Trim()))
+            {
+                MessageBox.Show("Numero inválido!", "Valor dever ser numerico!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtNumero.Focus();
             }
             
         }
+
+        private void txtComplemento_Leave(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(txtComplemento.Text))
+            {
+                if (!MaskForm.ValidaTexto(txtComplemento.Text))
+                {
+                    MessageBox.Show("Complemento inválido!", "Complemento não pode conter numeros!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    txtComplemento.Focus();
+                }
+                else if (txtComplemento.Text.Trim().Length > 50)
+                {
+                    MessageBox.Show("Complemento inválido!", "Complemento não pode conter mais de 50 caracteres!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    txtComplemento.Focus();
+                }
+            }
+        }
+
+        private void txtBairro_Leave(object sender, EventArgs e)
+        {
+            if (txtBairro.Text.Trim().Length > 100)
+            {
+                MessageBox.Show("Não é possivel inserir este bairro", "Informe o bairro com menos de 100 caracteres!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtBairro.Focus();
+            }
+            else if (String.IsNullOrEmpty(txtBairro.Text.Trim()))
+            {
+                MessageBox.Show("Faltou informar o Bairro", "Informe o Bairro!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtBairro.Focus();
+            }
+            else if (!MaskForm.ValidaTexto(txtBairro.Text))
+            {
+                MessageBox.Show("Bairro inválido!", "Bairro não pode conter numeros!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtBairro.Focus();
+            }
+        }
+
+        private void txtCep_Leave(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtCep.Text.Trim()))
+            {
+                txtCep.Text = "";
+            }
+            else if (txtCep.Text.Length < 8 & txtCep.Text.Length > 2)
+            {
+                MessageBox.Show("CEP inválido, é necessário no minímo 8 números.", "Informe o CEP!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtCep.Focus();
+            }
+        }
+
+        private void txtCelular_Leave(object sender, EventArgs e)
+        {
+            if (String.IsNullOrEmpty(txtCelular.Text))
+            {
+                MessageBox.Show("Faltou informar o celular", "Informe o celular!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtCelular.Focus();
+            }
+            else if (txtCelular.Text.Length < 10)
+            {
+                MessageBox.Show("Celular inválido, deve ter no mínimo 10 números", "Informe o celular!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtCelular.Focus();
+            }
+        }
+
+        private void txtTelefone_Leave(object sender, EventArgs e)
+        {
+            if (txtTelefone.Text.Length < 10)
+            {
+                MessageBox.Show("Telefone inválido, deve ter no mínimo 10 números", "Informe o Telefone!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtTelefone.Focus();
+            }
+        }
+
+        private void txtContato_Leave(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(txtContato.Text.Trim()))
+            {
+                if (!MaskForm.ValidaTexto(txtContato.Text))
+                {
+                    MessageBox.Show("Contato inválido!", "Contato não pode conter numeros!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    txtContato.Focus();
+                    // return false;
+                }
+                else if (txtContato.Text.Length > 100)
+                {
+                    MessageBox.Show("Não é possivel inserir este contato", "Informe o contato com menos de 100 caracteres!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    txtContato.Focus();
+                    // return false;
+                }
+            }
+        }
+
+        private void txtCpf_Leave(object sender, EventArgs e)
+        {
+            if (rbFisica.Checked && !chkEstrangeiro.Checked)
+            {
+                if (!IsCpf(txtCpf.Text) || txtCpf.Text.Length < 11)
+                {
+                    MessageBox.Show("CPF Inválido!", "Verefique o CPF!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    txtCpf.Focus();
+                }
+            } 
+            else if (rbJuridica.Checked)
+            {
+                if (!IsCnpj(txtCpf.Text) || txtCpf.Text.Length < 14)
+                {
+                    MessageBox.Show("CNPJ Inválido!", "Verefique o CNPJ!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    txtCpf.Focus();
+                }
+            }
+        }
+
+        private void txtEmail_Leave(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(txtEmail.Text))
+            {
+                if (!ValidaEmail(txtEmail.Text))
+                {
+                    MessageBox.Show("Email inválido ", "Informe um email valido!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    txtEmail.Focus();
+                }
+                else if (txtEmail.Text.Trim().Length > 30)
+                {
+                    MessageBox.Show("Não é possivel inserir este email", "Informe o email com menos de 30 caracteres!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    txtEmail.Focus();
+                }
+            }
+        }
+
+        private void txtSite_Leave(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(txtSite.Text))
+            {
+                if (!MaskForm.ValidaSite(txtSite.Text))
+                {
+                    MessageBox.Show("Site inválido!", "Contato não pode conter numeros !", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    txtSite.Focus();
+                }
+            }
+        }
+
+        private void txtCodCondicao_TextChanged(object sender, EventArgs e)
+        {
+            
+            if (string.IsNullOrEmpty(txtCodCondicao.Text))
+                return;
+            if (Convert.ToInt32("0" + txtCodCondicao.Text) < 1 )
+                return;
+            CondicaoPagamentos Cond = CtrlCondicao.BuscarPorID(Convert.ToInt32(txtCodCondicao.Text)) as CondicaoPagamentos;
+            if (Cond == null)
+            {
+                MessageBox.Show("Nenhum resultado");
+                txtCondicao.Text = "";
+                txtCodCondicao.Text = "";
+                txtCondicao.Enabled = true;
+            }
+            else
+            {
+                txtCondicao.Text = Cond.condicao;
+                txtCondicao.Enabled = false;
+            }
+        }
+
+        private void txtIdCidade_Leave(object sender, EventArgs e)
+        {
+            if (!MaskForm.ValidaNumero(txtIdCidade.Text.Trim()))
+            {
+                MessageBox.Show("Codigo cidade inválido!", "Codigo da cidade dever ser númerico!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtIdCidade.Text = "";
+                txtIdCidade.Focus();
+            }
+            else if ( string.IsNullOrEmpty(txtIdCidade.Text ))
+            {
+                MessageBox.Show("Faltou informar o codigo da cidade", "Informer o codigo da cidade", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtIdCidade.Focus();
+            }
+            else
+            {
+                Cidades cid = CtrlCidade.BuscarPorID(Convert.ToInt32(txtIdCidade.Text)) as Cidades;
+                if (cid == null)
+                {
+                    MessageBox.Show("Nenhum resultado");
+                    txtCidade.Text = "";
+                    txtUF.Text = "";
+                }
+                else
+                {
+                    txtCidade.Text = cid.cidade;
+                    txtUF.Text = cid.Estado.uf;
+                    txtUF.Enabled = false;
+                    txtCidade.Enabled = false;
+                }
+            }
+        }
+
     }
 }

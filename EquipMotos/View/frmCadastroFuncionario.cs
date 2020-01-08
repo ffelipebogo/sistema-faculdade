@@ -43,7 +43,7 @@ namespace EquipMotos.View
                     func.dtNascimento = Convert.ToDateTime(txtDtNascimento.Text);
                     func.sexo = Convert.ToChar(txtSexo.Text);
                     func.endereco = txtEndereco.Text;
-                    func.numero = Convert.ToInt32(txtNumero.Text);
+                    func.numero = Convert.ToString(txtNumero.Text);
                     func.complemento = txtComplemento.Text;
                     func.bairro = txtBairro.Text;
                     func.cep = txtCep.Text;

@@ -29,18 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnBuscarOS = new System.Windows.Forms.PictureBox();
             this.gvOS = new System.Windows.Forms.DataGridView();
-            this.btnExcluir = new System.Windows.Forms.Button();
-            this.btnVoltar = new System.Windows.Forms.Button();
-            this.btnAlterar = new System.Windows.Forms.Button();
-            this.btnNovo = new System.Windows.Forms.Button();
-            this.txtPesquisar = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.sistemaMoto2DataSetOrdemServico = new EquipMotos.SistemaMoto2DataSetOrdemServico();
-            this.ordemServicosBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.ordemServicosTableAdapter = new EquipMotos.SistemaMoto2DataSetOrdemServicoTableAdapters.ordemServicosTableAdapter();
             this.nrNotaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.modeloDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.serieDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -60,10 +51,19 @@
             this.dtCadastroDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dtAlteracaoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.usuarioDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ordemServicosBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.sistemaMoto2DataSetOrdemServico = new EquipMotos.SistemaMoto2DataSetOrdemServico();
+            this.btnExcluir = new System.Windows.Forms.Button();
+            this.btnVoltar = new System.Windows.Forms.Button();
+            this.btnAlterar = new System.Windows.Forms.Button();
+            this.btnNovo = new System.Windows.Forms.Button();
+            this.txtPesquisar = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.ordemServicosTableAdapter = new EquipMotos.SistemaMoto2DataSetOrdemServicoTableAdapters.ordemServicosTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.btnBuscarOS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvOS)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sistemaMoto2DataSetOrdemServico)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ordemServicosBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sistemaMoto2DataSetOrdemServico)).BeginInit();
             this.SuspendLayout();
             // 
             // btnBuscarOS
@@ -92,14 +92,14 @@
             this.gvOS.BackgroundColor = System.Drawing.SystemColors.Control;
             this.gvOS.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.gvOS.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.ControlDark;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.gvOS.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.ControlDark;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.gvOS.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.gvOS.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gvOS.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.nrNotaDataGridViewTextBoxColumn,
@@ -130,102 +130,6 @@
             this.gvOS.RowHeadersWidth = 51;
             this.gvOS.Size = new System.Drawing.Size(968, 497);
             this.gvOS.TabIndex = 272;
-            // 
-            // btnExcluir
-            // 
-            this.btnExcluir.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnExcluir.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExcluir.Image = global::EquipMotos.Properties.Resources._1398756469_Erase;
-            this.btnExcluir.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnExcluir.Location = new System.Drawing.Point(591, 622);
-            this.btnExcluir.Margin = new System.Windows.Forms.Padding(4);
-            this.btnExcluir.Name = "btnExcluir";
-            this.btnExcluir.Size = new System.Drawing.Size(127, 42);
-            this.btnExcluir.TabIndex = 271;
-            this.btnExcluir.Text = "EXCLUIR";
-            this.btnExcluir.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnExcluir.UseVisualStyleBackColor = true;
-            this.btnExcluir.Click += new System.EventHandler(this.btnExcluir_Click);
-            // 
-            // btnVoltar
-            // 
-            this.btnVoltar.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnVoltar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnVoltar.Location = new System.Drawing.Point(789, 622);
-            this.btnVoltar.Margin = new System.Windows.Forms.Padding(4);
-            this.btnVoltar.Name = "btnVoltar";
-            this.btnVoltar.Size = new System.Drawing.Size(153, 42);
-            this.btnVoltar.TabIndex = 270;
-            this.btnVoltar.Text = "VOLTAR";
-            this.btnVoltar.UseVisualStyleBackColor = true;
-            this.btnVoltar.Click += new System.EventHandler(this.btnVoltar_Click);
-            // 
-            // btnAlterar
-            // 
-            this.btnAlterar.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnAlterar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAlterar.Image = global::EquipMotos.Properties.Resources._1398756462_Modify;
-            this.btnAlterar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAlterar.Location = new System.Drawing.Point(426, 622);
-            this.btnAlterar.Margin = new System.Windows.Forms.Padding(4);
-            this.btnAlterar.Name = "btnAlterar";
-            this.btnAlterar.Size = new System.Drawing.Size(139, 42);
-            this.btnAlterar.TabIndex = 269;
-            this.btnAlterar.Text = "ALTERAR";
-            this.btnAlterar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnAlterar.UseVisualStyleBackColor = true;
-            this.btnAlterar.Click += new System.EventHandler(this.btnAlterar_Click);
-            // 
-            // btnNovo
-            // 
-            this.btnNovo.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnNovo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNovo.Image = global::EquipMotos.Properties.Resources._1398756346_1;
-            this.btnNovo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnNovo.Location = new System.Drawing.Point(295, 622);
-            this.btnNovo.Margin = new System.Windows.Forms.Padding(4);
-            this.btnNovo.Name = "btnNovo";
-            this.btnNovo.Size = new System.Drawing.Size(123, 42);
-            this.btnNovo.TabIndex = 268;
-            this.btnNovo.Text = "NOVO";
-            this.btnNovo.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnNovo.UseVisualStyleBackColor = true;
-            this.btnNovo.Click += new System.EventHandler(this.btnNovo_Click);
-            // 
-            // txtPesquisar
-            // 
-            this.txtPesquisar.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtPesquisar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPesquisar.Location = new System.Drawing.Point(15, 38);
-            this.txtPesquisar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtPesquisar.Name = "txtPesquisar";
-            this.txtPesquisar.Size = new System.Drawing.Size(495, 26);
-            this.txtPesquisar.TabIndex = 267;
-            // 
-            // label1
-            // 
-            this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(11, 10);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(262, 25);
-            this.label1.TabIndex = 266;
-            this.label1.Text = "Pesquisar Ordem de Serviço";
-            // 
-            // sistemaMoto2DataSetOrdemServico
-            // 
-            this.sistemaMoto2DataSetOrdemServico.DataSetName = "SistemaMoto2DataSetOrdemServico";
-            this.sistemaMoto2DataSetOrdemServico.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // ordemServicosBindingSource
-            // 
-            this.ordemServicosBindingSource.DataMember = "ordemServicos";
-            this.ordemServicosBindingSource.DataSource = this.sistemaMoto2DataSetOrdemServico;
-            // 
-            // ordemServicosTableAdapter
-            // 
-            this.ordemServicosTableAdapter.ClearBeforeFill = true;
             // 
             // nrNotaDataGridViewTextBoxColumn
             // 
@@ -398,6 +302,101 @@
             this.usuarioDataGridViewTextBoxColumn.ReadOnly = true;
             this.usuarioDataGridViewTextBoxColumn.Width = 125;
             // 
+            // ordemServicosBindingSource
+            // 
+            this.ordemServicosBindingSource.DataMember = "ordemServicos";
+            this.ordemServicosBindingSource.DataSource = this.sistemaMoto2DataSetOrdemServico;
+            // 
+            // sistemaMoto2DataSetOrdemServico
+            // 
+            this.sistemaMoto2DataSetOrdemServico.DataSetName = "SistemaMoto2DataSetOrdemServico";
+            this.sistemaMoto2DataSetOrdemServico.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // btnExcluir
+            // 
+            this.btnExcluir.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnExcluir.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExcluir.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnExcluir.Location = new System.Drawing.Point(591, 622);
+            this.btnExcluir.Margin = new System.Windows.Forms.Padding(4);
+            this.btnExcluir.Name = "btnExcluir";
+            this.btnExcluir.Size = new System.Drawing.Size(127, 42);
+            this.btnExcluir.TabIndex = 271;
+            this.btnExcluir.Text = "FINALIZAR";
+            this.btnExcluir.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnExcluir.UseVisualStyleBackColor = true;
+            this.btnExcluir.Click += new System.EventHandler(this.btnExcluir_Click);
+            // 
+            // btnVoltar
+            // 
+            this.btnVoltar.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnVoltar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnVoltar.Location = new System.Drawing.Point(789, 622);
+            this.btnVoltar.Margin = new System.Windows.Forms.Padding(4);
+            this.btnVoltar.Name = "btnVoltar";
+            this.btnVoltar.Size = new System.Drawing.Size(153, 42);
+            this.btnVoltar.TabIndex = 270;
+            this.btnVoltar.Text = "VOLTAR";
+            this.btnVoltar.UseVisualStyleBackColor = true;
+            this.btnVoltar.Click += new System.EventHandler(this.btnVoltar_Click);
+            // 
+            // btnAlterar
+            // 
+            this.btnAlterar.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnAlterar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAlterar.Image = global::EquipMotos.Properties.Resources._1398756462_Modify;
+            this.btnAlterar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnAlterar.Location = new System.Drawing.Point(435, 622);
+            this.btnAlterar.Margin = new System.Windows.Forms.Padding(4);
+            this.btnAlterar.Name = "btnAlterar";
+            this.btnAlterar.Size = new System.Drawing.Size(139, 42);
+            this.btnAlterar.TabIndex = 269;
+            this.btnAlterar.Text = "ALTERAR";
+            this.btnAlterar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnAlterar.UseVisualStyleBackColor = true;
+            this.btnAlterar.Click += new System.EventHandler(this.btnAlterar_Click);
+            // 
+            // btnNovo
+            // 
+            this.btnNovo.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnNovo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNovo.Image = global::EquipMotos.Properties.Resources._1398756346_1;
+            this.btnNovo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnNovo.Location = new System.Drawing.Point(295, 622);
+            this.btnNovo.Margin = new System.Windows.Forms.Padding(4);
+            this.btnNovo.Name = "btnNovo";
+            this.btnNovo.Size = new System.Drawing.Size(123, 42);
+            this.btnNovo.TabIndex = 268;
+            this.btnNovo.Text = "NOVO";
+            this.btnNovo.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnNovo.UseVisualStyleBackColor = true;
+            this.btnNovo.Click += new System.EventHandler(this.btnNovo_Click);
+            // 
+            // txtPesquisar
+            // 
+            this.txtPesquisar.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.txtPesquisar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPesquisar.Location = new System.Drawing.Point(15, 38);
+            this.txtPesquisar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtPesquisar.Name = "txtPesquisar";
+            this.txtPesquisar.Size = new System.Drawing.Size(495, 26);
+            this.txtPesquisar.TabIndex = 267;
+            // 
+            // label1
+            // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(11, 10);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(262, 25);
+            this.label1.TabIndex = 266;
+            this.label1.Text = "Pesquisar Ordem de Serviço";
+            // 
+            // ordemServicosTableAdapter
+            // 
+            this.ordemServicosTableAdapter.ClearBeforeFill = true;
+            // 
             // frmConsultaOrdemServico
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -417,8 +416,8 @@
             this.Load += new System.EventHandler(this.frmConsultaOrdemServico_Load);
             ((System.ComponentModel.ISupportInitialize)(this.btnBuscarOS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvOS)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sistemaMoto2DataSetOrdemServico)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ordemServicosBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sistemaMoto2DataSetOrdemServico)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

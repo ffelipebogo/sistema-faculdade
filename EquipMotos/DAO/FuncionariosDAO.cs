@@ -304,7 +304,7 @@ namespace EquipMotos.DAO
                     fun.dtNascimento = Convert.ToDateTime(row["dtNascimento"]);
                     fun.sexo = Convert.ToChar(row["sexo"]);
                     fun.endereco = Convert.ToString(row["endereco"]);
-                    fun.numero = Convert.ToInt32(row["numero"]);
+                    fun.numero = Convert.ToString(row["numero"]);
                     fun.complemento = Convert.ToString(row["complemento"]);
                     fun.bairro = Convert.ToString(row["bairro"]);
                     fun.cep = Convert.ToString(row["cep"]);

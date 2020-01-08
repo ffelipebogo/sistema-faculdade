@@ -11,9 +11,20 @@ namespace EquipMotos.View.helper
 {
     static class MaskForm
     {
-        public static bool ValidaTexto(String texto)
+        public static bool ValidaTexto(string texto)
         {
-            Regex rg = new Regex("[A-Z]");
+            Regex rg = new Regex("[ A-Z]");
+            return rg.IsMatch(texto);
+        }
+        public static bool ValidaSite(string texto)
+        {
+            Regex rg = new Regex("(http|http(s)?://)?([/w-]+/.)+[/w-]+[.com|.in|.org]");
+            return rg.IsMatch(texto);
+        }
+
+        public static bool ValidaNumero(string texto)
+        {
+            Regex rg = new Regex("[0-9]");
 
             return rg.IsMatch(texto);
         }

@@ -37,7 +37,7 @@ namespace EquipMotos.DAO
             {
                 CondID = 1;
             }
-            return CondID;
+            return Convert.ToInt64(CondID) + 1;
         }
 
         public override void Inserir(object obj)
@@ -71,8 +71,6 @@ namespace EquipMotos.DAO
                 conexao.Close();
             }
         }
-
-       
 
         private void InserirOrdemSQl(OrdemServicos ordemS, SqlTransaction transaction)
         {
@@ -277,50 +275,129 @@ namespace EquipMotos.DAO
 
         public override void Editar(object obj)
         {
-            SqlConnection conexao = Conecta.CreateConnection();
+            conexao.Open();
+            SqlTransaction transaction = conexao.BeginTransaction("SampleTransacion");
+            try
             {
-                try
+                OrdemServicos ordemS = obj as OrdemServicos;
+                
+                this.AlterarOrdemSQl(ordemS, transaction);
+                this.ExcluirProdutosOS(ordemS.NrNota, transaction);
+                this.ExcluirServicosOS(ordemS.NrNota, transaction);
+                foreach (ItensOrdemServico produto in ordemS.ListaProduto)
                 {
-                    OrdemServicos ordemS = obj as OrdemServicos;
-                    string sql = @"UPDATE ordemServicos SET 
-                                                dataOS = @dataOS, codCliente= @codCliente, codVeiculo = @codVeiculo, codProduto = @codProduto,
-                                                codServico = @codServico, ano = @ano, placa = @placa, km = @km, rg = @rg, cor = @cor, qtd = @qtd,
-                                                valorProd = @valorProd, desconto = @desconto, valorServ = @valorServ, valorTotal = @valorTotal,
-                                                observacoes = @observacoes, dtCadastro = @dtCadastro, dtAlteracao = @dtAlteracao, usuario = @usuario 
-                                   WHERE numeroOS = @numeroOS,";
-                    SqlCommand comando = new SqlCommand(sql, conexao);
-                    comando.Parameters.AddWithValue("@dataOS", ordemS.data);
-                    comando.Parameters.AddWithValue("@ano", ordemS.ano);
-                    comando.Parameters.AddWithValue("@km", ordemS.km);
-                    comando.Parameters.AddWithValue("@cor", ordemS.cor);
-                    comando.Parameters.AddWithValue("@qtd", ordemS.qtd);
-                    comando.Parameters.AddWithValue("@valorProd", ordemS.valorProduto);
-                    comando.Parameters.AddWithValue("@valorServ", ordemS.valorServico);
-                    comando.Parameters.AddWithValue("@desconto", ordemS.desconto);
-                    comando.Parameters.AddWithValue("@valorTotal", ordemS.valorTotal);
-                    comando.Parameters.AddWithValue("@codVeiculo", ordemS.Veiculo.codigo);
-                    comando.Parameters.AddWithValue("@codCondPagamento", ordemS.CondPagamento.codigo);
-                    comando.Parameters.AddWithValue("@codProduto", ordemS.Produto.codigo);
-                    comando.Parameters.AddWithValue("@codServico", ordemS.Servico.codigo);
-                    comando.Parameters.AddWithValue("@codFuncionario", ordemS.Mecanico.codigo);
-                    comando.Parameters.AddWithValue("@observacoes", ordemS.observacoes);
-                    comando.Parameters.AddWithValue("@dtCadastro", ordemS.dtCadastro);
-                    comando.Parameters.AddWithValue("@dtAlteracao", ordemS.dtAlteracao);
-                    comando.Parameters.AddWithValue("@usuario", ordemS.usuario);
-                    comando.Parameters.AddWithValue("@ordemS", ordemS.NrNota);
-                    conexao.Open();
-                    comando.ExecuteNonQuery();
+                    this.InserirProdutosItemOS(ordemS.NrNota, produto, transaction);
                 }
-                catch
+                foreach (ItensOrdemServico servico in ordemS.ListaServico)
                 {
-                    MessageBox.Show("Erro ao alterar OS!", "Falha no banco de dados", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    this.InserirServicoItemOS(ordemS.NrNota, servico, transaction);
                 }
-                finally
-                {
-                    conexao.Close();
-                }
+                transaction.Commit();
+                MessageBox.Show("Ordem de servico alterado com sucesso!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                transaction.Rollback();
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                conexao.Close();
             }
 
+        }
+
+        private void ExcluirServicosOS(string nrNota, SqlTransaction transaction)
+        {
+            SqlCommand comando = this.CreateCommandTransaction(transaction);
+            comando.CommandText = @" DELETE FROM servicoOrdemServico WHERE nrNota = @nrNota ";
+            comando.Parameters.AddWithValue("@nrNota", nrNota);
+
+            comando.ExecuteNonQuery();
+        }
+
+        private void ExcluirProdutosOS(string nrNota, SqlTransaction transaction)
+        {
+            SqlCommand comando = this.CreateCommandTransaction(transaction);
+            comando.CommandText = @" DELETE FROM produtoOrdemServico WHERE nrNota = @nrNota";
+            comando.Parameters.AddWithValue("@nrNota", nrNota);
+
+            comando.ExecuteNonQuery();
+        }
+
+        private void AlterarOrdemSQl(OrdemServicos ordemS, SqlTransaction transaction)
+        {
+            SqlCommand comando = this.CreateCommandTransaction(transaction);
+            comando.CommandText = @"UPDATE ordemServicos SET 
+                                        modelo = @modelo, serie = @serie,  codVeiculo = @codVeiculo, codCliente = @codCliente,  data = @data, codCondPagamento = @codCondPagamento,
+                                        ano = @ano, placa = @placa, km = @km, cor = @cor,  valorProduto = @valorProduto, valorServico = @valorServico, desconto = @desconto,  valorTotal = @valorTotal,
+                                        observacoes = @observacoes, dtCadastro = @dtCadastro, dtAlteracao = @dtAlteracao, usuario = @usuario
+                                        WHERE nrNota = @nrNota ";
+
+            comando.Parameters.AddWithValue("@modelo", ordemS.modelo);
+            comando.Parameters.AddWithValue("@serie", ordemS.serie);
+             comando.Parameters.AddWithValue("@nrNota", ordemS.NrNota);
+            comando.Parameters.AddWithValue("@codVeiculo", ordemS.Veiculo.codigo);
+            comando.Parameters.AddWithValue("@codCliente", ordemS.Cliente.codigo);
+
+            comando.Parameters.AddWithValue("@data", ordemS.data);
+            comando.Parameters.AddWithValue("@codCondPagamento", ordemS.CondPagamento.codigo);
+            comando.Parameters.AddWithValue("@ano", ordemS.ano);
+            comando.Parameters.AddWithValue("@placa", ordemS.placa);
+            comando.Parameters.AddWithValue("@km", ordemS.km);
+            comando.Parameters.AddWithValue("@cor", ordemS.cor);
+            comando.Parameters.AddWithValue("@valorProduto", ordemS.valorProduto);
+            comando.Parameters.AddWithValue("@valorServico", ordemS.valorServico);
+            comando.Parameters.AddWithValue("@desconto", ordemS.desconto);
+            comando.Parameters.AddWithValue("@valorTotal", ordemS.valorTotal);
+            comando.Parameters.AddWithValue("@observacoes", ordemS.observacoes);
+            comando.Parameters.AddWithValue("@dtCadastro", ordemS.dtCadastro);
+            comando.Parameters.AddWithValue("@dtAlteracao", ordemS.dtAlteracao);
+            comando.Parameters.AddWithValue("@usuario", ordemS.usuario);
+
+            comando.ExecuteNonQuery();
+        }
+
+        private void AlterarProdutosItemOS(object nrNota, ItensOrdemServico produto, SqlTransaction transaction)
+        {
+            SqlCommand comando = this.CreateCommandTransaction(transaction);
+            comando.CommandText = @"UPDATE produtoOrdemServico  SET modelo = @modelo, serie = @serie, codCliente = @codCliente, codVeiculo = @codVeiculo, codProduto = @codProduto,
+                                    qtd = @qtd, valorVenda = @valorVenda, dtCadastro = @dtCadastro,  dtAlteracao = @dtAlteracao
+                                    WHERE nrNota = @nrNota";
+
+            comando.Parameters.AddWithValue("@modelo", produto.modelo);
+            comando.Parameters.AddWithValue("@serie", produto.serie);
+            comando.Parameters.AddWithValue("@nrNota", nrNota);
+            comando.Parameters.AddWithValue("@codCliente", produto.cliente.codigo);
+            comando.Parameters.AddWithValue("@codVeiculo", produto.Veiculo.codigo);
+            comando.Parameters.AddWithValue("@codProduto", produto.codigo);
+            comando.Parameters.AddWithValue("@qtd", produto.qtd);
+            comando.Parameters.AddWithValue("@valorVenda", produto.precoVenda);
+            comando.Parameters.AddWithValue("@dtCadastro", produto.dtCadastro);
+            comando.Parameters.AddWithValue("@dtAlteracao", produto.dtAlteracao);
+
+            comando.ExecuteNonQuery();
+        }
+
+        private void AlterarServicoItemOS(object nrNota, ItensOrdemServico servico, SqlTransaction transaction)
+        {
+            SqlCommand comando = this.CreateCommandTransaction(transaction);
+            comando.CommandText = @"UPDATE servicoOrdemServico  SET modelo = @modelo, serie = @serie, codCliente = @codCliente, codServico = @codServico,
+                                    codMecanico = @codMecanico, codVeiculo = @codVeiculo, valorVenda = @valorVenda, dtCadastro = @dtCadastro,  dtAlteracao = @dtAlteracao
+                                    WHERE nrNota = @nrNota";
+
+            comando.Parameters.AddWithValue("@modelo", servico.modelo);
+            comando.Parameters.AddWithValue("@serie", servico.serie);
+            comando.Parameters.AddWithValue("@nrNota", nrNota);
+            comando.Parameters.AddWithValue("@codCliente", servico.cliente.codigo);
+            comando.Parameters.AddWithValue("@codVeiculo", servico.Veiculo.codigo);
+            comando.Parameters.AddWithValue("@codServico", servico.codigo);
+            comando.Parameters.AddWithValue("@codMecanico", servico.Mecanico.codigo);
+            comando.Parameters.AddWithValue("@valorVenda", servico.precoVenda);
+            comando.Parameters.AddWithValue("@dtCadastro", servico.dtCadastro);
+            comando.Parameters.AddWithValue("@dtAlteracao", servico.dtAlteracao);
+
+            comando.ExecuteNonQuery();
         }
 
         public override void Excluir(object id)
@@ -354,7 +431,7 @@ namespace EquipMotos.DAO
             using (SqlConnection conexao = Conecta.CreateConnection())
             {
                 SqlDataAdapter da;
-                string sql = @"SELECT * FROM ordemServicos";
+                string sql = @"SELECT * FROM ordemServicos "; //where finalizada = 0
                 SqlCommand comando = new SqlCommand(sql, conexao);
                 conexao.Open();
                 da = new SqlDataAdapter(comando);

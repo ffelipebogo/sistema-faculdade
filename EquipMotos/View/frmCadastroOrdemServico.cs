@@ -29,9 +29,6 @@ namespace EquipMotos.View
         CtrlClientes CtrlCliente = new CtrlClientes();
         CtrlVendas CtrlVenda = new CtrlVendas();
 
-        List<ProdutosServicos> ListaProdutos;
-        List<ProdutosServicos> ListaServicos;
-
         public static object Cliente;
         public static object Modelo;
         public static object Produto = null;
@@ -42,6 +39,14 @@ namespace EquipMotos.View
         public frmCadastroOrdemServico()
         {
             InitializeComponent();
+            if (btnSalvar.Text == "ALTERAR")
+            {
+                btnFinalizar.Visible = false;
+            }
+            else
+            {
+                btnFinalizar.Visible = true;
+            }
         }
 
         private void btnSalvar_Click(object sender, EventArgs e)
@@ -53,6 +58,18 @@ namespace EquipMotos.View
                 var listItemServicoOS = new List<ItensOrdemServico>();
                 var modeloOs = "55";
                 var serieOs = "1";
+                if (String.IsNullOrEmpty(txtNumeroOS.Text))
+                {
+                    OrdemServico.modelo = modeloOs;
+                    OrdemServico.serie = serieOs;
+                }
+                else
+                {
+                    var OS = CtrlOrdemServico.BuscarPorID(txtNumeroOS.Text) as OrdemServicos;
+                    OrdemServico.modelo = OS.modelo;
+                    OrdemServico.serie = OS.serie;
+                    OrdemServico.NrNota = OS.NrNota;
+                }
                 {
                     if (ValidaCampos())
                     {
@@ -68,9 +85,6 @@ namespace EquipMotos.View
                         condPag.codigo = Convert.ToInt32(txtCodCondPagamento.Text);
                         OrdemServico.CondPagamento = condPag;
 
-                        OrdemServico.modelo = modeloOs;
-                        OrdemServico.serie = serieOs;
-                        
                         OrdemServico.data = txtData.Value;
                         OrdemServico.ano = txtAno.Text;
                         OrdemServico.placa = txtPlaca.Text;
@@ -112,7 +126,7 @@ namespace EquipMotos.View
                         {
                             var idItem = Convert.ToInt32(lvServico.Items[i].SubItems[0].Text);
                             var custoItem = Decimal.Parse(lvServico.Items[i].SubItems[4].Text, NumberStyles.Any);
-                            var codMecanico = Convert.ToInt32(lvServico.Items[i].SubItems[2].Text);
+                            var codMecanico = Convert.ToInt32(lvServico.Items[i].SubItems[1].Text);
                             Mecanico.codigo = codMecanico;
 
                             listItemServicoOS.Add(new ItensOrdemServico()
@@ -130,9 +144,16 @@ namespace EquipMotos.View
                             });
                         }
                         OrdemServico.ListaServico = listItemServicoOS;
-
-                        CtrlOrdemServico.Inserir(OrdemServico);
-                        this.DialogResult = DialogResult.OK;
+                        if(btnSalvar.Text == "ALTERAR")
+                        {
+                            CtrlOrdemServico.Editar(OrdemServico);
+                            this.DialogResult = DialogResult.OK;
+                        }
+                        else
+                        {
+                            CtrlOrdemServico.Inserir(OrdemServico);
+                            this.DialogResult = DialogResult.OK;
+                        }
                     }
                     else
                     {
@@ -140,7 +161,7 @@ namespace EquipMotos.View
                         OrdemServico.ListaServico = null;
                         OrdemServico.ListaProduto = null;
                     }
-                    // this.DialogResult = DialogResult.OK;
+                     //this.DialogResult = DialogResult.OK;
                 }
             }
             catch (Exception ex)
@@ -151,6 +172,48 @@ namespace EquipMotos.View
             {
                 //this.LimparCampos();
             }
+        }
+
+        internal void Disable()
+        {
+            txtNumeroOS.Enabled = false;
+            txtData.Enabled = false;
+            txtCodCliente.Enabled = false;
+            txtCliente.Enabled = false;
+            txtCelular.Enabled = false;
+            txtMarca.Enabled = false;
+            txtCodVeiculo.Enabled = false;
+            txtVeiculo.Enabled = false;
+            txtAno.Enabled = false;
+            txtPlaca.Enabled = false;
+            txtKm.Enabled = false;
+            txtCor.Enabled = false;
+            txtCodProduto.Enabled = false;
+            txtProduto.Enabled = false;
+            txtQtd.Enabled = false;
+            txtCodServico.Enabled = false;
+            txtServico.Enabled = false;
+            txtCodMecanico.Enabled = false;
+            txtMecanico.Enabled = false;
+            txtValorProdutos.Enabled = false;
+            txtValorServicos.Enabled = false;
+            txtDescontos.Enabled = false;
+            txtValorTotal.Enabled = false;
+            txtCodCondPagamento.Enabled = false;
+            txtCondPagamento.Enabled = false;
+            txtObservacoes.Enabled = false;
+            btnLimpar.Visible = false;
+            btnBuscarCliente.Enabled = false;
+            btnBuscarCondPagamento.Enabled = false;
+            btnBuscarFuncionario.Enabled = false;
+            btnBuscarProduto.Enabled = false;
+            btnBuscarServico.Enabled = false;
+            btnSalvar.Visible = false;
+            btnAddProduto.Enabled = false;
+            btnAddServico.Enabled = false;
+            btnRemProduto.Enabled = false;
+            btnRemServico.Enabled = false;
+            btnFinalizar.Visible = true;
         }
 
         private void btnLimpar_Click(object sender, EventArgs e)
@@ -454,8 +517,7 @@ namespace EquipMotos.View
 
         private void btnBuscarProduto_Click(object sender, EventArgs e)
         {
-            frmConsultaProdutosServicos frmConProd = new frmConsultaProdutosServicos();
-            frmConProd.isProduto = 1;
+            frmConsultaProdutosServicos frmConProd = new frmConsultaProdutosServicos(1);
             for (int i = 0; i < lvProduto.Items.Count; i++)
             {
                 frmConProd.FilterID.Add( lvProduto.Items[i].SubItems[0].Text);
@@ -480,8 +542,7 @@ namespace EquipMotos.View
 
         private void btnBuscarServico_Click(object sender, EventArgs e)
         {
-            frmConsultaProdutosServicos frmConServ = new frmConsultaProdutosServicos();
-            frmConServ.isProduto = 2;
+            frmConsultaProdutosServicos frmConServ = new frmConsultaProdutosServicos(2);
             frmConServ.btnVoltar.Text = "SELECIONAR";
             if (frmConServ.ShowDialog() == DialogResult.OK)
             {
@@ -528,43 +589,46 @@ namespace EquipMotos.View
             try
             {
                 ProdutosServicos prod = Produto as ProdutosServicos;
-                if (ValidaProduto() || prod != null)
+                if (ValidaProduto() && prod != null)
                 {
                     var qtd = Convert.ToInt32(txtQtd.Text);
                     var totalRow = Convert.ToString(qtd * prod.precoVenda);
-
-                    string[] row = { Convert.ToString(prod.codigo), prod.produto, txtQtd.Text, Convert.ToString(prod.precoVenda), Convert.ToString(totalRow) };
-                    var lvi = new ListViewItem(row);
-                    lvProduto.Items.Add(lvi);
-
-                    var vlTotalincial = Double.Parse(txtValorProdutos.Text, NumberStyles.Any);
-                    if (vlTotalincial <= 0)
+                    var codigo = prod.codigo;
+                    if (ValidaEstoque(codigo, qtd))
                     {
-                        txtValorProdutos.Text = lvProduto.Items[0].SubItems[4].Text;
-                    }
-                    else
-                    {
-                        var vltotal = Double.Parse(txtValorProdutos.Text, NumberStyles.Any);
-                        for (int i = 0; i < lvProduto.Items.Count; i++)
+                        string[] row = { Convert.ToString(prod.codigo), prod.produto, txtQtd.Text, Convert.ToString(prod.precoVenda), Convert.ToString(totalRow) };
+                        var lvi = new ListViewItem(row);
+                        lvProduto.Items.Add(lvi);
+
+                        var vlTotalincial = Double.Parse(txtValorProdutos.Text, NumberStyles.Any);
+                        if (vlTotalincial <= 0)
                         {
-                            txtValorProdutos.Text = Double.Parse(lvProduto.Items[i].SubItems[4].Text, NumberStyles.Any).ToString("C", CultureInfo.CurrentCulture);
+                            txtValorProdutos.Text = lvProduto.Items[0].SubItems[4].Text;
                         }
-                        //vltotal + txtvalortoal
-                        var vlTotalGrid = Double.Parse(txtValorProdutos.Text, NumberStyles.Any);
-                        var ValorTotal = vltotal + vlTotalGrid;
-                        txtValorProdutos.Text = ValorTotal.ToString("C", CultureInfo.CurrentCulture);
+                        else
+                        {
+                            var vltotal = Double.Parse(txtValorProdutos.Text, NumberStyles.Any);
+                            for (int i = 0; i < lvProduto.Items.Count; i++)
+                            {
+                                txtValorProdutos.Text = Double.Parse(lvProduto.Items[i].SubItems[4].Text, NumberStyles.Any).ToString("C", CultureInfo.CurrentCulture);
+                            }
+                            //vltotal + txtvalortoal
+                            var vlTotalGrid = Double.Parse(txtValorProdutos.Text, NumberStyles.Any);
+                            var ValorTotal = vltotal + vlTotalGrid;
+                            txtValorProdutos.Text = ValorTotal.ToString("C", CultureInfo.CurrentCulture);
+                        }
+                        SomaTotal();
+                        txtCodProduto.Text = "";
+                        txtProduto.Text = "";
+                        txtQtd.Text = "";
                     }
-                    SomaTotal();
-                    txtCodProduto.Text = "";
-                    txtProduto.Text = "";
-                    txtQtd.Text = "";
                     //Produto = null;
                 }
                 else
                 {
-                    MessageBox.Show("Produto inválido!", "Informe um produto", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    //MessageBox.Show("Produto inválido!", "Informe um produto", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-                ValidaEstoque();
+                
             }
             catch (Exception ex)
             {
@@ -572,18 +636,14 @@ namespace EquipMotos.View
             }
         }
 
-        private bool ValidaEstoque()
+        private bool ValidaEstoque(int codigo, int qtd)
         {
-            for (int i = 0; i < lvProduto.Items.Count; i++)
+            var qtdItem = qtd;
+            var Produto = CtrlProdutoServico.BuscarPorID(codigo) as ProdutosServicos;
+            if (Produto.qtd < qtdItem)
             {
-                var idItem = Convert.ToInt32(lvProduto.Items[i].SubItems[0].Text);
-                var qtdItem = Convert.ToInt32(lvProduto.Items[i].SubItems[2].Text);
-                var Produto = CtrlProdutoServico.BuscarPorID(idItem) as ProdutosServicos;
-                if (Produto.qtd < qtdItem)
-                {
-                    MessageBox.Show("Não há estoque para a venda de " + Produto.produto + ", o estoque atual é de " + Produto.qtd, "Quantidade inválida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return false;
-                }
+                MessageBox.Show("Não há estoque para a venda de " + Produto.produto + ", o estoque atual é de " + Produto.qtd, "Quantidade inválida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
             }
             return true;
         }
@@ -613,7 +673,6 @@ namespace EquipMotos.View
                         {
                             txtValorServicos.Text = Double.Parse(lvServico.Items[i].SubItems[4].Text, NumberStyles.Any).ToString("C", CultureInfo.CurrentCulture);
                         }
-                        //vltotal + txtvalortoal
                         var vlTotalGrid = Double.Parse(txtValorServicos.Text, NumberStyles.Any);
                         var ValorTotal = vltotal + vlTotalGrid;
                         txtValorServicos.Text = ValorTotal.ToString("C", CultureInfo.CurrentCulture);
@@ -711,8 +770,10 @@ namespace EquipMotos.View
             txtData.Value = OrdemServico.data;
             txtCodCliente.Text = Convert.ToString(OrdemServico.Cliente.codigo);
             txtCliente.Text = OrdemServico.Cliente.cliente;
+            txtCelular.Text = OrdemServico.Cliente.celular;
             txtCodVeiculo.Text = Convert.ToString(OrdemServico.Veiculo.codigo);
             txtVeiculo.Text = OrdemServico.Veiculo.modelo;
+            txtMarca.Text = OrdemServico.Veiculo.Marca.marca;
             txtAno.Text = OrdemServico.ano;
             txtPlaca.Text = Convert.ToString(OrdemServico.placa);
             txtKm.Text = Convert.ToString(OrdemServico.km);
@@ -750,6 +811,7 @@ namespace EquipMotos.View
             txtDtAlteracao.Text = Convert.ToString(OrdemServico.dtAlteracao);
             txtUsuario.Text = OrdemServico.usuario;
             btnSalvar.Text = "ALTERAR";
+            btnFinalizar.Visible = false;
         }
 
         private void frmCadastroOrdemServico_Load(object sender, EventArgs e)
@@ -831,6 +893,7 @@ namespace EquipMotos.View
             CtrlCondicaoPagamento CtrlCondPag = new CtrlCondicaoPagamento();
             var listItemProdutoOS = new List<ItensOrdemServico>();
             var listItemServicoOS = new List<ItensOrdemServico>();
+
             try
             {
                 Venda.modelo = "65";
@@ -945,11 +1008,13 @@ namespace EquipMotos.View
                 }
                 Venda.listaContasReceberServicos = listContaReceberServicos;
 
-                //Venda.situacao = chkSituacao.Checked;
-
+                //enda.situacao = chkSituacao.Checked;
+               
                 CtrlVenda.InserirVendaOs(Venda);
+                
                 MessageBox.Show("Venda salva com sucesso", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.DialogResult = DialogResult.OK;
+
 
             }
             catch{

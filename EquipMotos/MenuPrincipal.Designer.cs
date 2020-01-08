@@ -48,7 +48,6 @@
             this.vendasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.OrdemDeServiçoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.financeiroToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.caixaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contasÀPagarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contasÀReceberToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.estoqueToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -221,19 +220,11 @@
             // financeiroToolStripMenuItem
             // 
             this.financeiroToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.caixaToolStripMenuItem,
             this.contasÀPagarToolStripMenuItem,
             this.contasÀReceberToolStripMenuItem});
             this.financeiroToolStripMenuItem.Name = "financeiroToolStripMenuItem";
             this.financeiroToolStripMenuItem.Size = new System.Drawing.Size(91, 24);
             this.financeiroToolStripMenuItem.Text = "Financeiro";
-            
-            // 
-            // caixaToolStripMenuItem
-            // 
-            this.caixaToolStripMenuItem.Name = "caixaToolStripMenuItem";
-            this.caixaToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.caixaToolStripMenuItem.Text = "Caixa";
             // 
             // contasÀPagarToolStripMenuItem
             // 
@@ -260,7 +251,7 @@
             // consultarEstoqueToolStripMenuItem
             // 
             this.consultarEstoqueToolStripMenuItem.Name = "consultarEstoqueToolStripMenuItem";
-            this.consultarEstoqueToolStripMenuItem.Size = new System.Drawing.Size(211, 26);
+            this.consultarEstoqueToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.consultarEstoqueToolStripMenuItem.Text = "Consultar Estoque";
             this.consultarEstoqueToolStripMenuItem.Click += new System.EventHandler(this.ConsultarEstoqueToolStripMenuItem_Click);
             // 
@@ -361,7 +352,6 @@
         private System.Windows.Forms.ToolStripMenuItem fornecedoresToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem produtosEServiçosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem financeiroToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem caixaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem estoqueToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem consultarEstoqueToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem sairToolStripMenuItem;

@@ -116,6 +116,7 @@
             this.txtSite.Name = "txtSite";
             this.txtSite.Size = new System.Drawing.Size(260, 26);
             this.txtSite.TabIndex = 20;
+            this.txtSite.Leave += new System.EventHandler(this.txtSite_Leave);
             // 
             // lblRg
             // 
@@ -256,6 +257,7 @@
             this.txtContato.Name = "txtContato";
             this.txtContato.Size = new System.Drawing.Size(140, 26);
             this.txtContato.TabIndex = 19;
+            this.txtContato.Leave += new System.EventHandler(this.txtContato_Leave);
             // 
             // lblContato
             // 
@@ -278,6 +280,7 @@
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(263, 26);
             this.txtEmail.TabIndex = 18;
+            this.txtEmail.Leave += new System.EventHandler(this.txtEmail_Leave);
             // 
             // lblEmail
             // 
@@ -316,7 +319,7 @@
             // 
             this.txtUF.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtUF.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtUF.Location = new System.Drawing.Point(523, 166);
+            this.txtUF.Location = new System.Drawing.Point(440, 166);
             this.txtUF.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtUF.Name = "txtUF";
             this.txtUF.Size = new System.Drawing.Size(43, 26);
@@ -327,7 +330,7 @@
             this.lblUF.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblUF.AutoSize = true;
             this.lblUF.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUF.Location = new System.Drawing.Point(519, 145);
+            this.lblUF.Location = new System.Drawing.Point(436, 145);
             this.lblUF.Name = "lblUF";
             this.lblUF.Size = new System.Drawing.Size(42, 20);
             this.lblUF.TabIndex = 131;
@@ -364,8 +367,8 @@
             this.txtIdCidade.Name = "txtIdCidade";
             this.txtIdCidade.Size = new System.Drawing.Size(68, 26);
             this.txtIdCidade.TabIndex = 13;
-            this.txtIdCidade.TextChanged += new System.EventHandler(this.TxtIdCidade_TextChanged);
             this.txtIdCidade.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtIdCidade_KeyPress);
+            this.txtIdCidade.Leave += new System.EventHandler(this.txtIdCidade_Leave);
             // 
             // lblCodigoCidade
             // 
@@ -374,9 +377,9 @@
             this.lblCodigoCidade.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCodigoCidade.Location = new System.Drawing.Point(20, 146);
             this.lblCodigoCidade.Name = "lblCodigoCidade";
-            this.lblCodigoCidade.Size = new System.Drawing.Size(43, 20);
+            this.lblCodigoCidade.Size = new System.Drawing.Size(54, 20);
             this.lblCodigoCidade.TabIndex = 126;
-            this.lblCodigoCidade.Text = "Cód.";
+            this.lblCodigoCidade.Text = "Cód. *";
             // 
             // txtCep
             // 
@@ -389,6 +392,7 @@
             this.txtCep.Size = new System.Drawing.Size(100, 26);
             this.txtCep.TabIndex = 12;
             this.txtCep.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtCep_KeyPress);
+            this.txtCep.Leave += new System.EventHandler(this.txtCep_Leave);
             // 
             // label10
             // 
@@ -411,6 +415,7 @@
             this.txtBairro.Name = "txtBairro";
             this.txtBairro.Size = new System.Drawing.Size(244, 26);
             this.txtBairro.TabIndex = 11;
+            this.txtBairro.Leave += new System.EventHandler(this.txtBairro_Leave);
             // 
             // lblBairro
             // 
@@ -433,6 +438,7 @@
             this.txtComplemento.Name = "txtComplemento";
             this.txtComplemento.Size = new System.Drawing.Size(285, 26);
             this.txtComplemento.TabIndex = 10;
+            this.txtComplemento.Leave += new System.EventHandler(this.txtComplemento_Leave);
             // 
             // label8
             // 
@@ -455,6 +461,7 @@
             this.txtSexo.Name = "txtSexo";
             this.txtSexo.Size = new System.Drawing.Size(42, 26);
             this.txtSexo.TabIndex = 7;
+            this.txtSexo.Leave += new System.EventHandler(this.txtSexo_Leave);
             // 
             // lblSexo
             // 
@@ -511,12 +518,14 @@
             // txtNumero
             // 
             this.txtNumero.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.txtNumero.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtNumero.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNumero.Location = new System.Drawing.Point(440, 100);
             this.txtNumero.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtNumero.Name = "txtNumero";
             this.txtNumero.Size = new System.Drawing.Size(100, 26);
             this.txtNumero.TabIndex = 9;
+            this.txtNumero.Leave += new System.EventHandler(this.txtNumero_Leave);
             // 
             // label5
             // 
@@ -539,6 +548,7 @@
             this.txtEndereco.Name = "txtEndereco";
             this.txtEndereco.Size = new System.Drawing.Size(403, 26);
             this.txtEndereco.TabIndex = 8;
+            this.txtEndereco.Leave += new System.EventHandler(this.txtEndereco_Leave);
             // 
             // lblEndereco
             // 
@@ -561,6 +571,7 @@
             this.txtApelido.Name = "txtApelido";
             this.txtApelido.Size = new System.Drawing.Size(236, 26);
             this.txtApelido.TabIndex = 5;
+            this.txtApelido.Leave += new System.EventHandler(this.txtApelido_Leave);
             // 
             // lblApelido
             // 
@@ -583,6 +594,7 @@
             this.txtCliente.Name = "txtCliente";
             this.txtCliente.Size = new System.Drawing.Size(348, 26);
             this.txtCliente.TabIndex = 2;
+            this.txtCliente.Leave += new System.EventHandler(this.txtCliente_Leave);
             // 
             // lblCliente
             // 
@@ -628,6 +640,7 @@
             this.txtCelular.Size = new System.Drawing.Size(135, 26);
             this.txtCelular.TabIndex = 16;
             this.txtCelular.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
+            this.txtCelular.Leave += new System.EventHandler(this.txtCelular_Leave);
             // 
             // txtTelefone
             // 
@@ -640,6 +653,7 @@
             this.txtTelefone.Size = new System.Drawing.Size(135, 26);
             this.txtTelefone.TabIndex = 17;
             this.txtTelefone.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
+            this.txtTelefone.Leave += new System.EventHandler(this.txtTelefone_Leave);
             // 
             // txtCpf
             // 
@@ -654,6 +668,7 @@
             this.txtCpf.Size = new System.Drawing.Size(152, 26);
             this.txtCpf.TabIndex = 21;
             this.txtCpf.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
+            this.txtCpf.Leave += new System.EventHandler(this.txtCpf_Leave);
             // 
             // txtDtCadastro
             // 
@@ -752,6 +767,7 @@
             this.txtCodCondicao.Name = "txtCodCondicao";
             this.txtCodCondicao.Size = new System.Drawing.Size(67, 26);
             this.txtCodCondicao.TabIndex = 23;
+            this.txtCodCondicao.TextChanged += new System.EventHandler(this.txtCodCondicao_TextChanged);
             this.txtCodCondicao.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtCodCondicao_KeyPress);
             // 
             // btnBuscarConPagamento
@@ -776,7 +792,7 @@
             this.btnBuscarCidade.ErrorImage = global::EquipMotos.Properties.Resources._1398754683_xmag;
             this.btnBuscarCidade.Image = global::EquipMotos.Properties.Resources._1398754683_xmag;
             this.btnBuscarCidade.InitialImage = global::EquipMotos.Properties.Resources._1398754683_xmag;
-            this.btnBuscarCidade.Location = new System.Drawing.Point(430, 144);
+            this.btnBuscarCidade.Location = new System.Drawing.Point(489, 145);
             this.btnBuscarCidade.Name = "btnBuscarCidade";
             this.btnBuscarCidade.Size = new System.Drawing.Size(74, 61);
             this.btnBuscarCidade.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
@@ -786,6 +802,7 @@
             // 
             // txtRg
             // 
+            this.txtRg.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtRg.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtRg.Location = new System.Drawing.Point(195, 289);
             this.txtRg.Name = "txtRg";
@@ -819,7 +836,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(1252, 597);
-            this.ControlBox = false;
             this.Controls.Add(this.chkEstrangeiro);
             this.Controls.Add(this.txtDtNascimento);
             this.Controls.Add(this.txtRg);

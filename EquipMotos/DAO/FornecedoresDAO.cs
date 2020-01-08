@@ -231,7 +231,7 @@ namespace EquipMotos.DAO
                     forn.dtFundacao = Convert.ToDateTime(row["dtFundacao"]);
                     forn.sexo = Convert.ToChar(row["sexo"]);
                     forn.endereco = Convert.ToString(row["endereco"]);
-                    forn.numero = Convert.ToInt32(row["numero"]);
+                    forn.numero = Convert.ToString(row["numero"]);
                     forn.complemento = Convert.ToString(row["complemento"]);
                     forn.bairro = Convert.ToString(row["bairro"]);
                     forn.cep = Convert.ToString(row["cep"]);

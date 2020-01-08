@@ -52,10 +52,14 @@ namespace EquipMotos.DAO
                         comando.Parameters.AddWithValue("@site", cli.site);
                         comando.Parameters.AddWithValue("@endereco", cli.endereco);
                         comando.Parameters.AddWithValue("@complemento", cli.complemento);
-                        if(cli.numero == 0)
+                        if(cli.numero == "0")
                         {
                             comando.Parameters.AddWithValue("@numero", cli.numero);
-                        }   
+                        }
+                        else
+                        {
+                            comando.Parameters.AddWithValue("@numero", cli.numero);
+                }
                         comando.Parameters.AddWithValue("@bairro", cli.bairro);
                         if (cli.cep == "0")
                         {
@@ -170,7 +174,7 @@ namespace EquipMotos.DAO
                         Cliente.dtNascimento = Convert.ToDateTime(row["dtNascimento"]);
                         Cliente.sexo = Convert.ToChar(row["sexo"]);
                         Cliente.endereco = Convert.ToString(row["endereco"]);
-                        Cliente.numero = Convert.ToInt32(row["numero"]);
+                        Cliente.numero = Convert.ToString(row["numero"]);
                         Cliente.complemento = Convert.ToString(row["complemento"]);
                         Cliente.bairro = Convert.ToString(row["bairro"]);
                         Cliente.cep = Convert.ToString(row["cep"]);
@@ -369,7 +373,7 @@ namespace EquipMotos.DAO
                     cli.dtNascimento = Convert.ToDateTime(row["dtNascimento"]);
                     cli.sexo = Convert.ToChar(row["sexo"]);
                     cli.endereco = Convert.ToString(row["endereco"]);
-                    cli.numero = Convert.ToInt32(row["numero"]);
+                    cli.numero = Convert.ToString("0" + row["numero"]);
                     cli.complemento = Convert.ToString(row["complemento"]);
                     cli.bairro = Convert.ToString(row["bairro"]);
                     cli.cep = Convert.ToString(row["cep"]);

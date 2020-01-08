@@ -210,6 +210,7 @@
             this.txtContato.Name = "txtContato";
             this.txtContato.Size = new System.Drawing.Size(140, 26);
             this.txtContato.TabIndex = 17;
+            this.txtContato.Leave += new System.EventHandler(this.txtContato_Leave);
             // 
             // lblContato
             // 
@@ -232,6 +233,7 @@
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(263, 26);
             this.txtEmail.TabIndex = 16;
+            this.txtEmail.Leave += new System.EventHandler(this.txtEmail_Leave);
             // 
             // lblEmail
             // 
@@ -321,7 +323,7 @@
             this.txtIdCidade.Size = new System.Drawing.Size(68, 26);
             this.txtIdCidade.TabIndex = 11;
             this.txtIdCidade.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txtIdCidade.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtIdCidade_KeyPress);
+            this.txtIdCidade.Leave += new System.EventHandler(this.txtIdCidade_Leave);
             // 
             // lblCodigoCidade
             // 
@@ -330,9 +332,9 @@
             this.lblCodigoCidade.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCodigoCidade.Location = new System.Drawing.Point(13, 131);
             this.lblCodigoCidade.Name = "lblCodigoCidade";
-            this.lblCodigoCidade.Size = new System.Drawing.Size(61, 20);
+            this.lblCodigoCidade.Size = new System.Drawing.Size(54, 20);
             this.lblCodigoCidade.TabIndex = 72;
-            this.lblCodigoCidade.Text = "Código";
+            this.lblCodigoCidade.Text = "Cod. *";
             // 
             // txtCep
             // 
@@ -344,6 +346,7 @@
             this.txtCep.Name = "txtCep";
             this.txtCep.Size = new System.Drawing.Size(96, 26);
             this.txtCep.TabIndex = 10;
+            this.txtCep.Leave += new System.EventHandler(this.txtCep_Leave);
             // 
             // label10
             // 
@@ -352,9 +355,9 @@
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.Location = new System.Drawing.Point(1043, 73);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(54, 20);
+            this.label10.Size = new System.Drawing.Size(43, 20);
             this.label10.TabIndex = 70;
-            this.label10.Text = "CEP *";
+            this.label10.Text = "CEP";
             // 
             // txtBairro
             // 
@@ -366,6 +369,7 @@
             this.txtBairro.Name = "txtBairro";
             this.txtBairro.Size = new System.Drawing.Size(244, 26);
             this.txtBairro.TabIndex = 9;
+            this.txtBairro.Leave += new System.EventHandler(this.txtBairro_Leave);
             // 
             // lblBairro
             // 
@@ -383,11 +387,12 @@
             this.txtComplemento.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtComplemento.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtComplemento.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtComplemento.Location = new System.Drawing.Point(538, 94);
+            this.txtComplemento.Location = new System.Drawing.Point(543, 93);
             this.txtComplemento.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtComplemento.Name = "txtComplemento";
             this.txtComplemento.Size = new System.Drawing.Size(236, 26);
             this.txtComplemento.TabIndex = 8;
+            this.txtComplemento.Leave += new System.EventHandler(this.txtComplemento_Leave);
             // 
             // label8
             // 
@@ -412,6 +417,7 @@
             this.txtSexo.Size = new System.Drawing.Size(38, 26);
             this.txtSexo.TabIndex = 5;
             this.txtSexo.Visible = false;
+            this.txtSexo.Leave += new System.EventHandler(this.txtSexo_Leave);
             // 
             // lblSexo
             // 
@@ -476,6 +482,7 @@
             this.txtNumero.Name = "txtNumero";
             this.txtNumero.Size = new System.Drawing.Size(61, 26);
             this.txtNumero.TabIndex = 7;
+            this.txtNumero.Leave += new System.EventHandler(this.txtNumero_Leave);
             // 
             // label5
             // 
@@ -498,6 +505,7 @@
             this.txtEndereco.Name = "txtEndereco";
             this.txtEndereco.Size = new System.Drawing.Size(399, 26);
             this.txtEndereco.TabIndex = 6;
+            this.txtEndereco.Leave += new System.EventHandler(this.txtEndereco_Leave);
             // 
             // lblEndereco
             // 
@@ -520,6 +528,7 @@
             this.txtNomeFantasia.Name = "txtNomeFantasia";
             this.txtNomeFantasia.Size = new System.Drawing.Size(272, 26);
             this.txtNomeFantasia.TabIndex = 3;
+            this.txtNomeFantasia.Leave += new System.EventHandler(this.txtNomeFantasia_Leave);
             // 
             // lblNomeFantasia
             // 
@@ -542,6 +551,7 @@
             this.txtFornecedor.Name = "txtFornecedor";
             this.txtFornecedor.Size = new System.Drawing.Size(348, 26);
             this.txtFornecedor.TabIndex = 2;
+            this.txtFornecedor.Leave += new System.EventHandler(this.txtFornecedor_Leave);
             // 
             // lblFornecedor
             // 
@@ -616,6 +626,7 @@
             this.txtSite.Name = "txtSite";
             this.txtSite.Size = new System.Drawing.Size(260, 26);
             this.txtSite.TabIndex = 18;
+            this.txtSite.Leave += new System.EventHandler(this.txtSite_Leave);
             // 
             // lblSite
             // 
@@ -640,6 +651,7 @@
             this.txtCodCondicao.Size = new System.Drawing.Size(67, 26);
             this.txtCodCondicao.TabIndex = 21;
             this.txtCodCondicao.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtCodCondicao.TextChanged += new System.EventHandler(this.txtCodCondicao_TextChanged);
             this.txtCodCondicao.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtCodCondicao_KeyPress);
             // 
             // label3
@@ -650,9 +662,9 @@
             this.label3.Location = new System.Drawing.Point(16, 314);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(61, 20);
+            this.label3.Size = new System.Drawing.Size(48, 20);
             this.label3.TabIndex = 105;
-            this.label3.Text = "Código";
+            this.label3.Text = "Cod. ";
             // 
             // txtCondicao
             // 
@@ -684,9 +696,9 @@
             this.lblIe.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblIe.Location = new System.Drawing.Point(287, 252);
             this.lblIe.Name = "lblIe";
-            this.lblIe.Size = new System.Drawing.Size(39, 20);
+            this.lblIe.Size = new System.Drawing.Size(28, 20);
             this.lblIe.TabIndex = 100;
-            this.lblIe.Text = "I.E *";
+            this.lblIe.Text = "I.E";
             // 
             // txtLimiteCredito
             // 
@@ -753,6 +765,7 @@
             this.txtCnpj.Size = new System.Drawing.Size(164, 26);
             this.txtCnpj.TabIndex = 19;
             this.txtCnpj.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
+            this.txtCnpj.Leave += new System.EventHandler(this.txtCnpj_Leave);
             // 
             // txtTelefone
             // 
@@ -765,6 +778,7 @@
             this.txtTelefone.Size = new System.Drawing.Size(135, 26);
             this.txtTelefone.TabIndex = 15;
             this.txtTelefone.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
+            this.txtTelefone.Leave += new System.EventHandler(this.txtTelefone_Leave);
             // 
             // txtCelular
             // 
@@ -777,6 +791,7 @@
             this.txtCelular.Size = new System.Drawing.Size(135, 26);
             this.txtCelular.TabIndex = 14;
             this.txtCelular.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
+            this.txtCelular.Leave += new System.EventHandler(this.txtCelular_Leave);
             // 
             // btnBuscarCidade
             // 

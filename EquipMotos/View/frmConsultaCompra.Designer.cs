@@ -38,9 +38,6 @@
             this.btnAlterar = new System.Windows.Forms.Button();
             this.btnNovo = new System.Windows.Forms.Button();
             this.gvCompra = new System.Windows.Forms.DataGridView();
-            this.comprasBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.sistemaMoto2DataSetCompra = new EquipMotos.SistemaMoto2DataSetCompra();
-            this.comprasTableAdapter = new EquipMotos.SistemaMoto2DataSetCompraTableAdapters.comprasTableAdapter();
             this.dataGridViewTextBoxColumn17 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn16 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -57,6 +54,9 @@
             this.dataGridViewTextBoxColumn24 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn25 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn26 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.comprasBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.sistemaMoto2DataSetCompra = new EquipMotos.SistemaMoto2DataSetCompra();
+            this.comprasTableAdapter = new EquipMotos.SistemaMoto2DataSetCompraTableAdapters.comprasTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.btnBuscarCompra)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvCompra)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.comprasBindingSource)).BeginInit();
@@ -125,6 +125,7 @@
             this.btnExcluir.Text = "DESATIVAR";
             this.btnExcluir.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnExcluir.UseVisualStyleBackColor = true;
+            this.btnExcluir.Visible = false;
             this.btnExcluir.Click += new System.EventHandler(this.BtnExcluir_Click);
             // 
             // btnAlterar
@@ -203,20 +204,6 @@
             this.gvCompra.RowHeadersWidth = 51;
             this.gvCompra.Size = new System.Drawing.Size(976, 497);
             this.gvCompra.TabIndex = 266;
-            // 
-            // comprasBindingSource
-            // 
-            this.comprasBindingSource.DataMember = "compras";
-            this.comprasBindingSource.DataSource = this.sistemaMoto2DataSetCompra;
-            // 
-            // sistemaMoto2DataSetCompra
-            // 
-            this.sistemaMoto2DataSetCompra.DataSetName = "SistemaMoto2DataSetCompra";
-            this.sistemaMoto2DataSetCompra.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // comprasTableAdapter
-            // 
-            this.comprasTableAdapter.ClearBeforeFill = true;
             // 
             // dataGridViewTextBoxColumn17
             // 
@@ -361,6 +348,20 @@
             this.dataGridViewTextBoxColumn26.Name = "dataGridViewTextBoxColumn26";
             this.dataGridViewTextBoxColumn26.ReadOnly = true;
             this.dataGridViewTextBoxColumn26.Width = 125;
+            // 
+            // comprasBindingSource
+            // 
+            this.comprasBindingSource.DataMember = "compras";
+            this.comprasBindingSource.DataSource = this.sistemaMoto2DataSetCompra;
+            // 
+            // sistemaMoto2DataSetCompra
+            // 
+            this.sistemaMoto2DataSetCompra.DataSetName = "SistemaMoto2DataSetCompra";
+            this.sistemaMoto2DataSetCompra.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // comprasTableAdapter
+            // 
+            this.comprasTableAdapter.ClearBeforeFill = true;
             // 
             // frmConsultaCompra
             // 

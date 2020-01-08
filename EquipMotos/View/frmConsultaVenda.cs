@@ -33,14 +33,20 @@ namespace EquipMotos.View
             try
             {
                 frmCadastroVenda frmCadVenda = new frmCadastroVenda();
-                var vendaRow = gvVendas.CurrentRow.DataBoundItem as DataRowView;
 
-                var codigo = vendaRow["codigo"];
+                var compraRow = gvVendas.CurrentRow.DataBoundItem as DataRowView;
 
-                frmCadVenda.Carregar(codigo);
+                var nrNota = compraRow["nrNota"];
+
+                frmCadVenda.Carregar(nrNota);
+                //frmCadVenda.DisableView();
                 if (frmCadVenda.ShowDialog() == DialogResult.OK)
                 {
-                     gvVendas.DataSource = CtrlVenda.ListarTodos();
+                    var lista = CtrlVenda.ListarTodos();
+                    if (lista != null)
+                    {
+                        gvVendas.DataSource = lista;
+                    }
                 }
             }
             catch

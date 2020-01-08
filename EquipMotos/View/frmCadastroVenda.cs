@@ -42,7 +42,7 @@ namespace EquipMotos.View
                 {
                     if (ValidaCampos())
                     {
-                        if (ValidaEstoque())
+                        //if (ValidaEstoque())
                         {
                             Venda.modelo = txtModelo.Text;
                             Venda.serie = txtSerie.Text;
@@ -123,6 +123,75 @@ namespace EquipMotos.View
             }
         }
 
+        internal void DisableView()
+        {
+            throw new NotImplementedException();
+        }
+
+        internal void Carregar( object nrNota)
+        {
+            try
+            {
+                Venda = CtrlVenda.BuscarPorID(nrNota) as Vendas;
+                txtModelo.Text = Venda.modelo;
+                txtSerie.Text = Venda.serie;
+                txtNumeroVenda.Text = Venda.nrNota;
+                txtData.Text = Convert.ToString(Venda.dtEmissao);
+                txtCodCliente.Text = Convert.ToString(Venda.cliente.codigo);
+                txtCliente.Text = Convert.ToString(Venda.cliente.cliente);
+                txtDescontos.Text = (Venda.desconto).ToString("C", CultureInfo.CurrentCulture);
+                //txtValorItens.Text = (Venda.ValorItens).ToString("C", CultureInfo.CurrentCulture);
+                //txtValorTotal.Text = (Venda.ValorTotal).ToString("C", CultureInfo.CurrentCulture);
+
+                foreach (var item in Venda.listaItem)
+                {
+                    var prod = CtrlProduto.BuscarPorID(Convert.ToString(item.codigo)) as ProdutosServicos;
+                    var total = item.qtd * prod.precoVenda;
+                    string[] itens = { Convert.ToString(item.codigo), prod.produto, prod.unidade, Convert.ToString(item.qtd), Convert.ToString(prod.custoUltCompra), Convert.ToString(total) };
+                    var listItens = new ListViewItem(itens);
+                    lvProdutosVenda.Items.Add(listItens);
+
+                    var vlTotalincial = Double.Parse(txtValorTotal.Text, NumberStyles.Any);
+
+                    if (vlTotalincial <= 0)
+                    {
+                        txtValorTotal.Text = Double.Parse(lvProdutosVenda.Items[0].SubItems[5].Text).ToString("C", CultureInfo.CurrentCulture);
+                    }
+                    else
+                    {
+                        var vltotal = Double.Parse(txtValorTotal.Text, NumberStyles.Any);
+                        for (int i = 0; i < lvProdutosVenda.Items.Count; i++)
+                        {
+                            txtValorTotal.Text = Double.Parse(lvProdutosVenda.Items[i].SubItems[5].Text, NumberStyles.Any).ToString("C", CultureInfo.CurrentCulture);
+                        }
+                        var vlTotalGrid = Double.Parse(txtValorTotal.Text, NumberStyles.Any);
+                        var ValorTotal = (vltotal + vlTotalGrid).ToString("C", CultureInfo.CurrentCulture);
+                        txtValorTotal.Text = ValorTotal;
+                    }
+                }
+
+                var totalproduto = Double.Parse(txtValorTotal.Text, NumberStyles.Any);
+               
+                var totalPagar = totalproduto;
+                txtValorTotal.Text = totalPagar.ToString("C", CultureInfo.CurrentCulture);
+
+                txtCodCondPagamento.Text = Convert.ToString(Venda.condPagamento.codigo);
+                txtCondPagamento.Text = Convert.ToString(Venda.condPagamento.condicao);
+                foreach (var conta in Venda.listaContasReceber)
+                {
+                    string[] row = {  Convert.ToString(conta.nrParcela), conta.dtVencimento.ToString("dd/MM/yyyy"), conta.vlrParcela.ToString("C", CultureInfo.CurrentCulture) };
+                    var lvi = new ListViewItem(row);
+                    lvContaReceber.Items.Add(lvi);
+                }
+                chkSituacao.Checked = Venda.situacao;
+
+            }
+            catch
+            {
+                MessageBox.Show("Não foi possivel vizualizar a compra", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
         private void BtnVoltar_Click(object sender, EventArgs e)
         {
             Close();
@@ -183,11 +252,6 @@ namespace EquipMotos.View
                 
                 txtValorProd.Text = pro.precoVenda.ToString();
             }
-        }
-
-        internal void Carregar(object codigo)
-        {
-            
         }
         
         private void BtnBuscarCondPagamento_Click(object sender, EventArgs e)
@@ -347,21 +411,34 @@ namespace EquipMotos.View
             return true;
         }
 
-        private bool ValidaEstoque()
+
+        private bool ValidaEstoque(int codigo, int qtd)
         {
-            for (int i = 0; i < lvProdutosVenda.Items.Count; i++)
+            var qtdItem = qtd;
+            var Produto = CtrlProduto.BuscarPorID(codigo) as ProdutosServicos;
+            if (Produto.qtd < qtdItem)
             {
-                var idItem = Convert.ToInt32(lvProdutosVenda.Items[i].SubItems[0].Text);
-                var qtdItem = Convert.ToInt32(lvProdutosVenda.Items[i].SubItems[2].Text);
-                var Produto = CtrlProduto.BuscarPorID(idItem) as ProdutosServicos;
-                if (Produto.qtd < qtdItem)
-                {
-                    MessageBox.Show( "Não há estoque para a venda de " + Produto.produto + ", o estoque atual é de "+ Produto.qtd , "Quantidade inválida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return false;
-                }
+                MessageBox.Show("Não há estoque para a venda de " + Produto.produto + ", o estoque atual é de " + Produto.qtd, "Quantidade inválida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
             }
             return true;
         }
+
+        //private bool ValidaEstoque()
+        //{
+        //    for (int i = 0; i < lvProdutosVenda.Items.Count; i++)
+        //    {
+        //        var idItem = Convert.ToInt32(lvProdutosVenda.Items[i].SubItems[0].Text);
+        //        var qtdItem = Convert.ToInt32(lvProdutosVenda.Items[i].SubItems[2].Text);
+        //        var Produto = CtrlProduto.BuscarPorID(idItem) as ProdutosServicos;
+        //        if (Produto.qtd < qtdItem)
+        //        {
+        //            MessageBox.Show( "Não há estoque para a venda de " + Produto.produto + ", o estoque atual é de "+ Produto.qtd , "Quantidade inválida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        //            return false;
+        //        }
+        //    }
+        //    return true;
+        //}
 
         private void btnAddProduto_Click(object sender, EventArgs e)
         {
@@ -373,36 +450,40 @@ namespace EquipMotos.View
                     var preco = Double.Parse(txtValorProd.Text, NumberStyles.Any);
                     var qtd = Convert.ToInt32(txtQtd.Text);
                     var totalRow = (qtd * preco).ToString("C", CultureInfo.CurrentCulture);
-
-                    string[] row = { Convert.ToString(prod.codigo), prod.produto, txtQtd.Text, (prod.precoVenda).ToString("C", CultureInfo.CurrentCulture), Convert.ToString(totalRow) };
-                    var lvi = new ListViewItem(row);
-                    lvProdutosVenda.Items.Add(lvi);
-
-                    var vlTotalItens = Double.Parse(txtValorItens.Text, NumberStyles.Any);
-                    if (vlTotalItens <= 0)
+                    var codigo = prod.codigo;
+                    if (ValidaEstoque(codigo, qtd))
                     {
-                        txtValorItens.Text = lvProdutosVenda.Items[0].SubItems[4].Text;
+
+                            string[] row = { Convert.ToString(prod.codigo), prod.produto, txtQtd.Text, (prod.precoVenda).ToString("C", CultureInfo.CurrentCulture), Convert.ToString(totalRow) };
+                            var lvi = new ListViewItem(row);
+                            lvProdutosVenda.Items.Add(lvi);
+
+                            var vlTotalItens = Double.Parse(txtValorItens.Text, NumberStyles.Any);
+                            if (vlTotalItens <= 0)
+                            {
+                                txtValorItens.Text = lvProdutosVenda.Items[0].SubItems[4].Text;
+                            }
+                            else
+                            {
+                                var vltotal = Double.Parse(txtValorItens.Text, NumberStyles.Any);
+                                for (int i = 0; i < lvProdutosVenda.Items.Count; i++)
+                                {
+                                    txtValorItens.Text = Double.Parse(lvProdutosVenda.Items[i].SubItems[4].Text, NumberStyles.Any).ToString("C", CultureInfo.CurrentCulture);
+                                }
+                                //vltotal + txtvalortoal
+                                var vlTotalGrid = Double.Parse(txtValorItens.Text, NumberStyles.Any);
+                                var ValorTotal = vltotal + vlTotalGrid;
+                                txtValorTotal.Text = ValorTotal.ToString("C", CultureInfo.CurrentCulture);
+                            }
+                           // SomaTotal();
+                            txtCodProduto.Text = "";
+                            txtProduto.Text = "";
+                            txtQtd.Text = "";
+                            txtValorProd.Text = "R$ 0.00";
+                            Produto = null;
                     }
-                    else
-                    {
-                        var vltotal = Double.Parse(txtValorItens.Text, NumberStyles.Any);
-                        for (int i = 0; i < lvProdutosVenda.Items.Count; i++)
-                        {
-                            txtValorItens.Text = Double.Parse(lvProdutosVenda.Items[i].SubItems[4].Text, NumberStyles.Any).ToString("C", CultureInfo.CurrentCulture);
-                        }
-                        //vltotal + txtvalortoal
-                        var vlTotalGrid = Double.Parse(txtValorItens.Text, NumberStyles.Any);
-                        var ValorTotal = vltotal + vlTotalGrid;
-                        txtValorTotal.Text = ValorTotal.ToString("C", CultureInfo.CurrentCulture);
-                    }
-                   // SomaTotal();
-                    txtCodProduto.Text = "";
-                    txtProduto.Text = "";
-                    txtQtd.Text = "";
-                    txtValorProd.Text = "R$ 0.00";
-                    Produto = null;
                 }
-                this.ValidaEstoque();
+                
             }
             catch (Exception ex)
             {

@@ -10,33 +10,34 @@ namespace EquipMotos.View
 {
     public partial class frmConsultaProdutosServicos : Form
     {
-        public int isProduto { get; set; } = 3;
+        public int IsProduto { get; set; } = 3;
         ProdutosServicos prodServ;
         CtrlProdutosServicos CtrlProdutoServico = new CtrlProdutosServicos();
         public List<string> FilterID { get; set; } = new List<string>();
-        public frmConsultaProdutosServicos()
+        public frmConsultaProdutosServicos(int? isProduto = null)
         {
+            IsProduto = isProduto ?? IsProduto;
 
-            if (isProduto == 1)
+            if (IsProduto == 1)
             {
                 InitializeComponent();
                 rbProduto.Checked = true;
                 rbServico.Checked = false;
                 rbServico.Enabled = false;
-                //isProduto = 3;
+                //IsProduto = 3;
             }
-            else if (isProduto == 2)
+            else if (IsProduto == 2)
             {
                 InitializeComponent();
                 rbServico.Checked = true;
                 rbProduto.Checked = false;
                 rbProduto.Enabled = false;
-                //isProduto = 3;
+                //IsProduto = 3;
             }
             else
             {
                 InitializeComponent();
-                rbProduto.Checked = true;
+                //rbProduto.Checked = true;
                 rbServico.Enabled = true;
                 rbProduto.Enabled = true;
             }
@@ -47,7 +48,7 @@ namespace EquipMotos.View
         {
             // TODO: esta linha de código carrega dados na tabela 'sistemaMoto2DataSetProduto.produtos'. Você pode movê-la ou removê-la conforme necessário.
             //this.produtosTableAdapter.Fill(this.sistemaMoto2DataSetProduto.produtos);
-            gvProdutos.DataSource = CtrlProdutoServico.Pesquisar(null, FilterID, isProduto);
+            gvProdutos.DataSource = CtrlProdutoServico.Pesquisar(null, FilterID, IsProduto);
 
         }
 
@@ -141,7 +142,7 @@ namespace EquipMotos.View
         private void BtnBuscar_Click(object sender, EventArgs e)
         {
             string prod = txtPesquisar.Text;
-            gvProdutos.DataSource = CtrlProdutoServico.Pesquisar(prod, FilterID, isProduto);
+            gvProdutos.DataSource = CtrlProdutoServico.Pesquisar(prod, FilterID, IsProduto);
         }
 
         private void RbProduto_CheckedChanged(object sender, EventArgs e)

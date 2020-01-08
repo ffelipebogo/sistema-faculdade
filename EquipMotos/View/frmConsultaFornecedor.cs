@@ -104,7 +104,7 @@ namespace EquipMotos.View
         private void frmConsultaFornecedor_Load(object sender, EventArgs e)
         {
             // TODO: esta linha de código carrega dados na tabela 'sistemaMoto2DataSetFornecedor.fornecedores'. Você pode movê-la ou removê-la conforme necessário.
-            this.fornecedoresTableAdapter.Fill(this.sistemaMoto2DataSetFornecedor.fornecedores);
+            //this.fornecedoresTableAdapter.Fill(this.sistemaMoto2DataSetFornecedor.fornecedores);
 
         }
     }

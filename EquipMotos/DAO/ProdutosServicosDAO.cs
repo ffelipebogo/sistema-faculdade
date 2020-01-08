@@ -165,26 +165,26 @@ namespace EquipMotos.DAO
                 if (string.IsNullOrEmpty(proServ))
                 {
                     proServ = "";
-                    sql = $@"SELECT * FROM produtos WHERE 1=1  
-                        {(isProduto == 3 ? "" : $" AND servico = {isProduto} ")} 
-                        { (filterID == null || filterID.Count == 0 ? "" : $" AND not codigo in ({ filterIDaux}) ") } ";
-
+                    sql = $@"SELECT * FROM produtos WHERE 1=1  ";
                 }
                 else if (proServ.Length <= 4 && isNumeric)
                 {
-                    sql = @"SELECT * FROM produtos WHERE codigo = @proServ";
+                    sql = @"SELECT * FROM produtos WHERE codigo = @proServ ";
                 }
                 else
                 {
                     if (isNumeric)
                     {
-                        sql = @"SELECT * FROM produtos WHERE produto like '%'+ @proServ +'%'";
+                        sql = @"SELECT * FROM produtos WHERE produto like '%'+ @proServ +'%' ";
                     }
                     else
                     {
                         sql = @"SELECT * FROM produtos WHERE produto like '%'+ @proServ + '%' ";
                     }
                 }
+                sql += $@" {(isProduto == 3 ? "" : $" AND servico = { isProduto - 1 } ")} 
+                        { (filterID == null || filterID.Count == 0 ? "" : $" AND not codigo in ({ filterIDaux}) ") } ";
+
                 SqlCommand comando = new SqlCommand(sql, conexao);
 
                 comando.Parameters.AddWithValue("@proServ", proServ);

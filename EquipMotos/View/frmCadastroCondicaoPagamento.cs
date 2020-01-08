@@ -50,7 +50,6 @@ namespace EquipMotos.View
             frmConFormaPag.btnVoltar.Text = "SELECIONAR";
             if (frmConFormaPag.ShowDialog() == DialogResult.OK)
             {
-                
                 CarregaForma();
             }
         }
@@ -62,6 +61,8 @@ namespace EquipMotos.View
                 FormaPagamentos forma = formaPag as FormaPagamentos;
                 txtCodFormaPagamento.Text = Convert.ToString(forma.codigo);
                 txtFormaPagamento.Text = forma.forma;
+                txtFormaPagamento.Enabled = false;
+                txtCodFormaPagamento.Enabled = false;
             }
         }
         #endregion
@@ -182,6 +183,7 @@ namespace EquipMotos.View
                         txtFormaPagamento.Text = "";
                         txtCodFormaPagamento.Enabled = true;
                         txtFormaPagamento.Enabled = true;
+
                     }
                     else
                     {
@@ -189,13 +191,13 @@ namespace EquipMotos.View
                         txtNrParcelas.Text = "";
                         MessageBox.Show("Maximo de parcelas é 12");
                     }
+                    txtNrParcelas.Text = Convert.ToString(listviewParcelas.Items.Count + 1 );
                 } 
             }
             catch
             {
                 MessageBox.Show("Não foi possivel adicionar a parcela");
             }
-                    
         }
 
         #region Validar parcelas
@@ -293,8 +295,31 @@ namespace EquipMotos.View
                 if ((MessageBox.Show("Remover parcela ?", "EXCLUIR", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes) & (listviewParcelas.SelectedIndices[0] != null))
                 {
                     listviewParcelas.Items.RemoveAt(listviewParcelas.SelectedIndices[0]);
+                    if(listviewParcelas.Items.Count > 0)
+                    {
+                        ListView listView = new ListView();
+                        listView = listviewParcelas;
+                        for (int i = 0; i < listView.Items.Count; i++)
+                        {
+                            ///string[] row = {
+                            listviewParcelas.Items[i].SubItems[0].Text = Convert.ToString(i + 1);
+                            listviewParcelas.Items[i].SubItems[1].Text = listView.Items[i].SubItems[1].Text;
+                            listviewParcelas.Items[i].SubItems[2].Text = listView.Items[i].SubItems[2].Text;
+                            listviewParcelas.Items[i].SubItems[3].Text = listView.Items[i].SubItems[3].Text;
+                            listviewParcelas.Items[i].SubItems[4].Text = listView.Items[i].SubItems[4].Text;
+                            //};
+                            //var lvi = new ListViewItem(row);
+                            //listviewParcelas.Items.RemoveAt(i);
+                            //listView.Items.Add(lvi);
+                        }
+                         txtNrParcelas.Text = Convert.ToString(listviewParcelas.Items.Count + 1);
+                        //listviewParcelas = listView ;
+                    }
+                    else
+                    {
+                        txtNrParcelas.Text = Convert.ToString(1);
+                    }
                 }
-
             }
             catch
             {
@@ -340,6 +365,10 @@ namespace EquipMotos.View
         private void TxtJuros_Leave(object sender, EventArgs e)
         {
             MaskForm.TxtMask_Porcentagem_Leave(sender, e);
+            if (String.IsNullOrEmpty(txtJuros.Text))
+            {
+
+            }
         }
 
         private void TxtJuros_KeyPress(object sender, KeyPressEventArgs e)
@@ -404,12 +433,17 @@ namespace EquipMotos.View
 
         private void TxtNrDias_KeyUp(object sender, KeyEventArgs e)
         {
-            MaskForm.TxtMask_Porcentagem_KeyUp(sender, e);
+            //MaskForm.TxtMask_Porcentagem_KeyUp(sender, e);
         }
 
         private void TxtNrDias_Leave(object sender, EventArgs e)
         {
-            MaskForm.TxtMask_Porcentagem_Leave(sender, e);
+            if (!MaskForm.ValidaNumero(txtNrDias.Text))
+            {
+                MessageBox.Show("Valor inválido", "Digite apenas numeros", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtNrDias.Focus();
+                txtNrDias.Clear();
+            }
         }
 
         private void TxtNrParcelas_KeyPress(object sender, KeyPressEventArgs e)
@@ -441,6 +475,11 @@ namespace EquipMotos.View
         {
             MaskForm.TxtMask_Porcentagem_Leave(sender, e);
         }
-        #endregion 
+        #endregion
+
+        private void txtCodFormaPagamento_TextChanged(object sender, EventArgs e)
+        {
+            
+        }
     }
 }
