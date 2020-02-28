@@ -25,8 +25,21 @@ namespace EquipMotos.View.helper
         public static bool ValidaNumero(string texto)
         {
             Regex rg = new Regex("[0-9]");
-
             return rg.IsMatch(texto);
+        }
+
+        public static Boolean ValidaEmail(string email)
+        {
+            Regex rg = new Regex(@"^[A-Za-z0-9](([_\.\-]?[a-zA-Z0-9]+)*)@([A-Za-z0-9]+)(([\.\-]?[a-zA-Z0-9]+)*)\.([A-Za-z]{2,})$");
+
+            if (rg.IsMatch(email))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         public static void TxtMask_Porcentagem_KeyUp(object senderEvent, KeyEventArgs e)
@@ -66,6 +79,81 @@ namespace EquipMotos.View.helper
             {
 
             }
+        }
+
+        /// <summary>
+        /// Verifica campos que aceitam numeros e letras
+        /// </summary>
+        /// <param name="senderEvent"></param>
+        /// <param name="e"></param>
+        public static void TxtMask_ValidaNumeroLetras_KeyPress(object senderEvent, KeyPressEventArgs e)
+        {
+            var sender = senderEvent as TextBox;
+            if (!Char.IsLetterOrDigit(e.KeyChar) && e.KeyChar != Convert.ToChar(Keys.Back) && !Char.IsLetterOrDigit(e.KeyChar) && e.KeyChar != Convert.ToChar(Keys.Space) )
+            {
+                e.Handled = true;
+            }
+        }
+
+        /// <summary>
+        /// verificar todos os campos que só aceitam numeros
+        /// </summary>
+        /// <param name="senderEvent"></param>
+        /// <param name="e"></param>
+        public static void TxtMask_Numero_KeyPress(object senderEvent, KeyPressEventArgs e)
+        {
+            var sender = senderEvent as TextBox;
+            if (!Char.IsDigit(e.KeyChar) && e.KeyChar != Convert.ToChar(Keys.Back))
+            {
+               e.Handled = true;
+            }
+        }
+
+        /// <summary>
+        /// verificar campos que só aceitam letras
+        /// </summary>
+        /// <param name="senderEvent"></param>
+        /// <param name="e"></param>
+        public static void TxtMask_Sexo_KeyPress(object senderEvent, KeyPressEventArgs e)
+        {
+            var sender = senderEvent as TextBox;
+            if (Char.IsLetter(e.KeyChar) && e.KeyChar != Convert.ToChar(Keys.Back))
+            {
+                if ((e.KeyChar == 'M') | (e.KeyChar == 'F'))
+                {
+                    
+                }
+            }
+        }
+
+        public static void TxtMask_Letras_KeyPress(object senderEvent, KeyPressEventArgs e)
+        {
+            var sender = senderEvent as TextBox;
+            if (!Char.IsLetter(e.KeyChar) && e.KeyChar != Convert.ToChar(Keys.Back) && !Char.IsLetter(e.KeyChar) && e.KeyChar != Convert.ToChar(Keys.Space))
+            {
+                e.Handled = true;
+            }
+        }
+
+        public static bool IsPis(string pis)
+        {
+            int[] multiplicador = new int[10] { 3, 2, 9, 8, 7, 6, 5, 4, 3, 2 };
+            int soma;
+            int resto;
+            if (pis.Trim().Length != 11)
+                return false;
+            pis = pis.Trim();
+            pis = pis.Replace("-", "").Replace(".", "").PadLeft(11, '0');
+
+            soma = 0;
+            for (int i = 0; i < 10; i++)
+                soma += int.Parse(pis[i].ToString()) * multiplicador[i];
+            resto = soma % 11;
+            if (resto < 2)
+                resto = 0;
+            else
+                resto = 11 - resto;
+            return pis.EndsWith(resto.ToString());
         }
 
         public static void TxtMask_Valida_KeyPress(object senderEvent, KeyPressEventArgs e)

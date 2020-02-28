@@ -126,7 +126,7 @@
     <value>Microsoft Sans Serif, 10pt</value>
   </data>
   <data name="txtPesquisar.Location" type="System.Drawing.Point, System.Drawing">
-    <value>16, 37</value>
+    <value>9, 94</value>
   </data>
   <data name="txtPesquisar.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 2, 3, 2</value>
@@ -163,7 +163,7 @@
     <value>NoControl</value>
   </data>
   <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 9</value>
+    <value>5, 66</value>
   </data>
   <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
     <value>292, 25</value>
@@ -196,7 +196,7 @@
     <value>NoControl</value>
   </data>
   <data name="btnVoltar.Location" type="System.Drawing.Point, System.Drawing">
-    <value>576, 472</value>
+    <value>523, 533</value>
   </data>
   <data name="btnVoltar.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>4, 4, 4, 4</value>
@@ -277,7 +277,7 @@
     <value>17, 17</value>
   </metadata>
   <data name="gvFormaPag.Location" type="System.Drawing.Point, System.Drawing">
-    <value>17, 85</value>
+    <value>10, 142</value>
   </data>
   <data name="gvFormaPag.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>4, 4, 4, 4</value>
@@ -286,7 +286,7 @@
     <value>51</value>
   </data>
   <data name="gvFormaPag.Size" type="System.Drawing.Size, System.Drawing">
-    <value>723, 362</value>
+    <value>677, 362</value>
   </data>
   <data name="gvFormaPag.TabIndex" type="System.Int32, mscorlib">
     <value>31</value>
@@ -310,7 +310,7 @@
     <value>NoControl</value>
   </data>
   <data name="btnBuscarFormaPag.Location" type="System.Drawing.Point, System.Drawing">
-    <value>555, 23</value>
+    <value>548, 80</value>
   </data>
   <data name="btnBuscarFormaPag.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>4, 4, 4, 4</value>
@@ -349,7 +349,7 @@
     <value>NoControl</value>
   </data>
   <data name="btnExcluir.Location" type="System.Drawing.Point, System.Drawing">
-    <value>396, 472</value>
+    <value>329, 533</value>
   </data>
   <data name="btnExcluir.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>4, 4, 4, 4</value>
@@ -391,7 +391,7 @@
     <value>NoControl</value>
   </data>
   <data name="btnAlterar.Location" type="System.Drawing.Point, System.Drawing">
-    <value>258, 472</value>
+    <value>191, 533</value>
   </data>
   <data name="btnAlterar.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>4, 4, 4, 4</value>
@@ -433,7 +433,7 @@
     <value>NoControl</value>
   </data>
   <data name="btnNovo.Location" type="System.Drawing.Point, System.Drawing">
-    <value>120, 472</value>
+    <value>53, 533</value>
   </data>
   <data name="btnNovo.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>4, 4, 4, 4</value>
@@ -472,7 +472,7 @@
     <value>8, 16</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>767, 527</value>
+    <value>701, 589</value>
   </data>
   <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 2, 3, 2</value>
@@ -482,24 +482,6 @@
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Consultar Forma de Pagamento</value>
-  </data>
-  <data name="&gt;&gt;formaPagamentoBindingSource.Name" xml:space="preserve">
-    <value>formaPagamentoBindingSource</value>
-  </data>
-  <data name="&gt;&gt;formaPagamentoBindingSource.Type" xml:space="preserve">
-    <value>System.Windows.Forms.BindingSource, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;sistemaMoto2DataSetFormaPagamento.Name" xml:space="preserve">
-    <value>sistemaMoto2DataSetFormaPagamento</value>
-  </data>
-  <data name="&gt;&gt;sistemaMoto2DataSetFormaPagamento.Type" xml:space="preserve">
-    <value>EquipMotos.SistemaMoto2DataSetFormaPagamento, SistemaMoto2DataSetFormaPagamento.Designer.cs.dll, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;formaPagamentoTableAdapter.Name" xml:space="preserve">
-    <value>formaPagamentoTableAdapter</value>
-  </data>
-  <data name="&gt;&gt;formaPagamentoTableAdapter.Type" xml:space="preserve">
-    <value>EquipMotos.SistemaMoto2DataSetFormaPagamentoTableAdapters.formaPagamentoTableAdapter, SistemaMoto2DataSetFormaPagamento.Designer.cs.dll, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;codigoDataGridViewTextBoxColumn.Name" xml:space="preserve">
     <value>codigoDataGridViewTextBoxColumn</value>
@@ -531,10 +513,28 @@
   <data name="&gt;&gt;dataGridViewTextBoxColumn4.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;formaPagamentoBindingSource.Name" xml:space="preserve">
+    <value>formaPagamentoBindingSource</value>
+  </data>
+  <data name="&gt;&gt;formaPagamentoBindingSource.Type" xml:space="preserve">
+    <value>System.Windows.Forms.BindingSource, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;sistemaMoto2DataSetFormaPagamento.Name" xml:space="preserve">
+    <value>sistemaMoto2DataSetFormaPagamento</value>
+  </data>
+  <data name="&gt;&gt;sistemaMoto2DataSetFormaPagamento.Type" xml:space="preserve">
+    <value>EquipMotos.SistemaMoto2DataSetFormaPagamento, SistemaMoto2DataSetFormaPagamento.Designer.cs.dll, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;formaPagamentoTableAdapter.Name" xml:space="preserve">
+    <value>formaPagamentoTableAdapter</value>
+  </data>
+  <data name="&gt;&gt;formaPagamentoTableAdapter.Type" xml:space="preserve">
+    <value>EquipMotos.SistemaMoto2DataSetFormaPagamentoTableAdapters.formaPagamentoTableAdapter, SistemaMoto2DataSetFormaPagamento.Designer.cs.dll, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>frmConsultaFormaPagamento</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>MaterialSkin.Controls.MaterialForm, MaterialSkin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
 </root>

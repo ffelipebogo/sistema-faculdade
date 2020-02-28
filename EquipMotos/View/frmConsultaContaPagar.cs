@@ -12,7 +12,7 @@ using System.Windows.Forms;
 
 namespace EquipMotos.View
 {
-    public partial class frmConsultaContaPagar : Form
+    public partial class frmConsultaContaPagar : MaterialSkin.Controls.MaterialForm
     {
         CtrlContasPagar CtrlContaPagar = new CtrlContasPagar();
 
@@ -100,7 +100,17 @@ namespace EquipMotos.View
         private void btnBuscarContaPagar_Click(object sender, EventArgs e)
         {
             string conta = txtPesquisar.Text;
-            gvContaPagar.DataSource = CtrlContaPagar.Pesquisar(conta);
+            
+            DataGridView dtView = new DataGridView();
+            dtView.DataSource = CtrlContaPagar.Pesquisar(conta);
+            if (dtView.DataSource == null)
+            {
+                MessageBox.Show("Não encotrado");
+            }
+            else
+            {
+                gvContaPagar.DataSource = dtView.DataSource;
+            }
         }
     }
 }

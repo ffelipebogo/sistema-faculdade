@@ -53,7 +53,7 @@
             // 
             this.btnVoltar.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnVoltar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnVoltar.Location = new System.Drawing.Point(465, 441);
+            this.btnVoltar.Location = new System.Drawing.Point(570, 529);
             this.btnVoltar.Margin = new System.Windows.Forms.Padding(4);
             this.btnVoltar.Name = "btnVoltar";
             this.btnVoltar.Size = new System.Drawing.Size(157, 42);
@@ -66,7 +66,7 @@
             // 
             this.txtPesquisar.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtPesquisar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPesquisar.Location = new System.Drawing.Point(20, 37);
+            this.txtPesquisar.Location = new System.Drawing.Point(12, 95);
             this.txtPesquisar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtPesquisar.Name = "txtPesquisar";
             this.txtPesquisar.Size = new System.Drawing.Size(445, 26);
@@ -77,7 +77,7 @@
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(16, 9);
+            this.label1.Location = new System.Drawing.Point(8, 67);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(159, 25);
             this.label1.TabIndex = 20;
@@ -107,12 +107,12 @@
             this.dataGridViewTextBoxColumn1});
             this.gvMarca.DataSource = this.marcasBindingSource;
             this.gvMarca.EnableHeadersVisualStyles = false;
-            this.gvMarca.Location = new System.Drawing.Point(20, 102);
+            this.gvMarca.Location = new System.Drawing.Point(12, 144);
             this.gvMarca.Margin = new System.Windows.Forms.Padding(4);
             this.gvMarca.Name = "gvMarca";
             this.gvMarca.ReadOnly = true;
             this.gvMarca.RowHeadersWidth = 51;
-            this.gvMarca.Size = new System.Drawing.Size(602, 306);
+            this.gvMarca.Size = new System.Drawing.Size(698, 322);
             this.gvMarca.TabIndex = 19;
             // 
             // codigoDataGridViewTextBoxColumn
@@ -149,7 +149,7 @@
             this.btnExcluir.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnExcluir.Image = global::EquipMotos.Properties.Resources._1398756469_Erase;
             this.btnExcluir.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnExcluir.Location = new System.Drawing.Point(300, 441);
+            this.btnExcluir.Location = new System.Drawing.Point(405, 529);
             this.btnExcluir.Margin = new System.Windows.Forms.Padding(4);
             this.btnExcluir.Name = "btnExcluir";
             this.btnExcluir.Size = new System.Drawing.Size(130, 42);
@@ -165,7 +165,7 @@
             this.btnAlterar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAlterar.Image = global::EquipMotos.Properties.Resources._1398756462_Modify;
             this.btnAlterar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAlterar.Location = new System.Drawing.Point(162, 441);
+            this.btnAlterar.Location = new System.Drawing.Point(267, 529);
             this.btnAlterar.Margin = new System.Windows.Forms.Padding(4);
             this.btnAlterar.Name = "btnAlterar";
             this.btnAlterar.Size = new System.Drawing.Size(130, 42);
@@ -181,7 +181,7 @@
             this.btnNovo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnNovo.Image = global::EquipMotos.Properties.Resources._1398756346_1;
             this.btnNovo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnNovo.Location = new System.Drawing.Point(24, 441);
+            this.btnNovo.Location = new System.Drawing.Point(129, 529);
             this.btnNovo.Margin = new System.Windows.Forms.Padding(4);
             this.btnNovo.Name = "btnNovo";
             this.btnNovo.Size = new System.Drawing.Size(130, 42);
@@ -198,7 +198,7 @@
             this.btnBuscarMarca.ErrorImage = global::EquipMotos.Properties.Resources._1398754683_xmag;
             this.btnBuscarMarca.Image = global::EquipMotos.Properties.Resources._1398754683_xmag;
             this.btnBuscarMarca.InitialImage = global::EquipMotos.Properties.Resources._1398754683_xmag;
-            this.btnBuscarMarca.Location = new System.Drawing.Point(472, 18);
+            this.btnBuscarMarca.Location = new System.Drawing.Point(464, 76);
             this.btnBuscarMarca.Margin = new System.Windows.Forms.Padding(4);
             this.btnBuscarMarca.Name = "btnBuscarMarca";
             this.btnBuscarMarca.Size = new System.Drawing.Size(67, 60);
@@ -215,7 +215,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(635, 496);
+            this.ClientSize = new System.Drawing.Size(740, 584);
             this.Controls.Add(this.btnBuscarMarca);
             this.Controls.Add(this.btnExcluir);
             this.Controls.Add(this.btnVoltar);

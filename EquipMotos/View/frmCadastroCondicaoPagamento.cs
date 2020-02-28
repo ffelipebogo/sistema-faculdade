@@ -16,11 +16,12 @@ using System.Windows.Forms;
 
 namespace EquipMotos.View
 {
-    public partial class frmCadastroCondicaoPagamento : Form
+    public partial class frmCadastroCondicaoPagamento : MaterialSkin.Controls.MaterialForm
     {
         
         CondicaoPagamentos condPagamento = new CondicaoPagamentos();
         CtrlCondicaoPagamento CtrlCondPagamento = new CtrlCondicaoPagamento();
+        CtrlFormaPagamentos CtrlFormaPagamento = new CtrlFormaPagamentos();
         public static object formaPag = null;
         List<CondicaoParcelada> listaParcela = new List<CondicaoParcelada>();
 
@@ -87,7 +88,6 @@ namespace EquipMotos.View
                         formaPag.codigo = Convert.ToInt32(listviewParcelas.Items[i].SubItems[3].Text);
                         var parce = listviewParcelas.Items[i];
 
-
                         listaParcela.Add(new CondicaoParcelada()
                         {
                             nrParcela = Convert.ToInt32(listviewParcelas.Items[i].SubItems[0].Text),
@@ -131,7 +131,7 @@ namespace EquipMotos.View
             }
             else
             {
-                MessageBox.Show("Porcentagem inválida!", "Porcentagem não deu 100%", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Porcentagem não atingiu 100%", "Porcentagem inválida!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -292,33 +292,35 @@ namespace EquipMotos.View
         {
             try
             {
-                if ((MessageBox.Show("Remover parcela ?", "EXCLUIR", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes) & (listviewParcelas.SelectedIndices[0] != null))
+                if (listviewParcelas.SelectedIndices[0] != null)
                 {
-                    listviewParcelas.Items.RemoveAt(listviewParcelas.SelectedIndices[0]);
-                    if(listviewParcelas.Items.Count > 0)
+                    if ((MessageBox.Show("Remover parcela ?", "EXCLUIR", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes) & (listviewParcelas.SelectedIndices[0] != null))
                     {
-                        ListView listView = new ListView();
-                        listView = listviewParcelas;
-                        for (int i = 0; i < listView.Items.Count; i++)
+                        listviewParcelas.Items.RemoveAt(listviewParcelas.SelectedIndices[0]);
+                        if (listviewParcelas.Items.Count > 0)
                         {
-                            ///string[] row = {
-                            listviewParcelas.Items[i].SubItems[0].Text = Convert.ToString(i + 1);
-                            listviewParcelas.Items[i].SubItems[1].Text = listView.Items[i].SubItems[1].Text;
-                            listviewParcelas.Items[i].SubItems[2].Text = listView.Items[i].SubItems[2].Text;
-                            listviewParcelas.Items[i].SubItems[3].Text = listView.Items[i].SubItems[3].Text;
-                            listviewParcelas.Items[i].SubItems[4].Text = listView.Items[i].SubItems[4].Text;
-                            //};
-                            //var lvi = new ListViewItem(row);
-                            //listviewParcelas.Items.RemoveAt(i);
-                            //listView.Items.Add(lvi);
+                            ListView listView = new ListView();
+                            listView = listviewParcelas;
+                            for (int i = 0; i < listView.Items.Count; i++)
+                            {
+                                listviewParcelas.Items[i].SubItems[0].Text = Convert.ToString(i + 1);
+                                listviewParcelas.Items[i].SubItems[1].Text = listView.Items[i].SubItems[1].Text;
+                                listviewParcelas.Items[i].SubItems[2].Text = listView.Items[i].SubItems[2].Text;
+                                listviewParcelas.Items[i].SubItems[3].Text = listView.Items[i].SubItems[3].Text;
+                                listviewParcelas.Items[i].SubItems[4].Text = listView.Items[i].SubItems[4].Text;
+                                
+                            }
+                            txtNrParcelas.Text = Convert.ToString(listviewParcelas.Items.Count + 1);
                         }
-                         txtNrParcelas.Text = Convert.ToString(listviewParcelas.Items.Count + 1);
-                        //listviewParcelas = listView ;
+                        else
+                        {
+                            txtNrParcelas.Text = Convert.ToString(1);
+                        }
                     }
-                    else
-                    {
-                        txtNrParcelas.Text = Convert.ToString(1);
-                    }
+                }
+                else
+                {
+                    MessageBox.Show("Selecione um item!");
                 }
             }
             catch
@@ -334,11 +336,13 @@ namespace EquipMotos.View
                 btnAdd.Enabled = true;
             }
         }
+
         private void TxtFormaPagamento_TextChanged(object sender, EventArgs e)
         {
             //txtCodFormaPagamento.Enabled = false;
             //txtFormaPagamento.Enabled = false;
         }
+
         public void Carregar(object id)
         {
             condPagamento = CtrlCondPagamento.BuscarPorID(id) as CondicaoPagamentos;
@@ -364,16 +368,68 @@ namespace EquipMotos.View
 
         private void TxtJuros_Leave(object sender, EventArgs e)
         {
-            MaskForm.TxtMask_Porcentagem_Leave(sender, e);
-            if (String.IsNullOrEmpty(txtJuros.Text))
+            if (!String.IsNullOrEmpty(txtJuros.Text))
             {
-
+                var jurosInt = double.Parse(txtJuros.Text);
+                var juros = jurosInt / 100;
+                if (txtJuros.Text.Trim().Length > 5)
+                {
+                    MessageBox.Show("Não é possivel inserir este juro", "Informe um juros com menos de 4 caracteres", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    txtJuros.Focus();
+                    txtJuros.Text = "";
+                }else if((juros < 0.00) | ( juros > 100.00) )
+                {
+                    if(juros > 100.00)
+                    {
+                        MessageBox.Show("Não é possivel inserir este juro", "Informe um juros menor que 100 %", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Não é possivel inserir este juro", "Informe um juros maior que 0 %", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                    txtJuros.Focus();
+                }
             }
         }
 
         private void TxtJuros_KeyPress(object sender, KeyPressEventArgs e)
         {
             MaskForm.TxtMask_Valida_KeyPress(sender, e);
+        }
+
+        private void TxtPorcentagem_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            MaskForm.TxtMask_Porcentagem_KeyPress(sender, e);
+        }
+
+        private void TxtMulta_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            MaskForm.TxtMask_Valida_KeyPress(sender, e);
+        }
+
+        private void TxtDesconto_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            MaskForm.TxtMask_Valida_KeyPress(sender, e);
+        }
+
+        private void TxtNrDias_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            MaskForm.TxtMask_Numero_KeyPress(sender, e);
+        }
+
+        private void TxtNrParcelas_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            MaskForm.TxtMask_Numero_KeyPress(sender, e);
+        }
+
+        private void TxtCodFormaPagamento_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            MaskForm.TxtMask_Numero_KeyPress(sender, e);
+        }
+
+        private void txtCondicao_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            MaskForm.TxtMask_ValidaNumeroLetras_KeyPress(sender, e);
         }
 
         private void TxtJuros_KeyUp(object sender, KeyEventArgs e)
@@ -386,19 +442,9 @@ namespace EquipMotos.View
             MaskForm.TxtMask_Porcentagem_Leave(sender, e);
         }
 
-        private void TxtPorcentagem_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            MaskForm.TxtMask_Porcentagem_KeyPress(sender, e);
-        }
-
         private void TxtPorcentagem_KeyUp(object sender, KeyEventArgs e)
         {
             MaskForm.TxtMask_Porcentagem_KeyUp(sender, e);
-        }
-
-        private void TxtMulta_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            MaskForm.TxtMask_Valida_KeyPress(sender, e);
         }
 
         private void TxtMulta_KeyUp(object sender, KeyEventArgs e)
@@ -408,12 +454,29 @@ namespace EquipMotos.View
 
         private void TxtMulta_Leave(object sender, EventArgs e)
         {
-            MaskForm.TxtMask_Porcentagem_Leave(sender, e);
-        }
-
-        private void TxtDesconto_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            MaskForm.TxtMask_Valida_KeyPress(sender, e);
+            if (!String.IsNullOrEmpty(txtMulta.Text))
+            {
+                var multaInt = double.Parse(txtMulta.Text);
+                var multa = multaInt / 100;
+                if (txtMulta.Text.Trim().Length > 5)
+                {
+                    MessageBox.Show("Não é possivel inserir esta multa", "Informe uma multa com menos de 4 caracteres", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    txtMulta.Focus();
+                    txtMulta.Text = "";
+                }
+                else if ((multa < 0) | (multa > 100))
+                {
+                    if (multa > 100)
+                    {
+                        MessageBox.Show("Não é possivel inserir esta multa", "Informe uma multa menor que 100 %", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Não é possivel inserir esta multa", "Informe uma multa maior que 0 %", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                    txtJuros.Focus();
+                }
+            }
         }
 
         private void TxtDesconto_KeyUp(object sender, KeyEventArgs e)
@@ -423,47 +486,71 @@ namespace EquipMotos.View
 
         private void TxtDesconto_Leave(object sender, EventArgs e)
         {
-            MaskForm.TxtMask_Porcentagem_Leave(sender, e);
-        }
-
-        private void TxtNrDias_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            MaskForm.TxtMask_Porcentagem_KeyPress(sender, e);
+            if (!String.IsNullOrEmpty(txtDesconto.Text))
+            {
+                var descontoInt = double.Parse(txtDesconto.Text);
+                var desconto = descontoInt / 100;
+                if (txtDesconto.Text.Trim().Length > 5)
+                {
+                    MessageBox.Show("Não é possivel inserir este desconto", "Informe um desconto com menos de 4 caracteres", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    txtDesconto.Focus();
+                    txtDesconto.Clear();
+                }
+                else if ((desconto < 0) & (desconto > 100))
+                {
+                    if (desconto > 100)
+                    {
+                        MessageBox.Show("Não é possivel inserir este desconto", "Informe um desconto menor que 100 %", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Não é possivel inserir este desconto", "Informe um desconto maior que 0 %", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                    txtJuros.Focus();
+                }
+            }
         }
 
         private void TxtNrDias_KeyUp(object sender, KeyEventArgs e)
         {
-            //MaskForm.TxtMask_Porcentagem_KeyUp(sender, e);
         }
 
         private void TxtNrDias_Leave(object sender, EventArgs e)
         {
-            if (!MaskForm.ValidaNumero(txtNrDias.Text))
+            if (!String.IsNullOrEmpty(txtNrDias.Text))
             {
-                MessageBox.Show("Valor inválido", "Digite apenas numeros", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtNrDias.Focus();
-                txtNrDias.Clear();
+                var dias = double.Parse(txtNrDias.Text);
+                if (dias == 0)
+                {
+                    MessageBox.Show("Não é possivel inserir esta quatidade de dias", "Informe uma quantidade maior que 0", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    txtNrDias.Focus();
+                    txtNrDias.Clear();
+                }
+                else if(dias > 365)
+                {
+                    MessageBox.Show("Não é possivel inserir esta quatidade de dias", "Informe uma quantidade menor que 365", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    txtNrDias.Focus();
+                    txtNrDias.Clear();
+                }
             }
-        }
-
-        private void TxtNrParcelas_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            MaskForm.TxtMask_Valida_KeyPress(sender, e);
         }
 
         private void TxtNrParcelas_KeyUp(object sender, KeyEventArgs e)
         {
-            MaskForm.TxtMask_Porcentagem_KeyUp(sender, e);
+
         }
 
         private void TxtNrParcelas_Leave(object sender, EventArgs e)
         {
-            MaskForm.TxtMask_Porcentagem_Leave(sender, e);
-        }
-
-        private void TxtCodFormaPagamento_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            MaskForm.TxtMask_Valida_KeyPress(sender, e);
+            if (!String.IsNullOrEmpty(txtNrParcelas.Text))
+            {
+                if (txtNrParcelas.Text.Trim().Length > 2)
+                {
+                    MessageBox.Show("Não é possivel inserir este valor", "Informe um valor com menos de 3 caracteres", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    txtNrParcelas.Focus();
+                    txtNrParcelas.Clear();
+                }
+            }
         }
 
         private void TxtCodFormaPagamento_KeyUp(object sender, KeyEventArgs e)
@@ -479,7 +566,41 @@ namespace EquipMotos.View
 
         private void txtCodFormaPagamento_TextChanged(object sender, EventArgs e)
         {
-            
+            if (string.IsNullOrEmpty(txtCodFormaPagamento.Text))
+                return;
+            if (Convert.ToInt32("0" + txtCodFormaPagamento.Text) < 1)
+                return;
+            FormaPagamentos formaPag = CtrlFormaPagamento.BuscarPorID(Convert.ToInt32(txtCodFormaPagamento.Text)) as FormaPagamentos;
+            if (formaPag == null)
+            {
+                MessageBox.Show("Nenhum resultado");
+                txtCodFormaPagamento.Text = "";
+                txtFormaPagamento.Text = "";
+                txtCodFormaPagamento.Enabled = true;
+                txtFormaPagamento.Enabled = true;
+            }
+            else
+            {
+                txtFormaPagamento.Text = formaPag.forma;
+                txtCodFormaPagamento.Enabled = false;
+                txtFormaPagamento.Enabled = false;
+            }
+        }
+
+        private void txtCondicao_Leave(object sender, EventArgs e)
+        {
+            if (!String.IsNullOrEmpty(txtCondicao.Text))
+            {
+                if(txtCondicao.Text.Length > 30)
+                {
+                    MessageBox.Show("Não é possivel inserir esta condição", "Informe uma condição com menos de 30 caracteres", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    txtCondicao.Focus();
+                }else if (txtCondicao.Text.Length < 5)
+                {
+                    MessageBox.Show("Não é possivel inserir esta condição", "Informe uma condição com mais de 5 caracteres", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    txtCondicao.Focus();
+                }
+            }
         }
     }
 }

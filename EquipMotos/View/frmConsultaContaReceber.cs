@@ -11,13 +11,14 @@ using System.Windows.Forms;
 
 namespace EquipMotos.View
 {
-    public partial class frmConsultaContaReceber : Form
+    public partial class frmConsultaContaReceber : MaterialSkin.Controls.MaterialForm
     {
         frmCadastroContaReceber frmCadContaReceber;
         CtrlContasReceber CtrlContaReceber = new CtrlContasReceber();
         public frmConsultaContaReceber()
         {
             InitializeComponent();
+            gvContaReceber.DataSource = CtrlContaReceber.ListarTodos();
         }
 
         private void btnNovo_Click(object sender, EventArgs e)
@@ -84,15 +85,23 @@ namespace EquipMotos.View
 
         private void frmConsultaContaReceber_Load(object sender, EventArgs e)
         {
-            // TODO: esta linha de código carrega dados na tabela 'sistemaMoto2DataSetContaReceber.contaReceber'. Você pode movê-la ou removê-la conforme necessário.
-           // this.contaReceberTableAdapter.Fill(this.sistemaMoto2DataSetContaReceber.contaReceber);
 
         }
 
         private void btnBuscarContaPagar_Click(object sender, EventArgs e)
         {
             string conta = txtPesquisar.Text;
-            gvContaReceber.DataSource = CtrlContaReceber.Pesquisar(conta);
+             
+            DataGridView dtView = new DataGridView();
+            dtView.DataSource = CtrlContaReceber.Pesquisar(conta);
+            if (dtView.DataSource == null)
+            {
+                MessageBox.Show("Não encotrado");
+            }
+            else
+            {
+                gvContaReceber.DataSource = dtView.DataSource;
+            }
         }
     }
 }

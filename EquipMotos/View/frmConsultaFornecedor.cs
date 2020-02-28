@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace EquipMotos.View
 {
-    public partial class frmConsultaFornecedor : Form
+    public partial class frmConsultaFornecedor : MaterialSkin.Controls.MaterialForm
     {
         CtrlFornecedores CtrlFornecedor = new CtrlFornecedores();
         Fornecedores fornecedor;
@@ -63,7 +63,18 @@ namespace EquipMotos.View
         private void BtnBuscarFornecedor_Click(object sender, EventArgs e)
         {
             string forn = txtPesquisar.Text;
-            gvFornecedor.DataSource = CtrlFornecedor.Pesquisar(forn);
+            DataGridView dtFornecedor = new DataGridView();
+            dtFornecedor.DataSource = CtrlFornecedor.Pesquisar(forn);
+            var test = dtFornecedor.DataSource.ToString();
+
+            if (dtFornecedor.DataSource == null)
+            {
+                MessageBox.Show("Não encotrado");
+            }
+            else
+            {
+                gvFornecedor.DataSource = dtFornecedor.DataSource;
+            }
         }
 
         private void BtnAlterar_Click(object sender, EventArgs e)

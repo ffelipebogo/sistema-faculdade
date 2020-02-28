@@ -14,7 +14,7 @@ using System.Windows.Forms;
 
 namespace EquipMotos.View
 {
-    public partial class frmConsultaCondicaoPagamento : Form
+    public partial class frmConsultaCondicaoPagamento : MaterialSkin.Controls.MaterialForm
     {
 
         CondicaoPagamentos condPagamento = new CondicaoPagamentos();
@@ -37,7 +37,16 @@ namespace EquipMotos.View
         private void BtnBuscarCondPag_Click(object sender, EventArgs e)
         {
             string cond = txtPesquisar.Text;
-            gvCondPagamento.DataSource = CtrlCondPagamento.Pesquisar(cond);
+            DataGridView dtView = new DataGridView();
+            dtView.DataSource = CtrlCondPagamento.Pesquisar(cond);
+            if (dtView.DataSource == null)
+            {
+                MessageBox.Show("Não encotrado");
+            }
+            else
+            {
+                gvCondPagamento.DataSource = dtView.DataSource;
+            }
         }
 
         private void BtnAlterar_Click(object sender, EventArgs e)

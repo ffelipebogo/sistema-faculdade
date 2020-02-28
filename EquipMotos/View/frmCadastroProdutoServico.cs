@@ -8,11 +8,14 @@ using System.Windows.Forms;
 
 namespace EquipMotos.View
 {
-    public partial class frmCadastroProdutoServico : Form
+    public partial class frmCadastroProdutoServico : MaterialSkin.Controls.MaterialForm
     {
         String pusuario;
         ProdutosServicos ProdutoServico = new ProdutosServicos();
         CtrlProdutosServicos CtrlProdutoServico = new CtrlProdutosServicos();
+        CtrlCategorias CtrlCategoria = new CtrlCategorias();
+        CtrlFuncionarios CtrlFuncionario = new CtrlFuncionarios();
+        CtrlFornecedores CtrlFornecedor = new CtrlFornecedores();
         public static object categoria;
         public static object fornecedor;
         public static object funcionario;
@@ -106,7 +109,7 @@ namespace EquipMotos.View
                 }
                 else
                 {
-                    MessageBox.Show("Verifique se os campos foram preenchidos corretamente");
+                   // MessageBox.Show("Verifique se os campos foram preenchidos corretamente");
                 }
             }
             catch (Exception)
@@ -201,6 +204,8 @@ namespace EquipMotos.View
                 Fornecedores forn = fornecedor as Fornecedores;
                 txtCodFornecedor.Text = Convert.ToString(forn.codigo);
                 txtFornecedor.Text = forn.fornecedor;
+                txtCodFornecedor.Enabled = false;
+                txtFornecedor.Enabled = false;
             }
         }
 
@@ -231,6 +236,8 @@ namespace EquipMotos.View
                 Categorias cat = categoria as Categorias;
                 txtCodCategoria.Text = Convert.ToString(cat.codigo);
                 txtCategoriaGrupo.Text = cat.categoria;
+                txtCodCategoria.Enabled = false;
+                txtCategoriaGrupo.Enabled = false;
             }
         }
 
@@ -346,7 +353,12 @@ namespace EquipMotos.View
             txtCustoUltCompra.Visible = true;
             lblDtUltCompra.Visible = true;
             txtDtUltCompra.Visible = true;
-           
+
+            txtCodFornecedor.Enabled = true;
+            txtFornecedor.Enabled = true;
+            txtCodCategoria.Enabled = true;
+            txtCategoriaGrupo.Enabled = true;
+
         }
 
         private void RbServico_CheckedChanged(object sender, EventArgs e)
@@ -363,6 +375,11 @@ namespace EquipMotos.View
             lblDtUltCompra.Visible = false;
             txtDtUltCompra.Visible = false;
 
+            txtCodFornecedor.Enabled = true;
+            txtFornecedor.Enabled = true;
+            txtCodCategoria.Enabled = true;
+            txtCategoriaGrupo.Enabled = true;
+
         }
         String vlr;
         private void TxtComissao_Leave(object sender, EventArgs e)
@@ -376,18 +393,12 @@ namespace EquipMotos.View
 
             }
         }
+
         private void TxtComissao_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!Char.IsDigit(e.KeyChar) && e.KeyChar != Convert.ToChar(Keys.Back))
-            {
-                if (e.KeyChar == ',')
-                {
-                    e.Handled = (txtComissao.Text.Contains(","));
-                }
-                else
-                    e.Handled = true;
-            }
+            MaskForm.TxtMask_Numero_KeyPress(sender, e);
         }
+
         private void TxtComissao_KeyUp(object sender, KeyEventArgs e)
         {
             vlr = txtComissao.Text.Replace(" ", "").Replace(",", "").Replace(" ", "").Replace("00,", "");
@@ -445,12 +456,13 @@ namespace EquipMotos.View
 
         private void txtCodCategoria_KeyPress(object sender, KeyPressEventArgs e)
         {
-            MaskForm.TxtMask_Moeda_KeyPress(sender, e);
+            MaskForm.TxtMask_Numero_KeyPress(sender, e);
         }
 
         private void txtCodFornecedor_KeyPress(object sender, KeyPressEventArgs e)
         {
-            MaskForm.TxtMask_Moeda_KeyPress(sender, e);
+            MaskForm.TxtMask_Numero_KeyPress(sender, e);
+
         }
 
         private void txtCustoUltCompra_KeyPress(object sender, KeyPressEventArgs e)
@@ -466,6 +478,214 @@ namespace EquipMotos.View
         private void txtCustoUltCompra_Leave(object sender, EventArgs e)
         {
             MaskForm.TxtMask_Moeda_Leave(sender, e);
+        }
+
+        private void txtProdutoServico_Leave(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(txtProdutoServico.Text))
+            {
+                if (rbProduto.Checked)
+                {
+                    if (txtProdutoServico.Text.Length < 3)
+                    {
+                        MessageBox.Show("Produto inválido!", "Informe o produto com mais de 3 caracteres!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        txtProdutoServico.Focus();
+                    }
+                    else
+                    if (txtFornecedor.Text.Trim().Length > 100)
+                    {
+                        MessageBox.Show("Produto inválido!", "Informe o produto com menos de 100 caracteres!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        txtProdutoServico.Focus();
+                    }
+                    else
+                    if (String.IsNullOrEmpty(txtProdutoServico.Text.Trim()))
+                    {
+                        MessageBox.Show("Faltou informar o Produto", "Informe o produto!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        txtProdutoServico.Focus();
+                    }
+                    else
+                    if (!MaskForm.ValidaTexto(txtProdutoServico.Text))
+                    {
+                        MessageBox.Show("Produto inválido!", "Produto não pode conter numeros!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        txtProdutoServico.Focus();
+                    }
+                }
+                else
+                {
+                    if (txtProdutoServico.Text.Length < 3)
+                    {
+                        MessageBox.Show("Servico inválido!", "Informe o servico com mais de 3 caracteres!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        txtProdutoServico.Focus();
+                    }
+                    else
+                   if (txtFornecedor.Text.Trim().Length > 100)
+                    {
+                        MessageBox.Show("Servico inválido!", "Informe o servico com menos de 100 caracteres!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        txtProdutoServico.Focus();
+                    }
+                    else
+                   if (String.IsNullOrEmpty(txtProdutoServico.Text.Trim()))
+                    {
+                        MessageBox.Show("Faltou informar o Servico", "Informe o Servico!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        txtProdutoServico.Focus();
+                    }
+                    else
+                   if (!MaskForm.ValidaTexto(txtProdutoServico.Text))
+                    {
+                        MessageBox.Show("Servico inválido!", "Servico não pode conter numeros!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        txtProdutoServico.Focus();
+                    }
+                }
+            }
+        }
+
+        private void txtUnidade_Leave(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(txtUnidade.Text))
+            { 
+                if(txtUnidade.Text.Trim().Length > 10)
+                {
+                    MessageBox.Show("Não é possivel inserir esta unidade", "Informe uma unidade com menos de 10 caracteres", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    txtUnidade.Focus();
+                    txtUnidade.Text = "";
+                }
+            }
+        }
+
+        private void txtCodBarra_Leave(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(txtCodBarra.Text))
+            {
+                if (txtCodBarra.Text.Trim().Length > 10)
+                {
+                    MessageBox.Show("Não é possivel inserir este codigo de barra", "Informe um codigo de barra com menos de 5 caracteres", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    txtCodBarra.Focus();
+                    txtCodBarra.Text = "";
+                }
+                else if (txtCodBarra.Text.Trim().Length < 5)
+                {
+                    MessageBox.Show("Não é possivel inserir este codigo de barra", "Informe um codigo de barra com menos de 5 caracteres", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    txtCodBarra.Focus();
+                    txtCodBarra.Text = "";
+                }
+            }
+        }
+
+        private void txtCodCategoria_Leave(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(txtProdutoServico.Text))
+            {
+                
+            }
+        }
+
+        private void txtCodFornecedor_Leave(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(txtProdutoServico.Text))
+            {
+
+            }
+        }
+
+        private void txtDtUltCompra_Leave(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(txtDtUltCompra.Text))
+            {
+                if(txtDtUltCompra.Value > DateTime.Now)
+                {
+                    MessageBox.Show("Não é possivel inserir esta data", "Informe uma data menor que a atual", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    txtDtUltCompra.Focus();
+                    txtDtUltCompra.Value = DateTime.Now;
+                }
+            }
+        }
+
+        private void txtProdutoServico_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            MaskForm.TxtMask_ValidaNumeroLetras_KeyPress(sender, e);
+        }
+
+        private void txtCodBarra_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            MaskForm.TxtMask_Numero_KeyPress(sender, e);
+        }
+
+        private void txtUnidade_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            MaskForm.TxtMask_ValidaNumeroLetras_KeyPress(sender, e);
+        }
+
+        private void txtCodCategoria_TextChanged(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtCodCategoria.Text))
+                return;
+            if (Convert.ToInt32("0" + txtCodCategoria.Text) < 1)
+                return;
+            Categorias cat = CtrlCategoria.BuscarPorID(Convert.ToInt32(txtCodCategoria.Text)) as Categorias;
+            if (cat == null)
+            {
+                MessageBox.Show("Nenhum resultado");
+                txtCategoriaGrupo.Text = "";
+                txtCodCategoria.Text = "";
+                txtCategoriaGrupo.Enabled = true;
+                txtCodCategoria.Enabled = true;
+            }
+            else
+            {
+                txtCategoriaGrupo.Text = cat.categoria;
+                txtCategoriaGrupo.Enabled = false;
+                txtCodCategoria.Enabled = false;
+            }
+            cat = null;
+        }
+
+        private void txtCodFornecedor_TextChanged(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(txtCodFornecedor.Text))
+            {
+                if (rbProduto.Checked)
+                {
+                    if (Convert.ToInt32("0" + txtCodFornecedor.Text) < 1)
+                        return;
+                    Fornecedores forn = CtrlFornecedor.BuscarPorID(Convert.ToInt32(txtCodFornecedor.Text)) as Fornecedores;
+                    if (forn == null)
+                    {
+                        MessageBox.Show("Nenhum resultado");
+                        txtFornecedor.Text = "";
+                        txtCodFornecedor.Text = "";
+                        txtFornecedor.Enabled = true;
+                        txtCodFornecedor.Enabled = true;
+                    }
+                    else
+                    {
+                        txtFornecedor.Text = forn.fornecedor;
+                        txtFornecedor.Enabled = false;
+                        txtCodFornecedor.Enabled = false;
+                    }
+                    forn = null;
+                }
+                else
+                {
+                    if (Convert.ToInt32("0" + txtCodFornecedor.Text) < 1)
+                        return;
+                    Funcionarios func = CtrlFuncionario.BuscarPorID(Convert.ToInt32(txtCodFornecedor.Text)) as Funcionarios;
+                    if (func == null)
+                    {
+                        MessageBox.Show("Nenhum resultado");
+                        txtFornecedor.Text = "";
+                        txtCodFornecedor.Text = "";
+                        txtFornecedor.Enabled = true;
+                        txtCodFornecedor.Enabled = true;
+                    }
+                    else
+                    {
+                        txtFornecedor.Text = func.funcionario;
+                        txtFornecedor.Enabled = false;
+                        txtCodFornecedor.Enabled = false;
+                    }
+                    func = null;
+                }
+            }
         }
     }
 }

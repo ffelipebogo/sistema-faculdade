@@ -13,7 +13,7 @@ using System.Windows.Forms;
 
 namespace EquipMotos.View
 {
-    public partial class frmConsultaMarca : Form
+    public partial class frmConsultaMarca : MaterialSkin.Controls.MaterialForm
     {
         CtrlMarcas CtrlMarca = new CtrlMarcas();
         Marcas marca = new Marcas();
@@ -113,7 +113,18 @@ namespace EquipMotos.View
         private void btnBuscarMarca_Click(object sender, EventArgs e)
         {
             string marca = txtPesquisar.Text;
-            gvMarca.DataSource = CtrlMarca.Pesquisar(marca);
+           
+            DataGridView dtView = new DataGridView();
+            dtView.DataSource = CtrlMarca.Pesquisar(marca);
+            if (dtView.DataSource == null)
+            {
+                MessageBox.Show("Não encotrado");
+            }
+            else
+            {
+                gvMarca.DataSource = dtView.DataSource;
+            }
+
         }
     }
 }

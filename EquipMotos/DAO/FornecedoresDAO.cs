@@ -222,6 +222,7 @@ namespace EquipMotos.DAO
                 da = new SqlDataAdapter(comando);
                 DataTable dtFornecedor = new DataTable();
                 da.Fill(dtFornecedor);
+                fornecedor = null;
                 foreach (DataRow row in dtFornecedor.Rows)
                 {
                     Fornecedores forn = new Fornecedores();

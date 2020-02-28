@@ -110,6 +110,7 @@ namespace EquipMotos.DAO
                 DataTable dtCidade = new DataTable();
                 da.Fill(dtCidade);
                 EstadosDAO daoEstado = new EstadosDAO();
+                cidade = null;
                 foreach (DataRow row in dtCidade.Rows)
                 {
                     Cidades cid = new Cidades();

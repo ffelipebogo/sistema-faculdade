@@ -75,12 +75,12 @@
             this.dataGridViewTextBoxColumn7});
             this.gvModelo.DataSource = this.bindingSource1;
             this.gvModelo.EnableHeadersVisualStyles = false;
-            this.gvModelo.Location = new System.Drawing.Point(17, 97);
+            this.gvModelo.Location = new System.Drawing.Point(18, 168);
             this.gvModelo.Margin = new System.Windows.Forms.Padding(4);
             this.gvModelo.Name = "gvModelo";
             this.gvModelo.ReadOnly = true;
             this.gvModelo.RowHeadersWidth = 51;
-            this.gvModelo.Size = new System.Drawing.Size(599, 307);
+            this.gvModelo.Size = new System.Drawing.Size(663, 307);
             this.gvModelo.TabIndex = 0;
             // 
             // dataGridViewTextBoxColumn5
@@ -124,7 +124,7 @@
             // 
             this.btnVoltar.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnVoltar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnVoltar.Location = new System.Drawing.Point(467, 443);
+            this.btnVoltar.Location = new System.Drawing.Point(532, 504);
             this.btnVoltar.Margin = new System.Windows.Forms.Padding(4);
             this.btnVoltar.Name = "btnVoltar";
             this.btnVoltar.Size = new System.Drawing.Size(149, 42);
@@ -137,7 +137,7 @@
             // 
             this.txtPesquisar.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtPesquisar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPesquisar.Location = new System.Drawing.Point(16, 37);
+            this.txtPesquisar.Location = new System.Drawing.Point(17, 108);
             this.txtPesquisar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtPesquisar.Name = "txtPesquisar";
             this.txtPesquisar.Size = new System.Drawing.Size(445, 26);
@@ -148,7 +148,7 @@
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(12, 9);
+            this.label1.Location = new System.Drawing.Point(13, 80);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(169, 25);
             this.label1.TabIndex = 12;
@@ -160,7 +160,7 @@
             this.btnExcluir.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnExcluir.Image = global::EquipMotos.Properties.Resources._1398756469_Erase;
             this.btnExcluir.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnExcluir.Location = new System.Drawing.Point(303, 443);
+            this.btnExcluir.Location = new System.Drawing.Point(368, 504);
             this.btnExcluir.Margin = new System.Windows.Forms.Padding(4);
             this.btnExcluir.Name = "btnExcluir";
             this.btnExcluir.Size = new System.Drawing.Size(130, 42);
@@ -176,7 +176,7 @@
             this.btnAlterar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAlterar.Image = global::EquipMotos.Properties.Resources._1398756462_Modify;
             this.btnAlterar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAlterar.Location = new System.Drawing.Point(165, 443);
+            this.btnAlterar.Location = new System.Drawing.Point(230, 504);
             this.btnAlterar.Margin = new System.Windows.Forms.Padding(4);
             this.btnAlterar.Name = "btnAlterar";
             this.btnAlterar.Size = new System.Drawing.Size(130, 42);
@@ -192,7 +192,7 @@
             this.btnNovo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnNovo.Image = global::EquipMotos.Properties.Resources._1398756346_1;
             this.btnNovo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnNovo.Location = new System.Drawing.Point(27, 443);
+            this.btnNovo.Location = new System.Drawing.Point(92, 504);
             this.btnNovo.Margin = new System.Windows.Forms.Padding(4);
             this.btnNovo.Name = "btnNovo";
             this.btnNovo.Size = new System.Drawing.Size(130, 42);
@@ -209,7 +209,7 @@
             this.btnBuscar.ErrorImage = global::EquipMotos.Properties.Resources._1398754683_xmag;
             this.btnBuscar.Image = global::EquipMotos.Properties.Resources._1398754683_xmag;
             this.btnBuscar.InitialImage = global::EquipMotos.Properties.Resources._1398754683_xmag;
-            this.btnBuscar.Location = new System.Drawing.Point(467, 20);
+            this.btnBuscar.Location = new System.Drawing.Point(468, 91);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(74, 61);
             this.btnBuscar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
@@ -225,7 +225,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(640, 498);
+            this.ClientSize = new System.Drawing.Size(698, 560);
             this.ControlBox = false;
             this.Controls.Add(this.btnBuscar);
             this.Controls.Add(this.btnExcluir);

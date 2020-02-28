@@ -29,10 +29,14 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.label2 = new System.Windows.Forms.Label();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnVoltar = new System.Windows.Forms.Button();
             this.gvPais = new System.Windows.Forms.DataGridView();
+            this.codigoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dtCadastroDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dtAlteracaoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.usuarioDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.paisesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.sistemaMoto2DataSetPais = new EquipMotos.SistemaMoto2DataSetPais();
             this.label1 = new System.Windows.Forms.Label();
@@ -42,32 +46,17 @@
             this.btnNovo = new System.Windows.Forms.Button();
             this.btnBuscarPais = new System.Windows.Forms.PictureBox();
             this.paisesTableAdapter = new EquipMotos.SistemaMoto2DataSetPaisTableAdapters.paisesTableAdapter();
-            this.codigoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dtCadastroDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dtAlteracaoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.usuarioDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gvPais)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.paisesBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sistemaMoto2DataSetPais)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnBuscarPais)).BeginInit();
             this.SuspendLayout();
             // 
-            // label2
-            // 
-            this.label2.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(20, 82);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(104, 17);
-            this.label2.TabIndex = 283;
-            this.label2.Text = "Lista de Paises";
-            // 
             // btnVoltar
             // 
             this.btnVoltar.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnVoltar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnVoltar.Location = new System.Drawing.Point(484, 438);
+            this.btnVoltar.Location = new System.Drawing.Point(517, 510);
             this.btnVoltar.Margin = new System.Windows.Forms.Padding(4);
             this.btnVoltar.Name = "btnVoltar";
             this.btnVoltar.Size = new System.Drawing.Size(152, 42);
@@ -85,14 +74,14 @@
             this.gvPais.BackgroundColor = System.Drawing.SystemColors.Control;
             this.gvPais.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.gvPais.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.ControlDark;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.gvPais.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.ControlDark;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.gvPais.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.gvPais.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gvPais.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.codigoDataGridViewTextBoxColumn,
@@ -102,114 +91,14 @@
             this.usuarioDataGridViewTextBoxColumn});
             this.gvPais.DataSource = this.paisesBindingSource;
             this.gvPais.EnableHeadersVisualStyles = false;
-            this.gvPais.Location = new System.Drawing.Point(24, 105);
+            this.gvPais.Location = new System.Drawing.Point(17, 145);
             this.gvPais.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.gvPais.Name = "gvPais";
             this.gvPais.ReadOnly = true;
             this.gvPais.RowHeadersWidth = 51;
             this.gvPais.RowTemplate.Height = 24;
-            this.gvPais.Size = new System.Drawing.Size(612, 303);
+            this.gvPais.Size = new System.Drawing.Size(652, 333);
             this.gvPais.TabIndex = 278;
-            // 
-            // paisesBindingSource
-            // 
-            this.paisesBindingSource.DataMember = "paises";
-            this.paisesBindingSource.DataSource = this.sistemaMoto2DataSetPais;
-            // 
-            // sistemaMoto2DataSetPais
-            // 
-            this.sistemaMoto2DataSetPais.DataSetName = "SistemaMoto2DataSetPais";
-            this.sistemaMoto2DataSetPais.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // label1
-            // 
-            this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(20, 9);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(122, 20);
-            this.label1.TabIndex = 277;
-            this.label1.Text = "Pesquisar Pais";
-            // 
-            // txtPesquisar
-            // 
-            this.txtPesquisar.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtPesquisar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPesquisar.Location = new System.Drawing.Point(24, 34);
-            this.txtPesquisar.Margin = new System.Windows.Forms.Padding(4);
-            this.txtPesquisar.Name = "txtPesquisar";
-            this.txtPesquisar.Size = new System.Drawing.Size(431, 26);
-            this.txtPesquisar.TabIndex = 275;
-            // 
-            // btnExcluir
-            // 
-            this.btnExcluir.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnExcluir.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExcluir.Image = global::EquipMotos.Properties.Resources._1398756469_Erase;
-            this.btnExcluir.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnExcluir.Location = new System.Drawing.Point(312, 438);
-            this.btnExcluir.Margin = new System.Windows.Forms.Padding(4);
-            this.btnExcluir.Name = "btnExcluir";
-            this.btnExcluir.Size = new System.Drawing.Size(130, 42);
-            this.btnExcluir.TabIndex = 282;
-            this.btnExcluir.Text = "EXCLUIR";
-            this.btnExcluir.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnExcluir.UseVisualStyleBackColor = true;
-            this.btnExcluir.Click += new System.EventHandler(this.BtnExcluir_Click);
-            // 
-            // btnAlterar
-            // 
-            this.btnAlterar.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnAlterar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAlterar.Image = global::EquipMotos.Properties.Resources._1398756462_Modify;
-            this.btnAlterar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAlterar.Location = new System.Drawing.Point(174, 438);
-            this.btnAlterar.Margin = new System.Windows.Forms.Padding(4);
-            this.btnAlterar.Name = "btnAlterar";
-            this.btnAlterar.Size = new System.Drawing.Size(130, 42);
-            this.btnAlterar.TabIndex = 280;
-            this.btnAlterar.Text = "ALTERAR";
-            this.btnAlterar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnAlterar.UseVisualStyleBackColor = true;
-            this.btnAlterar.Click += new System.EventHandler(this.BtnAlterar_Click);
-            // 
-            // btnNovo
-            // 
-            this.btnNovo.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnNovo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNovo.Image = global::EquipMotos.Properties.Resources._1398756346_1;
-            this.btnNovo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnNovo.Location = new System.Drawing.Point(36, 438);
-            this.btnNovo.Margin = new System.Windows.Forms.Padding(4);
-            this.btnNovo.Name = "btnNovo";
-            this.btnNovo.Size = new System.Drawing.Size(130, 42);
-            this.btnNovo.TabIndex = 279;
-            this.btnNovo.Text = "NOVO";
-            this.btnNovo.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnNovo.UseVisualStyleBackColor = true;
-            this.btnNovo.Click += new System.EventHandler(this.BtnNovo_Click);
-            // 
-            // btnBuscarPais
-            // 
-            this.btnBuscarPais.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnBuscarPais.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.btnBuscarPais.ErrorImage = global::EquipMotos.Properties.Resources._1398754683_xmag;
-            this.btnBuscarPais.Image = global::EquipMotos.Properties.Resources._1398754683_xmag;
-            this.btnBuscarPais.InitialImage = global::EquipMotos.Properties.Resources._1398754683_xmag;
-            this.btnBuscarPais.Location = new System.Drawing.Point(463, 13);
-            this.btnBuscarPais.Margin = new System.Windows.Forms.Padding(4);
-            this.btnBuscarPais.Name = "btnBuscarPais";
-            this.btnBuscarPais.Size = new System.Drawing.Size(67, 60);
-            this.btnBuscarPais.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.btnBuscarPais.TabIndex = 276;
-            this.btnBuscarPais.TabStop = false;
-            this.btnBuscarPais.Click += new System.EventHandler(this.BtnBuscarPais_Click);
-            // 
-            // paisesTableAdapter
-            // 
-            this.paisesTableAdapter.ClearBeforeFill = true;
             // 
             // codigoDataGridViewTextBoxColumn
             // 
@@ -256,13 +145,112 @@
             this.usuarioDataGridViewTextBoxColumn.ReadOnly = true;
             this.usuarioDataGridViewTextBoxColumn.Width = 125;
             // 
+            // paisesBindingSource
+            // 
+            this.paisesBindingSource.DataMember = "paises";
+            this.paisesBindingSource.DataSource = this.sistemaMoto2DataSetPais;
+            // 
+            // sistemaMoto2DataSetPais
+            // 
+            this.sistemaMoto2DataSetPais.DataSetName = "SistemaMoto2DataSetPais";
+            this.sistemaMoto2DataSetPais.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // label1
+            // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(13, 79);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(122, 20);
+            this.label1.TabIndex = 277;
+            this.label1.Text = "Pesquisar Pais";
+            // 
+            // txtPesquisar
+            // 
+            this.txtPesquisar.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.txtPesquisar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPesquisar.Location = new System.Drawing.Point(17, 104);
+            this.txtPesquisar.Margin = new System.Windows.Forms.Padding(4);
+            this.txtPesquisar.Name = "txtPesquisar";
+            this.txtPesquisar.Size = new System.Drawing.Size(431, 26);
+            this.txtPesquisar.TabIndex = 275;
+            // 
+            // btnExcluir
+            // 
+            this.btnExcluir.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnExcluir.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExcluir.Image = global::EquipMotos.Properties.Resources._1398756469_Erase;
+            this.btnExcluir.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnExcluir.Location = new System.Drawing.Point(345, 510);
+            this.btnExcluir.Margin = new System.Windows.Forms.Padding(4);
+            this.btnExcluir.Name = "btnExcluir";
+            this.btnExcluir.Size = new System.Drawing.Size(130, 42);
+            this.btnExcluir.TabIndex = 282;
+            this.btnExcluir.Text = "EXCLUIR";
+            this.btnExcluir.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnExcluir.UseVisualStyleBackColor = true;
+            this.btnExcluir.Click += new System.EventHandler(this.BtnExcluir_Click);
+            // 
+            // btnAlterar
+            // 
+            this.btnAlterar.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnAlterar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAlterar.Image = global::EquipMotos.Properties.Resources._1398756462_Modify;
+            this.btnAlterar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnAlterar.Location = new System.Drawing.Point(207, 510);
+            this.btnAlterar.Margin = new System.Windows.Forms.Padding(4);
+            this.btnAlterar.Name = "btnAlterar";
+            this.btnAlterar.Size = new System.Drawing.Size(130, 42);
+            this.btnAlterar.TabIndex = 280;
+            this.btnAlterar.Text = "ALTERAR";
+            this.btnAlterar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnAlterar.UseVisualStyleBackColor = true;
+            this.btnAlterar.Click += new System.EventHandler(this.BtnAlterar_Click);
+            // 
+            // btnNovo
+            // 
+            this.btnNovo.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnNovo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNovo.Image = global::EquipMotos.Properties.Resources._1398756346_1;
+            this.btnNovo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnNovo.Location = new System.Drawing.Point(69, 510);
+            this.btnNovo.Margin = new System.Windows.Forms.Padding(4);
+            this.btnNovo.Name = "btnNovo";
+            this.btnNovo.Size = new System.Drawing.Size(130, 42);
+            this.btnNovo.TabIndex = 279;
+            this.btnNovo.Text = "NOVO";
+            this.btnNovo.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnNovo.UseVisualStyleBackColor = true;
+            this.btnNovo.Click += new System.EventHandler(this.BtnNovo_Click);
+            // 
+            // btnBuscarPais
+            // 
+            this.btnBuscarPais.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnBuscarPais.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.btnBuscarPais.ErrorImage = global::EquipMotos.Properties.Resources._1398754683_xmag;
+            this.btnBuscarPais.Image = global::EquipMotos.Properties.Resources._1398754683_xmag;
+            this.btnBuscarPais.InitialImage = global::EquipMotos.Properties.Resources._1398754683_xmag;
+            this.btnBuscarPais.Location = new System.Drawing.Point(472, 79);
+            this.btnBuscarPais.Margin = new System.Windows.Forms.Padding(4);
+            this.btnBuscarPais.Name = "btnBuscarPais";
+            this.btnBuscarPais.Size = new System.Drawing.Size(67, 60);
+            this.btnBuscarPais.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.btnBuscarPais.TabIndex = 276;
+            this.btnBuscarPais.TabStop = false;
+            this.btnBuscarPais.Click += new System.EventHandler(this.BtnBuscarPais_Click);
+            // 
+            // paisesTableAdapter
+            // 
+            this.paisesTableAdapter.ClearBeforeFill = true;
+            // 
             // frmConsultaPais
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(662, 490);
+            this.ClientSize = new System.Drawing.Size(682, 565);
             this.ControlBox = false;
-            this.Controls.Add(this.label2);
             this.Controls.Add(this.btnExcluir);
             this.Controls.Add(this.btnVoltar);
             this.Controls.Add(this.btnAlterar);
@@ -286,8 +274,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnExcluir;
         private System.Windows.Forms.Button btnAlterar;
         private System.Windows.Forms.Button btnNovo;

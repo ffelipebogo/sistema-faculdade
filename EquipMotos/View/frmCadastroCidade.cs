@@ -13,7 +13,7 @@ using System.Windows.Forms;
 
 namespace EquipMotos.View
 {
-    public partial class frmCadastroCidade : Form
+    public partial class frmCadastroCidade : MaterialSkin.Controls.MaterialForm
     {
         public static object estado;
         Cidades cid = new Cidades();
@@ -111,6 +111,11 @@ namespace EquipMotos.View
             txtCodEstado.Text = "";
             txtCodigo.Text = "";
             txtEstado.Text = "";
+        }
+
+        private void frmCadastroCidade_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

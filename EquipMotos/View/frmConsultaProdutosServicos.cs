@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace EquipMotos.View
 {
-    public partial class frmConsultaProdutosServicos : Form
+    public partial class frmConsultaProdutosServicos : MaterialSkin.Controls.MaterialForm
     {
         public int IsProduto { get; set; } = 3;
         ProdutosServicos prodServ;
@@ -142,7 +142,17 @@ namespace EquipMotos.View
         private void BtnBuscar_Click(object sender, EventArgs e)
         {
             string prod = txtPesquisar.Text;
-            gvProdutos.DataSource = CtrlProdutoServico.Pesquisar(prod, FilterID, IsProduto);
+            DataGridView dtView = new DataGridView();
+            dtView.DataSource = CtrlProdutoServico.Pesquisar(prod, FilterID, IsProduto);
+            if (dtView.DataSource == null)
+            {
+                MessageBox.Show("Não encotrado");
+            }
+            else
+            {
+                gvProdutos.DataSource = dtView.DataSource;
+            }
+           
         }
 
         private void RbProduto_CheckedChanged(object sender, EventArgs e)

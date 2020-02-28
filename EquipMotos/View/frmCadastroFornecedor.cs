@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace EquipMotos.Codigo.View
 {
-    public partial class frmCadastroFornecedor : Form
+    public partial class frmCadastroFornecedor : MaterialSkin.Controls.MaterialForm
     {
         CtrlFornecedores CtrlFornecedor = new CtrlFornecedores();
         Fornecedores Fornecedor = new Fornecedores();
@@ -137,6 +137,7 @@ namespace EquipMotos.Codigo.View
             lblDtFundacao.Text = "DT.Nascimento";
             lblCnpj.Text = "CPF *";
             txtCnpj.Mask = "000.000.000-00";
+            txtCnpj.Clear();
             lblIe.Text = "RG";
 
             lblSite.Visible = false;
@@ -147,11 +148,12 @@ namespace EquipMotos.Codigo.View
         {
             lblSexo.Visible = false;
             txtSexo.Visible = false;
-            txtSexo.Text = "";
+            txtSexo.Clear();
             lblNomeFantasia.Text = "Nome Fantasia";
             lblDtFundacao.Text = "Fundação";
             lblCnpj.Text = "CNPJ *";
             txtCnpj.Mask = "00.000.000/0000-00";
+            txtCnpj.Clear();
             lblIe.Text = "I.E";
 
             lblSite.Visible = true;
@@ -399,13 +401,13 @@ namespace EquipMotos.Codigo.View
                 }
                 if (txtDtFundacao.Text == DateTime.Now.ToString())
                 {
-                    MessageBox.Show("Data Fundação inválida", "Informe a Data de Fundação!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Data Nascimento inválida", "Informe a Data de Nascimento!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     txtDtFundacao.Focus();
                     return false;
                 }
                 else if (Convert.ToDateTime(txtDtFundacao.Text) > DateTime.Now)
                 {
-                    MessageBox.Show("Data Fundação inválida", "Informe a Data de Fundação!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Data Nascimento inválida", "Informe a Data de Nascimento!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     txtDtFundacao.Focus();
                     return false;
                 }
@@ -446,19 +448,19 @@ namespace EquipMotos.Codigo.View
             return true;
         }
 
-        public Boolean ValidaEmail(string email)
-        {
-            Regex rg = new Regex(@"^[A-Za-z0-9](([_\.\-]?[a-zA-Z0-9]+)*)@([A-Za-z0-9]+)(([\.\-]?[a-zA-Z0-9]+)*)\.([A-Za-z]{2,})$");
+        //public Boolean ValidaEmail(string email)
+        //{
+        //    Regex rg = new Regex(@"^[A-Za-z0-9](([_\.\-]?[a-zA-Z0-9]+)*)@([A-Za-z0-9]+)(([\.\-]?[a-zA-Z0-9]+)*)\.([A-Za-z]{2,})$");
 
-            if (rg.IsMatch(email))
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
+        //    if (rg.IsMatch(email))
+        //    {
+        //        return true;
+        //    }
+        //    else
+        //    {
+        //        return false;
+        //    }
+        //}
 
         public Boolean IsCpf(string cpf)
         {
@@ -617,7 +619,7 @@ namespace EquipMotos.Codigo.View
 
         private void txtIdCidade_Leave(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(txtCodCondicao.Text))
+            if (!string.IsNullOrEmpty(txtIdCidade.Text))
             {
                 if (string.IsNullOrEmpty(txtIdCidade.Text))
                 {
@@ -629,23 +631,6 @@ namespace EquipMotos.Codigo.View
                     MessageBox.Show("Codigo cidade inválido!", "Codigo da cidade dever ser númerico!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     txtIdCidade.Text = "";
                     txtIdCidade.Focus();
-                }
-                else
-                {
-                    Cidades cid = CtrlCidade.BuscarPorID(Convert.ToInt32(txtIdCidade.Text)) as Cidades;
-                    if (cid == null)
-                    {
-                        MessageBox.Show("Nenhum resultado");
-                        txtCidade.Text = "";
-                        txtUF.Text = "";
-                    }
-                    else
-                    {
-                        txtCidade.Text = cid.cidade;
-                        txtUF.Text = cid.Estado.uf;
-                        txtUF.Enabled = false;
-                        txtCidade.Enabled = false;
-                    }
                 }
             }
         }
@@ -711,6 +696,7 @@ namespace EquipMotos.Codigo.View
                 {
                     MessageBox.Show("Sexo inválido, deve ser 'M' ou 'F' ", "Verefique o Sexo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     txtSexo.Focus();
+                    txtSexo.Text = "";
                 }
             }
         }
@@ -810,9 +796,14 @@ namespace EquipMotos.Codigo.View
             {
                 txtCep.Text = "";
             }
-            else if (txtCep.Text.Length < 8 & txtCep.Text.Length > 2)
+            else if (txtCep.Text.Trim().Length < 8)
             {
                 MessageBox.Show("CEP inválido, é necessário no minímo 8 números.", "Informe o CEP!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtCep.Focus();
+            }
+            else if (txtCep.Text.Trim().Length > 8)
+            {
+                MessageBox.Show("CEP inválido, é necessário no máximo 8 números.", "Informe o CEP!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txtCep.Focus();
             }
         }
@@ -850,7 +841,7 @@ namespace EquipMotos.Codigo.View
         {
             if (!string.IsNullOrEmpty(txtEmail.Text))
             {
-                if (!ValidaEmail(txtEmail.Text))
+                if (!MaskForm.ValidaEmail(txtEmail.Text))
                 {
                     MessageBox.Show("Email inválido ", "Informe um email valido!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     txtEmail.Focus();
@@ -914,6 +905,97 @@ namespace EquipMotos.Codigo.View
                 }
             }
         }
-       
+
+        private void txtNumero_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            MaskForm.TxtMask_ValidaNumeroLetras_KeyPress(sender, e);
+        }
+
+        private void txtSexo_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            MaskForm.TxtMask_Sexo_KeyPress(sender, e);
+        }
+
+        private void txtDtFundacao_Leave(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(txtDtFundacao.Text))
+            {
+                if (txtDtFundacao.Value >= DateTime.Now)
+                {
+                    MessageBox.Show("Não é possivel inserir esta data", "informe uma data menor que hoje!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    txtDtFundacao.Focus();
+                }
+            }
+        }
+
+        private void txtIdCidade_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == System.Windows.Forms.MouseButtons.Right)
+            {
+                MessageBox.Show("Botão direito sobre a caixa de texto desabilitada.");
+            }
+        }
+
+        private void txtIdCidade_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            MaskForm.TxtMask_Numero_KeyPress(sender, e);
+        }
+
+        private void txtCep_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == System.Windows.Forms.MouseButtons.Right)
+            {
+                MessageBox.Show("Botão direito sobre a caixa de texto desabilitada.");
+            }
+        }
+
+        private void txtCep_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            MaskForm.TxtMask_Numero_KeyPress(sender, e);
+        }
+
+        private void txtSexo_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == System.Windows.Forms.MouseButtons.Right)
+            {
+                MessageBox.Show("Botão direito sobre a caixa de texto desabilitada.");
+            }
+        }
+
+        private void txtIdCidade_TextChanged(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtIdCidade.Text))
+                return;
+            if (Convert.ToInt32("0" + txtIdCidade.Text) < 1)
+                return;
+            Cidades cid = CtrlCidade.BuscarPorID(Convert.ToInt32(txtIdCidade.Text)) as Cidades;
+            if (cid == null)
+            {
+                MessageBox.Show("Nenhum resultado");
+                txtCidade.Text = "";
+                txtIdCidade.Text = "";
+                txtUF.Text = "";
+                txtCidade.Enabled = true;
+                txtUF.Enabled = true;
+                txtIdCidade.Enabled = true;
+                txtIdCidade.Focus();
+            }
+            else
+            {
+                txtCidade.Text = cid.cidade;
+                txtUF.Text = cid.Estado.uf;
+                txtUF.Enabled = false;
+                txtCidade.Enabled = false;
+                txtIdCidade.Focus();
+            }
+        }
+
+        private void txtCodCondicao_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == System.Windows.Forms.MouseButtons.Right)
+            {
+                MessageBox.Show("Botão direito sobre a caixa de texto desabilitada.");
+            }
+        }
     }
 }

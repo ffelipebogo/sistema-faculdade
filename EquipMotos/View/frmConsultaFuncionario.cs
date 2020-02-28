@@ -13,7 +13,7 @@ using System.Windows.Forms;
 
 namespace EquipMotos.View
 {
-    public partial class frmConsultaFuncionario : Form
+    public partial class frmConsultaFuncionario : MaterialSkin.Controls.MaterialForm
     {
         Funcionarios func;
         private CtrlFuncionarios CtrlFuncionario = new CtrlFuncionarios();
@@ -113,7 +113,17 @@ namespace EquipMotos.View
         private void btnBuscar_Click_1(object sender, EventArgs e)
         {
             string func = txtPesquisar.Text;
-            gvFuncionario.DataSource = CtrlFuncionario.Pesquisar(func);
+            
+            DataGridView dtView = new DataGridView();
+            dtView.DataSource = CtrlFuncionario.Pesquisar(func);
+            if (dtView.DataSource == null)
+            {
+                MessageBox.Show("Não encotrado");
+            }
+            else
+            {
+                gvFuncionario.DataSource = dtView.DataSource;
+            }
         }
     }
 }

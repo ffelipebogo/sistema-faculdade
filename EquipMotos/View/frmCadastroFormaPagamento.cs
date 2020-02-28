@@ -14,7 +14,7 @@ using System.Windows.Forms;
 
 namespace EquipMotos.View
 {
-    public partial class frmCadastroFormaPagamento : Form
+    public partial class frmCadastroFormaPagamento : MaterialSkin.Controls.MaterialForm
     {
         FormaPagamentos formPag = new FormaPagamentos();
         CtrlFormaPagamentos CtrlFormaPagamento = new CtrlFormaPagamentos();
@@ -113,6 +113,24 @@ namespace EquipMotos.View
                 return false;
             }
             return true;
+        }
+
+        private void txtForma_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            MaskForm.TxtMask_Letras_KeyPress(sender, e);
+        }
+
+        private void txtForma_Leave(object sender, EventArgs e)
+        {
+            if(txtForma.Text.Length < 4)
+            {
+                MessageBox.Show("Informe uma forma com mais de 4 caracteres", "Forma invalida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void frmCadastroFormaPagamento_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -85,7 +85,7 @@ namespace EquipMotos.DAO
                 da = new SqlDataAdapter(comando);
                 DataTable dtModelos = new DataTable();
                 da.Fill(dtModelos);
-
+                modelos = null;
                 foreach (DataRow row in dtModelos.Rows)
                 {
                     Modelos mod = new Modelos();

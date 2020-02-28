@@ -112,7 +112,7 @@ namespace EquipMotos.DAO
 
                 DataTable dtFormaPag = new DataTable();
                 da.Fill(dtFormaPag);
-                
+                formaPagamento = null;
                 foreach (DataRow row in dtFormaPag.Rows)
                 {
                     FormaPagamentos condPag = new FormaPagamentos();
@@ -128,6 +128,7 @@ namespace EquipMotos.DAO
                 return formaPagamento;
             }
         }
+
         public override object Pesquisar(string form)
         {
             using (SqlConnection conexao = Conecta.CreateConnection())

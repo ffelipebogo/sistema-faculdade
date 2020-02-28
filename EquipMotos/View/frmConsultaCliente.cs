@@ -12,7 +12,7 @@ using Message = System.Windows.Forms.Message;
 
 namespace EquipMotos.Codigo.View
 {
-    public partial class frmConsultaCliente : Form
+    public partial class frmConsultaCliente : MaterialSkin.Controls.MaterialForm
     {
         Clientes cliente;
         private readonly string usuario;
@@ -122,9 +122,16 @@ namespace EquipMotos.Codigo.View
         private void BtnBuscarCliente_Click(object sender, EventArgs e)
         {
             string cli = txtPesquisar.Text;
-            gvClientes.DataSource = CtrlCliente.Pesquisar(cli);
+            DataGridView dtView = new DataGridView();
+            dtView.DataSource = CtrlCliente.Pesquisar(cli);
+            if (dtView.DataSource == null)
+            {
+                MessageBox.Show("Não encotrado");
+            }
+            else
+            {
+                gvClientes.DataSource = dtView.DataSource;
+            }
         }
-
-       
     }
 }

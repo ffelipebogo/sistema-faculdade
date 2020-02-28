@@ -13,7 +13,7 @@ using System.Windows.Forms;
 
 namespace EquipMotos.View
 {
-    public partial class frmConsultaFormaPagamento : Form
+    public partial class frmConsultaFormaPagamento : MaterialSkin.Controls.MaterialForm
     {
         CtrlFormaPagamentos CtrlFormaPagamento = new CtrlFormaPagamentos();
         FormaPagamentos formaPag;
@@ -106,7 +106,17 @@ namespace EquipMotos.View
         private void BtnBuscarFormaPag_Click(object sender, EventArgs e)
         {
             string form = txtPesquisar.Text;
-            gvFormaPag.DataSource = CtrlFormaPagamento.Pesquisar(form);
+            
+            DataGridView dtView = new DataGridView();
+            dtView.DataSource = CtrlFormaPagamento.Pesquisar(form);
+            if (dtView.DataSource == null)
+            {
+                MessageBox.Show("Não encotrado");
+            }
+            else
+            {
+                gvFormaPag.DataSource = dtView.DataSource;
+            }
         }
 
         private void FrmConsultaFormaPagamento_Load(object sender, EventArgs e)

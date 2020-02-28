@@ -13,7 +13,7 @@ using System.Windows.Forms;
 
 namespace EquipMotos.View
 {
-    public partial class frmCadastroMarca : Form
+    public partial class frmCadastroMarca : MaterialSkin.Controls.MaterialForm
     {
         Marcas mar = new Marcas();
         CtrlMarcas CtrlMarca = new CtrlMarcas();

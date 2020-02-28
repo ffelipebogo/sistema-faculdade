@@ -13,7 +13,7 @@ using System.Windows.Forms;
 
 namespace EquipMotos.View
 {
-    public partial class frmCadastroCategoria : frmCadastro
+    public partial class frmCadastroCategoria : MaterialSkin.Controls.MaterialForm
     {
         CtrlCategorias CtrlCategoria = new CtrlCategorias();
         Categorias categoria = new Categorias();
@@ -104,5 +104,9 @@ namespace EquipMotos.View
 
         }
 
+        private void frmCadastroCategoria_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -362,8 +362,8 @@ namespace EquipMotos.DAO
 
                 DataTable dtCliente = new DataTable();
                 da.Fill(dtCliente);
-                
-                foreach( DataRow row in dtCliente.Rows)
+                cliente = null;
+                foreach ( DataRow row in dtCliente.Rows)
                 {
                     Clientes cli = new Clientes();
                     
@@ -373,7 +373,7 @@ namespace EquipMotos.DAO
                     cli.dtNascimento = Convert.ToDateTime(row["dtNascimento"]);
                     cli.sexo = Convert.ToChar(row["sexo"]);
                     cli.endereco = Convert.ToString(row["endereco"]);
-                    cli.numero = Convert.ToString("0" + row["numero"]);
+                    cli.numero = Convert.ToString(row["numero"]);
                     cli.complemento = Convert.ToString(row["complemento"]);
                     cli.bairro = Convert.ToString(row["bairro"]);
                     cli.cep = Convert.ToString(row["cep"]);

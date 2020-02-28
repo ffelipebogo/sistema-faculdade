@@ -342,6 +342,7 @@ namespace EquipMotos.DAO
                 da = new SqlDataAdapter(comando);
                 DataTable dtProdutoServico = new DataTable();
                 da.Fill(dtProdutoServico);
+                produtoServico = null;
                 foreach (DataRow row in dtProdutoServico.Rows)
                 {
                     ProdutosServicos proServ = new ProdutosServicos();

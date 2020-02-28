@@ -8,10 +8,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Material = MaterialSkin.Controls;
 
 namespace EquipMotos.View
 {
-    public partial class frmConsultaVenda : Form
+    public partial class frmConsultaVenda : Material.MaterialForm
     {
         CtrlVendas CtrlVenda =  new CtrlVendas();
         public frmConsultaVenda()
@@ -57,19 +58,7 @@ namespace EquipMotos.View
 
         private void BtnExcluir_Click(object sender, EventArgs e)
         {
-            //try
-            //{
-            //    var venRow = gvVendas.CurrentRow.DataBoundItem as DataRowView;
-            //    var id = venRow["codigo"];
-            //    CtrlVenda.Marca(id);
-            //    MessageBox.Show("Condição de Pagamento foi excluida!");
-
-            //    gvVendas.DataSource = CtrlVenda.ListarTodasVendas();
-            //}
-            //catch (Exception)
-            //{
-            //    MessageBox.Show("Não foi possivel excluir a Condição de Pagamento!");
-            //}
+            
         }
 
         private void BtnVoltar_Click(object sender, EventArgs e)
@@ -86,7 +75,17 @@ namespace EquipMotos.View
         private void btnBuscarVenda_Click(object sender, EventArgs e)
         {
             string venda = txtPesquisar.Text;
-            gvVendas.DataSource = CtrlVenda.Pesquisar(venda);
+            
+            DataGridView dtView = new DataGridView();
+            dtView.DataSource = CtrlVenda.Pesquisar(venda);
+            if (dtView.DataSource == null)
+            {
+                MessageBox.Show("Não encotrado");
+            }
+            else
+            {
+                gvVendas.DataSource = dtView.DataSource;
+            }
         }
     }
 }

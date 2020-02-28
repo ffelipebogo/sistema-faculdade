@@ -13,7 +13,7 @@ using System.Windows.Forms;
 
 namespace EquipMotos.View
 {
-    public partial class frmConsultaModelo : Form
+    public partial class frmConsultaModelo : MaterialSkin.Controls.MaterialForm
     {
         Modelos modelo;
         CtrlModelos CtrlModelo = new CtrlModelos(); 
@@ -119,7 +119,17 @@ namespace EquipMotos.View
         private void btnBuscar_Click(object sender, EventArgs e)
         {
             string modelo = txtPesquisar.Text;
-            gvModelo.DataSource = CtrlModelo.Pesquisar(modelo);
+            
+            DataGridView dtView = new DataGridView();
+            dtView.DataSource = CtrlModelo.Pesquisar(modelo);
+            if (dtView.DataSource == null)
+            {
+                MessageBox.Show("Não encotrado");
+            }
+            else
+            {
+                gvModelo.DataSource = dtView.DataSource;
+            }
         }
     }
 }

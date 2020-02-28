@@ -55,7 +55,7 @@
             this.txtCodModelo.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtCodModelo.Enabled = false;
             this.txtCodModelo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCodModelo.Location = new System.Drawing.Point(17, 33);
+            this.txtCodModelo.Location = new System.Drawing.Point(13, 92);
             this.txtCodModelo.Margin = new System.Windows.Forms.Padding(4);
             this.txtCodModelo.Name = "txtCodModelo";
             this.txtCodModelo.Size = new System.Drawing.Size(64, 26);
@@ -67,7 +67,7 @@
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(13, 9);
+            this.label1.Location = new System.Drawing.Point(9, 68);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(61, 20);
@@ -79,7 +79,7 @@
             this.label2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(87, 9);
+            this.label2.Location = new System.Drawing.Point(83, 68);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(63, 20);
@@ -91,7 +91,7 @@
             this.txtModelo.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtModelo.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtModelo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtModelo.Location = new System.Drawing.Point(91, 33);
+            this.txtModelo.Location = new System.Drawing.Point(87, 92);
             this.txtModelo.Margin = new System.Windows.Forms.Padding(4);
             this.txtModelo.Name = "txtModelo";
             this.txtModelo.Size = new System.Drawing.Size(304, 26);
@@ -102,7 +102,7 @@
             this.label3.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(13, 70);
+            this.label3.Location = new System.Drawing.Point(9, 129);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(61, 20);
@@ -114,7 +114,7 @@
             this.txtCodMarca.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtCodMarca.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtCodMarca.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCodMarca.Location = new System.Drawing.Point(17, 95);
+            this.txtCodMarca.Location = new System.Drawing.Point(13, 154);
             this.txtCodMarca.Margin = new System.Windows.Forms.Padding(4);
             this.txtCodMarca.Name = "txtCodMarca";
             this.txtCodMarca.Size = new System.Drawing.Size(64, 26);
@@ -127,7 +127,7 @@
             this.label4.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(87, 70);
+            this.label4.Location = new System.Drawing.Point(83, 129);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(56, 20);
@@ -139,7 +139,7 @@
             this.txtMarca.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtMarca.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtMarca.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtMarca.Location = new System.Drawing.Point(91, 95);
+            this.txtMarca.Location = new System.Drawing.Point(87, 154);
             this.txtMarca.Margin = new System.Windows.Forms.Padding(4);
             this.txtMarca.Name = "txtMarca";
             this.txtMarca.Size = new System.Drawing.Size(241, 26);
@@ -148,7 +148,7 @@
             // btnVoltar
             // 
             this.btnVoltar.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnVoltar.Location = new System.Drawing.Point(299, 201);
+            this.btnVoltar.Location = new System.Drawing.Point(662, 246);
             this.btnVoltar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnVoltar.Name = "btnVoltar";
             this.btnVoltar.Size = new System.Drawing.Size(100, 31);
@@ -160,7 +160,7 @@
             // btnLimpar
             // 
             this.btnLimpar.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnLimpar.Location = new System.Drawing.Point(129, 201);
+            this.btnLimpar.Location = new System.Drawing.Point(492, 246);
             this.btnLimpar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnLimpar.Name = "btnLimpar";
             this.btnLimpar.Size = new System.Drawing.Size(100, 31);
@@ -172,7 +172,7 @@
             // btnSalvar
             // 
             this.btnSalvar.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnSalvar.Location = new System.Drawing.Point(14, 201);
+            this.btnSalvar.Location = new System.Drawing.Point(377, 246);
             this.btnSalvar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnSalvar.Name = "btnSalvar";
             this.btnSalvar.Size = new System.Drawing.Size(100, 31);
@@ -188,7 +188,7 @@
             this.btnBuscarMarca.ErrorImage = global::EquipMotos.Properties.Resources._1398754683_xmag;
             this.btnBuscarMarca.Image = global::EquipMotos.Properties.Resources._1398754683_xmag;
             this.btnBuscarMarca.InitialImage = global::EquipMotos.Properties.Resources._1398754683_xmag;
-            this.btnBuscarMarca.Location = new System.Drawing.Point(340, 83);
+            this.btnBuscarMarca.Location = new System.Drawing.Point(336, 142);
             this.btnBuscarMarca.Margin = new System.Windows.Forms.Padding(4);
             this.btnBuscarMarca.Name = "btnBuscarMarca";
             this.btnBuscarMarca.Size = new System.Drawing.Size(68, 47);
@@ -202,7 +202,7 @@
             this.txtDtAlteracao.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtDtAlteracao.Enabled = false;
             this.txtDtAlteracao.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDtAlteracao.Location = new System.Drawing.Point(112, 162);
+            this.txtDtAlteracao.Location = new System.Drawing.Point(108, 253);
             this.txtDtAlteracao.Margin = new System.Windows.Forms.Padding(5);
             this.txtDtAlteracao.Mask = "00/00/0000";
             this.txtDtAlteracao.Name = "txtDtAlteracao";
@@ -216,7 +216,7 @@
             this.txtDtCadastro.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtDtCadastro.Enabled = false;
             this.txtDtCadastro.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDtCadastro.Location = new System.Drawing.Point(18, 162);
+            this.txtDtCadastro.Location = new System.Drawing.Point(14, 253);
             this.txtDtCadastro.Margin = new System.Windows.Forms.Padding(5);
             this.txtDtCadastro.Mask = "00/00/0000";
             this.txtDtCadastro.Name = "txtDtCadastro";
@@ -231,7 +231,7 @@
             this.txtUsuario.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtUsuario.Enabled = false;
             this.txtUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtUsuario.Location = new System.Drawing.Point(205, 162);
+            this.txtUsuario.Location = new System.Drawing.Point(201, 253);
             this.txtUsuario.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.txtUsuario.Name = "txtUsuario";
             this.txtUsuario.Size = new System.Drawing.Size(152, 21);
@@ -243,7 +243,7 @@
             this.lblUsuario.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblUsuario.AutoSize = true;
             this.lblUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUsuario.Location = new System.Drawing.Point(201, 142);
+            this.lblUsuario.Location = new System.Drawing.Point(197, 233);
             this.lblUsuario.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblUsuario.Name = "lblUsuario";
             this.lblUsuario.Size = new System.Drawing.Size(125, 15);
@@ -256,7 +256,7 @@
             this.lblDtAlteracao.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblDtAlteracao.AutoSize = true;
             this.lblDtAlteracao.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDtAlteracao.Location = new System.Drawing.Point(108, 142);
+            this.lblDtAlteracao.Location = new System.Drawing.Point(104, 233);
             this.lblDtAlteracao.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblDtAlteracao.Name = "lblDtAlteracao";
             this.lblDtAlteracao.Size = new System.Drawing.Size(87, 15);
@@ -269,7 +269,7 @@
             this.lblDtCadastro.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblDtCadastro.AutoSize = true;
             this.lblDtCadastro.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDtCadastro.Location = new System.Drawing.Point(14, 142);
+            this.lblDtCadastro.Location = new System.Drawing.Point(10, 233);
             this.lblDtCadastro.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblDtCadastro.Name = "lblDtCadastro";
             this.lblDtCadastro.Size = new System.Drawing.Size(85, 15);
@@ -281,7 +281,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(438, 249);
+            this.ClientSize = new System.Drawing.Size(774, 288);
             this.ControlBox = false;
             this.Controls.Add(this.txtDtAlteracao);
             this.Controls.Add(this.txtDtCadastro);
@@ -305,6 +305,7 @@
             this.Name = "frmCadastroModelo";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Cadastro de Modelo";
+            this.Load += new System.EventHandler(this.frmCadastroModelo_Load);
             ((System.ComponentModel.ISupportInitialize)(this.btnBuscarMarca)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

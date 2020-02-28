@@ -59,6 +59,7 @@ namespace EquipMotos.DAO
             }
 
         }
+
         public override DataTable ListarTodos()
         {
             using (SqlConnection conexao = Conecta.CreateConnection())
@@ -102,7 +103,7 @@ namespace EquipMotos.DAO
 
                 DataTable dtCompra = new DataTable();
                 da.Fill(dtCompra);
-
+                conta = null;
                 foreach (DataRow row in dtCompra.Rows)
                 {
                     ContasPagar contas = new ContasPagar();

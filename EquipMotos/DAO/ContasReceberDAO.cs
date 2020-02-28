@@ -110,7 +110,7 @@ namespace EquipMotos.DAO
 
                 DataTable dtCompra = new DataTable();
                 da.Fill(dtCompra);
-
+                conta = null;
                 foreach (DataRow row in dtCompra.Rows)
                 {
                     ContasReceber contaReceber = new ContasReceber();

@@ -318,7 +318,7 @@ namespace EquipMotos.DAO
             using (SqlConnection conexao = Conecta.CreateConnection())
             {
                 SqlDataAdapter da;
-                string sql = @"SELECT * FROM vendas WHERE ";
+                string sql = @"SELECT * FROM vendas";
 
                 SqlCommand comando = new SqlCommand(sql, conexao);
                 conexao.Open();
@@ -348,7 +348,7 @@ namespace EquipMotos.DAO
 
                 DataTable dtCompra = new DataTable();
                 da.Fill(dtCompra);
-
+                Venda = null;
                 foreach (DataRow row in dtCompra.Rows)
                 {
                     Vendas venda = new Vendas();

@@ -13,7 +13,7 @@ using System.Windows.Forms;
 
 namespace EquipMotos.View
 {
-    public partial class frmConsultaEstado : Form
+    public partial class frmConsultaEstado : MaterialSkin.Controls.MaterialForm
     {
         Estados estado;
         CtrlEstados CtrlEstado = new CtrlEstados();
@@ -104,7 +104,17 @@ namespace EquipMotos.View
         private void BtnBuscarEstado_Click(object sender, EventArgs e)
         {
             string est = txtPesquisar.Text;
-            gvEstado.DataSource = CtrlEstado.Pesquisar(est);
+            
+            DataGridView dtView = new DataGridView();
+            dtView.DataSource = CtrlEstado.Pesquisar(est);
+            if (dtView.DataSource == null)
+            {
+                MessageBox.Show("Não encotrado");
+            }
+            else
+            {
+                gvEstado.DataSource = dtView.DataSource;
+            }
         }
     }
 }

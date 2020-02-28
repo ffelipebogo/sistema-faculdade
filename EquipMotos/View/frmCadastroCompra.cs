@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace EquipMotos.View
 {
-    public partial class frmCadastroCompra : Form
+    public partial class frmCadastroCompra : MaterialSkin.Controls.MaterialForm
     {
         //private string pusuario;
         public static object fornecedor;
@@ -20,6 +20,8 @@ namespace EquipMotos.View
         Compras compra;
         //ComprasDAO dao;
         CtrlProdutosServicos CtrlProduto = new CtrlProdutosServicos();
+        CtrlFornecedores CtrlFornecedor = new CtrlFornecedores();
+        CtrlCondicaoPagamento CtrlCondPagamento = new CtrlCondicaoPagamento();
         List<ContasPagar> listContaPagar;
         List<ItensCompra> listItemCompra;
         CondicaoPagamentos condPag = new CondicaoPagamentos();
@@ -476,7 +478,7 @@ namespace EquipMotos.View
             }
 
 
-            if (txtSerie.Text == String.Empty)
+            if (String.IsNullOrEmpty(txtSerie.Text))
             {
                 MessageBox.Show("Faltou informar Serie", "Informe a Serie!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txtSerie.Focus();
@@ -484,7 +486,7 @@ namespace EquipMotos.View
             }
 
 
-            if (txtCodFornecedor.Text == String.Empty || (txtFornecedor.Text == String.Empty))
+            if (String.IsNullOrEmpty(txtCodFornecedor.Text) || String.IsNullOrEmpty(txtFornecedor.Text))
             {
                 MessageBox.Show("Faltou informar o Fornecedor", "Informe o Fornecedor!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txtCodFornecedor.Focus();
@@ -630,7 +632,6 @@ namespace EquipMotos.View
                             txtValorTotal.Text = Double.Parse(lvItem.Items[i].SubItems[5].Text, NumberStyles.Any).ToString("C", CultureInfo.CurrentCulture);
                         }
                         var vlTotalGrid = Double.Parse(txtValorTotal.Text, NumberStyles.Any);
-
                         txtValorTotal.Text = vlTotalGrid.ToString("C", CultureInfo.CurrentCulture);
                     }
                 }
@@ -724,7 +725,28 @@ namespace EquipMotos.View
 
         private void TxtCodFornecedor_TextChanged(object sender, EventArgs e)
         {
+            if (string.IsNullOrEmpty(txtCodFornecedor.Text))
+                return;
+            if (Convert.ToInt32("0" + txtCodFornecedor.Text) < 1)
+                return;
+            Fornecedores forn = CtrlFornecedor.BuscarPorID(Convert.ToInt32(txtCodFornecedor.Text)) as Fornecedores;
+            if (forn == null)
+            {
+                MessageBox.Show("Nenhum resultado");
+                txtFornecedor.Text = "";
+                txtCodFornecedor.Text = "";
 
+                txtCodFornecedor.Enabled = true;
+                txtFornecedor.Enabled = true;
+            }
+            else
+            {
+                txtFornecedor.Text = forn.fornecedor;
+
+                txtCodFornecedor.Enabled = false;
+                txtFornecedor.Enabled = false;
+                Enable();
+            }
         }
 
         private void ChkSituacao_CheckedChanged(object sender, EventArgs e)
@@ -734,33 +756,102 @@ namespace EquipMotos.View
 
         private void txtCodFornecedor_KeyPress(object sender, KeyPressEventArgs e)
         {
-            MaskForm.TxtMask_Valida_KeyPress(sender, e);
+            MaskForm.TxtMask_Numero_KeyPress(sender, e);
         }
 
         private void txtQtd_KeyPress(object sender, KeyPressEventArgs e)
         {
-            MaskForm.TxtMask_Valida_KeyPress(sender, e);
+            MaskForm.TxtMask_Numero_KeyPress(sender, e);
 
         }
 
         private void txtCodCondPagamento_KeyPress(object sender, KeyPressEventArgs e)
         {
-            MaskForm.TxtMask_Valida_KeyPress(sender, e);
+            MaskForm.TxtMask_Numero_KeyPress(sender, e);
         }
 
         private void txtModelo_KeyPress(object sender, KeyPressEventArgs e)
         {
-            MaskForm.TxtMask_Valida_KeyPress(sender, e);
+            MaskForm.TxtMask_ValidaNumeroLetras_KeyPress(sender, e);
         }
 
         private void txtSerie_KeyPress(object sender, KeyPressEventArgs e)
         {
-            MaskForm.TxtMask_Valida_KeyPress(sender, e);
+            MaskForm.TxtMask_Numero_KeyPress(sender, e);
         }
 
         private void txtNrNota_KeyPress(object sender, KeyPressEventArgs e)
         {
-            MaskForm.TxtMask_Valida_KeyPress(sender, e);
+            MaskForm.TxtMask_Numero_KeyPress(sender, e);
+        }
+
+        private void txtCodProduto_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            MaskForm.TxtMask_Numero_KeyPress(sender, e);
+        }
+
+        private void txtUnidade_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            MaskForm.TxtMask_ValidaNumeroLetras_KeyPress(sender, e);
+        }
+
+        private void txtCodCondPagamento_TextChanged(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtCodCondPagamento.Text))
+                return;
+            if (Convert.ToInt32("0" + txtCodCondPagamento.Text) < 1)
+                return;
+            CondicaoPagamentos cond = CtrlCondPagamento.BuscarPorID(Convert.ToInt32(txtCodCondPagamento.Text)) as CondicaoPagamentos;
+            if (cond == null)
+            {
+                MessageBox.Show("Nenhum resultado");
+                txtCondPagamento.Text = "";
+                txtCodCondPagamento.Text = "";
+
+                txtCodCondPagamento.Enabled = true;
+                txtCondPagamento.Enabled = true;
+            }
+            else
+            {
+                txtCondPagamento.Text = cond.condicao;
+
+                txtCodCondPagamento.Enabled = false;
+                txtCondPagamento.Enabled = false;
+            }
+        }
+
+        private void txtCodProduto_TextChanged(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtCodProduto.Text))
+                return;
+            if (Convert.ToInt32("0" + txtCodProduto.Text) < 1)
+                return;
+            ProdutosServicos cond = CtrlProduto.BuscarPorID(Convert.ToInt32(txtCodProduto.Text)) as ProdutosServicos;
+            if (cond == null)
+            {
+                MessageBox.Show("Nenhum resultado");
+                txtProduto.Text = "";
+                txtCodProduto.Text = "";
+                txtCodProduto.Enabled = true;
+                txtProduto.Enabled = true;
+            }
+            else
+            {
+                txtProduto.Text = cond.produto;
+
+                txtCodProduto.Enabled = false;
+                txtProduto.Enabled = false;
+            }
+        }
+
+        private void txtDataEmissao_Leave(object sender, EventArgs e)
+        {
+
+        }
+
+        private void frmCadastroCompra_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

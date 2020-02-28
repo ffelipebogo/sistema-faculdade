@@ -224,6 +224,7 @@ namespace EquipMotos.DAO
 
                 DataTable dtCondicao = new DataTable();
                 da.Fill(dtCondicao);
+                condicaoPagamento = null;
                 foreach (DataRow row in dtCondicao.Rows)
                 {
                     CondicaoPagamentos condPagamento = new CondicaoPagamentos();

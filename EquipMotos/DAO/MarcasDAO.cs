@@ -83,7 +83,7 @@ namespace EquipMotos.DAO
 
                 DataTable dtPais = new DataTable();
                 da.Fill(dtPais);
-
+                marcas = null;
                 foreach (DataRow row in dtPais.Rows)
                 {
                     Marcas marca = new Marcas();

@@ -14,7 +14,7 @@ using System.Windows.Forms;
 
 namespace EquipMotos.View
 {
-    public partial class frmCadastroPais : Form
+    public partial class frmCadastroPais : MaterialSkin.Controls.MaterialForm
     {
         Paises Pais = new Paises();
         CtrlPaises CtrlPais = new CtrlPaises();
@@ -109,5 +109,9 @@ namespace EquipMotos.View
             return true;
         }
 
+        private void frmCadastroPais_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

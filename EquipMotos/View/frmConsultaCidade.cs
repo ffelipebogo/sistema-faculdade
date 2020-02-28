@@ -14,7 +14,7 @@ using System.Windows.Forms;
 
 namespace EquipMotos.View
 {
-    public partial class frmConsultaCidade : Form
+    public partial class frmConsultaCidade : MaterialSkin.Controls.MaterialForm
     {
         Cidades cidade;
         
@@ -124,7 +124,17 @@ namespace EquipMotos.View
         private void BtnBuscarCidade_Click(object sender, EventArgs e)
         {
             string cid = txtPesquisar.Text;
-            gvCidade.DataSource = CtrlCidade.Pesquisar(cid);
+            DataGridView dtView = new DataGridView();
+            dtView.DataSource = CtrlCidade.Pesquisar(cid);
+            if (dtView.DataSource == null)
+            {
+                MessageBox.Show("Não encotrado");
+            }
+            else
+            {
+                gvCidade.DataSource = dtView.DataSource;
+            }
+         
         }
     }
 }

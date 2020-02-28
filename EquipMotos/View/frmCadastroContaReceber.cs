@@ -13,7 +13,7 @@ using System.Windows.Forms;
 
 namespace EquipMotos.View
 {
-    public partial class frmCadastroContaReceber : Form
+    public partial class frmCadastroContaReceber : MaterialSkin.Controls.MaterialForm
     {
         CtrlFormaPagamentos ctrlFormaPagamento = new CtrlFormaPagamentos();
         ContasReceber ContaReceber = new ContasReceber();
@@ -58,8 +58,8 @@ namespace EquipMotos.View
             txtNrNota.Text = ContaReceber.nrNota;
             txtNrParcela.Text = Convert.ToString(ContaReceber.nrParcela);
             txtValor.Text = ContaReceber.vlrParcela.ToString("C", CultureInfo.CurrentCulture);
-            txtFornecedor.Text = Convert.ToString(ContaReceber.cliente.codigo);
-            txtCodFornecedor.Text = ContaReceber.cliente.cliente;
+            txtFornecedor.Text =  ContaReceber.cliente.cliente;
+            txtCodFornecedor.Text = Convert.ToString(ContaReceber.cliente.codigo);
             txtDtEmissao.Text = Convert.ToString(ContaReceber.dtEmissao);
             txtDtVencimento.Text = Convert.ToString(ContaReceber.dtVencimento);
             txtCodFormaPagamento.Text = Convert.ToString(ContaReceber.formaPagamento.codigo);
@@ -92,6 +92,11 @@ namespace EquipMotos.View
             txtDtAlteracao.Enabled = false;
             txtUsuario.Enabled = false;
             chkPaga.Enabled = false;
+        }
+
+        private void frmCadastroContaReceber_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

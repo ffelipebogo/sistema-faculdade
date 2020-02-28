@@ -13,7 +13,7 @@ using System.Windows.Forms;
 
 namespace EquipMotos.View
 {
-    public partial class frmConsultaCategoria : Form
+    public partial class frmConsultaCategoria : MaterialSkin.Controls.MaterialForm
     {
         CtrlCategorias CtrlCategoria = new CtrlCategorias();
         Categorias categoria;
@@ -110,12 +110,23 @@ namespace EquipMotos.View
         {
             // TODO: esta linha de código carrega dados na tabela 'sistemaMoto2DataSetCategoria.categorias'. Você pode movê-la ou removê-la conforme necessário.
             this.categoriasTableAdapter.Fill(this.sistemaMoto2DataSetCategoria.categorias);
+
         }
 
         private void BtnBuscarCategoria_Click(object sender, EventArgs e)
         {
             string cat = txtPesquisar.Text;
-            gvCategoria.DataSource = CtrlCategoria.Pesquisar(cat);
+            DataGridView dtView = new DataGridView();
+            dtView.DataSource = CtrlCategoria.Pesquisar(cat);
+            if (dtView.DataSource == null)
+            {
+                MessageBox.Show("Não encotrado");
+            }
+            else
+            {
+                gvCategoria.DataSource = dtView.DataSource;
+            }
+            
         }
     }
 }

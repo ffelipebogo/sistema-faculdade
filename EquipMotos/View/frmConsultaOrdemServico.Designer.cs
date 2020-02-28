@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnBuscarOS = new System.Windows.Forms.PictureBox();
             this.gvOS = new System.Windows.Forms.DataGridView();
             this.nrNotaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -73,7 +73,7 @@
             this.btnBuscarOS.ErrorImage = global::EquipMotos.Properties.Resources._1398754683_xmag;
             this.btnBuscarOS.Image = global::EquipMotos.Properties.Resources._1398754683_xmag;
             this.btnBuscarOS.InitialImage = global::EquipMotos.Properties.Resources._1398754683_xmag;
-            this.btnBuscarOS.Location = new System.Drawing.Point(516, 11);
+            this.btnBuscarOS.Location = new System.Drawing.Point(517, 72);
             this.btnBuscarOS.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnBuscarOS.Name = "btnBuscarOS";
             this.btnBuscarOS.Size = new System.Drawing.Size(75, 62);
@@ -92,14 +92,14 @@
             this.gvOS.BackgroundColor = System.Drawing.SystemColors.Control;
             this.gvOS.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.gvOS.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.ControlDark;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.gvOS.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.ControlDark;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.gvOS.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.gvOS.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gvOS.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.nrNotaDataGridViewTextBoxColumn,
@@ -123,12 +123,12 @@
             this.usuarioDataGridViewTextBoxColumn});
             this.gvOS.DataSource = this.ordemServicosBindingSource;
             this.gvOS.EnableHeadersVisualStyles = false;
-            this.gvOS.Location = new System.Drawing.Point(16, 91);
+            this.gvOS.Location = new System.Drawing.Point(17, 152);
             this.gvOS.Margin = new System.Windows.Forms.Padding(4);
             this.gvOS.Name = "gvOS";
             this.gvOS.ReadOnly = true;
             this.gvOS.RowHeadersWidth = 51;
-            this.gvOS.Size = new System.Drawing.Size(968, 497);
+            this.gvOS.Size = new System.Drawing.Size(968, 468);
             this.gvOS.TabIndex = 272;
             // 
             // nrNotaDataGridViewTextBoxColumn
@@ -317,7 +317,7 @@
             this.btnExcluir.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnExcluir.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnExcluir.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnExcluir.Location = new System.Drawing.Point(591, 622);
+            this.btnExcluir.Location = new System.Drawing.Point(647, 647);
             this.btnExcluir.Margin = new System.Windows.Forms.Padding(4);
             this.btnExcluir.Name = "btnExcluir";
             this.btnExcluir.Size = new System.Drawing.Size(127, 42);
@@ -331,7 +331,7 @@
             // 
             this.btnVoltar.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnVoltar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnVoltar.Location = new System.Drawing.Point(789, 622);
+            this.btnVoltar.Location = new System.Drawing.Point(832, 647);
             this.btnVoltar.Margin = new System.Windows.Forms.Padding(4);
             this.btnVoltar.Name = "btnVoltar";
             this.btnVoltar.Size = new System.Drawing.Size(153, 42);
@@ -346,7 +346,7 @@
             this.btnAlterar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAlterar.Image = global::EquipMotos.Properties.Resources._1398756462_Modify;
             this.btnAlterar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAlterar.Location = new System.Drawing.Point(435, 622);
+            this.btnAlterar.Location = new System.Drawing.Point(491, 647);
             this.btnAlterar.Margin = new System.Windows.Forms.Padding(4);
             this.btnAlterar.Name = "btnAlterar";
             this.btnAlterar.Size = new System.Drawing.Size(139, 42);
@@ -362,7 +362,7 @@
             this.btnNovo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnNovo.Image = global::EquipMotos.Properties.Resources._1398756346_1;
             this.btnNovo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnNovo.Location = new System.Drawing.Point(295, 622);
+            this.btnNovo.Location = new System.Drawing.Point(351, 647);
             this.btnNovo.Margin = new System.Windows.Forms.Padding(4);
             this.btnNovo.Name = "btnNovo";
             this.btnNovo.Size = new System.Drawing.Size(123, 42);
@@ -376,7 +376,7 @@
             // 
             this.txtPesquisar.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtPesquisar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPesquisar.Location = new System.Drawing.Point(15, 38);
+            this.txtPesquisar.Location = new System.Drawing.Point(16, 99);
             this.txtPesquisar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtPesquisar.Name = "txtPesquisar";
             this.txtPesquisar.Size = new System.Drawing.Size(495, 26);
@@ -387,7 +387,7 @@
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(11, 10);
+            this.label1.Location = new System.Drawing.Point(12, 71);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(262, 25);
             this.label1.TabIndex = 266;
@@ -401,7 +401,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1003, 677);
+            this.ClientSize = new System.Drawing.Size(1003, 700);
             this.Controls.Add(this.btnBuscarOS);
             this.Controls.Add(this.gvOS);
             this.Controls.Add(this.btnExcluir);

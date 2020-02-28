@@ -294,7 +294,7 @@ namespace EquipMotos.DAO
 
                 DataTable dtFuncionario = new DataTable();
                 da.Fill(dtFuncionario);
-
+                funcionario = null;
                 foreach (DataRow row in dtFuncionario.Rows)
                 {
                     Funcionarios fun = new Funcionarios();

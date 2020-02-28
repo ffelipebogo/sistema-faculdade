@@ -12,7 +12,7 @@ using System.Windows.Forms;
 
 namespace EquipMotos.View
 {
-    public partial class frmConsultaOrdemServico : Form
+    public partial class frmConsultaOrdemServico : MaterialSkin.Controls.MaterialForm
     {
         
         CtrlOrdemServicos CtrlOrdemServico = new CtrlOrdemServicos();
@@ -24,7 +24,17 @@ namespace EquipMotos.View
         private void btnBuscarOS_Click(object sender, EventArgs e)
         {
             string os = txtPesquisar.Text;
-            gvOS.DataSource = CtrlOrdemServico.Pesquisar(os);
+
+            DataGridView dtView = new DataGridView();
+            dtView.DataSource = CtrlOrdemServico.Pesquisar(os);
+            if (dtView.DataSource == null)
+            {
+                MessageBox.Show("Não encotrado");
+            }
+            else
+            {
+                gvOS.DataSource = dtView.DataSource;
+            }
         }
 
         private void btnNovo_Click(object sender, EventArgs e)

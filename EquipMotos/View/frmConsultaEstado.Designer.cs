@@ -30,7 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.label2 = new System.Windows.Forms.Label();
             this.btnVoltar = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.txtPesquisar = new System.Windows.Forms.TextBox();
@@ -39,10 +38,6 @@
             this.btnNovo = new System.Windows.Forms.Button();
             this.btnBuscarEstado = new System.Windows.Forms.PictureBox();
             this.gvEstado = new System.Windows.Forms.DataGridView();
-            this.estadosBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.sistemaMoto2DataSetEstado = new EquipMotos.SistemaMoto2DataSetEstado();
-            this.sistemaMoto2DataSetCategoria = new EquipMotos.SistemaMoto2DataSetCategoria();
-            this.estadosTableAdapter = new EquipMotos.SistemaMoto2DataSetEstadoTableAdapters.estadosTableAdapter();
             this.codigoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -50,6 +45,10 @@
             this.dtAlteracaoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dtCadastroDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.usuarioDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.estadosBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.sistemaMoto2DataSetEstado = new EquipMotos.SistemaMoto2DataSetEstado();
+            this.sistemaMoto2DataSetCategoria = new EquipMotos.SistemaMoto2DataSetCategoria();
+            this.estadosTableAdapter = new EquipMotos.SistemaMoto2DataSetEstadoTableAdapters.estadosTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.btnBuscarEstado)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvEstado)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.estadosBindingSource)).BeginInit();
@@ -57,21 +56,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.sistemaMoto2DataSetCategoria)).BeginInit();
             this.SuspendLayout();
             // 
-            // label2
-            // 
-            this.label2.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(10, 81);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(113, 17);
-            this.label2.TabIndex = 274;
-            this.label2.Text = "Lista de Estados";
-            // 
             // btnVoltar
             // 
             this.btnVoltar.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnVoltar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnVoltar.Location = new System.Drawing.Point(439, 439);
+            this.btnVoltar.Location = new System.Drawing.Point(508, 512);
             this.btnVoltar.Margin = new System.Windows.Forms.Padding(4);
             this.btnVoltar.Name = "btnVoltar";
             this.btnVoltar.Size = new System.Drawing.Size(162, 42);
@@ -85,7 +74,7 @@
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(10, 8);
+            this.label1.Location = new System.Drawing.Point(10, 74);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(141, 20);
@@ -96,7 +85,7 @@
             // 
             this.txtPesquisar.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtPesquisar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPesquisar.Location = new System.Drawing.Point(13, 33);
+            this.txtPesquisar.Location = new System.Drawing.Point(13, 99);
             this.txtPesquisar.Margin = new System.Windows.Forms.Padding(4);
             this.txtPesquisar.Name = "txtPesquisar";
             this.txtPesquisar.Size = new System.Drawing.Size(431, 26);
@@ -108,7 +97,7 @@
             this.btnExcluir.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnExcluir.Image = global::EquipMotos.Properties.Resources._1398756469_Erase;
             this.btnExcluir.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnExcluir.Location = new System.Drawing.Point(279, 439);
+            this.btnExcluir.Location = new System.Drawing.Point(348, 512);
             this.btnExcluir.Margin = new System.Windows.Forms.Padding(4);
             this.btnExcluir.Name = "btnExcluir";
             this.btnExcluir.Size = new System.Drawing.Size(123, 42);
@@ -124,7 +113,7 @@
             this.btnAlterar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAlterar.Image = global::EquipMotos.Properties.Resources._1398756462_Modify;
             this.btnAlterar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAlterar.Location = new System.Drawing.Point(137, 439);
+            this.btnAlterar.Location = new System.Drawing.Point(206, 512);
             this.btnAlterar.Margin = new System.Windows.Forms.Padding(4);
             this.btnAlterar.Name = "btnAlterar";
             this.btnAlterar.Size = new System.Drawing.Size(134, 42);
@@ -140,7 +129,7 @@
             this.btnNovo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnNovo.Image = global::EquipMotos.Properties.Resources._1398756346_1;
             this.btnNovo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnNovo.Location = new System.Drawing.Point(18, 439);
+            this.btnNovo.Location = new System.Drawing.Point(87, 512);
             this.btnNovo.Margin = new System.Windows.Forms.Padding(4);
             this.btnNovo.Name = "btnNovo";
             this.btnNovo.Size = new System.Drawing.Size(111, 42);
@@ -157,7 +146,7 @@
             this.btnBuscarEstado.ErrorImage = global::EquipMotos.Properties.Resources._1398754683_xmag;
             this.btnBuscarEstado.Image = global::EquipMotos.Properties.Resources._1398754683_xmag;
             this.btnBuscarEstado.InitialImage = global::EquipMotos.Properties.Resources._1398754683_xmag;
-            this.btnBuscarEstado.Location = new System.Drawing.Point(452, 8);
+            this.btnBuscarEstado.Location = new System.Drawing.Point(452, 74);
             this.btnBuscarEstado.Margin = new System.Windows.Forms.Padding(4);
             this.btnBuscarEstado.Name = "btnBuscarEstado";
             this.btnBuscarEstado.Size = new System.Drawing.Size(92, 76);
@@ -195,32 +184,13 @@
             this.usuarioDataGridViewTextBoxColumn});
             this.gvEstado.DataSource = this.estadosBindingSource;
             this.gvEstado.EnableHeadersVisualStyles = false;
-            this.gvEstado.Location = new System.Drawing.Point(12, 101);
+            this.gvEstado.Location = new System.Drawing.Point(12, 167);
             this.gvEstado.Name = "gvEstado";
             this.gvEstado.ReadOnly = true;
             this.gvEstado.RowHeadersWidth = 51;
             this.gvEstado.RowTemplate.Height = 24;
-            this.gvEstado.Size = new System.Drawing.Size(589, 304);
+            this.gvEstado.Size = new System.Drawing.Size(658, 304);
             this.gvEstado.TabIndex = 275;
-            // 
-            // estadosBindingSource
-            // 
-            this.estadosBindingSource.DataMember = "estados";
-            this.estadosBindingSource.DataSource = this.sistemaMoto2DataSetEstado;
-            // 
-            // sistemaMoto2DataSetEstado
-            // 
-            this.sistemaMoto2DataSetEstado.DataSetName = "SistemaMoto2DataSetEstado";
-            this.sistemaMoto2DataSetEstado.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // sistemaMoto2DataSetCategoria
-            // 
-            this.sistemaMoto2DataSetCategoria.DataSetName = "SistemaMoto2DataSetCategoria";
-            this.sistemaMoto2DataSetCategoria.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // estadosTableAdapter
-            // 
-            this.estadosTableAdapter.ClearBeforeFill = true;
             // 
             // codigoDataGridViewTextBoxColumn
             // 
@@ -285,14 +255,32 @@
             this.usuarioDataGridViewTextBoxColumn.ReadOnly = true;
             this.usuarioDataGridViewTextBoxColumn.Width = 125;
             // 
+            // estadosBindingSource
+            // 
+            this.estadosBindingSource.DataMember = "estados";
+            this.estadosBindingSource.DataSource = this.sistemaMoto2DataSetEstado;
+            // 
+            // sistemaMoto2DataSetEstado
+            // 
+            this.sistemaMoto2DataSetEstado.DataSetName = "SistemaMoto2DataSetEstado";
+            this.sistemaMoto2DataSetEstado.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // sistemaMoto2DataSetCategoria
+            // 
+            this.sistemaMoto2DataSetCategoria.DataSetName = "SistemaMoto2DataSetCategoria";
+            this.sistemaMoto2DataSetCategoria.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // estadosTableAdapter
+            // 
+            this.estadosTableAdapter.ClearBeforeFill = true;
+            // 
             // frmConsultaEstado
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(617, 494);
+            this.ClientSize = new System.Drawing.Size(683, 567);
             this.ControlBox = false;
             this.Controls.Add(this.gvEstado);
-            this.Controls.Add(this.label2);
             this.Controls.Add(this.btnExcluir);
             this.Controls.Add(this.btnVoltar);
             this.Controls.Add(this.btnAlterar);
@@ -315,8 +303,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnExcluir;
         private System.Windows.Forms.Button btnAlterar;
         private System.Windows.Forms.Button btnNovo;

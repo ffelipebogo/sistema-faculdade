@@ -19,15 +19,19 @@ using System.Windows.Forms;
 
 namespace EquipMotos.View
 {
-    public partial class frmCadastroOrdemServico : Form
+    public partial class frmCadastroOrdemServico : MaterialSkin.Controls.MaterialForm
     {
 
         OrdemServicos OrdemServico = new OrdemServicos();
-        CtrlOrdemServicos CtrlOrdemServico = new CtrlOrdemServicos();
         CondicaoPagamentos CondicaoPagamento = new CondicaoPagamentos();
+
+        CtrlOrdemServicos CtrlOrdemServico = new CtrlOrdemServicos();
         CtrlProdutosServicos CtrlProdutoServico = new CtrlProdutosServicos();
         CtrlClientes CtrlCliente = new CtrlClientes();
         CtrlVendas CtrlVenda = new CtrlVendas();
+        CtrlModelos CtrlModelo = new CtrlModelos();
+        CtrlCondicaoPagamento CtrlCondicao = new CtrlCondicaoPagamento();
+        CtrlFuncionarios CtrlFuncionario = new CtrlFuncionarios();
 
         public static object Cliente;
         public static object Modelo;
@@ -357,7 +361,7 @@ namespace EquipMotos.View
             }
         }
 
-        public bool ValidaPlaca(String placa)
+        public bool ValidaPlaca(string placa)
         {
             Regex rg = new Regex("[A-Z]{3}[0-9]{1}[A-Z]{1}[0-9]{2}|[A-Z]{3}-[0-9]{4}");
 
@@ -630,7 +634,7 @@ namespace EquipMotos.View
                 }
                 
             }
-            catch (Exception ex)
+            catch
             {
                 MessageBox.Show("Não foi possivel adicionar o produto");
             }
@@ -1022,6 +1026,253 @@ namespace EquipMotos.View
             }
         }
 
+        private void txtNumeroOS_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            MaskForm.TxtMask_Numero_KeyPress(sender, e);
+        }
+
+        private void txtMarca_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            MaskForm.TxtMask_ValidaNumeroLetras_KeyPress(sender, e);
+        }
+
+        private void txtCor_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            MaskForm.TxtMask_Letras_KeyPress(sender, e);
+        }
+
+        private void txtCelular_Leave(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(txtCelular.Text))
+            {
+                if (String.IsNullOrEmpty(txtCelular.Text))
+                {
+                    MessageBox.Show("Faltou informar o celular", "Informe o celular!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    txtCelular.Focus();
+                }
+                else if (txtCelular.Text.Length < 10)
+                {
+                    MessageBox.Show("Celular inválido, deve ter no mínimo 10 números", "Informe o celular!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    txtCelular.Focus();
+                }
+            }
+        }
+
+        private void txtMarca_Leave(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(txtMarca.Text))
+            {
+                if(txtMarca.Text.Length < 3)
+                {
+                    MessageBox.Show("Informe uma marca com mais de 3 caracteres", "Marca invalida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    txtMarca.Focus();
+                }else if (txtMarca.Text.Length > 20)
+                {
+                    MessageBox.Show("Informe uma marca com menos de 20 caracteres", "Marca invalida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    txtMarca.Focus();
+                }
+            }
+        }
+
+        private void txtAno_Leave(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(txtAno.Text))
+            {
+                var ano = Convert.ToInt64(txtAno.Text);
+                if (ano < 1900)
+                {
+                    MessageBox.Show("Informe um ano maior que 1900", "Ano inválido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    txtMarca.Focus();
+                }
+                else if (ano > DateTime.Now.Year )
+                {
+                    MessageBox.Show("Informe um ano menor que "+ DateTime.Now.Year, "Marca invalida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    txtMarca.Focus();
+                }
+            }
+        }
+
+        private void txtPlaca_Leave(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(txtPlaca.Text))
+            {
+                if (!ValidaPlaca(txtPlaca.Text))
+                {
+                    MessageBox.Show("Informe a placa correta", "Placa inválida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    txtPlaca.Focus();
+                    txtPlaca.Clear();
+                }
+            }
+        }
+
+        private void txtKm_Leave(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(txtKm.Text))
+            {
+                if(txtKm.Text.Length > 11)
+                {
+                    MessageBox.Show("Informe o odomentro presente no veiculo", "Kilometragem inválida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    txtKm.Focus();
+                }
+            }
+        }
+
+        private void txtCor_Leave(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(txtCor.Text))
+            {
+                if(txtCor.Text.Length < 3)
+                {
+                    MessageBox.Show("Informe uma cor com mais de 3 caracteres", "Numero de caracteres insuficiente", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    txtCor.Focus();
+                }
+            }
+        }
+
+        private void txtQtd_Leave(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(txtQtd.Text))
+            {
+               
+            }
+        }
+
+        private void txtCodCliente_TextChanged(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtCodCliente.Text))
+                return;
+            if (Convert.ToInt32("0" + txtCodCliente.Text) < 1)
+                return;
+            Clientes cli = CtrlCliente.BuscarPorID(Convert.ToInt32(txtCodCliente.Text)) as Clientes;
+            if (cli == null)
+            {
+                MessageBox.Show("Nenhum resultado");
+                txtCodCliente.Text = "";
+                txtCliente.Text = "";
+                txtCelular.Text = "";
+                txtCliente.Enabled = true;
+                txtCelular.Enabled = true;
+                txtCodCliente.Enabled = true;
+                txtCodCliente.Focus();
+            }
+            else
+            {
+                txtCliente.Text = cli.cliente;
+                txtCelular.Text = cli.celular;
+                txtCliente.Enabled = false;
+                txtCelular.Enabled = false;
+                txtCodCliente.Focus();
+            }
+        }
+
+        private void txtCodVeiculo_TextChanged(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtCodVeiculo.Text))
+                return;
+            if (Convert.ToInt32("0" + txtCodVeiculo.Text) < 1)
+                return;
+            Modelos model = CtrlModelo.BuscarPorID(Convert.ToInt32(txtCodVeiculo.Text)) as Modelos;
+            if (model == null)
+            {
+                MessageBox.Show("Nenhum resultado");
+                txtCodVeiculo.Text = "";
+                txtVeiculo.Text = "";
+                txtMarca.Text = "";
+                txtVeiculo.Enabled = true;
+                txtMarca.Enabled = true;
+                txtCodVeiculo.Enabled = true;
+                txtCodVeiculo.Focus();
+            }
+            else
+            {
+                txtVeiculo.Text = model.modelo;
+                txtMarca.Text = model.Marca.marca;
+                txtVeiculo.Enabled = false;
+                txtMarca.Enabled = false;
+                txtCodVeiculo.Focus();
+            }
+        }
+
+        private void txtCodProduto_TextChanged(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtCodProduto.Text))
+                return;
+            if (Convert.ToInt32("0" + txtCodProduto.Text) < 1)
+                return;
+            ProdutosServicos prod = CtrlProdutoServico.BuscarPorID(Convert.ToInt32(txtCodProduto.Text)) as ProdutosServicos;
+            if (prod == null)
+            {
+                MessageBox.Show("Nenhum resultado");
+                txtCodProduto.Text = "";
+                txtProduto.Text = "";
+                txtProduto.Enabled = true;
+                txtCodProduto.Enabled = true;
+                txtCodProduto.Focus();
+            }
+            else
+            {
+                txtVeiculo.Text = prod.produto;
+                txtVeiculo.Enabled = false;
+                txtCodProduto.Focus();
+            }
+        }
+
+        private void txtCodCondPagamento_TextChanged(object sender, EventArgs e)
+        {
+            CondicaoPagamentos Cond = CtrlCondicao.BuscarPorID(Convert.ToInt32(txtCodCondPagamento.Text)) as CondicaoPagamentos;
+            if (Cond == null)
+            {
+                MessageBox.Show("Nenhum resultado");
+                txtCondPagamento.Text = "";
+                txtCodCondPagamento.Text = "";
+                txtCondPagamento.Enabled = true;
+                txtCodCondPagamento.Focus();
+            }
+            else
+            {
+                txtCondPagamento.Text = Cond.condicao;
+                txtCondPagamento.Enabled = false;
+                txtCodCondPagamento.Focus();
+            }
+        }
+
+        private void txtCodServico_TextChanged(object sender, EventArgs e)
+        {
+            ProdutosServicos Serv = CtrlProdutoServico.BuscarPorID(Convert.ToInt32(txtCodServico.Text)) as ProdutosServicos;
+            if (Serv == null)
+            {
+                MessageBox.Show("Nenhum resultado");
+                txtServico.Text = "";
+                txtCodServico.Text = "";
+                txtServico.Enabled = true;
+                txtCodServico.Focus();
+            }
+            else
+            {
+                txtServico.Text = Serv.produto;
+                txtServico.Enabled = false;
+                txtCodServico.Focus();
+            }
+        }
+
+        private void txtCodMecanico_TextChanged(object sender, EventArgs e)
+        {
+            Funcionarios func = CtrlFuncionario.BuscarPorID(Convert.ToInt32(txtCodMecanico.Text)) as Funcionarios;
+            if (func == null)
+            {
+                MessageBox.Show("Nenhum resultado");
+                txtMecanico.Text = "";
+                txtCodMecanico.Text = "";
+                txtMecanico.Enabled = true;
+                txtCodMecanico.Focus();
+            }
+            else
+            {
+                txtMecanico.Text = func.funcionario;
+                txtMecanico.Enabled = false;
+                txtCodMecanico.Focus();
+            }
+        }
     }
 }
 

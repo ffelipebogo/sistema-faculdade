@@ -15,10 +15,13 @@ using System.Windows.Forms;
 
 namespace EquipMotos.View
 {
-    public partial class frmCadastroContaPagar : Form
+    public partial class frmCadastroContaPagar : MaterialSkin.Controls.MaterialForm
     {
         ContasPagar ContaPagar = new ContasPagar();
         CtrlContasPagar CtrlContaPagar = new CtrlContasPagar();
+        CtrlFornecedores CtrlFornecedor = new CtrlFornecedores();
+        CtrlFormaPagamentos CtrlFormaPagamento = new CtrlFormaPagamentos();
+
         public static object fornecedor = null;
         public static object condPagamento = null;
         public static object formaPag;
@@ -231,27 +234,73 @@ namespace EquipMotos.View
 
         private void txtModelo_KeyPress(object sender, KeyPressEventArgs e)
         {
-            MaskForm.TxtMask_Valida_KeyPress(sender, e);
+            MaskForm.TxtMask_Numero_KeyPress(sender, e);
         }
 
         private void txtNrNota_KeyPress(object sender, KeyPressEventArgs e)
         {
-            MaskForm.TxtMask_Valida_KeyPress(sender, e);
+            MaskForm.TxtMask_Numero_KeyPress(sender, e);
         }
 
         private void txtSerie_KeyPress(object sender, KeyPressEventArgs e)
         {
-            MaskForm.TxtMask_Valida_KeyPress(sender, e);
+            MaskForm.TxtMask_Numero_KeyPress(sender, e);
         }
 
         private void txtCodFornecedor_KeyPress(object sender, KeyPressEventArgs e)
         {
-            MaskForm.TxtMask_Valida_KeyPress(sender, e);
+            MaskForm.TxtMask_Numero_KeyPress(sender, e);
         }
 
         private void txtCodCondPagamento_KeyPress(object sender, KeyPressEventArgs e)
         {
-            MaskForm.TxtMask_Valida_KeyPress(sender, e);
+            MaskForm.TxtMask_Numero_KeyPress(sender, e);
+        }
+
+        private void txtCodFornecedor_TextChanged(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtCodFornecedor.Text))
+                return;
+            if (Convert.ToInt32("0" + txtCodFornecedor.Text) < 1)
+                return;
+            Fornecedores forn = CtrlFornecedor.BuscarPorID(Convert.ToInt32(txtCodFornecedor.Text)) as Fornecedores;
+            if (forn == null)
+            {
+                MessageBox.Show("Nenhum resultado");
+                txtFornecedor.Text = "";
+                txtCodFornecedor.Text = "";
+                txtFornecedor.Enabled = true;
+                txtCodFornecedor.Focus();
+            }
+            else
+            {
+                txtFornecedor.Text = forn.fornecedor;
+                txtFornecedor.Enabled = false;
+                txtCodFornecedor.Focus();
+            }
+        }
+
+        private void txtCodFormaPagamento_TextChanged(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtCodFormaPagamento.Text))
+                return;
+            if (Convert.ToInt32("0" + txtCodFormaPagamento.Text) < 1)
+                return;
+            FormaPagamentos formaPag = CtrlFormaPagamento.BuscarPorID(Convert.ToInt32(txtCodFormaPagamento.Text)) as FormaPagamentos;
+            if (formaPag == null)
+            {
+                MessageBox.Show("Nenhum resultado");
+                txtCodFormaPagamento.Text = "";
+                txtFormaPagamento.Text = "";
+                txtCodFormaPagamento.Enabled = true;
+                txtFormaPagamento.Enabled = true;
+            }
+            else
+            {
+                txtFormaPagamento.Text = formaPag.forma;
+                txtCodFormaPagamento.Enabled = false;
+                txtFormaPagamento.Enabled = false;
+            }
         }
     }
 }

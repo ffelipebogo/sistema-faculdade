@@ -14,7 +14,7 @@ using System.Windows.Forms;
 
 namespace EquipMotos.View
 {
-    public partial class frmCadastroModelo : Form
+    public partial class frmCadastroModelo : MaterialSkin.Controls.MaterialForm
     {
         public static object marca;
         Modelos Modelo = new Modelos();
@@ -142,6 +142,11 @@ namespace EquipMotos.View
         private void txtCodMarca_KeyPress(object sender, KeyPressEventArgs e)
         {
             MaskForm.TxtMask_Valida_KeyPress(sender, e);
+        }
+
+        private void frmCadastroModelo_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

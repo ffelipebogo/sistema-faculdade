@@ -12,10 +12,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MaterialForm = MaterialSkin.Controls.MaterialForm;
 
 namespace EquipMotos.View
 {
-    public partial class frmCadastroVenda : Form
+    public partial class frmCadastroVenda : MaterialForm
     {
         public static object Produto;
         public static object Cliente;
@@ -569,22 +570,22 @@ namespace EquipMotos.View
 
         private void txtCodCliente_KeyPress(object sender, KeyPressEventArgs e)
         {
-            MaskForm.TxtMask_Valida_KeyPress(sender, e);
+            MaskForm.TxtMask_Numero_KeyPress(sender, e);
         }
 
         private void txtCodProduto_KeyPress(object sender, KeyPressEventArgs e)
         {
-            MaskForm.TxtMask_Valida_KeyPress(sender, e);
+            MaskForm.TxtMask_Numero_KeyPress(sender, e);
         }
 
         private void txtNrItens_KeyPress(object sender, KeyPressEventArgs e)
         {
-            MaskForm.TxtMask_Valida_KeyPress(sender, e);
+            MaskForm.TxtMask_Numero_KeyPress(sender, e);
         }
 
         private void txtCodCondPagamento_KeyPress(object sender, KeyPressEventArgs e)
         {
-            MaskForm.TxtMask_Valida_KeyPress(sender, e);
+            MaskForm.TxtMask_Numero_KeyPress(sender, e);
         }
 
         private void txtValorItens_KeyPress(object sender, KeyPressEventArgs e)
@@ -604,7 +605,7 @@ namespace EquipMotos.View
 
         private void txtQtd_KeyPress(object sender, KeyPressEventArgs e)
         {
-            MaskForm.TxtMask_Moeda_KeyPress(sender, e);
+            MaskForm.TxtMask_Numero_KeyPress(sender, e);
         }
 
         private void txtValorProd_KeyPress(object sender, KeyPressEventArgs e)
@@ -627,6 +628,108 @@ namespace EquipMotos.View
             MaskForm.TxtMask_Valida_KeyPress(sender, e);
         }
 
-        
+        private void txtModelo_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            MaskForm.TxtMask_Numero_KeyPress(sender, e);
+        }
+
+        private void txtSerie_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            MaskForm.TxtMask_Numero_KeyPress(sender, e);
+        }
+
+        private void txtNumeroVenda_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            MaskForm.TxtMask_Numero_KeyPress(sender, e);
+        }
+
+        private void txtData_Leave(object sender, EventArgs e)
+        {
+            if(txtData.Value > DateTime.Now)
+            {
+                MessageBox.Show("Não é possivel inserir esta data", "Informe uma data igual ou menor que a atual", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtData.Value = DateTime.Now;
+                txtData.Focus();
+            }
+        }
+
+        private void txtCodCliente_TextChanged(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtCodCliente.Text))
+                return;
+            if (Convert.ToInt32("0" + txtCodCliente.Text) < 1)
+                return;
+           
+            Clientes cli = CtrlCliente.BuscarPorID(Convert.ToInt32(txtCodCliente.Text)) as Clientes;
+            if (cli == null)
+            {
+                MessageBox.Show("Nenhum resultado", "Tente pesquisar clicando na lupa ao lado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                txtCodCliente.Text = "";
+                txtCliente.Text = "";
+
+                txtCodCliente.Enabled = true;
+                txtCliente.Enabled = true;
+                txtCodCliente.Focus();
+            }
+            else
+            {
+                txtCliente.Text = cli.cliente;
+
+                cli = null;
+                txtCliente.Enabled = false;
+                txtCodCliente.Focus();
+            }
+        }
+
+        private void txtCodProduto_TextChanged(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtCodProduto.Text))
+                return;
+            if (Convert.ToInt32("0" + txtCodProduto.Text) < 1)
+                return;
+            ProdutosServicos prod = CtrlProduto.BuscarPorID(Convert.ToInt32(txtCodProduto.Text)) as ProdutosServicos;
+            if (prod == null)
+            {
+                MessageBox.Show("Nenhum resultado");
+                txtCodProduto.Text = "";
+                txtProduto.Text = "";
+
+                txtCodProduto.Enabled = true;
+                txtProduto.Enabled = true;
+                txtCodProduto.Focus();
+            }
+            else
+            {
+                txtProduto.Text = prod.produto;
+
+                txtProduto.Enabled = false;
+                txtCodProduto.Focus();
+            }
+        }
+
+        private void txtCodCondPagamento_TextChanged(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtCodCondPagamento.Text))
+                return;
+            if (Convert.ToInt32("0" + txtCodCondPagamento.Text) < 1)
+                return;
+            CondicaoPagamentos cond = CtrlCondPagamento.BuscarPorID(Convert.ToInt32(txtCodCondPagamento.Text)) as CondicaoPagamentos;
+            if (cond == null)
+            {
+                MessageBox.Show("Nenhum resultado");
+                txtCodCondPagamento.Text = "";
+                txtCondPagamento.Text = "";
+
+                txtCodCondPagamento.Enabled = true;
+                txtCondPagamento.Enabled = true;
+            }
+            else
+            {
+                txtCondPagamento.Text = cond.condicao;
+
+                txtCodCondPagamento.Enabled = false;
+                txtCondPagamento.Enabled = false;
+            }
+        }
     }
 }

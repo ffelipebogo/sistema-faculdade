@@ -114,6 +114,7 @@ namespace EquipMotos.DAO
                 DataTable dtEstado = new DataTable();
                 da.Fill(dtEstado);
                 EstadosDAO daoEstado = new EstadosDAO();
+                estado = null;
                 foreach (DataRow row in dtEstado.Rows)
                 {
                     Estados est = new Estados();
@@ -131,6 +132,7 @@ namespace EquipMotos.DAO
                 return estado;
             }
         }
+
         public override object Pesquisar(string est)
         {
             using (SqlConnection conexao = Conecta.CreateConnection())

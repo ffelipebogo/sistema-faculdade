@@ -87,6 +87,7 @@ namespace EquipMotos.DAO
                 return dtPaises;
             }
         }
+
         public override object BuscarPorID(object id)
         {
             using (SqlConnection conexao = Conecta.CreateConnection())
@@ -103,7 +104,7 @@ namespace EquipMotos.DAO
                 da = new SqlDataAdapter(comando);
                 DataTable dtPais = new DataTable();
                 da.Fill(dtPais);
-
+                paises = null;
                 foreach (DataRow row in dtPais.Rows)
                 {
                     Paises pais = new Paises();

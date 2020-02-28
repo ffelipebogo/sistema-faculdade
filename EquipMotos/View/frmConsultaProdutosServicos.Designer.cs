@@ -105,12 +105,12 @@
             this.dataGridViewTextBoxColumn12});
             this.gvProdutos.DataSource = this.produtosBindingSource;
             this.gvProdutos.EnableHeadersVisualStyles = false;
-            this.gvProdutos.Location = new System.Drawing.Point(29, 96);
+            this.gvProdutos.Location = new System.Drawing.Point(13, 156);
             this.gvProdutos.Margin = new System.Windows.Forms.Padding(4);
             this.gvProdutos.Name = "gvProdutos";
             this.gvProdutos.ReadOnly = true;
             this.gvProdutos.RowHeadersWidth = 51;
-            this.gvProdutos.Size = new System.Drawing.Size(1171, 497);
+            this.gvProdutos.Size = new System.Drawing.Size(1168, 467);
             this.gvProdutos.TabIndex = 20;
             // 
             // codigoDataGridViewTextBoxColumn
@@ -280,7 +280,7 @@
             // 
             this.btnVoltar.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnVoltar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnVoltar.Location = new System.Drawing.Point(1055, 615);
+            this.btnVoltar.Location = new System.Drawing.Point(1036, 647);
             this.btnVoltar.Margin = new System.Windows.Forms.Padding(4);
             this.btnVoltar.Name = "btnVoltar";
             this.btnVoltar.Size = new System.Drawing.Size(145, 42);
@@ -293,7 +293,7 @@
             // 
             this.txtPesquisar.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtPesquisar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPesquisar.Location = new System.Drawing.Point(28, 43);
+            this.txtPesquisar.Location = new System.Drawing.Point(12, 103);
             this.txtPesquisar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtPesquisar.Name = "txtPesquisar";
             this.txtPesquisar.Size = new System.Drawing.Size(673, 26);
@@ -304,7 +304,7 @@
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(24, 15);
+            this.label1.Location = new System.Drawing.Point(12, 76);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(279, 25);
             this.label1.TabIndex = 13;
@@ -316,7 +316,7 @@
             this.btnExcluir.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnExcluir.Image = global::EquipMotos.Properties.Resources._1398756469_Erase;
             this.btnExcluir.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnExcluir.Location = new System.Drawing.Point(861, 615);
+            this.btnExcluir.Location = new System.Drawing.Point(831, 647);
             this.btnExcluir.Margin = new System.Windows.Forms.Padding(4);
             this.btnExcluir.Name = "btnExcluir";
             this.btnExcluir.Size = new System.Drawing.Size(139, 42);
@@ -332,7 +332,7 @@
             this.btnAlterar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAlterar.Image = global::EquipMotos.Properties.Resources._1398756462_Modify;
             this.btnAlterar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAlterar.Location = new System.Drawing.Point(711, 615);
+            this.btnAlterar.Location = new System.Drawing.Point(681, 647);
             this.btnAlterar.Margin = new System.Windows.Forms.Padding(4);
             this.btnAlterar.Name = "btnAlterar";
             this.btnAlterar.Size = new System.Drawing.Size(143, 42);
@@ -348,7 +348,7 @@
             this.btnNovo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnNovo.Image = global::EquipMotos.Properties.Resources._1398756346_1;
             this.btnNovo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnNovo.Location = new System.Drawing.Point(581, 615);
+            this.btnNovo.Location = new System.Drawing.Point(551, 647);
             this.btnNovo.Margin = new System.Windows.Forms.Padding(4);
             this.btnNovo.Name = "btnNovo";
             this.btnNovo.Size = new System.Drawing.Size(121, 42);
@@ -365,7 +365,7 @@
             this.btnBuscar.ErrorImage = global::EquipMotos.Properties.Resources._1398754683_xmag;
             this.btnBuscar.Image = global::EquipMotos.Properties.Resources._1398754683_xmag;
             this.btnBuscar.InitialImage = global::EquipMotos.Properties.Resources._1398754683_xmag;
-            this.btnBuscar.Location = new System.Drawing.Point(711, 26);
+            this.btnBuscar.Location = new System.Drawing.Point(695, 86);
             this.btnBuscar.Margin = new System.Windows.Forms.Padding(4);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(70, 62);
@@ -378,7 +378,7 @@
             // 
             this.rbProduto.AutoSize = true;
             this.rbProduto.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rbProduto.Location = new System.Drawing.Point(844, 26);
+            this.rbProduto.Location = new System.Drawing.Point(801, 86);
             this.rbProduto.Name = "rbProduto";
             this.rbProduto.Size = new System.Drawing.Size(145, 24);
             this.rbProduto.TabIndex = 278;
@@ -391,7 +391,7 @@
             // 
             this.rbServico.AutoSize = true;
             this.rbServico.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rbServico.Location = new System.Drawing.Point(844, 53);
+            this.rbServico.Location = new System.Drawing.Point(801, 116);
             this.rbServico.Name = "rbServico";
             this.rbServico.Size = new System.Drawing.Size(143, 24);
             this.rbServico.TabIndex = 279;
@@ -408,7 +408,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1227, 670);
+            this.ClientSize = new System.Drawing.Size(1194, 701);
             this.ControlBox = false;
             this.Controls.Add(this.rbServico);
             this.Controls.Add(this.rbProduto);

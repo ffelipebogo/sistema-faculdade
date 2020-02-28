@@ -14,7 +14,7 @@ using System.Windows.Forms;
 
 namespace EquipMotos.View
 {
-    public partial class frmCadastroEstado : Form
+    public partial class frmCadastroEstado : MaterialSkin.Controls.MaterialForm
     {
         //Paises paises = new Paises();
         Estados est = new Estados();
@@ -147,6 +147,10 @@ namespace EquipMotos.View
             txtUsuario.Text = "";
         }
 
+        private void frmCadastroEstado_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
 

@@ -162,6 +162,7 @@ namespace EquipMotos.DAO
                 da = new SqlDataAdapter(comando);
                 DataTable dtCliente = new DataTable();
                 da.Fill(dtCliente);
+                ordemServ = null;
                 foreach (DataRow row in dtCliente.Rows)
                 {
                     OrdemServicos os = new OrdemServicos();

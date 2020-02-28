@@ -37,10 +37,6 @@
             this.btnAlterar = new System.Windows.Forms.Button();
             this.btnNovo = new System.Windows.Forms.Button();
             this.gvFornecedor = new System.Windows.Forms.DataGridView();
-            this.fornecedoresBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.sistemaMoto2DataSetFornecedor = new EquipMotos.SistemaMoto2DataSetFornecedor();
-            this.btnBuscarFornecedor = new System.Windows.Forms.PictureBox();
-            this.fornecedoresTableAdapter = new EquipMotos.SistemaMoto2DataSetFornecedorTableAdapters.fornecedoresTableAdapter();
             this.codigoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -68,6 +64,10 @@
             this.fisicoDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.cpfDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.rgDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fornecedoresBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.sistemaMoto2DataSetFornecedor = new EquipMotos.SistemaMoto2DataSetFornecedor();
+            this.btnBuscarFornecedor = new System.Windows.Forms.PictureBox();
+            this.fornecedoresTableAdapter = new EquipMotos.SistemaMoto2DataSetFornecedorTableAdapters.fornecedoresTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.gvFornecedor)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fornecedoresBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sistemaMoto2DataSetFornecedor)).BeginInit();
@@ -78,7 +78,7 @@
             // 
             this.btnVoltar.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnVoltar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnVoltar.Location = new System.Drawing.Point(899, 619);
+            this.btnVoltar.Location = new System.Drawing.Point(898, 622);
             this.btnVoltar.Margin = new System.Windows.Forms.Padding(4);
             this.btnVoltar.Name = "btnVoltar";
             this.btnVoltar.Size = new System.Drawing.Size(169, 42);
@@ -91,7 +91,7 @@
             // 
             this.txtPesquisar.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtPesquisar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPesquisar.Location = new System.Drawing.Point(16, 37);
+            this.txtPesquisar.Location = new System.Drawing.Point(15, 96);
             this.txtPesquisar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtPesquisar.Name = "txtPesquisar";
             this.txtPesquisar.Size = new System.Drawing.Size(711, 26);
@@ -102,7 +102,7 @@
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(12, 9);
+            this.label1.Location = new System.Drawing.Point(12, 69);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(204, 25);
             this.label1.TabIndex = 13;
@@ -114,7 +114,7 @@
             this.btnExcluir.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnExcluir.Image = global::EquipMotos.Properties.Resources._1398756469_Erase;
             this.btnExcluir.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnExcluir.Location = new System.Drawing.Point(735, 619);
+            this.btnExcluir.Location = new System.Drawing.Point(734, 622);
             this.btnExcluir.Margin = new System.Windows.Forms.Padding(4);
             this.btnExcluir.Name = "btnExcluir";
             this.btnExcluir.Size = new System.Drawing.Size(130, 42);
@@ -130,7 +130,7 @@
             this.btnAlterar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAlterar.Image = global::EquipMotos.Properties.Resources._1398756462_Modify;
             this.btnAlterar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAlterar.Location = new System.Drawing.Point(597, 619);
+            this.btnAlterar.Location = new System.Drawing.Point(596, 622);
             this.btnAlterar.Margin = new System.Windows.Forms.Padding(4);
             this.btnAlterar.Name = "btnAlterar";
             this.btnAlterar.Size = new System.Drawing.Size(130, 42);
@@ -146,7 +146,7 @@
             this.btnNovo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnNovo.Image = global::EquipMotos.Properties.Resources._1398756346_1;
             this.btnNovo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnNovo.Location = new System.Drawing.Point(459, 619);
+            this.btnNovo.Location = new System.Drawing.Point(458, 622);
             this.btnNovo.Margin = new System.Windows.Forms.Padding(4);
             this.btnNovo.Name = "btnNovo";
             this.btnNovo.Size = new System.Drawing.Size(130, 42);
@@ -205,42 +205,13 @@
             this.rgDataGridViewTextBoxColumn});
             this.gvFornecedor.DataSource = this.fornecedoresBindingSource;
             this.gvFornecedor.EnableHeadersVisualStyles = false;
-            this.gvFornecedor.Location = new System.Drawing.Point(16, 90);
+            this.gvFornecedor.Location = new System.Drawing.Point(15, 149);
             this.gvFornecedor.Margin = new System.Windows.Forms.Padding(4);
             this.gvFornecedor.Name = "gvFornecedor";
             this.gvFornecedor.ReadOnly = true;
             this.gvFornecedor.RowHeadersWidth = 51;
-            this.gvFornecedor.Size = new System.Drawing.Size(1052, 495);
+            this.gvFornecedor.Size = new System.Drawing.Size(1052, 424);
             this.gvFornecedor.TabIndex = 24;
-            // 
-            // fornecedoresBindingSource
-            // 
-            this.fornecedoresBindingSource.DataMember = "fornecedores";
-            this.fornecedoresBindingSource.DataSource = this.sistemaMoto2DataSetFornecedor;
-            // 
-            // sistemaMoto2DataSetFornecedor
-            // 
-            this.sistemaMoto2DataSetFornecedor.DataSetName = "SistemaMoto2DataSetFornecedor";
-            this.sistemaMoto2DataSetFornecedor.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // btnBuscarFornecedor
-            // 
-            this.btnBuscarFornecedor.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnBuscarFornecedor.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.btnBuscarFornecedor.ErrorImage = global::EquipMotos.Properties.Resources._1398754683_xmag;
-            this.btnBuscarFornecedor.Image = global::EquipMotos.Properties.Resources._1398754683_xmag;
-            this.btnBuscarFornecedor.InitialImage = global::EquipMotos.Properties.Resources._1398754683_xmag;
-            this.btnBuscarFornecedor.Location = new System.Drawing.Point(733, 22);
-            this.btnBuscarFornecedor.Name = "btnBuscarFornecedor";
-            this.btnBuscarFornecedor.Size = new System.Drawing.Size(74, 61);
-            this.btnBuscarFornecedor.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.btnBuscarFornecedor.TabIndex = 258;
-            this.btnBuscarFornecedor.TabStop = false;
-            this.btnBuscarFornecedor.Click += new System.EventHandler(this.BtnBuscarFornecedor_Click);
-            // 
-            // fornecedoresTableAdapter
-            // 
-            this.fornecedoresTableAdapter.ClearBeforeFill = true;
             // 
             // codigoDataGridViewTextBoxColumn
             // 
@@ -485,11 +456,40 @@
             this.rgDataGridViewTextBoxColumn.ReadOnly = true;
             this.rgDataGridViewTextBoxColumn.Width = 125;
             // 
+            // fornecedoresBindingSource
+            // 
+            this.fornecedoresBindingSource.DataMember = "fornecedores";
+            this.fornecedoresBindingSource.DataSource = this.sistemaMoto2DataSetFornecedor;
+            // 
+            // sistemaMoto2DataSetFornecedor
+            // 
+            this.sistemaMoto2DataSetFornecedor.DataSetName = "SistemaMoto2DataSetFornecedor";
+            this.sistemaMoto2DataSetFornecedor.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // btnBuscarFornecedor
+            // 
+            this.btnBuscarFornecedor.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnBuscarFornecedor.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.btnBuscarFornecedor.ErrorImage = global::EquipMotos.Properties.Resources._1398754683_xmag;
+            this.btnBuscarFornecedor.Image = global::EquipMotos.Properties.Resources._1398754683_xmag;
+            this.btnBuscarFornecedor.InitialImage = global::EquipMotos.Properties.Resources._1398754683_xmag;
+            this.btnBuscarFornecedor.Location = new System.Drawing.Point(732, 81);
+            this.btnBuscarFornecedor.Name = "btnBuscarFornecedor";
+            this.btnBuscarFornecedor.Size = new System.Drawing.Size(74, 61);
+            this.btnBuscarFornecedor.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.btnBuscarFornecedor.TabIndex = 258;
+            this.btnBuscarFornecedor.TabStop = false;
+            this.btnBuscarFornecedor.Click += new System.EventHandler(this.BtnBuscarFornecedor_Click);
+            // 
+            // fornecedoresTableAdapter
+            // 
+            this.fornecedoresTableAdapter.ClearBeforeFill = true;
+            // 
             // frmConsultaFornecedor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1092, 671);
+            this.ClientSize = new System.Drawing.Size(1092, 679);
             this.ControlBox = false;
             this.Controls.Add(this.btnBuscarFornecedor);
             this.Controls.Add(this.gvFornecedor);

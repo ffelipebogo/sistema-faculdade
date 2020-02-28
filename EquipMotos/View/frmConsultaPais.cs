@@ -13,7 +13,7 @@ using System.Windows.Forms;
 
 namespace EquipMotos.View
 {
-    public partial class frmConsultaPais : Form
+    public partial class frmConsultaPais : MaterialSkin.Controls.MaterialForm
     {
         Paises pais;
         CtrlPaises CtrlPais = new CtrlPaises();
@@ -108,7 +108,16 @@ namespace EquipMotos.View
         private void BtnBuscarPais_Click(object sender, EventArgs e)
         {
             string pais = txtPesquisar.Text;
-            gvPais.DataSource = CtrlPais.Pesquisar(pais);
+            DataGridView dtView = new DataGridView();
+            dtView.DataSource = CtrlPais.Pesquisar(pais);
+            if (dtView.DataSource == null)
+            {
+                MessageBox.Show("Não encotrado");
+            }
+            else
+            {
+                gvPais.DataSource = dtView.DataSource;
+            }
         }
     }
 }

@@ -12,7 +12,7 @@ using System.Windows.Forms;
 
 namespace EquipMotos.View
 {
-    public partial class frmConsultaCompra : Form
+    public partial class frmConsultaCompra : MaterialSkin.Controls.MaterialForm
     {
         CtrlCompras CtrlCompra = new CtrlCompras();
         public frmConsultaCompra()
@@ -94,7 +94,17 @@ namespace EquipMotos.View
         private void BtnBuscarCompra_Click(object sender, EventArgs e)
         {
             string compra = txtPesquisar.Text;
-            gvCompra.DataSource = CtrlCompra.Pesquisar(compra);
+            
+            DataGridView dtView = new DataGridView();
+            dtView.DataSource = CtrlCompra.Pesquisar(compra);
+            if (dtView.DataSource == null)
+            {
+                MessageBox.Show("Não encotrado");
+            }
+            else
+            {
+                gvCompra.DataSource = dtView.DataSource;
+            }
         }
     }
 }

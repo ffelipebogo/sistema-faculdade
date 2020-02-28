@@ -45,12 +45,12 @@
             this.usuarioDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.vendasBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.sistemaMoto2DataSetVenda = new EquipMotos.SistemaMoto2DataSetVenda();
-            this.btnExcluir = new System.Windows.Forms.Button();
-            this.btnVoltar = new System.Windows.Forms.Button();
-            this.btnNovo = new System.Windows.Forms.Button();
-            this.txtPesquisar = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.btnAlterar = new System.Windows.Forms.Button();
+            this.btnExcluir = new MaterialSkin.Controls.MaterialRaisedButton();
+            this.btnVoltar = new MaterialSkin.Controls.MaterialRaisedButton();
+            this.btnNovo = new MaterialSkin.Controls.MaterialRaisedButton();
+            this.txtPesquisar = new MaterialSkin.Controls.MaterialSingleLineTextField();
+            this.label1 = new MaterialSkin.Controls.MaterialLabel();
+            this.btnAlterar = new MaterialSkin.Controls.MaterialRaisedButton();
             this.vendasTableAdapter = new EquipMotos.SistemaMoto2DataSetVendaTableAdapters.vendasTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.btnBuscarVenda)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvVendas)).BeginInit();
@@ -65,10 +65,10 @@
             this.btnBuscarVenda.ErrorImage = global::EquipMotos.Properties.Resources._1398754683_xmag;
             this.btnBuscarVenda.Image = global::EquipMotos.Properties.Resources._1398754683_xmag;
             this.btnBuscarVenda.InitialImage = global::EquipMotos.Properties.Resources._1398754683_xmag;
-            this.btnBuscarVenda.Location = new System.Drawing.Point(516, 22);
+            this.btnBuscarVenda.Location = new System.Drawing.Point(486, 67);
             this.btnBuscarVenda.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnBuscarVenda.Name = "btnBuscarVenda";
-            this.btnBuscarVenda.Size = new System.Drawing.Size(75, 62);
+            this.btnBuscarVenda.Size = new System.Drawing.Size(66, 58);
             this.btnBuscarVenda.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.btnBuscarVenda.TabIndex = 265;
             this.btnBuscarVenda.TabStop = false;
@@ -86,7 +86,7 @@
             this.gvVendas.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.ControlDark;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F);
             dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -107,12 +107,12 @@
             this.usuarioDataGridViewTextBoxColumn});
             this.gvVendas.DataSource = this.vendasBindingSource;
             this.gvVendas.EnableHeadersVisualStyles = false;
-            this.gvVendas.Location = new System.Drawing.Point(17, 90);
+            this.gvVendas.Location = new System.Drawing.Point(15, 143);
             this.gvVendas.Margin = new System.Windows.Forms.Padding(4);
             this.gvVendas.Name = "gvVendas";
             this.gvVendas.ReadOnly = true;
             this.gvVendas.RowHeadersWidth = 51;
-            this.gvVendas.Size = new System.Drawing.Size(983, 497);
+            this.gvVendas.Size = new System.Drawing.Size(860, 426);
             this.gvVendas.TabIndex = 264;
             // 
             // nrNotaDataGridViewTextBoxColumn
@@ -227,13 +227,16 @@
             // btnExcluir
             // 
             this.btnExcluir.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnExcluir.Depth = 0;
             this.btnExcluir.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnExcluir.Image = global::EquipMotos.Properties.Resources._1398756469_Erase;
             this.btnExcluir.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnExcluir.Location = new System.Drawing.Point(683, 625);
+            this.btnExcluir.Location = new System.Drawing.Point(598, 586);
             this.btnExcluir.Margin = new System.Windows.Forms.Padding(4);
+            this.btnExcluir.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnExcluir.Name = "btnExcluir";
-            this.btnExcluir.Size = new System.Drawing.Size(130, 42);
+            this.btnExcluir.Primary = true;
+            this.btnExcluir.Size = new System.Drawing.Size(114, 39);
             this.btnExcluir.TabIndex = 263;
             this.btnExcluir.Text = "EXCLUIR";
             this.btnExcluir.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -244,11 +247,14 @@
             // btnVoltar
             // 
             this.btnVoltar.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnVoltar.Depth = 0;
             this.btnVoltar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnVoltar.Location = new System.Drawing.Point(874, 625);
+            this.btnVoltar.Location = new System.Drawing.Point(765, 586);
             this.btnVoltar.Margin = new System.Windows.Forms.Padding(4);
+            this.btnVoltar.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnVoltar.Name = "btnVoltar";
-            this.btnVoltar.Size = new System.Drawing.Size(130, 42);
+            this.btnVoltar.Primary = true;
+            this.btnVoltar.Size = new System.Drawing.Size(114, 39);
             this.btnVoltar.TabIndex = 262;
             this.btnVoltar.Text = "VOLTAR";
             this.btnVoltar.UseVisualStyleBackColor = true;
@@ -257,13 +263,16 @@
             // btnNovo
             // 
             this.btnNovo.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnNovo.Depth = 0;
             this.btnNovo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnNovo.Image = global::EquipMotos.Properties.Resources._1398756346_1;
             this.btnNovo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnNovo.Location = new System.Drawing.Point(407, 625);
+            this.btnNovo.Location = new System.Drawing.Point(356, 586);
             this.btnNovo.Margin = new System.Windows.Forms.Padding(4);
+            this.btnNovo.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnNovo.Name = "btnNovo";
-            this.btnNovo.Size = new System.Drawing.Size(130, 42);
+            this.btnNovo.Primary = true;
+            this.btnNovo.Size = new System.Drawing.Size(114, 39);
             this.btnNovo.TabIndex = 260;
             this.btnNovo.Text = "NOVO";
             this.btnNovo.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -273,33 +282,47 @@
             // txtPesquisar
             // 
             this.txtPesquisar.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.txtPesquisar.Depth = 0;
             this.txtPesquisar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPesquisar.Location = new System.Drawing.Point(16, 37);
+            this.txtPesquisar.Hint = "";
+            this.txtPesquisar.Location = new System.Drawing.Point(15, 98);
             this.txtPesquisar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtPesquisar.MouseState = MaterialSkin.MouseState.HOVER;
             this.txtPesquisar.Name = "txtPesquisar";
-            this.txtPesquisar.Size = new System.Drawing.Size(495, 26);
+            this.txtPesquisar.PasswordChar = '\0';
+            this.txtPesquisar.SelectedText = "";
+            this.txtPesquisar.SelectionLength = 0;
+            this.txtPesquisar.SelectionStart = 0;
+            this.txtPesquisar.Size = new System.Drawing.Size(433, 28);
             this.txtPesquisar.TabIndex = 259;
+            this.txtPesquisar.UseSystemPasswordChar = false;
             // 
             // label1
             // 
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(12, 9);
+            this.label1.Depth = 0;
+            this.label1.Font = new System.Drawing.Font("Roboto", 11F);
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.label1.Location = new System.Drawing.Point(11, 67);
+            this.label1.MouseState = MaterialSkin.MouseState.HOVER;
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(172, 25);
+            this.label1.Size = new System.Drawing.Size(162, 24);
             this.label1.TabIndex = 258;
             this.label1.Text = "Pesquisar Vendas";
             // 
             // btnAlterar
             // 
             this.btnAlterar.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnAlterar.Depth = 0;
             this.btnAlterar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAlterar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAlterar.Location = new System.Drawing.Point(545, 625);
+            this.btnAlterar.Location = new System.Drawing.Point(477, 586);
             this.btnAlterar.Margin = new System.Windows.Forms.Padding(4);
+            this.btnAlterar.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnAlterar.Name = "btnAlterar";
-            this.btnAlterar.Size = new System.Drawing.Size(130, 42);
+            this.btnAlterar.Primary = true;
+            this.btnAlterar.Size = new System.Drawing.Size(114, 39);
             this.btnAlterar.TabIndex = 261;
             this.btnAlterar.Text = "VISUALIZAR";
             this.btnAlterar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -312,9 +335,9 @@
             // 
             // frmConsultaVenda
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1013, 678);
+            this.ClientSize = new System.Drawing.Size(886, 636);
             this.ControlBox = false;
             this.Controls.Add(this.btnBuscarVenda);
             this.Controls.Add(this.gvVendas);
@@ -324,6 +347,7 @@
             this.Controls.Add(this.btnNovo);
             this.Controls.Add(this.txtPesquisar);
             this.Controls.Add(this.label1);
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "frmConsultaVenda";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -341,12 +365,12 @@
         #endregion
 
         private System.Windows.Forms.PictureBox btnBuscarVenda;
-        private System.Windows.Forms.Button btnExcluir;
-        private System.Windows.Forms.Button btnNovo;
-        private System.Windows.Forms.TextBox txtPesquisar;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button btnAlterar;
-        public System.Windows.Forms.Button btnVoltar;
+        private MaterialSkin.Controls.MaterialRaisedButton btnExcluir;
+        private MaterialSkin.Controls.MaterialRaisedButton btnNovo;
+        private MaterialSkin.Controls.MaterialSingleLineTextField txtPesquisar;
+        private MaterialSkin.Controls.MaterialLabel label1;
+        private MaterialSkin.Controls.MaterialRaisedButton btnAlterar;
+        public MaterialSkin.Controls.MaterialRaisedButton btnVoltar;
         private SistemaMoto2DataSetVenda sistemaMoto2DataSetVenda;
         private System.Windows.Forms.BindingSource vendasBindingSource;
         private SistemaMoto2DataSetVendaTableAdapters.vendasTableAdapter vendasTableAdapter;
