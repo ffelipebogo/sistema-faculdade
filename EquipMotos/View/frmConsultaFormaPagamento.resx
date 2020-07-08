@@ -126,13 +126,13 @@
     <value>Microsoft Sans Serif, 10pt</value>
   </data>
   <data name="txtPesquisar.Location" type="System.Drawing.Point, System.Drawing">
-    <value>9, 94</value>
+    <value>20, 99</value>
   </data>
   <data name="txtPesquisar.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="txtPesquisar.Size" type="System.Drawing.Size, System.Drawing">
-    <value>531, 26</value>
+    <value>399, 23</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="txtPesquisar.TabIndex" type="System.Int32, mscorlib">
@@ -163,10 +163,13 @@
     <value>NoControl</value>
   </data>
   <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>5, 66</value>
+    <value>17, 77</value>
+  </data>
+  <data name="label1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 0, 2, 0</value>
   </data>
   <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>292, 25</value>
+    <value>237, 20</value>
   </data>
   <data name="label1.TabIndex" type="System.Int32, mscorlib">
     <value>36</value>
@@ -196,13 +199,10 @@
     <value>NoControl</value>
   </data>
   <data name="btnVoltar.Location" type="System.Drawing.Point, System.Drawing">
-    <value>523, 533</value>
-  </data>
-  <data name="btnVoltar.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 4, 4, 4</value>
+    <value>456, 469</value>
   </data>
   <data name="btnVoltar.Size" type="System.Drawing.Size, System.Drawing">
-    <value>164, 42</value>
+    <value>100, 30</value>
   </data>
   <data name="btnVoltar.TabIndex" type="System.Int32, mscorlib">
     <value>34</value>
@@ -214,7 +214,7 @@
     <value>btnVoltar</value>
   </data>
   <data name="&gt;&gt;btnVoltar.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>MaterialSkin.Controls.MaterialRaisedButton, MaterialSkin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;btnVoltar.Parent" xml:space="preserve">
     <value>$this</value>
@@ -277,16 +277,13 @@
     <value>17, 17</value>
   </metadata>
   <data name="gvFormaPag.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 142</value>
-  </data>
-  <data name="gvFormaPag.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 4, 4, 4</value>
+    <value>21, 138</value>
   </data>
   <data name="gvFormaPag.RowHeadersWidth" type="System.Int32, mscorlib">
     <value>51</value>
   </data>
   <data name="gvFormaPag.Size" type="System.Drawing.Size, System.Drawing">
-    <value>677, 362</value>
+    <value>526, 309</value>
   </data>
   <data name="gvFormaPag.TabIndex" type="System.Int32, mscorlib">
     <value>31</value>
@@ -310,13 +307,10 @@
     <value>NoControl</value>
   </data>
   <data name="btnBuscarFormaPag.Location" type="System.Drawing.Point, System.Drawing">
-    <value>548, 80</value>
-  </data>
-  <data name="btnBuscarFormaPag.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 4, 4, 4</value>
+    <value>424, 82</value>
   </data>
   <data name="btnBuscarFormaPag.Size" type="System.Drawing.Size, System.Drawing">
-    <value>67, 54</value>
+    <value>50, 50</value>
   </data>
   <data name="btnBuscarFormaPag.SizeMode" type="System.Windows.Forms.PictureBoxSizeMode, System.Windows.Forms">
     <value>CenterImage</value>
@@ -349,13 +343,10 @@
     <value>NoControl</value>
   </data>
   <data name="btnExcluir.Location" type="System.Drawing.Point, System.Drawing">
-    <value>329, 533</value>
-  </data>
-  <data name="btnExcluir.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 4, 4, 4</value>
+    <value>311, 469</value>
   </data>
   <data name="btnExcluir.Size" type="System.Drawing.Size, System.Drawing">
-    <value>130, 42</value>
+    <value>100, 30</value>
   </data>
   <data name="btnExcluir.TabIndex" type="System.Int32, mscorlib">
     <value>35</value>
@@ -370,7 +361,7 @@
     <value>btnExcluir</value>
   </data>
   <data name="&gt;&gt;btnExcluir.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>MaterialSkin.Controls.MaterialRaisedButton, MaterialSkin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;btnExcluir.Parent" xml:space="preserve">
     <value>$this</value>
@@ -391,13 +382,10 @@
     <value>NoControl</value>
   </data>
   <data name="btnAlterar.Location" type="System.Drawing.Point, System.Drawing">
-    <value>191, 533</value>
-  </data>
-  <data name="btnAlterar.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 4, 4, 4</value>
+    <value>207, 469</value>
   </data>
   <data name="btnAlterar.Size" type="System.Drawing.Size, System.Drawing">
-    <value>130, 42</value>
+    <value>100, 30</value>
   </data>
   <data name="btnAlterar.TabIndex" type="System.Int32, mscorlib">
     <value>33</value>
@@ -412,7 +400,7 @@
     <value>btnAlterar</value>
   </data>
   <data name="&gt;&gt;btnAlterar.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>MaterialSkin.Controls.MaterialRaisedButton, MaterialSkin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;btnAlterar.Parent" xml:space="preserve">
     <value>$this</value>
@@ -433,13 +421,10 @@
     <value>NoControl</value>
   </data>
   <data name="btnNovo.Location" type="System.Drawing.Point, System.Drawing">
-    <value>53, 533</value>
-  </data>
-  <data name="btnNovo.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 4, 4, 4</value>
+    <value>104, 469</value>
   </data>
   <data name="btnNovo.Size" type="System.Drawing.Size, System.Drawing">
-    <value>130, 42</value>
+    <value>100, 30</value>
   </data>
   <data name="btnNovo.TabIndex" type="System.Int32, mscorlib">
     <value>32</value>
@@ -454,7 +439,7 @@
     <value>btnNovo</value>
   </data>
   <data name="&gt;&gt;btnNovo.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>MaterialSkin.Controls.MaterialRaisedButton, MaterialSkin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;btnNovo.Parent" xml:space="preserve">
     <value>$this</value>
@@ -469,13 +454,13 @@
     <value>True</value>
   </metadata>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>8, 16</value>
+    <value>6, 13</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>701, 589</value>
+    <value>579, 523</value>
   </data>
   <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
     <value>CenterScreen</value>

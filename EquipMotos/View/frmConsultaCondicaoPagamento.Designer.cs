@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.gvCondPagamento = new System.Windows.Forms.DataGridView();
             this.codigoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -41,13 +41,13 @@
             this.dataGridViewTextBoxColumn15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.condicaoPagamentoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.sistemaMoto2DataSetCondicaoPagamento = new EquipMotos.SistemaMoto2DataSetCondicaoPagamento();
-            this.btnVoltar = new System.Windows.Forms.Button();
+            this.btnVoltar = new MaterialSkin.Controls.MaterialRaisedButton();
             this.txtPesquisar = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnBuscarCondPag = new System.Windows.Forms.PictureBox();
-            this.btnExcluir = new System.Windows.Forms.Button();
-            this.btnAlterar = new System.Windows.Forms.Button();
-            this.btnNovo = new System.Windows.Forms.Button();
+            this.btnExcluir = new MaterialSkin.Controls.MaterialRaisedButton();
+            this.btnAlterar = new MaterialSkin.Controls.MaterialRaisedButton();
+            this.btnNovo = new MaterialSkin.Controls.MaterialRaisedButton();
             this.condicaoPagamentoTableAdapter = new EquipMotos.SistemaMoto2DataSetCondicaoPagamentoTableAdapters.condicaoPagamentoTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.gvCondPagamento)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.condicaoPagamentoBindingSource)).BeginInit();
@@ -65,14 +65,14 @@
             this.gvCondPagamento.BackgroundColor = System.Drawing.SystemColors.Control;
             this.gvCondPagamento.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.gvCondPagamento.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.ControlDark;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.gvCondPagamento.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.ControlDark;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.gvCondPagamento.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.gvCondPagamento.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gvCondPagamento.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.codigoDataGridViewTextBoxColumn,
@@ -85,12 +85,11 @@
             this.dataGridViewTextBoxColumn15});
             this.gvCondPagamento.DataSource = this.condicaoPagamentoBindingSource;
             this.gvCondPagamento.EnableHeadersVisualStyles = false;
-            this.gvCondPagamento.Location = new System.Drawing.Point(17, 151);
-            this.gvCondPagamento.Margin = new System.Windows.Forms.Padding(4);
+            this.gvCondPagamento.Location = new System.Drawing.Point(23, 143);
             this.gvCondPagamento.Name = "gvCondPagamento";
             this.gvCondPagamento.ReadOnly = true;
             this.gvCondPagamento.RowHeadersWidth = 51;
-            this.gvCondPagamento.Size = new System.Drawing.Size(882, 362);
+            this.gvCondPagamento.Size = new System.Drawing.Size(662, 294);
             this.gvCondPagamento.TabIndex = 0;
             // 
             // codigoDataGridViewTextBoxColumn
@@ -178,11 +177,13 @@
             // btnVoltar
             // 
             this.btnVoltar.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnVoltar.Depth = 0;
             this.btnVoltar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnVoltar.Location = new System.Drawing.Point(730, 539);
-            this.btnVoltar.Margin = new System.Windows.Forms.Padding(4);
+            this.btnVoltar.Location = new System.Drawing.Point(585, 476);
+            this.btnVoltar.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnVoltar.Name = "btnVoltar";
-            this.btnVoltar.Size = new System.Drawing.Size(169, 42);
+            this.btnVoltar.Primary = true;
+            this.btnVoltar.Size = new System.Drawing.Size(100, 30);
             this.btnVoltar.TabIndex = 26;
             this.btnVoltar.Text = "VOLTAR";
             this.btnVoltar.UseVisualStyleBackColor = true;
@@ -192,35 +193,37 @@
             // 
             this.txtPesquisar.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtPesquisar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPesquisar.Location = new System.Drawing.Point(12, 102);
-            this.txtPesquisar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtPesquisar.Location = new System.Drawing.Point(19, 103);
+            this.txtPesquisar.Margin = new System.Windows.Forms.Padding(2);
             this.txtPesquisar.Name = "txtPesquisar";
-            this.txtPesquisar.Size = new System.Drawing.Size(531, 26);
+            this.txtPesquisar.Size = new System.Drawing.Size(399, 23);
             this.txtPesquisar.TabIndex = 29;
             // 
             // label1
             // 
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(12, 75);
+            this.label1.Location = new System.Drawing.Point(19, 81);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(293, 25);
+            this.label1.Size = new System.Drawing.Size(236, 20);
             this.label1.TabIndex = 28;
             this.label1.Text = "Pesquisar Condição Pagamento";
             // 
             // btnBuscarCondPag
             // 
             this.btnBuscarCondPag.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnBuscarCondPag.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnBuscarCondPag.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.btnBuscarCondPag.ErrorImage = global::EquipMotos.Properties.Resources._1398754683_xmag;
             this.btnBuscarCondPag.Image = global::EquipMotos.Properties.Resources._1398754683_xmag;
             this.btnBuscarCondPag.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.btnBuscarCondPag.InitialImage = global::EquipMotos.Properties.Resources._1398754683_xmag;
-            this.btnBuscarCondPag.Location = new System.Drawing.Point(554, 89);
-            this.btnBuscarCondPag.Margin = new System.Windows.Forms.Padding(4);
+            this.btnBuscarCondPag.Location = new System.Drawing.Point(423, 87);
             this.btnBuscarCondPag.Name = "btnBuscarCondPag";
-            this.btnBuscarCondPag.Size = new System.Drawing.Size(66, 54);
+            this.btnBuscarCondPag.Size = new System.Drawing.Size(50, 50);
             this.btnBuscarCondPag.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.btnBuscarCondPag.TabIndex = 267;
             this.btnBuscarCondPag.TabStop = false;
@@ -229,13 +232,15 @@
             // btnExcluir
             // 
             this.btnExcluir.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnExcluir.Depth = 0;
             this.btnExcluir.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnExcluir.Image = global::EquipMotos.Properties.Resources._1398756469_Erase;
             this.btnExcluir.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnExcluir.Location = new System.Drawing.Point(570, 539);
-            this.btnExcluir.Margin = new System.Windows.Forms.Padding(4);
+            this.btnExcluir.Location = new System.Drawing.Point(465, 476);
+            this.btnExcluir.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnExcluir.Name = "btnExcluir";
-            this.btnExcluir.Size = new System.Drawing.Size(130, 42);
+            this.btnExcluir.Primary = true;
+            this.btnExcluir.Size = new System.Drawing.Size(100, 30);
             this.btnExcluir.TabIndex = 27;
             this.btnExcluir.Text = "EXCLUIR";
             this.btnExcluir.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -245,13 +250,15 @@
             // btnAlterar
             // 
             this.btnAlterar.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnAlterar.Depth = 0;
             this.btnAlterar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAlterar.Image = global::EquipMotos.Properties.Resources._1398756462_Modify;
             this.btnAlterar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAlterar.Location = new System.Drawing.Point(432, 539);
-            this.btnAlterar.Margin = new System.Windows.Forms.Padding(4);
+            this.btnAlterar.Location = new System.Drawing.Point(361, 476);
+            this.btnAlterar.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnAlterar.Name = "btnAlterar";
-            this.btnAlterar.Size = new System.Drawing.Size(130, 42);
+            this.btnAlterar.Primary = true;
+            this.btnAlterar.Size = new System.Drawing.Size(100, 30);
             this.btnAlterar.TabIndex = 25;
             this.btnAlterar.Text = "ALTERAR";
             this.btnAlterar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -261,13 +268,15 @@
             // btnNovo
             // 
             this.btnNovo.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnNovo.Depth = 0;
             this.btnNovo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnNovo.Image = global::EquipMotos.Properties.Resources._1398756346_1;
             this.btnNovo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnNovo.Location = new System.Drawing.Point(294, 539);
-            this.btnNovo.Margin = new System.Windows.Forms.Padding(4);
+            this.btnNovo.Location = new System.Drawing.Point(257, 476);
+            this.btnNovo.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnNovo.Name = "btnNovo";
-            this.btnNovo.Size = new System.Drawing.Size(130, 42);
+            this.btnNovo.Primary = true;
+            this.btnNovo.Size = new System.Drawing.Size(100, 30);
             this.btnNovo.TabIndex = 24;
             this.btnNovo.Text = "NOVO";
             this.btnNovo.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -280,9 +289,9 @@
             // 
             // frmConsultaCondicaoPagamento
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(913, 602);
+            this.ClientSize = new System.Drawing.Size(704, 528);
             this.ControlBox = false;
             this.Controls.Add(this.btnBuscarCondPag);
             this.Controls.Add(this.txtPesquisar);
@@ -292,7 +301,6 @@
             this.Controls.Add(this.btnAlterar);
             this.Controls.Add(this.btnNovo);
             this.Controls.Add(this.gvCondPagamento);
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmConsultaCondicaoPagamento";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Consulta Condicao de Pagamento";
@@ -309,13 +317,13 @@
         #endregion
 
         private System.Windows.Forms.DataGridView gvCondPagamento;
-        private System.Windows.Forms.Button btnExcluir;
-        private System.Windows.Forms.Button btnAlterar;
-        private System.Windows.Forms.Button btnNovo;
+        private MaterialSkin.Controls.MaterialRaisedButton btnExcluir;
+        private MaterialSkin.Controls.MaterialRaisedButton btnAlterar;
+        private MaterialSkin.Controls.MaterialRaisedButton btnNovo;
         private System.Windows.Forms.TextBox txtPesquisar;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox btnBuscarCondPag;
-        public System.Windows.Forms.Button btnVoltar;
+        public MaterialSkin.Controls.MaterialRaisedButton btnVoltar;
         private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn condicaoDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn multaDataGridViewTextBoxColumn;

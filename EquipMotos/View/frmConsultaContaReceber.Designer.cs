@@ -30,9 +30,9 @@
         {
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.btnExcluir = new System.Windows.Forms.Button();
-            this.btnVoltar = new System.Windows.Forms.Button();
-            this.btnAlterar = new System.Windows.Forms.Button();
+            this.btnExcluir = new MaterialSkin.Controls.MaterialRaisedButton();
+            this.btnVoltar = new MaterialSkin.Controls.MaterialRaisedButton();
+            this.btnAlterar = new MaterialSkin.Controls.MaterialRaisedButton();
             this.txtPesquisar = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.gvContaReceber = new System.Windows.Forms.DataGridView();
@@ -52,7 +52,7 @@
             this.pagoDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.contaReceberBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.sistemaMoto2DataSetContaReceber = new EquipMotos.SistemaMoto2DataSetContaReceber();
-            this.btnNovo = new System.Windows.Forms.Button();
+            this.btnNovo = new MaterialSkin.Controls.MaterialRaisedButton();
             this.btnBuscarContaPagar = new System.Windows.Forms.PictureBox();
             this.contaReceberTableAdapter = new EquipMotos.SistemaMoto2DataSetContaReceberTableAdapters.contaReceberTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.gvContaReceber)).BeginInit();
@@ -63,12 +63,14 @@
             // 
             // btnExcluir
             // 
+            this.btnExcluir.Depth = 0;
             this.btnExcluir.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnExcluir.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnExcluir.Location = new System.Drawing.Point(460, 530);
-            this.btnExcluir.Margin = new System.Windows.Forms.Padding(4);
+            this.btnExcluir.Location = new System.Drawing.Point(372, 458);
+            this.btnExcluir.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnExcluir.Name = "btnExcluir";
-            this.btnExcluir.Size = new System.Drawing.Size(112, 42);
+            this.btnExcluir.Primary = true;
+            this.btnExcluir.Size = new System.Drawing.Size(100, 30);
             this.btnExcluir.TabIndex = 282;
             this.btnExcluir.Text = "RECEBER";
             this.btnExcluir.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -77,11 +79,13 @@
             // 
             // btnVoltar
             // 
+            this.btnVoltar.Depth = 0;
             this.btnVoltar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnVoltar.Location = new System.Drawing.Point(611, 530);
-            this.btnVoltar.Margin = new System.Windows.Forms.Padding(4);
+            this.btnVoltar.Location = new System.Drawing.Point(507, 458);
+            this.btnVoltar.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnVoltar.Name = "btnVoltar";
-            this.btnVoltar.Size = new System.Drawing.Size(159, 42);
+            this.btnVoltar.Primary = true;
+            this.btnVoltar.Size = new System.Drawing.Size(100, 30);
             this.btnVoltar.TabIndex = 281;
             this.btnVoltar.Text = "VOLTAR";
             this.btnVoltar.UseVisualStyleBackColor = true;
@@ -89,12 +93,14 @@
             // 
             // btnAlterar
             // 
+            this.btnAlterar.Depth = 0;
             this.btnAlterar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAlterar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAlterar.Location = new System.Drawing.Point(301, 530);
-            this.btnAlterar.Margin = new System.Windows.Forms.Padding(4);
+            this.btnAlterar.Location = new System.Drawing.Point(266, 458);
+            this.btnAlterar.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnAlterar.Name = "btnAlterar";
-            this.btnAlterar.Size = new System.Drawing.Size(131, 42);
+            this.btnAlterar.Primary = true;
+            this.btnAlterar.Size = new System.Drawing.Size(100, 30);
             this.btnAlterar.TabIndex = 280;
             this.btnAlterar.Text = "VISUALIZAR";
             this.btnAlterar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -104,19 +110,21 @@
             // txtPesquisar
             // 
             this.txtPesquisar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPesquisar.Location = new System.Drawing.Point(16, 95);
-            this.txtPesquisar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtPesquisar.Location = new System.Drawing.Point(30, 104);
+            this.txtPesquisar.Margin = new System.Windows.Forms.Padding(2);
             this.txtPesquisar.Name = "txtPesquisar";
-            this.txtPesquisar.Size = new System.Drawing.Size(472, 26);
+            this.txtPesquisar.Size = new System.Drawing.Size(355, 23);
             this.txtPesquisar.TabIndex = 277;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(12, 67);
+            this.label1.Location = new System.Drawing.Point(27, 81);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(261, 25);
+            this.label1.Size = new System.Drawing.Size(212, 20);
             this.label1.TabIndex = 276;
             this.label1.Text = "Pesquisar Contas à Receber";
             // 
@@ -155,12 +163,11 @@
             this.pagoDataGridViewCheckBoxColumn});
             this.gvContaReceber.DataSource = this.contaReceberBindingSource;
             this.gvContaReceber.EnableHeadersVisualStyles = false;
-            this.gvContaReceber.Location = new System.Drawing.Point(17, 140);
-            this.gvContaReceber.Margin = new System.Windows.Forms.Padding(4);
+            this.gvContaReceber.Location = new System.Drawing.Point(31, 141);
             this.gvContaReceber.Name = "gvContaReceber";
             this.gvContaReceber.ReadOnly = true;
             this.gvContaReceber.RowHeadersWidth = 51;
-            this.gvContaReceber.Size = new System.Drawing.Size(753, 362);
+            this.gvContaReceber.Size = new System.Drawing.Size(565, 294);
             this.gvContaReceber.TabIndex = 275;
             // 
             // nrNotaDataGridViewTextBoxColumn
@@ -301,13 +308,15 @@
             // 
             // btnNovo
             // 
+            this.btnNovo.Depth = 0;
             this.btnNovo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnNovo.Image = global::EquipMotos.Properties.Resources._1398756346_1;
             this.btnNovo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnNovo.Location = new System.Drawing.Point(163, 530);
-            this.btnNovo.Margin = new System.Windows.Forms.Padding(4);
+            this.btnNovo.Location = new System.Drawing.Point(162, 458);
+            this.btnNovo.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnNovo.Name = "btnNovo";
-            this.btnNovo.Size = new System.Drawing.Size(131, 42);
+            this.btnNovo.Primary = true;
+            this.btnNovo.Size = new System.Drawing.Size(100, 30);
             this.btnNovo.TabIndex = 279;
             this.btnNovo.Text = "NOVO";
             this.btnNovo.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -317,15 +326,15 @@
             // 
             // btnBuscarContaPagar
             // 
+            this.btnBuscarContaPagar.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnBuscarContaPagar.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.btnBuscarContaPagar.ErrorImage = global::EquipMotos.Properties.Resources._1398754683_xmag;
             this.btnBuscarContaPagar.Image = global::EquipMotos.Properties.Resources._1398754683_xmag;
             this.btnBuscarContaPagar.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.btnBuscarContaPagar.InitialImage = global::EquipMotos.Properties.Resources._1398754683_xmag;
-            this.btnBuscarContaPagar.Location = new System.Drawing.Point(495, 77);
-            this.btnBuscarContaPagar.Margin = new System.Windows.Forms.Padding(4);
+            this.btnBuscarContaPagar.Location = new System.Drawing.Point(390, 85);
             this.btnBuscarContaPagar.Name = "btnBuscarContaPagar";
-            this.btnBuscarContaPagar.Size = new System.Drawing.Size(67, 54);
+            this.btnBuscarContaPagar.Size = new System.Drawing.Size(50, 50);
             this.btnBuscarContaPagar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.btnBuscarContaPagar.TabIndex = 278;
             this.btnBuscarContaPagar.TabStop = false;
@@ -337,9 +346,9 @@
             // 
             // frmConsultaContaReceber
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(788, 583);
+            this.ClientSize = new System.Drawing.Size(628, 517);
             this.ControlBox = false;
             this.Controls.Add(this.btnExcluir);
             this.Controls.Add(this.btnVoltar);
@@ -349,7 +358,7 @@
             this.Controls.Add(this.txtPesquisar);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.gvContaReceber);
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "frmConsultaContaReceber";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Consultar Contas à Receber";
@@ -365,10 +374,10 @@
 
         #endregion
 
-        private System.Windows.Forms.Button btnExcluir;
-        public System.Windows.Forms.Button btnVoltar;
-        private System.Windows.Forms.Button btnAlterar;
-        private System.Windows.Forms.Button btnNovo;
+        private MaterialSkin.Controls.MaterialRaisedButton btnExcluir;
+        public MaterialSkin.Controls.MaterialRaisedButton btnVoltar;
+        private MaterialSkin.Controls.MaterialRaisedButton btnAlterar;
+        private MaterialSkin.Controls.MaterialRaisedButton btnNovo;
         private System.Windows.Forms.PictureBox btnBuscarContaPagar;
         private System.Windows.Forms.TextBox txtPesquisar;
         private System.Windows.Forms.Label label1;

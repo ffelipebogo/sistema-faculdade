@@ -33,7 +33,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.txtPesquisar = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.btnVoltar = new System.Windows.Forms.Button();
+            this.btnVoltar = new MaterialSkin.Controls.MaterialRaisedButton();
             this.gvFormaPag = new System.Windows.Forms.DataGridView();
             this.codigoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -43,9 +43,9 @@
             this.formaPagamentoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.sistemaMoto2DataSetFormaPagamento = new EquipMotos.SistemaMoto2DataSetFormaPagamento();
             this.btnBuscarFormaPag = new System.Windows.Forms.PictureBox();
-            this.btnExcluir = new System.Windows.Forms.Button();
-            this.btnAlterar = new System.Windows.Forms.Button();
-            this.btnNovo = new System.Windows.Forms.Button();
+            this.btnExcluir = new MaterialSkin.Controls.MaterialRaisedButton();
+            this.btnAlterar = new MaterialSkin.Controls.MaterialRaisedButton();
+            this.btnNovo = new MaterialSkin.Controls.MaterialRaisedButton();
             this.formaPagamentoTableAdapter = new EquipMotos.SistemaMoto2DataSetFormaPagamentoTableAdapters.formaPagamentoTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.gvFormaPag)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.formaPagamentoBindingSource)).BeginInit();
@@ -61,12 +61,16 @@
             // label1
             // 
             resources.ApplyResources(this.label1, "label1");
+            this.label1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.label1.Name = "label1";
             // 
             // btnVoltar
             // 
             resources.ApplyResources(this.btnVoltar, "btnVoltar");
+            this.btnVoltar.Depth = 0;
+            this.btnVoltar.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnVoltar.Name = "btnVoltar";
+            this.btnVoltar.Primary = true;
             this.btnVoltar.UseVisualStyleBackColor = true;
             this.btnVoltar.Click += new System.EventHandler(this.BtnVoltar_Click);
             // 
@@ -148,6 +152,7 @@
             // btnBuscarFormaPag
             // 
             resources.ApplyResources(this.btnBuscarFormaPag, "btnBuscarFormaPag");
+            this.btnBuscarFormaPag.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnBuscarFormaPag.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.btnBuscarFormaPag.ErrorImage = global::EquipMotos.Properties.Resources._1398754683_xmag;
             this.btnBuscarFormaPag.Image = global::EquipMotos.Properties.Resources._1398754683_xmag;
@@ -159,24 +164,33 @@
             // btnExcluir
             // 
             resources.ApplyResources(this.btnExcluir, "btnExcluir");
+            this.btnExcluir.Depth = 0;
             this.btnExcluir.Image = global::EquipMotos.Properties.Resources._1398756469_Erase;
+            this.btnExcluir.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnExcluir.Name = "btnExcluir";
+            this.btnExcluir.Primary = true;
             this.btnExcluir.UseVisualStyleBackColor = true;
             this.btnExcluir.Click += new System.EventHandler(this.BtnExcluir_Click);
             // 
             // btnAlterar
             // 
             resources.ApplyResources(this.btnAlterar, "btnAlterar");
+            this.btnAlterar.Depth = 0;
             this.btnAlterar.Image = global::EquipMotos.Properties.Resources._1398756462_Modify;
+            this.btnAlterar.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnAlterar.Name = "btnAlterar";
+            this.btnAlterar.Primary = true;
             this.btnAlterar.UseVisualStyleBackColor = true;
             this.btnAlterar.Click += new System.EventHandler(this.BtnAlterar_Click);
             // 
             // btnNovo
             // 
             resources.ApplyResources(this.btnNovo, "btnNovo");
+            this.btnNovo.Depth = 0;
             this.btnNovo.Image = global::EquipMotos.Properties.Resources._1398756346_1;
+            this.btnNovo.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnNovo.Name = "btnNovo";
+            this.btnNovo.Primary = true;
             this.btnNovo.UseVisualStyleBackColor = true;
             this.btnNovo.Click += new System.EventHandler(this.BtnNovo_Click);
             // 
@@ -211,12 +225,12 @@
         #endregion
         private System.Windows.Forms.TextBox txtPesquisar;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button btnExcluir;
-        private System.Windows.Forms.Button btnAlterar;
-        private System.Windows.Forms.Button btnNovo;
+        private MaterialSkin.Controls.MaterialRaisedButton btnExcluir;
+        private MaterialSkin.Controls.MaterialRaisedButton btnAlterar;
+        private MaterialSkin.Controls.MaterialRaisedButton btnNovo;
         private System.Windows.Forms.DataGridView gvFormaPag;
         private System.Windows.Forms.PictureBox btnBuscarFormaPag;
-        public System.Windows.Forms.Button btnVoltar;
+        public MaterialSkin.Controls.MaterialRaisedButton btnVoltar;
         private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn formaDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn dtCadastroDataGridViewTextBoxColumn;
