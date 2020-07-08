@@ -283,11 +283,9 @@
             // txtPesquisar
             // 
             this.txtPesquisar.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtPesquisar.Depth = 0;
             this.txtPesquisar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPesquisar.Location = new System.Drawing.Point(37, 102);
             this.txtPesquisar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtPesquisar.MouseState = MaterialSkin.MouseState.HOVER;
             this.txtPesquisar.Name = "txtPesquisar";
             this.txtPesquisar.Size = new System.Drawing.Size(433, 23);
             this.txtPesquisar.TabIndex = 259;

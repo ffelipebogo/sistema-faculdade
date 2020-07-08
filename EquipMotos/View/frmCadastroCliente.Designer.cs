@@ -109,7 +109,6 @@
             // txtSite
             // 
             this.txtSite.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtSite.Depth = 0;
             this.txtSite.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSite.Location = new System.Drawing.Point(648, 259);
             this.txtSite.Name = "txtSite";
@@ -195,7 +194,6 @@
             // txtUsuario
             // 
             this.txtUsuario.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtUsuario.Depth = 0;
             this.txtUsuario.Enabled = false;
             this.txtUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtUsuario.Location = new System.Drawing.Point(218, 482);
@@ -407,7 +405,6 @@
             this.txtIdCidade.Name = "txtIdCidade";
             this.txtIdCidade.Size = new System.Drawing.Size(52, 22);
             this.txtIdCidade.TabIndex = 13;
-            this.txtIdCidade.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtIdCidade.TextChanged += new System.EventHandler(this.txtIdCidade_TextChanged);
             this.txtIdCidade.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtIdCidade_KeyPress);
             this.txtIdCidade.MouseDown += new System.Windows.Forms.MouseEventHandler(this.txtIdCidade_MouseDown);
@@ -515,7 +512,6 @@
             this.txtSexo.Name = "txtSexo";
             this.txtSexo.Size = new System.Drawing.Size(32, 22);
             this.txtSexo.TabIndex = 7;
-            this.txtSexo.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtSexo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSexo_KeyPress);
             this.txtSexo.Leave += new System.EventHandler(this.txtSexo_Leave);
             this.txtSexo.MouseDown += new System.Windows.Forms.MouseEventHandler(this.txtSexo_MouseDown);
@@ -532,7 +528,6 @@
             this.lblSexo.Size = new System.Drawing.Size(47, 16);
             this.lblSexo.TabIndex = 118;
             this.lblSexo.Text = "Sexo *";
-            this.lblSexo.Click += new System.EventHandler(this.lblSexo_Click);
             // 
             // lblDtNascimento
             // 
@@ -834,7 +829,6 @@
             this.label6.Size = new System.Drawing.Size(52, 16);
             this.label6.TabIndex = 250;
             this.label6.Text = "Código";
-            this.label6.Click += new System.EventHandler(this.label6_Click);
             // 
             // txtCodCondicao
             // 
@@ -845,7 +839,6 @@
             this.txtCodCondicao.Name = "txtCodCondicao";
             this.txtCodCondicao.Size = new System.Drawing.Size(51, 22);
             this.txtCodCondicao.TabIndex = 23;
-            this.txtCodCondicao.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtCodCondicao.TextChanged += new System.EventHandler(this.txtCodCondicao_TextChanged);
             this.txtCodCondicao.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtCodCondicao_KeyPress);
             this.txtCodCondicao.MouseDown += new System.Windows.Forms.MouseEventHandler(this.txtCodCondicao_MouseDown);
@@ -889,7 +882,6 @@
             this.txtRg.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtRg.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtRg.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtRg.Location = new System.Drawing.Point(151, 311);
             this.txtRg.Margin = new System.Windows.Forms.Padding(2);

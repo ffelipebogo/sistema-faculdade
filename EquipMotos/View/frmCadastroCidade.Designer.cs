@@ -134,7 +134,6 @@
             this.txtUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtUsuario.Location = new System.Drawing.Point(213, 267);
             this.txtUsuario.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
-            this.txtUsuario.MouseState = MaterialSkin.MouseState.HOVER;
             this.txtUsuario.Name = "txtUsuario";
             this.txtUsuario.Size = new System.Drawing.Size(139, 18);
             this.txtUsuario.TabIndex = 252;
@@ -148,7 +147,6 @@
             this.lblUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblUsuario.Location = new System.Drawing.Point(210, 247);
             this.lblUsuario.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblUsuario.MouseState = MaterialSkin.MouseState.HOVER;
             this.lblUsuario.Name = "lblUsuario";
             this.lblUsuario.Size = new System.Drawing.Size(107, 13);
             this.lblUsuario.TabIndex = 251;
@@ -162,7 +160,6 @@
             this.lblDtAlteracao.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDtAlteracao.Location = new System.Drawing.Point(104, 247);
             this.lblDtAlteracao.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblDtAlteracao.MouseState = MaterialSkin.MouseState.HOVER;
             this.lblDtAlteracao.Name = "lblDtAlteracao";
             this.lblDtAlteracao.Size = new System.Drawing.Size(77, 13);
             this.lblDtAlteracao.TabIndex = 250;
@@ -176,7 +173,6 @@
             this.lblDtCadastro.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDtCadastro.Location = new System.Drawing.Point(14, 247);
             this.lblDtCadastro.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblDtCadastro.MouseState = MaterialSkin.MouseState.HOVER;
             this.lblDtCadastro.Name = "lblDtCadastro";
             this.lblDtCadastro.Size = new System.Drawing.Size(75, 13);
             this.lblDtCadastro.TabIndex = 249;
@@ -190,7 +186,6 @@
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(13, 81);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label1.MouseState = MaterialSkin.MouseState.HOVER;
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(52, 17);
             this.label1.TabIndex = 258;
@@ -204,7 +199,6 @@
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(91, 82);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label2.MouseState = MaterialSkin.MouseState.HOVER;
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(52, 17);
             this.label2.TabIndex = 259;
@@ -219,7 +213,6 @@
             this.txtCodigo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCodigo.Location = new System.Drawing.Point(17, 106);
             this.txtCodigo.Margin = new System.Windows.Forms.Padding(4);
-            this.txtCodigo.MouseState = MaterialSkin.MouseState.HOVER;
             this.txtCodigo.Name = "txtCodigo";
             this.txtCodigo.Size = new System.Drawing.Size(60, 23);
             this.txtCodigo.TabIndex = 1;
@@ -233,7 +226,6 @@
             this.txtCidade.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCidade.Location = new System.Drawing.Point(94, 106);
             this.txtCidade.Margin = new System.Windows.Forms.Padding(4);
-            this.txtCidade.MouseState = MaterialSkin.MouseState.HOVER;
             this.txtCidade.Name = "txtCidade";
             this.txtCidade.Size = new System.Drawing.Size(328, 23);
             this.txtCidade.TabIndex = 2;
@@ -271,7 +263,6 @@
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(13, 137);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label3.MouseState = MaterialSkin.MouseState.HOVER;
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(52, 17);
             this.label3.TabIndex = 265;
@@ -359,7 +350,7 @@
         private System.Windows.Forms.TextBox txtCodEstado;
         private System.Windows.Forms.TextBox txtEstado;
         private System.Windows.Forms.PictureBox btnBuscarEstado;
-        private MaterialSkin.Controls.MaterialLabel label3;
-        private MaterialSkin.Controls.MaterialLabel label4;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
     }
 }
