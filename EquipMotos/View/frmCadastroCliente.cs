@@ -1062,5 +1062,10 @@ namespace EquipMotos.Codigo.View
                 txtDtNascimento.Focus();
             }
         }
+
+        private void txtDtNascimento_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

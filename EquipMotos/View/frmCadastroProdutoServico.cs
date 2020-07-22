@@ -687,5 +687,20 @@ namespace EquipMotos.View
                 }
             }
         }
+
+        private void txtDtCadastro_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
+        {
+
+        }
+
+        private void txtDtAlteracao_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
+        {
+
+        }
+
+        private void txtUsuario_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

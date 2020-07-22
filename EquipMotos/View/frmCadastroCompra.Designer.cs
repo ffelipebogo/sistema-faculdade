@@ -109,7 +109,7 @@
             this.label16.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label16.AutoSize = true;
             this.label16.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label16.Location = new System.Drawing.Point(730, 215);
+            this.label16.Location = new System.Drawing.Point(730, 217);
             this.label16.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(50, 17);
@@ -136,7 +136,7 @@
             this.label15.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label15.AutoSize = true;
             this.label15.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label15.Location = new System.Drawing.Point(624, 215);
+            this.label15.Location = new System.Drawing.Point(624, 217);
             this.label15.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(91, 17);
@@ -160,7 +160,7 @@
             this.label14.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label14.AutoSize = true;
             this.label14.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label14.Location = new System.Drawing.Point(89, 215);
+            this.label14.Location = new System.Drawing.Point(93, 215);
             this.label14.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(67, 17);
@@ -182,7 +182,7 @@
             this.label13.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label13.AutoSize = true;
             this.label13.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label13.Location = new System.Drawing.Point(3, 215);
+            this.label13.Location = new System.Drawing.Point(7, 215);
             this.label13.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(52, 17);
@@ -207,7 +207,7 @@
             this.label4.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label4.AutoSize = true;
             this.label4.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label4.Location = new System.Drawing.Point(89, 139);
+            this.label4.Location = new System.Drawing.Point(91, 142);
             this.label4.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(90, 17);
@@ -231,7 +231,7 @@
             this.label3.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label3.Location = new System.Drawing.Point(3, 139);
+            this.label3.Location = new System.Drawing.Point(5, 142);
             this.label3.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(52, 17);
@@ -257,7 +257,7 @@
             this.label2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label2.Location = new System.Drawing.Point(375, 79);
+            this.label2.Location = new System.Drawing.Point(375, 82);
             this.label2.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(103, 17);
@@ -367,7 +367,7 @@
             this.label28.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label28.AutoSize = true;
             this.label28.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label28.Location = new System.Drawing.Point(86, 497);
+            this.label28.Location = new System.Drawing.Point(92, 500);
             this.label28.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label28.Name = "label28";
             this.label28.Size = new System.Drawing.Size(172, 17);
@@ -379,7 +379,7 @@
             this.label27.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label27.AutoSize = true;
             this.label27.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label27.Location = new System.Drawing.Point(5, 497);
+            this.label27.Location = new System.Drawing.Point(11, 500);
             this.label27.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label27.Name = "label27";
             this.label27.Size = new System.Drawing.Size(52, 17);
@@ -562,7 +562,7 @@
             this.btnBuscarFornecedor.Location = new System.Drawing.Point(448, 151);
             this.btnBuscarFornecedor.Margin = new System.Windows.Forms.Padding(5);
             this.btnBuscarFornecedor.Name = "btnBuscarFornecedor";
-            this.btnBuscarFornecedor.Size = new System.Drawing.Size(82, 51);
+            this.btnBuscarFornecedor.Size = new System.Drawing.Size(50, 50);
             this.btnBuscarFornecedor.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.btnBuscarFornecedor.TabIndex = 265;
             this.btnBuscarFornecedor.TabStop = false;
@@ -579,7 +579,7 @@
             this.btnBuscarProduto.Location = new System.Drawing.Point(448, 227);
             this.btnBuscarProduto.Margin = new System.Windows.Forms.Padding(5);
             this.btnBuscarProduto.Name = "btnBuscarProduto";
-            this.btnBuscarProduto.Size = new System.Drawing.Size(82, 50);
+            this.btnBuscarProduto.Size = new System.Drawing.Size(50, 50);
             this.btnBuscarProduto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.btnBuscarProduto.TabIndex = 266;
             this.btnBuscarProduto.TabStop = false;
@@ -596,7 +596,7 @@
             this.btnBuscarCondPagamento.Location = new System.Drawing.Point(450, 509);
             this.btnBuscarCondPagamento.Margin = new System.Windows.Forms.Padding(5);
             this.btnBuscarCondPagamento.Name = "btnBuscarCondPagamento";
-            this.btnBuscarCondPagamento.Size = new System.Drawing.Size(82, 51);
+            this.btnBuscarCondPagamento.Size = new System.Drawing.Size(50, 50);
             this.btnBuscarCondPagamento.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.btnBuscarCondPagamento.TabIndex = 267;
             this.btnBuscarCondPagamento.TabStop = false;
@@ -629,19 +629,20 @@
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label1.Location = new System.Drawing.Point(3, 79);
+            this.label1.Location = new System.Drawing.Point(5, 82);
             this.label1.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(63, 17);
             this.label1.TabIndex = 87;
             this.label1.Text = "Modelo *";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // label7
             // 
             this.label7.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label7.AutoSize = true;
             this.label7.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label7.Location = new System.Drawing.Point(124, 79);
+            this.label7.Location = new System.Drawing.Point(124, 82);
             this.label7.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(50, 17);
@@ -675,7 +676,7 @@
             this.label8.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label8.AutoSize = true;
             this.label8.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label8.Location = new System.Drawing.Point(245, 79);
+            this.label8.Location = new System.Drawing.Point(245, 82);
             this.label8.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(71, 17);
@@ -699,7 +700,7 @@
             this.label9.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label9.AutoSize = true;
             this.label9.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label9.Location = new System.Drawing.Point(540, 79);
+            this.label9.Location = new System.Drawing.Point(540, 82);
             this.label9.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(106, 17);
@@ -711,7 +712,7 @@
             this.label10.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label10.AutoSize = true;
             this.label10.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label10.Location = new System.Drawing.Point(530, 216);
+            this.label10.Location = new System.Drawing.Point(530, 218);
             this.label10.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(47, 17);
@@ -764,7 +765,7 @@
             this.label12.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label12.AutoSize = true;
             this.label12.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label12.Location = new System.Drawing.Point(3, 441);
+            this.label12.Location = new System.Drawing.Point(11, 442);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(69, 17);
             this.label12.TabIndex = 285;
@@ -783,9 +784,9 @@
             this.lvItem.FullRowSelect = true;
             this.lvItem.GridLines = true;
             this.lvItem.HideSelection = false;
-            this.lvItem.Location = new System.Drawing.Point(9, 288);
+            this.lvItem.Location = new System.Drawing.Point(10, 288);
             this.lvItem.Name = "lvItem";
-            this.lvItem.Size = new System.Drawing.Size(720, 146);
+            this.lvItem.Size = new System.Drawing.Size(719, 146);
             this.lvItem.TabIndex = 286;
             this.lvItem.UseCompatibleStateImageBehavior = false;
             this.lvItem.View = System.Windows.Forms.View.Details;
@@ -881,7 +882,7 @@
             // 
             this.txtDataEmissao.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDataEmissao.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.txtDataEmissao.Location = new System.Drawing.Point(385, 113);
+            this.txtDataEmissao.Location = new System.Drawing.Point(378, 104);
             this.txtDataEmissao.Name = "txtDataEmissao";
             this.txtDataEmissao.Size = new System.Drawing.Size(130, 23);
             this.txtDataEmissao.TabIndex = 290;
@@ -891,7 +892,7 @@
             // 
             this.txtDtChegada.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.txtDtChegada.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.txtDtChegada.Location = new System.Drawing.Point(555, 114);
+            this.txtDtChegada.Location = new System.Drawing.Point(548, 105);
             this.txtDtChegada.Name = "txtDtChegada";
             this.txtDtChegada.Size = new System.Drawing.Size(132, 23);
             this.txtDtChegada.TabIndex = 291;

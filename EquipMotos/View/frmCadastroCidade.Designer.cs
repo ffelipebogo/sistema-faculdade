@@ -135,9 +135,8 @@
             this.txtUsuario.Location = new System.Drawing.Point(213, 267);
             this.txtUsuario.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.txtUsuario.Name = "txtUsuario";
-            this.txtUsuario.Size = new System.Drawing.Size(139, 18);
+            this.txtUsuario.Size = new System.Drawing.Size(130, 18);
             this.txtUsuario.TabIndex = 252;
-            this.txtUsuario.UseSystemPasswordChar = false;
             // 
             // lblUsuario
             // 
@@ -216,7 +215,6 @@
             this.txtCodigo.Name = "txtCodigo";
             this.txtCodigo.Size = new System.Drawing.Size(60, 23);
             this.txtCodigo.TabIndex = 1;
-            this.txtCodigo.UseSystemPasswordChar = false;
             // 
             // txtCidade
             // 
@@ -229,7 +227,6 @@
             this.txtCidade.Name = "txtCidade";
             this.txtCidade.Size = new System.Drawing.Size(328, 23);
             this.txtCidade.TabIndex = 2;
-            this.txtCidade.UseSystemPasswordChar = false;
             // 
             // txtCodEstado
             // 
@@ -241,7 +238,6 @@
             this.txtCodEstado.Name = "txtCodEstado";
             this.txtCodEstado.Size = new System.Drawing.Size(59, 23);
             this.txtCodEstado.TabIndex = 3;
-            this.txtCodEstado.UseSystemPasswordChar = false;
             // 
             // txtEstado
             // 
@@ -253,7 +249,6 @@
             this.txtEstado.Name = "txtEstado";
             this.txtEstado.Size = new System.Drawing.Size(255, 23);
             this.txtEstado.TabIndex = 4;
-            this.txtEstado.UseSystemPasswordChar = false;
             // 
             // label3
             // 
@@ -290,7 +285,7 @@
             this.btnBuscarEstado.Location = new System.Drawing.Point(356, 148);
             this.btnBuscarEstado.Margin = new System.Windows.Forms.Padding(4);
             this.btnBuscarEstado.Name = "btnBuscarEstado";
-            this.btnBuscarEstado.Size = new System.Drawing.Size(66, 54);
+            this.btnBuscarEstado.Size = new System.Drawing.Size(50, 50);
             this.btnBuscarEstado.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.btnBuscarEstado.TabIndex = 264;
             this.btnBuscarEstado.TabStop = false;

@@ -284,7 +284,7 @@ namespace EquipMotos.View
             this.btnBuscarFormaPag.Location = new System.Drawing.Point(771, 148);
             this.btnBuscarFormaPag.Margin = new System.Windows.Forms.Padding(5);
             this.btnBuscarFormaPag.Name = "btnBuscarFormaPag";
-            this.btnBuscarFormaPag.Size = new System.Drawing.Size(57, 47);
+            this.btnBuscarFormaPag.Size = new System.Drawing.Size(50, 50);
             this.btnBuscarFormaPag.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.btnBuscarFormaPag.TabIndex = 265;
             this.btnBuscarFormaPag.TabStop = false;

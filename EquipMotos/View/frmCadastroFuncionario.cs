@@ -1193,5 +1193,20 @@ namespace EquipMotos.View
         {
 
         }
+
+        private void lblUsuario_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblDtAlteracao_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblDtCadastro_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
