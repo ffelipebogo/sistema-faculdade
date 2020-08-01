@@ -1056,9 +1056,9 @@ namespace EquipMotos.Codigo.View
 
         private void txtDtNascimento_Leave(object sender, EventArgs e)
         {
-            if (txtDtNascimento.Value >= DateTime.Now)
+            if (txtDtNascimento.Value.Date >= DateTime.Now.Date)
             {
-                MessageBox.Show("Não é possivel inserir esta data", "informe uma data menor que hoje!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Informe uma data menor que hoje!", "Não é possivel inserir esta data", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txtDtNascimento.Focus();
             }
         }

@@ -13,7 +13,7 @@ namespace EquipMotos.View.helper
     {
         public static bool ValidaTexto(string texto)
         {
-            Regex rg = new Regex("[ A-Z]");
+            Regex rg = new Regex("[A-Z]");
             return rg.IsMatch(texto);
         }
         public static bool ValidaSite(string texto)

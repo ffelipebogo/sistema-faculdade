@@ -86,9 +86,9 @@
             this.label2.Location = new System.Drawing.Point(90, 80);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(71, 17);
+            this.label2.Size = new System.Drawing.Size(80, 17);
             this.label2.TabIndex = 2;
-            this.label2.Text = "Descrição";
+            this.label2.Text = "Descrição *";
             // 
             // txtDtAlteracao
             // 

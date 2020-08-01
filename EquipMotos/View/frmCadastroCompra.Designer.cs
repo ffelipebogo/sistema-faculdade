@@ -296,7 +296,7 @@
             this.txtObservacoes.Location = new System.Drawing.Point(6, 701);
             this.txtObservacoes.Margin = new System.Windows.Forms.Padding(5);
             this.txtObservacoes.Name = "txtObservacoes";
-            this.txtObservacoes.Size = new System.Drawing.Size(716, 32);
+            this.txtObservacoes.Size = new System.Drawing.Size(571, 32);
             this.txtObservacoes.TabIndex = 20;
             this.txtObservacoes.Text = "";
             // 

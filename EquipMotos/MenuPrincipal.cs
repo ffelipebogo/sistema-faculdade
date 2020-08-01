@@ -10,9 +10,6 @@ namespace EquipMotos
         public MenuPrincipal(string pusuario)
         {
             InitializeComponent();
-            statusUser.Name = System.Security.Principal.WindowsIdentity.GetCurrent().Name;
-            statusUser.Text = System.Security.Principal.WindowsIdentity.GetCurrent().Name;
-            status_data.Text = Convert.ToString(DateTime.Now);
         }
 
         public MenuPrincipal()

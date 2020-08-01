@@ -52,19 +52,12 @@ namespace EquipMotos.DAO
                         comando.Parameters.AddWithValue("@site", cli.site);
                         comando.Parameters.AddWithValue("@endereco", cli.endereco);
                         comando.Parameters.AddWithValue("@complemento", cli.complemento);
-                        if(cli.numero == "0")
-                        {
-                            comando.Parameters.AddWithValue("@numero", cli.numero);
-                        }
-                        else
-                        {
-                            comando.Parameters.AddWithValue("@numero", cli.numero);
-                }
+                        
+                        comando.Parameters.AddWithValue("@numero", cli.numero);
+                
                         comando.Parameters.AddWithValue("@bairro", cli.bairro);
-                        if (cli.cep == "0")
-                        {
-                            comando.Parameters.AddWithValue("@cep", cli.cep);
-                        }
+                        comando.Parameters.AddWithValue("@cep", cli.cep);
+                        
                         comando.Parameters.AddWithValue("@codCidade", cli.Cidade.codigo);
                         if (cli.CondPagamento.codigo != 0)
                         {

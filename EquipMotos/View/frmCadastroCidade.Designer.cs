@@ -199,9 +199,9 @@
             this.label2.Location = new System.Drawing.Point(91, 82);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(52, 17);
+            this.label2.Size = new System.Drawing.Size(61, 17);
             this.label2.TabIndex = 259;
-            this.label2.Text = "Cidade";
+            this.label2.Text = "Cidade *";
             // 
             // txtCodigo
             // 
@@ -270,9 +270,9 @@
             this.label4.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.label4.Location = new System.Drawing.Point(90, 137);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(52, 17);
+            this.label4.Size = new System.Drawing.Size(61, 17);
             this.label4.TabIndex = 266;
-            this.label4.Text = "Estado";
+            this.label4.Text = "Estado *";
             // 
             // btnBuscarEstado
             // 

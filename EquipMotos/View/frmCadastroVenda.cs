@@ -28,9 +28,13 @@ namespace EquipMotos.View
         CtrlClientes CtrlCliente = new CtrlClientes();
         CondicaoPagamentos CondicaoPagamento;
 
+        ToolTip toolTip = new ToolTip();
+
         public frmCadastroVenda()
         {
             InitializeComponent();
+            toolTip.SetToolTip(btnAddProduto, "Adicionar Produto");
+            toolTip.SetToolTip(btnRemProduto, "Remover Produto");
             chkSituacao.Checked = true;
         }
         private void BtnSalvar_Click(object sender, EventArgs e)
@@ -731,5 +735,7 @@ namespace EquipMotos.View
                 txtCondPagamento.Enabled = false;
             }
         }
+
+      
     }
 }

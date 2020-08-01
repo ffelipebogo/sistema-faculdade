@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnVoltar = new MaterialSkin.Controls.MaterialRaisedButton();
             this.txtPesquisar = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -37,6 +37,10 @@
             this.btnAlterar = new MaterialSkin.Controls.MaterialRaisedButton();
             this.btnNovo = new MaterialSkin.Controls.MaterialRaisedButton();
             this.gvFornecedor = new System.Windows.Forms.DataGridView();
+            this.fornecedoresBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.sistemaMoto2DataSetFornecedor = new EquipMotos.SistemaMoto2DataSetFornecedor();
+            this.btnBuscarFornecedor = new System.Windows.Forms.PictureBox();
+            this.fornecedoresTableAdapter = new EquipMotos.SistemaMoto2DataSetFornecedorTableAdapters.fornecedoresTableAdapter();
             this.codigoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -64,10 +68,6 @@
             this.fisicoDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.cpfDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.rgDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.fornecedoresBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.sistemaMoto2DataSetFornecedor = new EquipMotos.SistemaMoto2DataSetFornecedor();
-            this.btnBuscarFornecedor = new System.Windows.Forms.PictureBox();
-            this.fornecedoresTableAdapter = new EquipMotos.SistemaMoto2DataSetFornecedorTableAdapters.fornecedoresTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.gvFornecedor)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fornecedoresBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sistemaMoto2DataSetFornecedor)).BeginInit();
@@ -79,11 +79,12 @@
             this.btnVoltar.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnVoltar.Depth = 0;
             this.btnVoltar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnVoltar.Location = new System.Drawing.Point(748, 522);
+            this.btnVoltar.Location = new System.Drawing.Point(965, 622);
+            this.btnVoltar.Margin = new System.Windows.Forms.Padding(4);
             this.btnVoltar.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnVoltar.Name = "btnVoltar";
             this.btnVoltar.Primary = true;
-            this.btnVoltar.Size = new System.Drawing.Size(100, 30);
+            this.btnVoltar.Size = new System.Drawing.Size(115, 30);
             this.btnVoltar.TabIndex = 22;
             this.btnVoltar.Text = "VOLTAR";
             this.btnVoltar.UseVisualStyleBackColor = true;
@@ -93,11 +94,12 @@
             // 
             this.txtPesquisar.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtPesquisar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPesquisar.Location = new System.Drawing.Point(32, 95);
-            this.txtPesquisar.Margin = new System.Windows.Forms.Padding(2);
+            this.txtPesquisar.Location = new System.Drawing.Point(28, 113);
+            this.txtPesquisar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtPesquisar.Name = "txtPesquisar";
-            this.txtPesquisar.Size = new System.Drawing.Size(534, 23);
+            this.txtPesquisar.Size = new System.Drawing.Size(400, 23);
             this.txtPesquisar.TabIndex = 16;
+            this.txtPesquisar.Tag = "Teste tamnho do campo de pesquisa";
             // 
             // label1
             // 
@@ -105,8 +107,7 @@
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(30, 73);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Location = new System.Drawing.Point(25, 86);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(165, 20);
             this.label1.TabIndex = 13;
@@ -119,7 +120,8 @@
             this.btnExcluir.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnExcluir.Image = global::EquipMotos.Properties.Resources._1398756469_Erase;
             this.btnExcluir.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnExcluir.Location = new System.Drawing.Point(596, 522);
+            this.btnExcluir.Location = new System.Drawing.Point(817, 622);
+            this.btnExcluir.Margin = new System.Windows.Forms.Padding(4);
             this.btnExcluir.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnExcluir.Name = "btnExcluir";
             this.btnExcluir.Primary = true;
@@ -137,7 +139,8 @@
             this.btnAlterar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAlterar.Image = global::EquipMotos.Properties.Resources._1398756462_Modify;
             this.btnAlterar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAlterar.Location = new System.Drawing.Point(490, 522);
+            this.btnAlterar.Location = new System.Drawing.Point(709, 622);
+            this.btnAlterar.Margin = new System.Windows.Forms.Padding(4);
             this.btnAlterar.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnAlterar.Name = "btnAlterar";
             this.btnAlterar.Primary = true;
@@ -155,7 +158,8 @@
             this.btnNovo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnNovo.Image = global::EquipMotos.Properties.Resources._1398756346_1;
             this.btnNovo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnNovo.Location = new System.Drawing.Point(384, 522);
+            this.btnNovo.Location = new System.Drawing.Point(601, 622);
+            this.btnNovo.Margin = new System.Windows.Forms.Padding(4);
             this.btnNovo.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnNovo.Name = "btnNovo";
             this.btnNovo.Primary = true;
@@ -176,14 +180,14 @@
             this.gvFornecedor.BackgroundColor = System.Drawing.SystemColors.Control;
             this.gvFornecedor.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.gvFornecedor.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.ControlDark;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.gvFornecedor.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.ControlDark;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.gvFornecedor.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.gvFornecedor.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gvFornecedor.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.codigoDataGridViewTextBoxColumn,
@@ -215,12 +219,44 @@
             this.rgDataGridViewTextBoxColumn});
             this.gvFornecedor.DataSource = this.fornecedoresBindingSource;
             this.gvFornecedor.EnableHeadersVisualStyles = false;
-            this.gvFornecedor.Location = new System.Drawing.Point(32, 138);
+            this.gvFornecedor.Location = new System.Drawing.Point(0, 166);
+            this.gvFornecedor.Margin = new System.Windows.Forms.Padding(4);
             this.gvFornecedor.Name = "gvFornecedor";
             this.gvFornecedor.ReadOnly = true;
             this.gvFornecedor.RowHeadersWidth = 51;
-            this.gvFornecedor.Size = new System.Drawing.Size(789, 344);
+            this.gvFornecedor.Size = new System.Drawing.Size(1115, 423);
             this.gvFornecedor.TabIndex = 24;
+            // 
+            // fornecedoresBindingSource
+            // 
+            this.fornecedoresBindingSource.DataMember = "fornecedores";
+            this.fornecedoresBindingSource.DataSource = this.sistemaMoto2DataSetFornecedor;
+            // 
+            // sistemaMoto2DataSetFornecedor
+            // 
+            this.sistemaMoto2DataSetFornecedor.DataSetName = "SistemaMoto2DataSetFornecedor";
+            this.sistemaMoto2DataSetFornecedor.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // btnBuscarFornecedor
+            // 
+            this.btnBuscarFornecedor.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnBuscarFornecedor.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnBuscarFornecedor.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.btnBuscarFornecedor.ErrorImage = global::EquipMotos.Properties.Resources._1398754683_xmag;
+            this.btnBuscarFornecedor.Image = global::EquipMotos.Properties.Resources._1398754683_xmag;
+            this.btnBuscarFornecedor.InitialImage = global::EquipMotos.Properties.Resources._1398754683_xmag;
+            this.btnBuscarFornecedor.Location = new System.Drawing.Point(434, 98);
+            this.btnBuscarFornecedor.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnBuscarFornecedor.Name = "btnBuscarFornecedor";
+            this.btnBuscarFornecedor.Size = new System.Drawing.Size(50, 50);
+            this.btnBuscarFornecedor.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.btnBuscarFornecedor.TabIndex = 258;
+            this.btnBuscarFornecedor.TabStop = false;
+            this.btnBuscarFornecedor.Click += new System.EventHandler(this.BtnBuscarFornecedor_Click);
+            // 
+            // fornecedoresTableAdapter
+            // 
+            this.fornecedoresTableAdapter.ClearBeforeFill = true;
             // 
             // codigoDataGridViewTextBoxColumn
             // 
@@ -229,7 +265,7 @@
             this.codigoDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.codigoDataGridViewTextBoxColumn.Name = "codigoDataGridViewTextBoxColumn";
             this.codigoDataGridViewTextBoxColumn.ReadOnly = true;
-            this.codigoDataGridViewTextBoxColumn.Width = 125;
+            this.codigoDataGridViewTextBoxColumn.Width = 80;
             // 
             // dataGridViewTextBoxColumn2
             // 
@@ -238,7 +274,7 @@
             this.dataGridViewTextBoxColumn2.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
             this.dataGridViewTextBoxColumn2.ReadOnly = true;
-            this.dataGridViewTextBoxColumn2.Width = 125;
+            this.dataGridViewTextBoxColumn2.Width = 150;
             // 
             // dataGridViewTextBoxColumn3
             // 
@@ -252,11 +288,11 @@
             // dataGridViewTextBoxColumn4
             // 
             this.dataGridViewTextBoxColumn4.DataPropertyName = "dtFundacao";
-            this.dataGridViewTextBoxColumn4.HeaderText = "Data Fundação";
+            this.dataGridViewTextBoxColumn4.HeaderText = "Dt. Fundação";
             this.dataGridViewTextBoxColumn4.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
             this.dataGridViewTextBoxColumn4.ReadOnly = true;
-            this.dataGridViewTextBoxColumn4.Width = 125;
+            this.dataGridViewTextBoxColumn4.Width = 80;
             // 
             // dataGridViewTextBoxColumn5
             // 
@@ -265,12 +301,12 @@
             this.dataGridViewTextBoxColumn5.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
             this.dataGridViewTextBoxColumn5.ReadOnly = true;
-            this.dataGridViewTextBoxColumn5.Width = 125;
+            this.dataGridViewTextBoxColumn5.Width = 40;
             // 
             // dataGridViewTextBoxColumn6
             // 
             this.dataGridViewTextBoxColumn6.DataPropertyName = "endereco";
-            this.dataGridViewTextBoxColumn6.HeaderText = "Endereco";
+            this.dataGridViewTextBoxColumn6.HeaderText = "Endereço";
             this.dataGridViewTextBoxColumn6.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
             this.dataGridViewTextBoxColumn6.ReadOnly = true;
@@ -283,7 +319,7 @@
             this.dataGridViewTextBoxColumn7.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
             this.dataGridViewTextBoxColumn7.ReadOnly = true;
-            this.dataGridViewTextBoxColumn7.Width = 125;
+            this.dataGridViewTextBoxColumn7.Width = 80;
             // 
             // dataGridViewTextBoxColumn8
             // 
@@ -310,12 +346,12 @@
             this.dataGridViewTextBoxColumn10.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
             this.dataGridViewTextBoxColumn10.ReadOnly = true;
-            this.dataGridViewTextBoxColumn10.Width = 125;
+            this.dataGridViewTextBoxColumn10.Width = 80;
             // 
             // codCidadeDataGridViewTextBoxColumn
             // 
             this.codCidadeDataGridViewTextBoxColumn.DataPropertyName = "codCidade";
-            this.codCidadeDataGridViewTextBoxColumn.HeaderText = "Codigo Cidade";
+            this.codCidadeDataGridViewTextBoxColumn.HeaderText = "Cod. Cidade";
             this.codCidadeDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.codCidadeDataGridViewTextBoxColumn.Name = "codCidadeDataGridViewTextBoxColumn";
             this.codCidadeDataGridViewTextBoxColumn.ReadOnly = true;
@@ -328,7 +364,7 @@
             this.dataGridViewTextBoxColumn11.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn11.Name = "dataGridViewTextBoxColumn11";
             this.dataGridViewTextBoxColumn11.ReadOnly = true;
-            this.dataGridViewTextBoxColumn11.Width = 125;
+            this.dataGridViewTextBoxColumn11.Width = 80;
             // 
             // dataGridViewTextBoxColumn12
             // 
@@ -337,7 +373,7 @@
             this.dataGridViewTextBoxColumn12.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn12.Name = "dataGridViewTextBoxColumn12";
             this.dataGridViewTextBoxColumn12.ReadOnly = true;
-            this.dataGridViewTextBoxColumn12.Width = 125;
+            this.dataGridViewTextBoxColumn12.Width = 80;
             // 
             // dataGridViewTextBoxColumn13
             // 
@@ -355,7 +391,7 @@
             this.dataGridViewTextBoxColumn14.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn14.Name = "dataGridViewTextBoxColumn14";
             this.dataGridViewTextBoxColumn14.ReadOnly = true;
-            this.dataGridViewTextBoxColumn14.Width = 125;
+            this.dataGridViewTextBoxColumn14.Width = 80;
             // 
             // dataGridViewTextBoxColumn15
             // 
@@ -382,12 +418,12 @@
             this.dataGridViewTextBoxColumn17.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn17.Name = "dataGridViewTextBoxColumn17";
             this.dataGridViewTextBoxColumn17.ReadOnly = true;
-            this.dataGridViewTextBoxColumn17.Width = 125;
+            this.dataGridViewTextBoxColumn17.Width = 80;
             // 
             // dataGridViewTextBoxColumn18
             // 
             this.dataGridViewTextBoxColumn18.DataPropertyName = "limiteCredito";
-            this.dataGridViewTextBoxColumn18.HeaderText = "Limite Credito";
+            this.dataGridViewTextBoxColumn18.HeaderText = "Credito";
             this.dataGridViewTextBoxColumn18.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn18.Name = "dataGridViewTextBoxColumn18";
             this.dataGridViewTextBoxColumn18.ReadOnly = true;
@@ -405,20 +441,20 @@
             // dataGridViewTextBoxColumn20
             // 
             this.dataGridViewTextBoxColumn20.DataPropertyName = "dtCadastro";
-            this.dataGridViewTextBoxColumn20.HeaderText = "Data Cadastro";
+            this.dataGridViewTextBoxColumn20.HeaderText = "Dt. Cadastro";
             this.dataGridViewTextBoxColumn20.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn20.Name = "dataGridViewTextBoxColumn20";
             this.dataGridViewTextBoxColumn20.ReadOnly = true;
-            this.dataGridViewTextBoxColumn20.Width = 125;
+            this.dataGridViewTextBoxColumn20.Width = 80;
             // 
             // dataGridViewTextBoxColumn21
             // 
             this.dataGridViewTextBoxColumn21.DataPropertyName = "dtAlteracao";
-            this.dataGridViewTextBoxColumn21.HeaderText = "Data Alteração";
+            this.dataGridViewTextBoxColumn21.HeaderText = "Dt. Alteração";
             this.dataGridViewTextBoxColumn21.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn21.Name = "dataGridViewTextBoxColumn21";
             this.dataGridViewTextBoxColumn21.ReadOnly = true;
-            this.dataGridViewTextBoxColumn21.Width = 125;
+            this.dataGridViewTextBoxColumn21.Width = 80;
             // 
             // dataGridViewTextBoxColumn22
             // 
@@ -432,11 +468,11 @@
             // codCondPagamentoDataGridViewTextBoxColumn
             // 
             this.codCondPagamentoDataGridViewTextBoxColumn.DataPropertyName = "codCondPagamento";
-            this.codCondPagamentoDataGridViewTextBoxColumn.HeaderText = "Codigo Condição Pagamento";
+            this.codCondPagamentoDataGridViewTextBoxColumn.HeaderText = "Cod. Condição Pag.";
             this.codCondPagamentoDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.codCondPagamentoDataGridViewTextBoxColumn.Name = "codCondPagamentoDataGridViewTextBoxColumn";
             this.codCondPagamentoDataGridViewTextBoxColumn.ReadOnly = true;
-            this.codCondPagamentoDataGridViewTextBoxColumn.Width = 125;
+            this.codCondPagamentoDataGridViewTextBoxColumn.Width = 80;
             // 
             // fisicoDataGridViewCheckBoxColumn
             // 
@@ -463,44 +499,12 @@
             this.rgDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.rgDataGridViewTextBoxColumn.Name = "rgDataGridViewTextBoxColumn";
             this.rgDataGridViewTextBoxColumn.ReadOnly = true;
-            this.rgDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // fornecedoresBindingSource
-            // 
-            this.fornecedoresBindingSource.DataMember = "fornecedores";
-            this.fornecedoresBindingSource.DataSource = this.sistemaMoto2DataSetFornecedor;
-            // 
-            // sistemaMoto2DataSetFornecedor
-            // 
-            this.sistemaMoto2DataSetFornecedor.DataSetName = "SistemaMoto2DataSetFornecedor";
-            this.sistemaMoto2DataSetFornecedor.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // btnBuscarFornecedor
-            // 
-            this.btnBuscarFornecedor.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnBuscarFornecedor.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnBuscarFornecedor.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.btnBuscarFornecedor.ErrorImage = global::EquipMotos.Properties.Resources._1398754683_xmag;
-            this.btnBuscarFornecedor.Image = global::EquipMotos.Properties.Resources._1398754683_xmag;
-            this.btnBuscarFornecedor.InitialImage = global::EquipMotos.Properties.Resources._1398754683_xmag;
-            this.btnBuscarFornecedor.Location = new System.Drawing.Point(570, 83);
-            this.btnBuscarFornecedor.Margin = new System.Windows.Forms.Padding(2);
-            this.btnBuscarFornecedor.Name = "btnBuscarFornecedor";
-            this.btnBuscarFornecedor.Size = new System.Drawing.Size(50, 50);
-            this.btnBuscarFornecedor.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.btnBuscarFornecedor.TabIndex = 258;
-            this.btnBuscarFornecedor.TabStop = false;
-            this.btnBuscarFornecedor.Click += new System.EventHandler(this.BtnBuscarFornecedor_Click);
-            // 
-            // fornecedoresTableAdapter
-            // 
-            this.fornecedoresTableAdapter.ClearBeforeFill = true;
             // 
             // frmConsultaFornecedor
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(860, 587);
+            this.ClientSize = new System.Drawing.Size(1115, 674);
             this.ControlBox = false;
             this.Controls.Add(this.btnBuscarFornecedor);
             this.Controls.Add(this.gvFornecedor);
@@ -510,6 +514,7 @@
             this.Controls.Add(this.btnNovo);
             this.Controls.Add(this.txtPesquisar);
             this.Controls.Add(this.label1);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmConsultaFornecedor";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Consultar Fornecedores";

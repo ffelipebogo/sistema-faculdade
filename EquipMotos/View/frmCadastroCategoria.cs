@@ -108,5 +108,15 @@ namespace EquipMotos.View
         {
 
         }
+
+        private void lblObservacoes_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtObeservacoes_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

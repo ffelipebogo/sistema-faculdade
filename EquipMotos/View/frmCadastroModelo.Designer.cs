@@ -84,9 +84,9 @@
             this.label2.Location = new System.Drawing.Point(88, 87);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(54, 17);
+            this.label2.Size = new System.Drawing.Size(63, 17);
             this.label2.TabIndex = 3;
-            this.label2.Text = "Modelo";
+            this.label2.Text = "Modelo *";
             // 
             // txtModelo
             // 
@@ -105,7 +105,7 @@
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(17, 165);
+            this.label3.Location = new System.Drawing.Point(17, 151);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(52, 17);
@@ -117,7 +117,7 @@
             this.txtCodMarca.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtCodMarca.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtCodMarca.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCodMarca.Location = new System.Drawing.Point(20, 186);
+            this.txtCodMarca.Location = new System.Drawing.Point(20, 172);
             this.txtCodMarca.Margin = new System.Windows.Forms.Padding(4);
             this.txtCodMarca.Name = "txtCodMarca";
             this.txtCodMarca.Size = new System.Drawing.Size(60, 23);
@@ -131,19 +131,19 @@
             this.label4.AutoSize = true;
             this.label4.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(88, 165);
+            this.label4.Location = new System.Drawing.Point(88, 151);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(47, 17);
+            this.label4.Size = new System.Drawing.Size(56, 17);
             this.label4.TabIndex = 7;
-            this.label4.Text = "Marca";
+            this.label4.Text = "Marca *";
             // 
             // txtMarca
             // 
             this.txtMarca.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtMarca.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtMarca.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtMarca.Location = new System.Drawing.Point(91, 186);
+            this.txtMarca.Location = new System.Drawing.Point(91, 172);
             this.txtMarca.Margin = new System.Windows.Forms.Padding(4);
             this.txtMarca.Name = "txtMarca";
             this.txtMarca.Size = new System.Drawing.Size(300, 23);
@@ -153,7 +153,7 @@
             // 
             this.btnVoltar.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnVoltar.Depth = 0;
-            this.btnVoltar.Location = new System.Drawing.Point(766, 288);
+            this.btnVoltar.Location = new System.Drawing.Point(757, 282);
             this.btnVoltar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnVoltar.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnVoltar.Name = "btnVoltar";
@@ -168,7 +168,7 @@
             // 
             this.btnLimpar.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnLimpar.Depth = 0;
-            this.btnLimpar.Location = new System.Drawing.Point(605, 288);
+            this.btnLimpar.Location = new System.Drawing.Point(596, 282);
             this.btnLimpar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnLimpar.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnLimpar.Name = "btnLimpar";
@@ -183,7 +183,7 @@
             // 
             this.btnSalvar.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnSalvar.Depth = 0;
-            this.btnSalvar.Location = new System.Drawing.Point(490, 288);
+            this.btnSalvar.Location = new System.Drawing.Point(481, 282);
             this.btnSalvar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnSalvar.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnSalvar.Name = "btnSalvar";
@@ -202,7 +202,7 @@
             this.btnBuscarMarca.ErrorImage = global::EquipMotos.Properties.Resources._1398754683_xmag;
             this.btnBuscarMarca.Image = global::EquipMotos.Properties.Resources._1398754683_xmag;
             this.btnBuscarMarca.InitialImage = global::EquipMotos.Properties.Resources._1398754683_xmag;
-            this.btnBuscarMarca.Location = new System.Drawing.Point(411, 165);
+            this.btnBuscarMarca.Location = new System.Drawing.Point(411, 151);
             this.btnBuscarMarca.Margin = new System.Windows.Forms.Padding(4);
             this.btnBuscarMarca.Name = "btnBuscarMarca";
             this.btnBuscarMarca.Size = new System.Drawing.Size(50, 50);
@@ -216,7 +216,7 @@
             this.txtDtAlteracao.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtDtAlteracao.Enabled = false;
             this.txtDtAlteracao.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDtAlteracao.Location = new System.Drawing.Point(123, 301);
+            this.txtDtAlteracao.Location = new System.Drawing.Point(128, 289);
             this.txtDtAlteracao.Margin = new System.Windows.Forms.Padding(5);
             this.txtDtAlteracao.Mask = "00/00/0000";
             this.txtDtAlteracao.Name = "txtDtAlteracao";
@@ -230,7 +230,7 @@
             this.txtDtCadastro.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtDtCadastro.Enabled = false;
             this.txtDtCadastro.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDtCadastro.Location = new System.Drawing.Point(15, 301);
+            this.txtDtCadastro.Location = new System.Drawing.Point(20, 289);
             this.txtDtCadastro.Margin = new System.Windows.Forms.Padding(5);
             this.txtDtCadastro.Mask = "00/00/0000";
             this.txtDtCadastro.Name = "txtDtCadastro";
@@ -245,7 +245,7 @@
             this.txtUsuario.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtUsuario.Enabled = false;
             this.txtUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtUsuario.Location = new System.Drawing.Point(241, 301);
+            this.txtUsuario.Location = new System.Drawing.Point(246, 289);
             this.txtUsuario.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.txtUsuario.Name = "txtUsuario";
             this.txtUsuario.Size = new System.Drawing.Size(120, 18);
@@ -258,7 +258,7 @@
             this.lblUsuario.AutoSize = true;
             this.lblUsuario.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.lblUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUsuario.Location = new System.Drawing.Point(238, 282);
+            this.lblUsuario.Location = new System.Drawing.Point(243, 271);
             this.lblUsuario.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblUsuario.Name = "lblUsuario";
             this.lblUsuario.Size = new System.Drawing.Size(107, 13);
@@ -272,7 +272,7 @@
             this.lblDtAlteracao.AutoSize = true;
             this.lblDtAlteracao.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.lblDtAlteracao.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDtAlteracao.Location = new System.Drawing.Point(120, 282);
+            this.lblDtAlteracao.Location = new System.Drawing.Point(125, 271);
             this.lblDtAlteracao.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblDtAlteracao.Name = "lblDtAlteracao";
             this.lblDtAlteracao.Size = new System.Drawing.Size(77, 13);
@@ -286,7 +286,7 @@
             this.lblDtCadastro.AutoSize = true;
             this.lblDtCadastro.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.lblDtCadastro.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDtCadastro.Location = new System.Drawing.Point(14, 282);
+            this.lblDtCadastro.Location = new System.Drawing.Point(17, 271);
             this.lblDtCadastro.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblDtCadastro.Name = "lblDtCadastro";
             this.lblDtCadastro.Size = new System.Drawing.Size(75, 13);

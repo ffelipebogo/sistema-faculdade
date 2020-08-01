@@ -51,11 +51,11 @@
             this.txtDtAlteracao.Cursor = System.Windows.Forms.Cursors.WaitCursor;
             this.txtDtAlteracao.Enabled = false;
             this.txtDtAlteracao.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDtAlteracao.Location = new System.Drawing.Point(97, 260);
-            this.txtDtAlteracao.Margin = new System.Windows.Forms.Padding(4);
+            this.txtDtAlteracao.Location = new System.Drawing.Point(110, 261);
+            this.txtDtAlteracao.Margin = new System.Windows.Forms.Padding(5);
             this.txtDtAlteracao.Mask = "00/00/0000";
             this.txtDtAlteracao.Name = "txtDtAlteracao";
-            this.txtDtAlteracao.Size = new System.Drawing.Size(65, 18);
+            this.txtDtAlteracao.Size = new System.Drawing.Size(85, 18);
             this.txtDtAlteracao.TabIndex = 274;
             this.txtDtAlteracao.ValidatingType = typeof(System.DateTime);
             // 
@@ -65,11 +65,11 @@
             this.txtDtCadastro.Cursor = System.Windows.Forms.Cursors.WaitCursor;
             this.txtDtCadastro.Enabled = false;
             this.txtDtCadastro.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDtCadastro.Location = new System.Drawing.Point(26, 260);
-            this.txtDtCadastro.Margin = new System.Windows.Forms.Padding(4);
+            this.txtDtCadastro.Location = new System.Drawing.Point(16, 261);
+            this.txtDtCadastro.Margin = new System.Windows.Forms.Padding(5);
             this.txtDtCadastro.Mask = "00/00/0000";
             this.txtDtCadastro.Name = "txtDtCadastro";
-            this.txtDtCadastro.Size = new System.Drawing.Size(65, 18);
+            this.txtDtCadastro.Size = new System.Drawing.Size(85, 18);
             this.txtDtCadastro.TabIndex = 273;
             this.txtDtCadastro.ValidatingType = typeof(System.DateTime);
             // 
@@ -79,12 +79,11 @@
             this.txtUsuario.Cursor = System.Windows.Forms.Cursors.WaitCursor;
             this.txtUsuario.Enabled = false;
             this.txtUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtUsuario.Location = new System.Drawing.Point(179, 260);
-            this.txtUsuario.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtUsuario.Location = new System.Drawing.Point(220, 261);
+            this.txtUsuario.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.txtUsuario.Name = "txtUsuario";
-            this.txtUsuario.Size = new System.Drawing.Size(115, 18);
+            this.txtUsuario.Size = new System.Drawing.Size(120, 18);
             this.txtUsuario.TabIndex = 269;
-            this.txtUsuario.UseSystemPasswordChar = false;
             // 
             // lblUsuario
             // 
@@ -93,7 +92,8 @@
             this.lblUsuario.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.lblUsuario.Cursor = System.Windows.Forms.Cursors.WaitCursor;
             this.lblUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUsuario.Location = new System.Drawing.Point(175, 244);
+            this.lblUsuario.Location = new System.Drawing.Point(214, 241);
+            this.lblUsuario.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblUsuario.Name = "lblUsuario";
             this.lblUsuario.Size = new System.Drawing.Size(107, 13);
             this.lblUsuario.TabIndex = 268;
@@ -106,7 +106,8 @@
             this.lblDtAlteracao.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.lblDtAlteracao.Cursor = System.Windows.Forms.Cursors.WaitCursor;
             this.lblDtAlteracao.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDtAlteracao.Location = new System.Drawing.Point(95, 244);
+            this.lblDtAlteracao.Location = new System.Drawing.Point(108, 241);
+            this.lblDtAlteracao.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblDtAlteracao.Name = "lblDtAlteracao";
             this.lblDtAlteracao.Size = new System.Drawing.Size(77, 13);
             this.lblDtAlteracao.TabIndex = 267;
@@ -119,7 +120,8 @@
             this.lblDtCadastro.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.lblDtCadastro.Cursor = System.Windows.Forms.Cursors.WaitCursor;
             this.lblDtCadastro.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDtCadastro.Location = new System.Drawing.Point(23, 244);
+            this.lblDtCadastro.Location = new System.Drawing.Point(12, 241);
+            this.lblDtCadastro.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblDtCadastro.Name = "lblDtCadastro";
             this.lblDtCadastro.Size = new System.Drawing.Size(75, 13);
             this.lblDtCadastro.TabIndex = 266;
@@ -132,11 +134,13 @@
             this.lblObservacoes.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.lblObservacoes.Cursor = System.Windows.Forms.Cursors.WaitCursor;
             this.lblObservacoes.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblObservacoes.Location = new System.Drawing.Point(22, 172);
+            this.lblObservacoes.Location = new System.Drawing.Point(14, 163);
+            this.lblObservacoes.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblObservacoes.Name = "lblObservacoes";
             this.lblObservacoes.Size = new System.Drawing.Size(90, 16);
             this.lblObservacoes.TabIndex = 265;
             this.lblObservacoes.Text = "Observações";
+            this.lblObservacoes.Click += new System.EventHandler(this.lblObservacoes_Click);
             // 
             // txtCodigo
             // 
@@ -144,10 +148,10 @@
             this.txtCodigo.Cursor = System.Windows.Forms.Cursors.WaitCursor;
             this.txtCodigo.Enabled = false;
             this.txtCodigo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCodigo.Location = new System.Drawing.Point(22, 101);
-            this.txtCodigo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtCodigo.Location = new System.Drawing.Point(14, 99);
+            this.txtCodigo.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.txtCodigo.Name = "txtCodigo";
-            this.txtCodigo.Size = new System.Drawing.Size(50, 22);
+            this.txtCodigo.Size = new System.Drawing.Size(65, 22);
             this.txtCodigo.TabIndex = 263;
             // 
             // lblCodigo
@@ -157,7 +161,8 @@
             this.lblCodigo.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.lblCodigo.Cursor = System.Windows.Forms.Cursors.WaitCursor;
             this.lblCodigo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCodigo.Location = new System.Drawing.Point(20, 82);
+            this.lblCodigo.Location = new System.Drawing.Point(13, 82);
+            this.lblCodigo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblCodigo.Name = "lblCodigo";
             this.lblCodigo.Size = new System.Drawing.Size(52, 16);
             this.lblCodigo.TabIndex = 262;
@@ -170,7 +175,8 @@
             this.label1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.label1.Cursor = System.Windows.Forms.Cursors.WaitCursor;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(79, 82);
+            this.label1.Location = new System.Drawing.Point(93, 81);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(67, 16);
             this.label1.TabIndex = 276;
@@ -181,23 +187,24 @@
             this.txtCategoria.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtCategoria.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.txtCategoria.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCategoria.Location = new System.Drawing.Point(82, 100);
-            this.txtCategoria.Margin = new System.Windows.Forms.Padding(2);
+            this.txtCategoria.Location = new System.Drawing.Point(96, 99);
+            this.txtCategoria.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtCategoria.Name = "txtCategoria";
-            this.txtCategoria.Size = new System.Drawing.Size(276, 23);
+            this.txtCategoria.Size = new System.Drawing.Size(367, 23);
             this.txtCategoria.TabIndex = 1;
             // 
             // btnSalvar
             // 
             this.btnSalvar.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnSalvar.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.btnSalvar.Depth = 0;
             this.btnSalvar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSalvar.Location = new System.Drawing.Point(369, 248);
-            this.btnSalvar.Margin = new System.Windows.Forms.Padding(2);
+            this.btnSalvar.Location = new System.Drawing.Point(431, 252);
+            this.btnSalvar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnSalvar.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnSalvar.Name = "btnSalvar";
             this.btnSalvar.Primary = true;
-            this.btnSalvar.Size = new System.Drawing.Size(100, 30);
+            this.btnSalvar.Size = new System.Drawing.Size(80, 31);
             this.btnSalvar.TabIndex = 2;
             this.btnSalvar.Text = "SALVAR";
             this.btnSalvar.UseVisualStyleBackColor = true;
@@ -209,12 +216,12 @@
             this.btnLimpar.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.btnLimpar.Depth = 0;
             this.btnLimpar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLimpar.Location = new System.Drawing.Point(473, 248);
-            this.btnLimpar.Margin = new System.Windows.Forms.Padding(2);
+            this.btnLimpar.Location = new System.Drawing.Point(517, 252);
+            this.btnLimpar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnLimpar.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnLimpar.Name = "btnLimpar";
             this.btnLimpar.Primary = true;
-            this.btnLimpar.Size = new System.Drawing.Size(100, 30);
+            this.btnLimpar.Size = new System.Drawing.Size(80, 31);
             this.btnLimpar.TabIndex = 3;
             this.btnLimpar.Text = "LIMPAR";
             this.btnLimpar.UseVisualStyleBackColor = true;
@@ -226,12 +233,12 @@
             this.btnVoltar.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.btnVoltar.Depth = 0;
             this.btnVoltar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnVoltar.Location = new System.Drawing.Point(613, 248);
-            this.btnVoltar.Margin = new System.Windows.Forms.Padding(2);
+            this.btnVoltar.Location = new System.Drawing.Point(633, 252);
+            this.btnVoltar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnVoltar.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnVoltar.Name = "btnVoltar";
             this.btnVoltar.Primary = true;
-            this.btnVoltar.Size = new System.Drawing.Size(100, 30);
+            this.btnVoltar.Size = new System.Drawing.Size(80, 31);
             this.btnVoltar.TabIndex = 4;
             this.btnVoltar.Text = "VOLTAR";
             this.btnVoltar.UseVisualStyleBackColor = true;
@@ -241,18 +248,19 @@
             // 
             this.txtObeservacoes.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtObeservacoes.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.txtObeservacoes.Location = new System.Drawing.Point(22, 190);
-            this.txtObeservacoes.Margin = new System.Windows.Forms.Padding(2);
+            this.txtObeservacoes.Location = new System.Drawing.Point(14, 181);
+            this.txtObeservacoes.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtObeservacoes.Name = "txtObeservacoes";
-            this.txtObeservacoes.Size = new System.Drawing.Size(364, 34);
+            this.txtObeservacoes.Size = new System.Drawing.Size(328, 45);
             this.txtObeservacoes.TabIndex = 281;
             this.txtObeservacoes.Text = "";
+            this.txtObeservacoes.TextChanged += new System.EventHandler(this.txtObeservacoes_TextChanged);
             // 
             // frmCadastroCategoria
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(740, 297);
+            this.ClientSize = new System.Drawing.Size(740, 310);
             this.ControlBox = false;
             this.Controls.Add(this.txtObeservacoes);
             this.Controls.Add(this.btnVoltar);
@@ -270,6 +278,7 @@
             this.Controls.Add(this.txtCodigo);
             this.Controls.Add(this.lblCodigo);
             this.Cursor = System.Windows.Forms.Cursors.Default;
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmCadastroCategoria";
             this.Text = "Cadastro de Categoria";
             this.Load += new System.EventHandler(this.frmCadastroCategoria_Load);

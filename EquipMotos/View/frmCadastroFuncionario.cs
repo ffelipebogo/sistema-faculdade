@@ -1,16 +1,8 @@
 ﻿using EquipMotos.CONTROLLER;
-using EquipMotos.DAO;
 using EquipMotos.MODEL;
 using EquipMotos.View.helper;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace EquipMotos.View
@@ -213,7 +205,7 @@ namespace EquipMotos.View
                 txtDtNascimento.Focus();
                 return false;
             }
-            else if (Convert.ToDateTime(txtDtNascimento.Text) > DateTime.Now)
+            else if (txtDtNascimento.Value.Date > DateTime.Now.Date)
             {
                 MessageBox.Show("Data Nascimento inválida", "Informe a Data de Nascimento!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txtDtNascimento.Focus();
@@ -245,7 +237,7 @@ namespace EquipMotos.View
                 txtDtEmissaoCt.Focus();
                 return false;
             }
-            else if (Convert.ToDateTime(txtDtEmissaoCt.Text) > DateTime.Now)
+            else if (txtDtEmissaoCt.Value > DateTime.Now)
             {
                 MessageBox.Show("Data de Emissão inválida", "Informe a Data de Emissão!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txtDtEmissaoCt.Focus();
@@ -257,7 +249,7 @@ namespace EquipMotos.View
                 txtDtExpedicao.Focus();
                 return false;
             }
-            else if (Convert.ToDateTime(txtDtExpedicao.Text) > DateTime.Now)
+            else if (txtDtExpedicao.Value > DateTime.Now)
             {
                 MessageBox.Show("Data de Expedição inválida", "Informe a Data de Expedição!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txtDtExpedicao.Focus();
@@ -269,7 +261,7 @@ namespace EquipMotos.View
                 txtDtExpedicao.Focus();
                 return false;
             }
-            else if (Convert.ToDateTime(txtDtValidade.Text) > DateTime.Now)
+            else if (txtDtValidade.Value > DateTime.Now)
             {
                 MessageBox.Show("Data de Validade inválida", "Informe a Data de Validade!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txtDtValidade.Focus();
@@ -282,7 +274,7 @@ namespace EquipMotos.View
                 txtDtPrimeiraCnh.Focus();
                 return false;
             }
-            else if (Convert.ToDateTime(txtDtPrimeiraCnh.Text) > DateTime.Now)
+            else if (txtDtPrimeiraCnh.Value > DateTime.Now)
             {
                 MessageBox.Show("Data da 1º CNH inválida", "Informe a Data da 1º CNH!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txtDtPrimeiraCnh.Focus();
@@ -625,13 +617,13 @@ namespace EquipMotos.View
             {
                 if (txtFuncionario.Text.Length < 3)
                 {
-                    MessageBox.Show("Funcionario inválido!", "Informe o funcionario com mais de 3 caracteres!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show( "Informe o funcionario com mais de 3 caracteres!", "Funcionario inválido!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     txtFuncionario.Focus();
                 }
                 else
                 if (txtFuncionario.Text.Trim().Length > 100)
                 {
-                    MessageBox.Show("Funcionario inválido!", "Informe o funcionario com menos de 100 caracteres!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show( "Informe o funcionario com menos de 100 caracteres!", "Funcionario inválido!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     txtFuncionario.Focus();
                 }
                 else
@@ -643,7 +635,7 @@ namespace EquipMotos.View
                 else
                 if (!MaskForm.ValidaTexto(txtFuncionario.Text))
                 {
-                    MessageBox.Show("Funcionario inválido!", "Funcionario não pode conter numeros!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show( "Funcionario não pode conter numeros!", "Funcionario inválido!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     txtFuncionario.Focus();
                 }
             }
@@ -655,7 +647,7 @@ namespace EquipMotos.View
             {
                 if (!MaskForm.ValidaTexto(txtApelido.Text))
                 {
-                    MessageBox.Show("Apelido inválido!", "Apelido não pode conter numeros!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Apelido não pode conter numeros!", "Apelido inválido!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txtApelido.Focus();
                 }
             }
@@ -665,9 +657,9 @@ namespace EquipMotos.View
         {
             if (!string.IsNullOrEmpty(txtDtNascimento.Text))
             {
-                if (txtDtNascimento.Value >= DateTime.Now)
+                if (txtDtNascimento.Value.Date >= DateTime.Now.Date)
                 {
-                    MessageBox.Show("Não é possivel inserir esta data", "informe uma data menor que hoje!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show( "Informe uma data menor que hoje!", "Não é possivel inserir esta data", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     txtDtNascimento.Focus();
                 }
             }
@@ -692,22 +684,22 @@ namespace EquipMotos.View
             {
                 if (txtEndereco.Text.Trim().Length > 100)
                 {
-                    MessageBox.Show("Não é possivel inserir este endereço", "Informe o endereço com menos de 100 caracteres!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show( "Informe o endereço com menos de 100 caracteres!", "Não é possivel inserir este endereço", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     txtEndereco.Focus();
                 }
                 else if (String.IsNullOrEmpty(txtEndereco.Text.Trim()))
                 {
-                    MessageBox.Show("Faltou informar o Endereço", "Informe o Endereço!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show( "Informe o Endereço!", "Faltou informar o Endereço", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     txtEndereco.Focus();
                 }
                 else if (!MaskForm.ValidaTexto(txtEndereco.Text))
                 {
-                    MessageBox.Show("Endereço inválido!", "Endereço não pode conter numeros!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show( "Endereço não pode conter numeros!", "Endereço inválido!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     txtEndereco.Focus();
                 }
                 else if (txtEndereco.Text.Trim().Length < 3)
                 {
-                    MessageBox.Show("Não é possivel inserir este endereço", "Informe o endereço com mais de 3 caracteres!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show( "Informe o endereço com mais de 3 caracteres!", "Não é possivel inserir este endereço", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     txtEndereco.Focus();
                 }
             }
@@ -719,13 +711,13 @@ namespace EquipMotos.View
             {
                 if (txtNumero.Text.Trim().Length > 6)
                 {
-                    MessageBox.Show("Numero inválido!", "Numero não pode conter mais de 10 caracteres!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show( "Numero não pode conter mais de 10 caracteres!", "Numero inválido!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     txtNumero.Focus();
 
                 }
                 else if (!MaskForm.ValidaNumero(txtNumero.Text.Trim()))
                 {
-                    MessageBox.Show("Numero inválido!", "Valor dever ser numerico!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show( "Valor dever ser numerico!", "Numero inválido!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     txtNumero.Focus();
                 }
             }
@@ -737,12 +729,12 @@ namespace EquipMotos.View
             {
                 if (!MaskForm.ValidaTexto(txtComplemento.Text))
                 {
-                    MessageBox.Show("Complemento inválido!", "Complemento não pode conter numeros!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show( "Complemento não pode conter numeros!", "Complemento inválido!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     txtComplemento.Focus();
                 }
                 else if (txtComplemento.Text.Trim().Length > 50)
                 {
-                    MessageBox.Show("Complemento inválido!", "Complemento não pode conter mais de 50 caracteres!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show( "Complemento não pode conter mais de 50 caracteres!", "Complemento inválido!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     txtComplemento.Focus();
                 }
             }
@@ -754,22 +746,22 @@ namespace EquipMotos.View
             {
                 if (txtBairro.Text.Trim().Length > 100)
                 {
-                    MessageBox.Show("Não é possivel inserir este bairro", "Informe o bairro com menos de 100 caracteres!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Informe o bairro com menos de 100 caracteres!", "Não é possivel inserir este bairro",  MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     txtBairro.Focus();
                 }
                 else if (String.IsNullOrEmpty(txtBairro.Text.Trim()))
                 {
-                    MessageBox.Show("Faltou informar o Bairro", "Informe o Bairro!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Informe o Bairro!", "Faltou informar o Bairro",  MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     txtBairro.Focus();
                 }
                 else if (!MaskForm.ValidaTexto(txtBairro.Text))
                 {
-                    MessageBox.Show("Bairro inválido!", "Bairro não pode conter numeros!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show( "Bairro não pode conter numeros!", "Bairro inválido!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     txtBairro.Focus();
                 }
                 else if (txtBairro.Text.Trim().Length < 3)
                 {
-                    MessageBox.Show("Não é possivel inserir este bairro", "Informe o bairro com mais de 3 caracteres!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Informe o bairro com mais de 3 caracteres!", "Não é possivel inserir este bairro", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     txtBairro.Focus();
                 }
             }
@@ -847,12 +839,12 @@ namespace EquipMotos.View
             {
                 if (!MaskForm.ValidaEmail(txtEmail.Text))
                 {
-                    MessageBox.Show("Email inválido ", "Informe um email valido!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Informe um email valido!", "Email inválido ",  MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     txtEmail.Focus();
                 }
                 else if (txtEmail.Text.Trim().Length > 30)
                 {
-                    MessageBox.Show("Não é possivel inserir este email", "Informe o email com menos de 30 caracteres!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Informe o email com menos de 30 caracteres!", "Não é possivel inserir este email",  MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     txtEmail.Focus();
                 }
             }
@@ -864,7 +856,7 @@ namespace EquipMotos.View
             {
                 if (!IsCpf(txtCpf.Text) || txtCpf.Text.Length < 11)
                 {
-                    MessageBox.Show("CPF Inválido!", "Verefique o CPF!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Verefique o CPF!", "CPF Inválido!",  MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     txtCpf.Focus();
                 }
             }
@@ -876,12 +868,12 @@ namespace EquipMotos.View
             {
                 if (txtRg.Text.Trim().Length > 20 )
                 {
-                    MessageBox.Show("Não é possivel inserir esse RG", "Informe o RG com menos de 20 caracteres", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Informe o RG com menos de 20 caracteres", "Não é possivel inserir esse RG", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     txtRg.Focus();
                 }
                 else if(txtRg.Text.Trim().Length < 9)
                 {
-                    MessageBox.Show("Não é possivel inserir esse RG", "Informe o RG com mais de 9 caracteres", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Informe o RG com mais de 9 caracteres", "Não é possivel inserir esse RG",  MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     txtRg.Focus();
                 }
             }
@@ -893,12 +885,12 @@ namespace EquipMotos.View
             {
                 if(txtCargo.Text.Trim().Length > 50)
                 {
-                    MessageBox.Show("Não é possivel inserir esse Cargo", "Informe o Cargo com menos de 50 caracteres", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Informe o Cargo com menos de 50 caracteres", "Não é possivel inserir esse Cargo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     txtCargo.Focus();
                 }
                 else if(txtCargo.Text.Trim().Length < 3)
                 {
-                    MessageBox.Show("Não é possivel inserir esse Cargo", "Informe o Cargo com mais de 3 caracteres", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Informe o Cargo com mais de 3 caracteres", "Não é possivel inserir esse Cargo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     txtCargo.Focus();
                 }
             }
@@ -910,12 +902,12 @@ namespace EquipMotos.View
             {
                 if (txtCarteiraTrabalho.Text.Trim().Length > 11)
                 {
-                    MessageBox.Show("Não é possivel inserir essa Carteira de Trabalho", "Informe a Carteira de Trabalho com menos de 11 caracteres", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Informe a Carteira de Trabalho com menos de 11 caracteres",  "Não é possivel inserir essa Carteira de Trabalho",  MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     txtCarteiraTrabalho.Focus();
                 }
                 else if (txtCarteiraTrabalho.Text.Trim().Length < 11)
                 {
-                    MessageBox.Show("Não é possivel inserir essa Carteira de Trabalho", "Informe a Carteira de Trabalho com mais de 11 caracteres", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Informe a Carteira de Trabalho com mais de 11 caracteres",  "Não é possivel inserir essa Carteira de Trabalho",  MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     txtCarteiraTrabalho.Focus();
                 }
             }
@@ -927,12 +919,12 @@ namespace EquipMotos.View
             {
                 if (txtSerie.Text.Trim().Length > 7)
                 {
-                    MessageBox.Show("Não é possivel inserir essa Serie", "Informe a Serie com menos de 7 caracteres", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Informe a Serie com menos de 7 caracteres", "Não é possivel inserir essa Serie",  MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     txtSerie.Focus();
                 }
                 else if (txtSerie.Text.Trim().Length < 7)
                 {
-                    MessageBox.Show("Não é possivel inserir essa Serie", "Informe a Serie com mais de 7 caracteres", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Informe a Serie com mais de 7 caracteres", "Não é possivel inserir essa Serie",  MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     txtSerie.Focus();
                 }
             }
@@ -944,7 +936,7 @@ namespace EquipMotos.View
             {
                 if (txtUfct.Text.Trim().Length > 2 || txtUfct.Text.Trim().Length < 2)
                 {
-                    MessageBox.Show("Não possivel inserir esta UF ", "Informe uma UF com 2 caracteres", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Informe uma UF com 2 caracteres", "Não possivel inserir esta UF ",  MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     txtUfct.Focus();
                 }
             }
@@ -954,11 +946,11 @@ namespace EquipMotos.View
         {
             if (!string.IsNullOrEmpty(txtDtEmissaoCt.Text))
             {
-                if (txtDtEmissaoCt.Value >= DateTime.Now)
+                if (txtDtEmissaoCt.Value.Date >= DateTime.Now.Date)
                 {
-                    MessageBox.Show("Não é possivel inserir esta data", "informe uma data menor que hoje!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Informe uma data menor que hoje!", "Não é possivel inserir esta data",  MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     txtDtEmissaoCt.Focus();
-                    txtDtEmissaoCt.Value = DateTime.Now;
+                    txtDtEmissaoCt.Value = DateTime.Now.AddDays(-1);
                 }
             }
         }
@@ -977,7 +969,7 @@ namespace EquipMotos.View
             {
                 if(txtCnh.Text.Trim().Length > 11 || txtCnh.Text.Trim().Length < 11)
                 {
-                    MessageBox.Show("Não é possivel inserir este número de CNH", "Informe o número que consta na CNH", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Informe o número que consta na CNH. São 11 numeros.", "Não é possivel inserir este número de CNH",  MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     txtCnh.Focus();
                 }
             }
@@ -989,12 +981,12 @@ namespace EquipMotos.View
             {
                 if(txtEmissor.Text.Trim().Length < 3)
                 {
-                    MessageBox.Show("Não é possivel inserir este Orgão Emissor", "Informe um orgão emissor com mais de 3 caracteres", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Informe um orgão emissor com mais de 3 caracteres",  "Não é possivel inserir este Orgão Emissor",  MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     txtEmissor.Focus();
                 }
                 else if(txtEmissor.Text.Trim().Length > 20)
                 {
-                    MessageBox.Show("Não é possivel inserir este Orgão Emissor", "Informe um orgão emissor com menos de 20 caracteres", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Informe um orgão emissor com menos de 20 caracteres",  "Não é possivel inserir este Orgão Emissor",  MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     txtEmissor.Focus();
                 }
             }
@@ -1006,7 +998,7 @@ namespace EquipMotos.View
             {
                 if (txtUfCnh.Text.Trim().Length > 2 || txtUfCnh.Text.Trim().Length < 2)
                 {
-                    MessageBox.Show("Não possivel inserir esta UF ", "Informe uma UF com 2 caracteres", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Informe uma UF com 2 caracteres", "Não possivel inserir esta UF ",  MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     txtUfCnh.Focus();
                 }
             }
@@ -1016,12 +1008,13 @@ namespace EquipMotos.View
         {
             if (!string.IsNullOrEmpty(txtDtExpedicao.Text))
             {
-                if (txtDtExpedicao.Value >= DateTime.Now)
+                if (txtDtExpedicao.Value.Date >= DateTime.Now.Date)
                 {
                     MessageBox.Show("Não é possivel inserir esta data", "Informe uma data menor que hoje!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     txtDtExpedicao.Focus();
-                    txtDtExpedicao.Value = DateTime.Now;
+                    txtDtExpedicao.Value = DateTime.Now.AddDays(-1); 
                 }
+                txtDtValidade.Value = txtDtExpedicao.Value.AddYears(5);
             }
         }
 
@@ -1029,12 +1022,24 @@ namespace EquipMotos.View
         {
             if (!string.IsNullOrEmpty(txtDtValidade.Text))
             {
-                if (txtDtValidade.Value >= DateTime.Now)
+                if ( txtDtExpedicao.Value.Date >= txtDtValidade.Value.Date)
                 {
-                    MessageBox.Show("Não é possivel inserir esta data", "Informe uma data menor que hoje!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Informe uma data menor que hoje!", "Não é possivel inserir esta data",  MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     txtDtValidade.Focus();
-                    txtDtValidade.Value = DateTime.Now;
+                    txtDtValidade.Value = txtDtExpedicao.Value.AddYears(5);
                 }
+                else {
+                    DateTime validade = txtDtValidade.Value.Date;
+                    var expedicao = txtDtExpedicao.Value.Date;
+                    var diff = validade.Subtract(expedicao).TotalDays;
+                    if ( diff < 1825 || diff > 1827)
+                    {
+                        MessageBox.Show("A diferença entre Expedição e Validade não pode ser maior nem menor que 5 anos!",  "Não é possivel inserir esta data",  MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        txtDtValidade.Focus();
+                        txtDtValidade.Value = txtDtExpedicao.Value.AddYears(5);
+                    }
+                }
+
             }
         }
 
@@ -1042,11 +1047,11 @@ namespace EquipMotos.View
         {
             if (!string.IsNullOrEmpty(txtDtPrimeiraCnh.Text))
             {
-                if (txtDtPrimeiraCnh.Value >= DateTime.Now)
+                if (txtDtPrimeiraCnh.Value.Date >= DateTime.Now.Date)
                 {
                     MessageBox.Show("Não é possivel inserir esta data", "Informe uma data menor que hoje!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     txtDtPrimeiraCnh.Focus();
-                    txtDtPrimeiraCnh.Value = DateTime.Now;
+                    txtDtPrimeiraCnh.Value = DateTime.Now.AddDays(-1); ;
                 }
             }
         }
@@ -1194,19 +1199,5 @@ namespace EquipMotos.View
 
         }
 
-        private void lblUsuario_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lblDtAlteracao_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lblDtCadastro_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }

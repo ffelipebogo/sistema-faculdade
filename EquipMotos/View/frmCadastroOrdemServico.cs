@@ -40,9 +40,17 @@ namespace EquipMotos.View
         public static object Funcionario;
         public static object CondPagamento;
 
+        ToolTip toolTip;
+
+
         public frmCadastroOrdemServico()
         {
             InitializeComponent();
+            toolTip.SetToolTip(btnAddProduto, "Adicionar Produto");
+            toolTip.SetToolTip(btnAddServico, "Adicionar Servicço");
+            toolTip.SetToolTip(btnRemProduto, "Remover Produto");
+            toolTip.SetToolTip(btnRemServico, "Adicionar Serviço");
+
             if (btnSalvar.Text == "ALTERAR")
             {
                 btnFinalizar.Visible = false;
@@ -1273,6 +1281,8 @@ namespace EquipMotos.View
                 txtCodMecanico.Focus();
             }
         }
+
+        
     }
 }
 

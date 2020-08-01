@@ -110,6 +110,7 @@
             // txtSite
             // 
             this.txtSite.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.txtSite.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtSite.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSite.Location = new System.Drawing.Point(875, 303);
             this.txtSite.Margin = new System.Windows.Forms.Padding(4);
@@ -264,6 +265,7 @@
             // txtContato
             // 
             this.txtContato.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.txtContato.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtContato.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtContato.Location = new System.Drawing.Point(684, 303);
             this.txtContato.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -289,6 +291,7 @@
             // txtEmail
             // 
             this.txtEmail.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.txtEmail.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtEmail.Location = new System.Drawing.Point(367, 304);
             this.txtEmail.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -362,6 +365,7 @@
             // txtCidade
             // 
             this.txtCidade.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.txtCidade.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtCidade.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCidade.Location = new System.Drawing.Point(104, 241);
             this.txtCidade.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -385,6 +389,7 @@
             // txtIdCidade
             // 
             this.txtIdCidade.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.txtIdCidade.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtIdCidade.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtIdCidade.Location = new System.Drawing.Point(21, 241);
             this.txtIdCidade.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -411,6 +416,7 @@
             // txtCep
             // 
             this.txtCep.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.txtCep.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtCep.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCep.Location = new System.Drawing.Point(1035, 175);
             this.txtCep.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -437,6 +443,7 @@
             // txtBairro
             // 
             this.txtBairro.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.txtBairro.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtBairro.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBairro.Location = new System.Drawing.Point(750, 175);
             this.txtBairro.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -462,6 +469,7 @@
             // txtComplemento
             // 
             this.txtComplemento.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.txtComplemento.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtComplemento.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtComplemento.Location = new System.Drawing.Point(466, 175);
             this.txtComplemento.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -487,6 +495,7 @@
             // txtSexo
             // 
             this.txtSexo.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.txtSexo.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtSexo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSexo.Location = new System.Drawing.Point(1094, 107);
             this.txtSexo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -529,7 +538,7 @@
             this.rbJuridica.AutoSize = true;
             this.rbJuridica.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.rbJuridica.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.rbJuridica.Location = new System.Drawing.Point(426, 85);
+            this.rbJuridica.Location = new System.Drawing.Point(410, 80);
             this.rbJuridica.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.rbJuridica.Name = "rbJuridica";
             this.rbJuridica.Size = new System.Drawing.Size(123, 20);
@@ -545,7 +554,7 @@
             this.rbFisica.AutoSize = true;
             this.rbFisica.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.rbFisica.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.rbFisica.Location = new System.Drawing.Point(426, 112);
+            this.rbFisica.Location = new System.Drawing.Point(410, 107);
             this.rbFisica.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.rbFisica.Name = "rbFisica";
             this.rbFisica.Size = new System.Drawing.Size(112, 20);
@@ -558,6 +567,7 @@
             // txtNumero
             // 
             this.txtNumero.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.txtNumero.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtNumero.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNumero.Location = new System.Drawing.Point(366, 175);
             this.txtNumero.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -584,6 +594,7 @@
             // txtEndereco
             // 
             this.txtEndereco.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.txtEndereco.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtEndereco.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtEndereco.Location = new System.Drawing.Point(21, 175);
             this.txtEndereco.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -609,11 +620,12 @@
             // txtApelido
             // 
             this.txtApelido.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.txtApelido.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtApelido.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtApelido.Location = new System.Drawing.Point(666, 107);
+            this.txtApelido.Location = new System.Drawing.Point(684, 107);
             this.txtApelido.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtApelido.Name = "txtApelido";
-            this.txtApelido.Size = new System.Drawing.Size(236, 22);
+            this.txtApelido.Size = new System.Drawing.Size(218, 22);
             this.txtApelido.TabIndex = 5;
             this.txtApelido.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtApelido_KeyPress);
             this.txtApelido.Leave += new System.EventHandler(this.txtApelido_Leave);
@@ -625,7 +637,7 @@
             this.lblApelido.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.lblApelido.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
             this.lblApelido.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.lblApelido.Location = new System.Drawing.Point(666, 88);
+            this.lblApelido.Location = new System.Drawing.Point(680, 85);
             this.lblApelido.Name = "lblApelido";
             this.lblApelido.Size = new System.Drawing.Size(55, 16);
             this.lblApelido.TabIndex = 108;
@@ -634,6 +646,7 @@
             // txtCliente
             // 
             this.txtCliente.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.txtCliente.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCliente.Location = new System.Drawing.Point(104, 107);
             this.txtCliente.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -659,6 +672,7 @@
             // txtCodigo
             // 
             this.txtCodigo.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.txtCodigo.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtCodigo.Enabled = false;
             this.txtCodigo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCodigo.Location = new System.Drawing.Point(21, 107);
@@ -764,6 +778,7 @@
             // txtLimiteCredito
             // 
             this.txtLimiteCredito.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.txtLimiteCredito.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtLimiteCredito.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtLimiteCredito.Location = new System.Drawing.Point(522, 439);
             this.txtLimiteCredito.Margin = new System.Windows.Forms.Padding(4);
@@ -793,6 +808,7 @@
             // txtCondicao
             // 
             this.txtCondicao.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.txtCondicao.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtCondicao.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCondicao.Location = new System.Drawing.Point(104, 439);
             this.txtCondicao.Margin = new System.Windows.Forms.Padding(4);
@@ -817,6 +833,7 @@
             // txtCodCondicao
             // 
             this.txtCodCondicao.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.txtCodCondicao.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtCodCondicao.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCodCondicao.Location = new System.Drawing.Point(21, 439);
             this.txtCodCondicao.Margin = new System.Windows.Forms.Padding(4);
@@ -864,6 +881,7 @@
             // txtRg
             // 
             this.txtRg.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.txtRg.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtRg.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtRg.Location = new System.Drawing.Point(195, 364);
             this.txtRg.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -892,7 +910,7 @@
             this.chkEstrangeiro.AutoSize = true;
             this.chkEstrangeiro.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.chkEstrangeiro.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.chkEstrangeiro.Location = new System.Drawing.Point(564, 89);
+            this.chkEstrangeiro.Location = new System.Drawing.Point(552, 107);
             this.chkEstrangeiro.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.chkEstrangeiro.Name = "chkEstrangeiro";
             this.chkEstrangeiro.Size = new System.Drawing.Size(96, 20);

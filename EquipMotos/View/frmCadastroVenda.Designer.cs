@@ -69,8 +69,6 @@
             this.txtNumeroVenda = new System.Windows.Forms.TextBox();
             this.txtDtCadastro = new System.Windows.Forms.MaskedTextBox();
             this.txtDtAlteracao = new System.Windows.Forms.MaskedTextBox();
-            this.btnRemProduto = new System.Windows.Forms.Button();
-            this.btnAddProduto = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.btnBuscarCliente = new System.Windows.Forms.PictureBox();
             this.btnBuscarProduto = new System.Windows.Forms.PictureBox();
@@ -88,9 +86,13 @@
             this.txtSerie = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.chkSituacao = new System.Windows.Forms.CheckBox();
+            this.btnAddProduto = new System.Windows.Forms.PictureBox();
+            this.btnRemProduto = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.btnBuscarCliente)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnBuscarProduto)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnBuscarCondPagamento)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnAddProduto)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnRemProduto)).BeginInit();
             this.SuspendLayout();
             // 
             // btnVoltar
@@ -186,7 +188,6 @@
             this.txtUsuario.Name = "txtUsuario";
             this.txtUsuario.Size = new System.Drawing.Size(146, 18);
             this.txtUsuario.TabIndex = 198;
-            this.txtUsuario.UseSystemPasswordChar = false;
             // 
             // lblAlteracao
             // 
@@ -235,7 +236,6 @@
             this.txtCondPagamento.Name = "txtCondPagamento";
             this.txtCondPagamento.Size = new System.Drawing.Size(294, 23);
             this.txtCondPagamento.TabIndex = 192;
-            this.txtCondPagamento.UseSystemPasswordChar = false;
             // 
             // label27
             // 
@@ -260,7 +260,6 @@
             this.txtCodCondPagamento.TabIndex = 190;
             this.txtCodCondPagamento.TextChanged += new System.EventHandler(this.txtCodCondPagamento_TextChanged);
             this.txtCodCondPagamento.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCodCondPagamento_KeyPress);
-            this.txtCodCondPagamento.TextChanged += new System.EventHandler(this.txtCodCondPagamento_TextChanged);
             // 
             // label26
             // 
@@ -437,7 +436,6 @@
             this.txtProduto.Name = "txtProduto";
             this.txtProduto.Size = new System.Drawing.Size(330, 23);
             this.txtProduto.TabIndex = 167;
-            this.txtProduto.UseSystemPasswordChar = false;
             // 
             // label13
             // 
@@ -462,7 +460,6 @@
             this.txtCodProduto.TabIndex = 165;
             this.txtCodProduto.TextChanged += new System.EventHandler(this.txtCodProduto_TextChanged);
             this.txtCodProduto.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCodProduto_KeyPress);
-            this.txtCodProduto.TextChanged += new System.EventHandler(this.txtCodProduto_TextChanged);
             // 
             // label4
             // 
@@ -485,7 +482,6 @@
             this.txtCliente.Name = "txtCliente";
             this.txtCliente.Size = new System.Drawing.Size(330, 23);
             this.txtCliente.TabIndex = 163;
-            this.txtCliente.UseSystemPasswordChar = false;
             // 
             // label3
             // 
@@ -510,7 +506,6 @@
             this.txtCodCliente.TabIndex = 161;
             this.txtCodCliente.TextChanged += new System.EventHandler(this.txtCodCliente_TextChanged);
             this.txtCodCliente.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCodCliente_KeyPress);
-            this.txtCodCliente.TextChanged += new System.EventHandler(this.txtCodCliente_TextChanged);
             // 
             // label2
             // 
@@ -547,7 +542,6 @@
             this.txtNumeroVenda.Name = "txtNumeroVenda";
             this.txtNumeroVenda.Size = new System.Drawing.Size(99, 23);
             this.txtNumeroVenda.TabIndex = 293;
-            this.txtNumeroVenda.UseSystemPasswordChar = false;
             this.txtNumeroVenda.Visible = false;
             this.txtNumeroVenda.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNumeroVenda_KeyPress);
             // 
@@ -574,32 +568,6 @@
             this.txtDtAlteracao.Size = new System.Drawing.Size(65, 18);
             this.txtDtAlteracao.TabIndex = 209;
             this.txtDtAlteracao.ValidatingType = typeof(System.DateTime);
-            // 
-            // btnRemProduto
-            // 
-            this.btnRemProduto.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnRemProduto.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnRemProduto.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRemProduto.Image = global::EquipMotos.Properties.Resources._1398756469_Erase;
-            this.btnRemProduto.Location = new System.Drawing.Point(805, 188);
-            this.btnRemProduto.Name = "btnRemProduto";
-            this.btnRemProduto.Size = new System.Drawing.Size(50, 40);
-            this.btnRemProduto.TabIndex = 178;
-            this.btnRemProduto.UseVisualStyleBackColor = false;
-            this.btnRemProduto.Click += new System.EventHandler(this.btnRemProduto_Click);
-            // 
-            // btnAddProduto
-            // 
-            this.btnAddProduto.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnAddProduto.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnAddProduto.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddProduto.Image = global::EquipMotos.Properties.Resources._1398756346_1;
-            this.btnAddProduto.Location = new System.Drawing.Point(746, 188);
-            this.btnAddProduto.Name = "btnAddProduto";
-            this.btnAddProduto.Size = new System.Drawing.Size(50, 40);
-            this.btnAddProduto.TabIndex = 177;
-            this.btnAddProduto.UseVisualStyleBackColor = false;
-            this.btnAddProduto.Click += new System.EventHandler(this.btnAddProduto_Click);
             // 
             // label6
             // 
@@ -800,12 +768,42 @@
             this.chkSituacao.Text = "Ativa";
             this.chkSituacao.UseVisualStyleBackColor = false;
             // 
+            // btnAddProduto
+            // 
+            this.btnAddProduto.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnAddProduto.ErrorImage = global::EquipMotos.Properties.Resources._1398756346_1;
+            this.btnAddProduto.Image = global::EquipMotos.Properties.Resources._1398756346_1;
+            this.btnAddProduto.InitialImage = global::EquipMotos.Properties.Resources._1398756346_1;
+            this.btnAddProduto.Location = new System.Drawing.Point(737, 187);
+            this.btnAddProduto.Name = "btnAddProduto";
+            this.btnAddProduto.Size = new System.Drawing.Size(50, 40);
+            this.btnAddProduto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.btnAddProduto.TabIndex = 371;
+            this.btnAddProduto.TabStop = false;
+            this.btnAddProduto.Click += new System.EventHandler(this.btnAddProduto_Click);
+            // 
+            // btnRemProduto
+            // 
+            this.btnRemProduto.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnRemProduto.ErrorImage = global::EquipMotos.Properties.Resources._1398756469_Erase;
+            this.btnRemProduto.Image = global::EquipMotos.Properties.Resources._1398756469_Erase;
+            this.btnRemProduto.InitialImage = global::EquipMotos.Properties.Resources._1398756469_Erase;
+            this.btnRemProduto.Location = new System.Drawing.Point(803, 187);
+            this.btnRemProduto.Name = "btnRemProduto";
+            this.btnRemProduto.Size = new System.Drawing.Size(50, 40);
+            this.btnRemProduto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.btnRemProduto.TabIndex = 373;
+            this.btnRemProduto.TabStop = false;
+            this.btnRemProduto.Click += new System.EventHandler(this.btnRemProduto_Click);
+            // 
             // frmCadastroVenda
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(973, 765);
             this.ControlBox = false;
+            this.Controls.Add(this.btnRemProduto);
+            this.Controls.Add(this.btnAddProduto);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.chkSituacao);
             this.Controls.Add(this.label9);
@@ -841,8 +839,6 @@
             this.Controls.Add(this.label24);
             this.Controls.Add(this.txtValorItens);
             this.Controls.Add(this.lvProdutosVenda);
-            this.Controls.Add(this.btnRemProduto);
-            this.Controls.Add(this.btnAddProduto);
             this.Controls.Add(this.label16);
             this.Controls.Add(this.txtValorProd);
             this.Controls.Add(this.label15);
@@ -866,6 +862,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnBuscarCliente)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnBuscarProduto)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnBuscarCondPagamento)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnAddProduto)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnRemProduto)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -891,8 +889,6 @@
         private System.Windows.Forms.Label label24;
         private System.Windows.Forms.TextBox txtValorItens;
         private System.Windows.Forms.ListView lvProdutosVenda;
-        private System.Windows.Forms.Button btnRemProduto;
-        private System.Windows.Forms.Button btnAddProduto;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.TextBox txtValorProd;
         private System.Windows.Forms.Label label15;
@@ -932,5 +928,7 @@
         private System.Windows.Forms.TextBox txtSerie;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.CheckBox chkSituacao;
+        private System.Windows.Forms.PictureBox btnAddProduto;
+        private System.Windows.Forms.PictureBox btnRemProduto;
     }
 }
