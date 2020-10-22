@@ -261,12 +261,12 @@ namespace EquipMotos.View
                 txtDtExpedicao.Focus();
                 return false;
             }
-            else if (txtDtValidade.Value > DateTime.Now)
-            {
-                MessageBox.Show("Data de Validade inválida", "Informe a Data de Validade!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                txtDtValidade.Focus();
-                return false;
-            }
+            //else if (txtDtValidade.Value > DateTime.Now)
+            //{
+            //    MessageBox.Show("Data de Validade inválida", "Informe a Data de Validade!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            //    txtDtValidade.Focus();
+            //    return false;
+            //}
 
             if (!ValidaData(txtDtPrimeiraCnh.Text))
             {
@@ -1047,11 +1047,17 @@ namespace EquipMotos.View
         {
             if (!string.IsNullOrEmpty(txtDtPrimeiraCnh.Text))
             {
-                if (txtDtPrimeiraCnh.Value.Date >= DateTime.Now.Date)
+                if (txtDtPrimeiraCnh.Value.Date >= txtDtExpedicao.Value.Date)
+                {
+                    MessageBox.Show("Não é possivel inserir esta data", "Informe uma data menor que expedição!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    txtDtPrimeiraCnh.Focus();
+                    txtDtPrimeiraCnh.Value = DateTime.Now.AddDays(-1); 
+                }
+                if(txtDtExpedicao.Value.Date >= DateTime.Now.Date)
                 {
                     MessageBox.Show("Não é possivel inserir esta data", "Informe uma data menor que hoje!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     txtDtPrimeiraCnh.Focus();
-                    txtDtPrimeiraCnh.Value = DateTime.Now.AddDays(-1); ;
+                    txtDtPrimeiraCnh.Value = DateTime.Now.AddDays(-1);
                 }
             }
         }

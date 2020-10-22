@@ -126,13 +126,13 @@
     <value>Microsoft Sans Serif, 10pt</value>
   </data>
   <data name="txtPesquisar.Location" type="System.Drawing.Point, System.Drawing">
-    <value>35, 101</value>
+    <value>15, 98</value>
   </data>
   <data name="txtPesquisar.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="txtPesquisar.Size" type="System.Drawing.Size, System.Drawing">
-    <value>400, 23</value>
+    <value>301, 23</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="txtPesquisar.TabIndex" type="System.Int32, mscorlib">
@@ -157,16 +157,19 @@
     <value>True</value>
   </data>
   <data name="label1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 12pt</value>
+    <value>Microsoft Sans Serif, 11pt</value>
   </data>
   <data name="label1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>31, 74</value>
+    <value>11, 76</value>
+  </data>
+  <data name="label1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 0, 2, 0</value>
   </data>
   <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>237, 20</value>
+    <value>222, 18</value>
   </data>
   <data name="label1.TabIndex" type="System.Int32, mscorlib">
     <value>36</value>
@@ -196,13 +199,10 @@
     <value>NoControl</value>
   </data>
   <data name="btnVoltar.Location" type="System.Drawing.Point, System.Drawing">
-    <value>467, 551</value>
-  </data>
-  <data name="btnVoltar.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 4, 4, 4</value>
+    <value>653, 539</value>
   </data>
   <data name="btnVoltar.Size" type="System.Drawing.Size, System.Drawing">
-    <value>115, 30</value>
+    <value>86, 24</value>
   </data>
   <data name="btnVoltar.TabIndex" type="System.Int32, mscorlib">
     <value>34</value>
@@ -232,7 +232,7 @@
     <value>6</value>
   </data>
   <data name="codigoDataGridViewTextBoxColumn.Width" type="System.Int32, mscorlib">
-    <value>50</value>
+    <value>60</value>
   </data>
   <data name="dataGridViewTextBoxColumn1.HeaderText" xml:space="preserve">
     <value>Forma</value>
@@ -241,13 +241,16 @@
     <value>6</value>
   </data>
   <data name="dataGridViewTextBoxColumn1.Width" type="System.Int32, mscorlib">
-    <value>200</value>
+    <value>635</value>
   </data>
   <data name="dataGridViewTextBoxColumn2.HeaderText" xml:space="preserve">
     <value>Data Cadastro</value>
   </data>
   <data name="dataGridViewTextBoxColumn2.MinimumWidth" type="System.Int32, mscorlib">
     <value>6</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn2.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
   <data name="dataGridViewTextBoxColumn2.Width" type="System.Int32, mscorlib">
     <value>80</value>
@@ -258,6 +261,9 @@
   <data name="dataGridViewTextBoxColumn3.MinimumWidth" type="System.Int32, mscorlib">
     <value>6</value>
   </data>
+  <data name="dataGridViewTextBoxColumn3.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
   <data name="dataGridViewTextBoxColumn3.Width" type="System.Int32, mscorlib">
     <value>80</value>
   </data>
@@ -266,6 +272,9 @@
   </data>
   <data name="dataGridViewTextBoxColumn4.MinimumWidth" type="System.Int32, mscorlib">
     <value>6</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn4.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
   <data name="dataGridViewTextBoxColumn4.Width" type="System.Int32, mscorlib">
     <value>150</value>
@@ -277,16 +286,13 @@
     <value>17, 17</value>
   </metadata>
   <data name="gvFormaPag.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 151</value>
-  </data>
-  <data name="gvFormaPag.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 4, 4, 4</value>
+    <value>10, 136</value>
   </data>
   <data name="gvFormaPag.RowHeadersWidth" type="System.Int32, mscorlib">
     <value>51</value>
   </data>
   <data name="gvFormaPag.Size" type="System.Drawing.Size, System.Drawing">
-    <value>611, 380</value>
+    <value>750, 366</value>
   </data>
   <data name="gvFormaPag.TabIndex" type="System.Int32, mscorlib">
     <value>31</value>
@@ -310,13 +316,10 @@
     <value>NoControl</value>
   </data>
   <data name="btnBuscarFormaPag.Location" type="System.Drawing.Point, System.Drawing">
-    <value>442, 83</value>
-  </data>
-  <data name="btnBuscarFormaPag.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 4, 4, 4</value>
+    <value>321, 82</value>
   </data>
   <data name="btnBuscarFormaPag.Size" type="System.Drawing.Size, System.Drawing">
-    <value>50, 50</value>
+    <value>38, 41</value>
   </data>
   <data name="btnBuscarFormaPag.SizeMode" type="System.Windows.Forms.PictureBoxSizeMode, System.Windows.Forms">
     <value>CenterImage</value>
@@ -349,13 +352,10 @@
     <value>NoControl</value>
   </data>
   <data name="btnExcluir.Location" type="System.Drawing.Point, System.Drawing">
-    <value>325, 551</value>
-  </data>
-  <data name="btnExcluir.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 4, 4, 4</value>
+    <value>546, 539</value>
   </data>
   <data name="btnExcluir.Size" type="System.Drawing.Size, System.Drawing">
-    <value>100, 30</value>
+    <value>75, 24</value>
   </data>
   <data name="btnExcluir.TabIndex" type="System.Int32, mscorlib">
     <value>35</value>
@@ -391,13 +391,10 @@
     <value>NoControl</value>
   </data>
   <data name="btnAlterar.Location" type="System.Drawing.Point, System.Drawing">
-    <value>217, 551</value>
-  </data>
-  <data name="btnAlterar.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 4, 4, 4</value>
+    <value>465, 539</value>
   </data>
   <data name="btnAlterar.Size" type="System.Drawing.Size, System.Drawing">
-    <value>100, 30</value>
+    <value>75, 24</value>
   </data>
   <data name="btnAlterar.TabIndex" type="System.Int32, mscorlib">
     <value>33</value>
@@ -433,13 +430,10 @@
     <value>NoControl</value>
   </data>
   <data name="btnNovo.Location" type="System.Drawing.Point, System.Drawing">
-    <value>109, 551</value>
-  </data>
-  <data name="btnNovo.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 4, 4, 4</value>
+    <value>384, 539</value>
   </data>
   <data name="btnNovo.Size" type="System.Drawing.Size, System.Drawing">
-    <value>100, 30</value>
+    <value>75, 24</value>
   </data>
   <data name="btnNovo.TabIndex" type="System.Int32, mscorlib">
     <value>32</value>
@@ -469,19 +463,37 @@
     <value>True</value>
   </metadata>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>8, 16</value>
+    <value>6, 13</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>611, 620</value>
+    <value>772, 593</value>
   </data>
   <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
     <value>CenterScreen</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Consultar Forma de Pagamento</value>
+  </data>
+  <data name="&gt;&gt;formaPagamentoBindingSource.Name" xml:space="preserve">
+    <value>formaPagamentoBindingSource</value>
+  </data>
+  <data name="&gt;&gt;formaPagamentoBindingSource.Type" xml:space="preserve">
+    <value>System.Windows.Forms.BindingSource, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;sistemaMoto2DataSetFormaPagamento.Name" xml:space="preserve">
+    <value>sistemaMoto2DataSetFormaPagamento</value>
+  </data>
+  <data name="&gt;&gt;sistemaMoto2DataSetFormaPagamento.Type" xml:space="preserve">
+    <value>EquipMotos.SistemaMoto2DataSetFormaPagamento, SistemaMoto2DataSetFormaPagamento.Designer.cs.dll, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;formaPagamentoTableAdapter.Name" xml:space="preserve">
+    <value>formaPagamentoTableAdapter</value>
+  </data>
+  <data name="&gt;&gt;formaPagamentoTableAdapter.Type" xml:space="preserve">
+    <value>EquipMotos.SistemaMoto2DataSetFormaPagamentoTableAdapters.formaPagamentoTableAdapter, SistemaMoto2DataSetFormaPagamento.Designer.cs.dll, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;codigoDataGridViewTextBoxColumn.Name" xml:space="preserve">
     <value>codigoDataGridViewTextBoxColumn</value>
@@ -512,24 +524,6 @@
   </data>
   <data name="&gt;&gt;dataGridViewTextBoxColumn4.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;formaPagamentoBindingSource.Name" xml:space="preserve">
-    <value>formaPagamentoBindingSource</value>
-  </data>
-  <data name="&gt;&gt;formaPagamentoBindingSource.Type" xml:space="preserve">
-    <value>System.Windows.Forms.BindingSource, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;sistemaMoto2DataSetFormaPagamento.Name" xml:space="preserve">
-    <value>sistemaMoto2DataSetFormaPagamento</value>
-  </data>
-  <data name="&gt;&gt;sistemaMoto2DataSetFormaPagamento.Type" xml:space="preserve">
-    <value>EquipMotos.SistemaMoto2DataSetFormaPagamento, SistemaMoto2DataSetFormaPagamento.Designer.cs.dll, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;formaPagamentoTableAdapter.Name" xml:space="preserve">
-    <value>formaPagamentoTableAdapter</value>
-  </data>
-  <data name="&gt;&gt;formaPagamentoTableAdapter.Type" xml:space="preserve">
-    <value>EquipMotos.SistemaMoto2DataSetFormaPagamentoTableAdapters.formaPagamentoTableAdapter, SistemaMoto2DataSetFormaPagamento.Designer.cs.dll, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>frmConsultaFormaPagamento</value>

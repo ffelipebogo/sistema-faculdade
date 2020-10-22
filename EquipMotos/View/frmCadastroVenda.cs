@@ -2,6 +2,7 @@
 using EquipMotos.CONTROLLER;
 using EquipMotos.MODEL;
 using EquipMotos.View.helper;
+using EquipMotos.VIEW;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -23,7 +24,7 @@ namespace EquipMotos.View
         public static object CondPagamento;
         Vendas Venda;
         CtrlVendas CtrlVenda = new CtrlVendas();
-        CtrlProdutosServicos CtrlProduto = new CtrlProdutosServicos();
+        CtrlProdutos CtrlProduto = new CtrlProdutos();
         CtrlCondicaoPagamento CtrlCondPagamento = new CtrlCondicaoPagamento();
         CtrlClientes CtrlCliente = new CtrlClientes();
         CondicaoPagamentos CondicaoPagamento;
@@ -54,6 +55,7 @@ namespace EquipMotos.View
                             Venda.nrNota = txtNumeroVenda.Text;
                             Venda.dtEmissao = txtData.Value;
                             Venda.desconto = Double.Parse("0"+txtDescontos.Text);
+                            Venda.totalReceber = Double.Parse("0"+txtValorTotal.Text);
                             Venda.cliente = CtrlCliente.BuscarPorID(txtCodCliente.Text.Trim()) as Clientes;
                             Venda.condPagamento = CtrlCondPagamento.BuscarPorID(Convert.ToInt32(txtCodCondPagamento.Text.Trim())) as CondicaoPagamentos;
                             Venda.observacoes = txtObservacoes.Text;
@@ -130,7 +132,33 @@ namespace EquipMotos.View
 
         internal void DisableView()
         {
-            throw new NotImplementedException();
+            txtModelo.Enabled = false;
+            txtSerie.Enabled = false;
+            txtNumeroVenda.Enabled = false;
+            txtData.Enabled = false;
+            
+            txtCodCliente.Enabled = false;
+            txtCliente.Enabled = false;
+            btnBuscarCliente.Enabled = false;
+            txtCodProduto.Enabled = false;
+            txtProduto.Enabled = false;
+            btnBuscarProduto.Enabled = false;
+            txtQtd.Enabled = false;
+            txtValorProd.Enabled = false;
+            btnAddProduto.Enabled = false;
+            btnRemProduto.Enabled = false;
+            lvProdutosVenda.Enabled = false;
+            txtDescontos.Enabled = false;
+            txtValorItens.Enabled = false;
+            txtValorTotal.Enabled = false;
+            txtCodCondPagamento.Enabled = false;
+            txtCondPagamento.Enabled = false;
+            btnBuscarCondPagamento.Enabled = false;
+            chkSituacao.Enabled = false;
+
+            txtObservacoes.Enabled = false;
+            btnSalvar.Hide();
+            btnLimpar.Hide();
         }
 
         internal void Carregar( object nrNota)
@@ -146,11 +174,11 @@ namespace EquipMotos.View
                 txtCliente.Text = Convert.ToString(Venda.cliente.cliente);
                 txtDescontos.Text = (Venda.desconto).ToString("C", CultureInfo.CurrentCulture);
                 //txtValorItens.Text = (Venda.ValorItens).ToString("C", CultureInfo.CurrentCulture);
-                //txtValorTotal.Text = (Venda.ValorTotal).ToString("C", CultureInfo.CurrentCulture);
+                //txtValorTotal.Text = (Venda.totalReceber).ToString("C", CultureInfo.CurrentCulture);
 
                 foreach (var item in Venda.listaItem)
                 {
-                    var prod = CtrlProduto.BuscarPorID(Convert.ToString(item.codigo)) as ProdutosServicos;
+                    var prod = CtrlProduto.BuscarPorID(Convert.ToString(item.codigo)) as Produtos;
                     var total = item.qtd * prod.precoVenda;
                     string[] itens = { Convert.ToString(item.codigo), prod.produto, prod.unidade, Convert.ToString(item.qtd), Convert.ToString(prod.custoUltCompra), Convert.ToString(total) };
                     var listItens = new ListViewItem(itens);
@@ -238,10 +266,10 @@ namespace EquipMotos.View
 
         private void BtnBuscarProduto_Click_1(object sender, EventArgs e)
         {
-            frmConsultaProdutosServicos frmConProdServ = new frmConsultaProdutosServicos();
-            frmConProdServ.btnVoltar.Text = "SELECIONAR";
+            frmConsultaProduto frmConProduto = new frmConsultaProduto();
+            frmConProduto.btnVoltar.Text = "SELECIONAR";
 
-            if (frmConProdServ.ShowDialog() == DialogResult.OK)
+            if (frmConProduto.ShowDialog() == DialogResult.OK)
             {
                 CarregaProduto();
             }
@@ -251,10 +279,9 @@ namespace EquipMotos.View
         {
             if (Produto != null)
             {
-                ProdutosServicos pro = Produto as ProdutosServicos;
+                Produtos pro = Produto as Produtos;
                 txtCodProduto.Text = Convert.ToString("0" + pro.codigo);
                 txtProduto.Text = pro.produto;
-                
                 txtValorProd.Text = pro.precoVenda.ToString();
             }
         }
@@ -416,11 +443,10 @@ namespace EquipMotos.View
             return true;
         }
 
-
         private bool ValidaEstoque(int codigo, int qtd)
         {
             var qtdItem = qtd;
-            var Produto = CtrlProduto.BuscarPorID(codigo) as ProdutosServicos;
+            var Produto = CtrlProduto.BuscarPorID(codigo) as Produtos;
             if (Produto.qtd < qtdItem)
             {
                 MessageBox.Show("Não há estoque para a venda de " + Produto.produto + ", o estoque atual é de " + Produto.qtd, "Quantidade inválida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -449,7 +475,7 @@ namespace EquipMotos.View
         {
             try
             {
-                ProdutosServicos prod = Produto as ProdutosServicos;
+                Produtos prod = Produto as Produtos;
                 if (ValidaProduto())
                 {
                     var preco = Double.Parse(txtValorProd.Text, NumberStyles.Any);
@@ -691,7 +717,7 @@ namespace EquipMotos.View
                 return;
             if (Convert.ToInt32("0" + txtCodProduto.Text) < 1)
                 return;
-            ProdutosServicos prod = CtrlProduto.BuscarPorID(Convert.ToInt32(txtCodProduto.Text)) as ProdutosServicos;
+            Produtos prod = CtrlProduto.BuscarPorID(Convert.ToInt32(txtCodProduto.Text)) as Produtos;
             if (prod == null)
             {
                 MessageBox.Show("Nenhum resultado");
@@ -736,6 +762,44 @@ namespace EquipMotos.View
             }
         }
 
-      
+        private void txtObservacoes_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private Boolean ValidarContasReceber(object modelo, object serie, object nrNota, object codCliente)
+        {
+            var listaContaReceber = CtrlVenda.BuscarContaReceber(modelo, serie, nrNota, codCliente);
+            bool valida = true;
+            foreach (var conta in listaContaReceber)
+            {
+                if (conta.pago)
+                {
+                    valida = false;
+                }
+
+            }
+            return valida;
+        }
+
+        private void btnExcluir_Click(object sender, EventArgs e)
+        {
+            if ((MessageBox.Show("Será necessario informar o usuario Administrador do sistema.", "Deseja cancelar?", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes) & txtModelo.Text != null)
+            {
+                frmConfirmaAdmin frmConfirma = new frmConfirmaAdmin();
+                if (frmConfirma.ShowDialog() == DialogResult.OK)
+                {
+                    if (ValidarContasReceber(txtModelo.Text, txtSerie.Text, txtNumeroVenda.Text, txtCodCliente.Text))
+                    {
+                        CtrlVenda.Desativar(txtModelo.Text, txtSerie.Text, txtNumeroVenda.Text, txtCodCliente.Text);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Não foi possivel cancelar a venda, pois teve contas a receber vinculadas pagas.", "Parcelas vinculadas recebidas!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+
+                }
+            }
+        }
     }
 }

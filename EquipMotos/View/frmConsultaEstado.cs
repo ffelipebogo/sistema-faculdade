@@ -69,15 +69,23 @@ namespace EquipMotos.View
         {
             try
             {
-                frmCadastroEstado frmCadEstado = new frmCadastroEstado();
-                var estRow = gvEstado.CurrentRow.DataBoundItem as DataRowView;
-
-                var id = estRow["codigo"];
-
-                frmCadEstado.Carregar(id);
-                if (frmCadEstado.ShowDialog() == DialogResult.OK)
+                if (gvEstado.CurrentRow != null)
                 {
-                    gvEstado.DataSource = CtrlEstado.ListarTodos();
+
+                    frmCadastroEstado frmCadEstado = new frmCadastroEstado();
+                    var estRow = gvEstado.CurrentRow.DataBoundItem as DataRowView;
+
+                    var id = estRow["codigo"];
+
+                    frmCadEstado.Carregar(id);
+                    if (frmCadEstado.ShowDialog() == DialogResult.OK)
+                    {
+                        gvEstado.DataSource = CtrlEstado.ListarTodos();
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Selecione o estado que deseja alterar!");
                 }
             }
             catch (Exception ex)

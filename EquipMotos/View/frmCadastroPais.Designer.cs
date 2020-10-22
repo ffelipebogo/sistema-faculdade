@@ -48,10 +48,9 @@
             this.txtPais.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtPais.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtPais.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPais.Location = new System.Drawing.Point(87, 107);
-            this.txtPais.Margin = new System.Windows.Forms.Padding(4);
+            this.txtPais.Location = new System.Drawing.Point(83, 124);
             this.txtPais.Name = "txtPais";
-            this.txtPais.Size = new System.Drawing.Size(387, 23);
+            this.txtPais.Size = new System.Drawing.Size(291, 23);
             this.txtPais.TabIndex = 2;
             // 
             // txtCodigoPais
@@ -60,10 +59,9 @@
             this.txtCodigoPais.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtCodigoPais.Enabled = false;
             this.txtCodigoPais.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCodigoPais.Location = new System.Drawing.Point(19, 107);
-            this.txtCodigoPais.Margin = new System.Windows.Forms.Padding(4);
+            this.txtCodigoPais.Location = new System.Drawing.Point(25, 124);
             this.txtCodigoPais.Name = "txtCodigoPais";
-            this.txtCodigoPais.Size = new System.Drawing.Size(60, 23);
+            this.txtCodigoPais.Size = new System.Drawing.Size(46, 23);
             this.txtCodigoPais.TabIndex = 1;
             this.txtCodigoPais.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -73,8 +71,7 @@
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(84, 86);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Location = new System.Drawing.Point(80, 104);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(44, 17);
             this.label2.TabIndex = 295;
@@ -86,8 +83,7 @@
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(16, 86);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(22, 104);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(52, 17);
             this.label1.TabIndex = 294;
@@ -98,11 +94,11 @@
             this.txtDtAlteracao.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtDtAlteracao.Enabled = false;
             this.txtDtAlteracao.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDtAlteracao.Location = new System.Drawing.Point(134, 260);
-            this.txtDtAlteracao.Margin = new System.Windows.Forms.Padding(5);
+            this.txtDtAlteracao.Location = new System.Drawing.Point(101, 550);
+            this.txtDtAlteracao.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtDtAlteracao.Mask = "00/00/0000";
             this.txtDtAlteracao.Name = "txtDtAlteracao";
-            this.txtDtAlteracao.Size = new System.Drawing.Size(85, 18);
+            this.txtDtAlteracao.Size = new System.Drawing.Size(65, 18);
             this.txtDtAlteracao.TabIndex = 293;
             this.txtDtAlteracao.ValidatingType = typeof(System.DateTime);
             // 
@@ -111,11 +107,11 @@
             this.txtDtCadastro.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtDtCadastro.Enabled = false;
             this.txtDtCadastro.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDtCadastro.Location = new System.Drawing.Point(19, 260);
-            this.txtDtCadastro.Margin = new System.Windows.Forms.Padding(5);
+            this.txtDtCadastro.Location = new System.Drawing.Point(15, 550);
+            this.txtDtCadastro.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtDtCadastro.Mask = "00/00/0000";
             this.txtDtCadastro.Name = "txtDtCadastro";
-            this.txtDtCadastro.Size = new System.Drawing.Size(85, 18);
+            this.txtDtCadastro.Size = new System.Drawing.Size(65, 18);
             this.txtDtCadastro.TabIndex = 292;
             this.txtDtCadastro.ValidatingType = typeof(System.DateTime);
             // 
@@ -125,10 +121,10 @@
             this.txtUsuario.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtUsuario.Enabled = false;
             this.txtUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtUsuario.Location = new System.Drawing.Point(246, 260);
-            this.txtUsuario.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.txtUsuario.Location = new System.Drawing.Point(185, 550);
+            this.txtUsuario.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtUsuario.Name = "txtUsuario";
-            this.txtUsuario.Size = new System.Drawing.Size(120, 18);
+            this.txtUsuario.Size = new System.Drawing.Size(91, 18);
             this.txtUsuario.TabIndex = 288;
             // 
             // lblUsuario
@@ -137,8 +133,7 @@
             this.lblUsuario.AutoSize = true;
             this.lblUsuario.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.lblUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUsuario.Location = new System.Drawing.Point(243, 245);
-            this.lblUsuario.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblUsuario.Location = new System.Drawing.Point(183, 538);
             this.lblUsuario.Name = "lblUsuario";
             this.lblUsuario.Size = new System.Drawing.Size(107, 13);
             this.lblUsuario.TabIndex = 287;
@@ -150,8 +145,7 @@
             this.lblDtAlteracao.AutoSize = true;
             this.lblDtAlteracao.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.lblDtAlteracao.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDtAlteracao.Location = new System.Drawing.Point(131, 245);
-            this.lblDtAlteracao.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblDtAlteracao.Location = new System.Drawing.Point(99, 538);
             this.lblDtAlteracao.Name = "lblDtAlteracao";
             this.lblDtAlteracao.Size = new System.Drawing.Size(77, 13);
             this.lblDtAlteracao.TabIndex = 286;
@@ -163,8 +157,7 @@
             this.lblDtCadastro.AutoSize = true;
             this.lblDtCadastro.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.lblDtCadastro.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDtCadastro.Location = new System.Drawing.Point(16, 245);
-            this.lblDtCadastro.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblDtCadastro.Location = new System.Drawing.Point(13, 538);
             this.lblDtCadastro.Name = "lblDtCadastro";
             this.lblDtCadastro.Size = new System.Drawing.Size(75, 13);
             this.lblDtCadastro.TabIndex = 285;
@@ -175,12 +168,12 @@
             this.btnLimpar.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnLimpar.Depth = 0;
             this.btnLimpar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLimpar.Location = new System.Drawing.Point(520, 253);
-            this.btnLimpar.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.btnLimpar.Location = new System.Drawing.Point(484, 526);
+            this.btnLimpar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnLimpar.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnLimpar.Name = "btnLimpar";
             this.btnLimpar.Primary = true;
-            this.btnLimpar.Size = new System.Drawing.Size(80, 31);
+            this.btnLimpar.Size = new System.Drawing.Size(100, 30);
             this.btnLimpar.TabIndex = 297;
             this.btnLimpar.Text = "LIMPAR";
             this.btnLimpar.UseVisualStyleBackColor = true;
@@ -191,12 +184,12 @@
             this.btnSalvar.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnSalvar.Depth = 0;
             this.btnSalvar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSalvar.Location = new System.Drawing.Point(432, 253);
-            this.btnSalvar.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.btnSalvar.Location = new System.Drawing.Point(378, 526);
+            this.btnSalvar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnSalvar.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnSalvar.Name = "btnSalvar";
             this.btnSalvar.Primary = true;
-            this.btnSalvar.Size = new System.Drawing.Size(80, 31);
+            this.btnSalvar.Size = new System.Drawing.Size(100, 30);
             this.btnSalvar.TabIndex = 296;
             this.btnSalvar.Text = "SALVAR";
             this.btnSalvar.UseVisualStyleBackColor = true;
@@ -207,12 +200,12 @@
             this.btnVoltar.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnVoltar.Depth = 0;
             this.btnVoltar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnVoltar.Location = new System.Drawing.Point(630, 253);
-            this.btnVoltar.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.btnVoltar.Location = new System.Drawing.Point(639, 526);
+            this.btnVoltar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnVoltar.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnVoltar.Name = "btnVoltar";
             this.btnVoltar.Primary = true;
-            this.btnVoltar.Size = new System.Drawing.Size(80, 31);
+            this.btnVoltar.Size = new System.Drawing.Size(100, 30);
             this.btnVoltar.TabIndex = 298;
             this.btnVoltar.Text = "VOLTAR";
             this.btnVoltar.UseVisualStyleBackColor = true;
@@ -220,9 +213,9 @@
             // 
             // frmCadastroPais
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(740, 310);
+            this.ClientSize = new System.Drawing.Size(772, 593);
             this.ControlBox = false;
             this.Controls.Add(this.btnLimpar);
             this.Controls.Add(this.btnSalvar);
@@ -237,7 +230,7 @@
             this.Controls.Add(this.lblUsuario);
             this.Controls.Add(this.lblDtAlteracao);
             this.Controls.Add(this.lblDtCadastro);
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "frmCadastroPais";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Cadastro de Paises";

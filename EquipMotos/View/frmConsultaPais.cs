@@ -35,15 +35,23 @@ namespace EquipMotos.View
         {
             try
             {
-                frmCadastroPais frmCadPais = new frmCadastroPais();
-                var paisRow = gvPais.CurrentRow.DataBoundItem as DataRowView;
-
-                var codigo = paisRow["codigo"];
-
-                frmCadPais.Carregar(codigo);
-                if (frmCadPais.ShowDialog() == DialogResult.OK)
+                if (gvPais.CurrentRow != null)
                 {
-                    gvPais.DataSource = CtrlPais.ListarTodos();
+
+                    frmCadastroPais frmCadPais = new frmCadastroPais();
+                    var paisRow = gvPais.CurrentRow.DataBoundItem as DataRowView;
+
+                    var codigo = paisRow["codigo"];
+
+                    frmCadPais.Carregar(codigo);
+                    if (frmCadPais.ShowDialog() == DialogResult.OK)
+                    {
+                        gvPais.DataSource = CtrlPais.ListarTodos();
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Selecione o pais que deseja alterar!");
                 }
 
             }

@@ -9,5 +9,6 @@ namespace EquipMotos.MODEL
     public class ContasReceber: Contas
     {
         public Clientes cliente { get; set; }
+        public bool recebido { get; set; }
     }
 }

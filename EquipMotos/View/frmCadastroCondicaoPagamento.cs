@@ -32,7 +32,8 @@ namespace EquipMotos.View
 
             toolTip.ShowAlways = true;
             toolTip.SetToolTip(this.btnAdd, "Adicionar Parcela");
-            toolTip.SetToolTip(this.btnRemove, "Remover Parcela");
+            toolTip.SetToolTip(this.btnRemove, "Remover a ultima Parcela");
+            toolTip.SetToolTip(this.btnLimparListaParcela, "Remover todas Parcelas");
             toolTip.SetToolTip(this.btnBuscarFormaPag, "Pesquisar Forma de Pagamento");
             toolTip.SetToolTip(this.btnSalvar, "Salvar");
             toolTip.SetToolTip(this.btnLimpar, "Limpar");
@@ -176,6 +177,7 @@ namespace EquipMotos.View
                     if (listviewParcelas.Items.Count <= 11)
                     {
                         listviewParcelas.Items.Add(lvi);
+                        //Reorganiza(listviewParcelas);
                         txtNrParcelas.Text = "";
                         txtNrDias.Text = "";
                         txtPorcentagem.Text = "";
@@ -192,10 +194,12 @@ namespace EquipMotos.View
                         MessageBox.Show("Maximo de parcelas é 12");
                     }
                     txtNrParcelas.Text = Convert.ToString(listviewParcelas.Items.Count + 1 );
+                    txtNrDias.Focus();
                 } 
             }
             catch
             {
+                
                 MessageBox.Show("Não foi possivel adicionar a parcela");
             }
         }
@@ -262,6 +266,38 @@ namespace EquipMotos.View
         }
         #endregion
 
+        #region Reorganiza table
+        private void Reorganiza(ListView lvi)
+        {
+            if (lvi.Items.Count > 0)
+            {
+                for( int i = 1; i < lvi.Items.Count; i++)
+                {
+                    for( int j = 0; j < (lvi.Items.Count - i); j++)
+                    {
+                        if ( Convert.ToInt64(lvi.Items[j].SubItems[1].Text) > Convert.ToInt64(lvi.Items[j + 1].SubItems[1].Text))
+                        {
+                            ListViewItem item = lvi.Items[j];
+                            lvi.Items[j].SubItems[1].Text = lvi.Items[j + 1].SubItems[1].Text;
+                            lvi.Items[j].SubItems[2].Text = lvi.Items[j + 1].SubItems[2].Text;
+                            lvi.Items[j].SubItems[3].Text = lvi.Items[j + 1].SubItems[3].Text;
+                            lvi.Items[j].SubItems[4].Text = lvi.Items[j + 1].SubItems[4].Text;
+                            lvi.Items[j + 1].SubItems[1].Text = item.SubItems[1].Text;
+                            lvi.Items[j + 1].SubItems[2].Text = item.SubItems[2].Text;
+                            lvi.Items[j + 1].SubItems[3].Text = item.SubItems[3].Text;
+                            lvi.Items[j + 1].SubItems[4].Text = item.SubItems[4].Text;
+                        }
+                    }
+                }
+                listviewParcelas = lvi;
+            }
+            else
+            {
+                txtNrParcelas.Text = Convert.ToString(1);
+            }
+        }
+        #endregion
+
         private double SomaPorcentagem()
         {
             double vlr = 0;
@@ -292,43 +328,29 @@ namespace EquipMotos.View
         {
             try
             {
-                if (listviewParcelas.SelectedIndices[0] != null)
+                var item = listviewParcelas.Items[listviewParcelas.Items.Count - 1];
+                if (MessageBox.Show("Remover parcela "+ item.SubItems[0].Text + " ? ", "EXCLUIR", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
                 {
-                    if ((MessageBox.Show("Remover parcela ?", "EXCLUIR", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes) & (listviewParcelas.SelectedIndices[0] != null))
+                    
+                    if (listviewParcelas.Items.Count > 0)
                     {
-                        listviewParcelas.Items.RemoveAt(listviewParcelas.SelectedIndices[0]);
-                        if (listviewParcelas.Items.Count > 0)
-                        {
-                            ListView listView = new ListView();
-                            listView = listviewParcelas;
-                            for (int i = 0; i < listView.Items.Count; i++)
-                            {
-                                listviewParcelas.Items[i].SubItems[0].Text = Convert.ToString(i + 1);
-                                listviewParcelas.Items[i].SubItems[1].Text = listView.Items[i].SubItems[1].Text;
-                                listviewParcelas.Items[i].SubItems[2].Text = listView.Items[i].SubItems[2].Text;
-                                listviewParcelas.Items[i].SubItems[3].Text = listView.Items[i].SubItems[3].Text;
-                                listviewParcelas.Items[i].SubItems[4].Text = listView.Items[i].SubItems[4].Text;
-                                
-                            }
-                            txtNrParcelas.Text = Convert.ToString(listviewParcelas.Items.Count + 1);
-                        }
-                        else
-                        {
-                            txtNrParcelas.Text = Convert.ToString(1);
-                        }
+
+                        listviewParcelas.Items.Remove(item);
+                        txtNrParcelas.Text = Convert.ToString(listviewParcelas.Items.Count + 1);
                     }
-                }
-                else
-                {
-                    MessageBox.Show("Selecione um item!");
-                }
+                    else
+                    {
+                        txtNrParcelas.Text = Convert.ToString(1);
+                    }
+                }     
             }
             catch
             {
-                MessageBox.Show("Selecione uma parcela! ");
+                MessageBox.Show("Não foi possivel remover a parcela! ");
             }
         }
         #endregion
+
         private void ListviewParcelas_Click(object sender, EventArgs e)
         {
             if (listviewParcelas.Items.Count <= 12)
@@ -352,7 +374,9 @@ namespace EquipMotos.View
             txtJuros.Text = Convert.ToString(condPagamento.juros);
             txtMulta.Text = Convert.ToString(condPagamento.multa);
             txtDesconto.Text = Convert.ToString(condPagamento.desconto);
-            
+            txtDtAlteracao.Text = condPagamento.dtAlteracao.ToString();
+            txtDtCadastro.Text = condPagamento.dtCadastro.ToString();
+            txtUsuario.Text = condPagamento.usuario.ToString();
             foreach (var parcela in condPagamento.listaParcela)
             {
                 string[] row = { Convert.ToString(parcela.nrParcela), Convert.ToString(parcela.nrDia), Convert.ToString(parcela.porcentagem), Convert.ToString(parcela.formaPagamento.codigo), Convert.ToString(parcela.formaPagamento.forma) };
@@ -601,6 +625,16 @@ namespace EquipMotos.View
                     txtCondicao.Focus();
                 }
             }
+        }
+
+        private void btnLimparListaParcela_Click(object sender, EventArgs e)
+        {
+            listviewParcelas.Items.Clear();
+        }
+
+        private void label7_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

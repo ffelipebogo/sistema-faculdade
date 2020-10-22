@@ -54,10 +54,21 @@ namespace EquipMotos.View
 
         private void BtnNovo_Click(object sender, EventArgs e)
         {
-            frmCadastroProdutoServico frmCadProServ = new frmCadastroProdutoServico();
+            frmCadastroProduto frmCadProServ = new frmCadastroProduto();
             if (frmCadProServ.ShowDialog() == DialogResult.OK)
             {
-                gvProdutos.DataSource = CtrlProdutoServico.ListarTodos();
+                if (rbProduto.Checked)
+                {
+                    gvProdutos.DataSource = CtrlProdutoServico.ListarTodosProdutos();
+
+                }else if (rbServico.Checked)
+                {
+                    gvProdutos.DataSource = CtrlProdutoServico.ListarTodosServicos();
+                }
+                else
+                {
+                    gvProdutos.DataSource = CtrlProdutoServico.ListarTodos();
+                }
             }
         }
 
@@ -65,7 +76,7 @@ namespace EquipMotos.View
         {
             try
             {
-                frmCadastroProdutoServico frmCadProServ = new frmCadastroProdutoServico();
+                frmCadastroProduto frmCadProServ = new frmCadastroProduto();
                 var cliRow = gvProdutos.CurrentRow.DataBoundItem as DataRowView;
 
                 var id = cliRow["codigo"];
@@ -73,7 +84,22 @@ namespace EquipMotos.View
                 frmCadProServ.Carregar(id);
                 if (frmCadProServ.ShowDialog() == DialogResult.OK)
                 {
-                    gvProdutos.DataSource = CtrlProdutoServico.ListarTodos();
+
+                    if (rbProduto.Checked)
+                    {
+                        gvProdutos.DataSource = CtrlProdutoServico.ListarTodosProdutos();
+
+                    }
+                    else if (rbServico.Checked)
+                    {
+                        gvProdutos.DataSource = CtrlProdutoServico.ListarTodosServicos();
+                    }
+                    else
+                    {
+                        gvProdutos.DataSource = CtrlProdutoServico.ListarTodos();
+                    }
+                    
+                    
                 }
             }
             catch (Exception ex)
@@ -89,7 +115,7 @@ namespace EquipMotos.View
                 SelecionaProdutoServico();
                 if (prodServ != null)
                 {
-                    frmCadastroCompra.prod = prodServ;
+                    frmCadastroCompra.Produto = prodServ;
                     frmCadastroVenda.Produto = prodServ;
                     frmCadastroOrdemServico.Produto = prodServ;
                     frmCadastroOrdemServico.Servico = prodServ;
@@ -109,11 +135,22 @@ namespace EquipMotos.View
             prodServ = null;
             if (gvProdutos.CurrentRow != null)
             {
-
                 var proRow = gvProdutos.CurrentRow.DataBoundItem as DataRowView;
-                var serv = CtrlProdutoServico.BuscarPorID(proRow["codigo"]) as ProdutosServicos;
+                ProdutosServicos ProSer = new ProdutosServicos();
+                if (rbProduto.Checked)
+                {
+                    ProSer = CtrlProdutoServico.BuscarProdutoPorId(proRow["codigo"]) as ProdutosServicos;
 
-                return prodServ = serv;
+                }else if(rbServico.Checked)
+                {
+                    ProSer = CtrlProdutoServico.BuscarServicoPorId(proRow["codigo"]) as ProdutosServicos;
+                }
+                else
+                {
+                    ProSer = CtrlProdutoServico.BuscarPorID(proRow["codigo"]) as ProdutosServicos;
+                }
+
+                return prodServ = ProSer;
             }
             else
             {
@@ -131,7 +168,19 @@ namespace EquipMotos.View
                 CtrlProdutoServico.Excluir(id);
                 MessageBox.Show("Produto foi excluido!");
 
-                gvProdutos.DataSource = CtrlProdutoServico.ListarTodos();
+                if (rbProduto.Checked)
+                {
+                    gvProdutos.DataSource = CtrlProdutoServico.ListarTodosProdutos();
+
+                }
+                else if (rbServico.Checked)
+                {
+                    gvProdutos.DataSource = CtrlProdutoServico.ListarTodosServicos();
+                }
+                else
+                {
+                    gvProdutos.DataSource = CtrlProdutoServico.ListarTodos();
+                }
             }
             catch (Exception)
             {

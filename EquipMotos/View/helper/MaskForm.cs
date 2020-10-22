@@ -186,38 +186,45 @@ namespace EquipMotos.View.helper
 
         public static void TxtMask_Moeda_KeyUp(object senderEvent, KeyEventArgs e)
         {
-            var sender = senderEvent as TextBox;
-            var vlr = sender.Text.Replace("R$", "").Replace(",", "").Replace(" ", "").Replace("00,", "");
-            if (vlr.Length == 0)
+            try
             {
-                sender.Text = "0,00" + vlr;
-            }
-            if (vlr.Length == 1)
-            {
-                sender.Text = "0,0" + vlr;
-            }
-            if (vlr.Length == 2)
-            {
-                sender.Text = "0," + vlr;
-            }
-            else if (vlr.Length >= 3)
-            {
-                if (sender.Text.StartsWith("0,"))
+                var sender = senderEvent as TextBox;
+                var vlr = sender.Text.Replace("R$", "").Replace(",", "").Replace(" ", "").Replace("00,", "");
+                if (vlr.Length == 0)
                 {
-                    sender.Text = vlr.Insert(vlr.Length - 2, ",").Replace("0,", "");
+                    sender.Text = "0,00" + vlr;
                 }
-                else if (sender.Text.Contains("00,"))
+                if (vlr.Length == 1)
                 {
-                    sender.Text = vlr.Insert(vlr.Length - 2, ",").Replace("00,", "");
+                    sender.Text = "0,0" + vlr;
                 }
-                else
+                if (vlr.Length == 2)
                 {
-                    sender.Text = vlr.Insert(vlr.Length - 2, ",");
+                    sender.Text = "0," + vlr;
                 }
+                else if (vlr.Length >= 3)
+                {
+                    if (sender.Text.StartsWith("0,"))
+                    {
+                        sender.Text = vlr.Insert(vlr.Length - 2, ",").Replace("0,", "");
+                    }
+                    else if (sender.Text.Contains("00,"))
+                    {
+                        sender.Text = vlr.Insert(vlr.Length - 2, ",").Replace("00,", "");
+                    }
+                    else
+                    {
+                        sender.Text = vlr.Insert(vlr.Length - 2, ",");
+                    }
+                }
+                vlr = sender.Text;
+                sender.Text = string.Format("{0:C}", Convert.ToDouble("0" + Double.Parse(vlr, NumberStyles.Any)));
+                sender.Select(sender.Text.Length, 0);
             }
-            vlr = sender.Text;
-            sender.Text = string.Format("{0:C}", Convert.ToDouble("0" + Double.Parse(vlr, NumberStyles.Any)));
-            sender.Select(sender.Text.Length, 0);
+            catch
+            {
+
+            }
         }
 
         public static void TxtMask_Moeda_Leave(object senderEvent, EventArgs e)

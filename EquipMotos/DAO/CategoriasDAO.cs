@@ -32,6 +32,7 @@ namespace EquipMotos.DAO
             }
 
         }
+
         public override void Editar(Object obj)
         {
             using (SqlConnection conexao = Conecta.CreateConnection())

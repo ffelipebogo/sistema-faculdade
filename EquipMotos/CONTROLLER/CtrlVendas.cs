@@ -1,4 +1,5 @@
 ﻿using EquipMotos.DAO;
+using EquipMotos.MODEL;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,9 +17,14 @@ namespace EquipMotos.CONTROLLER
             this.DaoVenda = (VendasDAO)this.Dao;
         }
 
-        public void Desativar(object modelo, object serie, object nrNota, object idFornecedor)
+        public void Desativar(object modelo, object serie, object nrNota, object codCliente) 
         {
-            //DaoVenda.Desativar(modelo, serie, nrNota, idFornecedor);
+            DaoVenda.Desativar(modelo, serie, nrNota, codCliente);
+        }
+
+        public List<ContasReceber> BuscarContaReceber(object modelo, object serie, object nrNota, object codCliente)
+        {
+            return DaoVenda.BuscarContasReceber(modelo, serie, nrNota, codCliente);
         }
 
         public void InserirVendaOs(object obj)

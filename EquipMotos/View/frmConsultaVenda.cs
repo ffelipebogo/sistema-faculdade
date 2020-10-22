@@ -1,4 +1,5 @@
 ﻿using EquipMotos.CONTROLLER;
+using EquipMotos.VIEW;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -33,21 +34,28 @@ namespace EquipMotos.View
         {
             try
             {
-                frmCadastroVenda frmCadVenda = new frmCadastroVenda();
-
-                var compraRow = gvVendas.CurrentRow.DataBoundItem as DataRowView;
-
-                var nrNota = compraRow["nrNota"];
-
-                frmCadVenda.Carregar(nrNota);
-                //frmCadVenda.DisableView();
-                if (frmCadVenda.ShowDialog() == DialogResult.OK)
+                if (gvVendas.CurrentRow != null)
                 {
-                    var lista = CtrlVenda.ListarTodos();
-                    if (lista != null)
+                    frmCadastroVenda frmCadVenda = new frmCadastroVenda();
+
+                    var compraRow = gvVendas.CurrentRow.DataBoundItem as DataRowView;
+
+                    var nrNota = compraRow["nrNota"];
+
+                    frmCadVenda.Carregar(nrNota);
+                    frmCadVenda.DisableView();
+                    if (frmCadVenda.ShowDialog() == DialogResult.OK)
                     {
-                        gvVendas.DataSource = lista;
+                        var lista = CtrlVenda.ListarTodos();
+                        if (lista != null)
+                        {
+                            gvVendas.DataSource = lista;
+                        }
                     }
+                }
+                else
+                {
+                    MessageBox.Show("Selecione a venda que deseja!");
                 }
             }
             catch
@@ -56,9 +64,34 @@ namespace EquipMotos.View
             }
         }
 
+        
+
         private void BtnExcluir_Click(object sender, EventArgs e)
         {
-            
+            var vendaRow = gvVendas.CurrentRow.DataBoundItem as DataRowView;
+
+            var modelo = vendaRow["modelo"];
+            var serie = vendaRow["serie"];
+            var nrNota = vendaRow["nrNota"];
+            var codCliente = vendaRow["codCliente"];
+
+            if ((MessageBox.Show("Será necessario informar o usuario Administrador do sistema.", "Deseja cancelar?", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes) & modelo != null)
+            {
+                frmConfirmaAdmin frmConfirma = new frmConfirmaAdmin();
+                if (frmConfirma.ShowDialog() == DialogResult.OK)
+                {
+                    if (ValidarContasReceber(modelo, serie, nrNota, codCliente))
+                    {
+                        CtrlVenda.Desativar(modelo, serie, nrNota, codCliente);
+                        gvVendas.DataSource = CtrlVenda.ListarTodos();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Não foi possivel cancelar a venda, pois teve contas a receber vinculadas pagas.", "Parcelas vinculadas recebidas!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+
+                }
+            }
         }
 
         private void BtnVoltar_Click(object sender, EventArgs e)
@@ -87,5 +120,7 @@ namespace EquipMotos.View
                 gvVendas.DataSource = dtView.DataSource;
             }
         }
+
+       
     }
 }

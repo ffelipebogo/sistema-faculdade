@@ -35,15 +35,22 @@ namespace EquipMotos.View
         {
             try
             {
-                frmCadastroMarca frmCadMarca = new frmCadastroMarca();
-                var marRow = gvMarca.CurrentRow.DataBoundItem as DataRowView;
+                if(gvMarca.CurrentRow != null) { 
 
-                var codigo = marRow["codigo"];
+                    frmCadastroMarca frmCadMarca = new frmCadastroMarca();
+                    var marRow = gvMarca.CurrentRow.DataBoundItem as DataRowView;
 
-                frmCadMarca.Carregar(codigo);
-                if (frmCadMarca.ShowDialog() == DialogResult.OK)
+                    var codigo = marRow["codigo"];
+
+                    frmCadMarca.Carregar(codigo);
+                    if (frmCadMarca.ShowDialog() == DialogResult.OK)
+                    {
+                        gvMarca.DataSource = CtrlMarca.ListarTodos();
+                    }
+                }
+                else
                 {
-                    gvMarca.DataSource = CtrlMarca.ListarTodos();
+                    MessageBox.Show("Selecione a marca que deseja alterar!");
                 }
             }
             catch (Exception ex)

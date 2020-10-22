@@ -30,13 +30,9 @@
         {
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnVoltar = new MaterialSkin.Controls.MaterialRaisedButton();
             this.gvPais = new System.Windows.Forms.DataGridView();
-            this.codigoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dtCadastroDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dtAlteracaoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.usuarioDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.paisesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.sistemaMoto2DataSetPais = new EquipMotos.SistemaMoto2DataSetPais();
             this.label1 = new System.Windows.Forms.Label();
@@ -46,6 +42,11 @@
             this.btnNovo = new MaterialSkin.Controls.MaterialRaisedButton();
             this.btnBuscarPais = new System.Windows.Forms.PictureBox();
             this.paisesTableAdapter = new EquipMotos.SistemaMoto2DataSetPaisTableAdapters.paisesTableAdapter();
+            this.codigoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dtCadastroDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dtAlteracaoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.usuarioDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gvPais)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.paisesBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sistemaMoto2DataSetPais)).BeginInit();
@@ -57,12 +58,11 @@
             this.btnVoltar.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnVoltar.Depth = 0;
             this.btnVoltar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnVoltar.Location = new System.Drawing.Point(541, 528);
-            this.btnVoltar.Margin = new System.Windows.Forms.Padding(4);
+            this.btnVoltar.Location = new System.Drawing.Point(660, 543);
             this.btnVoltar.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnVoltar.Name = "btnVoltar";
             this.btnVoltar.Primary = true;
-            this.btnVoltar.Size = new System.Drawing.Size(115, 30);
+            this.btnVoltar.Size = new System.Drawing.Size(86, 24);
             this.btnVoltar.TabIndex = 281;
             this.btnVoltar.Text = "VOLTAR";
             this.btnVoltar.UseVisualStyleBackColor = true;
@@ -94,59 +94,14 @@
             this.usuarioDataGridViewTextBoxColumn});
             this.gvPais.DataSource = this.paisesBindingSource;
             this.gvPais.EnableHeadersVisualStyles = false;
-            this.gvPais.Location = new System.Drawing.Point(2, 159);
-            this.gvPais.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.gvPais.Location = new System.Drawing.Point(11, 148);
+            this.gvPais.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.gvPais.Name = "gvPais";
             this.gvPais.ReadOnly = true;
             this.gvPais.RowHeadersWidth = 51;
             this.gvPais.RowTemplate.Height = 24;
-            this.gvPais.Size = new System.Drawing.Size(679, 345);
+            this.gvPais.Size = new System.Drawing.Size(750, 366);
             this.gvPais.TabIndex = 278;
-            // 
-            // codigoDataGridViewTextBoxColumn
-            // 
-            this.codigoDataGridViewTextBoxColumn.DataPropertyName = "codigo";
-            this.codigoDataGridViewTextBoxColumn.HeaderText = "Codigo";
-            this.codigoDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.codigoDataGridViewTextBoxColumn.Name = "codigoDataGridViewTextBoxColumn";
-            this.codigoDataGridViewTextBoxColumn.ReadOnly = true;
-            this.codigoDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "pais";
-            this.dataGridViewTextBoxColumn1.HeaderText = "Pais";
-            this.dataGridViewTextBoxColumn1.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            this.dataGridViewTextBoxColumn1.Width = 125;
-            // 
-            // dtCadastroDataGridViewTextBoxColumn
-            // 
-            this.dtCadastroDataGridViewTextBoxColumn.DataPropertyName = "dtCadastro";
-            this.dtCadastroDataGridViewTextBoxColumn.HeaderText = "Data Cadastro";
-            this.dtCadastroDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.dtCadastroDataGridViewTextBoxColumn.Name = "dtCadastroDataGridViewTextBoxColumn";
-            this.dtCadastroDataGridViewTextBoxColumn.ReadOnly = true;
-            this.dtCadastroDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // dtAlteracaoDataGridViewTextBoxColumn
-            // 
-            this.dtAlteracaoDataGridViewTextBoxColumn.DataPropertyName = "dtAlteracao";
-            this.dtAlteracaoDataGridViewTextBoxColumn.HeaderText = "Data Alteração";
-            this.dtAlteracaoDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.dtAlteracaoDataGridViewTextBoxColumn.Name = "dtAlteracaoDataGridViewTextBoxColumn";
-            this.dtAlteracaoDataGridViewTextBoxColumn.ReadOnly = true;
-            this.dtAlteracaoDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // usuarioDataGridViewTextBoxColumn
-            // 
-            this.usuarioDataGridViewTextBoxColumn.DataPropertyName = "usuario";
-            this.usuarioDataGridViewTextBoxColumn.HeaderText = "Usuario";
-            this.usuarioDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.usuarioDataGridViewTextBoxColumn.Name = "usuarioDataGridViewTextBoxColumn";
-            this.usuarioDataGridViewTextBoxColumn.ReadOnly = true;
-            this.usuarioDataGridViewTextBoxColumn.Width = 125;
             // 
             // paisesBindingSource
             // 
@@ -163,11 +118,10 @@
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.label1.Location = new System.Drawing.Point(27, 77);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
+            this.label1.Location = new System.Drawing.Point(21, 78);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(113, 20);
+            this.label1.Size = new System.Drawing.Size(107, 18);
             this.label1.TabIndex = 277;
             this.label1.Text = "Pesquisar Pais";
             // 
@@ -175,10 +129,9 @@
             // 
             this.txtPesquisar.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtPesquisar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPesquisar.Location = new System.Drawing.Point(31, 102);
-            this.txtPesquisar.Margin = new System.Windows.Forms.Padding(4);
+            this.txtPesquisar.Location = new System.Drawing.Point(24, 98);
             this.txtPesquisar.Name = "txtPesquisar";
-            this.txtPesquisar.Size = new System.Drawing.Size(400, 23);
+            this.txtPesquisar.Size = new System.Drawing.Size(301, 23);
             this.txtPesquisar.TabIndex = 275;
             // 
             // btnExcluir
@@ -188,12 +141,11 @@
             this.btnExcluir.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnExcluir.Image = global::EquipMotos.Properties.Resources._1398756469_Erase;
             this.btnExcluir.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnExcluir.Location = new System.Drawing.Point(375, 528);
-            this.btnExcluir.Margin = new System.Windows.Forms.Padding(4);
+            this.btnExcluir.Location = new System.Drawing.Point(536, 543);
             this.btnExcluir.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnExcluir.Name = "btnExcluir";
             this.btnExcluir.Primary = true;
-            this.btnExcluir.Size = new System.Drawing.Size(100, 30);
+            this.btnExcluir.Size = new System.Drawing.Size(75, 24);
             this.btnExcluir.TabIndex = 282;
             this.btnExcluir.Text = "EXCLUIR";
             this.btnExcluir.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -207,12 +159,11 @@
             this.btnAlterar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAlterar.Image = global::EquipMotos.Properties.Resources._1398756462_Modify;
             this.btnAlterar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAlterar.Location = new System.Drawing.Point(267, 528);
-            this.btnAlterar.Margin = new System.Windows.Forms.Padding(4);
+            this.btnAlterar.Location = new System.Drawing.Point(455, 543);
             this.btnAlterar.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnAlterar.Name = "btnAlterar";
             this.btnAlterar.Primary = true;
-            this.btnAlterar.Size = new System.Drawing.Size(100, 30);
+            this.btnAlterar.Size = new System.Drawing.Size(75, 24);
             this.btnAlterar.TabIndex = 280;
             this.btnAlterar.Text = "ALTERAR";
             this.btnAlterar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -226,12 +177,11 @@
             this.btnNovo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnNovo.Image = global::EquipMotos.Properties.Resources._1398756346_1;
             this.btnNovo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnNovo.Location = new System.Drawing.Point(159, 528);
-            this.btnNovo.Margin = new System.Windows.Forms.Padding(4);
+            this.btnNovo.Location = new System.Drawing.Point(374, 543);
             this.btnNovo.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnNovo.Name = "btnNovo";
             this.btnNovo.Primary = true;
-            this.btnNovo.Size = new System.Drawing.Size(100, 30);
+            this.btnNovo.Size = new System.Drawing.Size(75, 24);
             this.btnNovo.TabIndex = 279;
             this.btnNovo.Text = "NOVO";
             this.btnNovo.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -246,10 +196,9 @@
             this.btnBuscarPais.ErrorImage = global::EquipMotos.Properties.Resources._1398754683_xmag;
             this.btnBuscarPais.Image = global::EquipMotos.Properties.Resources._1398754683_xmag;
             this.btnBuscarPais.InitialImage = global::EquipMotos.Properties.Resources._1398754683_xmag;
-            this.btnBuscarPais.Location = new System.Drawing.Point(439, 89);
-            this.btnBuscarPais.Margin = new System.Windows.Forms.Padding(4);
+            this.btnBuscarPais.Location = new System.Drawing.Point(330, 87);
             this.btnBuscarPais.Name = "btnBuscarPais";
-            this.btnBuscarPais.Size = new System.Drawing.Size(50, 50);
+            this.btnBuscarPais.Size = new System.Drawing.Size(38, 41);
             this.btnBuscarPais.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.btnBuscarPais.TabIndex = 276;
             this.btnBuscarPais.TabStop = false;
@@ -259,11 +208,61 @@
             // 
             this.paisesTableAdapter.ClearBeforeFill = true;
             // 
+            // codigoDataGridViewTextBoxColumn
+            // 
+            this.codigoDataGridViewTextBoxColumn.DataPropertyName = "codigo";
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.codigoDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle2;
+            this.codigoDataGridViewTextBoxColumn.HeaderText = "Codigo";
+            this.codigoDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.codigoDataGridViewTextBoxColumn.Name = "codigoDataGridViewTextBoxColumn";
+            this.codigoDataGridViewTextBoxColumn.ReadOnly = true;
+            this.codigoDataGridViewTextBoxColumn.Width = 60;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "pais";
+            this.dataGridViewTextBoxColumn1.HeaderText = "Pais";
+            this.dataGridViewTextBoxColumn1.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.Width = 635;
+            // 
+            // dtCadastroDataGridViewTextBoxColumn
+            // 
+            this.dtCadastroDataGridViewTextBoxColumn.DataPropertyName = "dtCadastro";
+            this.dtCadastroDataGridViewTextBoxColumn.HeaderText = "Data Cadastro";
+            this.dtCadastroDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.dtCadastroDataGridViewTextBoxColumn.Name = "dtCadastroDataGridViewTextBoxColumn";
+            this.dtCadastroDataGridViewTextBoxColumn.ReadOnly = true;
+            this.dtCadastroDataGridViewTextBoxColumn.Visible = false;
+            this.dtCadastroDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // dtAlteracaoDataGridViewTextBoxColumn
+            // 
+            this.dtAlteracaoDataGridViewTextBoxColumn.DataPropertyName = "dtAlteracao";
+            this.dtAlteracaoDataGridViewTextBoxColumn.HeaderText = "Data Alteração";
+            this.dtAlteracaoDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.dtAlteracaoDataGridViewTextBoxColumn.Name = "dtAlteracaoDataGridViewTextBoxColumn";
+            this.dtAlteracaoDataGridViewTextBoxColumn.ReadOnly = true;
+            this.dtAlteracaoDataGridViewTextBoxColumn.Visible = false;
+            this.dtAlteracaoDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // usuarioDataGridViewTextBoxColumn
+            // 
+            this.usuarioDataGridViewTextBoxColumn.DataPropertyName = "usuario";
+            this.usuarioDataGridViewTextBoxColumn.HeaderText = "Usuario";
+            this.usuarioDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.usuarioDataGridViewTextBoxColumn.Name = "usuarioDataGridViewTextBoxColumn";
+            this.usuarioDataGridViewTextBoxColumn.ReadOnly = true;
+            this.usuarioDataGridViewTextBoxColumn.Visible = false;
+            this.usuarioDataGridViewTextBoxColumn.Width = 125;
+            // 
             // frmConsultaPais
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(683, 580);
+            this.ClientSize = new System.Drawing.Size(772, 593);
             this.ControlBox = false;
             this.Controls.Add(this.btnExcluir);
             this.Controls.Add(this.btnVoltar);
@@ -273,7 +272,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnBuscarPais);
             this.Controls.Add(this.txtPesquisar);
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "frmConsultaPais";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Consultar Paises";

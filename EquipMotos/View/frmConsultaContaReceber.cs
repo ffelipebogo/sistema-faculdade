@@ -34,25 +34,32 @@ namespace EquipMotos.View
         {
             try
             {
-                frmCadastroContaReceber frmCadConta = new frmCadastroContaReceber();
-
-                var contaRow = gvContaReceber.CurrentRow.DataBoundItem as DataRowView;
-
-                var modelo = contaRow["modelo"];
-                var serie = contaRow["serie"];
-                var nrNota = contaRow["nrNota"];
-                var codCliente = contaRow["codCliente"];
-                var nrParcela = contaRow["nrParcela"];
-
-                frmCadConta.Carregar(modelo, serie, nrNota, codCliente, nrParcela);
-                frmCadConta.Disable();
-                if (frmCadConta.ShowDialog() == DialogResult.OK)
+                if (gvContaReceber.CurrentRow != null)
                 {
-                    var lista = CtrlContaReceber.ListarTodos();
-                    if (lista != null)
+                    frmCadastroContaReceber frmCadConta = new frmCadastroContaReceber();
+
+                    var contaRow = gvContaReceber.CurrentRow.DataBoundItem as DataRowView;
+
+                    var modelo = contaRow["modelo"];
+                    var serie = contaRow["serie"];
+                    var nrNota = contaRow["nrNota"];
+                    var codCliente = contaRow["codCliente"];
+                    var nrParcela = contaRow["nrParcela"];
+
+                    frmCadConta.Carregar(modelo, serie, nrNota, codCliente, nrParcela);
+                    frmCadConta.Disable();
+                    if (frmCadConta.ShowDialog() == DialogResult.OK)
                     {
-                        gvContaReceber.DataSource = lista;
+                        var lista = CtrlContaReceber.ListarTodos();
+                        if (lista != null)
+                        {
+                            gvContaReceber.DataSource = lista;
+                        }
                     }
+                }
+                else
+                {
+                    MessageBox.Show("Selecione a conta que deseja!");
                 }
             }
             catch

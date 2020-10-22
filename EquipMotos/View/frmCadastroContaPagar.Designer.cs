@@ -123,9 +123,9 @@
             this.label1.Location = new System.Drawing.Point(14, 77);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(54, 17);
+            this.label1.Size = new System.Drawing.Size(63, 17);
             this.label1.TabIndex = 6;
-            this.label1.Text = "Modelo";
+            this.label1.Text = "Modelo *";
             // 
             // label2
             // 
@@ -135,9 +135,9 @@
             this.label2.Location = new System.Drawing.Point(122, 77);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(57, 17);
+            this.label2.Size = new System.Drawing.Size(66, 17);
             this.label2.TabIndex = 7;
-            this.label2.Text = "Nr Nota";
+            this.label2.Text = "Nr Nota *";
             // 
             // label3
             // 
@@ -147,9 +147,9 @@
             this.label3.Location = new System.Drawing.Point(245, 77);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(41, 17);
+            this.label3.Size = new System.Drawing.Size(50, 17);
             this.label3.TabIndex = 8;
-            this.label3.Text = "Série";
+            this.label3.Text = "Série *";
             // 
             // label4
             // 

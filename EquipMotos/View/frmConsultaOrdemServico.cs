@@ -51,15 +51,22 @@ namespace EquipMotos.View
             try
             {
                 frmCadastroOrdemServico frmCadOrdemServico = new frmCadastroOrdemServico();
-                
-                var cliRow = gvOS.CurrentRow.DataBoundItem as DataRowView;
-
-                var codigo = cliRow["nrNota"];
-
-                frmCadOrdemServico.Carregar(codigo);
-                if (frmCadOrdemServico.ShowDialog() == DialogResult.OK)
+                if (gvOS.CurrentRow != null)
                 {
-                    gvOS.DataSource = CtrlOrdemServico.ListarTodos();
+
+                    var cliRow = gvOS.CurrentRow.DataBoundItem as DataRowView;
+
+                    var codigo = cliRow["nrNota"];
+
+                    frmCadOrdemServico.Carregar(codigo);
+                    if (frmCadOrdemServico.ShowDialog() == DialogResult.OK)
+                    {
+                        gvOS.DataSource = CtrlOrdemServico.ListarTodos();
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Selecione a O.S que deseja alterar!");
                 }
             }
             catch (Exception ex)

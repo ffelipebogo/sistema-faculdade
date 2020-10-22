@@ -3,6 +3,7 @@ using EquipMotos.CONTROLLER;
 using EquipMotos.DAO;
 using EquipMotos.MODEL;
 using EquipMotos.View.helper;
+using EquipMotos.VIEW;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -14,12 +15,12 @@ namespace EquipMotos.View
     public partial class frmCadastroCompra : MaterialSkin.Controls.MaterialForm
     {
         //private string pusuario;
-        public static object fornecedor;
-        public static object condPagamento;
-        public static object prod;
-        Compras compra;
+        public static object Fornecedor;
+        public static object CondPagamento;
+        public static object Produto;
+        Compras Compra;
         //ComprasDAO dao;
-        CtrlProdutosServicos CtrlProduto = new CtrlProdutosServicos();
+        CtrlProdutos CtrlProduto = new CtrlProdutos();
         CtrlFornecedores CtrlFornecedor = new CtrlFornecedores();
         CtrlCondicaoPagamento CtrlCondPagamento = new CtrlCondicaoPagamento();
         List<ContasPagar> listContaPagar;
@@ -29,7 +30,6 @@ namespace EquipMotos.View
         public frmCadastroCompra()
         {
             InitializeComponent();
-            chkSituacao.Checked = true;
             Disable();
         }
 
@@ -37,84 +37,86 @@ namespace EquipMotos.View
         {
             LimpaCampos();
         }
+
         private void BtnVoltar_Click(object sender, EventArgs e)
         {
             Close();
         }
+
         private void BtnSalvar_Click(object sender, EventArgs e)
         {
             try
             {
-                compra = new Compras();
+                Compra = new Compras();
                 listContaPagar = new List<ContasPagar>();
                 listItemCompra = new List<ItensCompra>();
-                
+                Compra.condPagamento = CondPagamento as CondicaoPagamentos;
                 {
                     if (ValidaCompra())
                     {
-                        compra.modelo = txtModelo.Text;
-                        compra.serie = txtSerie.Text;
-                        compra.nrNota = txtNrNota.Text;
-                        var forn = fornecedor as Fornecedores;
+                        Compra.modelo = txtModelo.Text;
+                        Compra.serie = txtSerie.Text;
+                        Compra.nrNota = txtNrNota.Text;
+                        Fornecedores forn = new Fornecedores();
                         forn.codigo = Convert.ToInt32(txtCodFornecedor.Text);
-                        compra.fornecedor = forn;
-                        var condPag = condPagamento as CondicaoPagamentos;
-                        condPag.codigo = Convert.ToInt32(txtCodCondPagamento.Text);
-                        compra.condPagamento = condPag;
-                        compra.dtEmissao = Convert.ToDateTime(txtDataEmissao.Text);
-                        compra.dtChegada = Convert.ToDateTime(txtDtChegada.Text);
-                        compra.cfi = rbTipoFrete1.Checked;
+                        Compra.fornecedor = forn;
+                        //CondicaoPagamentos condPag = new CondicaoPagamentos();
+                        //condPag.codigo = Convert.ToInt32(txtCodCondPagamento.Text);
+                        //Compra.condPagamento = condPag;
+                        Compra.dtEmissao = Convert.ToDateTime(txtDataEmissao.Text);
+                        Compra.dtChegada = Convert.ToDateTime(txtDtChegada.Text);
+                        Compra.cfi = rbTipoFrete1.Checked;
 
-                        compra.frete = Double.Parse(txtFrete.Text, NumberStyles.Any);
-                        compra.seguro = Double.Parse(txtSeguro.Text, NumberStyles.Any);
-                        compra.despesa = Double.Parse(txtOutrasDesp.Text, NumberStyles.Any);
+                        Compra.frete = Double.Parse(txtFrete.Text, NumberStyles.Any);
+                        Compra.seguro = Double.Parse(txtSeguro.Text, NumberStyles.Any);
+                        Compra.despesa = Double.Parse(txtOutrasDesp.Text, NumberStyles.Any);
 
-                        compra.totalPagar = Double.Parse(txtTotalPagar.Text, NumberStyles.Any);
-                        compra.totalProduto = Double.Parse(txtValorTotal.Text, NumberStyles.Any);
+                        Compra.totalPagar = Double.Parse(txtTotalPagar.Text, NumberStyles.Any);
+                        Compra.totalProduto = Double.Parse(txtValorTotal.Text, NumberStyles.Any);
 
-                        compra.situacao = chkSituacao.Checked;
-                        compra.observacoes = txtObservacoes.Text;
-                        compra.dtCadastro = DateTime.Now;
-                        compra.dtAlteracao = DateTime.Now;
+                        Compra.situacao = chkSituacao.Checked;
+                        Compra.observacoes = txtObservacoes.Text;
+                        Compra.dtCadastro = DateTime.Now;
+                        Compra.dtAlteracao = DateTime.Now;
                         var dtEmissao = txtDataEmissao.Value;
-                        compra.usuario = UsuarioLogado.Usuario;
-                        ProdutosServicos produto = new ProdutosServicos();
+                        Compra.usuario = UsuarioLogado.Usuario;
+                        Produtos produto = new Produtos();
                         for (int i = 0; i < lvItem.Items.Count; i++)
                         {
                             var idItem = Convert.ToInt32(lvItem.Items[i].SubItems[0].Text);
                             var qtdItem = Convert.ToInt32(lvItem.Items[i].SubItems[3].Text);
                             var custoItem = Convert.ToDecimal(Double.Parse(lvItem.Items[i].SubItems[4].Text, NumberStyles.Any).ToString("N2"));
                             var totalItens = getTotal();
-                            var totalDespesas = Convert.ToDecimal(compra.frete + compra.seguro + compra.despesa);
+                            var totalDespesas = Convert.ToDecimal(Compra.frete + Compra.seguro + Compra.despesa);
                             var porcentagemItem = ((custoItem * qtdItem) / totalItens);
                             var vlrFinal = totalDespesas * porcentagemItem;
                             vlrFinal /= qtdItem;
                                                        
                             listItemCompra.Add(new ItensCompra()
                             {
-                                modelo = compra.modelo,
-                                serie = compra.serie,
-                                nrNota = compra.nrNota,
-                                Fornecedor = compra.fornecedor,
+                                modelo = Compra.modelo,
+                                serie = Compra.serie,
+                                nrNota = Compra.nrNota,
+                                Fornecedor = Compra.fornecedor,
                                 codigo = idItem,
                                 qtd = qtdItem,
                                 valorUnitario = custoItem,
                                 custoUnitario = custoItem + vlrFinal,
-                                dtCadastro = compra.dtCadastro,
-                                dtAlteracao = compra.dtAlteracao,
+                                dtCadastro = Compra.dtCadastro,
+                                dtAlteracao = Compra.dtAlteracao,
                             });
                         }
-                        compra.listaItem = listItemCompra;
+                        Compra.listaItem = listItemCompra;
 
                         for (int i = 0; i < lvContaPagar.Items.Count; i++)
                         {
-                            var parcela = compra.condPagamento.listaParcela.ElementAt(i);
+                            var parcela = Compra.condPagamento.listaParcela.ElementAt(i);
                             listContaPagar.Add(new ContasPagar()
                             {
-                                modelo = compra.modelo,
-                                serie = compra.serie,
-                                nrNota = compra.nrNota,
-                                fornecedor = compra.fornecedor,
+                                modelo = Compra.modelo,
+                                serie = Compra.serie,
+                                nrNota = Compra.nrNota,
+                                fornecedor = Compra.fornecedor,
                                 formaPagamento = parcela.formaPagamento,
                                 nrParcela = i + 1,
                                 dtVencimento = Convert.ToDateTime(lvContaPagar.Items[i].SubItems[1].Text),
@@ -122,32 +124,51 @@ namespace EquipMotos.View
                                 dtAlteracao = DateTime.Now,
                                 dtCadastro = DateTime.Now,
                                 dtEmissao = dtEmissao,
+                                observacoes = parcela.observacoes,
                                 usuario = UsuarioLogado.Usuario
-                            }); 
+                            }); ; 
                         }
-                        compra.listaContasPagar = listContaPagar;
-                        compra.situacao = chkSituacao.Checked;
-                        CtrlCompra.Inserir(compra);
+                        Compra.listaContasPagar = listContaPagar;
+                        Compra.situacao = chkSituacao.Checked;
+                        if (btnSalvar.Text == "DESATIVAR")
+                        {
+                            if ((MessageBox.Show("Depois desta operação, não será possivel vizualizar estas informações novamente.", "DESATIVAR COMPRA", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK))
+                            {
+                                CtrlCompra.Desativar(Compra.modelo, Compra.serie, Compra.nrNota, Compra.fornecedor.codigo);
+                                this.DialogResult = DialogResult.OK;
+                            }
+                        }
+                        else
+                        {
+                            CtrlCompra.Inserir(Compra);
+                            this.DialogResult = DialogResult.OK;
+                        }
                     }
                     else
                     {
                         MessageBox.Show("Não foi possivel gerar a compra.", "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        compra.listaContasPagar = null;
-                        compra.listaItem = null;
+                        Compra.listaContasPagar = null;
+                        Compra.listaItem = null;
                         this.DialogResult = DialogResult.OK;
                     }
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                //MessageBox.Show(ex.Message);
+                MessageBox.Show("Não foi possivel gerar a compra.", "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
             }
             finally
             {
-                //this.LimpaCampos();
+                if ((MessageBox.Show("Deseja continuar com as mesmas informações no formulario", "MANTER COMPRA", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) != DialogResult.OK))
+                {
+                    this.LimpaCampos();
+                }
             }
 
         }
+
         public void DisableView()
         {
             txtModelo.Enabled = false;
@@ -157,7 +178,7 @@ namespace EquipMotos.View
             txtDtChegada.Enabled = false;
             txtCodFornecedor.Enabled = false;
             txtFornecedor.Enabled = false;
-            btnBuscarCondPagamento.Enabled = false;
+            btnBuscarFornecedor.Enabled = false;
             txtCodProduto.Enabled = false;
             txtProduto.Enabled = false;
             btnBuscarProduto.Enabled = false;
@@ -182,6 +203,7 @@ namespace EquipMotos.View
             btnSalvar.Hide();
             btnLimpar.Hide();
         }
+
         public void Disable()
         {
             txtDataEmissao.Enabled = false;
@@ -210,6 +232,7 @@ namespace EquipMotos.View
             txtObservacoes.Enabled = false;
            
         }
+
         public void Enable()
         {
             txtDataEmissao.Enabled = true;
@@ -238,27 +261,30 @@ namespace EquipMotos.View
             txtObservacoes.Enabled = true;
             
         }
+
         public void Carregar(object modelo, object serie, object nrNota, object idFornecedor)
         {
             try
             {
-                //dao = new ComprasDAO();
-               // compra = new Compras();
-                compra = CtrlCompra.BuscarPorID(modelo, serie, nrNota, idFornecedor) as Compras;
-                txtModelo.Text = compra.modelo;
-                txtSerie.Text = compra.serie;
-                txtNrNota.Text = compra.nrNota;
-                txtDataEmissao.Text = Convert.ToString(compra.dtEmissao);
-                txtDtChegada.Text = Convert.ToString(compra.dtChegada);
-                txtCodFornecedor.Text = Convert.ToString(compra.fornecedor.codigo);
-                txtFornecedor.Text = Convert.ToString(compra.fornecedor.fornecedor);
-                txtFrete.Text = (compra.frete).ToString("C", CultureInfo.CurrentCulture);
-                txtSeguro.Text = (compra.seguro).ToString("C", CultureInfo.CurrentCulture);
-                txtOutrasDesp.Text = (compra.despesa).ToString("C", CultureInfo.CurrentCulture);
+                Compra = CtrlCompra.BuscarPorID(modelo, serie, nrNota, idFornecedor) as Compras;
+                txtModelo.Text = Compra.modelo;
+                txtSerie.Text = Compra.serie;
+                txtNrNota.Text = Compra.nrNota;
+                txtDataEmissao.Text = Convert.ToString(Compra.dtEmissao);
+                txtDtChegada.Text = Convert.ToString(Compra.dtChegada);
+                txtCodFornecedor.Text = Convert.ToString(Compra.fornecedor.codigo);
+                txtFornecedor.Text = Convert.ToString(Compra.fornecedor.fornecedor);
+                Fornecedor = Compra.fornecedor;
+                txtFrete.Text = (Compra.frete).ToString("C", CultureInfo.CurrentCulture);
+                txtSeguro.Text = (Compra.seguro).ToString("C", CultureInfo.CurrentCulture);
+                txtOutrasDesp.Text = (Compra.despesa).ToString("C", CultureInfo.CurrentCulture);
+                txtDtAlteracao.Text = Compra.dtAlteracao.ToString();
+                txtDtCadastro.Text = Compra.dtCadastro.ToString();
+                txtUsuario.Text = Compra.usuario;
 
-                foreach (var item in compra.listaItem)
+                foreach (var item in Compra.listaItem)
                 {
-                    var prod = CtrlProduto.BuscarPorID(Convert.ToString(item.codigo)) as ProdutosServicos;
+                    var prod = CtrlProduto.BuscarPorID(Convert.ToString(item.codigo)) as Produtos;
                     var total = item.qtd * prod.custoUltCompra;
                     string[] itens = { Convert.ToString(item.codigo), prod.produto, prod.unidade, Convert.ToString(item.qtd), Convert.ToString(prod.custoUltCompra), Convert.ToString(total) };
                     var listItens = new ListViewItem(itens);
@@ -290,17 +316,18 @@ namespace EquipMotos.View
                 var totalPagar = totalproduto + frete + seguro + despesa;
                 txtTotalPagar.Text = totalPagar.ToString("C", CultureInfo.CurrentCulture);
 
-                txtCodCondPagamento.Text = Convert.ToString(compra.condPagamento.codigo);
-                txtCondPagamento.Text = Convert.ToString(compra.condPagamento.condicao);
-                foreach (var conta in compra.listaContasPagar)
+                txtCodCondPagamento.Text = Convert.ToString(Compra.condPagamento.codigo);
+                txtCondPagamento.Text = Convert.ToString(Compra.condPagamento.condicao);
+                CondPagamento = Compra.condPagamento;
+                foreach (var conta in Compra.listaContasPagar)
                 {
                     string[] row = { txtNrNota.Text + "/" + Convert.ToString(conta.nrParcela), conta.dtVencimento.ToString("dd/MM/yyyy"), conta.vlrParcela.ToString("C", CultureInfo.CurrentCulture) };
                     var lvi = new ListViewItem(row);
                     lvContaPagar.Items.Add(lvi);
                 }
-                chkSituacao.Checked = compra.situacao;
+                chkSituacao.Checked = Compra.situacao;
                
-                if (compra.cfi == true)
+                if (Compra.cfi == true)
                 {
                     rbTipoFrete1.Checked = true;
                 }
@@ -314,21 +341,24 @@ namespace EquipMotos.View
                 MessageBox.Show("Não foi possivel vizualizar a compra", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
         private decimal getTotal()
         {
             return Convert.ToDecimal(Double.Parse(txtValorTotal.Text, NumberStyles.Any));
         }
+
         private void BtnBuscarProduto_Click(object sender, EventArgs e)
         {
 
-            frmConsultaProdutosServicos frmConProdServ = new frmConsultaProdutosServicos();
-            frmConProdServ.btnVoltar.Text = "SELECIONAR";
+            frmConsultaProduto frmConProduto = new frmConsultaProduto();
+            frmConProduto.btnVoltar.Text = "SELECIONAR";
 
-            if (frmConProdServ.ShowDialog() == DialogResult.OK)
+            if (frmConProduto.ShowDialog() == DialogResult.OK)
             {
                 CarregaProduto();
             }
         }
+
         private void BtnBuscarCondPagamento_Click(object sender, EventArgs e)
         {
             frmConsultaCondicaoPagamento frmConCondPag = new frmConsultaCondicaoPagamento();
@@ -400,6 +430,7 @@ namespace EquipMotos.View
                 txtCondPagamento.Text = "";
             }
         }
+
         private void BtnBuscarFornecedor_Click(object sender, EventArgs e)
         {
             frmConsultaFornecedor frmConFornecedor = new frmConsultaFornecedor();
@@ -417,6 +448,7 @@ namespace EquipMotos.View
                 txtFornecedor.Text = "";
             }
         }
+
         private void BtnAddProduto_Click(object sender, EventArgs e)
         {
             try
@@ -455,6 +487,7 @@ namespace EquipMotos.View
                 txtValorTotal.Text = "R$0.00";
             }
         }
+
         private bool ValidaCompra()
         {
             if (txtModelo.Text.Trim().Length > 3)
@@ -494,6 +527,7 @@ namespace EquipMotos.View
             }
             return true;
         }
+
         private void LimpaCampos()
         {
             txtModelo.Text = "";
@@ -521,30 +555,33 @@ namespace EquipMotos.View
             txtObservacoes.Text = "";
 
         }
+
         private void CarregaProduto()
         {
-            if (prod != null)
+            if (Produto != null)
             {
-                ProdutosServicos pro = prod as ProdutosServicos;
+                Produtos pro = Produto as Produtos;
                 txtCodProduto.Text = Convert.ToString("0" + pro.codigo);
                 txtProduto.Text = pro.produto;
                 txtUnidade.Text = pro.unidade;
             }
         }
+
         private void CarregaCondicao()
         {
-            if (condPagamento != null)
+            if (CondPagamento != null)
             {
-                condPag = condPagamento as CondicaoPagamentos;
+                condPag = CondPagamento as CondicaoPagamentos;
                 txtCodCondPagamento.Text = Convert.ToString(condPag.codigo);
                 txtCondPagamento.Text = condPag.condicao;
             }
         }
+
         private void CarregaFornecedor()
         {
-            if (fornecedor != null)
+            if (Fornecedor != null)
             {
-                Fornecedores forn = fornecedor as Fornecedores;
+                Fornecedores forn = Fornecedor as Fornecedores;
                 txtCodFornecedor.Text = Convert.ToString(forn.codigo);
                 txtFornecedor.Text = forn.fornecedor;
                 if (!String.IsNullOrEmpty(txtFornecedor.Text))
@@ -553,6 +590,7 @@ namespace EquipMotos.View
                 }
             }
         }
+
         private void PopulaGridProduto()
         {
             var custo = Double.Parse(txtCusto.Text, NumberStyles.Any);
@@ -564,6 +602,7 @@ namespace EquipMotos.View
             var listItem = new ListViewItem(row);
             lvItem.Items.Add(listItem);
         }
+
         private bool VerificaProduto()
         {
             if (txtCodProduto.Text == string.Empty || (txtProduto.Text == string.Empty))
@@ -598,6 +637,7 @@ namespace EquipMotos.View
             }
             return true;
         }
+
         private void TxtDtChegada_ValueChanged(object sender, EventArgs e)
         {
             int i = 0;
@@ -608,16 +648,19 @@ namespace EquipMotos.View
                 i++;
             }
         }
+
         private void RbTipoFrete1_CheckedChanged(object sender, EventArgs e)
         {
             txtFrete.Enabled = false;
             txtSeguro.Enabled = false;
         }
+
         private void RbTipoFrete2_CheckedChanged(object sender, EventArgs e)
         {
             txtFrete.Enabled = true;
             txtSeguro.Enabled = true;
         }
+
         private void BtnRemProduto_Click(object sender, EventArgs e)
         {
             try
@@ -714,10 +757,12 @@ namespace EquipMotos.View
         {
 
         }
+
         private void TxtFornecedor_TextChanged(object sender, EventArgs e)
         {
 
         }
+
         private void Label3_Click(object sender, EventArgs e)
         {
 
@@ -751,7 +796,10 @@ namespace EquipMotos.View
 
         private void ChkSituacao_CheckedChanged(object sender, EventArgs e)
         {
+           
+            btnSalvar.Text = "DESATIVAR";
             btnSalvar.Show();
+            
         }
 
         private void txtCodFornecedor_KeyPress(object sender, KeyPressEventArgs e)
@@ -826,8 +874,8 @@ namespace EquipMotos.View
                 return;
             if (Convert.ToInt32("0" + txtCodProduto.Text) < 1)
                 return;
-            ProdutosServicos cond = CtrlProduto.BuscarPorID(Convert.ToInt32(txtCodProduto.Text)) as ProdutosServicos;
-            if (cond == null)
+            Produtos prod = CtrlProduto.BuscarPorID(Convert.ToInt32(txtCodProduto.Text)) as Produtos;
+            if (prod == null)
             {
                 MessageBox.Show("Nenhum resultado");
                 txtProduto.Text = "";
@@ -837,8 +885,7 @@ namespace EquipMotos.View
             }
             else
             {
-                txtProduto.Text = cond.produto;
-
+                txtProduto.Text = prod.produto;
                 txtCodProduto.Enabled = false;
                 txtProduto.Enabled = false;
             }
@@ -857,6 +904,49 @@ namespace EquipMotos.View
         private void label1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void label25_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private Boolean ValidarContasPagar(object modelo, object serie, object nrNota, object codFornecedor)
+        {
+            var listaContaPagar = CtrlCompra.BuscarContaPagar(modelo, serie, nrNota, codFornecedor);
+            bool valida = true;
+            foreach (var conta in listaContaPagar)
+            {
+                if (conta.pago)
+                {
+                    valida = false;
+                }
+
+            }
+            return valida;
+        }
+
+        private void btnExcluir_Click(object sender, EventArgs e)
+
+        {
+            if ((MessageBox.Show("Será necessario informar o usuario Administrador do sistema.", "Deseja cancelar?", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes) & txtModelo.Text != null)
+            {
+                frmConfirmaAdmin frmConfirma = new frmConfirmaAdmin();
+                if (frmConfirma.ShowDialog() == DialogResult.OK)
+                {
+
+                    if (ValidarContasPagar(txtModelo.Text, txtSerie.Text, txtNrNota.Text, txtCodFornecedor.Text))
+                    {
+                        CtrlCompra.Desativar(txtModelo.Text, txtSerie.Text, txtNrNota.Text, txtCodFornecedor.Text);
+                        //gvCompra.DataSource = CtrlCompra.ListarTodos();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Não foi possivel cancelar a compra, pois teve contas a pagar vinculadas pagas.", "Parcelas vinculadas pagas!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+
+                }
+            }
         }
     }
 }

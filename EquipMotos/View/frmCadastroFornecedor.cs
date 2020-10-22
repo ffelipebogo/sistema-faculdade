@@ -535,17 +535,20 @@ namespace EquipMotos.Codigo.View
 
         private void txtCodCondicao_TextChanged(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(txtCodCondicao.Text) & (Convert.ToInt32(txtCodCondicao.Text) != 0))
+            if (!string.IsNullOrEmpty(txtCodCondicao.Text))
             {
-                var condicao = CtrlCondicao.BuscarPorID(txtCodCondicao.Text);
-                if(condicao == null)
+                if (Convert.ToInt32(txtCodCondicao.Text) != 0)
                 {
-                    MessageBox.Show("Nenhum resultado");
-                }
-                else
-                {
-                    condPagamento = condicao;
-                    CarregaCondPagamento();
+                    var condicao = CtrlCondicao.BuscarPorID(txtCodCondicao.Text);
+                    if (condicao == null)
+                    {
+                        MessageBox.Show("Nenhum resultado");
+                    }
+                    else
+                    {
+                        condPagamento = condicao;
+                        CarregaCondPagamento();
+                    }
                 }
             }
         }

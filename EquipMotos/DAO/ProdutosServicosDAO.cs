@@ -44,7 +44,7 @@ namespace EquipMotos.DAO
                                         usuario,
                                         servico
                                 
-                                        ) values (@produto, @unidade, @codCategoria, @codBarra, @qtd, @precoCusto, @precoVenda, @codFornecedor,@codFuncionario, @custoUltCompra, @dtUltCompra, @comissao,
+                                        ) values (@produto, @unidade, @codCategoria, @codBarra, @qtd, @precoCusto, @precoVenda, @codFornecedor, @codFuncionario, @custoUltCompra, @dtUltCompra, @comissao,
                                           @observacoes, @dtCadastro, @dtAlteracao, @usuario, @servico )";
 
 
@@ -61,7 +61,7 @@ namespace EquipMotos.DAO
                         comando.Parameters.AddWithValue("@precoVenda", proServ.precoVenda);
 
                         comando.Parameters.AddWithValue("@codFornecedor", proServ.Fornecedor.codigo);
-                        comando.Parameters.AddWithValue("@codFuncionario", DBNull.Value);
+                        comando.Parameters.AddWithValue("@codFuncionario", proServ.Funcionario.codigo);
 
                         comando.Parameters.AddWithValue("@custoUltCompra", proServ.custoUltCompra);
                         comando.Parameters.AddWithValue("@dtUltCompra", proServ.dtUltCompra);
@@ -329,13 +329,20 @@ namespace EquipMotos.DAO
 
         #endregion
 
-        #region BuscarProdutoServico id
+        #region BuscarProdutoServicoId
         public override object BuscarPorID(object id)
         {
             using (SqlConnection conexao = Conecta.CreateConnection())
             {
                 SqlDataAdapter da;
-                string sql = @"SELECT * FROM produtos WHERE codigo = @codigo";
+                string sql = @"SELECT  produtos.codigo, produtos.produto, produtos.unidade, produtos.codBarra, produtos.codCategoria, produtos.qtd, produtos.precoCusto, produtos.codFornecedor, produtos.custoUltCompra, produtos.dtUltCompra, 
+                                 produtos.comissao, produtos.observacoes, produtos.dtCadastro, produtos.dtAlteracao, produtos.usuario, produtos.servico, produtos.codFuncionario, fornecedores.fornecedor, categorias.categoria, funcionarios.funcionario, 
+                                 produtos.precoVenda, produtos.valorUnitario
+                                    FROM  produtos INNER JOIN
+                                 categorias ON produtos.codCategoria = categorias.codigo INNER JOIN
+                                 funcionarios ON produtos.codFuncionario = funcionarios.codigo INNER JOIN
+                                 fornecedores ON produtos.codFornecedor = fornecedores.codigo
+                                WHERE produtos.codigo = @codigo";
                 SqlCommand comando = new SqlCommand(sql, conexao);
                 comando.Parameters.AddWithValue("@codigo", id);
                 conexao.Open();
@@ -392,13 +399,159 @@ namespace EquipMotos.DAO
         }
         #endregion
 
+        #region BuscarServicoId
+        public object BuscarServicoPorID(object id)
+        {
+            using (SqlConnection conexao = Conecta.CreateConnection())
+            {
+                SqlDataAdapter da;
+                string sql = @"SELECT  produtos.codigo, produtos.produto, produtos.unidade, produtos.codBarra, produtos.codCategoria, produtos.qtd, produtos.precoCusto, produtos.codFornecedor, produtos.custoUltCompra, produtos.dtUltCompra, 
+                         produtos.comissao, produtos.observacoes, produtos.dtCadastro, produtos.dtAlteracao, produtos.usuario, produtos.servico, produtos.codFuncionario, categorias.categoria, funcionarios.funcionario, 
+                         produtos.precoVenda, produtos.valorUnitario
+                         FROM            produtos INNER JOIN
+                         categorias ON produtos.codCategoria = categorias.codigo INNER JOIN
+                         funcionarios ON produtos.codFuncionario = funcionarios.codigo
+                         
+                            WHERE produtos.codigo = @codigo AND produtos.servico = 1 ";
+
+                SqlCommand comando = new SqlCommand(sql, conexao);
+                comando.Parameters.AddWithValue("@codigo", id);
+                conexao.Open();
+                da = new SqlDataAdapter(comando);
+                DataTable dtProdutoServico = new DataTable();
+                da.Fill(dtProdutoServico);
+                produtoServico = null;
+                foreach (DataRow row in dtProdutoServico.Rows)
+                {
+                    ProdutosServicos proServ = new ProdutosServicos();
+                    proServ.servico = Convert.ToBoolean(row["servico"]);
+                    if (!proServ.servico)
+                    {
+                        proServ.codigo = Convert.ToInt32(row["codigo"]);
+                        proServ.produto = Convert.ToString(row["produto"]);
+                        proServ.unidade = Convert.ToString(row["unidade"]);
+                        proServ.codBarra = Convert.ToString(row["codBarra"]);
+
+                        proServ.Categoria = CtrlCategoria.BuscarPorID(Convert.ToInt32(row["codCategoria"])) as Categorias;
+                        proServ.qtd = Convert.ToInt32(row["qtd"]);
+                        proServ.custo = Convert.ToDecimal(row["precoCusto"]);
+                        proServ.precoVenda = Convert.ToDecimal(row["precoVenda"]);
+
+                        proServ.Fornecedor = daoForn.BuscarPorID(Convert.ToInt32(row["codFornecedor"])) as Fornecedores;
+                        proServ.custoUltCompra = Convert.ToDecimal(row["custoUltCompra"]);
+                        proServ.dtUltCompra = Convert.ToDateTime(row["dtUltCompra"]);
+                        proServ.comissao = Convert.ToDouble(row["comissao"]);
+                        proServ.observacoes = Convert.ToString(row["observacoes"]);
+                        proServ.dtCadastro = Convert.ToDateTime(row["dtCadastro"]);
+                        proServ.dtAlteracao = Convert.ToDateTime(row["dtAlteracao"]);
+                        proServ.usuario = Convert.ToString(row["usuario"]);
+                        this.produtoServico = proServ;
+                    }
+                    else
+                    {
+                        proServ.codigo = Convert.ToInt32(row["codigo"]);
+                        proServ.produto = Convert.ToString(row["produto"]);
+                        proServ.Categoria = CtrlCategoria.BuscarPorID(Convert.ToInt32(row["codCategoria"])) as Categorias;
+                        proServ.custo = Convert.ToDecimal(row["precoCusto"]);
+                        proServ.precoVenda = Convert.ToDecimal(row["precoVenda"]);
+
+                        proServ.Funcionario = daoFunc.BuscarPorID(Convert.ToInt32(row["codFuncionario"])) as Funcionarios;
+                        proServ.comissao = Convert.ToDouble(row["comissao"]);
+                        proServ.observacoes = Convert.ToString(row["observacoes"]);
+                        proServ.dtCadastro = Convert.ToDateTime(row["dtCadastro"]);
+                        proServ.dtAlteracao = Convert.ToDateTime(row["dtAlteracao"]);
+                        proServ.usuario = Convert.ToString(row["usuario"]);
+
+                        this.produtoServico = proServ;
+                    }
+                }
+                return produtoServico;
+            }
+        }
+        #endregion
+
+        #region BuscarProdutoId
+        public object BuscarProdutoPorID(object id)
+        {
+            using (SqlConnection conexao = Conecta.CreateConnection())
+            {
+                SqlDataAdapter da;
+                string sql = @"SELECT        produtos.codigo, produtos.produto, produtos.unidade, produtos.codBarra, produtos.codCategoria, produtos.qtd, produtos.precoCusto, produtos.codFornecedor, produtos.custoUltCompra, produtos.dtUltCompra, 
+                         produtos.comissao, produtos.observacoes, produtos.dtCadastro, produtos.dtAlteracao, produtos.usuario, produtos.servico, produtos.codFuncionario, fornecedores.fornecedor, categorias.categoria, funcionarios.funcionario, 
+                         produtos.precoVenda, produtos.valorUnitario
+                            FROM            produtos INNER JOIN
+                         categorias ON produtos.codCategoria = categorias.codigo INNER JOIN
+                         funcionarios ON produtos.codFuncionario = funcionarios.codigo INNER JOIN
+                         fornecedores ON produtos.codFornecedor = fornecedores.codigo WHERE produtos.codigo = @codigo AND produtos.servico = 0";
+                SqlCommand comando = new SqlCommand(sql, conexao);
+                comando.Parameters.AddWithValue("@codigo", id);
+                conexao.Open();
+                da = new SqlDataAdapter(comando);
+                DataTable dtProdutoServico = new DataTable();
+                da.Fill(dtProdutoServico);
+                produtoServico = null;
+                foreach (DataRow row in dtProdutoServico.Rows)
+                {
+                    ProdutosServicos proServ = new ProdutosServicos();
+                    proServ.servico = Convert.ToBoolean(row["servico"]);
+                    if (!proServ.servico)
+                    {
+                        proServ.codigo = Convert.ToInt32(row["codigo"]);
+                        proServ.produto = Convert.ToString(row["produto"]);
+                        proServ.unidade = Convert.ToString(row["unidade"]);
+                        proServ.codBarra = Convert.ToString(row["codBarra"]);
+
+                        proServ.Categoria = CtrlCategoria.BuscarPorID(Convert.ToInt32(row["codCategoria"])) as Categorias;
+                        proServ.qtd = Convert.ToInt32(row["qtd"]);
+                        proServ.custo = Convert.ToDecimal(row["precoCusto"]);
+                        proServ.precoVenda = Convert.ToDecimal(row["precoVenda"]);
+
+                        proServ.Fornecedor = daoForn.BuscarPorID(Convert.ToInt32(row["codFornecedor"])) as Fornecedores;
+                        proServ.custoUltCompra = Convert.ToDecimal(row["custoUltCompra"]);
+                        proServ.dtUltCompra = Convert.ToDateTime(row["dtUltCompra"]);
+                        proServ.comissao = Convert.ToDouble(row["comissao"]);
+                        proServ.observacoes = Convert.ToString(row["observacoes"]);
+                        proServ.dtCadastro = Convert.ToDateTime(row["dtCadastro"]);
+                        proServ.dtAlteracao = Convert.ToDateTime(row["dtAlteracao"]);
+                        proServ.usuario = Convert.ToString(row["usuario"]);
+                        this.produtoServico = proServ;
+                    }
+                    else
+                    {
+                        proServ.codigo = Convert.ToInt32(row["codigo"]);
+                        proServ.produto = Convert.ToString(row["produto"]);
+                        proServ.Categoria = CtrlCategoria.BuscarPorID(Convert.ToInt32(row["codCategoria"])) as Categorias;
+                        proServ.custo = Convert.ToDecimal(row["precoCusto"]);
+                        proServ.precoVenda = Convert.ToDecimal(row["precoVenda"]);
+
+                        proServ.Funcionario = daoFunc.BuscarPorID(Convert.ToInt32(row["codFuncionario"])) as Funcionarios;
+                        proServ.comissao = Convert.ToDouble(row["comissao"]);
+                        proServ.observacoes = Convert.ToString(row["observacoes"]);
+                        proServ.dtCadastro = Convert.ToDateTime(row["dtCadastro"]);
+                        proServ.dtAlteracao = Convert.ToDateTime(row["dtAlteracao"]);
+                        proServ.usuario = Convert.ToString(row["usuario"]);
+
+                        this.produtoServico = proServ;
+                    }
+                }
+                return produtoServico;
+            }
+        }
+        #endregion
+
+
         #region ListarTodosProdutosServicos
         public override DataTable ListarTodos()
         {
             using (SqlConnection conexao = Conecta.CreateConnection())
             {
                 SqlDataAdapter da;
-                string sql = @"SELECT * FROM produtos";
+                string sql = @"SELECT        produtos.codigo, produtos.produto, produtos.unidade, produtos.codBarra, produtos.codCategoria, produtos.qtd, produtos.precoCusto, produtos.codFornecedor, produtos.custoUltCompra, produtos.dtUltCompra, 
+                         produtos.comissao, produtos.observacoes, produtos.dtCadastro, produtos.dtAlteracao, produtos.usuario, produtos.servico, produtos.codFuncionario, categorias.categoria, funcionarios.funcionario, 
+                         produtos.precoVenda, produtos.valorUnitario
+                            FROM            produtos INNER JOIN
+                         categorias ON produtos.codCategoria = categorias.codigo INNER JOIN
+                         funcionarios ON produtos.codFuncionario = funcionarios.codigo;";
 
                 SqlCommand comando = new SqlCommand(sql, conexao);
 
@@ -418,7 +571,14 @@ namespace EquipMotos.DAO
             using (SqlConnection conexao = Conecta.CreateConnection())
             {
                 SqlDataAdapter da;
-                string sql = @" SELECT * FROM produtos WHERE servico = 0 ";
+                string sql = @"SELECT        produtos.codigo, produtos.produto, produtos.unidade, produtos.codBarra, produtos.codCategoria, produtos.qtd, produtos.precoCusto, produtos.codFornecedor, produtos.custoUltCompra, produtos.dtUltCompra, 
+                             produtos.comissao, produtos.observacoes, produtos.dtCadastro, produtos.dtAlteracao, produtos.usuario, produtos.servico, produtos.codFuncionario, fornecedores.fornecedor, categorias.categoria, funcionarios.funcionario, 
+                             produtos.precoVenda, produtos.valorUnitario
+                                FROM            produtos INNER JOIN
+                             categorias ON produtos.codCategoria = categorias.codigo INNER JOIN
+                             funcionarios ON produtos.codFuncionario = funcionarios.codigo INNER JOIN
+                             fornecedores ON produtos.codFornecedor = fornecedores.codigo
+                                WHERE produtos.servico = 0";
 
                 SqlCommand comando = new SqlCommand(sql, conexao);
 
@@ -440,7 +600,14 @@ namespace EquipMotos.DAO
             using (SqlConnection conexao = Conecta.CreateConnection())
             {
                 SqlDataAdapter da;
-                string sql = @" SELECT * FROM produtos WHERE servico = 1 ";
+                string sql = @"SELECT        produtos.codigo, produtos.produto, produtos.unidade, produtos.codBarra, produtos.codCategoria, produtos.qtd, produtos.precoCusto, produtos.codFornecedor, produtos.custoUltCompra, produtos.dtUltCompra, 
+                             produtos.comissao, produtos.observacoes, produtos.dtCadastro, produtos.dtAlteracao, produtos.usuario, produtos.servico, produtos.codFuncionario, fornecedores.fornecedor, categorias.categoria, funcionarios.funcionario, 
+                             produtos.precoVenda, produtos.valorUnitario
+                                FROM            produtos INNER JOIN
+                             categorias ON produtos.codCategoria = categorias.codigo INNER JOIN
+                             funcionarios ON produtos.codFuncionario = funcionarios.codigo INNER JOIN
+                             fornecedores ON produtos.codFornecedor = fornecedores.codigo
+                                WHERE produtos.servico = 1 ";
                 SqlCommand comando = new SqlCommand(sql, conexao);
 
                 conexao.Open();
@@ -464,16 +631,14 @@ namespace EquipMotos.DAO
             {
                 ProdutosServicos proServ = obj as ProdutosServicos;
                 SqlDataAdapter da;
-                string sql = @"SELECT C.codigo as Codigo, C.nome as Cliente,
-                                C.cnpj as CNPJ, C.cpf as CPF, C.email as Email, C.telefone as Telefone,
-                                C.celular as Celular, C.site As Site,  C.endereco as Endereco, C.complemento as Complemento, 
-                                C.numero as Numero, C.bairro as Bairro, Cidade.cidade as Cidade, E.uf as UF, C.cep as CEP, 
-
-                           FROM produtos As C
-                             INNER JOIN estados AS E ON C.codigoUf = E.codigo 
-                             INNER JOIN cidades AS Cid ON C.codigoCidade = Cid.codigo 
-
-                           WHERE C.nome = @nome";
+                string sql = @"SELECT        produtos.codigo, produtos.produto, produtos.unidade, produtos.codBarra, produtos.codCategoria, produtos.qtd, produtos.precoCusto, produtos.codFornecedor, produtos.custoUltCompra, produtos.dtUltCompra, 
+                             produtos.comissao, produtos.observacoes, produtos.dtCadastro, produtos.dtAlteracao, produtos.usuario, produtos.servico, produtos.codFuncionario, fornecedores.fornecedor, categorias.categoria, funcionarios.funcionario, 
+                             produtos.precoVenda, produtos.valorUnitario
+                                FROM            produtos INNER JOIN
+                             categorias ON produtos.codCategoria = categorias.codigo INNER JOIN
+                             funcionarios ON produtos.codFuncionario = funcionarios.codigo INNER JOIN
+                             fornecedores ON produtos.codFornecedor = fornecedores.codigo
+                               WHERE produtos.nome = @nome";
 
                 SqlCommand comando = new SqlCommand(sql, conexao);
                 comando.Parameters.AddWithValue("@nome", proServ.produto);

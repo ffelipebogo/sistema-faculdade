@@ -1,4 +1,5 @@
 ﻿using EquipMotos.DAO;
+using EquipMotos.MODEL;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -26,6 +27,11 @@ namespace EquipMotos.CONTROLLER
         public object BuscarPorID(object modelo, object serie, object nrNota, object idFornecedor)
         {
             return DaoCompra.BuscarCompra_porID(modelo, serie, nrNota, idFornecedor);
+        }
+
+        public List<ContasPagar> BuscarContaPagar(object modelo, object serie, object nrNota, object idFornecedor)
+        {
+            return DaoCompra.BuscarContasPagar(modelo, serie, nrNota, idFornecedor);
         }
 
     }

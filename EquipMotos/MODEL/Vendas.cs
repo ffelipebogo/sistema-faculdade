@@ -16,6 +16,7 @@ namespace EquipMotos.MODEL
         public DateTime dtEmissao { get; set; }
         public double desconto { get; set; }
         public bool situacao { get; set; }
+        public double totalReceber { get; set; }
         public List<ContasReceber> listaContasReceber { get; set; }
         public List<ContasReceber> listaContasReceberProdutos { get; set; }
         public List<ContasReceber> listaContasReceberServicos { get; set; }

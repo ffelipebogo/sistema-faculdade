@@ -1,6 +1,7 @@
 ﻿using EquipMotos.CONTROLLER;
 using EquipMotos.DAO;
 using EquipMotos.MODEL;
+using EquipMotos.VIEW;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -35,15 +36,22 @@ namespace EquipMotos.View
         {
             try
             {
-                frmCadastroFuncionario frmCadFuncionario = new frmCadastroFuncionario();
-                var funRow = gvFuncionario.CurrentRow.DataBoundItem as DataRowView;
+                if(gvFuncionario.CurrentRow != null) 
+                { 
+                    frmCadastroFuncionario frmCadFuncionario = new frmCadastroFuncionario();
+                    var funRow = gvFuncionario.CurrentRow.DataBoundItem as DataRowView;
 
-                var codigo = funRow["codigo"];
+                    var codigo = funRow["codigo"];
 
-                frmCadFuncionario.Carregar(codigo);
-                if (frmCadFuncionario.ShowDialog() == DialogResult.OK)
+                    frmCadFuncionario.Carregar(codigo);
+                    if (frmCadFuncionario.ShowDialog() == DialogResult.OK)
+                    {
+                        gvFuncionario.DataSource = CtrlFuncionario.ListarTodos();
+                    }
+                }
+                else
                 {
-                    gvFuncionario.DataSource = CtrlFuncionario.ListarTodos();
+                    MessageBox.Show("Selecione o funcionario que deseja alterar!");
                 }
             }
             catch (Exception ex)
@@ -77,7 +85,6 @@ namespace EquipMotos.View
                 try 
                 { 
                     SelecionaFuncionario();
-                    frmCadastroProdutoServico.funcionario = func;
                     frmCadastroOrdemServico.Funcionario = func;
                     this.DialogResult = DialogResult.OK;
                     Close();
@@ -124,6 +131,11 @@ namespace EquipMotos.View
             {
                 gvFuncionario.DataSource = dtView.DataSource;
             }
+        }
+
+        private void gvFuncionario_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

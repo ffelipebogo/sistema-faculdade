@@ -74,7 +74,10 @@ namespace EquipMotos.DAO
             using (SqlConnection conexao = Conecta.CreateConnection())
             {
                 SqlDataAdapter da;
-                string sql = @"SELECT * FROM modelos WHERE codigo = @codigo";
+                string sql = @"SELECT    modelos.*, marcas.marca
+                    FROM        modelos INNER JOIN
+                  marcas ON modelos.codMarca = marcas.codigo 
+                    WHERE modelos.codigo = @codigo";
 
                 SqlCommand comando = new SqlCommand(sql, conexao);
 
@@ -107,7 +110,9 @@ namespace EquipMotos.DAO
             using (SqlConnection conexao = Conecta.CreateConnection())
             {
                 SqlDataAdapter da;
-                string sql = @"SELECT * FROM modelos";
+                string sql = @"SELECT    modelos.*, marcas.marca
+                             FROM        modelos INNER JOIN
+                         marcas ON modelos.codMarca = marcas.codigo";
 
                 SqlCommand comando = new SqlCommand(sql, conexao);
 
@@ -133,12 +138,18 @@ namespace EquipMotos.DAO
                 if (mod.Length <= 4 && isNumeric)
                 {
 
-                    sql = @"SELECT * FROM modelos WHERE codigo = @mod";
+                    sql = @"SELECT     modelos.*, marcas.marca
+                            FROM  modelos INNER JOIN
+                                marcas ON modelos.codMarca = marcas.codigo    
+                            WHERE modelos.codigo = @mod";
                 }
                 else
                 {
 
-                    sql = @"SELECT * FROM modelos WHERE modelo like '%'+ @mod + '%' ";
+                    sql = @"SELECT     modelos.*, marcas.marca
+                            FROM  modelos INNER JOIN
+                                marcas ON modelos.codMarca = marcas.codigo
+                            WHERE modelos.modelo like '%'+ @mod + '%' ";
 
                 }
 

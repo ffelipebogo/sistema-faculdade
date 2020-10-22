@@ -1,6 +1,7 @@
 ﻿using EquipMotos.CONTROLLER;
 using EquipMotos.DAO;
 using EquipMotos.MODEL;
+using EquipMotos.VIEW;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -81,7 +82,7 @@ namespace EquipMotos.View
                 try
                 {
                     SelecionaCategoria();
-                    frmCadastroProdutoServico.categoria = this.categoria;
+                    frmCadastroProduto.categoria = this.categoria;
                     this.DialogResult = DialogResult.OK;
                     Close();
                 }

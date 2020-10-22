@@ -183,7 +183,8 @@
     <Compile Include="CONTROLLER\CtrlModelos.cs" />
     <Compile Include="CONTROLLER\CtrlOrdemServicos.cs" />
     <Compile Include="CONTROLLER\CtrlPaises.cs" />
-    <Compile Include="CONTROLLER\CtrlProdutosServicos.cs" />
+    <Compile Include="CONTROLLER\CtrlProdutos.cs" />
+    <Compile Include="CONTROLLER\CtrlServicos.cs" />
     <Compile Include="CONTROLLER\CtrlVendas.cs" />
     <Compile Include="DAO\CategoriasDAO.cs" />
     <Compile Include="DAO\CidadesDAO.cs" />
@@ -202,7 +203,8 @@
     <Compile Include="DAO\ModelosDAO.cs" />
     <Compile Include="DAO\OrdemServicosDAO.cs" />
     <Compile Include="DAO\PaisesDAO.cs" />
-    <Compile Include="DAO\ProdutosServicosDAO.cs" />
+    <Compile Include="DAO\ProdutosDAO.cs" />
+    <Compile Include="DAO\ServicosDAO.cs" />
     <Compile Include="DAO\UsuariosDAO.cs" />
     <Compile Include="DAO\VendasDAO.cs" />
     <Compile Include="Login.cs">
@@ -233,25 +235,41 @@
     <Compile Include="MODEL\Paises.cs" />
     <Compile Include="MODEL\Pessoa.cs" />
     <Compile Include="MODEL\ItensOrdemServico.cs" />
-    <Compile Include="MODEL\ProdutosServicos.cs" />
+    <Compile Include="MODEL\Produtos.cs" />
+    <Compile Include="MODEL\Servicos.cs" />
     <Compile Include="MODEL\UsuarioLogado.cs" />
     <Compile Include="MODEL\Usuarios.cs" />
     <Compile Include="MODEL\Categorias.cs" />
     <Compile Include="MODEL\Vendas.cs" />
+    <Compile Include="obj\Debug\.NETFramework,Version=v4.7.2.AssemblyAttributes.cs" />
+    <Compile Include="SistemaMoto2DataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SistemaMoto2DataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="SistemaMoto2DataSetCategoria.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>SistemaMoto2DataSetCategoria.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="SistemaMoto2DataSetCidade.cs">
+      <DependentUpon>SistemaMoto2DataSetCidade.xsd</DependentUpon>
     </Compile>
     <Compile Include="SistemaMoto2DataSetCidade.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>SistemaMoto2DataSetCidade.xsd</DependentUpon>
     </Compile>
+    <Compile Include="SistemaMoto2DataSetCliente.cs">
+      <DependentUpon>SistemaMoto2DataSetCliente.xsd</DependentUpon>
+    </Compile>
     <Compile Include="SistemaMoto2DataSetCliente.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>SistemaMoto2DataSetCliente.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="SistemaMoto2DataSetCompra.cs">
+      <DependentUpon>SistemaMoto2DataSetCompra.xsd</DependentUpon>
     </Compile>
     <Compile Include="SistemaMoto2DataSetCompra.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -283,6 +301,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>SistemaMoto2DataSetEstado.xsd</DependentUpon>
     </Compile>
+    <Compile Include="SistemaMoto2DataSetEstoque.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SistemaMoto2DataSetEstoque.xsd</DependentUpon>
+    </Compile>
     <Compile Include="SistemaMoto2DataSetFormaPagamento.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -292,6 +315,9 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>SistemaMoto2DataSetFornecedor.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="SistemaMoto2DataSetFuncionario.cs">
+      <DependentUpon>SistemaMoto2DataSetFuncionario.xsd</DependentUpon>
     </Compile>
     <Compile Include="SistemaMoto2DataSetFuncionario.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -318,10 +344,15 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>SistemaMoto2DataSetPais.xsd</DependentUpon>
     </Compile>
-    <Compile Include="SistemaMoto2DataSetProduto.Designer.cs">
+    <Compile Include="SistemaMoto2DataSetProdutos.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>SistemaMoto2DataSetProduto.xsd</DependentUpon>
+      <DependentUpon>SistemaMoto2DataSetProdutos.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="SistemaMoto2DataSetServicos.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SistemaMoto2DataSetServicos.xsd</DependentUpon>
     </Compile>
     <Compile Include="SistemaMoto2DataSetVenda.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -423,6 +454,18 @@
     <Compile Include="VIEW\frmCadastroPais.Designer.cs">
       <DependentUpon>frmCadastroPais.cs</DependentUpon>
     </Compile>
+    <Compile Include="VIEW\frmCadastroProduto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VIEW\frmCadastroProduto.Designer.cs">
+      <DependentUpon>frmCadastroProduto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VIEW\frmCadastroServico.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VIEW\frmCadastroServico.Designer.cs">
+      <DependentUpon>frmCadastroServico.cs</DependentUpon>
+    </Compile>
     <Compile Include="VIEW\frmCadastroVenda.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -434,6 +477,12 @@
     </Compile>
     <Compile Include="VIEW\frmCadastroCondicaoPagamento.Designer.cs">
       <DependentUpon>frmCadastroCondicaoPagamento.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VIEW\frmConfirmaAdmin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VIEW\frmConfirmaAdmin.Designer.cs">
+      <DependentUpon>frmConfirmaAdmin.cs</DependentUpon>
     </Compile>
     <Compile Include="VIEW\frmConsultaCategoria.cs">
       <SubType>Form</SubType>
@@ -491,6 +540,12 @@
     <Compile Include="VIEW\frmConsultaEstado.Designer.cs">
       <DependentUpon>frmConsultaEstado.cs</DependentUpon>
     </Compile>
+    <Compile Include="VIEW\frmConsultaEstoque.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VIEW\frmConsultaEstoque.Designer.cs">
+      <DependentUpon>frmConsultaEstoque.cs</DependentUpon>
+    </Compile>
     <Compile Include="VIEW\frmConsultaFormaPagamento.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -502,12 +557,6 @@
     </Compile>
     <Compile Include="VIEW\frmConsultaFornecedor.Designer.cs">
       <DependentUpon>frmConsultaFornecedor.cs</DependentUpon>
-    </Compile>
-    <Compile Include="VIEW\frmCadastroProdutoServico.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="VIEW\frmCadastroProdutoServico.Designer.cs">
-      <DependentUpon>frmCadastroProdutoServico.cs</DependentUpon>
     </Compile>
     <Compile Include="VIEW\frmConsultaFuncionario.cs">
       <SubType>Form</SubType>
@@ -539,11 +588,17 @@
     <Compile Include="VIEW\frmConsultaPais.Designer.cs">
       <DependentUpon>frmConsultaPais.cs</DependentUpon>
     </Compile>
-    <Compile Include="VIEW\frmConsultaProdutosServicos.cs">
+    <Compile Include="VIEW\frmConsultaProduto.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="VIEW\frmConsultaProdutosServicos.Designer.cs">
-      <DependentUpon>frmConsultaProdutosServicos.cs</DependentUpon>
+    <Compile Include="VIEW\frmConsultaProduto.Designer.cs">
+      <DependentUpon>frmConsultaProduto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VIEW\frmConsultaServico.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VIEW\frmConsultaServico.Designer.cs">
+      <DependentUpon>frmConsultaServico.cs</DependentUpon>
     </Compile>
     <Compile Include="VIEW\frmConsultaVenda.cs">
       <SubType>Form</SubType>
@@ -555,6 +610,44 @@
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="obj\Release\EquipMotos.Codigo.View.frmCadastroCliente.resources" />
+    <EmbeddedResource Include="obj\Release\EquipMotos.Codigo.View.frmCadastroFornecedor.resources" />
+    <EmbeddedResource Include="obj\Release\EquipMotos.Codigo.View.frmConsultaCliente.resources" />
+    <EmbeddedResource Include="obj\Release\EquipMotos.Login.resources" />
+    <EmbeddedResource Include="obj\Release\EquipMotos.MenuPrincipal.resources" />
+    <EmbeddedResource Include="obj\Release\EquipMotos.Properties.Resources.resources" />
+    <EmbeddedResource Include="obj\Release\EquipMotos.View.frmCadastro.resources" />
+    <EmbeddedResource Include="obj\Release\EquipMotos.View.frmCadastroCategoria.resources" />
+    <EmbeddedResource Include="obj\Release\EquipMotos.View.frmCadastroCidade.resources" />
+    <EmbeddedResource Include="obj\Release\EquipMotos.View.frmCadastroCompra.resources" />
+    <EmbeddedResource Include="obj\Release\EquipMotos.View.frmCadastroCondicaoPagamento.resources" />
+    <EmbeddedResource Include="obj\Release\EquipMotos.View.frmCadastroContaPagar.resources" />
+    <EmbeddedResource Include="obj\Release\EquipMotos.View.frmCadastroContaReceber.resources" />
+    <EmbeddedResource Include="obj\Release\EquipMotos.View.frmCadastroEstado.resources" />
+    <EmbeddedResource Include="obj\Release\EquipMotos.View.frmCadastroFormaPagamento.resources" />
+    <EmbeddedResource Include="obj\Release\EquipMotos.View.frmCadastroFuncionario.resources" />
+    <EmbeddedResource Include="obj\Release\EquipMotos.View.frmCadastroMarca.resources" />
+    <EmbeddedResource Include="obj\Release\EquipMotos.View.frmCadastroModelo.resources" />
+    <EmbeddedResource Include="obj\Release\EquipMotos.View.frmCadastroOrdemServico.resources" />
+    <EmbeddedResource Include="obj\Release\EquipMotos.View.frmCadastroPais.resources" />
+    <EmbeddedResource Include="obj\Release\EquipMotos.View.frmCadastroProdutoServico.resources" />
+    <EmbeddedResource Include="obj\Release\EquipMotos.View.frmCadastroVenda.resources" />
+    <EmbeddedResource Include="obj\Release\EquipMotos.View.frmConsultaCategoria.resources" />
+    <EmbeddedResource Include="obj\Release\EquipMotos.View.frmConsultaCidade.resources" />
+    <EmbeddedResource Include="obj\Release\EquipMotos.View.frmConsultaCompra.resources" />
+    <EmbeddedResource Include="obj\Release\EquipMotos.View.frmConsultaCondicaoPagamento.resources" />
+    <EmbeddedResource Include="obj\Release\EquipMotos.View.frmConsultaContaPagar.resources" />
+    <EmbeddedResource Include="obj\Release\EquipMotos.View.frmConsultaContaReceber.resources" />
+    <EmbeddedResource Include="obj\Release\EquipMotos.View.frmConsultaEstado.resources" />
+    <EmbeddedResource Include="obj\Release\EquipMotos.View.frmConsultaFormaPagamento.resources" />
+    <EmbeddedResource Include="obj\Release\EquipMotos.View.frmConsultaFornecedor.resources" />
+    <EmbeddedResource Include="obj\Release\EquipMotos.View.frmConsultaFuncionario.resources" />
+    <EmbeddedResource Include="obj\Release\EquipMotos.View.frmConsultaMarca.resources" />
+    <EmbeddedResource Include="obj\Release\EquipMotos.View.frmConsultaModelo.resources" />
+    <EmbeddedResource Include="obj\Release\EquipMotos.View.frmConsultaOrdemServico.resources" />
+    <EmbeddedResource Include="obj\Release\EquipMotos.View.frmConsultaPais.resources" />
+    <EmbeddedResource Include="obj\Release\EquipMotos.View.frmConsultaProdutosServicos.resources" />
+    <EmbeddedResource Include="obj\Release\EquipMotos.View.frmConsultaVenda.resources" />
     <EmbeddedResource Include="VIEW\frmCadastro.resx">
       <DependentUpon>frmCadastro.cs</DependentUpon>
     </EmbeddedResource>
@@ -600,14 +693,20 @@
     <EmbeddedResource Include="VIEW\frmCadastroPais.resx">
       <DependentUpon>frmCadastroPais.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="VIEW\frmCadastroProdutoServico.resx">
-      <DependentUpon>frmCadastroProdutoServico.cs</DependentUpon>
+    <EmbeddedResource Include="VIEW\frmCadastroProduto.resx">
+      <DependentUpon>frmCadastroProduto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VIEW\frmCadastroServico.resx">
+      <DependentUpon>frmCadastroServico.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="VIEW\frmCadastroVenda.resx">
       <DependentUpon>frmCadastroVenda.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="VIEW\frmCadastroCondicaoPagamento.resx">
       <DependentUpon>frmCadastroCondicaoPagamento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VIEW\frmConfirmaAdmin.resx">
+      <DependentUpon>frmConfirmaAdmin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="VIEW\frmConsultaCategoria.resx">
       <DependentUpon>frmConsultaCategoria.cs</DependentUpon>
@@ -646,6 +745,9 @@
     <EmbeddedResource Include="VIEW\frmConsultaEstado.resx">
       <DependentUpon>frmConsultaEstado.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="VIEW\frmConsultaEstoque.resx">
+      <DependentUpon>frmConsultaEstoque.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="VIEW\frmConsultaFormaPagamento.resx">
       <DependentUpon>frmConsultaFormaPagamento.cs</DependentUpon>
     </EmbeddedResource>
@@ -668,13 +770,21 @@
       <DependentUpon>frmConsultaPais.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="VIEW\frmConsultaProdutosServicos.resx">
-      <DependentUpon>frmConsultaProdutosServicos.cs</DependentUpon>
+    <EmbeddedResource Include="VIEW\frmConsultaProduto.resx">
+      <DependentUpon>frmConsultaProduto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VIEW\frmConsultaServico.resx">
+      <DependentUpon>frmConsultaServico.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="VIEW\frmConsultaVenda.resx">
       <DependentUpon>frmConsultaVenda.cs</DependentUpon>
     </EmbeddedResource>
     <None Include=".editorconfig" />
+    <None Include="bin\Debug\EquipMotos.exe.config" />
+    <None Include="bin\Release\EquipMotos.exe.config" />
+    <None Include="obj\Release\EquipMotos.csproj.CopyComplete" />
+    <None Include="obj\Release\EquipMotos.csproj.GenerateResource.cache" />
+    <None Include="obj\Release\EquipMotos.csprojAssemblyReference.cache" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -690,6 +800,18 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="script.bat" />
+    <None Include="SistemaMoto2DataSet.xsc">
+      <DependentUpon>SistemaMoto2DataSet.xsd</DependentUpon>
+    </None>
+    <None Include="SistemaMoto2DataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SistemaMoto2DataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="SistemaMoto2DataSet.xss">
+      <DependentUpon>SistemaMoto2DataSet.xsd</DependentUpon>
+    </None>
     <None Include="SistemaMoto2DataSetCategoria.xsc">
       <DependentUpon>SistemaMoto2DataSetCategoria.xsd</DependentUpon>
     </None>
@@ -789,6 +911,17 @@
     <None Include="SistemaMoto2DataSetEstado.xss">
       <DependentUpon>SistemaMoto2DataSetEstado.xsd</DependentUpon>
     </None>
+    <None Include="SistemaMoto2DataSetEstoque.xsc">
+      <DependentUpon>SistemaMoto2DataSetEstoque.xsd</DependentUpon>
+    </None>
+    <None Include="SistemaMoto2DataSetEstoque.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SistemaMoto2DataSetEstoque.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="SistemaMoto2DataSetEstoque.xss">
+      <DependentUpon>SistemaMoto2DataSetEstoque.xsd</DependentUpon>
+    </None>
     <None Include="SistemaMoto2DataSetFormaPagamento.xsc">
       <DependentUpon>SistemaMoto2DataSetFormaPagamento.xsd</DependentUpon>
     </None>
@@ -866,16 +999,27 @@
     <None Include="SistemaMoto2DataSetPais.xss">
       <DependentUpon>SistemaMoto2DataSetPais.xsd</DependentUpon>
     </None>
-    <None Include="SistemaMoto2DataSetProduto.xsc">
-      <DependentUpon>SistemaMoto2DataSetProduto.xsd</DependentUpon>
+    <None Include="SistemaMoto2DataSetProdutos.xsc">
+      <DependentUpon>SistemaMoto2DataSetProdutos.xsd</DependentUpon>
     </None>
-    <None Include="SistemaMoto2DataSetProduto.xsd">
+    <None Include="SistemaMoto2DataSetProdutos.xsd">
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>SistemaMoto2DataSetProduto.Designer.cs</LastGenOutput>
+      <LastGenOutput>SistemaMoto2DataSetProdutos.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
-    <None Include="SistemaMoto2DataSetProduto.xss">
-      <DependentUpon>SistemaMoto2DataSetProduto.xsd</DependentUpon>
+    <None Include="SistemaMoto2DataSetProdutos.xss">
+      <DependentUpon>SistemaMoto2DataSetProdutos.xsd</DependentUpon>
+    </None>
+    <None Include="SistemaMoto2DataSetServicos.xsc">
+      <DependentUpon>SistemaMoto2DataSetServicos.xsd</DependentUpon>
+    </None>
+    <None Include="SistemaMoto2DataSetServicos.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SistemaMoto2DataSetServicos.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="SistemaMoto2DataSetServicos.xss">
+      <DependentUpon>SistemaMoto2DataSetServicos.xsd</DependentUpon>
     </None>
     <None Include="SistemaMoto2DataSetVenda.xsc">
       <DependentUpon>SistemaMoto2DataSetVenda.xsd</DependentUpon>
@@ -935,6 +1079,96 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="VIEW\Resources\383662.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="bin\Debug\EquipMotos.exe" />
+    <Content Include="bin\Debug\EquipMotos.pdb" />
+    <Content Include="bin\Release\EquipMotos.exe" />
+    <Content Include="bin\Release\EquipMotos.pdb" />
+    <Content Include="bin\Release\Microsoft.AspNetCore.Hosting.Abstractions.dll" />
+    <Content Include="bin\Release\Microsoft.AspNetCore.Hosting.Abstractions.xml" />
+    <Content Include="bin\Release\Microsoft.AspNetCore.Hosting.Server.Abstractions.dll" />
+    <Content Include="bin\Release\Microsoft.AspNetCore.Hosting.Server.Abstractions.xml" />
+    <Content Include="bin\Release\Microsoft.AspNetCore.Http.Abstractions.dll" />
+    <Content Include="bin\Release\Microsoft.AspNetCore.Http.Abstractions.xml" />
+    <Content Include="bin\Release\Microsoft.AspNetCore.Http.Extensions.dll" />
+    <Content Include="bin\Release\Microsoft.AspNetCore.Http.Extensions.xml" />
+    <Content Include="bin\Release\Microsoft.AspNetCore.Http.Features.dll" />
+    <Content Include="bin\Release\Microsoft.AspNetCore.Http.Features.xml" />
+    <Content Include="bin\Release\Microsoft.AspNetCore.Rewrite.dll" />
+    <Content Include="bin\Release\Microsoft.AspNetCore.Rewrite.xml" />
+    <Content Include="bin\Release\Microsoft.Bcl.AsyncInterfaces.dll" />
+    <Content Include="bin\Release\Microsoft.Bcl.AsyncInterfaces.xml" />
+    <Content Include="bin\Release\Microsoft.Extensions.Configuration.Abstractions.dll" />
+    <Content Include="bin\Release\Microsoft.Extensions.Configuration.Abstractions.xml" />
+    <Content Include="bin\Release\Microsoft.Extensions.DependencyInjection.Abstractions.dll" />
+    <Content Include="bin\Release\Microsoft.Extensions.DependencyInjection.Abstractions.xml" />
+    <Content Include="bin\Release\Microsoft.Extensions.FileProviders.Abstractions.dll" />
+    <Content Include="bin\Release\Microsoft.Extensions.FileProviders.Abstractions.xml" />
+    <Content Include="bin\Release\Microsoft.Extensions.FileSystemGlobbing.dll" />
+    <Content Include="bin\Release\Microsoft.Extensions.FileSystemGlobbing.xml" />
+    <Content Include="bin\Release\Microsoft.Extensions.Hosting.Abstractions.dll" />
+    <Content Include="bin\Release\Microsoft.Extensions.Hosting.Abstractions.xml" />
+    <Content Include="bin\Release\Microsoft.Extensions.Logging.Abstractions.dll" />
+    <Content Include="bin\Release\Microsoft.Extensions.Logging.Abstractions.xml" />
+    <Content Include="bin\Release\Microsoft.Extensions.Options.dll" />
+    <Content Include="bin\Release\Microsoft.Extensions.Options.xml" />
+    <Content Include="bin\Release\Microsoft.Extensions.Primitives.dll" />
+    <Content Include="bin\Release\Microsoft.Extensions.Primitives.xml" />
+    <Content Include="bin\Release\Microsoft.Net.Http.Headers.dll" />
+    <Content Include="bin\Release\Microsoft.Net.Http.Headers.xml" />
+    <Content Include="bin\Release\Newtonsoft.Json.dll" />
+    <Content Include="bin\Release\Newtonsoft.Json.xml" />
+    <Content Include="bin\Release\Npgsql.dll" />
+    <Content Include="bin\Release\Npgsql.pdb" />
+    <Content Include="bin\Release\Npgsql.xml" />
+    <Content Include="bin\Release\pt-br\System.Net.Http.Formatting.resources.dll" />
+    <Content Include="bin\Release\pt-br\System.Web.Http.resources.dll" />
+    <Content Include="bin\Release\System.Buffers.dll" />
+    <Content Include="bin\Release\System.Buffers.xml" />
+    <Content Include="bin\Release\System.ComponentModel.Annotations.dll" />
+    <Content Include="bin\Release\System.IO.Pipelines.dll" />
+    <Content Include="bin\Release\System.IO.Pipelines.xml" />
+    <Content Include="bin\Release\System.Memory.dll" />
+    <Content Include="bin\Release\System.Memory.xml" />
+    <Content Include="bin\Release\System.Net.Http.Formatting.dll" />
+    <Content Include="bin\Release\System.Net.Http.Formatting.xml" />
+    <Content Include="bin\Release\System.Numerics.Vectors.dll" />
+    <Content Include="bin\Release\System.Numerics.Vectors.xml" />
+    <Content Include="bin\Release\System.Runtime.CompilerServices.Unsafe.dll" />
+    <Content Include="bin\Release\System.Runtime.CompilerServices.Unsafe.xml" />
+    <Content Include="bin\Release\System.Text.Encodings.Web.dll" />
+    <Content Include="bin\Release\System.Text.Encodings.Web.xml" />
+    <Content Include="bin\Release\System.Text.Json.dll" />
+    <Content Include="bin\Release\System.Text.Json.xml" />
+    <Content Include="bin\Release\System.Threading.Tasks.Extensions.dll" />
+    <Content Include="bin\Release\System.Threading.Tasks.Extensions.xml" />
+    <Content Include="bin\Release\System.ValueTuple.dll" />
+    <Content Include="bin\Release\System.ValueTuple.xml" />
+    <Content Include="bin\Release\System.Web.Http.dll" />
+    <Content Include="bin\Release\System.Web.Http.xml" />
+    <Content Include="obj\Release\EquipMotos.csproj.FileListAbsolute.txt" />
+    <Content Include="obj\Release\EquipMotos.exe" />
+    <Content Include="obj\Release\EquipMotos.pdb" />
+    <Content Include="obj\Release\TempPE\Properties.Resources.Designer.cs.dll" />
+    <Content Include="obj\Release\TempPE\SistemaMoto2DataSetCategoria.Designer.cs.dll" />
+    <Content Include="obj\Release\TempPE\SistemaMoto2DataSetCidade.Designer.cs.dll" />
+    <Content Include="obj\Release\TempPE\SistemaMoto2DataSetCliente.Designer.cs.dll" />
+    <Content Include="obj\Release\TempPE\SistemaMoto2DataSetCompra.Designer.cs.dll" />
+    <Content Include="obj\Release\TempPE\SistemaMoto2DataSetCondicaoPagamento.Designer.cs.dll" />
+    <Content Include="obj\Release\TempPE\SistemaMoto2DataSetContaPagar.Designer.cs.dll" />
+    <Content Include="obj\Release\TempPE\SistemaMoto2DataSetContaReceber.Designer.cs.dll" />
+    <Content Include="obj\Release\TempPE\SistemaMoto2DataSetContasPagar.Designer.cs.dll" />
+    <Content Include="obj\Release\TempPE\SistemaMoto2DataSetEstado.Designer.cs.dll" />
+    <Content Include="obj\Release\TempPE\SistemaMoto2DataSetFormaPagamento.Designer.cs.dll" />
+    <Content Include="obj\Release\TempPE\SistemaMoto2DataSetFornecedor.Designer.cs.dll" />
+    <Content Include="obj\Release\TempPE\SistemaMoto2DataSetFuncionario.Designer.cs.dll" />
+    <Content Include="obj\Release\TempPE\SistemaMoto2DataSetMarca.Designer.cs.dll" />
+    <Content Include="obj\Release\TempPE\SistemaMoto2DataSetModelo.Designer.cs.dll" />
+    <Content Include="obj\Release\TempPE\SistemaMoto2DataSetOrdemServico.Designer.cs.dll" />
+    <Content Include="obj\Release\TempPE\SistemaMoto2DataSetPais.Designer.cs.dll" />
+    <Content Include="obj\Release\TempPE\SistemaMoto2DataSetProduto.Designer.cs.dll" />
+    <Content Include="obj\Release\TempPE\SistemaMoto2DataSetVenda.Designer.cs.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

@@ -3,6 +3,7 @@ using EquipMotos.CONTROLLER;
 using EquipMotos.DAO;
 using EquipMotos.MODEL;
 using EquipMotos.View.helper;
+using EquipMotos.VIEW;
 using Microsoft.AspNetCore.Rewrite.Internal;
 using Microsoft.Extensions.FileSystemGlobbing;
 using System;
@@ -26,7 +27,8 @@ namespace EquipMotos.View
         CondicaoPagamentos CondicaoPagamento = new CondicaoPagamentos();
 
         CtrlOrdemServicos CtrlOrdemServico = new CtrlOrdemServicos();
-        CtrlProdutosServicos CtrlProdutoServico = new CtrlProdutosServicos();
+        CtrlProdutos CtrlProduto = new CtrlProdutos();
+        CtrlServicos CtrlServico = new CtrlServicos();
         CtrlClientes CtrlCliente = new CtrlClientes();
         CtrlVendas CtrlVenda = new CtrlVendas();
         CtrlModelos CtrlModelo = new CtrlModelos();
@@ -40,7 +42,7 @@ namespace EquipMotos.View
         public static object Funcionario;
         public static object CondPagamento;
 
-        ToolTip toolTip;
+        ToolTip toolTip = new ToolTip();
 
 
         public frmCadastroOrdemServico()
@@ -51,14 +53,7 @@ namespace EquipMotos.View
             toolTip.SetToolTip(btnRemProduto, "Remover Produto");
             toolTip.SetToolTip(btnRemServico, "Adicionar Serviço");
 
-            if (btnSalvar.Text == "ALTERAR")
-            {
-                btnFinalizar.Visible = false;
-            }
-            else
-            {
-                btnFinalizar.Visible = true;
-            }
+            
         }
 
         private void btnSalvar_Click(object sender, EventArgs e)
@@ -70,6 +65,7 @@ namespace EquipMotos.View
                 var listItemServicoOS = new List<ItensOrdemServico>();
                 var modeloOs = "55";
                 var serieOs = "1";
+
                 if (String.IsNullOrEmpty(txtNumeroOS.Text))
                 {
                     OrdemServico.modelo = modeloOs;
@@ -529,13 +525,13 @@ namespace EquipMotos.View
 
         private void btnBuscarProduto_Click(object sender, EventArgs e)
         {
-            frmConsultaProdutosServicos frmConProd = new frmConsultaProdutosServicos(1);
-            for (int i = 0; i < lvProduto.Items.Count; i++)
-            {
-                frmConProd.FilterID.Add( lvProduto.Items[i].SubItems[0].Text);
-            }
-            frmConProd.btnVoltar.Text = "SELECIONAR";
-            if (frmConProd.ShowDialog() == DialogResult.OK)
+            frmConsultaProduto frmConProduto = new frmConsultaProduto();
+            //for (int i = 0; i < lvProduto.Items.Count; i++)
+            //{
+            //    frmConProduto.FilterID.Add( lvProduto.Items[i].SubItems[0].Text);
+            //}
+            frmConProduto.btnVoltar.Text = "SELECIONAR";
+            if (frmConProduto.ShowDialog() == DialogResult.OK)
             {
                 CarregaProduto();
             }
@@ -545,18 +541,23 @@ namespace EquipMotos.View
         {
             if (Produto != null)
             {
-                ProdutosServicos prod = Produto as ProdutosServicos;
+                Produtos prod = Produto as Produtos;
                 txtCodProduto.Text = Convert.ToString(prod.codigo);
                 txtProduto.Text = prod.produto;
+                txtVlrProduto.Text = prod.precoVenda.ToString("C", CultureInfo.CurrentCulture);
                 Servico = null;
             }
         }
 
         private void btnBuscarServico_Click(object sender, EventArgs e)
         {
-            frmConsultaProdutosServicos frmConServ = new frmConsultaProdutosServicos(2);
-            frmConServ.btnVoltar.Text = "SELECIONAR";
-            if (frmConServ.ShowDialog() == DialogResult.OK)
+            frmConsultaServico frmConServico = new frmConsultaServico();
+            //for (int i = 0; i < lvServico.Items.Count; i++)
+            //{
+            //    frmConServico.FilterID.Add(lvServico.Items[i].SubItems[0].Text);
+            //}
+            frmConServico.btnVoltar.Text = "SELECIONAR";
+            if (frmConServico.ShowDialog() == DialogResult.OK)
             {
                 CarregaServico();
             }
@@ -566,12 +567,12 @@ namespace EquipMotos.View
         {
             if (Servico != null)
             {
-                ProdutosServicos pro = Servico as ProdutosServicos;
-                txtCodServico.Text = Convert.ToString(pro.codigo);
-                txtServico.Text = pro.produto;
-                txtCodMecanico.Text = Convert.ToString(pro.Funcionario.codigo);
-                txtMecanico.Text = pro.Funcionario.funcionario;
-                Funcionario = pro.Funcionario;
+                Servicos serv = Servico as Servicos;
+                txtCodServico.Text = Convert.ToString(serv.codigo);
+                txtServico.Text = serv.servico;
+                txtCodMecanico.Text = Convert.ToString(serv.Funcionario.codigo);
+                txtMecanico.Text = serv.Funcionario.funcionario;
+                Funcionario = serv.Funcionario;
                 // Produto = null;
             }
         }
@@ -600,7 +601,7 @@ namespace EquipMotos.View
         {
             try
             {
-                ProdutosServicos prod = Produto as ProdutosServicos;
+                Produtos prod = Produto as Produtos;
                 if (ValidaProduto() && prod != null)
                 {
                     var qtd = Convert.ToInt32(txtQtd.Text);
@@ -651,7 +652,7 @@ namespace EquipMotos.View
         private bool ValidaEstoque(int codigo, int qtd)
         {
             var qtdItem = qtd;
-            var Produto = CtrlProdutoServico.BuscarPorID(codigo) as ProdutosServicos;
+            var Produto = CtrlProduto.BuscarPorID(codigo) as Produtos;
             if (Produto.qtd < qtdItem)
             {
                 MessageBox.Show("Não há estoque para a venda de " + Produto.produto + ", o estoque atual é de " + Produto.qtd, "Quantidade inválida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -664,12 +665,12 @@ namespace EquipMotos.View
         {
             try
             {
-                ProdutosServicos serv = Servico as ProdutosServicos;
+                Servicos serv = Servico as Servicos;
                 Funcionarios func = Funcionario as Funcionarios;
                 if (ValidaServico())
                 {
                     var totalRow = Convert.ToString(serv.precoVenda);
-                    string[] row = { Convert.ToString(serv.codigo),  Convert.ToString(func.codigo), serv.produto, func.funcionario, Convert.ToString(totalRow) };
+                    string[] row = { Convert.ToString(serv.codigo),  serv.servico, Convert.ToString(func.codigo), func.funcionario, Convert.ToString(totalRow) };
                     var lvi = new ListViewItem(row);
                     lvServico.Items.Add(lvi);
 
@@ -1090,12 +1091,14 @@ namespace EquipMotos.View
                 if (ano < 1900)
                 {
                     MessageBox.Show("Informe um ano maior que 1900", "Ano inválido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    txtMarca.Focus();
+                    txtAno.Text = "";
+                    txtAno.Focus();
                 }
-                else if (ano > DateTime.Now.Year )
+                else if (ano > DateTime.Now.Year + 1 )
                 {
                     MessageBox.Show("Informe um ano menor que "+ DateTime.Now.Year, "Marca invalida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    txtMarca.Focus();
+                    txtAno.Text = "";
+                    txtAno.Focus();
                 }
             }
         }
@@ -1179,7 +1182,7 @@ namespace EquipMotos.View
                 return;
             if (Convert.ToInt32("0" + txtCodVeiculo.Text) < 1)
                 return;
-            Modelos model = CtrlModelo.BuscarPorID(Convert.ToInt32(txtCodVeiculo.Text)) as Modelos;
+            Modelos model = CtrlModelo.BuscarPorID(Convert.ToInt32("0" + txtCodVeiculo.Text)) as Modelos;
             if (model == null)
             {
                 MessageBox.Show("Nenhum resultado");
@@ -1203,11 +1206,12 @@ namespace EquipMotos.View
 
         private void txtCodProduto_TextChanged(object sender, EventArgs e)
         {
+
             if (string.IsNullOrEmpty(txtCodProduto.Text))
                 return;
             if (Convert.ToInt32("0" + txtCodProduto.Text) < 1)
                 return;
-            ProdutosServicos prod = CtrlProdutoServico.BuscarPorID(Convert.ToInt32(txtCodProduto.Text)) as ProdutosServicos;
+            Produtos prod = CtrlProduto.BuscarPorID(Convert.ToInt32("0" + txtCodProduto.Text)) as Produtos;
             if (prod == null)
             {
                 MessageBox.Show("Nenhum resultado");
@@ -1219,15 +1223,15 @@ namespace EquipMotos.View
             }
             else
             {
-                txtVeiculo.Text = prod.produto;
-                txtVeiculo.Enabled = false;
+                txtProduto.Text = prod.produto;
+                txtProduto.Enabled = false;
                 txtCodProduto.Focus();
             }
         }
 
         private void txtCodCondPagamento_TextChanged(object sender, EventArgs e)
         {
-            CondicaoPagamentos Cond = CtrlCondicao.BuscarPorID(Convert.ToInt32(txtCodCondPagamento.Text)) as CondicaoPagamentos;
+            CondicaoPagamentos Cond = CtrlCondicao.BuscarPorID(Convert.ToInt32("0" + txtCodCondPagamento.Text)) as CondicaoPagamentos;
             if (Cond == null)
             {
                 MessageBox.Show("Nenhum resultado");
@@ -1246,7 +1250,7 @@ namespace EquipMotos.View
 
         private void txtCodServico_TextChanged(object sender, EventArgs e)
         {
-            ProdutosServicos Serv = CtrlProdutoServico.BuscarPorID(Convert.ToInt32(txtCodServico.Text)) as ProdutosServicos;
+            Servicos Serv = CtrlServico.BuscarPorID(Convert.ToInt32("0" + txtCodServico.Text)) as Servicos;
             if (Serv == null)
             {
                 MessageBox.Show("Nenhum resultado");
@@ -1257,7 +1261,7 @@ namespace EquipMotos.View
             }
             else
             {
-                txtServico.Text = Serv.produto;
+                txtServico.Text = Serv.servico;
                 txtServico.Enabled = false;
                 txtCodServico.Focus();
             }
@@ -1265,7 +1269,7 @@ namespace EquipMotos.View
 
         private void txtCodMecanico_TextChanged(object sender, EventArgs e)
         {
-            Funcionarios func = CtrlFuncionario.BuscarPorID(Convert.ToInt32(txtCodMecanico.Text)) as Funcionarios;
+            Funcionarios func = CtrlFuncionario.BuscarPorID(Convert.ToInt32("0" + txtCodMecanico.Text)) as Funcionarios;
             if (func == null)
             {
                 MessageBox.Show("Nenhum resultado");
@@ -1282,7 +1286,25 @@ namespace EquipMotos.View
             }
         }
 
-        
+        private void label18_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtValorServicos_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lvProduto_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label20_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
 

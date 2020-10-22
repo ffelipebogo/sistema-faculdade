@@ -88,13 +88,53 @@ namespace EquipMotos.DAO
 
         #endregion
 
+
+        public bool ConfirmaAdmin(Usuarios user)
+        {
+            using (SqlConnection conexao = Conecta.CreateConnection())
+            {
+
+                string sql = @"select usuario ,senha, admin from usuarios where usuario = @login and senha = @senha and admin = 1";
+
+                SqlCommand comando = new SqlCommand(sql, conexao);
+
+                comando.Parameters.AddWithValue("@login", user.usuario);
+                comando.Parameters.AddWithValue("@senha", user.senha);
+
+                conexao.Open();
+
+                SqlDataReader dados = comando.ExecuteReader();
+
+                if (dados.Read())
+                {
+                    //recebe  dados do cargo do usuario
+                    string usuario = dados.GetString(0);
+                    if (usuario != null)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+
+                }
+                else
+                {
+                    return false;
+                    
+                }
+                conexao.Close();
+            }
+        }
+
         public bool EfetuarLogin(Usuarios user)
         {
             using (SqlConnection conexao = Conecta.CreateConnection())
             {
                 try
                 {
-                    string sql = @"select usuario ,senha, cargo from usuarios where usuario = @login and senha = @senha";
+                    string sql = @"select usuario, senha, cargo from usuarios where usuario = @login and senha = @senha ";
 
                     SqlCommand comando = new SqlCommand(sql, conexao);
 
@@ -147,7 +187,7 @@ namespace EquipMotos.DAO
                 catch (SqlException e)
                 {
 
-                    MessageBox.Show(e.Message);
+                    //MessageBox.Show(e.Message);
                     return false;
                 }
                 finally

@@ -35,18 +35,24 @@ namespace EquipMotos.View
         {
             try
             {
-
-                frmCadastroModelo frmCadModelo = new frmCadastroModelo();
-                var modRow = gvModelo.CurrentRow.DataBoundItem as DataRowView;
-
-                var codigo = modRow["codigo"];
-
-                frmCadModelo.Carregar(codigo);
-                if (frmCadModelo.ShowDialog() == DialogResult.OK)
+                if(gvModelo.CurrentRow != null)
                 {
-                    gvModelo.DataSource = CtrlModelo.ListarTodos();
-                }
+                                    
+                    frmCadastroModelo frmCadModelo = new frmCadastroModelo();
+                    var modRow = gvModelo.CurrentRow.DataBoundItem as DataRowView;
 
+                    var codigo = modRow["codigo"];
+
+                    frmCadModelo.Carregar(codigo);
+                    if (frmCadModelo.ShowDialog() == DialogResult.OK)
+                    {
+                        gvModelo.DataSource = CtrlModelo.ListarTodos();
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Selecione o modelo que deseja alterar!");
+                }
             }
             catch (Exception ex)
             {

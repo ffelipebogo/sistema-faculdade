@@ -35,15 +35,22 @@ namespace EquipMotos.View
         {
             try
             {
-                frmCadastroFormaPagamento frmCadFormaPag = new frmCadastroFormaPagamento();
-                var formRow = gvFormaPag.CurrentRow.DataBoundItem as DataRowView;
-
-                var id = formRow["codigo"];
-
-                frmCadFormaPag.Carregar(id);
-                if (frmCadFormaPag.ShowDialog() == DialogResult.OK)
+                if(gvFormaPag.CurrentRow != null)
                 {
-                    gvFormaPag.DataSource = CtrlFormaPagamento.ListarTodos();
+                    frmCadastroFormaPagamento frmCadFormaPag = new frmCadastroFormaPagamento();
+                    var formRow = gvFormaPag.CurrentRow.DataBoundItem as DataRowView;
+
+                    var id = formRow["codigo"];
+
+                    frmCadFormaPag.Carregar(id);
+                    if (frmCadFormaPag.ShowDialog() == DialogResult.OK)
+                    {
+                        gvFormaPag.DataSource = CtrlFormaPagamento.ListarTodos();
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Selecione a forma de pagamento que deseja alterar!");
                 }
             }
             catch (Exception ex)

@@ -116,7 +116,6 @@ namespace EquipMotos.Codigo.View
         {
             // TODO: esta linha de código carrega dados na tabela 'sistemaMoto2DataSetCliente.clientes'. Você pode movê-la ou removê-la conforme necessário.
             this.clientesTableAdapter.Fill(this.sistemaMoto2DataSetCliente.clientes);
-            gvClientes.DataSource = CtrlCliente.ListarTodos();
         }
 
         private void BtnBuscarCliente_Click(object sender, EventArgs e)

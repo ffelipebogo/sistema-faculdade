@@ -2,6 +2,8 @@
 using System.Windows.Forms;
 using EquipMotos.Codigo.View;
 using EquipMotos.View;
+using System.Diagnostics;
+using EquipMotos.VIEW;
 
 namespace EquipMotos
 {
@@ -30,10 +32,10 @@ namespace EquipMotos
             frmConfonercedor.ShowDialog();
         }
 
-        private void ProdutosEServiçosToolStripMenuItem_Click(object sender, EventArgs e)
+        private void serviçosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmConsultaProdutosServicos frmConProServ = new frmConsultaProdutosServicos();
-            frmConProServ.ShowDialog();
+            frmConsultaServico frmConServico = new frmConsultaServico();
+            frmConServico.ShowDialog();
         }
 
         private void SairToolStripMenuItem_Click(object sender, EventArgs e)
@@ -46,7 +48,6 @@ namespace EquipMotos
             frmConsultaFuncionario frmConFuncionario = new frmConsultaFuncionario();
             frmConFuncionario.ShowDialog();
         }
-
 
         private void ModeloToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -62,8 +63,8 @@ namespace EquipMotos
 
         private void ConsultarEstoqueToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmConsultaProdutosServicos frmConProdutos = new frmConsultaProdutosServicos();
-            frmConProdutos.ShowDialog();
+            frmConsultaEstoque frmConEstoque = new frmConsultaEstoque();
+            frmConEstoque.ShowDialog();
             
         }
 
@@ -83,13 +84,6 @@ namespace EquipMotos
         {
             frmConsultaCidade frmConCidade = new frmConsultaCidade();
             frmConCidade.ShowDialog();
-        }
-
-
-        private void CategoriasToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            frmConsultaCategoria frmConCat = new frmConsultaCategoria();
-            frmConCat.ShowDialog();
         }
 
         private void FormasDePagamentoToolStripMenuItem_Click(object sender, EventArgs e)
@@ -139,5 +133,31 @@ namespace EquipMotos
 
         }
 
+        private void relatoriosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Process process = new Process();
+            ProcessStartInfo startInfo = new  ProcessStartInfo();
+            startInfo.WindowStyle = ProcessWindowStyle.Hidden;
+            startInfo.FileName = "C:\\dev\\faculdade\\reactJs\\report-reactjs\\script.bat";
+            process.StartInfo = startInfo;
+            process.Start();
+        }
+
+        private void MenuPrincipal_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void produtosStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmConsultaProduto frmConProduto= new frmConsultaProduto();
+            frmConProduto.ShowDialog();
+        }
+
+        private void categoriasStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmConsultaCategoria frmConcategoria = new frmConsultaCategoria();
+            frmConcategoria.ShowDialog();
+        }
     }
 }

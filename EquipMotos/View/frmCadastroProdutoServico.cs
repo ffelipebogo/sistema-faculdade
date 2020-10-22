@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace EquipMotos.View
 {
-    public partial class frmCadastroProdutoServico : MaterialSkin.Controls.MaterialForm
+    public partial class frmCadastroProduto : MaterialSkin.Controls.MaterialForm
     {
         String pusuario;
         ProdutosServicos ProdutoServico = new ProdutosServicos();
@@ -20,7 +20,7 @@ namespace EquipMotos.View
         public static object fornecedor;
         public static object funcionario;
 
-        public frmCadastroProdutoServico()
+        public frmCadastroProduto()
         {
             InitializeComponent();
             rbProduto.Checked = true;
@@ -118,6 +118,7 @@ namespace EquipMotos.View
                 MessageBox.Show("Verifique se todos os campos foram preenchidos corretamente");
             }
         }
+
         public void Carregar(object id)
         {
             ProdutoServico = CtrlProdutoServico.BuscarPorID(id) as ProdutosServicos;
@@ -150,6 +151,7 @@ namespace EquipMotos.View
             txtUsuario.Text = ProdutoServico.usuario;
             btnSalvar.Text = "ALTERAR";
         }
+
         public void limparCampos()
         {
             txtCodigo.Text = "";
@@ -359,6 +361,10 @@ namespace EquipMotos.View
             txtCodCategoria.Enabled = true;
             txtCategoriaGrupo.Enabled = true;
 
+            funcionario = null;
+            txtCodFornecedor.Text = "";
+            txtFornecedor.Text = "";
+
         }
 
         private void RbServico_CheckedChanged(object sender, EventArgs e)
@@ -379,6 +385,10 @@ namespace EquipMotos.View
             txtFornecedor.Enabled = true;
             txtCodCategoria.Enabled = true;
             txtCategoriaGrupo.Enabled = true;
+
+            fornecedor = null;
+            txtCodFornecedor.Text = "";
+            txtFornecedor.Text = "";
 
         }
         String vlr;

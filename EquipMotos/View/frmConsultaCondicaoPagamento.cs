@@ -53,16 +53,24 @@ namespace EquipMotos.View
         {
             try
             {
-                frmCadastroCondicaoPagamento frmCadCondPagamento = new frmCadastroCondicaoPagamento();
-                var condRow = gvCondPagamento.CurrentRow.DataBoundItem as DataRowView;
-
-                var codigo = condRow["codigo"];
-                frmCadCondPagamento.Carregar(codigo);
-                if (frmCadCondPagamento.ShowDialog() == DialogResult.OK)
+                if (gvCondPagamento.CurrentRow != null)
                 {
-                    gvCondPagamento.DataSource = CtrlCondPagamento.ListarTodos();
+
+                    frmCadastroCondicaoPagamento frmCadCondPagamento = new frmCadastroCondicaoPagamento();
+                    var condRow = gvCondPagamento.CurrentRow.DataBoundItem as DataRowView;
+
+                    var codigo = condRow["codigo"];
+                    frmCadCondPagamento.Carregar(codigo);
+                    if (frmCadCondPagamento.ShowDialog() == DialogResult.OK)
+                    {
+                        gvCondPagamento.DataSource = CtrlCondPagamento.ListarTodos();
+                    }
+                    //gvCondPagamento.DataSource = dao.ListarTodasCondicoes();
                 }
-                //gvCondPagamento.DataSource = dao.ListarTodasCondicoes();
+                else
+                {
+                    MessageBox.Show("Selecione a condição de pagamento que deseja alterar!");
+                }
             }
             catch (Exception ex)
             {
@@ -99,7 +107,7 @@ namespace EquipMotos.View
                 frmCadastroContaPagar.condPagamento = this.condPagamento;
                 frmCadastroCliente.condPagamento = this.condPagamento;
                 frmCadastroFornecedor.condPagamento = this.condPagamento;
-                frmCadastroCompra.condPagamento = this.condPagamento;
+                frmCadastroCompra.CondPagamento = this.condPagamento;
                 frmCadastroVenda.CondPagamento = this.condPagamento;
                 frmCadastroOrdemServico.CondPagamento = this.condPagamento;
                 this.DialogResult = DialogResult.OK;

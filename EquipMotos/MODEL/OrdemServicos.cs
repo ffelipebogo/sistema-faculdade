@@ -14,8 +14,8 @@ namespace EquipMotos.MODEL
         public DateTime data { get; set; }
         public Clientes Cliente { get; set; }
         public Modelos Veiculo { get; set; }
-        public ProdutosServicos Produto { get; set; }
-        public ProdutosServicos Servico { get; set; }
+        public Produtos Produto { get; set; }
+        public Servicos Servico { get; set; }
         public Funcionarios Mecanico { get; set; }
         public string ano { get; set; }
         public string placa { get; set; }

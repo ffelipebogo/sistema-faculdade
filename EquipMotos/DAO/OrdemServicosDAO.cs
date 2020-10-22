@@ -15,16 +15,12 @@ namespace EquipMotos.DAO
         List<ItensOrdemServico> ListaItensOrdemServicoP = new List<ItensOrdemServico>();
         List<ItensOrdemServico> ListaItensOrdemServicoS = new List<ItensOrdemServico>();
         OrdemServicos ordemServ = new OrdemServicos();
-        Clientes cliente = new Clientes();
         ClientesDAO DaoCliente = new ClientesDAO();
-        Funcionarios funcionario = new Funcionarios();
         FuncionariosDAO DaoFuncionario = new FuncionariosDAO();
-        Modelos mod = new Modelos();
         ModelosDAO DaoModelo = new ModelosDAO();
-        ProdutosServicos prodServ = new ProdutosServicos();
-        ProdutosServicosDAO daoProdServ = new ProdutosServicosDAO();
-        CondicaoPagamentos condPag = new CondicaoPagamentos();
-        CondicaoPagamentoDAO daoCondPag = new CondicaoPagamentoDAO();
+        ServicosDAO DaoServico = new  ServicosDAO();
+        ProdutosDAO DaoProduto = new  ProdutosDAO();
+        CondicaoPagamentoDAO DaoCondPag = new CondicaoPagamentoDAO();
 
         private object SelecionaUltimoID(SqlTransaction transaction)
         {
@@ -78,11 +74,11 @@ namespace EquipMotos.DAO
             comando.CommandText = @"INSERT INTO ordemServicos (
                                         modelo, serie,  codVeiculo, codCliente,  data, codCondPagamento,
                                         ano, placa, km, cor,  valorProduto, valorServico, desconto,  valorTotal,
-                                          observacoes, dtCadastro, dtAlteracao, usuario )
+                                          observacoes, dtCadastro, dtAlteracao, usuario, finalizada )
                                 VALUES ( 
                                         @modelo, @serie,  @codVeiculo, @codCliente, @data, @codCondPagamento, 
                                         @ano, @placa, @km, @cor, @valorProduto, @valorServico, @desconto, @valorTotal, 
-                                         @observacoes, @dtCadastro, @dtAlteracao, @usuario )";
+                                         @observacoes, @dtCadastro, @dtAlteracao, @usuario, @finalizada )";
 
             comando.Parameters.AddWithValue("@modelo", ordemS.modelo);
             comando.Parameters.AddWithValue("@serie", ordemS.serie);
@@ -104,6 +100,7 @@ namespace EquipMotos.DAO
             comando.Parameters.AddWithValue("@dtCadastro", ordemS.dtCadastro);
             comando.Parameters.AddWithValue("@dtAlteracao", ordemS.dtAlteracao);
             comando.Parameters.AddWithValue("@usuario", ordemS.usuario);
+            comando.Parameters.AddWithValue("@finalizada", 0);
             
             comando.ExecuteNonQuery();
         }
@@ -153,7 +150,7 @@ namespace EquipMotos.DAO
             using (SqlConnection conexao = Conecta.CreateConnection())
             {
                 SqlDataAdapter da;
-                string sql = @"SELECT * FROM ordemServicos WHERE nrNota = @nrNota";
+                string sql = @"SELECT * FROM ordemServicos WHERE nrNota = @nrNota AND finalizada = 0";
 
                 SqlCommand comando = new SqlCommand(sql, conexao);
 
@@ -180,7 +177,7 @@ namespace EquipMotos.DAO
                     os.desconto = Convert.ToDecimal(row["desconto"]);
                     os.valorServico = Convert.ToDecimal(row["valorServico"]);
                     os.valorTotal = Convert.ToDecimal(row["valorTotal"]);
-                    os.CondPagamento = daoCondPag.BuscarPorID(Convert.ToInt32(row["codCondPagamento"])) as CondicaoPagamentos;
+                    os.CondPagamento = DaoCondPag.BuscarPorID(Convert.ToInt32(row["codCondPagamento"])) as CondicaoPagamentos;
                     os.observacoes = Convert.ToString(row["observacoes"]);
                     os.dtCadastro = Convert.ToDateTime(row["dtCadastro"]);
                     os.dtAlteracao = Convert.ToDateTime(row["dtAlteracao"]);
@@ -214,13 +211,13 @@ namespace EquipMotos.DAO
                 foreach (DataRow row in dtItemOS.Rows)
                 {
                     var cod = Convert.ToInt32(row["codServico"]);
-                    var Servico = daoProdServ.BuscarPorID(cod) as ProdutosServicos;
+                    var Servico = DaoServico.BuscarPorID(cod) as Servicos;
                     ListaItensOrdemServicoS.Add(new ItensOrdemServico()
                     {
                         modelo = Convert.ToString(row["modelo"]),
                         serie = Convert.ToString(row["serie"]),
                         nrNota = Convert.ToString(row["nrNota"]),
-                        produto = Servico.produto,
+                        produto = Servico.servico,
                         cliente = DaoCliente.BuscarPorID(Convert.ToInt64(row["codCliente"])) as Clientes,
                         Veiculo = DaoModelo.BuscarPorID(Convert.ToInt64(row["codVeiculo"])) as Modelos,
                         Mecanico = DaoFuncionario.BuscarPorID(Convert.ToInt64(row["codMecanico"])) as Funcionarios,
@@ -254,7 +251,7 @@ namespace EquipMotos.DAO
                 foreach (DataRow row in dtItemOS.Rows)
                 {
                     var cod = Convert.ToInt32(row["codProduto"]);
-                    var Produto = daoProdServ.BuscarPorID(cod) as ProdutosServicos;
+                    var Produto = DaoProduto.BuscarPorID(cod) as Produtos;
                     ListaItensOrdemServicoP.Add(new ItensOrdemServico()
                     {
                         modelo = Convert.ToString(row["modelo"]),
@@ -407,7 +404,7 @@ namespace EquipMotos.DAO
             {
                 try
                 {
-                    string sql = @"DELETE FROM ordemServicos WHERE (id = @id)";
+                    string sql = @"DELETE FROM ordemServicos WHERE (nrNota = @id)";
 
                     SqlCommand comando = new SqlCommand(sql, conexao);
 

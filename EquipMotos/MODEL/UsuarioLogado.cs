@@ -8,6 +8,6 @@ namespace EquipMotos.MODEL
 {
     public static class UsuarioLogado
     {
-        public static string Usuario { get; set; } = "ADM";
+        public static string Usuario { get; set; } = "Administrador";
     }
 }

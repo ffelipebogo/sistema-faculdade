@@ -6,7 +6,7 @@ using System.Windows.Forms;
 
 namespace EquipMotos.DAO
 {
-    class ContasPagarDAO : DAO
+   public class ContasPagarDAO : DAO
     {
         ContasPagar conta = new ContasPagar();
         FornecedoresDAO daoFornecedor = new FornecedoresDAO();
@@ -65,9 +65,76 @@ namespace EquipMotos.DAO
             using (SqlConnection conexao = Conecta.CreateConnection())
             {
                 SqlDataAdapter da;
-                string sql = @"SELECT * FROM contaPagar WHERE pago = 0";
+                string sql = @"SELECT   contaPagar.modelo, contaPagar.serie, contaPagar.nrNota, contaPagar.codFornecedor, contaPagar.nrParcela, contaPagar.codFormaPagamento, contaPagar.dtEmissao, 
+	                                contaPagar.dtVencimento, contaPagar.valorParcela, contaPagar.observacoes, contaPagar.dtCadastro, contaPagar.dtAlteracao, contaPagar.usuario, contaPagar.pago, 
+	                                fornecedores.fornecedor, formaPagamento.forma
+                                FROM         contaPagar INNER JOIN
+                                    fornecedores ON contaPagar.codFornecedor = fornecedores.codigo INNER JOIN
+                                    formaPagamento ON contaPagar.codFormaPagamento = formaPagamento.codigo 
+                            WHERE contaPagar.pago = 0";
 
                 SqlCommand comando = new SqlCommand(sql, conexao);
+
+                conexao.Open();
+                da = new SqlDataAdapter(comando);
+
+                DataTable dtContaPagar = new DataTable();
+                da.Fill(dtContaPagar);
+                conexao.Close();
+                return dtContaPagar;
+            }
+        }
+
+        public DataTable BuscarCompra_Filtro(object nota, object fornecedor, object formaPagamento, DateTime dateMin, DateTime dateMax)
+        {
+            using (SqlConnection conexao = Conecta.CreateConnection())
+            {
+                SqlDataAdapter da;
+                string select = @"SELECT   contaPagar.modelo, contaPagar.serie, contaPagar.nrNota, contaPagar.codFornecedor, contaPagar.nrParcela, contaPagar.codFormaPagamento, contaPagar.dtEmissao, 
+	                                contaPagar.dtVencimento, contaPagar.valorParcela, contaPagar.observacoes, contaPagar.dtCadastro, contaPagar.dtAlteracao, contaPagar.usuario, contaPagar.pago, 
+	                                fornecedores.fornecedor, formaPagamento.forma
+                                FROM         contaPagar INNER JOIN
+                                    fornecedores ON contaPagar.codFornecedor = fornecedores.codigo INNER JOIN
+                                    formaPagamento ON contaPagar.codFormaPagamento = formaPagamento.codigo ";
+
+                string where = " WHERE 1 = 1 ";
+                string sql = "";
+                if (nota != null)
+                {
+                    where += " AND contaPagar.nrNota = @nrNota ";
+                }
+                else if (fornecedor != null)
+                {
+                    where += " AND fornecedores.fornecedor = @fornecedor OR fornecedores.fornecedores like '%'+ @fornecedor +'%'";
+                }
+                else if (formaPagamento != null)
+                {
+                    where += " AND formaPagamento.forma = @formaPagamento OR formaPagamento.forma like '%'+ @formaPagamento +'%'";
+                }
+                else if (dateMin != DateTime.MinValue & dateMax != DateTime.MinValue)
+                {
+                    where += " AND contaPagar.dtVencimento >= @dateMin AND contaPagar.dtVencimento <= @dateMax";
+                }
+                sql = select + where;
+                SqlCommand comando = new SqlCommand(sql, conexao);
+
+                if (nota != null)
+                {
+                    comando.Parameters.AddWithValue("@nrNota", nota);
+                }
+                else if (fornecedor != null)
+                {
+                    comando.Parameters.AddWithValue("@fornecedor", fornecedor);
+                }
+                else if (formaPagamento != null)
+                {
+                    comando.Parameters.AddWithValue("@formaPagamento", formaPagamento);
+                }
+                else if (dateMin != DateTime.MinValue & dateMax != DateTime.MinValue)
+                {
+                    comando.Parameters.AddWithValue("@dateMin", dateMin);
+                    comando.Parameters.AddWithValue("@dateMax", dateMax);
+                }
 
                 conexao.Open();
                 da = new SqlDataAdapter(comando);
@@ -84,11 +151,18 @@ namespace EquipMotos.DAO
             using (SqlConnection conexao = Conecta.CreateConnection())
             {
                 SqlDataAdapter da;
-                string sql = @"SELECT * FROM contaPagar WHERE modelo = @modelo 
-                                                        AND serie = @serie 
-                                                        AND nrNota = @nrNota 
-                                                        AND codFornecedor = @codFornecedor   
-                                                        AND nrParcela = @nrParcela";
+                string sql = @"SELECT   contaPagar.modelo, contaPagar.serie, contaPagar.nrNota, contaPagar.codFornecedor, contaPagar.nrParcela, contaPagar.codFormaPagamento, contaPagar.dtEmissao, 
+	                                contaPagar.dtVencimento, contaPagar.valorParcela, contaPagar.observacoes, contaPagar.dtCadastro, contaPagar.dtAlteracao, contaPagar.usuario, contaPagar.pago, 
+	                                fornecedores.fornecedor, formaPagamento.forma
+                                FROM         contaPagar INNER JOIN
+                                    fornecedores ON contaPagar.codFornecedor = fornecedores.codigo INNER JOIN
+                                    formaPagamento ON contaPagar.codFormaPagamento = formaPagamento.codigo
+                            WHERE contaPagar.modelo = @modelo 
+                            AND contaPagar.serie = @serie 
+                            AND contaPagar.nrNota = @nrNota 
+                            AND contaPagar.codFornecedor = @codFornecedor   
+                            AND contaPagar.nrParcela = @nrParcela
+                                                        ";
 
                 SqlCommand comando = new SqlCommand(sql, conexao);
 
@@ -171,11 +245,22 @@ namespace EquipMotos.DAO
                 bool isNumeric = int.TryParse(conta, out int n);
                 if (conta.Length > 1 )
                 {
-                    sql = @"SELECT * FROM contaPagar WHERE modelo = @conta or serie = @conta or nrNota = @conta";
+                    sql = @"SELECT   contaPagar.modelo, contaPagar.serie, contaPagar.nrNota, contaPagar.codFornecedor, contaPagar.nrParcela, contaPagar.codFormaPagamento, contaPagar.dtEmissao, 
+	                                contaPagar.dtVencimento, contaPagar.valorParcela, contaPagar.observacoes, contaPagar.dtCadastro, contaPagar.dtAlteracao, contaPagar.usuario, contaPagar.pago, 
+	                                fornecedores.fornecedor, formaPagamento.forma
+                                FROM         contaPagar INNER JOIN
+                                    fornecedores ON contaPagar.codFornecedor = fornecedores.codigo INNER JOIN
+                                    formaPagamento ON contaPagar.codFormaPagamento = formaPagamento.codigo
+                            WHERE contaPagar.modelo = @conta OR contaPagar.serie = @conta OR contaPagar.nrNota = @conta ";//WHERE pago = 0
                 }
                 else
                 {
-                    sql = "SELECT * From contaPagar";
+                    sql = @"SELECT   contaPagar.modelo, contaPagar.serie, contaPagar.nrNota, contaPagar.codFornecedor, contaPagar.nrParcela, contaPagar.codFormaPagamento, contaPagar.dtEmissao, 
+	                                contaPagar.dtVencimento, contaPagar.valorParcela, contaPagar.observacoes, contaPagar.dtCadastro, contaPagar.dtAlteracao, contaPagar.usuario, contaPagar.pago, 
+	                                fornecedores.fornecedor, formaPagamento.forma
+                                FROM         contaPagar INNER JOIN
+                                    fornecedores ON contaPagar.codFornecedor = fornecedores.codigo INNER JOIN
+                                    formaPagamento ON contaPagar.codFormaPagamento = formaPagamento.codigo"; //WHERE pago = 0
                 }
                
                 SqlCommand comando = new SqlCommand(sql, conexao);

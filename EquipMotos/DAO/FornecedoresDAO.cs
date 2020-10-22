@@ -7,7 +7,7 @@ using System;
 
 namespace EquipMotos.DAO
 {
-    class FornecedoresDAO: DAO
+    public class FornecedoresDAO: DAO
     {
         CidadesDAO daoCidade = new CidadesDAO();
         CondicaoPagamentoDAO daoCondPagamento = new CondicaoPagamentoDAO();
@@ -215,7 +215,14 @@ namespace EquipMotos.DAO
             using (SqlConnection conexao = Conecta.CreateConnection())
             {
                 SqlDataAdapter da;
-                string sql = @"select * from fornecedores where codigo = @codigo";
+                string sql = @"SELECT        fornecedores.codigo, fornecedores.fornecedor, fornecedores.nomeFantasia, fornecedores.dtFundacao, fornecedores.sexo, fornecedores.endereco, fornecedores.numero, fornecedores.complemento, fornecedores.bairro, 
+                         fornecedores.cep, fornecedores.codCidade, fornecedores.telefone, fornecedores.celular, fornecedores.email, fornecedores.contato, fornecedores.site, fornecedores.cnpj, fornecedores.ie, fornecedores.limiteCredito, 
+                         fornecedores.observacoes, fornecedores.dtCadastro, fornecedores.dtAlteracao, fornecedores.usuario, fornecedores.codCondPagamento, fornecedores.fisico, fornecedores.cpf, fornecedores.rg, condicaoPagamento.condicao, 
+                         cidades.cidade
+                            FROM            fornecedores INNER JOIN
+                         condicaoPagamento ON fornecedores.codCondPagamento = condicaoPagamento.codigo INNER JOIN
+                         cidades ON fornecedores.codCidade = cidades.codigo 
+                            WHERE fornecedores.codigo = @codigo";
                 comando = new SqlCommand(sql, conexao);
                 comando.Parameters.AddWithValue("@codigo", codigo);
                 conexao.Open();
@@ -273,7 +280,13 @@ namespace EquipMotos.DAO
             using (SqlConnection conexao = Conecta.CreateConnection())
             {
                 SqlDataAdapter da;
-                string sql = @"select * from fornecedores";
+                string sql = @"SELECT        fornecedores.codigo, fornecedores.fornecedor, fornecedores.nomeFantasia, fornecedores.dtFundacao, fornecedores.sexo, fornecedores.endereco, fornecedores.numero, fornecedores.complemento, fornecedores.bairro, 
+                         fornecedores.cep, fornecedores.codCidade, fornecedores.telefone, fornecedores.celular, fornecedores.email, fornecedores.contato, fornecedores.site, fornecedores.cnpj, fornecedores.ie, fornecedores.limiteCredito, 
+                         fornecedores.observacoes, fornecedores.dtCadastro, fornecedores.dtAlteracao, fornecedores.usuario, fornecedores.codCondPagamento, fornecedores.fisico, fornecedores.cpf, fornecedores.rg, condicaoPagamento.condicao, 
+                         cidades.cidade
+                            FROM            fornecedores INNER JOIN
+                         condicaoPagamento ON fornecedores.codCondPagamento = condicaoPagamento.codigo INNER JOIN
+                         cidades ON fornecedores.codCidade = cidades.codigo";
                 SqlCommand comando = new SqlCommand(sql, conexao);
                 conexao.Open();
                 da = new SqlDataAdapter(comando);
@@ -293,14 +306,14 @@ namespace EquipMotos.DAO
             {
                 Fornecedores forn = obj as Fornecedores;
                 SqlDataAdapter da;
-                string sql = @"SELECT F.codigo as Codigo, F.nome as Fornecedor,
-                                F.cnpj as CNPJ, F.email as Email, F.telefone as Telefone,
-                                F.celular as Celular, F.cpf as CPF, F.endereco as Endereco,
-                                F.bairro as Bairro, F.cidade as Cidade, U.uf as UF, F.cep as CEP, F.site As Site,
-                                F.fax as Fax, F.facebook as Facebook, F.numero as Numero 
-                             FROM fornecedores As F
-
-                             INNER JOIN estados AS U ON F.uf_id = U.codigo WHERE F.nome = @nome";
+                    string sql = @"SELECT        fornecedores.codigo, fornecedores.fornecedor, fornecedores.nomeFantasia, fornecedores.dtFundacao, fornecedores.sexo, fornecedores.endereco, fornecedores.numero, fornecedores.complemento, fornecedores.bairro, 
+                             fornecedores.cep, fornecedores.codCidade, fornecedores.telefone, fornecedores.celular, fornecedores.email, fornecedores.contato, fornecedores.site, fornecedores.cnpj, fornecedores.ie, fornecedores.limiteCredito, 
+                             fornecedores.observacoes, fornecedores.dtCadastro, fornecedores.dtAlteracao, fornecedores.usuario, fornecedores.codCondPagamento, fornecedores.fisico, fornecedores.cpf, fornecedores.rg, condicaoPagamento.condicao, 
+                             cidades.cidade
+                                FROM            fornecedores INNER JOIN
+                             condicaoPagamento ON fornecedores.codCondPagamento = condicaoPagamento.codigo INNER JOIN
+                             cidades ON fornecedores.codCidade = cidades.codigo
+                                WHERE fornecedores.fornecedor like '%' + @nome + '%'";
                 
                 SqlCommand comando = new SqlCommand(sql, conexao);
                 comando.Parameters.AddWithValue("@nome", forn.fornecedor);
@@ -326,11 +339,25 @@ namespace EquipMotos.DAO
                 bool isNumeric = int.TryParse(forn, out int n);
                 if (forn.Length <= 4 && isNumeric)
                 {
-                    sql = @"select * from fornecedores where codigo = @forn";
+                    sql = @"SELECT        fornecedores.codigo, fornecedores.fornecedor, fornecedores.nomeFantasia, fornecedores.dtFundacao, fornecedores.sexo, fornecedores.endereco, fornecedores.numero, fornecedores.complemento, fornecedores.bairro, 
+                             fornecedores.cep, fornecedores.codCidade, fornecedores.telefone, fornecedores.celular, fornecedores.email, fornecedores.contato, fornecedores.site, fornecedores.cnpj, fornecedores.ie, fornecedores.limiteCredito, 
+                             fornecedores.observacoes, fornecedores.dtCadastro, fornecedores.dtAlteracao, fornecedores.usuario, fornecedores.codCondPagamento, fornecedores.fisico, fornecedores.cpf, fornecedores.rg, condicaoPagamento.condicao, 
+                             cidades.cidade
+                                FROM            fornecedores INNER JOIN
+                             condicaoPagamento ON fornecedores.codCondPagamento = condicaoPagamento.codigo INNER JOIN
+                             cidades ON fornecedores.codCidade = cidades.codigo
+                                WHERE fornecedores.codigo = @forn";
                 }
                 else
                 {
-                    sql = @"select * from fornecedores where fornecedor like '%'+ @forn + '%' ";
+                    sql = @"SELECT        fornecedores.codigo, fornecedores.fornecedor, fornecedores.nomeFantasia, fornecedores.dtFundacao, fornecedores.sexo, fornecedores.endereco, fornecedores.numero, fornecedores.complemento, fornecedores.bairro, 
+                             fornecedores.cep, fornecedores.codCidade, fornecedores.telefone, fornecedores.celular, fornecedores.email, fornecedores.contato, fornecedores.site, fornecedores.cnpj, fornecedores.ie, fornecedores.limiteCredito, 
+                             fornecedores.observacoes, fornecedores.dtCadastro, fornecedores.dtAlteracao, fornecedores.usuario, fornecedores.codCondPagamento, fornecedores.fisico, fornecedores.cpf, fornecedores.rg, condicaoPagamento.condicao, 
+                             cidades.cidade
+                                FROM            fornecedores INNER JOIN
+                             condicaoPagamento ON fornecedores.codCondPagamento = condicaoPagamento.codigo INNER JOIN
+                             cidades ON fornecedores.codCidade = cidades.codigo
+                                WHERE fornecedores.fornecedor like '%'+ @forn + '%' ";
                 }
                 comando = new SqlCommand(sql, conexao);
                 comando.Parameters.AddWithValue("@forn", forn);

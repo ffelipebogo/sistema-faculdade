@@ -58,7 +58,6 @@ namespace EquipMotos.View
             this.nrParcela = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.nrDia = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.porcentagem = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.codFormaPag = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.FormaPagamento = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.btnAdd = new System.Windows.Forms.Button();
             this.txtNrParcelas = new System.Windows.Forms.TextBox();
@@ -70,6 +69,8 @@ namespace EquipMotos.View
             this.btnRemove = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
             this.txtJuros = new System.Windows.Forms.TextBox();
+            this.btnLimparListaParcela = new System.Windows.Forms.Button();
+            this.codFormaPag = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             ((System.ComponentModel.ISupportInitialize)(this.btnBuscarFormaPag)).BeginInit();
             this.SuspendLayout();
             // 
@@ -78,19 +79,19 @@ namespace EquipMotos.View
             this.label6.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label6.AutoSize = true;
             this.label6.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label6.Location = new System.Drawing.Point(14, 74);
+            this.label6.Location = new System.Drawing.Point(10, 73);
             this.label6.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(52, 17);
             this.label6.TabIndex = 276;
-            this.label6.Text = "Código";
+            this.label6.Text = "Codigo";
             // 
             // txtCodigo
             // 
             this.txtCodigo.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtCodigo.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtCodigo.Enabled = false;
-            this.txtCodigo.Location = new System.Drawing.Point(17, 99);
+            this.txtCodigo.Location = new System.Drawing.Point(11, 98);
             this.txtCodigo.Margin = new System.Windows.Forms.Padding(5);
             this.txtCodigo.Name = "txtCodigo";
             this.txtCodigo.Size = new System.Drawing.Size(60, 23);
@@ -102,7 +103,7 @@ namespace EquipMotos.View
             this.lblDesconto.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblDesconto.AutoSize = true;
             this.lblDesconto.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.lblDesconto.Location = new System.Drawing.Point(764, 74);
+            this.lblDesconto.Location = new System.Drawing.Point(550, 73);
             this.lblDesconto.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lblDesconto.Name = "lblDesconto";
             this.lblDesconto.Size = new System.Drawing.Size(93, 17);
@@ -113,7 +114,7 @@ namespace EquipMotos.View
             // 
             this.txtDesconto.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtDesconto.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtDesconto.Location = new System.Drawing.Point(768, 99);
+            this.txtDesconto.Location = new System.Drawing.Point(554, 98);
             this.txtDesconto.Margin = new System.Windows.Forms.Padding(5);
             this.txtDesconto.Name = "txtDesconto";
             this.txtDesconto.Size = new System.Drawing.Size(60, 23);
@@ -128,7 +129,7 @@ namespace EquipMotos.View
             this.lblMulta.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblMulta.AutoSize = true;
             this.lblMulta.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.lblMulta.Location = new System.Drawing.Point(617, 74);
+            this.lblMulta.Location = new System.Drawing.Point(461, 73);
             this.lblMulta.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lblMulta.Name = "lblMulta";
             this.lblMulta.Size = new System.Drawing.Size(67, 17);
@@ -139,7 +140,7 @@ namespace EquipMotos.View
             // 
             this.txtMulta.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtMulta.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtMulta.Location = new System.Drawing.Point(621, 99);
+            this.txtMulta.Location = new System.Drawing.Point(465, 98);
             this.txtMulta.Margin = new System.Windows.Forms.Padding(5);
             this.txtMulta.Name = "txtMulta";
             this.txtMulta.Size = new System.Drawing.Size(60, 23);
@@ -154,7 +155,7 @@ namespace EquipMotos.View
             this.btnSalvar.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnSalvar.Depth = 0;
             this.btnSalvar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSalvar.Location = new System.Drawing.Point(566, 505);
+            this.btnSalvar.Location = new System.Drawing.Point(422, 507);
             this.btnSalvar.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.btnSalvar.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnSalvar.Name = "btnSalvar";
@@ -170,7 +171,7 @@ namespace EquipMotos.View
             this.btnLimpar.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnLimpar.Depth = 0;
             this.btnLimpar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLimpar.Location = new System.Drawing.Point(674, 505);
+            this.btnLimpar.Location = new System.Drawing.Point(530, 507);
             this.btnLimpar.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.btnLimpar.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnLimpar.Name = "btnLimpar";
@@ -186,7 +187,7 @@ namespace EquipMotos.View
             this.btnVoltar.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnVoltar.Depth = 0;
             this.btnVoltar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnVoltar.Location = new System.Drawing.Point(824, 505);
+            this.btnVoltar.Location = new System.Drawing.Point(680, 507);
             this.btnVoltar.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.btnVoltar.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnVoltar.Name = "btnVoltar";
@@ -203,7 +204,7 @@ namespace EquipMotos.View
             this.lblDtCadastro.AutoSize = true;
             this.lblDtCadastro.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.lblDtCadastro.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDtCadastro.Location = new System.Drawing.Point(15, 495);
+            this.lblDtCadastro.Location = new System.Drawing.Point(9, 494);
             this.lblDtCadastro.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblDtCadastro.Name = "lblDtCadastro";
             this.lblDtCadastro.Size = new System.Drawing.Size(75, 13);
@@ -216,7 +217,7 @@ namespace EquipMotos.View
             this.lblDtAlteracao.AutoSize = true;
             this.lblDtAlteracao.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.lblDtAlteracao.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDtAlteracao.Location = new System.Drawing.Point(103, 495);
+            this.lblDtAlteracao.Location = new System.Drawing.Point(97, 494);
             this.lblDtAlteracao.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblDtAlteracao.Name = "lblDtAlteracao";
             this.lblDtAlteracao.Size = new System.Drawing.Size(77, 13);
@@ -229,7 +230,7 @@ namespace EquipMotos.View
             this.lblUsuario.AutoSize = true;
             this.lblUsuario.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.lblUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUsuario.Location = new System.Drawing.Point(209, 496);
+            this.lblUsuario.Location = new System.Drawing.Point(203, 495);
             this.lblUsuario.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblUsuario.Name = "lblUsuario";
             this.lblUsuario.Size = new System.Drawing.Size(107, 13);
@@ -241,7 +242,7 @@ namespace EquipMotos.View
             this.txtUsuario.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtUsuario.Enabled = false;
             this.txtUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtUsuario.Location = new System.Drawing.Point(212, 516);
+            this.txtUsuario.Location = new System.Drawing.Point(206, 515);
             this.txtUsuario.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.txtUsuario.Name = "txtUsuario";
             this.txtUsuario.Size = new System.Drawing.Size(120, 18);
@@ -252,7 +253,7 @@ namespace EquipMotos.View
             this.txtDtCadastro.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtDtCadastro.Enabled = false;
             this.txtDtCadastro.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDtCadastro.Location = new System.Drawing.Point(18, 515);
+            this.txtDtCadastro.Location = new System.Drawing.Point(12, 514);
             this.txtDtCadastro.Margin = new System.Windows.Forms.Padding(5);
             this.txtDtCadastro.Mask = "00/00/0000";
             this.txtDtCadastro.Name = "txtDtCadastro";
@@ -265,7 +266,7 @@ namespace EquipMotos.View
             this.txtDtAlteracao.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtDtAlteracao.Enabled = false;
             this.txtDtAlteracao.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDtAlteracao.Location = new System.Drawing.Point(108, 515);
+            this.txtDtAlteracao.Location = new System.Drawing.Point(102, 514);
             this.txtDtAlteracao.Margin = new System.Windows.Forms.Padding(5);
             this.txtDtAlteracao.Mask = "00/00/0000";
             this.txtDtAlteracao.Name = "txtDtAlteracao";
@@ -281,7 +282,7 @@ namespace EquipMotos.View
             this.btnBuscarFormaPag.ErrorImage = global::EquipMotos.Properties.Resources._1398754683_xmag;
             this.btnBuscarFormaPag.Image = global::EquipMotos.Properties.Resources._1398754683_xmag;
             this.btnBuscarFormaPag.InitialImage = global::EquipMotos.Properties.Resources._1398754683_xmag;
-            this.btnBuscarFormaPag.Location = new System.Drawing.Point(771, 148);
+            this.btnBuscarFormaPag.Location = new System.Drawing.Point(603, 147);
             this.btnBuscarFormaPag.Margin = new System.Windows.Forms.Padding(5);
             this.btnBuscarFormaPag.Name = "btnBuscarFormaPag";
             this.btnBuscarFormaPag.Size = new System.Drawing.Size(50, 50);
@@ -295,22 +296,22 @@ namespace EquipMotos.View
             this.label3.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label3.Location = new System.Drawing.Point(406, 135);
+            this.label3.Location = new System.Drawing.Point(238, 134);
             this.label3.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(66, 17);
+            this.label3.Size = new System.Drawing.Size(37, 17);
             this.label3.TabIndex = 10;
-            this.label3.Text = "Cod.Pag.";
+            this.label3.Text = "Cod.";
             // 
             // txtCodFormaPagamento
             // 
             this.txtCodFormaPagamento.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtCodFormaPagamento.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtCodFormaPagamento.Location = new System.Drawing.Point(409, 158);
+            this.txtCodFormaPagamento.Location = new System.Drawing.Point(241, 157);
             this.txtCodFormaPagamento.Margin = new System.Windows.Forms.Padding(5);
             this.txtCodFormaPagamento.Name = "txtCodFormaPagamento";
             this.txtCodFormaPagamento.Size = new System.Drawing.Size(60, 23);
-            this.txtCodFormaPagamento.TabIndex = 6;
+            this.txtCodFormaPagamento.TabIndex = 9;
             this.txtCodFormaPagamento.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtCodFormaPagamento.TextChanged += new System.EventHandler(this.txtCodFormaPagamento_TextChanged);
             this.txtCodFormaPagamento.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtCodFormaPagamento_KeyPress);
@@ -321,17 +322,17 @@ namespace EquipMotos.View
             // 
             this.txtFormaPagamento.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtFormaPagamento.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtFormaPagamento.Location = new System.Drawing.Point(482, 158);
+            this.txtFormaPagamento.Location = new System.Drawing.Point(314, 157);
             this.txtFormaPagamento.Margin = new System.Windows.Forms.Padding(5);
             this.txtFormaPagamento.Name = "txtFormaPagamento";
             this.txtFormaPagamento.Size = new System.Drawing.Size(279, 23);
-            this.txtFormaPagamento.TabIndex = 7;
+            this.txtFormaPagamento.TabIndex = 10;
             // 
             // txtCondicao
             // 
             this.txtCondicao.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtCondicao.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtCondicao.Location = new System.Drawing.Point(106, 99);
+            this.txtCondicao.Location = new System.Drawing.Point(81, 98);
             this.txtCondicao.Margin = new System.Windows.Forms.Padding(5);
             this.txtCondicao.Name = "txtCondicao";
             this.txtCondicao.Size = new System.Drawing.Size(266, 23);
@@ -344,7 +345,7 @@ namespace EquipMotos.View
             this.label4.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label4.AutoSize = true;
             this.label4.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label4.Location = new System.Drawing.Point(103, 74);
+            this.label4.Location = new System.Drawing.Point(78, 73);
             this.label4.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(76, 17);
@@ -356,7 +357,7 @@ namespace EquipMotos.View
             this.label2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label2.Location = new System.Drawing.Point(479, 135);
+            this.label2.Location = new System.Drawing.Point(311, 134);
             this.label2.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(153, 17);
@@ -368,7 +369,7 @@ namespace EquipMotos.View
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label1.Location = new System.Drawing.Point(458, 74);
+            this.label1.Location = new System.Drawing.Point(376, 73);
             this.label1.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(68, 17);
@@ -392,33 +393,29 @@ namespace EquipMotos.View
             this.listviewParcelas.GridLines = true;
             this.listviewParcelas.HideSelection = false;
             this.listviewParcelas.HoverSelection = true;
-            this.listviewParcelas.Location = new System.Drawing.Point(18, 229);
+            this.listviewParcelas.Location = new System.Drawing.Point(12, 228);
             this.listviewParcelas.Name = "listviewParcelas";
-            this.listviewParcelas.Size = new System.Drawing.Size(906, 264);
+            this.listviewParcelas.Size = new System.Drawing.Size(732, 264);
             this.listviewParcelas.TabIndex = 285;
             this.listviewParcelas.UseCompatibleStateImageBehavior = false;
             this.listviewParcelas.View = System.Windows.Forms.View.Details;
-            this.listviewParcelas.Click += new System.EventHandler(this.ListviewParcelas_Click);
             // 
             // nrParcela
             // 
             this.nrParcela.Text = "Nrº da Parcela";
-            this.nrParcela.Width = 124;
+            this.nrParcela.Width = 83;
             // 
             // nrDia
             // 
             this.nrDia.Text = "Nrº de Dias";
-            this.nrDia.Width = 100;
+            this.nrDia.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.nrDia.Width = 84;
             // 
             // porcentagem
             // 
             this.porcentagem.Text = "Porcentagem";
-            this.porcentagem.Width = 114;
-            // 
-            // codFormaPag
-            // 
-            this.codFormaPag.Text = "Cod. Forma Pag.";
-            this.codFormaPag.Width = 139;
+            this.porcentagem.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.porcentagem.Width = 66;
             // 
             // FormaPagamento
             // 
@@ -430,10 +427,10 @@ namespace EquipMotos.View
             this.btnAdd.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnAdd.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnAdd.Image = global::EquipMotos.Properties.Resources._1398756346_1;
-            this.btnAdd.Location = new System.Drawing.Point(836, 154);
+            this.btnAdd.Location = new System.Drawing.Point(668, 153);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(41, 35);
-            this.btnAdd.TabIndex = 283;
+            this.btnAdd.TabIndex = 11;
             this.btnAdd.Tag = "";
             this.btnAdd.UseVisualStyleBackColor = false;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
@@ -444,10 +441,10 @@ namespace EquipMotos.View
             this.txtNrParcelas.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
             this.txtNrParcelas.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtNrParcelas.Enabled = false;
-            this.txtNrParcelas.Location = new System.Drawing.Point(19, 158);
+            this.txtNrParcelas.Location = new System.Drawing.Point(13, 157);
             this.txtNrParcelas.Name = "txtNrParcelas";
             this.txtNrParcelas.Size = new System.Drawing.Size(60, 23);
-            this.txtNrParcelas.TabIndex = 286;
+            this.txtNrParcelas.TabIndex = 6;
             this.txtNrParcelas.Text = "1";
             this.txtNrParcelas.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtNrParcelas.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtNrParcelas_KeyPress);
@@ -456,10 +453,10 @@ namespace EquipMotos.View
             // 
             this.txtNrDias.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtNrDias.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtNrDias.Location = new System.Drawing.Point(155, 158);
+            this.txtNrDias.Location = new System.Drawing.Point(81, 157);
             this.txtNrDias.Name = "txtNrDias";
             this.txtNrDias.Size = new System.Drawing.Size(60, 23);
-            this.txtNrDias.TabIndex = 287;
+            this.txtNrDias.TabIndex = 7;
             this.txtNrDias.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtNrDias.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtNrDias_KeyPress);
             this.txtNrDias.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TxtNrDias_KeyUp);
@@ -469,10 +466,10 @@ namespace EquipMotos.View
             // 
             this.txtPorcentagem.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtPorcentagem.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtPorcentagem.Location = new System.Drawing.Point(272, 158);
+            this.txtPorcentagem.Location = new System.Drawing.Point(156, 157);
             this.txtPorcentagem.Name = "txtPorcentagem";
             this.txtPorcentagem.Size = new System.Drawing.Size(60, 23);
-            this.txtPorcentagem.TabIndex = 288;
+            this.txtPorcentagem.TabIndex = 8;
             this.txtPorcentagem.Text = "0";
             this.txtPorcentagem.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtPorcentagem.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtPorcentagem_KeyPress);
@@ -484,43 +481,44 @@ namespace EquipMotos.View
             this.label5.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label5.AutoSize = true;
             this.label5.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label5.Location = new System.Drawing.Point(15, 135);
+            this.label5.Location = new System.Drawing.Point(9, 134);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(102, 17);
+            this.label5.Size = new System.Drawing.Size(56, 17);
             this.label5.TabIndex = 291;
-            this.label5.Text = "Nº de Parcelas";
+            this.label5.Text = "Parcela";
             // 
             // label7
             // 
             this.label7.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label7.AutoSize = true;
             this.label7.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label7.Location = new System.Drawing.Point(142, 135);
+            this.label7.Location = new System.Drawing.Point(78, 134);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(84, 17);
+            this.label7.Size = new System.Drawing.Size(38, 17);
             this.label7.TabIndex = 292;
-            this.label7.Text = "Nº de Dias *";
+            this.label7.Text = "Dia *";
+            this.label7.Click += new System.EventHandler(this.label7_Click);
             // 
             // label8
             // 
             this.label8.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label8.AutoSize = true;
             this.label8.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label8.Location = new System.Drawing.Point(259, 135);
+            this.label8.Location = new System.Drawing.Point(154, 134);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(117, 17);
+            this.label8.Size = new System.Drawing.Size(62, 17);
             this.label8.TabIndex = 293;
-            this.label8.Text = "Porcentagem % *";
+            this.label8.Text = "Porc % *";
             // 
             // btnRemove
             // 
             this.btnRemove.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnRemove.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnRemove.Image = global::EquipMotos.Properties.Resources._1398756469_Erase;
-            this.btnRemove.Location = new System.Drawing.Point(883, 154);
+            this.btnRemove.Location = new System.Drawing.Point(715, 153);
             this.btnRemove.Name = "btnRemove";
             this.btnRemove.Size = new System.Drawing.Size(41, 35);
-            this.btnRemove.TabIndex = 294;
+            this.btnRemove.TabIndex = 12;
             this.btnRemove.UseVisualStyleBackColor = false;
             this.btnRemove.Click += new System.EventHandler(this.BtnRemove_Click);
             // 
@@ -529,7 +527,7 @@ namespace EquipMotos.View
             this.label9.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label9.AutoSize = true;
             this.label9.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label9.Location = new System.Drawing.Point(15, 206);
+            this.label9.Location = new System.Drawing.Point(9, 205);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(110, 17);
             this.label9.TabIndex = 295;
@@ -539,22 +537,40 @@ namespace EquipMotos.View
             // 
             this.txtJuros.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtJuros.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtJuros.Location = new System.Drawing.Point(462, 99);
+            this.txtJuros.Location = new System.Drawing.Point(380, 98);
             this.txtJuros.Margin = new System.Windows.Forms.Padding(5);
             this.txtJuros.Name = "txtJuros";
             this.txtJuros.Size = new System.Drawing.Size(60, 23);
-            this.txtJuros.TabIndex = 297;
+            this.txtJuros.TabIndex = 3;
             this.txtJuros.Text = "0";
             this.txtJuros.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtJuros.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtJuros_KeyPress);
             this.txtJuros.Leave += new System.EventHandler(this.TxtJuros_Leave);
             // 
+            // btnLimparListaParcela
+            // 
+            this.btnLimparListaParcela.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnLimparListaParcela.Location = new System.Drawing.Point(656, 228);
+            this.btnLimparListaParcela.Name = "btnLimparListaParcela";
+            this.btnLimparListaParcela.Size = new System.Drawing.Size(88, 30);
+            this.btnLimparListaParcela.TabIndex = 297;
+            this.btnLimparListaParcela.Text = "Limpar lista";
+            this.btnLimparListaParcela.UseVisualStyleBackColor = false;
+            this.btnLimparListaParcela.Click += new System.EventHandler(this.btnLimparListaParcela_Click);
+            // 
+            // codFormaPag
+            // 
+            this.codFormaPag.Text = "Cod. Forma";
+            this.codFormaPag.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.codFormaPag.Width = 99;
+            // 
             // frmCadastroCondicaoPagamento
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(944, 560);
+            this.ClientSize = new System.Drawing.Size(793, 560);
             this.ControlBox = false;
+            this.Controls.Add(this.btnLimparListaParcela);
             this.Controls.Add(this.txtJuros);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.btnRemove);
@@ -637,11 +653,12 @@ namespace EquipMotos.View
         private System.Windows.Forms.ColumnHeader nrParcela;
         private System.Windows.Forms.ColumnHeader nrDia;
         private System.Windows.Forms.ColumnHeader porcentagem;
-        private System.Windows.Forms.ColumnHeader codFormaPag;
         private System.Windows.Forms.ColumnHeader FormaPagamento;
         private System.Windows.Forms.ListView listviewParcelas;
         private Button btnRemove;
         private Label label9;
         private TextBox txtJuros;
+        private Button btnLimparListaParcela;
+        private ColumnHeader codFormaPag;
     }
 }

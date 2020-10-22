@@ -17,7 +17,7 @@ namespace EquipMotos.DAO
         List<ItensVenda> ListaItem = new List<ItensVenda>();
         ClientesDAO DaoCliente = new ClientesDAO();
         CondicaoPagamentoDAO DaoCondPagamento = new CondicaoPagamentoDAO();
-        ProdutosServicosDAO DaoProdutoServico = new ProdutosServicosDAO();
+        ProdutosDAO DaoProduto = new ProdutosDAO();
 
 
         private object SelecionaUltimoID(SqlTransaction transaction)
@@ -68,12 +68,13 @@ namespace EquipMotos.DAO
                 conexao.Close();
             }
         }
+
         private void InserirVendaSql(Vendas venda, SqlTransaction transaction)
         {
             SqlCommand comando = this.CreateCommandTransaction(transaction);
 
-            comando.CommandText = @"INSERT INTO vendas (modelo, serie,  codCliente, codCondPagamento, dtEmissao, situacao, desconto, dtCadastro, dtAlteracao, usuario)
-                                 VALUES (@modelo, @serie,  @codCliente, @codCondPagamento, @dtEmissao, @situacao, @desconto, @dtCadastro, @dtAlteracao, @usuario)";
+            comando.CommandText = @"INSERT INTO vendas (modelo, serie,  codCliente, codCondPagamento, dtEmissao, situacao, totalReceber, desconto, dtCadastro, dtAlteracao, usuario)
+                                 VALUES (@modelo, @serie,  @codCliente, @codCondPagamento, @dtEmissao, @situacao, @totalReceber, @desconto, @dtCadastro, @dtAlteracao, @usuario)";
 
             comando.Parameters.AddWithValue("@modelo", venda.modelo);
             comando.Parameters.AddWithValue("@serie", venda.serie);
@@ -83,6 +84,7 @@ namespace EquipMotos.DAO
             comando.Parameters.AddWithValue("@desconto", venda.desconto);
             comando.Parameters.AddWithValue("@dtEmissao", venda.dtEmissao);
             comando.Parameters.AddWithValue("@situacao", venda.situacao);
+            comando.Parameters.AddWithValue("@totalReceber", venda.totalReceber);
             comando.Parameters.AddWithValue("@observacoes", venda.observacoes);
             comando.Parameters.AddWithValue("@dtCadastro", venda.dtCadastro);
             comando.Parameters.AddWithValue("@dtAlteracao", venda.dtAlteracao);
@@ -94,7 +96,7 @@ namespace EquipMotos.DAO
         private void InserirItemVenda(object nrNota, ItensVenda item, SqlTransaction transaction)
         {
             SqlCommand comando = this.CreateCommandTransaction(transaction);
-            var Produto = DaoProdutoServico.BuscarPorID(item.codigo) as ProdutosServicos;
+            var Produto = DaoProduto.BuscarPorID(item.codigo) as Produtos;
             comando.CommandText = @"INSERT INTO itemVenda (  modelo, serie, nrNota, codCliente, codProduto, qtd, valorVenda, dtCadastro, dtAlteracao) 
                                                     values ( @modelo, @serie, @nrNota, @codCliente,  @codProduto, @qtd ,  @valorVenda,  @dtCadastro, @dtAlteracao);
                                     UPDATE  produtos set qtd = @qtdEstoque WHERE codigo = @codProduto ";
@@ -117,8 +119,8 @@ namespace EquipMotos.DAO
         {
             SqlCommand comando = this.CreateCommandTransaction(transaction);
 
-            comando.CommandText = @"INSERT INTO contaReceber ( modelo, serie, nrNota, nrParcela, codCliente, codFormaPagamento, valorParcela, dtVencimento, dtEmissao, dtCadastro, dtAlteracao, usuario) 
-                                                    values ( @modelo, @serie, @nrNota,  @nrParcela, @codCliente, @codFormaPagamento, @valorParcela, @dtVencimento, @dtEmissao, @dtCadastro, @dtAlteracao, @usuario)";
+            comando.CommandText = @"INSERT INTO contaReceber ( modelo, serie, nrNota, nrParcela, codCliente, codFormaPagamento, valorParcela, dtVencimento, dtEmissao, dtCadastro, dtAlteracao, usuario, observacoes, recebido) 
+                                                    values ( @modelo, @serie, @nrNota,  @nrParcela, @codCliente, @codFormaPagamento, @valorParcela, @dtVencimento, @dtEmissao, @dtCadastro, @dtAlteracao, @usuario, @observacoes, @recebido)";
 
             comando.Parameters.AddWithValue("@modelo", conta.modelo);
             comando.Parameters.AddWithValue("@serie", conta.serie);
@@ -132,6 +134,8 @@ namespace EquipMotos.DAO
             comando.Parameters.AddWithValue("@dtCadastro", conta.dtCadastro);
             comando.Parameters.AddWithValue("@dtAlteracao", conta.dtAlteracao);
             comando.Parameters.AddWithValue("@usuario", conta.usuario);
+            comando.Parameters.AddWithValue("@observacoes", conta.observacoes);
+            comando.Parameters.AddWithValue("@recebido", false);
 
             comando.ExecuteNonQuery();
         }
@@ -201,8 +205,8 @@ namespace EquipMotos.DAO
             SqlCommand comando = this.CreateCommandTransaction(transaction);
 
 
-            comando.CommandText = @"INSERT INTO vendas (modelo, serie,  codCliente, codCondPagamento, dtEmissao, situacao, desconto, dtCadastro, dtAlteracao, usuario)
-                                 VALUES (@modelo, @serie,  @codCliente, @codCondPagamento, @dtEmissao, @situacao, @desconto, @dtCadastro, @dtAlteracao, @usuario)";
+            comando.CommandText = @"INSERT INTO vendas (modelo, serie,  codCliente, codCondPagamento, dtEmissao, situacao, totalReceber, desconto, dtCadastro, dtAlteracao, usuario)
+                                 VALUES (@modelo, @serie,  @codCliente, @codCondPagamento, @dtEmissao, @situacao, @totalReceber, @desconto, @dtCadastro, @dtAlteracao, @usuario)";
 
             comando.Parameters.AddWithValue("@modelo", venda.modelo);
             comando.Parameters.AddWithValue("@serie", venda.serie);
@@ -210,6 +214,7 @@ namespace EquipMotos.DAO
             comando.Parameters.AddWithValue("@codCliente", venda.cliente.codigo);
             comando.Parameters.AddWithValue("@codCondPagamento", venda.condPagamento.codigo);
             comando.Parameters.AddWithValue("@desconto", venda.desconto);
+            comando.Parameters.AddWithValue("@totalReceber", venda.totalReceber);
             comando.Parameters.AddWithValue("@dtEmissao", venda.dtEmissao);
             comando.Parameters.AddWithValue("@situacao", venda.situacao);
             comando.Parameters.AddWithValue("@observacoes", venda.observacoes);
@@ -270,7 +275,7 @@ namespace EquipMotos.DAO
         private void InserirItemVendaProduto(ItensOrdemServico item, SqlTransaction transaction)
         {
             SqlCommand comando = this.CreateCommandTransaction(transaction);
-            var Produto = DaoProdutoServico.BuscarPorID(item.codigo) as ProdutosServicos;
+            var Produto = DaoProduto.BuscarPorID(item.codigo) as Produtos;
 
             comando.CommandText = @"INSERT INTO produtoOrdemServico (  modelo, serie, nrNota, codCliente, codVeiculo, codProduto, qtd, valorVenda, dtCadastro, dtAlteracao) 
                                                     values ( @modelo, @serie, @nrNota, @codCliente, @codVeiculo, @codProduto, @qtd ,  @valorVenda,  @dtCadastro, @dtAlteracao)
@@ -318,9 +323,64 @@ namespace EquipMotos.DAO
             using (SqlConnection conexao = Conecta.CreateConnection())
             {
                 SqlDataAdapter da;
-                string sql = @"SELECT * FROM vendas";
+                string sql = @"SELECT     vendas.modelo, vendas.serie, vendas.nrNota, vendas.codCliente, vendas.codCondPagamento, vendas.dtEmissao, vendas.desconto, vendas.totalReceber, vendas.observacoes, vendas.dtCadastro, vendas.dtAlteracao, vendas.usuario, vendas.situacao, clientes.cliente, condicaoPagamento.condicao
+                                FROM vendas 
+                                INNER JOIN clientes ON vendas.codCliente = clientes.codigo 
+                                INNER JOIN condicaoPagamento ON vendas.codCondPagamento = condicaoPagamento.codigo";
 
                 SqlCommand comando = new SqlCommand(sql, conexao);
+                conexao.Open();
+                da = new SqlDataAdapter(comando);
+
+                DataTable dtVenda = new DataTable();
+                da.Fill(dtVenda);
+
+                return dtVenda;
+            }
+        }
+
+        public DataTable BuscarVenda_Filtro(object nrNota, object cliente, DateTime dateMin, DateTime dateMax)
+        {
+            using (SqlConnection conexao = Conecta.CreateConnection())
+            {
+                SqlDataAdapter da;
+                string select = @"SELECT        vendas.modelo, vendas.serie, vendas.nrNota, vendas.codCliente, vendas.codCondPagamento, vendas.dtEmissao, vendas.desconto, vendas.totalReceber, vendas.observacoes, vendas.dtCadastro, vendas.dtAlteracao, vendas.usuario, vendas.situacao, clientes.cliente, condicaoPagamento.condicao
+                                FROM vendas 
+                                INNER JOIN clientes ON vendas.codCliente = clientes.codigo 
+                                INNER JOIN condicaoPagamento ON vendas.codCondPagamento = condicaoPagamento.codigo";
+
+                string where = " WHERE 1 = 1 ";
+                string sql = "";
+                if (nrNota != null)
+                {
+                    where += " AND vendas.nrNota = @nrNota ";
+                }
+                else if (cliente != null)
+                {
+                    where += " AND clientes.cliente = @cliente OR clientes.cliente like '%'+ @cliente +'%' ";
+                }
+                else if (dateMin != DateTime.MinValue & dateMax != DateTime.MinValue)
+                {
+                    where += " AND vendas.dtCadastro >= @dateMin AND vendas.dtCadastro <= @dateMax";
+                }
+                sql = select + where;
+
+                SqlCommand comando = new SqlCommand(sql, conexao);
+
+                if (nrNota != null)
+                {
+                    comando.Parameters.AddWithValue("@nrNota", nrNota);
+                }
+                else if (cliente != null)
+                {
+                    comando.Parameters.AddWithValue("@cliente", cliente);
+                }
+                else if (dateMin != DateTime.MinValue & dateMax != DateTime.MinValue)
+                {
+                    comando.Parameters.AddWithValue("@dateMin", dateMin);
+                    comando.Parameters.AddWithValue("@dateMax", dateMax);
+                }
+
                 conexao.Open();
                 da = new SqlDataAdapter(comando);
 
@@ -337,7 +397,11 @@ namespace EquipMotos.DAO
             {
                 //venda = new Vendas();
                 SqlDataAdapter da;
-                string sql = @"SELECT * FROM vendas WHERE  nrNota = @nrNota ";
+                string sql = @"SELECT  vendas.modelo, vendas.serie, vendas.nrNota, vendas.codCliente, vendas.codCondPagamento, vendas.dtEmissao, vendas.desconto, vendas.observacoes, vendas.dtCadastro, vendas.dtAlteracao, vendas.usuario, vendas.situacao, vendas.totalReceber, clientes.cliente, condicaoPagamento.condicao
+                                FROM vendas 
+                                INNER JOIN clientes ON vendas.codCliente = clientes.codigo 
+                                INNER JOIN condicaoPagamento ON vendas.codCondPagamento = condicaoPagamento.codigo
+                                WHERE  vendas.nrNota = @nrNota";
 
                 SqlCommand comando = new SqlCommand(sql, conexao);
 
@@ -359,15 +423,15 @@ namespace EquipMotos.DAO
                     venda.cliente = DaoCliente.BuscarPorID(Convert.ToInt64(row["codCliente"])) as Clientes;
                     venda.condPagamento = DaoCondPagamento.BuscarPorID(Convert.ToInt64(row["codCondPagamento"])) as CondicaoPagamentos;
                     venda.dtEmissao = Convert.ToDateTime(row["dtEmissao"]);
-                   
                     venda.desconto = Convert.ToDouble(Convert.ToDouble(row["desconto"]).ToString("N2"));
+                    venda.totalReceber = Convert.ToDouble(Convert.ToDouble(row["totalReceber"]).ToString("N2"));
                     venda.situacao = Convert.ToBoolean(row["situacao"]);
                     venda.observacoes = Convert.ToString(row["observacoes"]);
                     venda.dtCadastro = Convert.ToDateTime(row["dtCadastro"]);
                     venda.dtAlteracao = Convert.ToDateTime(row["dtAlteracao"]);
                     venda.usuario = Convert.ToString(row["usuario"]);
                     venda.listaItem = BuscarItem(nrNota);
-                    venda.listaContasReceber = BuscarContasReceber( nrNota);
+                    venda.listaContasReceber = BuscarContasReceber( venda.modelo, venda.serie, nrNota, venda.cliente.codigo);
 
                     Venda = venda;
                 }
@@ -375,17 +439,20 @@ namespace EquipMotos.DAO
             }
         }
 
-        private List<ContasReceber> BuscarContasReceber(object nrNota)
+        public List<ContasReceber> BuscarContasReceber(object modelo, object serie, object nrNota, object codCliente)
         {
             using (SqlConnection conexao = Conecta.CreateConnection())
             {
 
                 SqlDataAdapter da;
-                string sql = @"SELECT * FROM contaReceber WHERE  nrNota = @nrNota ";
+                string sql = @"SELECT * FROM contaReceber WHERE  modelo = @modelo AND serie = @serie AND nrNota = @nrNota AND codCliente = @codCliente ";
 
                 SqlCommand comando = new SqlCommand(sql, conexao);
                  
-                comando.Parameters.AddWithValue("@nrNota", nrNota); 
+                comando.Parameters.AddWithValue("@modelo", modelo);
+                comando.Parameters.AddWithValue("@serie", serie);
+                comando.Parameters.AddWithValue("@nrNota", nrNota);
+                comando.Parameters.AddWithValue("@codCliente", codCliente);
 
                 conexao.Open();
 
@@ -413,7 +480,7 @@ namespace EquipMotos.DAO
             }
         }
 
-        private List<ItensVenda> BuscarItem(object nrNota)
+        public List<ItensVenda> BuscarItem(object nrNota)
         {
             using (SqlConnection conexao = Conecta.CreateConnection())
             {
@@ -446,6 +513,40 @@ namespace EquipMotos.DAO
                     });
                 }
                 return ListaItem;
+            }
+        }
+
+        public void Desativar(object modelo, object serie, object nrNota, object codCliente)
+        {
+            conexao.Open();
+            SqlTransaction transaction = conexao.BeginTransaction("SampleTransacion");
+            try
+            {
+                SqlCommand comando = this.CreateCommandTransaction(transaction);
+
+                comando.CommandText = @"UPDATE vendas
+                                         SET situacao = 1  
+                                        WHERE modelo = @modelo and serie = @serie and nrNota = @nrNota  and codCliente = @codCliente ;";
+
+                comando.Parameters.AddWithValue("@modelo", modelo);
+                comando.Parameters.AddWithValue("@serie", serie);
+                comando.Parameters.AddWithValue("@nrNota", nrNota);
+                comando.Parameters.AddWithValue("@codCliente", codCliente);
+
+                comando.ExecuteNonQuery();
+                transaction.Commit();
+
+            }
+            catch (Exception ex)
+            {
+                //MessageBox.Show(ex.Message);
+                transaction.Rollback();
+                conexao.Close();
+                MessageBox.Show("Nao foi possivel desativar!");
+            }
+            finally
+            {
+                conexao.Close();
             }
         }
     }

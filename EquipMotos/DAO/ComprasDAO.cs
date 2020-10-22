@@ -14,8 +14,9 @@ namespace EquipMotos.DAO
         List<ContasPagar> ListaConta =  new List<ContasPagar>();
         List<ItensCompra> ListaItem =  new List<ItensCompra>();
         FornecedoresDAO DaoFornecedor = new FornecedoresDAO();
+        FormaPagamentoDAO DaoFormaPagamento = new FormaPagamentoDAO();
         CondicaoPagamentoDAO DaoCondPagamento = new CondicaoPagamentoDAO();
-        ProdutosServicosDAO DaoProdutoServico = new ProdutosServicosDAO();
+        ProdutosDAO DaoProduto = new ProdutosDAO();
 
         public ComprasDAO()
         {
@@ -56,8 +57,8 @@ namespace EquipMotos.DAO
             catch(SqlException ex) 
             {
                 transaction.Rollback();
-                MessageBox.Show(ex.Message);
-                MessageBox.Show("Este modelo, serie, nrNota e fornecedor já existe em outra compra!", "Erro ao salvar a Compra!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //MessageBox.Show(ex.Message);
+                //MessageBox.Show("Este modelo, serie, nrNota e fornecedor já existe em outra compra!", "Erro ao salvar a Compra!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
@@ -69,8 +70,8 @@ namespace EquipMotos.DAO
         {
             SqlCommand comando = this.CreateCommandTransaction(transaction);
 
-            comando.CommandText = @"INSERT INTO compras (modelo, serie, nrNota, codFornecedor, codCondPagamento, totalProduto, totalPagar, seguro, despesa, cfi, frete, dtChegada, dtEmissao, situacao, dtCadastro, dtAlteracao, usuario)
-                                 VALUES (@modelo, @serie, @nrNota, @codFornecedor, @codCondPagamento, @totalProduto, @totalPagar, @seguro, @despesa, @cfi, @frete, @dtEmissao, @dtChegada, @situacao, @dtCadastro, @dtAlteracao, @usuario);";
+            comando.CommandText = @"INSERT INTO compras (modelo, serie, nrNota, codFornecedor, codCondPagamento, totalProduto, totalPagar, seguro, despesa, cfi, frete, dtChegada, dtEmissao, situacao, dtCadastro, dtAlteracao, usuario, observacoes)
+                                 VALUES (@modelo, @serie, @nrNota, @codFornecedor, @codCondPagamento, @totalProduto, @totalPagar, @seguro, @despesa, @cfi, @frete, @dtEmissao, @dtChegada, @situacao, @dtCadastro, @dtAlteracao, @usuario, @observacoes);";
 
             comando.Parameters.AddWithValue("@modelo", compra.modelo);
             comando.Parameters.AddWithValue("@serie", compra.serie);
@@ -103,11 +104,22 @@ namespace EquipMotos.DAO
                 bool isNumeric = int.TryParse(compra, out int n);
                 if (string.IsNullOrEmpty(compra))
                 {
-                    sql = "SELECT * FROM compras ";
+                    sql = @"SELECT   compras.modelo, compras.serie, compras.nrNota, compras.codCondPagamento, compras.dtEmissao, compras.dtChegada, compras.cfi, compras.frete, compras.seguro, 
+                         compras.despesa, compras.situacao, compras.dtCadastro, compras.dtAlteracao, compras.usuario, compras.observacoes, compras.codFornecedor, fornecedores.fornecedor, 
+                         condicaoPagamento.condicao
+                            FROM         compras INNER JOIN
+                         fornecedores ON compras.codFornecedor = fornecedores.codigo INNER JOIN
+                         condicaoPagamento ON compras.codCondPagamento = condicaoPagamento.codigo";
                 }
                 else
                 {
-                    sql = @"select * from compras where modelo = @compra or serie = @compra or nrNota = @compra";
+                    sql = @"SELECT   compras.modelo, compras.serie, compras.nrNota, compras.codCondPagamento, compras.dtEmissao, compras.dtChegada, compras.cfi, compras.frete, compras.seguro, 
+                         compras.despesa, compras.situacao, compras.dtCadastro, compras.dtAlteracao, compras.usuario, compras.observacoes, compras.codFornecedor, fornecedores.fornecedor, 
+                         condicaoPagamento.condicao
+                            FROM         compras INNER JOIN
+                         fornecedores ON compras.codFornecedor = fornecedores.codigo INNER JOIN
+                         condicaoPagamento ON compras.codCondPagamento = condicaoPagamento.codigo
+                            WHERE compras.modelo = @compra OR compras.serie = @compra OR compras.nrNota = @compra ";
                 }
                 SqlCommand comando = new SqlCommand(sql, conexao);
 
@@ -146,7 +158,7 @@ namespace EquipMotos.DAO
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                //MessageBox.Show(ex.Message);
                 transaction.Rollback();
                 conexao.Close();
                 MessageBox.Show("Nao foi possivel desativar!");
@@ -161,8 +173,8 @@ namespace EquipMotos.DAO
         {
             SqlCommand comando = this.CreateCommandTransaction(transaction);
 
-            comando.CommandText = @"INSERT INTO contaPagar ( modelo, serie, nrNota, nrParcela, codFornecedor, codFormaPagamento, valorParcela, dtVencimento, dtEmissao, dtCadastro, dtAlteracao, usuario) 
-                                                    values ( @modelo, @serie, @nrNota,  @nrParcela, @codFornecedor, @codFormaPagamento, @valorParcela, @dtVencimento, @dtEmissao, @dtCadastro, @dtAlteracao, @usuario)";
+            comando.CommandText = @"INSERT INTO contaPagar ( modelo, serie, nrNota, nrParcela, codFornecedor, codFormaPagamento, valorParcela, dtVencimento, dtEmissao, dtCadastro, dtAlteracao, usuario,  pago) 
+                                                    values ( @modelo, @serie, @nrNota,  @nrParcela, @codFornecedor, @codFormaPagamento, @valorParcela, @dtVencimento, @dtEmissao, @dtCadastro, @dtAlteracao, @usuario,  @pago)";
 
             comando.Parameters.AddWithValue("@modelo", conta.modelo);
             comando.Parameters.AddWithValue("@serie", conta.serie);
@@ -176,7 +188,8 @@ namespace EquipMotos.DAO
             comando.Parameters.AddWithValue("@dtCadastro", conta.dtCadastro);
             comando.Parameters.AddWithValue("@dtAlteracao", conta.dtAlteracao);
             comando.Parameters.AddWithValue("@usuario", conta.usuario);
-            
+            comando.Parameters.AddWithValue("@pago", 0);
+
 
             comando.ExecuteNonQuery();
         }
@@ -184,7 +197,7 @@ namespace EquipMotos.DAO
         public void InserirItemCompra(ItensCompra item, SqlTransaction transaction)
         {
             SqlCommand comando = this.CreateCommandTransaction(transaction);
-            var Produto = DaoProdutoServico.BuscarPorID(item.codigo) as ProdutosServicos;
+            var Produto = DaoProduto.BuscarPorID(item.codigo) as Produtos;
             comando.CommandText = @"INSERT INTO itemCompra (  modelo, serie, nrNota, codFornecedor, codProduto, qtd, custoUnitario, valorUnitario, dtCadastro, dtAlteracao) 
                                                     values ( @modelo, @serie, @nrNota, @codFornecedor,  @codProduto, @qtd ,  @custoUnitario, @valorUnitario,  @dtCadastro, @dtAlteracao);
                                     UPDATE  produtos set qtd = @qtdEstoque, custoUltCompra = @valorUnitario, precoCusto = @custoUnitario, codFornecedor = @codFornecedor, dtUltCompra = @dtCadastro WHERE codigo = @codProduto ";
@@ -209,7 +222,13 @@ namespace EquipMotos.DAO
             using (SqlConnection conexao = Conecta.CreateConnection())
             {
                 SqlDataAdapter da;
-                string sql = @"SELECT * FROM compras WHERE situacao = 1";
+                string sql = @"SELECT   compras.modelo, compras.serie, compras.nrNota, compras.codCondPagamento, compras.dtEmissao, compras.dtChegada, compras.cfi, compras.frete, compras.seguro, 
+                             compras.despesa, compras.situacao, compras.totalPagar, compras.totalProduto, compras.dtCadastro, compras.dtAlteracao, compras.usuario, compras.observacoes, compras.codFornecedor, fornecedores.fornecedor, 
+                             condicaoPagamento.condicao
+                                FROM         compras INNER JOIN
+                             fornecedores ON compras.codFornecedor = fornecedores.codigo INNER JOIN
+                             condicaoPagamento ON compras.codCondPagamento = condicaoPagamento.codigo
+                               ";//WHERE compras.situacao = 0
 
                 SqlCommand comando = new SqlCommand(sql, conexao);
                 conexao.Open();
@@ -221,13 +240,20 @@ namespace EquipMotos.DAO
                 return dtCompra;
             }
         }
+
         public Compras BuscarCompra_porID(object modelo, object serie, object nrNota, object idFornecedor)
         {
             using (SqlConnection conexao = Conecta.CreateConnection())
             {
                 Compra = new Compras();
                 SqlDataAdapter da;
-                string sql = @"SELECT * FROM compras WHERE modelo = @modelo and serie = @serie and nrNota = @nrNota and codFornecedor = @codFornecedor";
+                string sql = @"SELECT   compras.modelo, compras.serie, compras.nrNota, compras.codCondPagamento, compras.dtEmissao, compras.dtChegada, compras.cfi, compras.frete, compras.seguro, 
+                             compras.despesa, compras.situacao, compras.totalPagar, compras.totalProduto, compras.dtCadastro, compras.dtAlteracao, compras.usuario, compras.observacoes, compras.codFornecedor, fornecedores.fornecedor, 
+                             condicaoPagamento.condicao
+                                FROM         compras INNER JOIN
+                             fornecedores ON compras.codFornecedor = fornecedores.codigo INNER JOIN
+                             condicaoPagamento ON compras.codCondPagamento = condicaoPagamento.codigo
+                            WHERE compras.modelo = @modelo AND compras.serie = @serie AND compras.nrNota = @nrNota AND compras.codFornecedor = @codFornecedor";
 
                 SqlCommand comando = new SqlCommand(sql, conexao);
 
@@ -258,6 +284,8 @@ namespace EquipMotos.DAO
                     comp.seguro = Convert.ToDouble(Convert.ToDouble(row["seguro"]).ToString("N2"));
                     comp.despesa = Convert.ToDouble(Convert.ToDouble(row["despesa"]).ToString("N2"));
                     comp.situacao = Convert.ToBoolean(row["situacao"]);
+                    comp.totalPagar = Convert.ToDouble(row["totalPagar"]);
+                    comp.totalProduto = Convert.ToDouble(row["totalProduto"]);
                     comp.observacoes = Convert.ToString(row["observacoes"]);
                     comp.dtCadastro = Convert.ToDateTime(row["dtCadastro"]);
                     comp.dtAlteracao = Convert.ToDateTime(row["dtAlteracao"]);
@@ -271,7 +299,64 @@ namespace EquipMotos.DAO
             }
         }
 
-        private List<ItensCompra> BuscarItem(object modelo, object serie, object nrNota, object idFornecedor)
+        public DataTable BuscarCompra_Filtro(object nrNota, object fornecedor, DateTime dateMin, DateTime dateMax)
+        {
+            using (SqlConnection conexao = Conecta.CreateConnection())
+            {
+                Compra = new Compras();
+                SqlDataAdapter da;
+
+                string select = @"SELECT   compras.modelo, compras.serie, compras.nrNota, compras.codCondPagamento, compras.dtEmissao, compras.dtChegada, compras.cfi, compras.frete, compras.seguro, 
+                             compras.despesa, compras.situacao, compras.totalPagar, compras.totalProduto, compras.dtCadastro, compras.dtAlteracao, compras.usuario, compras.observacoes, compras.codFornecedor, fornecedores.fornecedor, 
+                             condicaoPagamento.condicao
+                                FROM         compras INNER JOIN
+                             fornecedores ON compras.codFornecedor = fornecedores.codigo INNER JOIN
+                             condicaoPagamento ON compras.codCondPagamento = condicaoPagamento.codigo ";
+
+
+                string where = " WHERE 1 = 1 ";
+                string sql = "";
+                if (nrNota != null)
+                {
+                    where += " AND compras.nrNota = @nrNota ";
+                }
+                else if (fornecedor != null)
+                {
+                    where += " AND fornecedores.fornecedor = @fornecedor OR fornecedores.fornecedores like '%'+ @fornecedor +'%'";
+                }
+                else if (dateMin != DateTime.MinValue & dateMax != DateTime.MinValue)
+                {
+                    where += " AND compras.dtCadastro >= @dateMin AND compras.dtCadastro <= @dateMax";
+                }
+                sql = select + where;
+                SqlCommand comando = new SqlCommand(sql, conexao);
+
+                if (nrNota != null)
+                {
+                    comando.Parameters.AddWithValue("@nrNota", nrNota);
+                }
+                else if (fornecedor != null)
+                {
+                    comando.Parameters.AddWithValue("@fornecedor", fornecedor);
+                }
+                else if (dateMin != DateTime.MinValue & dateMax != DateTime.MinValue)
+                {
+                    comando.Parameters.AddWithValue("@dateMin", dateMin);
+                    comando.Parameters.AddWithValue("@dateMax", dateMax);
+                }
+
+
+                conexao.Open();
+                da = new SqlDataAdapter(comando);
+
+                DataTable dtCompra = new DataTable();
+                da.Fill(dtCompra);
+
+                return dtCompra;
+            }
+        }
+
+        public List<ItensCompra> BuscarItem(object modelo, object serie, object nrNota, object idFornecedor)
         {
             using (SqlConnection conexao = Conecta.CreateConnection())
             {
@@ -311,7 +396,7 @@ namespace EquipMotos.DAO
             }
         }
 
-        private List<ContasPagar> BuscarContasPagar(object modelo, object serie, object nrNota, object idFornecedor)
+        public  List<ContasPagar> BuscarContasPagar(object modelo, object serie, object nrNota, object idFornecedor)
         {
             using (SqlConnection conexao = Conecta.CreateConnection())
             {
@@ -345,12 +430,15 @@ namespace EquipMotos.DAO
                         dtAlteracao = Convert.ToDateTime(row["dtAlteracao"]),
                         dtCadastro = Convert.ToDateTime(row["dtCadastro"]),
                         dtEmissao = Convert.ToDateTime(row["dtEmissao"]),
+                        pago = Convert.ToBoolean(row["pago"]),
+                        formaPagamento = DaoFormaPagamento.BuscarPorID(Convert.ToInt64(row["codFormaPagamento"])) as FormaPagamentos
                         
                     });
                 }
                 return ListaConta;
             }
         }
+
         public void Dispose()
         {
             if (this.conexao != null)

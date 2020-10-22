@@ -19,13 +19,12 @@ namespace EquipMotos.View
         public frmConsultaContaPagar()
         {
             InitializeComponent();
+            gvContaPagar.DataSource = CtrlContaPagar.ListarTodos();
         }
 
         private void FrmConsultaContaPagar_Load(object sender, EventArgs e)
         {
-            // TODO: esta linha de código carrega dados na tabela 'sistemaMoto2DataSetContasPagar.contaPagar'. Você pode movê-la ou removê-la conforme necessário.
-           //this.contaPagarTableAdapter.Fill(this.sistemaMoto2DataSetContasPagar.contaPagar);
-            gvContaPagar.DataSource = CtrlContaPagar.ListarTodos();
+            
         }
 
         private void BtnNovo_Click(object sender, EventArgs e)
@@ -53,25 +52,31 @@ namespace EquipMotos.View
         {
             try
             {
-                frmCadastroContaPagar frmCadConta = new frmCadastroContaPagar();
+                if(gvContaPagar.CurrentRow != null) { 
+                    frmCadastroContaPagar frmCadConta = new frmCadastroContaPagar();
 
-                var contaRow = gvContaPagar.CurrentRow.DataBoundItem as DataRowView;
+                    var contaRow = gvContaPagar.CurrentRow.DataBoundItem as DataRowView;
 
-                var modelo = contaRow["modelo"];
-                var serie = contaRow["serie"];
-                var nrNota = contaRow["nrNota"];
-                var codFornecedor = contaRow["codFornecedor"];
-                var nrParcela = contaRow["nrParcela"];
+                    var modelo = contaRow["modelo"];
+                    var serie = contaRow["serie"];
+                    var nrNota = contaRow["Nota"];
+                    var codFornecedor = contaRow["codFornecedor"];
+                    var nrParcela = contaRow["Parcela"];
 
-                frmCadConta.Carregar(modelo, serie, nrNota, codFornecedor, nrParcela);
-                frmCadConta.Disable();
-                if (frmCadConta.ShowDialog() == DialogResult.OK)
-                {
-                    var lista = CtrlContaPagar.ListarTodos();
-                    if (lista != null)
+                    frmCadConta.Carregar(modelo, serie, nrNota, codFornecedor, nrParcela);
+                    frmCadConta.Disable();
+                    if (frmCadConta.ShowDialog() == DialogResult.OK)
                     {
-                        gvContaPagar.DataSource = lista;
+                        var lista = CtrlContaPagar.ListarTodos();
+                        if (lista != null)
+                        {
+                            gvContaPagar.DataSource = lista;
+                        }
                     }
+                }
+                else
+                {
+                    MessageBox.Show("Selecione a conta que deseja!");
                 }
             }
             catch

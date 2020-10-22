@@ -13,14 +13,14 @@ namespace EquipMotos.Codigo.View
 {
     public partial class frmCadastroCliente : MaterialSkin.Controls.MaterialForm
     {
+        public static object cidade = null;
+        public static object condPagamento = null;
+
         Clientes Cliente = new Clientes();
         CtrlClientes CtrlCliente = new CtrlClientes();
         CtrlCidades CtrlCidade = new CtrlCidades();
         CtrlCondicaoPagamento CtrlCondicao = new CtrlCondicaoPagamento();
         CondicaoPagamentos CondicaoPag = new CondicaoPagamentos();
-
-        public static object cidade = null;
-        public static object condPagamento = null;
 
         public frmCadastroCliente(string pusuario)
         {

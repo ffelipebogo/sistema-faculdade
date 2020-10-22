@@ -122,9 +122,12 @@ namespace EquipMotos.View
 
         private void txtForma_Leave(object sender, EventArgs e)
         {
-            if(txtForma.Text.Length < 4)
+            if (!string.IsNullOrEmpty(txtForma.Text))
             {
-                MessageBox.Show("Informe uma forma com mais de 4 caracteres", "Forma invalida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                if (txtForma.Text.Length < 4)
+                {
+                    MessageBox.Show("Informe uma forma com mais de 4 caracteres", "Forma invalida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
             }
         }
 

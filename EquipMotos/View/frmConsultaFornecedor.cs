@@ -2,6 +2,7 @@
 using EquipMotos.CONTROLLER;
 using EquipMotos.DAO;
 using EquipMotos.MODEL;
+using EquipMotos.VIEW;
 using System;
 using System.Data;
 using System.Windows.Forms;
@@ -33,8 +34,8 @@ namespace EquipMotos.View
             {
                 SelecionaFornecedor();
                 frmCadastroContaPagar.fornecedor = this.fornecedor;
-                frmCadastroProdutoServico.fornecedor = this.fornecedor;
-                frmCadastroCompra.fornecedor = this.fornecedor;
+                frmCadastroProduto.fornecedor = this.fornecedor;
+                frmCadastroCompra.Fornecedor = this.fornecedor;
                 this.DialogResult = DialogResult.OK;
                 Close();
             }
@@ -81,13 +82,21 @@ namespace EquipMotos.View
         {
             try
             {
-                frmCadastroFornecedor frmCadFornecedor = new frmCadastroFornecedor();
-                var forRow = gvFornecedor.CurrentRow.DataBoundItem as DataRowView;
-                var id = forRow["codigo"];
-                frmCadFornecedor.Carregar(id);
-                if (frmCadFornecedor.ShowDialog() == DialogResult.OK)
+                if (gvFornecedor.CurrentRow != null)
                 {
-                    gvFornecedor.DataSource = CtrlFornecedor.ListarTodos();
+
+                    frmCadastroFornecedor frmCadFornecedor = new frmCadastroFornecedor();
+                    var forRow = gvFornecedor.CurrentRow.DataBoundItem as DataRowView;
+                    var id = forRow["codigo"];
+                    frmCadFornecedor.Carregar(id);
+                    if (frmCadFornecedor.ShowDialog() == DialogResult.OK)
+                    {
+                        gvFornecedor.DataSource = CtrlFornecedor.ListarTodos();
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Selecione o fornecedor que deseja alterar!");
                 }
             }
             catch (Exception ex)

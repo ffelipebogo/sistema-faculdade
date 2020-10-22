@@ -82,7 +82,9 @@ namespace EquipMotos.DAO
             using (SqlConnection conexao = Conecta.CreateConnection())
             {
                 SqlDataAdapter da;
-                string sql = @"SELECT * FROM estados";
+                string sql = @"SELECT   estados.codigo, estados.uf, estados.codPais, estados.estado, estados.dtAlteracao, estados.dtCadastro, estados.usuario, paises.pais
+                                FROM         estados INNER JOIN
+                                paises ON estados.codPais = paises.codigo";
 
                 SqlCommand comando = new SqlCommand(sql, conexao);
 
@@ -102,7 +104,10 @@ namespace EquipMotos.DAO
             using (SqlConnection conexao = Conecta.CreateConnection())
             {
                 SqlDataAdapter da;
-                string sql = @"SELECT * FROM estados WHERE codigo = @codigo";
+                string sql = @"SELECT   estados.codigo, estados.uf, estados.codPais, estados.estado, estados.dtAlteracao, estados.dtCadastro, estados.usuario, paises.pais
+                                FROM         estados INNER JOIN
+                                paises ON estados.codPais = paises.codigo
+                                WHERE estados.codigo = @codigo";
 
                 SqlCommand comando = new SqlCommand(sql, conexao);
 
@@ -142,11 +147,17 @@ namespace EquipMotos.DAO
                 bool isNumeric = int.TryParse(est, out int n);
                 if (est.Length <= 4 && isNumeric)
                 {
-                    sql = @"SELECT * FROM estados WHERE codigo = @est";
+                    sql = @"SELECT   estados.codigo, estados.uf, estados.codPais, estados.estado, estados.dtAlteracao, estados.dtCadastro, estados.usuario, paises.pais
+                                FROM         estados INNER JOIN
+                                paises ON estados.codPais = paises.codigo
+                            WHERE estados.codigo = @est";
                 }
                 else
                 {
-                    sql = @"SELECT * FROM estados WHERE estado like '%'+ @est + '%' ";
+                    sql = @"SELECT   estados.codigo, estados.uf, estados.codPais, estados.estado, estados.dtAlteracao, estados.dtCadastro, estados.usuario, paises.pais
+                                FROM         estados INNER JOIN
+                                paises ON estados.codPais = paises.codigo
+                            WHERE estados.estado like '%'+ @est + '%' ";
                 }
                 SqlCommand comando = new SqlCommand(sql, conexao);
 

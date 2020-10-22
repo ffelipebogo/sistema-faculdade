@@ -136,5 +136,10 @@ namespace EquipMotos.View
             }
          
         }
+
+        private void gvCidade_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

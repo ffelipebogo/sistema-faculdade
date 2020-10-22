@@ -283,7 +283,12 @@ namespace EquipMotos.DAO
             using (SqlConnection conexao = Conecta.CreateConnection())
             { 
                 SqlDataAdapter da;
-                string sql = @"SELECT * FROM funcionarios WHERE codigo = @codigo";
+                string sql = @"SELECT     funcionarios.codigo, funcionarios.funcionario, funcionarios.apelido, funcionarios.dtNascimento, funcionarios.sexo, funcionarios.endereco, funcionarios.numero, funcionarios.complemento, funcionarios.bairro, funcionarios.cep, funcionarios.codCidade, funcionarios.codEstado, 
+                  funcionarios.telefone, funcionarios.celular, funcionarios.email, funcionarios.cpf, funcionarios.rg, funcionarios.cargo, funcionarios.salario, funcionarios.comissao, funcionarios.carteiraTrabalho, funcionarios.serie, funcionarios.ufCt, funcionarios.dtEmissaoCt, funcionarios.pis, 
+                  funcionarios.cnh, funcionarios.emissor, funcionarios.ufCnh, funcionarios.dtExpedicao, funcionarios.dtValidade, funcionarios.dtPrimeiraCnh, funcionarios.categoria, funcionarios.observacoes, funcionarios.dtCadastro, funcionarios.dtAlteracao, funcionarios.usuario, cidades.cidade
+                    FROM        funcionarios INNER JOIN
+                  cidades ON funcionarios.codCidade = cidades.codigo    
+                    WHERE funcionarios.codigo = @codigo";
 
                 SqlCommand comando = new SqlCommand(sql, conexao);
 
@@ -347,7 +352,11 @@ namespace EquipMotos.DAO
             using (SqlConnection conexao = Conecta.CreateConnection())
             {
                 SqlDataAdapter da;
-                string sql = @"SELECT * FROM funcionarios";
+                string sql = @"SELECT     funcionarios.codigo, funcionarios.funcionario, funcionarios.apelido, funcionarios.dtNascimento, funcionarios.sexo, funcionarios.endereco, funcionarios.numero, funcionarios.complemento, funcionarios.bairro, funcionarios.cep, funcionarios.codCidade, funcionarios.codEstado, 
+                  funcionarios.telefone, funcionarios.celular, funcionarios.email, funcionarios.cpf, funcionarios.rg, funcionarios.cargo, funcionarios.salario, funcionarios.comissao, funcionarios.carteiraTrabalho, funcionarios.serie, funcionarios.ufCt, funcionarios.dtEmissaoCt, funcionarios.pis, 
+                  funcionarios.cnh, funcionarios.emissor, funcionarios.ufCnh, funcionarios.dtExpedicao, funcionarios.dtValidade, funcionarios.dtPrimeiraCnh, funcionarios.categoria, funcionarios.observacoes, funcionarios.dtCadastro, funcionarios.dtAlteracao, funcionarios.usuario, cidades.cidade
+                    FROM        funcionarios INNER JOIN
+                  cidades ON funcionarios.codCidade = cidades.codigo  ";
 
                 SqlCommand comando = new SqlCommand(sql, conexao);
 
@@ -368,15 +377,12 @@ namespace EquipMotos.DAO
             using (SqlConnection conexao = Conecta.CreateConnection())
             {
                 SqlDataAdapter da;
-                string sql = @"SELECT C.codigo as Codigo, C.nome as Funcionario,
-                                C.cnpj as CNPJ, C.cpf as CPF, C.email as Email, C.telefone as Telefone,
-                                C.celular as Celular, C.site As Site,  C.endereco as Endereco, C.complemento as Complemento, 
-                                C.numero as Numero, C.bairro as Bairro, Cidade.cidade as Cidade, C.cep as CEP, 
-
-                           FROM funcionarios As C
-                             INNER JOIN cidades AS Cid ON C.codigoCidade = Cid.codigo 
-
-                           WHERE C.nome = @nome";
+                string sql = @"SELECT     funcionarios.codigo, funcionarios.funcionario, funcionarios.apelido, funcionarios.dtNascimento, funcionarios.sexo, funcionarios.endereco, funcionarios.numero, funcionarios.complemento, funcionarios.bairro, funcionarios.cep, funcionarios.codCidade, funcionarios.codEstado, 
+                          funcionarios.telefone, funcionarios.celular, funcionarios.email, funcionarios.cpf, funcionarios.rg, funcionarios.cargo, funcionarios.salario, funcionarios.comissao, funcionarios.carteiraTrabalho, funcionarios.serie, funcionarios.ufCt, funcionarios.dtEmissaoCt, funcionarios.pis, 
+                          funcionarios.cnh, funcionarios.emissor, funcionarios.ufCnh, funcionarios.dtExpedicao, funcionarios.dtValidade, funcionarios.dtPrimeiraCnh, funcionarios.categoria, funcionarios.observacoes, funcionarios.dtCadastro, funcionarios.dtAlteracao, funcionarios.usuario, cidades.cidade
+                            FROM        funcionarios INNER JOIN
+                          cidades ON funcionarios.codCidade = cidades.codigo   
+                            WHERE funcionarios.nome = @nome";
 
                 SqlCommand comando = new SqlCommand(sql, conexao);
                 comando.Parameters.AddWithValue("@nome", funcionario.funcionario);

@@ -1,6 +1,6 @@
 ﻿namespace EquipMotos.View
 {
-    partial class frmCadastroProdutoServico
+    partial class frmCadastroProduto
     {
         /// <summary>
         /// Required designer variable.

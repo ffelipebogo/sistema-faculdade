@@ -16,6 +16,7 @@ namespace EquipMotos.View
     public partial class frmCadastroCidade : MaterialSkin.Controls.MaterialForm
     {
         public static object estado;
+
         Cidades cid = new Cidades();
         CtrlCidades CtrlCidade = new CtrlCidades();
         public frmCadastroCidade()

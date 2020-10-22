@@ -101,19 +101,38 @@ namespace EquipMotos.DAO
                 if (cli.Length <= 4 && isNumeric)
                 {
                         int id = Convert.ToInt32(cli);
-                        sql = @"SELECT * FROM clientes WHERE codigo = @cli";
+                        sql = @"SELECT   clientes.codigo, clientes.cliente, clientes.apelido, clientes.sexo, clientes.endereco, clientes.bairro, clientes.telefone, clientes.celular, clientes.juridico, clientes.cnpj, clientes.ie, 
+                         clientes.numero, clientes.cpf, cidades.cidade, condicaoPagamento.condicao, clientes.dtNascimento, clientes.complemento, clientes.cep, clientes.codCidade, clientes.email, 
+                         clientes.contato, clientes.site, clientes.rg, clientes.codCondPagamento, clientes.observacoes, clientes.limiteCredito, clientes.dtCadastro, clientes.dtAlteracao, clientes.usuario, 
+                         clientes.estrangeiro
+                         FROM         clientes INNER JOIN
+                         condicaoPagamento ON clientes.codCondPagamento = condicaoPagamento.codigo INNER JOIN
+                         cidades ON clientes.codCidade = cidades.codigo
+                            WHERE clientes.codigo = @cli";
                 }
                 else
                 {
                     if (isNumeric)
                     {
-                        string cpf = cli;
-                        sql = @"SELECT * FROM clientes WHERE cpf like '%'+ @cli +'%'";
+                        sql = @"SELECT   clientes.codigo, clientes.cliente, clientes.apelido, clientes.sexo, clientes.endereco, clientes.bairro, clientes.telefone, clientes.celular, clientes.juridico, clientes.cnpj, clientes.ie, 
+                         clientes.numero, clientes.cpf, cidades.cidade, condicaoPagamento.condicao, clientes.dtNascimento, clientes.complemento, clientes.cep, clientes.codCidade, clientes.email, 
+                         clientes.contato, clientes.site, clientes.rg, clientes.codCondPagamento, clientes.observacoes, clientes.limiteCredito, clientes.dtCadastro, clientes.dtAlteracao, clientes.usuario, 
+                         clientes.estrangeiro
+                         FROM         clientes INNER JOIN
+                         condicaoPagamento ON clientes.codCondPagamento = condicaoPagamento.codigo INNER JOIN
+                         cidades ON clientes.codCidade = cidades.codigo
+                            WHERE clientes.cpf like '%'+ @cli +'%'";
                     }
                     else
                     {
-                        string cliente = cli;
-                        sql = @"SELECT * FROM clientes WHERE cliente like '%'+ @cli + '%' ";
+                        sql = @"SELECT   clientes.codigo, clientes.cliente, clientes.apelido, clientes.sexo, clientes.endereco, clientes.bairro, clientes.telefone, clientes.celular, clientes.juridico, clientes.cnpj, clientes.ie, 
+                         clientes.numero, clientes.cpf, cidades.cidade, condicaoPagamento.condicao, clientes.dtNascimento, clientes.complemento, clientes.cep, clientes.codCidade, clientes.email, 
+                         clientes.contato, clientes.site, clientes.rg, clientes.codCondPagamento, clientes.observacoes, clientes.limiteCredito, clientes.dtCadastro, clientes.dtAlteracao, clientes.usuario, 
+                         clientes.estrangeiro
+                         FROM         clientes INNER JOIN
+                         condicaoPagamento ON clientes.codCondPagamento = condicaoPagamento.codigo INNER JOIN
+                         cidades ON clientes.codCidade = cidades.codigo
+                            WHERE clientes.cliente like '%'+ @cli + '%' ";
 
                     }
                 }
@@ -138,7 +157,14 @@ namespace EquipMotos.DAO
              
                 if (!isNumeric)
                 {
-                    sql = @"SELECT * FROM clientes WHERE cpf = @cli and cpf = @senha";
+                    sql = @"SELECT   clientes.codigo, clientes.cliente, clientes.apelido, clientes.sexo, clientes.endereco, clientes.bairro, clientes.telefone, clientes.celular, clientes.juridico, clientes.cnpj, clientes.ie, 
+                         clientes.numero, clientes.cpf, cidades.cidade, condicaoPagamento.condicao, clientes.dtNascimento, clientes.complemento, clientes.cep, clientes.codCidade, clientes.email, 
+                         clientes.contato, clientes.site, clientes.rg, clientes.codCondPagamento, clientes.observacoes, clientes.limiteCredito, clientes.dtCadastro, clientes.dtAlteracao, clientes.usuario, 
+                         clientes.estrangeiro
+                         FROM         clientes INNER JOIN
+                         condicaoPagamento ON clientes.codCondPagamento = condicaoPagamento.codigo INNER JOIN
+                         cidades ON clientes.codCidade = cidades.codigo
+                            WHERE clientes.cpf = @cli and clientes.cpf = @senha";
                 }
                 else
                 {
@@ -344,7 +370,14 @@ namespace EquipMotos.DAO
             {
 
                 SqlDataAdapter da;
-                string sql = @"SELECT * FROM clientes WHERE codigo = @codigo";
+                string sql = @"SELECT   clientes.codigo, clientes.cliente, clientes.apelido, clientes.sexo, clientes.endereco, clientes.bairro, clientes.telefone, clientes.celular, clientes.juridico, clientes.cnpj, clientes.ie, 
+                         clientes.numero, clientes.cpf, cidades.cidade, condicaoPagamento.condicao, clientes.dtNascimento, clientes.complemento, clientes.cep, clientes.codCidade, clientes.email, 
+                         clientes.contato, clientes.site, clientes.rg, clientes.codCondPagamento, clientes.observacoes, clientes.limiteCredito, clientes.dtCadastro, clientes.dtAlteracao, clientes.usuario, 
+                         clientes.estrangeiro
+                         FROM         clientes INNER JOIN
+                         condicaoPagamento ON clientes.codCondPagamento = condicaoPagamento.codigo INNER JOIN
+                         cidades ON clientes.codCidade = cidades.codigo
+                            WHERE clientes.codigo = @codigo";
 
                 SqlCommand comando = new SqlCommand(sql, conexao);
 
@@ -406,7 +439,13 @@ namespace EquipMotos.DAO
             {
 
                 SqlDataAdapter da;
-                string sql = @"SELECT * FROM clientes";
+                string sql = @"SELECT   clientes.codigo, clientes.cliente, clientes.apelido, clientes.sexo, clientes.endereco, clientes.bairro, clientes.telefone, clientes.celular, clientes.juridico, clientes.cnpj, clientes.ie, 
+                         clientes.numero, clientes.cpf, cidades.cidade, condicaoPagamento.condicao, clientes.dtNascimento, clientes.complemento, clientes.cep, clientes.codCidade, clientes.email, 
+                         clientes.contato, clientes.site, clientes.rg, clientes.codCondPagamento, clientes.observacoes, clientes.limiteCredito, clientes.dtCadastro, clientes.dtAlteracao, clientes.usuario, 
+                         clientes.estrangeiro
+                         FROM         clientes INNER JOIN
+                         condicaoPagamento ON clientes.codCondPagamento = condicaoPagamento.codigo INNER JOIN
+                         cidades ON clientes.codCidade = cidades.codigo";
 
                 SqlCommand comando = new SqlCommand(sql, conexao);
 
@@ -428,16 +467,14 @@ namespace EquipMotos.DAO
             {
                 Clientes cliente = obj as Clientes;
                 SqlDataAdapter da;
-                string sql = @"SELECT C.codido as Codigo, C.nome as Cliente,
-                                    C.cnpj as CNPJ, C.cpf as CPF, C.email as Email, C.telefone as Telefone,
-                                    C.celular as Celular, C.site As Site,  C.endereco as Endereco, C.complemento as Complemento, 
-                                    C.numero as Numero, C.bairro as Bairro, Cidade.cidade as Cidade, E.uf as UF, C.cep as CEP, 
-
-                               FROM clientes As C
-                                 INNER JOIN estados AS E ON C.codigoUf = E.codido 
-                                 INNER JOIN cidades AS Cid ON C.codCidade = Cid.codido 
-
-                               WHERE C.nome = @nome";
+                string sql = @"SELECT   clientes.codigo, clientes.cliente, clientes.apelido, clientes.sexo, clientes.endereco, clientes.bairro, clientes.telefone, clientes.celular, clientes.juridico, clientes.cnpj, clientes.ie, 
+                         clientes.numero, clientes.cpf, cidades.cidade, condicaoPagamento.condicao, clientes.dtNascimento, clientes.complemento, clientes.cep, clientes.codCidade, clientes.email, 
+                         clientes.contato, clientes.site, clientes.rg, clientes.codCondPagamento, clientes.observacoes, clientes.limiteCredito, clientes.dtCadastro, clientes.dtAlteracao, clientes.usuario, 
+                         clientes.estrangeiro
+                         FROM         clientes INNER JOIN
+                         condicaoPagamento ON clientes.codCondPagamento = condicaoPagamento.codigo INNER JOIN
+                         cidades ON clientes.codCidade = cidades.codigo
+                               WHERE clientes.nome = @nome";
 
                     SqlCommand comando = new SqlCommand(sql, conexao);
                 comando.Parameters.AddWithValue("@nome", cliente.cliente);

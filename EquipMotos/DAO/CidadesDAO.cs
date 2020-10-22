@@ -77,7 +77,7 @@ namespace EquipMotos.DAO
             using (SqlConnection conexao = Conecta.CreateConnection())
             {
                 SqlDataAdapter da;
-                string sql = @"SELECT * FROM cidades";
+                string sql = @"SELECT a.* , b.estado  FROM cidades as a INNER JOIN estados as b on b.codigo = a.codEstado";
 
                 SqlCommand comando = new SqlCommand(sql, conexao);
 
