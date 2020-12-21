@@ -36,10 +36,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.contaPagarBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.sistemaMoto2DataSetContasPagar = new EquipMotos.SistemaMoto2DataSetContasPagar();
-            this.contaPagarTableAdapter = new EquipMotos.SistemaMoto2DataSetContasPagarTableAdapters.contaPagarTableAdapter();
-            this.gvContaPagar = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.txtPesquisar = new System.Windows.Forms.TextBox();
             this.btnBuscarContaPagar = new System.Windows.Forms.PictureBox();
@@ -47,41 +43,133 @@
             this.btnAlterar = new MaterialSkin.Controls.MaterialRaisedButton();
             this.btnVoltar = new MaterialSkin.Controls.MaterialRaisedButton();
             this.btnExcluir = new MaterialSkin.Controls.MaterialRaisedButton();
-            this.dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn18 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.formaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn17 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn16 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewCheckBoxColumn2 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.usuarioDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dtAlteracaoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dtCadastroDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.observacoesDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.codFormaPagamentoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.codFornecedorDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.contaPagarBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sistemaMoto2DataSetContasPagar)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gvContaPagar)).BeginInit();
+            this.gvContaPagar = new System.Windows.Forms.DataGridView();
+            this.contaPagarBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.sistemaMoto2DataSetContaPagar = new EquipMotos.SistemaMoto2DataSetContaPagar();
+            this.contaPagarTableAdapter = new EquipMotos.SistemaMoto2DataSetContaPagarTableAdapters.contaPagarTableAdapter();
+            this.dataGridViewTextBoxColumn19 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn20 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn21 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fornecedor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn23 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn27 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.forma = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn26 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewCheckBoxColumn3 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.canceladaDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.dataGridViewTextBoxColumn24 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn25 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn22 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn28 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn29 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn30 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn31 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.btnBuscarContaPagar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gvContaPagar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.contaPagarBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sistemaMoto2DataSetContaPagar)).BeginInit();
             this.SuspendLayout();
             // 
-            // contaPagarBindingSource
+            // label1
             // 
-            this.contaPagarBindingSource.DataMember = "contaPagar";
-            this.contaPagarBindingSource.DataSource = this.sistemaMoto2DataSetContasPagar;
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(7, 66);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(193, 20);
+            this.label1.TabIndex = 268;
+            this.label1.Text = "Pesquisar Contas à Pagar";
             // 
-            // sistemaMoto2DataSetContasPagar
+            // txtPesquisar
             // 
-            this.sistemaMoto2DataSetContasPagar.DataSetName = "SistemaMoto2DataSetContasPagar";
-            this.sistemaMoto2DataSetContasPagar.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            this.txtPesquisar.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtPesquisar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPesquisar.Location = new System.Drawing.Point(10, 88);
+            this.txtPesquisar.Margin = new System.Windows.Forms.Padding(2);
+            this.txtPesquisar.Name = "txtPesquisar";
+            this.txtPesquisar.Size = new System.Drawing.Size(301, 23);
+            this.txtPesquisar.TabIndex = 269;
             // 
-            // contaPagarTableAdapter
+            // btnBuscarContaPagar
             // 
-            this.contaPagarTableAdapter.ClearBeforeFill = true;
+            this.btnBuscarContaPagar.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnBuscarContaPagar.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.btnBuscarContaPagar.ErrorImage = global::EquipMotos.Properties.Resources._1398754683_xmag;
+            this.btnBuscarContaPagar.Image = global::EquipMotos.Properties.Resources._1398754683_xmag;
+            this.btnBuscarContaPagar.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.btnBuscarContaPagar.InitialImage = global::EquipMotos.Properties.Resources._1398754683_xmag;
+            this.btnBuscarContaPagar.Location = new System.Drawing.Point(315, 78);
+            this.btnBuscarContaPagar.Name = "btnBuscarContaPagar";
+            this.btnBuscarContaPagar.Size = new System.Drawing.Size(38, 41);
+            this.btnBuscarContaPagar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.btnBuscarContaPagar.TabIndex = 270;
+            this.btnBuscarContaPagar.TabStop = false;
+            this.btnBuscarContaPagar.Click += new System.EventHandler(this.btnBuscarContaPagar_Click);
+            // 
+            // btnNovo
+            // 
+            this.btnNovo.Depth = 0;
+            this.btnNovo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNovo.Image = global::EquipMotos.Properties.Resources._1398756346_1;
+            this.btnNovo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnNovo.Location = new System.Drawing.Point(349, 491);
+            this.btnNovo.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnNovo.Name = "btnNovo";
+            this.btnNovo.Primary = true;
+            this.btnNovo.Size = new System.Drawing.Size(75, 24);
+            this.btnNovo.TabIndex = 271;
+            this.btnNovo.Text = "NOVO";
+            this.btnNovo.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnNovo.UseVisualStyleBackColor = true;
+            this.btnNovo.Click += new System.EventHandler(this.BtnNovo_Click);
+            // 
+            // btnAlterar
+            // 
+            this.btnAlterar.Depth = 0;
+            this.btnAlterar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAlterar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnAlterar.Location = new System.Drawing.Point(430, 491);
+            this.btnAlterar.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnAlterar.Name = "btnAlterar";
+            this.btnAlterar.Primary = true;
+            this.btnAlterar.Size = new System.Drawing.Size(86, 24);
+            this.btnAlterar.TabIndex = 272;
+            this.btnAlterar.Text = "VISUALIZAR";
+            this.btnAlterar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnAlterar.UseVisualStyleBackColor = true;
+            this.btnAlterar.Click += new System.EventHandler(this.BtnAlterar_Click);
+            // 
+            // btnVoltar
+            // 
+            this.btnVoltar.Depth = 0;
+            this.btnVoltar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnVoltar.Location = new System.Drawing.Point(638, 491);
+            this.btnVoltar.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnVoltar.Name = "btnVoltar";
+            this.btnVoltar.Primary = true;
+            this.btnVoltar.Size = new System.Drawing.Size(86, 24);
+            this.btnVoltar.TabIndex = 273;
+            this.btnVoltar.Text = "VOLTAR";
+            this.btnVoltar.UseVisualStyleBackColor = true;
+            this.btnVoltar.Click += new System.EventHandler(this.BtnVoltar_Click);
+            // 
+            // btnExcluir
+            // 
+            this.btnExcluir.Depth = 0;
+            this.btnExcluir.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExcluir.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnExcluir.Location = new System.Drawing.Point(522, 491);
+            this.btnExcluir.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnExcluir.Name = "btnExcluir";
+            this.btnExcluir.Primary = true;
+            this.btnExcluir.Size = new System.Drawing.Size(75, 24);
+            this.btnExcluir.TabIndex = 274;
+            this.btnExcluir.Text = "PAGAR";
+            this.btnExcluir.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnExcluir.UseVisualStyleBackColor = true;
+            this.btnExcluir.Click += new System.EventHandler(this.BtnExcluir_Click);
             // 
             // gvContaPagar
             // 
@@ -102,282 +190,198 @@
             this.gvContaPagar.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.gvContaPagar.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gvContaPagar.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn11,
-            this.dataGridViewTextBoxColumn12,
-            this.dataGridViewTextBoxColumn13,
-            this.dataGridViewTextBoxColumn14,
-            this.dataGridViewTextBoxColumn18,
-            this.formaDataGridViewTextBoxColumn,
-            this.dataGridViewTextBoxColumn17,
-            this.dataGridViewTextBoxColumn15,
-            this.dataGridViewTextBoxColumn16,
-            this.dataGridViewCheckBoxColumn2,
-            this.usuarioDataGridViewTextBoxColumn,
-            this.dtAlteracaoDataGridViewTextBoxColumn,
-            this.dtCadastroDataGridViewTextBoxColumn,
-            this.observacoesDataGridViewTextBoxColumn,
-            this.codFormaPagamentoDataGridViewTextBoxColumn,
-            this.codFornecedorDataGridViewTextBoxColumn});
+            this.dataGridViewTextBoxColumn19,
+            this.dataGridViewTextBoxColumn20,
+            this.dataGridViewTextBoxColumn21,
+            this.fornecedor,
+            this.dataGridViewTextBoxColumn23,
+            this.dataGridViewTextBoxColumn27,
+            this.forma,
+            this.dataGridViewTextBoxColumn26,
+            this.dataGridViewCheckBoxColumn3,
+            this.canceladaDataGridViewCheckBoxColumn,
+            this.dataGridViewTextBoxColumn24,
+            this.dataGridViewTextBoxColumn25,
+            this.dataGridViewTextBoxColumn22,
+            this.dataGridViewTextBoxColumn28,
+            this.dataGridViewTextBoxColumn29,
+            this.dataGridViewTextBoxColumn30,
+            this.dataGridViewTextBoxColumn31});
             this.gvContaPagar.DataSource = this.contaPagarBindingSource;
             this.gvContaPagar.EnableHeadersVisualStyles = false;
-            this.gvContaPagar.Location = new System.Drawing.Point(13, 177);
-            this.gvContaPagar.Margin = new System.Windows.Forms.Padding(4);
+            this.gvContaPagar.Location = new System.Drawing.Point(0, 135);
             this.gvContaPagar.Name = "gvContaPagar";
             this.gvContaPagar.ReadOnly = true;
             this.gvContaPagar.RowHeadersWidth = 51;
-            this.gvContaPagar.Size = new System.Drawing.Size(1000, 450);
-            this.gvContaPagar.TabIndex = 1;
+            this.gvContaPagar.Size = new System.Drawing.Size(792, 327);
+            this.gvContaPagar.TabIndex = 276;
             // 
-            // label1
+            // contaPagarBindingSource
             // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(24, 88);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(193, 20);
-            this.label1.TabIndex = 268;
-            this.label1.Text = "Pesquisar Contas à Pagar";
+            this.contaPagarBindingSource.DataMember = "contaPagar";
+            this.contaPagarBindingSource.DataSource = this.sistemaMoto2DataSetContaPagar;
             // 
-            // txtPesquisar
+            // sistemaMoto2DataSetContaPagar
             // 
-            this.txtPesquisar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPesquisar.Location = new System.Drawing.Point(28, 116);
-            this.txtPesquisar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtPesquisar.Name = "txtPesquisar";
-            this.txtPesquisar.Size = new System.Drawing.Size(400, 23);
-            this.txtPesquisar.TabIndex = 269;
+            this.sistemaMoto2DataSetContaPagar.DataSetName = "SistemaMoto2DataSetContaPagar";
+            this.sistemaMoto2DataSetContaPagar.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
-            // btnBuscarContaPagar
+            // contaPagarTableAdapter
             // 
-            this.btnBuscarContaPagar.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnBuscarContaPagar.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.btnBuscarContaPagar.ErrorImage = global::EquipMotos.Properties.Resources._1398754683_xmag;
-            this.btnBuscarContaPagar.Image = global::EquipMotos.Properties.Resources._1398754683_xmag;
-            this.btnBuscarContaPagar.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btnBuscarContaPagar.InitialImage = global::EquipMotos.Properties.Resources._1398754683_xmag;
-            this.btnBuscarContaPagar.Location = new System.Drawing.Point(435, 104);
-            this.btnBuscarContaPagar.Margin = new System.Windows.Forms.Padding(4);
-            this.btnBuscarContaPagar.Name = "btnBuscarContaPagar";
-            this.btnBuscarContaPagar.Size = new System.Drawing.Size(50, 50);
-            this.btnBuscarContaPagar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.btnBuscarContaPagar.TabIndex = 270;
-            this.btnBuscarContaPagar.TabStop = false;
-            this.btnBuscarContaPagar.Click += new System.EventHandler(this.btnBuscarContaPagar_Click);
+            this.contaPagarTableAdapter.ClearBeforeFill = true;
             // 
-            // btnNovo
+            // dataGridViewTextBoxColumn19
             // 
-            this.btnNovo.Depth = 0;
-            this.btnNovo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNovo.Image = global::EquipMotos.Properties.Resources._1398756346_1;
-            this.btnNovo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnNovo.Location = new System.Drawing.Point(465, 670);
-            this.btnNovo.Margin = new System.Windows.Forms.Padding(4);
-            this.btnNovo.MouseState = MaterialSkin.MouseState.HOVER;
-            this.btnNovo.Name = "btnNovo";
-            this.btnNovo.Primary = true;
-            this.btnNovo.Size = new System.Drawing.Size(100, 30);
-            this.btnNovo.TabIndex = 271;
-            this.btnNovo.Text = "NOVO";
-            this.btnNovo.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnNovo.UseVisualStyleBackColor = true;
-            this.btnNovo.Click += new System.EventHandler(this.BtnNovo_Click);
-            // 
-            // btnAlterar
-            // 
-            this.btnAlterar.Depth = 0;
-            this.btnAlterar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAlterar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAlterar.Location = new System.Drawing.Point(573, 670);
-            this.btnAlterar.Margin = new System.Windows.Forms.Padding(4);
-            this.btnAlterar.MouseState = MaterialSkin.MouseState.HOVER;
-            this.btnAlterar.Name = "btnAlterar";
-            this.btnAlterar.Primary = true;
-            this.btnAlterar.Size = new System.Drawing.Size(115, 30);
-            this.btnAlterar.TabIndex = 272;
-            this.btnAlterar.Text = "VISUALIZAR";
-            this.btnAlterar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnAlterar.UseVisualStyleBackColor = true;
-            this.btnAlterar.Click += new System.EventHandler(this.BtnAlterar_Click);
-            // 
-            // btnVoltar
-            // 
-            this.btnVoltar.Depth = 0;
-            this.btnVoltar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnVoltar.Location = new System.Drawing.Point(850, 670);
-            this.btnVoltar.Margin = new System.Windows.Forms.Padding(4);
-            this.btnVoltar.MouseState = MaterialSkin.MouseState.HOVER;
-            this.btnVoltar.Name = "btnVoltar";
-            this.btnVoltar.Primary = true;
-            this.btnVoltar.Size = new System.Drawing.Size(115, 30);
-            this.btnVoltar.TabIndex = 273;
-            this.btnVoltar.Text = "VOLTAR";
-            this.btnVoltar.UseVisualStyleBackColor = true;
-            this.btnVoltar.Click += new System.EventHandler(this.BtnVoltar_Click);
-            // 
-            // btnExcluir
-            // 
-            this.btnExcluir.Depth = 0;
-            this.btnExcluir.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExcluir.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnExcluir.Location = new System.Drawing.Point(696, 670);
-            this.btnExcluir.Margin = new System.Windows.Forms.Padding(4);
-            this.btnExcluir.MouseState = MaterialSkin.MouseState.HOVER;
-            this.btnExcluir.Name = "btnExcluir";
-            this.btnExcluir.Primary = true;
-            this.btnExcluir.Size = new System.Drawing.Size(100, 30);
-            this.btnExcluir.TabIndex = 274;
-            this.btnExcluir.Text = "PAGAR";
-            this.btnExcluir.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnExcluir.UseVisualStyleBackColor = true;
-            this.btnExcluir.Click += new System.EventHandler(this.BtnExcluir_Click);
-            // 
-            // dataGridViewTextBoxColumn11
-            // 
-            this.dataGridViewTextBoxColumn11.DataPropertyName = "modelo";
+            this.dataGridViewTextBoxColumn19.DataPropertyName = "modelo";
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.dataGridViewTextBoxColumn11.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dataGridViewTextBoxColumn11.HeaderText = "Modelo";
-            this.dataGridViewTextBoxColumn11.Name = "dataGridViewTextBoxColumn11";
-            this.dataGridViewTextBoxColumn11.ReadOnly = true;
-            this.dataGridViewTextBoxColumn11.Width = 50;
+            this.dataGridViewTextBoxColumn19.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dataGridViewTextBoxColumn19.HeaderText = "Modelo";
+            this.dataGridViewTextBoxColumn19.Name = "dataGridViewTextBoxColumn19";
+            this.dataGridViewTextBoxColumn19.ReadOnly = true;
+            this.dataGridViewTextBoxColumn19.Width = 60;
             // 
-            // dataGridViewTextBoxColumn12
+            // dataGridViewTextBoxColumn20
             // 
-            this.dataGridViewTextBoxColumn12.DataPropertyName = "serie";
+            this.dataGridViewTextBoxColumn20.DataPropertyName = "serie";
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.dataGridViewTextBoxColumn12.DefaultCellStyle = dataGridViewCellStyle3;
-            this.dataGridViewTextBoxColumn12.HeaderText = "Serie";
-            this.dataGridViewTextBoxColumn12.Name = "dataGridViewTextBoxColumn12";
-            this.dataGridViewTextBoxColumn12.ReadOnly = true;
-            this.dataGridViewTextBoxColumn12.Width = 50;
+            this.dataGridViewTextBoxColumn20.DefaultCellStyle = dataGridViewCellStyle3;
+            this.dataGridViewTextBoxColumn20.HeaderText = "Serie";
+            this.dataGridViewTextBoxColumn20.Name = "dataGridViewTextBoxColumn20";
+            this.dataGridViewTextBoxColumn20.ReadOnly = true;
+            this.dataGridViewTextBoxColumn20.Width = 60;
             // 
-            // dataGridViewTextBoxColumn13
+            // dataGridViewTextBoxColumn21
             // 
-            this.dataGridViewTextBoxColumn13.DataPropertyName = "nrNota";
+            this.dataGridViewTextBoxColumn21.DataPropertyName = "nrNota";
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.dataGridViewTextBoxColumn13.DefaultCellStyle = dataGridViewCellStyle4;
-            this.dataGridViewTextBoxColumn13.HeaderText = "Nota";
-            this.dataGridViewTextBoxColumn13.Name = "dataGridViewTextBoxColumn13";
-            this.dataGridViewTextBoxColumn13.ReadOnly = true;
-            this.dataGridViewTextBoxColumn13.Width = 50;
+            this.dataGridViewTextBoxColumn21.DefaultCellStyle = dataGridViewCellStyle4;
+            this.dataGridViewTextBoxColumn21.HeaderText = "NrNota";
+            this.dataGridViewTextBoxColumn21.Name = "dataGridViewTextBoxColumn21";
+            this.dataGridViewTextBoxColumn21.ReadOnly = true;
+            this.dataGridViewTextBoxColumn21.Width = 60;
             // 
-            // dataGridViewTextBoxColumn14
+            // fornecedor
             // 
-            this.dataGridViewTextBoxColumn14.DataPropertyName = "nrParcela";
+            this.fornecedor.DataPropertyName = "fornecedor";
+            this.fornecedor.HeaderText = "Fornecedor";
+            this.fornecedor.Name = "fornecedor";
+            this.fornecedor.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn23
+            // 
+            this.dataGridViewTextBoxColumn23.DataPropertyName = "nrParcela";
             dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.dataGridViewTextBoxColumn14.DefaultCellStyle = dataGridViewCellStyle5;
-            this.dataGridViewTextBoxColumn14.HeaderText = "Parcela";
-            this.dataGridViewTextBoxColumn14.Name = "dataGridViewTextBoxColumn14";
-            this.dataGridViewTextBoxColumn14.ReadOnly = true;
-            this.dataGridViewTextBoxColumn14.Width = 50;
+            this.dataGridViewTextBoxColumn23.DefaultCellStyle = dataGridViewCellStyle5;
+            this.dataGridViewTextBoxColumn23.HeaderText = "Parcela";
+            this.dataGridViewTextBoxColumn23.Name = "dataGridViewTextBoxColumn23";
+            this.dataGridViewTextBoxColumn23.ReadOnly = true;
+            this.dataGridViewTextBoxColumn23.Width = 60;
             // 
-            // dataGridViewTextBoxColumn18
+            // dataGridViewTextBoxColumn27
             // 
-            this.dataGridViewTextBoxColumn18.DataPropertyName = "fornecedor";
-            this.dataGridViewTextBoxColumn18.HeaderText = "Fornecedor";
-            this.dataGridViewTextBoxColumn18.Name = "dataGridViewTextBoxColumn18";
-            this.dataGridViewTextBoxColumn18.ReadOnly = true;
-            this.dataGridViewTextBoxColumn18.Width = 130;
-            // 
-            // formaDataGridViewTextBoxColumn
-            // 
-            this.formaDataGridViewTextBoxColumn.DataPropertyName = "forma";
-            this.formaDataGridViewTextBoxColumn.HeaderText = "Forma";
-            this.formaDataGridViewTextBoxColumn.Name = "formaDataGridViewTextBoxColumn";
-            this.formaDataGridViewTextBoxColumn.ReadOnly = true;
-            this.formaDataGridViewTextBoxColumn.Width = 130;
-            // 
-            // dataGridViewTextBoxColumn17
-            // 
-            this.dataGridViewTextBoxColumn17.DataPropertyName = "valorParcela";
+            this.dataGridViewTextBoxColumn27.DataPropertyName = "valorParcela";
             dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.dataGridViewTextBoxColumn17.DefaultCellStyle = dataGridViewCellStyle6;
-            this.dataGridViewTextBoxColumn17.HeaderText = "Vlr_Parcela";
-            this.dataGridViewTextBoxColumn17.Name = "dataGridViewTextBoxColumn17";
-            this.dataGridViewTextBoxColumn17.ReadOnly = true;
-            this.dataGridViewTextBoxColumn17.Width = 70;
+            this.dataGridViewTextBoxColumn27.DefaultCellStyle = dataGridViewCellStyle6;
+            this.dataGridViewTextBoxColumn27.HeaderText = "Vlr_Parcela";
+            this.dataGridViewTextBoxColumn27.Name = "dataGridViewTextBoxColumn27";
+            this.dataGridViewTextBoxColumn27.ReadOnly = true;
+            this.dataGridViewTextBoxColumn27.Width = 60;
             // 
-            // dataGridViewTextBoxColumn15
+            // forma
             // 
-            this.dataGridViewTextBoxColumn15.DataPropertyName = "dtEmissao";
-            this.dataGridViewTextBoxColumn15.HeaderText = "Dt_Emissão";
-            this.dataGridViewTextBoxColumn15.Name = "dataGridViewTextBoxColumn15";
-            this.dataGridViewTextBoxColumn15.ReadOnly = true;
-            this.dataGridViewTextBoxColumn15.Width = 70;
+            this.forma.DataPropertyName = "forma";
+            this.forma.HeaderText = "Forma_Pag";
+            this.forma.Name = "forma";
+            this.forma.ReadOnly = true;
             // 
-            // dataGridViewTextBoxColumn16
+            // dataGridViewTextBoxColumn26
             // 
-            this.dataGridViewTextBoxColumn16.DataPropertyName = "dtVencimento";
+            this.dataGridViewTextBoxColumn26.DataPropertyName = "dtVencimento";
             dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.dataGridViewTextBoxColumn16.DefaultCellStyle = dataGridViewCellStyle7;
-            this.dataGridViewTextBoxColumn16.HeaderText = "Dt_Vencimento";
-            this.dataGridViewTextBoxColumn16.Name = "dataGridViewTextBoxColumn16";
-            this.dataGridViewTextBoxColumn16.ReadOnly = true;
-            this.dataGridViewTextBoxColumn16.Width = 80;
+            this.dataGridViewTextBoxColumn26.DefaultCellStyle = dataGridViewCellStyle7;
+            this.dataGridViewTextBoxColumn26.HeaderText = "Dt_Vencimento";
+            this.dataGridViewTextBoxColumn26.Name = "dataGridViewTextBoxColumn26";
+            this.dataGridViewTextBoxColumn26.ReadOnly = true;
             // 
-            // dataGridViewCheckBoxColumn2
+            // dataGridViewCheckBoxColumn3
             // 
-            this.dataGridViewCheckBoxColumn2.DataPropertyName = "pago";
-            this.dataGridViewCheckBoxColumn2.HeaderText = "Pago";
-            this.dataGridViewCheckBoxColumn2.Name = "dataGridViewCheckBoxColumn2";
-            this.dataGridViewCheckBoxColumn2.ReadOnly = true;
-            this.dataGridViewCheckBoxColumn2.Width = 50;
+            this.dataGridViewCheckBoxColumn3.DataPropertyName = "pago";
+            this.dataGridViewCheckBoxColumn3.HeaderText = "Pago";
+            this.dataGridViewCheckBoxColumn3.Name = "dataGridViewCheckBoxColumn3";
+            this.dataGridViewCheckBoxColumn3.ReadOnly = true;
+            this.dataGridViewCheckBoxColumn3.Width = 60;
             // 
-            // usuarioDataGridViewTextBoxColumn
+            // canceladaDataGridViewCheckBoxColumn
             // 
-            this.usuarioDataGridViewTextBoxColumn.DataPropertyName = "usuario";
-            this.usuarioDataGridViewTextBoxColumn.HeaderText = "usuario";
-            this.usuarioDataGridViewTextBoxColumn.Name = "usuarioDataGridViewTextBoxColumn";
-            this.usuarioDataGridViewTextBoxColumn.ReadOnly = true;
-            this.usuarioDataGridViewTextBoxColumn.Visible = false;
+            this.canceladaDataGridViewCheckBoxColumn.DataPropertyName = "cancelada";
+            this.canceladaDataGridViewCheckBoxColumn.HeaderText = "Cancelada";
+            this.canceladaDataGridViewCheckBoxColumn.Name = "canceladaDataGridViewCheckBoxColumn";
+            this.canceladaDataGridViewCheckBoxColumn.ReadOnly = true;
+            this.canceladaDataGridViewCheckBoxColumn.Width = 60;
             // 
-            // dtAlteracaoDataGridViewTextBoxColumn
+            // dataGridViewTextBoxColumn24
             // 
-            this.dtAlteracaoDataGridViewTextBoxColumn.DataPropertyName = "dtAlteracao";
-            this.dtAlteracaoDataGridViewTextBoxColumn.HeaderText = "dtAlteracao";
-            this.dtAlteracaoDataGridViewTextBoxColumn.Name = "dtAlteracaoDataGridViewTextBoxColumn";
-            this.dtAlteracaoDataGridViewTextBoxColumn.ReadOnly = true;
-            this.dtAlteracaoDataGridViewTextBoxColumn.Visible = false;
+            this.dataGridViewTextBoxColumn24.DataPropertyName = "codFormaPagamento";
+            this.dataGridViewTextBoxColumn24.HeaderText = "codFormaPagamento";
+            this.dataGridViewTextBoxColumn24.Name = "dataGridViewTextBoxColumn24";
+            this.dataGridViewTextBoxColumn24.ReadOnly = true;
+            this.dataGridViewTextBoxColumn24.Visible = false;
             // 
-            // dtCadastroDataGridViewTextBoxColumn
+            // dataGridViewTextBoxColumn25
             // 
-            this.dtCadastroDataGridViewTextBoxColumn.DataPropertyName = "dtCadastro";
-            this.dtCadastroDataGridViewTextBoxColumn.HeaderText = "dtCadastro";
-            this.dtCadastroDataGridViewTextBoxColumn.Name = "dtCadastroDataGridViewTextBoxColumn";
-            this.dtCadastroDataGridViewTextBoxColumn.ReadOnly = true;
-            this.dtCadastroDataGridViewTextBoxColumn.Visible = false;
+            this.dataGridViewTextBoxColumn25.DataPropertyName = "dtEmissao";
+            this.dataGridViewTextBoxColumn25.HeaderText = "dtEmissao";
+            this.dataGridViewTextBoxColumn25.Name = "dataGridViewTextBoxColumn25";
+            this.dataGridViewTextBoxColumn25.ReadOnly = true;
+            this.dataGridViewTextBoxColumn25.Visible = false;
             // 
-            // observacoesDataGridViewTextBoxColumn
+            // dataGridViewTextBoxColumn22
             // 
-            this.observacoesDataGridViewTextBoxColumn.DataPropertyName = "observacoes";
-            this.observacoesDataGridViewTextBoxColumn.HeaderText = "observacoes";
-            this.observacoesDataGridViewTextBoxColumn.Name = "observacoesDataGridViewTextBoxColumn";
-            this.observacoesDataGridViewTextBoxColumn.ReadOnly = true;
-            this.observacoesDataGridViewTextBoxColumn.Visible = false;
+            this.dataGridViewTextBoxColumn22.DataPropertyName = "codFornecedor";
+            this.dataGridViewTextBoxColumn22.HeaderText = "codFornecedor";
+            this.dataGridViewTextBoxColumn22.Name = "dataGridViewTextBoxColumn22";
+            this.dataGridViewTextBoxColumn22.ReadOnly = true;
+            this.dataGridViewTextBoxColumn22.Visible = false;
             // 
-            // codFormaPagamentoDataGridViewTextBoxColumn
+            // dataGridViewTextBoxColumn28
             // 
-            this.codFormaPagamentoDataGridViewTextBoxColumn.DataPropertyName = "codFormaPagamento";
-            this.codFormaPagamentoDataGridViewTextBoxColumn.HeaderText = "codFormaPagamento";
-            this.codFormaPagamentoDataGridViewTextBoxColumn.Name = "codFormaPagamentoDataGridViewTextBoxColumn";
-            this.codFormaPagamentoDataGridViewTextBoxColumn.ReadOnly = true;
-            this.codFormaPagamentoDataGridViewTextBoxColumn.Visible = false;
+            this.dataGridViewTextBoxColumn28.DataPropertyName = "observacoes";
+            this.dataGridViewTextBoxColumn28.HeaderText = "observacoes";
+            this.dataGridViewTextBoxColumn28.Name = "dataGridViewTextBoxColumn28";
+            this.dataGridViewTextBoxColumn28.ReadOnly = true;
+            this.dataGridViewTextBoxColumn28.Visible = false;
             // 
-            // codFornecedorDataGridViewTextBoxColumn
+            // dataGridViewTextBoxColumn29
             // 
-            this.codFornecedorDataGridViewTextBoxColumn.DataPropertyName = "codFornecedor";
-            this.codFornecedorDataGridViewTextBoxColumn.HeaderText = "codFornecedor";
-            this.codFornecedorDataGridViewTextBoxColumn.Name = "codFornecedorDataGridViewTextBoxColumn";
-            this.codFornecedorDataGridViewTextBoxColumn.ReadOnly = true;
-            this.codFornecedorDataGridViewTextBoxColumn.Visible = false;
+            this.dataGridViewTextBoxColumn29.DataPropertyName = "dtCadastro";
+            this.dataGridViewTextBoxColumn29.HeaderText = "dtCadastro";
+            this.dataGridViewTextBoxColumn29.Name = "dataGridViewTextBoxColumn29";
+            this.dataGridViewTextBoxColumn29.ReadOnly = true;
+            this.dataGridViewTextBoxColumn29.Visible = false;
+            // 
+            // dataGridViewTextBoxColumn30
+            // 
+            this.dataGridViewTextBoxColumn30.DataPropertyName = "dtAlteracao";
+            this.dataGridViewTextBoxColumn30.HeaderText = "dtAlteracao";
+            this.dataGridViewTextBoxColumn30.Name = "dataGridViewTextBoxColumn30";
+            this.dataGridViewTextBoxColumn30.ReadOnly = true;
+            this.dataGridViewTextBoxColumn30.Visible = false;
+            // 
+            // dataGridViewTextBoxColumn31
+            // 
+            this.dataGridViewTextBoxColumn31.DataPropertyName = "usuario";
+            this.dataGridViewTextBoxColumn31.HeaderText = "usuario";
+            this.dataGridViewTextBoxColumn31.Name = "dataGridViewTextBoxColumn31";
+            this.dataGridViewTextBoxColumn31.ReadOnly = true;
+            this.dataGridViewTextBoxColumn31.Visible = false;
             // 
             // frmConsultaContaPagar
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1030, 730);
+            this.ClientSize = new System.Drawing.Size(793, 526);
             this.ControlBox = false;
+            this.Controls.Add(this.gvContaPagar);
             this.Controls.Add(this.btnExcluir);
             this.Controls.Add(this.btnVoltar);
             this.Controls.Add(this.btnAlterar);
@@ -385,16 +389,15 @@
             this.Controls.Add(this.btnBuscarContaPagar);
             this.Controls.Add(this.txtPesquisar);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.gvContaPagar);
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "frmConsultaContaPagar";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Consultar Contas à Pagar";
             this.Load += new System.EventHandler(this.FrmConsultaContaPagar_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.contaPagarBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sistemaMoto2DataSetContasPagar)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gvContaPagar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnBuscarContaPagar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gvContaPagar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.contaPagarBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sistemaMoto2DataSetContaPagar)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -408,10 +411,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn nrParcelaDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn valorParcelaDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn dtVencimentoDataGridViewTextBoxColumn;
-        private SistemaMoto2DataSetContasPagar sistemaMoto2DataSetContasPagar;
-        private System.Windows.Forms.BindingSource contaPagarBindingSource;
-        private SistemaMoto2DataSetContasPagarTableAdapters.contaPagarTableAdapter contaPagarTableAdapter;
-        private System.Windows.Forms.DataGridView gvContaPagar;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtPesquisar;
         private System.Windows.Forms.PictureBox btnBuscarContaPagar;
@@ -437,21 +436,42 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
         private System.Windows.Forms.DataGridViewCheckBoxColumn dataGridViewCheckBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn codFornecedorDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn codFormaPagamentoDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn observacoesDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dtCadastroDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dtAlteracaoDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn usuarioDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn11;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn12;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn13;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn14;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn18;
-        private System.Windows.Forms.DataGridViewTextBoxColumn formaDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn17;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn15;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn16;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn17;
         private System.Windows.Forms.DataGridViewCheckBoxColumn dataGridViewCheckBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn usuarioDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dtAlteracaoDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dtCadastroDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn observacoesDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn codFormaPagamentoDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn codFornecedorDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn18;
+        private System.Windows.Forms.DataGridViewTextBoxColumn formaDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridView gvContaPagar;
+        private SistemaMoto2DataSetContaPagar sistemaMoto2DataSetContaPagar;
+        private System.Windows.Forms.BindingSource contaPagarBindingSource;
+        private SistemaMoto2DataSetContaPagarTableAdapters.contaPagarTableAdapter contaPagarTableAdapter;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn19;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn20;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn21;
+        private System.Windows.Forms.DataGridViewTextBoxColumn fornecedor;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn23;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn27;
+        private System.Windows.Forms.DataGridViewTextBoxColumn forma;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn26;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn dataGridViewCheckBoxColumn3;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn canceladaDataGridViewCheckBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn24;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn25;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn22;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn28;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn29;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn30;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn31;
     }
 }

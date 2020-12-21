@@ -29,38 +29,41 @@ namespace EquipMotos.Codigo.View
             try
             {
                 frmCadastroCliente frmCadCliente = new frmCadastroCliente(usuario);
-                var cliRow = gvClientes.CurrentRow.DataBoundItem as DataRowView;
-
-                var codigo  = cliRow["codigo"];
-
-                frmCadCliente.Carregar(codigo);
-                if (frmCadCliente.ShowDialog() == DialogResult.OK)
+                if (gvClientes.CurrentRow != null)
                 {
-                    gvClientes.DataSource = CtrlCliente.ListarTodos();
-                }
+                    var cliRow = gvClientes.CurrentRow.DataBoundItem as DataRowView;
 
+                    var codigo = cliRow["codigo"];
+
+                    frmCadCliente.Carregar(codigo);
+                    if (frmCadCliente.ShowDialog() == DialogResult.OK)
+                    {
+                        gvClientes.DataSource = CtrlCliente.ListarTodos();
+                    }
+                }
             }
             catch (Exception ex)
             {
-                MessageBox.Show( ex.Message);
+                MessageBox.Show( "Não foi possivel alterar Cliente!");
             }
-
-            
         }
 
         private void BtnExcluir_Click(object sender, EventArgs e)
         {
             try
             {
-                var cliRow = gvClientes.CurrentRow.DataBoundItem as DataRowView;
-                var codigo = cliRow["codigo"];
-                CtrlCliente.Excluir(codigo);
-                MessageBox.Show("Cliente foi excluido!");
-                gvClientes.DataSource = CtrlCliente.ListarTodos();
+                if (gvClientes.CurrentRow != null)
+                {
+                    var cliRow = gvClientes.CurrentRow.DataBoundItem as DataRowView;
+                    var codigo = cliRow["codigo"];
+                    CtrlCliente.Excluir(codigo);
+                    MessageBox.Show("Cliente foi excluido!");
+                    gvClientes.DataSource = CtrlCliente.ListarTodos();
+                }
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("Não foi possivel excluir o cliente");
             }
         }
 
@@ -98,16 +101,24 @@ namespace EquipMotos.Codigo.View
         {
             try
             {
-                cliente = null;
+                if (gvClientes.CurrentRow != null)
+                {
+                    cliente = null;
 
-                var cliRow = gvClientes.CurrentRow.DataBoundItem as DataRowView;
+                    var cliRow = gvClientes.CurrentRow.DataBoundItem as DataRowView;
 
-                cliente = CtrlCliente.BuscarPorID(cliRow["codigo"]) as Clientes;
-                return cliente;
+                    cliente = CtrlCliente.BuscarPorID(cliRow["codigo"]) as Clientes;
+                    return cliente;
+                }
+                else
+                {
+                    MessageBox.Show("Nenhum cliente foi selecionado");
+                    return null;
+                }
             }
             catch
             {
-                Close();
+                MessageBox.Show("Nenhum cliente foi selecionado");
                 return null;
             }
         }

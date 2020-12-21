@@ -53,7 +53,7 @@ namespace WebApplication4.Controllers
             FornecedoresDAO DaoFornecedor = new FornecedoresDAO();
             FormaPagamentoDAO DaoFormaPagamento = new FormaPagamentoDAO();
 
-            var lista = DaoContasPagar.BuscarCompra_Filtro(nota, fornecedor, formaPagamento, dateMin, dateMax);
+            var lista = DaoContasPagar.BuscarConta_Filtro(nota, fornecedor, formaPagamento, dateMin, dateMax);
             var convertedList = (from rw in lista.AsEnumerable()
                                  select new EquipMotos.MODEL.ContasPagar()
                                  {

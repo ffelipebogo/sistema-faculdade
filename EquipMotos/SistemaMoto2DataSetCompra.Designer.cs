@@ -315,6 +315,8 @@ namespace EquipMotos {
             
             private global::System.Data.DataColumn columnsituacao;
             
+            private global::System.Data.DataColumn columntotalPagar;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public comprasDataTable() {
@@ -494,6 +496,14 @@ namespace EquipMotos {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn totalPagarColumn {
+                get {
+                    return this.columntotalPagar;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -547,7 +557,8 @@ namespace EquipMotos {
                         decimal frete, 
                         decimal seguro, 
                         decimal despesa, 
-                        bool situacao) {
+                        bool situacao, 
+                        decimal totalPagar) {
                 comprasRow rowcomprasRow = ((comprasRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         observacoes,
@@ -567,7 +578,8 @@ namespace EquipMotos {
                         frete,
                         seguro,
                         despesa,
-                        situacao};
+                        situacao,
+                        totalPagar};
                 rowcomprasRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowcomprasRow);
                 return rowcomprasRow;
@@ -618,6 +630,7 @@ namespace EquipMotos {
                 this.columnseguro = base.Columns["seguro"];
                 this.columndespesa = base.Columns["despesa"];
                 this.columnsituacao = base.Columns["situacao"];
+                this.columntotalPagar = base.Columns["totalPagar"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -659,6 +672,8 @@ namespace EquipMotos {
                 base.Columns.Add(this.columndespesa);
                 this.columnsituacao = new global::System.Data.DataColumn("situacao", typeof(bool), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnsituacao);
+                this.columntotalPagar = new global::System.Data.DataColumn("totalPagar", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columntotalPagar);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnmodelo,
                                 this.columnserie,
@@ -1080,6 +1095,22 @@ namespace EquipMotos {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public decimal totalPagar {
+                get {
+                    try {
+                        return ((decimal)(this[this.tablecompras.totalPagarColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("O valor da coluna \'totalPagar\' na tabela \'compras\' é DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablecompras.totalPagarColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool IsobservacoesNull() {
                 return this.IsNull(this.tablecompras.observacoesColumn);
             }
@@ -1232,6 +1263,18 @@ namespace EquipMotos {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetsituacaoNull() {
                 this[this.tablecompras.situacaoColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IstotalPagarNull() {
+                return this.IsNull(this.tablecompras.totalPagarColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SettotalPagarNull() {
+                this[this.tablecompras.totalPagarColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -1412,6 +1455,7 @@ namespace EquipMotos.SistemaMoto2DataSetCompraTableAdapters {
             tableMapping.ColumnMappings.Add("seguro", "seguro");
             tableMapping.ColumnMappings.Add("despesa", "despesa");
             tableMapping.ColumnMappings.Add("situacao", "situacao");
+            tableMapping.ColumnMappings.Add("totalPagar", "totalPagar");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -1428,10 +1472,9 @@ namespace EquipMotos.SistemaMoto2DataSetCompraTableAdapters {
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = @"SELECT   compras.modelo, compras.serie, compras.nrNota, compras.codCondPagamento, compras.dtEmissao, compras.dtChegada, compras.cfi, compras.frete, compras.seguro, 
-                         compras.despesa, compras.situacao, compras.dtCadastro, compras.dtAlteracao, compras.usuario, compras.observacoes, compras.codFornecedor, fornecedores.fornecedor, 
-                         condicaoPagamento.condicao
-FROM         compras INNER JOIN
+            this._commandCollection[0].CommandText = @"SELECT        compras.modelo, compras.serie, compras.nrNota, compras.codCondPagamento, compras.dtEmissao, compras.dtChegada, compras.cfi, compras.frete, compras.seguro, compras.despesa, compras.situacao, 
+                         compras.dtCadastro, compras.dtAlteracao, compras.usuario, compras.observacoes, compras.codFornecedor, fornecedores.fornecedor, condicaoPagamento.condicao, compras.totalPagar
+FROM            compras INNER JOIN
                          fornecedores ON compras.codFornecedor = fornecedores.codigo INNER JOIN
                          condicaoPagamento ON compras.codCondPagamento = condicaoPagamento.codigo";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;

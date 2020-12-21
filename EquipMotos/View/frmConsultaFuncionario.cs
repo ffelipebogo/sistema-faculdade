@@ -64,13 +64,20 @@ namespace EquipMotos.View
         {
             try
             {
-                var funcRow = gvFuncionario.CurrentRow.DataBoundItem as DataRowView;
-                var codigo = funcRow["codigo"];
+                if (gvFuncionario.CurrentRow != null)
+                {
+                    var funcRow = gvFuncionario.CurrentRow.DataBoundItem as DataRowView;
+                    var codigo = funcRow["codigo"];
 
-                CtrlFuncionario.Excluir(codigo);
-                MessageBox.Show("Funcionario foi excluido!");
+                    CtrlFuncionario.Excluir(codigo);
+                    MessageBox.Show("Funcionario foi excluido!");
 
-                gvFuncionario.DataSource = CtrlFuncionario.ListarTodos();
+                    gvFuncionario.DataSource = CtrlFuncionario.ListarTodos();
+                }
+                else
+                {
+                    MessageBox.Show("Nenhum funcionario foi selecionado");
+                }
             }
             catch (Exception )
             {
@@ -86,6 +93,8 @@ namespace EquipMotos.View
                 { 
                     SelecionaFuncionario();
                     frmCadastroOrdemServico.Funcionario = func;
+                    frmCadastroServico.funcionario = func;
+
                     this.DialogResult = DialogResult.OK;
                     Close();
                 }
@@ -104,11 +113,18 @@ namespace EquipMotos.View
         private object SelecionaFuncionario()
         {
             func = null;
+            if (gvFuncionario.CurrentRow != null)
+            {
+                var funcRow = gvFuncionario.CurrentRow.DataBoundItem as DataRowView;
 
-            var funcRow = gvFuncionario.CurrentRow.DataBoundItem as DataRowView;
-
-            func = CtrlFuncionario.BuscarPorID(funcRow["codigo"]) as Funcionarios;
-            return func;
+                func = CtrlFuncionario.BuscarPorID(funcRow["codigo"]) as Funcionarios;
+                return func;
+            }
+            else
+            {
+                MessageBox.Show("Nenhum funcionario foi selecionado");
+                return null;
+            }
         }
 
         private void FrmConsultaFuncionario_Load(object sender, EventArgs e)

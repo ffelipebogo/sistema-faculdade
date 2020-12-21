@@ -37,7 +37,6 @@ namespace EquipMotos.View
             {
                 if (gvPais.CurrentRow != null)
                 {
-
                     frmCadastroPais frmCadPais = new frmCadastroPais();
                     var paisRow = gvPais.CurrentRow.DataBoundItem as DataRowView;
 
@@ -65,14 +64,20 @@ namespace EquipMotos.View
         {
             try
             {
+                if (gvPais.CurrentRow != null)
+                {
+                    var paisRow = gvPais.CurrentRow.DataBoundItem as DataRowView;
+                    var codigo = paisRow["codigo"];
 
-                var paisRow = gvPais.CurrentRow.DataBoundItem as DataRowView;
-                var codigo = paisRow["codigo"];
+                    CtrlPais.Excluir(codigo);
+                    MessageBox.Show("Pais foi excluido!");
 
-                CtrlPais.Excluir(codigo);
-                MessageBox.Show("Pais foi excluido!");
-
-                gvPais.DataSource = CtrlPais.ListarTodos();
+                    gvPais.DataSource = CtrlPais.ListarTodos();
+                }
+                else
+                {
+                    MessageBox.Show("Nenhum pais foi selecionado");
+                }
             }
             catch (Exception)
             {
@@ -100,10 +105,17 @@ namespace EquipMotos.View
         private object SelecionaPais()
         {
             pais = null;
-
-            var paisRow = gvPais.CurrentRow.DataBoundItem as DataRowView;
-            pais = CtrlPais.BuscarPorID(paisRow["codigo"]) as Paises;
-            return pais;
+            if (gvPais.CurrentRow != null)
+            {
+                var paisRow = gvPais.CurrentRow.DataBoundItem as DataRowView;
+                pais = CtrlPais.BuscarPorID(paisRow["codigo"]) as Paises;
+                return pais;
+            }
+            else
+            {
+                MessageBox.Show("Nenhum pais foi selecionado");
+                return null;
+            }
         }
 
         private void FrmConsultaPais_Load(object sender, EventArgs e)

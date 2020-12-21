@@ -70,18 +70,33 @@ namespace EquipMotos.View
 
         private void btnExcluir_Click(object sender, EventArgs e)
         {
-            var contaRow = gvContaReceber.CurrentRow.DataBoundItem as DataRowView;
-
-            var modelo = contaRow["modelo"];
-            var serie = contaRow["serie"];
-            var nrNota = contaRow["nrNota"];
-            var codFornecedor = contaRow["codCliente"];
-            var nrParcela = contaRow["nrParcela"];
-
-            if ((MessageBox.Show("Marcar conta como recebida ?", "Atenção", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes) & modelo != null)
+            if (gvContaReceber.CurrentRow != null)
             {
-                CtrlContaReceber.MarcarPago(modelo, serie, nrNota, codFornecedor, nrParcela);
-                gvContaReceber.DataSource = CtrlContaReceber.ListarTodos();
+                var contaRow = gvContaReceber.CurrentRow.DataBoundItem as DataRowView;
+
+                var modelo = contaRow["modelo"];
+                var serie = contaRow["serie"];
+                var nrNota = contaRow["nrNota"];
+                var codFornecedor = contaRow["codCliente"];
+                var nrParcela = contaRow["nrParcela"];
+                var recebido = contaRow["recebido"];
+
+                if (!bool.Parse(recebido.ToString()))
+                {
+                    if ((MessageBox.Show("Marcar conta como recebida ?", "Atenção", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes) & modelo != null)
+                    {
+                        CtrlContaReceber.MarcarPago(modelo, serie, nrNota, codFornecedor, nrParcela);
+                        gvContaReceber.DataSource = CtrlContaReceber.ListarTodos();
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Conta ja está como recebida ");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Nenhuma conta a receber foi selecionada");
             }
         }
 
@@ -103,7 +118,7 @@ namespace EquipMotos.View
             dtView.DataSource = CtrlContaReceber.Pesquisar(conta);
             if (dtView.DataSource == null)
             {
-                MessageBox.Show("Não encotrado");
+                MessageBox.Show("Não foi encotrado Conta a Receber");
             }
             else
             {

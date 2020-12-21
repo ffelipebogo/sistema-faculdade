@@ -357,9 +357,9 @@ namespace EquipMotos.Codigo.View
                 txtBairro.Focus();
                 return false;
             }
-            if (txtCep.Text.Trim().Length > 8)
+            if (txtCep.Text.Trim().Length != 8)
             {
-                MessageBox.Show("CEP inválido, é necessário no minímo 10 números.", "Informe o CEP!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("CEP inválido, é necessário  8 números.", "Informe o CEP!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txtCep.Focus();
                 return false;
             }
@@ -383,12 +383,26 @@ namespace EquipMotos.Codigo.View
             }
             if (string.IsNullOrEmpty(txtCodCondicao.Text.Trim()))
             {
-                txtCodCondicao.Text = "0";
+                MessageBox.Show("Código Condição de Pagamento Inválido!", "Informe o Código da Condição de Pagamento!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtCodCondicao.Focus();
+                return false;
             }
             else if (Convert.ToDecimal(txtCodCondicao.Text) < 0)
             {
                 MessageBox.Show("Código Condição de Pagamento Inválido!", "Verefique o Código Condição de Pagamento!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txtCodCondicao.Focus();
+                return false;
+            }
+            if (string.IsNullOrEmpty(txtCondicao.Text.Trim()))
+            {
+                MessageBox.Show("Condição de Pagamento Inválida!", "Informe a Condição de Pagamento!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtCondicao.Focus();
+                return false;
+            }
+            else if (txtCondicao.Text.Length < 3)
+            {
+                MessageBox.Show("Condição de Pagamento Inválida!", "Informe a Condição de Pagamento!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtCondicao.Focus();
                 return false;
             }
             if (rbFisica.Checked)
@@ -799,16 +813,16 @@ namespace EquipMotos.Codigo.View
             {
                 txtCep.Text = "";
             }
-            else if (txtCep.Text.Trim().Length < 8)
+            else if (txtCep.Text.Trim().Length != 8)
             {
-                MessageBox.Show("CEP inválido, é necessário no minímo 8 números.", "Informe o CEP!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("CEP inválido, é necessário  8 números.", "Informe o CEP!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txtCep.Focus();
             }
-            else if (txtCep.Text.Trim().Length > 8)
-            {
-                MessageBox.Show("CEP inválido, é necessário no máximo 8 números.", "Informe o CEP!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                txtCep.Focus();
-            }
+            //else if (txtCep.Text.Trim().Length > 8)
+            //{
+            //    MessageBox.Show("CEP inválido, é necessário no máximo 8 números.", "Informe o CEP!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            //    txtCep.Focus();
+            //}
         }
 
         private void txtCelular_Leave(object sender, EventArgs e)

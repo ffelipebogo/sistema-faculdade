@@ -149,6 +149,7 @@
             this.txtCodigo.Name = "txtCodigo";
             this.txtCodigo.Size = new System.Drawing.Size(60, 22);
             this.txtCodigo.TabIndex = 263;
+            this.txtCodigo.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // lblCodigo
             // 
@@ -179,6 +180,7 @@
             // txtCategoria
             // 
             this.txtCategoria.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.txtCategoria.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtCategoria.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.txtCategoria.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
             this.txtCategoria.Location = new System.Drawing.Point(100, 106);
@@ -273,6 +275,7 @@
             this.Controls.Add(this.lblCodigo);
             this.Cursor = System.Windows.Forms.Cursors.Default;
             this.Name = "frmCadastroCategoria";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Cadastro de Categoria";
             this.Load += new System.EventHandler(this.frmCadastroCategoria_Load);
             this.ResumeLayout(false);

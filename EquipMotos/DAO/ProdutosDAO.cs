@@ -15,7 +15,6 @@ namespace EquipMotos.DAO
     {
         Produtos Produto = new Produtos();
         CategoriasDAO DaoCategoria = new CategoriasDAO();
-        FornecedoresDAO DaoForn = new FornecedoresDAO();
 
         #region Inserir Produtos
         public override void Inserir(object obj)
@@ -25,10 +24,9 @@ namespace EquipMotos.DAO
                 try
                 {
                     Produtos produto = obj as Produtos;
-                    string sql = @"INSERT into produtos ( produto, unidade, codCategoria,codBarra, qtd, precoCusto, precoVenda, codFornecedor,  custoUltCompra, dtUltCompra, comissao, observacoes, dtCadastro, dtAlteracao, usuario,
-                                        ) values (@produto, @unidade, @codCategoria, @codBarra, @qtd, @precoCusto, @precoVenda, @codFornecedor,  @custoUltCompra, @dtUltCompra, @comissao,
+                    string sql = @"INSERT into produtos ( produto, unidade, codCategoria,codBarra, qtd, precoCusto, precoVenda,   custoUltCompra, dtUltCompra, comissao, observacoes, dtCadastro, dtAlteracao, usuario
+                                        ) values (@produto, @unidade, @codCategoria, @codBarra, @qtd, @precoCusto, @precoVenda,   @custoUltCompra, @dtUltCompra, @comissao,
                                           @observacoes, @dtCadastro, @dtAlteracao, @usuario )";
-
 
                     SqlCommand comando = new SqlCommand(sql, conexao);
 
@@ -39,7 +37,6 @@ namespace EquipMotos.DAO
                         comando.Parameters.AddWithValue("@qtd", produto.qtd);
                         comando.Parameters.AddWithValue("@precoCusto", produto.custo);
                         comando.Parameters.AddWithValue("@precoVenda", produto.precoVenda);
-                        comando.Parameters.AddWithValue("@codFornecedor", produto.Fornecedor.codigo);
 
                         comando.Parameters.AddWithValue("@custoUltCompra", produto.custoUltCompra);
                         comando.Parameters.AddWithValue("@dtUltCompra", produto.dtUltCompra);
@@ -75,27 +72,26 @@ namespace EquipMotos.DAO
                 bool isNumeric = int.TryParse(produto, out int n);
                 if (produto.Length <= 4 && isNumeric)
                 {
-                    sql = @"SELECT  produtos.*,  fornecedores.fornecedor, categorias.categoria 
+                    sql = @"SELECT  produtos.*,  categorias.categoria 
                             FROM	produtos INNER JOIN
-		                            categorias ON produtos.codCategoria = categorias.codigo INNER JOIN
-		                            fornecedores ON produtos.codFornecedor = fornecedores.codigo
-                            WHERE codigo = @produto";
+		                            categorias ON produtos.codCategoria = categorias.codigo 
+                            WHERE produtos.codigo = @produto";
                 }
                 else
                 {
                     if (isNumeric)
                     {
-                        sql = @"SELECT  produtos.*,  fornecedores.fornecedor, categorias.categoria 
+                        sql = @"SELECT  produtos.*, categorias.categoria 
                                 FROM	produtos INNER JOIN
-		                                categorias ON produtos.codCategoria = categorias.codigo INNER JOIN
-		                                fornecedores ON produtos.codFornecedor = fornecedores.codigo WHERE produto like '%'+ @produto +'%'";
+		                                categorias ON produtos.codCategoria = categorias.codigo  
+                                WHERE produtos.produto like '%'+ @produto +'%'";
                     }
                     else
                     {
-                        sql = @"SELECT  produtos.*,  fornecedores.fornecedor, categorias.categoria 
+                        sql = @"SELECT  produtos.*, categorias.categoria 
                                 FROM	produtos INNER JOIN
-		                                categorias ON produtos.codCategoria = categorias.codigo INNER JOIN
-		                                fornecedores ON produtos.codFornecedor = fornecedores.codigo  WHERE produto like '%'+ @produto + '%' ";
+		                                categorias ON produtos.codCategoria = categorias.codigo +
+                                WHERE produtos.produto like '%'+ @produto + '%' ";
                     }
                 }
                 SqlCommand comando = new SqlCommand(sql, conexao);
@@ -127,20 +123,15 @@ namespace EquipMotos.DAO
                                 unidade = @unidade,
                                 codBarra = @codBarra,
                                 codCategoria = @codCategoria, 
-
-                                qtd = @qtd,
                                 precoCusto = @precoCusto,
                                 precoVenda = @precoVenda,
-                               
-                                codFornecedor = @codFornecedor,
                                 custoUltCompra = @custoUltCompra,
                                 dtUltCompra = @dtUltCompra,
                                 comissao = @comissao,
-
                                 observacoes = @observacoes,
                                 dtCadastro = @dtCadastro,
                                 dtAlteracao = @dtAlteracao,
-                                usuario = @usuario,
+                                usuario = @usuario
 
                                 WHERE codigo = @codigo";
 
@@ -150,11 +141,9 @@ namespace EquipMotos.DAO
                         comando.Parameters.AddWithValue("@unidade", prod.unidade);
                         comando.Parameters.AddWithValue("@codBarra", prod.codBarra);
                         comando.Parameters.AddWithValue("@codCategoria", prod.Categoria.codigo);
-                        comando.Parameters.AddWithValue("@qtd", prod.qtd);
                         comando.Parameters.AddWithValue("@precoCusto", prod.custo);
                         comando.Parameters.AddWithValue("@precoVenda", prod.precoVenda);
 
-                        comando.Parameters.AddWithValue("@codFornecedor", prod.Fornecedor.codigo);
 
                         comando.Parameters.AddWithValue("@custoUltCompra", prod.custoUltCompra);
                         comando.Parameters.AddWithValue("@dtUltCompra", prod.dtUltCompra);
@@ -218,10 +207,9 @@ namespace EquipMotos.DAO
             using (SqlConnection conexao = Conecta.CreateConnection())
             {
                 SqlDataAdapter da;
-                string sql = @"SELECT  produtos.*,  fornecedores.fornecedor, categorias.categoria 
+                string sql = @"SELECT  produtos.*, categorias.categoria 
                                 FROM	produtos INNER JOIN
-		                                categorias ON produtos.codCategoria = categorias.codigo INNER JOIN
-		                                fornecedores ON produtos.codFornecedor = fornecedores.codigo
+		                                categorias ON produtos.codCategoria = categorias.codigo
                                 WHERE produtos.codigo = @codigo";
 
                 SqlCommand comando = new SqlCommand(sql, conexao);
@@ -243,7 +231,6 @@ namespace EquipMotos.DAO
                         proServ.qtd = Convert.ToInt32(row["qtd"]);
                         proServ.custo = Convert.ToDecimal(row["precoCusto"]);
                         proServ.precoVenda = Convert.ToDecimal(row["precoVenda"]);
-                        proServ.Fornecedor = DaoForn.BuscarPorID(Convert.ToInt32(row["codFornecedor"])) as Fornecedores;
                         proServ.custoUltCompra = Convert.ToDecimal(row["custoUltCompra"]);
                         proServ.dtUltCompra = Convert.ToDateTime(row["dtUltCompra"]);
                         proServ.comissao = Convert.ToDouble(row["comissao"]);
@@ -254,6 +241,7 @@ namespace EquipMotos.DAO
                         this.Produto = proServ;
                    
                 }
+                conexao.Close();
                 return Produto;
             }
         }
@@ -265,10 +253,9 @@ namespace EquipMotos.DAO
             using (SqlConnection conexao = Conecta.CreateConnection())
             {
                 SqlDataAdapter da;
-                string sql = @"SELECT  produtos.*,  fornecedores.fornecedor, categorias.categoria 
+                string sql = @"SELECT  produtos.*, categorias.categoria 
                                 FROM	produtos INNER JOIN
-		                                categorias ON produtos.codCategoria = categorias.codigo INNER JOIN
-		                                fornecedores ON produtos.codFornecedor = fornecedores.codigo";
+		                                categorias ON produtos.codCategoria = categorias.codigo";
 
                 SqlCommand comando = new SqlCommand(sql, conexao);
 
@@ -293,11 +280,10 @@ namespace EquipMotos.DAO
             {
                 Produtos produto = obj as Produtos;
                 SqlDataAdapter da;
-                string sql = @"SELECT  produtos.*,  fornecedores.fornecedor, categorias.categoria 
+                string sql = @"SELECT  produtos.*, categorias.categoria 
                                 FROM	produtos INNER JOIN
-		                                categorias ON produtos.codCategoria = categorias.codigo INNER JOIN
-		                                fornecedores ON produtos.codFornecedor = fornecedores.codigo
-                               WHERE produtos.nome = @nome";
+		                                categorias ON produtos.codCategoria = categorias.codigo
+                               WHERE produtos.produto = @nome";
 
                 SqlCommand comando = new SqlCommand(sql, conexao);
                 comando.Parameters.AddWithValue("@nome", produto.produto);
@@ -307,7 +293,7 @@ namespace EquipMotos.DAO
 
                 DataTable dtProduto = new DataTable();
                 da.Fill(dtProduto);
-
+                conexao.Close();
                 return dtProduto;
             }
         }

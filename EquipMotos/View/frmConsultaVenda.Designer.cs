@@ -43,12 +43,16 @@
             this.btnAlterar = new MaterialSkin.Controls.MaterialRaisedButton();
             this.btnNovo = new MaterialSkin.Controls.MaterialRaisedButton();
             this.gvVendas = new System.Windows.Forms.DataGridView();
+            this.vendasBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.sistemaMoto2DataSetVenda = new EquipMotos.SistemaMoto2DataSetVenda();
+            this.vendasTableAdapter = new EquipMotos.SistemaMoto2DataSetVendaTableAdapters.vendasTableAdapter();
             this.modeloDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.serieDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nrNotaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clienteDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.condicaoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dtEmissaoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Vlr_Venda = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.descontoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.observacoesDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.codCondPagamentoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -56,9 +60,6 @@
             this.dtCadastroDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dtAlteracaoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.usuarioDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.vendasBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.sistemaMoto2DataSetVenda = new EquipMotos.SistemaMoto2DataSetVenda();
-            this.vendasTableAdapter = new EquipMotos.SistemaMoto2DataSetVendaTableAdapters.vendasTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.btnBuscarVenda)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvVendas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.vendasBindingSource)).BeginInit();
@@ -73,7 +74,7 @@
             this.btnBuscarVenda.ErrorImage = global::EquipMotos.Properties.Resources._1398754683_xmag;
             this.btnBuscarVenda.Image = global::EquipMotos.Properties.Resources._1398754683_xmag;
             this.btnBuscarVenda.InitialImage = global::EquipMotos.Properties.Resources._1398754683_xmag;
-            this.btnBuscarVenda.Location = new System.Drawing.Point(305, 80);
+            this.btnBuscarVenda.Location = new System.Drawing.Point(303, 84);
             this.btnBuscarVenda.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnBuscarVenda.Name = "btnBuscarVenda";
             this.btnBuscarVenda.Size = new System.Drawing.Size(38, 41);
@@ -86,7 +87,7 @@
             // 
             this.txtPesquisar.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtPesquisar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPesquisar.Location = new System.Drawing.Point(12, 93);
+            this.txtPesquisar.Location = new System.Drawing.Point(12, 94);
             this.txtPesquisar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtPesquisar.Name = "txtPesquisar";
             this.txtPesquisar.Size = new System.Drawing.Size(285, 23);
@@ -98,12 +99,12 @@
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.label1.Depth = 0;
-            this.label1.Font = new System.Drawing.Font("Roboto", 11F);
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.label1.Location = new System.Drawing.Point(9, 75);
+            this.label1.Location = new System.Drawing.Point(8, 73);
             this.label1.MouseState = MaterialSkin.MouseState.HOVER;
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(130, 19);
+            this.label1.Size = new System.Drawing.Size(127, 18);
             this.label1.TabIndex = 258;
             this.label1.Text = "Pesquisar Vendas";
             // 
@@ -114,7 +115,7 @@
             this.btnExcluir.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnExcluir.Image = global::EquipMotos.Properties.Resources._1398756469_Erase;
             this.btnExcluir.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnExcluir.Location = new System.Drawing.Point(542, 545);
+            this.btnExcluir.Location = new System.Drawing.Point(621, 516);
             this.btnExcluir.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnExcluir.Name = "btnExcluir";
             this.btnExcluir.Primary = true;
@@ -131,7 +132,7 @@
             this.btnVoltar.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnVoltar.Depth = 0;
             this.btnVoltar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnVoltar.Location = new System.Drawing.Point(651, 545);
+            this.btnVoltar.Location = new System.Drawing.Point(730, 516);
             this.btnVoltar.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnVoltar.Name = "btnVoltar";
             this.btnVoltar.Primary = true;
@@ -144,10 +145,11 @@
             // btnAlterar
             // 
             this.btnAlterar.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnAlterar.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.btnAlterar.Depth = 0;
             this.btnAlterar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAlterar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAlterar.Location = new System.Drawing.Point(449, 545);
+            this.btnAlterar.Location = new System.Drawing.Point(528, 516);
             this.btnAlterar.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnAlterar.Name = "btnAlterar";
             this.btnAlterar.Primary = true;
@@ -165,7 +167,7 @@
             this.btnNovo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnNovo.Image = global::EquipMotos.Properties.Resources._1398756346_1;
             this.btnNovo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnNovo.Location = new System.Drawing.Point(369, 545);
+            this.btnNovo.Location = new System.Drawing.Point(448, 516);
             this.btnNovo.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnNovo.Name = "btnNovo";
             this.btnNovo.Primary = true;
@@ -202,6 +204,7 @@
             this.clienteDataGridViewTextBoxColumn,
             this.condicaoDataGridViewTextBoxColumn,
             this.dtEmissaoDataGridViewTextBoxColumn,
+            this.Vlr_Venda,
             this.descontoDataGridViewTextBoxColumn,
             this.observacoesDataGridViewTextBoxColumn,
             this.codCondPagamentoDataGridViewTextBoxColumn,
@@ -211,12 +214,26 @@
             this.usuarioDataGridViewTextBoxColumn});
             this.gvVendas.DataSource = this.vendasBindingSource;
             this.gvVendas.EnableHeadersVisualStyles = false;
-            this.gvVendas.Location = new System.Drawing.Point(12, 135);
+            this.gvVendas.Location = new System.Drawing.Point(8, 130);
             this.gvVendas.Name = "gvVendas";
             this.gvVendas.ReadOnly = true;
             this.gvVendas.RowHeadersWidth = 51;
-            this.gvVendas.Size = new System.Drawing.Size(750, 366);
+            this.gvVendas.Size = new System.Drawing.Size(846, 366);
             this.gvVendas.TabIndex = 270;
+            // 
+            // vendasBindingSource
+            // 
+            this.vendasBindingSource.DataMember = "vendas";
+            this.vendasBindingSource.DataSource = this.sistemaMoto2DataSetVenda;
+            // 
+            // sistemaMoto2DataSetVenda
+            // 
+            this.sistemaMoto2DataSetVenda.DataSetName = "SistemaMoto2DataSetVenda";
+            this.sistemaMoto2DataSetVenda.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // vendasTableAdapter
+            // 
+            this.vendasTableAdapter.ClearBeforeFill = true;
             // 
             // modeloDataGridViewTextBoxColumn
             // 
@@ -273,6 +290,13 @@
             this.dtEmissaoDataGridViewTextBoxColumn.Name = "dtEmissaoDataGridViewTextBoxColumn";
             this.dtEmissaoDataGridViewTextBoxColumn.ReadOnly = true;
             this.dtEmissaoDataGridViewTextBoxColumn.Width = 70;
+            // 
+            // Vlr_Venda
+            // 
+            this.Vlr_Venda.DataPropertyName = "totalReceber";
+            this.Vlr_Venda.HeaderText = "Vlr_Venda";
+            this.Vlr_Venda.Name = "Vlr_Venda";
+            this.Vlr_Venda.ReadOnly = true;
             // 
             // descontoDataGridViewTextBoxColumn
             // 
@@ -332,25 +356,11 @@
             this.usuarioDataGridViewTextBoxColumn.ReadOnly = true;
             this.usuarioDataGridViewTextBoxColumn.Visible = false;
             // 
-            // vendasBindingSource
-            // 
-            this.vendasBindingSource.DataMember = "vendas";
-            this.vendasBindingSource.DataSource = this.sistemaMoto2DataSetVenda;
-            // 
-            // sistemaMoto2DataSetVenda
-            // 
-            this.sistemaMoto2DataSetVenda.DataSetName = "SistemaMoto2DataSetVenda";
-            this.sistemaMoto2DataSetVenda.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // vendasTableAdapter
-            // 
-            this.vendasTableAdapter.ClearBeforeFill = true;
-            // 
             // frmConsultaVenda
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(772, 593);
+            this.ClientSize = new System.Drawing.Size(866, 560);
             this.ControlBox = false;
             this.Controls.Add(this.gvVendas);
             this.Controls.Add(this.btnExcluir);
@@ -393,6 +403,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn clienteDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn condicaoDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn dtEmissaoDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Vlr_Venda;
         private System.Windows.Forms.DataGridViewTextBoxColumn descontoDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn observacoesDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn codCondPagamentoDataGridViewTextBoxColumn;

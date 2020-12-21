@@ -43,7 +43,7 @@ namespace WebEquipMoto.Controllers
                                         dtCadastro = Convert.ToDateTime(Convert.ToDateTime(rw["dtCadastro"]).ToString("dd-MM-yyyy")),
                                         dtAlteracao = Convert.ToDateTime(rw["dtAlteracao"]),
                                         usuario = Convert.ToString(rw["usuario"]),
-                                        listaItem = DaoVenda.BuscarItem(Convert.ToString(rw["nrNota"])),
+                                        listaItem = DaoVenda.BuscarItem(Convert.ToString(rw["modelo"]), Convert.ToString(rw["serie"]), Convert.ToString(rw["nrNota"]), Convert.ToInt64(rw["codCliente"])),
                                         listaContasReceber = DaoVenda.BuscarContasReceber(Convert.ToString(rw["modelo"]), Convert.ToString(rw["serie"]), Convert.ToString(rw["nrNota"]), Convert.ToInt64(rw["codCliente"])),
 
                                 }).ToList();
@@ -73,7 +73,7 @@ namespace WebEquipMoto.Controllers
                                      dtCadastro = Convert.ToDateTime(Convert.ToDateTime(rw["dtCadastro"]).ToString("dd-MM-yyyy")),
                                      dtAlteracao = Convert.ToDateTime(rw["dtAlteracao"]),
                                      usuario = Convert.ToString(rw["usuario"]),
-                                     listaItem = DaoVenda.BuscarItem(Convert.ToString(rw["nrNota"])),
+                                     listaItem = DaoVenda.BuscarItem(Convert.ToString(rw["modelo"]), Convert.ToString(rw["serie"]), Convert.ToString(rw["nrNota"]), Convert.ToInt64(rw["codCliente"])),
                                      listaContasReceber = DaoVenda.BuscarContasReceber(Convert.ToString(rw["modelo"]), Convert.ToString(rw["serie"]), Convert.ToString(rw["nrNota"]), Convert.ToInt64(rw["codCliente"])),
 
                                  }).ToList();

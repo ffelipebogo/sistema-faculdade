@@ -52,20 +52,20 @@ namespace EquipMotos.View
 
                     func.cargo = txtCargo.Text;
                     func.salario = Convert.ToDecimal(Decimal.Parse(txtSalario.Text, NumberStyles.Any).ToString("N2"));
-                    func.comissao = Convert.ToDecimal(Convert.ToDecimal(txtComissao.Text).ToString("N2"));
+                    //func.comissao = Convert.ToDecimal(Convert.ToDecimal(txtComissao.Text).ToString("N2"));
 
                     func.carteiraTrabalho = txtCarteiraTrabalho.Text;
-                    func.ctSerie = txtSerie.Text;
-                    func.ctUf = txtUfct.Text;
-                    func.ctDtEmissao = Convert.ToDateTime(txtDtEmissaoCt.Text);
-                    func.ctPis = txtPis.Text;
+                    //func.ctSerie = txtSerie.Text;
+                    //func.ctUf = txtUfct.Text;
+                    //func.ctDtEmissao = Convert.ToDateTime(txtDtEmissaoCt.Text);
+                    //func.ctPis = txtPis.Text;
 
                     func.cnh = txtCnh.Text;
-                    func.cnhEmissor = txtEmissor.Text;
-                    func.cnhUf = txtUfCnh.Text;
-                    func.cnhDtExpedicao = Convert.ToDateTime(txtDtExpedicao.Text);
-                    func.cnhDtValidade = Convert.ToDateTime(txtDtValidade.Text);
-                    func.cnhDtPrimeira = Convert.ToDateTime(txtDtPrimeiraCnh.Text);
+                    //func.cnhEmissor = txtEmissor.Text;
+                    //func.cnhUf = txtUfCnh.Text;
+                    //func.cnhDtExpedicao = Convert.ToDateTime(txtDtExpedicao.Text);
+                    //func.cnhDtValidade = Convert.ToDateTime(txtDtValidade.Text);
+                    //func.cnhDtPrimeira = Convert.ToDateTime(txtDtPrimeiraCnh.Text);
                     func.cnhCategoria = txtCategoria.Text;
 
                     func.observacoes = txtObservacao.Text;
@@ -212,7 +212,7 @@ namespace EquipMotos.View
                 return false;
             }
 
-            if (String.IsNullOrEmpty(txtIdCidade.Text.Trim()) & txtIdCidade.Text.Length < 0)
+            if (String.IsNullOrEmpty(txtIdCidade.Text.Trim()))
             {
                 MessageBox.Show("Faltou informar o Cidade", "Informe o Cidade!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txtIdCidade.Focus();
@@ -231,36 +231,36 @@ namespace EquipMotos.View
                 txtCelular.Focus();
                 return false;
             }
-            if (!ValidaData(txtDtEmissaoCt.Text))
-            {
-                MessageBox.Show("Data de Emissão inválida", "Informe a Data de Emissão!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                txtDtEmissaoCt.Focus();
-                return false;
-            }
-            else if (txtDtEmissaoCt.Value > DateTime.Now)
-            {
-                MessageBox.Show("Data de Emissão inválida", "Informe a Data de Emissão!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                txtDtEmissaoCt.Focus();
-                return false;
-            }
-            if (!ValidaData(txtDtExpedicao.Text))
-            {
-                MessageBox.Show("Data de Expedição inválida", "Informe a Data de Expedição!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                txtDtExpedicao.Focus();
-                return false;
-            }
-            else if (txtDtExpedicao.Value > DateTime.Now)
-            {
-                MessageBox.Show("Data de Expedição inválida", "Informe a Data de Expedição!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                txtDtExpedicao.Focus();
-                return false;
-            }
-            if (!ValidaData(txtDtValidade.Text))
-            {
-                MessageBox.Show("Data de Validade inválida", "Informe a Data de Validade!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                txtDtExpedicao.Focus();
-                return false;
-            }
+            //if (!ValidaData(txtDtEmissaoCt.Text))
+            //{
+            //    MessageBox.Show("Data de Emissão inválida", "Informe a Data de Emissão!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            //    txtDtEmissaoCt.Focus();
+            //    return false;
+            //}
+            //else if (txtDtEmissaoCt.Value > DateTime.Now)
+            //{
+            //    MessageBox.Show("Data de Emissão inválida", "Informe a Data de Emissão!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            //    txtDtEmissaoCt.Focus();
+            //    return false;
+            //}
+            //if (!ValidaData(txtDtExpedicao.Text))
+            //{
+            //    MessageBox.Show("Data de Expedição inválida", "Informe a Data de Expedição!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            //    txtDtExpedicao.Focus();
+            //    return false;
+            //}
+            //else if (txtDtExpedicao.Value > DateTime.Now)
+            //{
+            //    MessageBox.Show("Data de Expedição inválida", "Informe a Data de Expedição!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            //    txtDtExpedicao.Focus();
+            //    return false;
+            //}
+            //if (!ValidaData(txtDtValidade.Text))
+            //{
+            //    MessageBox.Show("Data de Validade inválida", "Informe a Data de Validade!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            //    txtDtExpedicao.Focus();
+            //    return false;
+            //}
             //else if (txtDtValidade.Value > DateTime.Now)
             //{
             //    MessageBox.Show("Data de Validade inválida", "Informe a Data de Validade!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -268,18 +268,18 @@ namespace EquipMotos.View
             //    return false;
             //}
 
-            if (!ValidaData(txtDtPrimeiraCnh.Text))
-            {
-                MessageBox.Show("Data da 1º CNH inválida", "Informe a Data da 1º CNH!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                txtDtPrimeiraCnh.Focus();
-                return false;
-            }
-            else if (txtDtPrimeiraCnh.Value > DateTime.Now)
-            {
-                MessageBox.Show("Data da 1º CNH inválida", "Informe a Data da 1º CNH!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                txtDtPrimeiraCnh.Focus();
-                return false;
-            }
+            //if (!ValidaData(txtDtPrimeiraCnh.Text))
+            //{
+            //    MessageBox.Show("Data da 1º CNH inválida", "Informe a Data da 1º CNH!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            //    txtDtPrimeiraCnh.Focus();
+            //    return false;
+            //}
+            //else if (txtDtPrimeiraCnh.Value > DateTime.Now)
+            //{
+            //    MessageBox.Show("Data da 1º CNH inválida", "Informe a Data da 1º CNH!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            //    txtDtPrimeiraCnh.Focus();
+            //    return false;
+            //}
 
             if (!IsCpf(txtCpf.Text) || txtCpf.Text.Length < 11)
             {
@@ -318,19 +318,25 @@ namespace EquipMotos.View
                 txtSalario.Focus();
                 return false;
             }
+            else if(Double.Parse(txtSalario.Text, NumberStyles.Any).ToString().Length > 6)
+            {
+                MessageBox.Show("Salario inválido", "Informe um Salario menor!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtSalario.Focus();
+                return false;
+            }
 
-            if (String.IsNullOrEmpty(txtSerie.Text.Trim()))
-            {
-                MessageBox.Show("Faltou informar o Nº de Serie", "Informe o Nº de Serie!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                txtSerie.Focus();
-                return false;
-            }
-            else if (Convert.ToInt64(txtSerie.Text) < 0)
-            {
-                MessageBox.Show("Nº de Serie inválido", "Informe o Nº de Serie!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                txtSerie.Focus();
-                return false;
-            }
+            //if (String.IsNullOrEmpty(txtSerie.Text.Trim()))
+            //{
+            //    MessageBox.Show("Faltou informar o Nº de Serie", "Informe o Nº de Serie!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            //    txtSerie.Focus();
+            //    return false;
+            //}
+            //else if (Convert.ToInt64(txtSerie.Text) < 0)
+            //{
+            //    MessageBox.Show("Nº de Serie inválido", "Informe o Nº de Serie!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            //    txtSerie.Focus();
+            //    return false;
+            //}
 
             if (String.IsNullOrEmpty(txtCarteiraTrabalho.Text.Trim()))
             {
@@ -338,12 +344,12 @@ namespace EquipMotos.View
                 txtCarteiraTrabalho.Focus();
                 return false;
             }
-            else if (Convert.ToInt64(txtCarteiraTrabalho.Text.Trim()) < 0)
-            {
-                MessageBox.Show("Nº da Carteira de Trabalho inválido", "Informe o Nº da Carteira de Trabalho!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                txtCarteiraTrabalho.Focus();
-                return false;
-            }
+            //else if (Convert.ToInt64(txtCarteiraTrabalho.Text.Trim()) < 0)
+            //{
+            //    MessageBox.Show("Nº da Carteira de Trabalho inválido", "Informe o Nº da Carteira de Trabalho!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            //    txtCarteiraTrabalho.Focus();
+            //    return false;
+            //}
 
             if (String.IsNullOrEmpty(txtCnh.Text.Trim()))
             {
@@ -358,35 +364,35 @@ namespace EquipMotos.View
                 return false;
             }
 
-            if (String.IsNullOrEmpty(txtPis.Text.Trim()))
-            {
-                MessageBox.Show("Faltou informar o Nº do PIS", "Informe o Nº do PIS!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                txtPis.Focus();
-                return false;
-            }
-            else if (Convert.ToInt64(txtPis.Text) < 0)
-            {
-                MessageBox.Show("Nº do PIS inválido", "Informe o Nº do PIS!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                txtPis.Focus();
-                return false;
-            }
+            //if (String.IsNullOrEmpty(txtPis.Text.Trim()))
+            //{
+            //    MessageBox.Show("Faltou informar o Nº do PIS", "Informe o Nº do PIS!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            //    txtPis.Focus();
+            //    return false;
+            //}
+            //else if (Convert.ToInt64(txtPis.Text) < 0)
+            //{
+            //    MessageBox.Show("Nº do PIS inválido", "Informe o Nº do PIS!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            //    txtPis.Focus();
+            //    return false;
+            //}
 
-            if (String.IsNullOrEmpty(txtEmissor.Text.Trim()))
-            {
-                MessageBox.Show("Faltou informar o Orgão Emissor", "Informe o Orgão Emissor!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                txtEmissor.Focus();
-                return false;
-            }
+            //if (String.IsNullOrEmpty(txtEmissor.Text.Trim()))
+            //{
+            //    MessageBox.Show("Faltou informar o Orgão Emissor", "Informe o Orgão Emissor!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            //    txtEmissor.Focus();
+            //    return false;
+            //}
             if (String.IsNullOrEmpty(txtCategoria.Text.Trim() ))
             {
                 MessageBox.Show("Faltou informar a Categoria", "Informe a Categoria!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txtCategoria.Focus();
                 return false;
             }
-            if (String.IsNullOrEmpty(txtComissao.Text.Trim()))
-            {
-                txtComissao.Text = "0";
-            }
+            //if (String.IsNullOrEmpty(txtComissao.Text.Trim()))
+            //{
+            //    txtComissao.Text = "0";
+            //}
             return true;
         }
 
@@ -476,18 +482,18 @@ namespace EquipMotos.View
             txtCpf.Text = func.cpf;
             txtCargo.Text = func.cargo;
             txtSalario.Text =  func.salario.ToString("C", CultureInfo.CurrentCulture); 
-            txtComissao.Text = Convert.ToString(func.comissao);
+            //txtComissao.Text = Convert.ToString(func.comissao);
             txtCarteiraTrabalho.Text = func.carteiraTrabalho;
-            txtSerie.Text = func.ctSerie;
-            txtUfct.Text = func.ctUf;
-            txtDtEmissaoCt.Text = Convert.ToString(func.ctDtEmissao);
-            txtPis.Text = func.ctPis;
+            //txtSerie.Text = func.ctSerie;
+            //txtUfct.Text = func.ctUf;
+            //txtDtEmissaoCt.Text = Convert.ToString(func.ctDtEmissao);
+            //txtPis.Text = func.ctPis;
             txtCnh.Text = func.cnh;
-            txtEmissor.Text = func.cnhEmissor;
-            txtUfCnh.Text = func.cnhUf;
-            txtDtExpedicao.Text = Convert.ToString(func.cnhDtExpedicao);
-            txtDtValidade.Text = Convert.ToString(func.cnhDtValidade);
-            txtDtPrimeiraCnh.Text = Convert.ToString(func.cnhDtPrimeira);
+            //txtEmissor.Text = func.cnhEmissor;
+            //txtUfCnh.Text = func.cnhUf;
+            //txtDtExpedicao.Text = Convert.ToString(func.cnhDtExpedicao);
+            //txtDtValidade.Text = Convert.ToString(func.cnhDtValidade);
+            //txtDtPrimeiraCnh.Text = Convert.ToString(func.cnhDtPrimeira);
             txtCategoria.Text = func.cnhCategoria; 
 
             txtObservacao.Text = func.observacoes;
@@ -564,6 +570,7 @@ namespace EquipMotos.View
         private void TxtSalario_Leave(object sender, EventArgs e)
         {
             MaskForm.TxtMask_Moeda_Leave(sender, e);
+
         }
 
         private void TxtComissao_KeyPress(object sender, KeyPressEventArgs e)
@@ -657,9 +664,11 @@ namespace EquipMotos.View
         {
             if (!string.IsNullOrEmpty(txtDtNascimento.Text))
             {
-                if (txtDtNascimento.Value.Date >= DateTime.Now.Date)
+                var dias = DateTime.Now.Date.Subtract(txtDtNascimento.Value.Date).Days ;
+
+                if (dias < 6570)
                 {
-                    MessageBox.Show( "Informe uma data menor que hoje!", "Não é possivel inserir esta data", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show( "Funcionario não pode ter menos de 18 anos", "Não é possivel inserir esta data", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     txtDtNascimento.Focus();
                 }
             }
@@ -799,8 +808,7 @@ namespace EquipMotos.View
                     MessageBox.Show("Codigo cidade inválido!", "Codigo da cidade dever ser númerico!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     txtIdCidade.Text = "";
                     txtIdCidade.Focus();
-                }
-
+                } 
             };
         }
 
@@ -864,19 +872,7 @@ namespace EquipMotos.View
 
         private void txtRg_Leave(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(txtRg.Text))
-            {
-                if (txtRg.Text.Trim().Length > 20 )
-                {
-                    MessageBox.Show("Informe o RG com menos de 20 caracteres", "Não é possivel inserir esse RG", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    txtRg.Focus();
-                }
-                else if(txtRg.Text.Trim().Length < 9)
-                {
-                    MessageBox.Show("Informe o RG com mais de 9 caracteres", "Não é possivel inserir esse RG",  MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    txtRg.Focus();
-                }
-            }
+
         }
 
         private void txtCargo_Leave(object sender, EventArgs e)
@@ -900,17 +896,19 @@ namespace EquipMotos.View
         {
             if (!string.IsNullOrEmpty(txtCarteiraTrabalho.Text))
             {
-                if (txtCarteiraTrabalho.Text.Trim().Length > 11)
+                if (string.IsNullOrEmpty(txtCarteiraTrabalho.Text))
                 {
-                    MessageBox.Show("Informe a Carteira de Trabalho com menos de 11 caracteres",  "Não é possivel inserir essa Carteira de Trabalho",  MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Faltou informar o número da Carteira de Trabalho", "Informer o número da Carteira de Trabalho", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     txtCarteiraTrabalho.Focus();
                 }
-                else if (txtCarteiraTrabalho.Text.Trim().Length < 11)
+                else if (!MaskForm.ValidaNumero(txtCarteiraTrabalho.Text.Trim()))
                 {
-                    MessageBox.Show("Informe a Carteira de Trabalho com mais de 11 caracteres",  "Não é possivel inserir essa Carteira de Trabalho",  MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Número da Carteira de Trabalho inválido!", "Número da Carteira de Trabalho dever ser númerico!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    txtCarteiraTrabalho.Text = "";
                     txtCarteiraTrabalho.Focus();
                 }
-            }
+
+            };
         }
 
         private void txtSerie_Leave(object sender, EventArgs e)
@@ -959,20 +957,38 @@ namespace EquipMotos.View
         {
             if (!string.IsNullOrEmpty(txtPis.Text))
             {
-                MaskForm.IsPis(txtPis.Text);
-            }
+                if (string.IsNullOrEmpty(txtPis.Text))
+                {
+                    MessageBox.Show("Faltou informar o PIS", "Informer o PIS", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    txtPis.Focus();
+                }
+                else if (!MaskForm.ValidaNumero(txtPis.Text.Trim()))
+                {
+                    MessageBox.Show("PIS inválido!", "PIS dever ser númerico!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    txtPis.Text = "";
+                    txtPis.Focus();
+                }
+
+            };
         }
 
         private void txtCnh_Leave(object sender, EventArgs e)
         {
             if (!string.IsNullOrEmpty(txtCnh.Text))
             {
-                if(txtCnh.Text.Trim().Length > 11 || txtCnh.Text.Trim().Length < 11)
+                if (string.IsNullOrEmpty(txtCnh.Text))
                 {
-                    MessageBox.Show("Informe o número que consta na CNH. São 11 numeros.", "Não é possivel inserir este número de CNH",  MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Faltou informar o CNH", "Informer o CNH", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     txtCnh.Focus();
                 }
-            }
+                else if (!MaskForm.ValidaNumero(txtCnh.Text.Trim()))
+                {
+                    MessageBox.Show("CNH inválido!", "CNH dever ser númerico!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    txtCnh.Text = "";
+                    txtCnh.Focus();
+                }
+
+            };
         }
 
         private void txtEmissor_Leave(object sender, EventArgs e)
@@ -1202,8 +1218,42 @@ namespace EquipMotos.View
 
         private void frmCadastroFuncionario_Load(object sender, EventArgs e)
         {
+           
+        }
+
+        private void txtCep_TextChanged(object sender, EventArgs e)
+        {
 
         }
 
+        private void txtPis_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtSerie_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtEmissor_TextChanged(object sender, EventArgs e)
+        {
+
+        } 
+
+        private void txtRg_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtCarteiraTrabalho_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtCnh_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

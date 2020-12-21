@@ -32,7 +32,6 @@ namespace EquipMotos.DAO
                 var compValida = BuscarCompra_porID(comp.modelo, comp.serie, comp.nrNota, comp.fornecedor.codigo);
                 if(compValida.modelo == null)
                 {
-
                     this.InserirCompraSql(comp, transaction);
 
                     foreach (ContasPagar conta in comp.listaContasPagar)
@@ -57,8 +56,7 @@ namespace EquipMotos.DAO
             catch(SqlException ex) 
             {
                 transaction.Rollback();
-                //MessageBox.Show(ex.Message);
-                //MessageBox.Show("Este modelo, serie, nrNota e fornecedor já existe em outra compra!", "Erro ao salvar a Compra!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Erro ao salvar a compra!", ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             finally
             {
@@ -70,8 +68,8 @@ namespace EquipMotos.DAO
         {
             SqlCommand comando = this.CreateCommandTransaction(transaction);
 
-            comando.CommandText = @"INSERT INTO compras (modelo, serie, nrNota, codFornecedor, codCondPagamento, totalProduto, totalPagar, seguro, despesa, cfi, frete, dtChegada, dtEmissao, situacao, dtCadastro, dtAlteracao, usuario, observacoes)
-                                 VALUES (@modelo, @serie, @nrNota, @codFornecedor, @codCondPagamento, @totalProduto, @totalPagar, @seguro, @despesa, @cfi, @frete, @dtEmissao, @dtChegada, @situacao, @dtCadastro, @dtAlteracao, @usuario, @observacoes);";
+            comando.CommandText = @"INSERT INTO compras (modelo, serie, nrNota, codFornecedor, codCondPagamento, totalProduto, totalPagar, seguro, despesa, cfi, frete,  dtEmissao, dtChegada, situacao, dtCadastro, dtAlteracao, usuario, observacoes)
+                                        VALUES (@modelo, @serie, @nrNota, @codFornecedor, @codCondPagamento, @totalProduto, @totalPagar, @seguro, @despesa, @cfi, @frete, @dtEmissao, @dtChegada, @situacao, @dtCadastro, @dtAlteracao, @usuario, @observacoes);";
 
             comando.Parameters.AddWithValue("@modelo", compra.modelo);
             comando.Parameters.AddWithValue("@serie", compra.serie);
@@ -105,8 +103,8 @@ namespace EquipMotos.DAO
                 if (string.IsNullOrEmpty(compra))
                 {
                     sql = @"SELECT   compras.modelo, compras.serie, compras.nrNota, compras.codCondPagamento, compras.dtEmissao, compras.dtChegada, compras.cfi, compras.frete, compras.seguro, 
-                         compras.despesa, compras.situacao, compras.dtCadastro, compras.dtAlteracao, compras.usuario, compras.observacoes, compras.codFornecedor, fornecedores.fornecedor, 
-                         condicaoPagamento.condicao
+                         compras.despesa, compras.totalPagar, compras.situacao, compras.dtCadastro, compras.dtAlteracao, compras.usuario, compras.observacoes, compras.codFornecedor, fornecedores.fornecedor, 
+                         condicaoPagamento.condicao 
                             FROM         compras INNER JOIN
                          fornecedores ON compras.codFornecedor = fornecedores.codigo INNER JOIN
                          condicaoPagamento ON compras.codCondPagamento = condicaoPagamento.codigo";
@@ -114,7 +112,7 @@ namespace EquipMotos.DAO
                 else
                 {
                     sql = @"SELECT   compras.modelo, compras.serie, compras.nrNota, compras.codCondPagamento, compras.dtEmissao, compras.dtChegada, compras.cfi, compras.frete, compras.seguro, 
-                         compras.despesa, compras.situacao, compras.dtCadastro, compras.dtAlteracao, compras.usuario, compras.observacoes, compras.codFornecedor, fornecedores.fornecedor, 
+                         compras.despesa, compras.totalPagar, compras.situacao, compras.dtCadastro, compras.dtAlteracao, compras.usuario, compras.observacoes, compras.codFornecedor, fornecedores.fornecedor, 
                          condicaoPagamento.condicao
                             FROM         compras INNER JOIN
                          fornecedores ON compras.codFornecedor = fornecedores.codigo INNER JOIN
@@ -130,7 +128,7 @@ namespace EquipMotos.DAO
 
                 DataTable dtCompra = new DataTable();
                 da.Fill(dtCompra);
-
+                conexao.Close();
                 return dtCompra;
             }
         }
@@ -141,18 +139,8 @@ namespace EquipMotos.DAO
             SqlTransaction transaction = conexao.BeginTransaction("SampleTransacion");
             try
             {
-                SqlCommand comando = this.CreateCommandTransaction(transaction);
-
-                comando.CommandText = @"UPDATE compras
-                                         SET situacao = 1  
-                                        WHERE modelo = @modelo and serie = @serie and nrNota = @nrNota  and codFornecedor = @codFornecedor ;";
-
-                comando.Parameters.AddWithValue("@modelo", modelo);
-                comando.Parameters.AddWithValue("@serie", serie);
-                comando.Parameters.AddWithValue("@nrNota", nrNota);
-                comando.Parameters.AddWithValue("@codFornecedor", idFornecedor);
-
-                comando.ExecuteNonQuery();
+                DesativarCompra(modelo, serie, nrNota, idFornecedor, transaction);
+                DesativarContaAPagar(modelo, serie, nrNota, idFornecedor, transaction);
                 transaction.Commit();
 
             }
@@ -169,12 +157,43 @@ namespace EquipMotos.DAO
             }
         }
 
+        private void DesativarContaAPagar(object modelo, object serie, object nrNota, object idFornecedor, SqlTransaction transaction)
+        {
+            SqlCommand comando = this.CreateCommandTransaction(transaction);
+
+            comando.CommandText = @"UPDATE contaPagar SET cancelada = 1
+                                        WHERE modelo = @modelo and serie = @serie and nrNota = @nrNota  and codFornecedor = @codFornecedor;";
+
+            comando.Parameters.AddWithValue("@modelo", modelo);
+            comando.Parameters.AddWithValue("@serie", serie);
+            comando.Parameters.AddWithValue("@nrNota", nrNota);
+            comando.Parameters.AddWithValue("@codFornecedor", idFornecedor);
+
+            comando.ExecuteNonQuery();
+        }
+
+        private void DesativarCompra(object modelo, object serie, object nrNota, object idFornecedor, SqlTransaction transaction)
+        {
+            SqlCommand comando = this.CreateCommandTransaction(transaction);
+
+            comando.CommandText = @"UPDATE compras
+                                         SET situacao = 1  
+                                        WHERE modelo = @modelo and serie = @serie and nrNota = @nrNota  and codFornecedor = @codFornecedor;";
+
+            comando.Parameters.AddWithValue("@modelo", modelo);
+            comando.Parameters.AddWithValue("@serie", serie);
+            comando.Parameters.AddWithValue("@nrNota", nrNota);
+            comando.Parameters.AddWithValue("@codFornecedor", idFornecedor);
+
+            comando.ExecuteNonQuery();
+        }
+
         public void InserirContasPagar(ContasPagar conta, SqlTransaction transaction)
         {
             SqlCommand comando = this.CreateCommandTransaction(transaction);
 
-            comando.CommandText = @"INSERT INTO contaPagar ( modelo, serie, nrNota, nrParcela, codFornecedor, codFormaPagamento, valorParcela, dtVencimento, dtEmissao, dtCadastro, dtAlteracao, usuario,  pago) 
-                                                    values ( @modelo, @serie, @nrNota,  @nrParcela, @codFornecedor, @codFormaPagamento, @valorParcela, @dtVencimento, @dtEmissao, @dtCadastro, @dtAlteracao, @usuario,  @pago)";
+            comando.CommandText = @"INSERT INTO contaPagar ( modelo, serie, nrNota, nrParcela, codFornecedor, codFormaPagamento, valorParcela, dtVencimento, dtEmissao, dtCadastro, dtAlteracao, usuario,  pago, cancelada ) 
+                                                    values ( @modelo, @serie, @nrNota,  @nrParcela, @codFornecedor, @codFormaPagamento, @valorParcela, @dtVencimento, @dtEmissao, @dtCadastro, @dtAlteracao, @usuario,  @pago, @cancelada)";
 
             comando.Parameters.AddWithValue("@modelo", conta.modelo);
             comando.Parameters.AddWithValue("@serie", conta.serie);
@@ -187,8 +206,17 @@ namespace EquipMotos.DAO
             comando.Parameters.AddWithValue("@dtEmissao", conta.dtEmissao);
             comando.Parameters.AddWithValue("@dtCadastro", conta.dtCadastro);
             comando.Parameters.AddWithValue("@dtAlteracao", conta.dtAlteracao);
+            comando.Parameters.AddWithValue("@cancelada", 0);
             comando.Parameters.AddWithValue("@usuario", conta.usuario);
             comando.Parameters.AddWithValue("@pago", 0);
+            //if(conta.formaPagamento.codigo == 1)
+            //{
+            //    comando.Parameters.AddWithValue("@pago", 1);
+            //}
+            //else
+            //{
+            //    comando.Parameters.AddWithValue("@pago", 0);
+            //}
 
 
             comando.ExecuteNonQuery();
@@ -200,7 +228,7 @@ namespace EquipMotos.DAO
             var Produto = DaoProduto.BuscarPorID(item.codigo) as Produtos;
             comando.CommandText = @"INSERT INTO itemCompra (  modelo, serie, nrNota, codFornecedor, codProduto, qtd, custoUnitario, valorUnitario, dtCadastro, dtAlteracao) 
                                                     values ( @modelo, @serie, @nrNota, @codFornecedor,  @codProduto, @qtd ,  @custoUnitario, @valorUnitario,  @dtCadastro, @dtAlteracao);
-                                    UPDATE  produtos set qtd = @qtdEstoque, custoUltCompra = @valorUnitario, precoCusto = @custoUnitario, codFornecedor = @codFornecedor, dtUltCompra = @dtCadastro WHERE codigo = @codProduto ";
+                                    UPDATE  produtos set qtd = @qtdEstoque, custoUltCompra = @valorUnitario, precoCusto = @custoUnitario, dtUltCompra = @dtCadastro WHERE codigo = @codProduto ";
 
             comando.Parameters.AddWithValue("@modelo", item.modelo);
             comando.Parameters.AddWithValue("@serie", item.serie);
@@ -236,7 +264,7 @@ namespace EquipMotos.DAO
 
                 DataTable dtCompra = new DataTable();
                 da.Fill(dtCompra);
-
+                conexao.Close();
                 return dtCompra;
             }
         }
@@ -295,6 +323,7 @@ namespace EquipMotos.DAO
                     
                     Compra = comp;
                 }
+                conexao.Close();
                 return Compra;
             }
         }
@@ -322,7 +351,7 @@ namespace EquipMotos.DAO
                 }
                 else if (fornecedor != null)
                 {
-                    where += " AND fornecedores.fornecedor = @fornecedor OR fornecedores.fornecedores like '%'+ @fornecedor +'%'";
+                    where += " AND fornecedores.fornecedor = @fornecedor OR fornecedores.fornecedor like '%'+ @fornecedor +'%'";
                 }
                 else if (dateMin != DateTime.MinValue & dateMax != DateTime.MinValue)
                 {
@@ -351,7 +380,7 @@ namespace EquipMotos.DAO
 
                 DataTable dtCompra = new DataTable();
                 da.Fill(dtCompra);
-
+                conexao.Close();
                 return dtCompra;
             }
         }
@@ -392,6 +421,7 @@ namespace EquipMotos.DAO
                         dtCadastro = Convert.ToDateTime(row["dtCadastro"]),
                     });
                 }
+                conexao.Close();
                 return ListaItem;
             }
         }
@@ -435,6 +465,7 @@ namespace EquipMotos.DAO
                         
                     });
                 }
+                conexao.Close();
                 return ListaConta;
             }
         }

@@ -32,22 +32,14 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnBuscar = new System.Windows.Forms.PictureBox();
             this.txtPesquisar = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.gvServico = new System.Windows.Forms.DataGridView();
-            this.btnExcluir = new MaterialSkin.Controls.MaterialRaisedButton();
-            this.btnVoltar = new MaterialSkin.Controls.MaterialRaisedButton();
-            this.btnAlterar = new MaterialSkin.Controls.MaterialRaisedButton();
-            this.btnNovo = new MaterialSkin.Controls.MaterialRaisedButton();
-            this.servicosBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.sistemaMoto2DataSetServicos = new EquipMotos.SistemaMoto2DataSetServicos();
-            this.servicosTableAdapter = new EquipMotos.SistemaMoto2DataSetServicosTableAdapters.servicosTableAdapter();
             this.codigoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.servicoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.funcionarioDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.categoriaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.codCategoriaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.precoVendaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.valorUnitarioDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.precoCustoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -57,6 +49,13 @@
             this.dtCadastroDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dtAlteracaoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.usuarioDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.servicosBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.sistemaMoto2DataSetServicos = new EquipMotos.SistemaMoto2DataSetServicos();
+            this.btnExcluir = new MaterialSkin.Controls.MaterialRaisedButton();
+            this.btnVoltar = new MaterialSkin.Controls.MaterialRaisedButton();
+            this.btnAlterar = new MaterialSkin.Controls.MaterialRaisedButton();
+            this.btnNovo = new MaterialSkin.Controls.MaterialRaisedButton();
+            this.servicosTableAdapter = new EquipMotos.SistemaMoto2DataSetServicosTableAdapters.servicosTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.btnBuscar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvServico)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.servicosBindingSource)).BeginInit();
@@ -71,10 +70,9 @@
             this.btnBuscar.ErrorImage = global::EquipMotos.Properties.Resources._1398754683_xmag;
             this.btnBuscar.Image = global::EquipMotos.Properties.Resources._1398754683_xmag;
             this.btnBuscar.InitialImage = global::EquipMotos.Properties.Resources._1398754683_xmag;
-            this.btnBuscar.Location = new System.Drawing.Point(425, 100);
-            this.btnBuscar.Margin = new System.Windows.Forms.Padding(4);
+            this.btnBuscar.Location = new System.Drawing.Point(320, 82);
             this.btnBuscar.Name = "btnBuscar";
-            this.btnBuscar.Size = new System.Drawing.Size(51, 50);
+            this.btnBuscar.Size = new System.Drawing.Size(38, 41);
             this.btnBuscar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.btnBuscar.TabIndex = 280;
             this.btnBuscar.TabStop = false;
@@ -84,10 +82,10 @@
             // 
             this.txtPesquisar.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtPesquisar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPesquisar.Location = new System.Drawing.Point(18, 117);
-            this.txtPesquisar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtPesquisar.Location = new System.Drawing.Point(15, 96);
+            this.txtPesquisar.Margin = new System.Windows.Forms.Padding(2);
             this.txtPesquisar.Name = "txtPesquisar";
-            this.txtPesquisar.Size = new System.Drawing.Size(400, 23);
+            this.txtPesquisar.Size = new System.Drawing.Size(301, 23);
             this.txtPesquisar.TabIndex = 279;
             // 
             // label1
@@ -96,7 +94,8 @@
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(13, 95);
+            this.label1.Location = new System.Drawing.Point(11, 74);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(143, 20);
             this.label1.TabIndex = 278;
@@ -125,8 +124,6 @@
             this.codigoDataGridViewTextBoxColumn,
             this.servicoDataGridViewTextBoxColumn,
             this.funcionarioDataGridViewTextBoxColumn,
-            this.categoriaDataGridViewTextBoxColumn,
-            this.codCategoriaDataGridViewTextBoxColumn,
             this.precoVendaDataGridViewTextBoxColumn,
             this.valorUnitarioDataGridViewTextBoxColumn,
             this.precoCustoDataGridViewTextBoxColumn,
@@ -138,100 +135,12 @@
             this.usuarioDataGridViewTextBoxColumn});
             this.gvServico.DataSource = this.servicosBindingSource;
             this.gvServico.EnableHeadersVisualStyles = false;
-            this.gvServico.Location = new System.Drawing.Point(17, 182);
-            this.gvServico.Margin = new System.Windows.Forms.Padding(4);
+            this.gvServico.Location = new System.Drawing.Point(13, 128);
             this.gvServico.Name = "gvServico";
             this.gvServico.ReadOnly = true;
             this.gvServico.RowHeadersWidth = 51;
-            this.gvServico.Size = new System.Drawing.Size(1000, 450);
+            this.gvServico.Size = new System.Drawing.Size(750, 366);
             this.gvServico.TabIndex = 281;
-            // 
-            // btnExcluir
-            // 
-            this.btnExcluir.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnExcluir.Depth = 0;
-            this.btnExcluir.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExcluir.Image = global::EquipMotos.Properties.Resources._1398756469_Erase;
-            this.btnExcluir.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnExcluir.Location = new System.Drawing.Point(683, 667);
-            this.btnExcluir.Margin = new System.Windows.Forms.Padding(4);
-            this.btnExcluir.MouseState = MaterialSkin.MouseState.HOVER;
-            this.btnExcluir.Name = "btnExcluir";
-            this.btnExcluir.Primary = true;
-            this.btnExcluir.Size = new System.Drawing.Size(100, 30);
-            this.btnExcluir.TabIndex = 285;
-            this.btnExcluir.Text = "EXCLUIR";
-            this.btnExcluir.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnExcluir.UseVisualStyleBackColor = true;
-            this.btnExcluir.Click += new System.EventHandler(this.btnExcluir_Click);
-            // 
-            // btnVoltar
-            // 
-            this.btnVoltar.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnVoltar.Depth = 0;
-            this.btnVoltar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnVoltar.Location = new System.Drawing.Point(867, 667);
-            this.btnVoltar.Margin = new System.Windows.Forms.Padding(4);
-            this.btnVoltar.MouseState = MaterialSkin.MouseState.HOVER;
-            this.btnVoltar.Name = "btnVoltar";
-            this.btnVoltar.Primary = true;
-            this.btnVoltar.Size = new System.Drawing.Size(115, 30);
-            this.btnVoltar.TabIndex = 284;
-            this.btnVoltar.Text = "VOLTAR";
-            this.btnVoltar.UseVisualStyleBackColor = true;
-            this.btnVoltar.Click += new System.EventHandler(this.btnVoltar_Click);
-            // 
-            // btnAlterar
-            // 
-            this.btnAlterar.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnAlterar.Depth = 0;
-            this.btnAlterar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAlterar.Image = global::EquipMotos.Properties.Resources._1398756462_Modify;
-            this.btnAlterar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAlterar.Location = new System.Drawing.Point(575, 667);
-            this.btnAlterar.Margin = new System.Windows.Forms.Padding(4);
-            this.btnAlterar.MouseState = MaterialSkin.MouseState.HOVER;
-            this.btnAlterar.Name = "btnAlterar";
-            this.btnAlterar.Primary = true;
-            this.btnAlterar.Size = new System.Drawing.Size(100, 30);
-            this.btnAlterar.TabIndex = 283;
-            this.btnAlterar.Text = "ALTERAR";
-            this.btnAlterar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnAlterar.UseVisualStyleBackColor = true;
-            this.btnAlterar.Click += new System.EventHandler(this.btnAlterar_Click);
-            // 
-            // btnNovo
-            // 
-            this.btnNovo.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnNovo.Depth = 0;
-            this.btnNovo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNovo.Image = global::EquipMotos.Properties.Resources._1398756346_1;
-            this.btnNovo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnNovo.Location = new System.Drawing.Point(467, 667);
-            this.btnNovo.Margin = new System.Windows.Forms.Padding(4);
-            this.btnNovo.MouseState = MaterialSkin.MouseState.HOVER;
-            this.btnNovo.Name = "btnNovo";
-            this.btnNovo.Primary = true;
-            this.btnNovo.Size = new System.Drawing.Size(100, 30);
-            this.btnNovo.TabIndex = 282;
-            this.btnNovo.Text = "NOVO";
-            this.btnNovo.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnNovo.UseVisualStyleBackColor = true;
-            this.btnNovo.Click += new System.EventHandler(this.btnNovo_Click);
-            // 
-            // servicosBindingSource
-            // 
-            this.servicosBindingSource.DataMember = "servicos";
-            this.servicosBindingSource.DataSource = this.sistemaMoto2DataSetServicos;
-            // 
-            // sistemaMoto2DataSetServicos
-            // 
-            this.sistemaMoto2DataSetServicos.DataSetName = "SistemaMoto2DataSetServicos";
-            this.sistemaMoto2DataSetServicos.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // servicosTableAdapter
-            // 
-            this.servicosTableAdapter.ClearBeforeFill = true;
             // 
             // codigoDataGridViewTextBoxColumn
             // 
@@ -259,29 +168,14 @@
             this.funcionarioDataGridViewTextBoxColumn.ReadOnly = true;
             this.funcionarioDataGridViewTextBoxColumn.Width = 200;
             // 
-            // categoriaDataGridViewTextBoxColumn
-            // 
-            this.categoriaDataGridViewTextBoxColumn.DataPropertyName = "categoria";
-            this.categoriaDataGridViewTextBoxColumn.HeaderText = "Categoria";
-            this.categoriaDataGridViewTextBoxColumn.Name = "categoriaDataGridViewTextBoxColumn";
-            this.categoriaDataGridViewTextBoxColumn.ReadOnly = true;
-            this.categoriaDataGridViewTextBoxColumn.Width = 150;
-            // 
-            // codCategoriaDataGridViewTextBoxColumn
-            // 
-            this.codCategoriaDataGridViewTextBoxColumn.DataPropertyName = "codCategoria";
-            this.codCategoriaDataGridViewTextBoxColumn.HeaderText = "codCategoria";
-            this.codCategoriaDataGridViewTextBoxColumn.Name = "codCategoriaDataGridViewTextBoxColumn";
-            this.codCategoriaDataGridViewTextBoxColumn.ReadOnly = true;
-            this.codCategoriaDataGridViewTextBoxColumn.Visible = false;
-            // 
             // precoVendaDataGridViewTextBoxColumn
             // 
             this.precoVendaDataGridViewTextBoxColumn.DataPropertyName = "precoVenda";
-            this.precoVendaDataGridViewTextBoxColumn.HeaderText = "precoVenda";
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.precoVendaDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle3;
+            this.precoVendaDataGridViewTextBoxColumn.HeaderText = "Preço";
             this.precoVendaDataGridViewTextBoxColumn.Name = "precoVendaDataGridViewTextBoxColumn";
             this.precoVendaDataGridViewTextBoxColumn.ReadOnly = true;
-            this.precoVendaDataGridViewTextBoxColumn.Visible = false;
             // 
             // valorUnitarioDataGridViewTextBoxColumn
             // 
@@ -294,11 +188,12 @@
             // precoCustoDataGridViewTextBoxColumn
             // 
             this.precoCustoDataGridViewTextBoxColumn.DataPropertyName = "precoCusto";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.precoCustoDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.precoCustoDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle4;
             this.precoCustoDataGridViewTextBoxColumn.HeaderText = "Preço_Custo";
             this.precoCustoDataGridViewTextBoxColumn.Name = "precoCustoDataGridViewTextBoxColumn";
             this.precoCustoDataGridViewTextBoxColumn.ReadOnly = true;
+            this.precoCustoDataGridViewTextBoxColumn.Visible = false;
             this.precoCustoDataGridViewTextBoxColumn.Width = 70;
             // 
             // codFuncionarioDataGridViewTextBoxColumn
@@ -349,11 +244,95 @@
             this.usuarioDataGridViewTextBoxColumn.ReadOnly = true;
             this.usuarioDataGridViewTextBoxColumn.Visible = false;
             // 
+            // servicosBindingSource
+            // 
+            this.servicosBindingSource.DataMember = "servicos";
+            this.servicosBindingSource.DataSource = this.sistemaMoto2DataSetServicos;
+            // 
+            // sistemaMoto2DataSetServicos
+            // 
+            this.sistemaMoto2DataSetServicos.DataSetName = "SistemaMoto2DataSetServicos";
+            this.sistemaMoto2DataSetServicos.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // btnExcluir
+            // 
+            this.btnExcluir.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnExcluir.Depth = 0;
+            this.btnExcluir.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExcluir.Image = global::EquipMotos.Properties.Resources._1398756469_Erase;
+            this.btnExcluir.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnExcluir.Location = new System.Drawing.Point(507, 510);
+            this.btnExcluir.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnExcluir.Name = "btnExcluir";
+            this.btnExcluir.Primary = true;
+            this.btnExcluir.Size = new System.Drawing.Size(75, 24);
+            this.btnExcluir.TabIndex = 285;
+            this.btnExcluir.Text = "EXCLUIR";
+            this.btnExcluir.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnExcluir.UseVisualStyleBackColor = true;
+            this.btnExcluir.Click += new System.EventHandler(this.btnExcluir_Click);
+            // 
+            // btnVoltar
+            // 
+            this.btnVoltar.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnVoltar.Depth = 0;
+            this.btnVoltar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnVoltar.Location = new System.Drawing.Point(645, 510);
+            this.btnVoltar.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnVoltar.Name = "btnVoltar";
+            this.btnVoltar.Primary = true;
+            this.btnVoltar.Size = new System.Drawing.Size(86, 24);
+            this.btnVoltar.TabIndex = 284;
+            this.btnVoltar.Text = "VOLTAR";
+            this.btnVoltar.UseVisualStyleBackColor = true;
+            this.btnVoltar.Click += new System.EventHandler(this.btnVoltar_Click);
+            // 
+            // btnAlterar
+            // 
+            this.btnAlterar.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnAlterar.Depth = 0;
+            this.btnAlterar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAlterar.Image = global::EquipMotos.Properties.Resources._1398756462_Modify;
+            this.btnAlterar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnAlterar.Location = new System.Drawing.Point(426, 510);
+            this.btnAlterar.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnAlterar.Name = "btnAlterar";
+            this.btnAlterar.Primary = true;
+            this.btnAlterar.Size = new System.Drawing.Size(75, 24);
+            this.btnAlterar.TabIndex = 283;
+            this.btnAlterar.Text = "ALTERAR";
+            this.btnAlterar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnAlterar.UseVisualStyleBackColor = true;
+            this.btnAlterar.Click += new System.EventHandler(this.btnAlterar_Click);
+            // 
+            // btnNovo
+            // 
+            this.btnNovo.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnNovo.Depth = 0;
+            this.btnNovo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNovo.Image = global::EquipMotos.Properties.Resources._1398756346_1;
+            this.btnNovo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnNovo.Location = new System.Drawing.Point(345, 510);
+            this.btnNovo.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnNovo.Name = "btnNovo";
+            this.btnNovo.Primary = true;
+            this.btnNovo.Size = new System.Drawing.Size(75, 24);
+            this.btnNovo.TabIndex = 282;
+            this.btnNovo.Text = "NOVO";
+            this.btnNovo.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnNovo.UseVisualStyleBackColor = true;
+            this.btnNovo.Click += new System.EventHandler(this.btnNovo_Click);
+            // 
+            // servicosTableAdapter
+            // 
+            this.servicosTableAdapter.ClearBeforeFill = true;
+            // 
             // frmConsultaServico
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1029, 730);
+            this.ClientSize = new System.Drawing.Size(772, 552);
+            this.ControlBox = false;
             this.Controls.Add(this.btnExcluir);
             this.Controls.Add(this.btnVoltar);
             this.Controls.Add(this.btnAlterar);
@@ -362,6 +341,7 @@
             this.Controls.Add(this.btnBuscar);
             this.Controls.Add(this.txtPesquisar);
             this.Controls.Add(this.label1);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "frmConsultaServico";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Consultar Serviços";
@@ -391,8 +371,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn codigoDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn servicoDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn funcionarioDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn categoriaDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn codCategoriaDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn precoVendaDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn valorUnitarioDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn precoCustoDataGridViewTextBoxColumn;

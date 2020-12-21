@@ -291,11 +291,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>SistemaMoto2DataSetContaReceber.xsd</DependentUpon>
     </Compile>
-    <Compile Include="SistemaMoto2DataSetContasPagar.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>SistemaMoto2DataSetContasPagar.xsd</DependentUpon>
-    </Compile>
     <Compile Include="SistemaMoto2DataSetEstado.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -888,17 +883,6 @@
     </None>
     <None Include="SistemaMoto2DataSetContaReceber.xss">
       <DependentUpon>SistemaMoto2DataSetContaReceber.xsd</DependentUpon>
-    </None>
-    <None Include="SistemaMoto2DataSetContasPagar.xsc">
-      <DependentUpon>SistemaMoto2DataSetContasPagar.xsd</DependentUpon>
-    </None>
-    <None Include="SistemaMoto2DataSetContasPagar.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>SistemaMoto2DataSetContasPagar.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="SistemaMoto2DataSetContasPagar.xss">
-      <DependentUpon>SistemaMoto2DataSetContasPagar.xsd</DependentUpon>
     </None>
     <None Include="SistemaMoto2DataSetEstado.xsc">
       <DependentUpon>SistemaMoto2DataSetEstado.xsd</DependentUpon>

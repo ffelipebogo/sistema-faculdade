@@ -305,6 +305,10 @@ namespace EquipMotos {
             
             private global::System.Data.DataColumn columncondicao;
             
+            private global::System.Data.DataColumn columntotalReceber;
+            
+            private global::System.Data.DataColumn columnsituacao;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public vendasDataTable() {
@@ -444,6 +448,22 @@ namespace EquipMotos {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn totalReceberColumn {
+                get {
+                    return this.columntotalReceber;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn situacaoColumn {
+                get {
+                    return this.columnsituacao;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -479,7 +499,7 @@ namespace EquipMotos {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public vendasRow AddvendasRow(string modelo, string serie, int nrNota, int codCliente, int codCondPagamento, System.DateTime dtEmissao, decimal desconto, string observacoes, System.DateTime dtCadastro, System.DateTime dtAlteracao, string usuario, string cliente, string condicao) {
+            public vendasRow AddvendasRow(string modelo, string serie, int nrNota, int codCliente, int codCondPagamento, System.DateTime dtEmissao, decimal desconto, string observacoes, System.DateTime dtCadastro, System.DateTime dtAlteracao, string usuario, string cliente, string condicao, decimal totalReceber, bool situacao) {
                 vendasRow rowvendasRow = ((vendasRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         modelo,
@@ -494,7 +514,9 @@ namespace EquipMotos {
                         dtAlteracao,
                         usuario,
                         cliente,
-                        condicao};
+                        condicao,
+                        totalReceber,
+                        situacao};
                 rowvendasRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowvendasRow);
                 return rowvendasRow;
@@ -540,6 +562,8 @@ namespace EquipMotos {
                 this.columnusuario = base.Columns["usuario"];
                 this.columncliente = base.Columns["cliente"];
                 this.columncondicao = base.Columns["condicao"];
+                this.columntotalReceber = base.Columns["totalReceber"];
+                this.columnsituacao = base.Columns["situacao"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -571,6 +595,10 @@ namespace EquipMotos {
                 base.Columns.Add(this.columncliente);
                 this.columncondicao = new global::System.Data.DataColumn("condicao", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columncondicao);
+                this.columntotalReceber = new global::System.Data.DataColumn("totalReceber", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columntotalReceber);
+                this.columnsituacao = new global::System.Data.DataColumn("situacao", typeof(bool), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnsituacao);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnmodelo,
                                 this.columnserie,
@@ -908,6 +936,38 @@ namespace EquipMotos {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public decimal totalReceber {
+                get {
+                    try {
+                        return ((decimal)(this[this.tablevendas.totalReceberColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("O valor da coluna \'totalReceber\' na tabela \'vendas\' é DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablevendas.totalReceberColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool situacao {
+                get {
+                    try {
+                        return ((bool)(this[this.tablevendas.situacaoColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("O valor da coluna \'situacao\' na tabela \'vendas\' é DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablevendas.situacaoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool IsdtEmissaoNull() {
                 return this.IsNull(this.tablevendas.dtEmissaoColumn);
             }
@@ -988,6 +1048,30 @@ namespace EquipMotos {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetcondicaoNull() {
                 this[this.tablevendas.condicaoColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IstotalReceberNull() {
+                return this.IsNull(this.tablevendas.totalReceberColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SettotalReceberNull() {
+                this[this.tablevendas.totalReceberColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IssituacaoNull() {
+                return this.IsNull(this.tablevendas.situacaoColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetsituacaoNull() {
+                this[this.tablevendas.situacaoColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -1163,6 +1247,8 @@ namespace EquipMotos.SistemaMoto2DataSetVendaTableAdapters {
             tableMapping.ColumnMappings.Add("usuario", "usuario");
             tableMapping.ColumnMappings.Add("cliente", "cliente");
             tableMapping.ColumnMappings.Add("condicao", "condicao");
+            tableMapping.ColumnMappings.Add("totalReceber", "totalReceber");
+            tableMapping.ColumnMappings.Add("situacao", "situacao");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -1179,10 +1265,11 @@ namespace EquipMotos.SistemaMoto2DataSetVendaTableAdapters {
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = @"SELECT        vendas.modelo, vendas.serie, vendas.nrNota, vendas.codCliente, vendas.codCondPagamento, vendas.dtEmissao, vendas.desconto, vendas.observacoes, vendas.dtCadastro, vendas.dtAlteracao, vendas.usuario, clientes.cliente, condicaoPagamento.condicao
-FROM            vendas 
-                        INNER JOIN clientes ON vendas.codCliente = clientes.codigo 
-                        INNER JOIN condicaoPagamento ON vendas.codCondPagamento = condicaoPagamento.codigo";
+            this._commandCollection[0].CommandText = @"SELECT        vendas.modelo, vendas.serie, vendas.nrNota, vendas.codCliente, vendas.codCondPagamento, vendas.dtEmissao, vendas.desconto, vendas.observacoes, vendas.dtCadastro, vendas.dtAlteracao, vendas.usuario, 
+                         clientes.cliente, condicaoPagamento.condicao, vendas.totalReceber, vendas.situacao
+FROM            vendas INNER JOIN
+                         clientes ON vendas.codCliente = clientes.codigo INNER JOIN
+                         condicaoPagamento ON vendas.codCondPagamento = condicaoPagamento.codigo";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         

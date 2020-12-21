@@ -40,6 +40,12 @@ namespace EquipMotos
 
         private void SairToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            Process process = new Process();
+            ProcessStartInfo startInfo = new ProcessStartInfo();
+            startInfo.WindowStyle = ProcessWindowStyle.Hidden;
+            startInfo.FileName = "C:\\dev\\faculdade\\reactJs\\report-reactjs\\script2.bat";
+            process.StartInfo = startInfo;
+            process.Start();
             Application.Exit();
         }
 
@@ -159,5 +165,6 @@ namespace EquipMotos
             frmConsultaCategoria frmConcategoria = new frmConsultaCategoria();
             frmConcategoria.ShowDialog();
         }
+
     }
 }

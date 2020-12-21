@@ -22,18 +22,22 @@ namespace EquipMotos.DAO
         ProdutosDAO DaoProduto = new  ProdutosDAO();
         CondicaoPagamentoDAO DaoCondPag = new CondicaoPagamentoDAO();
 
-        private object SelecionaUltimoID(SqlTransaction transaction)
+        public object SelecionaUltimoID()
         {
+            conexao.Open();
+            SqlTransaction transaction = conexao.BeginTransaction("SampleTransacion");
             SqlCommand comando = this.CreateCommandTransaction(transaction);
             comando.CommandText = "SELECT MAX(nrNota) ID FROM ordemServicos";
 
-            var CondID = comando.ExecuteScalar();
+            int CondID = int.Parse( "0" + comando.ExecuteScalar().ToString());
 
-            if (String.IsNullOrEmpty(CondID.ToString()))
+            if (String.IsNullOrEmpty(CondID.ToString()) || CondID <= 0)
             {
-                CondID = 1;
+                conexao.Close();
+                return CondID = 1;
             }
-            return Convert.ToInt64(CondID) + 1;
+            conexao.Close();
+            return CondID + 1;
         }
 
         public override void Inserir(object obj)
@@ -43,19 +47,18 @@ namespace EquipMotos.DAO
             try
             {
                 OrdemServicos ordemS = obj as OrdemServicos;
-                var NrNota = this.SelecionaUltimoID(transaction);
                 this.InserirOrdemSQl(ordemS, transaction);
 
                 foreach (ItensOrdemServico produto in ordemS.ListaProduto)
                 {
-                    this.InserirProdutosItemOS(NrNota, produto, transaction);
+                    this.InserirProdutosItemOS(ordemS.NrNota, produto, transaction);
                 } 
                 foreach (ItensOrdemServico servico in ordemS.ListaServico)
                 {
-                    this.InserirServicoItemOS(NrNota, servico, transaction);
+                    this.InserirServicoItemOS(ordemS.NrNota, servico, transaction);
                 }
                 transaction.Commit();
-                MessageBox.Show("Ordem de servico salvar com sucesso!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Ordem de serviço salvar com sucesso!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
             {
@@ -71,21 +74,14 @@ namespace EquipMotos.DAO
         private void InserirOrdemSQl(OrdemServicos ordemS, SqlTransaction transaction)
         {
             SqlCommand comando = this.CreateCommandTransaction(transaction);
-            comando.CommandText = @"INSERT INTO ordemServicos (
-                                        modelo, serie,  codVeiculo, codCliente,  data, codCondPagamento,
-                                        ano, placa, km, cor,  valorProduto, valorServico, desconto,  valorTotal,
-                                          observacoes, dtCadastro, dtAlteracao, usuario, finalizada )
-                                VALUES ( 
-                                        @modelo, @serie,  @codVeiculo, @codCliente, @data, @codCondPagamento, 
-                                        @ano, @placa, @km, @cor, @valorProduto, @valorServico, @desconto, @valorTotal, 
-                                         @observacoes, @dtCadastro, @dtAlteracao, @usuario, @finalizada )";
+            comando.CommandText = @"INSERT INTO ordemServicos (nrNota,  codVeiculo, codCliente,  data, codCondPagamento, ano, placa, km, cor, valorProduto, valorServico, desconto,  valorTotal,
+                                                               observacoes, dtCadastro, dtAlteracao, usuario, finalizada ) 
+                                                VALUES ( @nrNota,  @codVeiculo, @codCliente, @data, @codCondPagamento, @ano, @placa, @km, @cor, @valorProduto, @valorServico, @desconto, @valorTotal, 
+                                                              @observacoes, @dtCadastro, @dtAlteracao, @usuario, @finalizada)";
 
-            comando.Parameters.AddWithValue("@modelo", ordemS.modelo);
-            comando.Parameters.AddWithValue("@serie", ordemS.serie);
-           // comando.Parameters.AddWithValue("@nrNota", ordemS.NrNota);
+            comando.Parameters.AddWithValue("@nrNota", ordemS.NrNota);
             comando.Parameters.AddWithValue("@codVeiculo", ordemS.Veiculo.codigo);
-            comando.Parameters.AddWithValue("@codCliente", ordemS.Cliente.codigo);
-
+            comando.Parameters.AddWithValue("@codCliente", ordemS.Cliente.codigo); 
             comando.Parameters.AddWithValue("@data", ordemS.data);
             comando.Parameters.AddWithValue("@codCondPagamento", ordemS.CondPagamento.codigo);
             comando.Parameters.AddWithValue("@ano", ordemS.ano);
@@ -101,7 +97,7 @@ namespace EquipMotos.DAO
             comando.Parameters.AddWithValue("@dtAlteracao", ordemS.dtAlteracao);
             comando.Parameters.AddWithValue("@usuario", ordemS.usuario);
             comando.Parameters.AddWithValue("@finalizada", 0);
-            
+
             comando.ExecuteNonQuery();
         }
 
@@ -150,7 +146,14 @@ namespace EquipMotos.DAO
             using (SqlConnection conexao = Conecta.CreateConnection())
             {
                 SqlDataAdapter da;
-                string sql = @"SELECT * FROM ordemServicos WHERE nrNota = @nrNota AND finalizada = 0";
+                string sql = @"SELECT   ordemServicos.nrNota, ordemServicos.codCliente, ordemServicos.codVeiculo, ordemServicos.data, ordemServicos.ano, 
+                                ordemServicos.placa, ordemServicos.km, ordemServicos.cor, ordemServicos.valorProduto, ordemServicos.desconto, ordemServicos.valorServico, ordemServicos.valorTotal, 
+                                 ordemServicos.codCondPagamento, ordemServicos.observacoes, ordemServicos.dtCadastro, ordemServicos.dtAlteracao, ordemServicos.usuario, ordemServicos.finalizada, condicaoPagamento.condicao, 
+                                 clientes.cliente, modelos.modelo AS veiculo
+                                FROM         ordemServicos INNER JOIN
+                                 clientes ON ordemServicos.codCliente = clientes.codigo INNER JOIN
+                                 modelos ON ordemServicos.codVeiculo = modelos.codigo INNER JOIN
+                                 condicaoPagamento ON ordemServicos.codCondPagamento = condicaoPagamento.codigo WHERE ordemServicos.nrNota = @nrNota";
 
                 SqlCommand comando = new SqlCommand(sql, conexao);
 
@@ -163,9 +166,7 @@ namespace EquipMotos.DAO
                 foreach (DataRow row in dtCliente.Rows)
                 {
                     OrdemServicos os = new OrdemServicos();
-                    os.NrNota = Convert.ToString(row["nrNota"]);
-                    os.modelo = Convert.ToString(row["modelo"]);
-                    os.serie = Convert.ToString(row["serie"]);
+                    os.NrNota = Convert.ToString(row["nrNota"]); 
                     os.data = Convert.ToDateTime(row["data"]);
                     os.Veiculo = DaoModelo.BuscarPorID(Convert.ToInt32(row["codVeiculo"])) as Modelos;
                     os.Cliente = DaoCliente.BuscarPorID(Convert.ToString(row["codCliente"])) as Clientes;
@@ -182,11 +183,13 @@ namespace EquipMotos.DAO
                     os.dtCadastro = Convert.ToDateTime(row["dtCadastro"]);
                     os.dtAlteracao = Convert.ToDateTime(row["dtAlteracao"]);
                     os.usuario = Convert.ToString(row["usuario"]);
+                    os.finalizada = Convert.ToBoolean(row["finalizada"]);
                     os.ListaProduto = BuscarProdutos(nrNota);
                     os.ListaServico = BuscarServicos(nrNota);
 
                     ordemServ = os;
                 }
+                conexao.Close();
                 return ordemServ;
             }
         }
@@ -227,6 +230,7 @@ namespace EquipMotos.DAO
                         dtCadastro = Convert.ToDateTime(row["dtCadastro"]),
                     });
                 }
+                conexao.Close();
                 return ListaItensOrdemServicoS;
             }
         }
@@ -267,6 +271,7 @@ namespace EquipMotos.DAO
                         dtCadastro = Convert.ToDateTime(row["dtCadastro"]),
                     });
                 }
+                conexao.Close();
                 return ListaItensOrdemServicoP;
             }
         }
@@ -327,13 +332,11 @@ namespace EquipMotos.DAO
         {
             SqlCommand comando = this.CreateCommandTransaction(transaction);
             comando.CommandText = @"UPDATE ordemServicos SET 
-                                        modelo = @modelo, serie = @serie,  codVeiculo = @codVeiculo, codCliente = @codCliente,  data = @data, codCondPagamento = @codCondPagamento,
+                                        codVeiculo = @codVeiculo, codCliente = @codCliente,  data = @data, codCondPagamento = @codCondPagamento,
                                         ano = @ano, placa = @placa, km = @km, cor = @cor,  valorProduto = @valorProduto, valorServico = @valorServico, desconto = @desconto,  valorTotal = @valorTotal,
                                         observacoes = @observacoes, dtCadastro = @dtCadastro, dtAlteracao = @dtAlteracao, usuario = @usuario
                                         WHERE nrNota = @nrNota ";
-
-            comando.Parameters.AddWithValue("@modelo", ordemS.modelo);
-            comando.Parameters.AddWithValue("@serie", ordemS.serie);
+             
              comando.Parameters.AddWithValue("@nrNota", ordemS.NrNota);
             comando.Parameters.AddWithValue("@codVeiculo", ordemS.Veiculo.codigo);
             comando.Parameters.AddWithValue("@codCliente", ordemS.Cliente.codigo);
@@ -429,7 +432,14 @@ namespace EquipMotos.DAO
             using (SqlConnection conexao = Conecta.CreateConnection())
             {
                 SqlDataAdapter da;
-                string sql = @"SELECT * FROM ordemServicos "; //where finalizada = 0
+                string sql = @"SELECT   ordemServicos.nrNota, ordemServicos.codCliente, ordemServicos.codVeiculo, ordemServicos.data, ordemServicos.ano, 
+                         ordemServicos.placa, ordemServicos.km, ordemServicos.cor, ordemServicos.valorProduto, ordemServicos.desconto, ordemServicos.valorServico, ordemServicos.valorTotal, 
+                         ordemServicos.codCondPagamento, ordemServicos.observacoes, ordemServicos.dtCadastro, ordemServicos.dtAlteracao, ordemServicos.usuario, condicaoPagamento.condicao, 
+                         clientes.cliente, modelos.modelo AS veiculo
+                            FROM         ordemServicos INNER JOIN
+                         clientes ON ordemServicos.codCliente = clientes.codigo INNER JOIN
+                         modelos ON ordemServicos.codVeiculo = modelos.codigo INNER JOIN
+                         condicaoPagamento ON ordemServicos.codCondPagamento = condicaoPagamento.codigo"; //where finalizada = 0
                 SqlCommand comando = new SqlCommand(sql, conexao);
                 conexao.Open();
                 da = new SqlDataAdapter(comando);
@@ -437,8 +447,8 @@ namespace EquipMotos.DAO
                 DataTable dtOS = new DataTable();
                 da.Fill(dtOS);
 
+                conexao.Close();
                 return dtOS;
-
             }
         }
     }

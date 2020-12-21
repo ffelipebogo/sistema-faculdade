@@ -101,6 +101,7 @@ namespace EquipMotos.DAO
 
                     this.modelos = mod;
                 }
+                conexao.Close();
                 return modelos;
             }
         }
@@ -121,7 +122,7 @@ namespace EquipMotos.DAO
 
                 DataTable dtModelos = new DataTable();
                 da.Fill(dtModelos);
-
+                conexao.Close();
                 return dtModelos;
             }
 
@@ -162,7 +163,7 @@ namespace EquipMotos.DAO
 
                 DataTable dtModelo = new DataTable();
                 da.Fill(dtModelo);
-
+                conexao.Close();
                 return dtModelo;
 
             }

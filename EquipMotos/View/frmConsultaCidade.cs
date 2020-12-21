@@ -46,18 +46,22 @@ namespace EquipMotos.View
         {
             try
             {
-                cidade = null;
-
-                var cidRow = gvCidade.CurrentRow.DataBoundItem as DataRowView;
-            
-                cidade = CtrlCidade.BuscarPorID(cidRow["codigo"]) as Cidades;
-                return cidade;
-
+                if(gvCidade.CurrentRow != null)
+                {
+                    cidade = null;
+                    var cidRow = gvCidade.CurrentRow.DataBoundItem as DataRowView;
+                    cidade = CtrlCidade.BuscarPorID(cidRow["codigo"]) as Cidades;
+                    return cidade;
+                }
+                else
+                {
+                    MessageBox.Show("Nenhuma cidade foi selecionada");
+                    return null;
+                }
             }
             catch
-            {
+            { 
                 return null;
-
             }
 
         }
@@ -66,14 +70,20 @@ namespace EquipMotos.View
         {
             try
             {
+                if (gvCidade.CurrentRow != null)
+                {
+                    var cidRow = gvCidade.CurrentRow.DataBoundItem as DataRowView;
+                    var id = cidRow["codigo"];
 
-                var cidRow = gvCidade.CurrentRow.DataBoundItem as DataRowView;
-                var id = cidRow["codigo"];
+                    CtrlCidade.Excluir(id);
+                    MessageBox.Show("Cidade foi excluida!");
 
-                CtrlCidade.Excluir(id);
-                MessageBox.Show("Cidade foi excluida!");
-
-                gvCidade.DataSource = CtrlCidade.ListarTodos();
+                    gvCidade.DataSource = CtrlCidade.ListarTodos();
+                }
+                else
+                {
+                    MessageBox.Show("Nenhuma cidade foi selecionada");
+                }
             }
             catch (Exception )
             {
@@ -85,23 +95,27 @@ namespace EquipMotos.View
         {
             try
             {
-
-                frmCadastroCidade frmCadCidade = new frmCadastroCidade();
-                var cidRow = gvCidade.CurrentRow.DataBoundItem as DataRowView;
-
-                var id = cidRow["codigo"];
-
-                frmCadCidade.Carregar(id);
-                if (frmCadCidade.ShowDialog() == DialogResult.OK)
+                if (gvCidade.CurrentRow != null)
                 {
-                    gvCidade.DataSource = CtrlCidade.ListarTodos();
-                }
-               
+                    frmCadastroCidade frmCadCidade = new frmCadastroCidade();
+                    var cidRow = gvCidade.CurrentRow.DataBoundItem as DataRowView;
 
+                    var id = cidRow["codigo"];
+
+                    frmCadCidade.Carregar(id);
+                    if (frmCadCidade.ShowDialog() == DialogResult.OK)
+                    {
+                        gvCidade.DataSource = CtrlCidade.ListarTodos();
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Nenhuma cidade foi selecionada");
+                }
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("Não foi possivel alterar a cidade");
             }
         }
 

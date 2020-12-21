@@ -63,12 +63,19 @@ namespace EquipMotos.View
         {
             try
             {
-                var formRow = gvFormaPag.CurrentRow.DataBoundItem as DataRowView;
-                var id = formRow["codigo"];
+                if (gvFormaPag.CurrentRow != null)
+                {
+                    var formRow = gvFormaPag.CurrentRow.DataBoundItem as DataRowView;
+                    var id = formRow["codigo"];
 
-                CtrlFormaPagamento.Excluir(id);
-               
-                gvFormaPag.DataSource = CtrlFormaPagamento.ListarTodos();
+                    CtrlFormaPagamento.Excluir(id);
+
+                    gvFormaPag.DataSource = CtrlFormaPagamento.ListarTodos();
+                }
+                else
+                {
+                    MessageBox.Show("Nenhuma forma de pagamento foi selecionada");
+                }
             }
             catch
             {
@@ -97,12 +104,20 @@ namespace EquipMotos.View
         {
             try
             {
-                formaPag = null;
+                if (gvFormaPag.CurrentRow != null)
+                {
+                    formaPag = null;
 
-                var formaRow = gvFormaPag.CurrentRow.DataBoundItem as DataRowView;
-            
-                formaPag = CtrlFormaPagamento.BuscarPorID(formaRow["codigo"]) as FormaPagamentos;
-                return formaPag;
+                    var formaRow = gvFormaPag.CurrentRow.DataBoundItem as DataRowView;
+
+                    formaPag = CtrlFormaPagamento.BuscarPorID(formaRow["codigo"]) as FormaPagamentos;
+                    return formaPag;
+                }
+                else
+                {
+                    MessageBox.Show("Nenhuma forma de pagamento foi selecionada");
+                    return null;
+                }
             }
             catch
             {

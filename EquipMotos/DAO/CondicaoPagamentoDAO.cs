@@ -13,6 +13,7 @@ namespace EquipMotos.DAO
     public class CondicaoPagamentoDAO : DAO, IDisposable
     {
         CondicaoPagamentos condicaoPagamento;
+        List<CondicaoParcelada> ListaItem = new List<CondicaoParcelada>();
         FormaPagamentoDAO daoFormPagamento = new FormaPagamentoDAO();
 
         public override void Inserir(object obj)
@@ -64,9 +65,9 @@ namespace EquipMotos.DAO
             SqlCommand comando = this.CreateCommandTransaction(transaction);
             comando.CommandText = "SELECT MAX(codigo) ID FROM condicaoPagamento";
             
-            var CondID = comando.ExecuteScalar();
+            int CondID = int.Parse("0" + comando.ExecuteScalar().ToString());
 
-            if (String.IsNullOrEmpty(CondID.ToString()))
+            if (String.IsNullOrEmpty(CondID.ToString()) || CondID <= 0)
             {
                 CondID = 1;
             }
@@ -192,7 +193,7 @@ namespace EquipMotos.DAO
             using (SqlConnection conexao = Conecta.CreateConnection())
             {
                 SqlDataAdapter da;
-                string sql = @"SELECT * FROM condicaoPagamento";
+                string sql = @"SELECT * FROM condicaoPagamento ";
 
                 SqlCommand comando = new SqlCommand(sql, conexao);
 
@@ -211,9 +212,8 @@ namespace EquipMotos.DAO
         {
             using (SqlConnection conexao = Conecta.CreateConnection())
             {
-
                 SqlDataAdapter da;
-                string sql = @"SELECT * FROM condicaoPagamento cp INNER JOIN parcelas p on p.codCondPagamento = cp.codigo WHERE cp.codigo = @codigo";
+                string sql = @"SELECT * FROM condicaoPagamento WHERE codigo = @codigo ";
 
                 SqlCommand comando = new SqlCommand(sql, conexao);
 
@@ -225,6 +225,8 @@ namespace EquipMotos.DAO
                 DataTable dtCondicao = new DataTable();
                 da.Fill(dtCondicao);
                 condicaoPagamento = null;
+                //string sqlParcela = @"SELECT * FROM parcelas WHERE codCondPagamento = @codigo";
+
                 foreach (DataRow row in dtCondicao.Rows)
                 {
                     CondicaoPagamentos condPagamento = new CondicaoPagamentos();
@@ -234,18 +236,7 @@ namespace EquipMotos.DAO
                     condPagamento.multa = Convert.ToDouble(row["multa"]);
                     condPagamento.juros = Convert.ToDouble(row["juros"]);
                     condPagamento.desconto = Convert.ToDouble(row["desconto"]);
-                    
-                    listaParcelas.Add(new CondicaoParcelada
-                    {
-                        nrParcela = Convert.ToInt32(row["nrParcela"]),
-                        nrDia = Convert.ToInt32(row["nrDia"]),
-                        porcentagem = Convert.ToDouble(row["porcentagem"]),
-                        formaPagamento = daoFormPagamento.BuscarPorID(Convert.ToInt32(row["codFormaPagamento"])) as FormaPagamentos,
-                        dtAlteracao = Convert.ToDateTime(row["dtAlteracao"]),
-                        dtCadastro = Convert.ToDateTime(row["dtCadastro"]),
-                        usuario = Convert.ToString(row["usuario"])
-                    }) ;
-                    condPagamento.listaParcela = listaParcelas;
+                    condPagamento.listaParcela = BuscarItem(condPagamento.codigo);
                     condPagamento.dtAlteracao = Convert.ToDateTime(row["dtAlteracao"]);
                     condPagamento.dtCadastro = Convert.ToDateTime(row["dtCadastro"]);
                     condPagamento.usuario = Convert.ToString(row["usuario"]);
@@ -254,6 +245,37 @@ namespace EquipMotos.DAO
                 conexao.Close();
                 return condicaoPagamento;
             }
+        }
+
+        public List<CondicaoParcelada> BuscarItem(object codCondPag)
+        {
+            SqlDataAdapter da;
+            string sql = @"SELECT * FROM parcelas WHERE codCondPagamento = @codCondPag";
+
+            SqlCommand comando = new SqlCommand(sql, conexao);
+
+            comando.Parameters.AddWithValue("@codCondPag", codCondPag);
+            
+            conexao.Open();
+            da = new SqlDataAdapter(comando);
+
+            DataTable dtParcela = new DataTable();
+            da.Fill(dtParcela);
+            foreach (DataRow row in dtParcela.Rows)
+            {
+                ListaItem.Add(new CondicaoParcelada
+                {
+                    nrParcela = Convert.ToInt32(row["nrParcela"]),
+                    nrDia = Convert.ToInt32(row["nrDia"]),
+                    porcentagem = Convert.ToDouble(row["porcentagem"]),
+                    formaPagamento = daoFormPagamento.BuscarPorID(Convert.ToInt32(row["codFormaPagamento"])) as FormaPagamentos,
+                    dtAlteracao = Convert.ToDateTime(row["dtAlteracao"]),
+                    dtCadastro = Convert.ToDateTime(row["dtCadastro"]),
+                    usuario = Convert.ToString(row["usuario"])
+                });
+            }
+            conexao.Close();
+            return ListaItem;
         }
 
         public override object Pesquisar(string cond)
@@ -279,10 +301,10 @@ namespace EquipMotos.DAO
                 conexao.Open();
                 da = new SqlDataAdapter(comando);
 
-                DataTable dtCategoria = new DataTable();
-                da.Fill(dtCategoria);
-
-                return dtCategoria;
+                DataTable dtcondPag = new DataTable();
+                da.Fill(dtcondPag);
+                conexao.Close();
+                return dtcondPag;
 
             }
         }

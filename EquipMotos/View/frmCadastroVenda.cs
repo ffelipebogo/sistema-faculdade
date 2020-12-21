@@ -36,7 +36,8 @@ namespace EquipMotos.View
             InitializeComponent();
             toolTip.SetToolTip(btnAddProduto, "Adicionar Produto");
             toolTip.SetToolTip(btnRemProduto, "Remover Produto");
-            chkSituacao.Checked = true;
+            chkSituacao.Checked = false;
+            CarregarModeloSerieNota();
         }
         private void BtnSalvar_Click(object sender, EventArgs e)
         {
@@ -47,79 +48,74 @@ namespace EquipMotos.View
                 var listItemVenda = new List<ItensVenda>();
                 {
                     if (ValidaCampos())
-                    {
-                        //if (ValidaEstoque())
+                    { 
+                        Venda.modelo = txtModelo.Text;
+                        Venda.serie = txtSerie.Text;
+                        Venda.nrNota = txtNumeroVenda.Text;
+                        Venda.dtEmissao = txtData.Value;
+                        Venda.desconto = Double.Parse("0"+ txtDescontos.Text, NumberStyles.Any);
+                        Venda.totalReceber = Double.Parse(txtValorTotal.Text, NumberStyles.Any);
+                        Venda.cliente = CtrlCliente.BuscarPorID(txtCodCliente.Text.Trim()) as Clientes;
+                        Venda.condPagamento = CtrlCondPagamento.BuscarPorID(Convert.ToInt32(txtCodCondPagamento.Text.Trim())) as CondicaoPagamentos;
+                        Venda.observacoes = txtObservacoes.Text + " ";
+                        Venda.dtCadastro = DateTime.Now;
+                        Venda.dtAlteracao = DateTime.Now;
+                        var dtEmissao = txtData.Value;
+                        Venda.usuario = UsuarioLogado.Usuario; 
+                        for (int i = 0; i < lvProdutosVenda.Items.Count; i++)
                         {
-                            Venda.modelo = txtModelo.Text;
-                            Venda.serie = txtSerie.Text;
-                            Venda.nrNota = txtNumeroVenda.Text;
-                            Venda.dtEmissao = txtData.Value;
-                            Venda.desconto = Double.Parse("0"+txtDescontos.Text);
-                            Venda.totalReceber = Double.Parse("0"+txtValorTotal.Text);
-                            Venda.cliente = CtrlCliente.BuscarPorID(txtCodCliente.Text.Trim()) as Clientes;
-                            Venda.condPagamento = CtrlCondPagamento.BuscarPorID(Convert.ToInt32(txtCodCondPagamento.Text.Trim())) as CondicaoPagamentos;
-                            Venda.observacoes = txtObservacoes.Text;
-                            Venda.dtCadastro = DateTime.Now;
-                            Venda.dtAlteracao = DateTime.Now;
-                            var dtEmissao = txtData.Value;
-                            Venda.usuario = UsuarioLogado.Usuario;
-                            // ProdutosServicos produto = new ProdutosServicos();
-                            for (int i = 0; i < lvProdutosVenda.Items.Count; i++)
+                            var idItem = Convert.ToInt32(lvProdutosVenda.Items[i].SubItems[0].Text);
+                            var qtdItem = Convert.ToInt32(lvProdutosVenda.Items[i].SubItems[2].Text);
+                            var custoItem = Decimal.Parse(lvProdutosVenda.Items[i].SubItems[4].Text, NumberStyles.Any);
+
+                            listItemVenda.Add(new ItensVenda()
                             {
-                                var idItem = Convert.ToInt32(lvProdutosVenda.Items[i].SubItems[0].Text);
-                                var qtdItem = Convert.ToInt32(lvProdutosVenda.Items[i].SubItems[2].Text);
-                                var custoItem = Decimal.Parse(lvProdutosVenda.Items[i].SubItems[4].Text, NumberStyles.Any);
-
-                                listItemVenda.Add(new ItensVenda()
-                                {
-                                    modelo = Venda.modelo,
-                                    serie = Venda.serie,
-                                    nrNota = Venda.nrNota,
-                                    cliente = Venda.cliente,
-                                    codigo = idItem,
-                                    qtd = qtdItem,
-                                    precoVenda = custoItem,
-                                    dtCadastro = Venda.dtCadastro,
-                                    dtAlteracao = Venda.dtAlteracao,
-                                    usuario = Venda.usuario,
-                                });
-                            }
-                            Venda.listaItem = listItemVenda;
-
-                            for (int i = 0; i < lvContaReceber.Items.Count; i++)
-                            {
-                                var forma = Venda.condPagamento.listaParcela.ElementAt(i).formaPagamento;
-                                                     
-                                listContaReceber.Add(new ContasReceber()
-                                {
-                                    modelo = Venda.modelo,
-                                    serie = Venda.serie,
-                                    nrNota = Venda.nrNota,
-                                    cliente = Venda.cliente,
-                                    formaPagamento = forma,
-                                    nrParcela = i + 1,
-                                    dtVencimento = Convert.ToDateTime(lvContaReceber.Items[i].SubItems[1].Text),
-                                    vlrParcela = Double.Parse(lvContaReceber.Items[i].SubItems[2].Text, NumberStyles.Any),
-                                    dtAlteracao = DateTime.Now,
-                                    dtCadastro = DateTime.Now,
-                                    dtEmissao = dtEmissao,
-                                    usuario = UsuarioLogado.Usuario
-                                });
-                            }
-                            Venda.listaContasReceber= listContaReceber;
-                            Venda.situacao = chkSituacao.Checked;
-
-                            CtrlVenda.Inserir(Venda);
-                            this.DialogResult = DialogResult.OK;
+                                modelo = Venda.modelo,
+                                serie = Venda.serie,
+                                nrNota = Venda.nrNota,
+                                cliente = Venda.cliente,
+                                codigo = idItem,
+                                qtd = qtdItem,
+                                precoVenda = custoItem,
+                                dtCadastro = Venda.dtCadastro,
+                                dtAlteracao = Venda.dtAlteracao,
+                                usuario = Venda.usuario,
+                            });
                         }
+                        Venda.listaItem = listItemVenda;
+
+                        for (int i = 0; i < lvContaReceber.Items.Count; i++)
+                        {
+                            var forma = Venda.condPagamento.listaParcela.ElementAt(i).formaPagamento;
+                                                     
+                            listContaReceber.Add(new ContasReceber()
+                            {
+                                modelo = Venda.modelo,
+                                serie = Venda.serie,
+                                nrNota = Venda.nrNota,
+                                cliente = Venda.cliente,
+                                formaPagamento = forma,
+                                nrParcela = i + 1,
+                                dtVencimento = Convert.ToDateTime(lvContaReceber.Items[i].SubItems[1].Text),
+                                vlrParcela = Double.Parse(lvContaReceber.Items[i].SubItems[2].Text, NumberStyles.Any),
+                                dtAlteracao = DateTime.Now,
+                                dtCadastro = DateTime.Now,
+                                dtEmissao = dtEmissao,
+                                usuario = UsuarioLogado.Usuario
+                            });
+                        }
+                        Venda.listaContasReceber= listContaReceber;
+                        Venda.situacao = chkSituacao.Checked;
+
+                        CtrlVenda.Inserir(Venda);
+                        this.DialogResult = DialogResult.OK;
+                        
                         btnRemProduto.Focus();
                     }
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
-                
                 MessageBox.Show("Não foi possivel gerar a Venda", "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Venda.listaContasReceber = null;
                 Venda.listaItem = null;
@@ -155,17 +151,17 @@ namespace EquipMotos.View
             txtCondPagamento.Enabled = false;
             btnBuscarCondPagamento.Enabled = false;
             chkSituacao.Enabled = false;
-
+            lvContaReceber.Enabled = false;
             txtObservacoes.Enabled = false;
             btnSalvar.Hide();
             btnLimpar.Hide();
         }
 
-        internal void Carregar( object nrNota)
+        internal void Carregar( object nrNota, object serie)
         {
             try
             {
-                Venda = CtrlVenda.BuscarPorID(nrNota) as Vendas;
+                Venda = CtrlVenda.BuscarPorID(nrNota, serie) as Vendas;
                 txtModelo.Text = Venda.modelo;
                 txtSerie.Text = Venda.serie;
                 txtNumeroVenda.Text = Venda.nrNota;
@@ -180,7 +176,7 @@ namespace EquipMotos.View
                 {
                     var prod = CtrlProduto.BuscarPorID(Convert.ToString(item.codigo)) as Produtos;
                     var total = item.qtd * prod.precoVenda;
-                    string[] itens = { Convert.ToString(item.codigo), prod.produto, prod.unidade, Convert.ToString(item.qtd), Convert.ToString(prod.custoUltCompra), Convert.ToString(total) };
+                    string[] itens = { Convert.ToString(item.codigo), prod.produto, prod.unidade, Convert.ToString(item.qtd), Convert.ToString(prod.precoVenda), Convert.ToString(total) };
                     var listItens = new ListViewItem(itens);
                     lvProdutosVenda.Items.Add(listItens);
 
@@ -219,9 +215,9 @@ namespace EquipMotos.View
                 chkSituacao.Checked = Venda.situacao;
 
             }
-            catch
+            catch(Exception e)
             {
-                MessageBox.Show("Não foi possivel vizualizar a compra", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Não foi possivel vizualizar a venda", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -244,6 +240,7 @@ namespace EquipMotos.View
                 CarregaCliente();
             }
         }
+
         private void BtnBuscarProduto_Click(object sender, EventArgs e)
         {
 
@@ -260,6 +257,7 @@ namespace EquipMotos.View
                 {
                     txtCodCondPagamento.Text = Convert.ToString(cli.CondPagamento.codigo);
                     txtCondPagamento.Text = cli.CondPagamento.condicao;
+                    CondPagamento = cli.CondPagamento;
                 }
             }
         }
@@ -376,6 +374,65 @@ namespace EquipMotos.View
 
         }
 
+        public void GeraParcelas()
+        {
+            
+            CarregaCondicao();
+            if(CondPagamento != null)
+            { 
+                var aux = CondicaoPagamento.listaParcela;
+                if (aux.Count == CondicaoPagamento.listaParcela.Count)
+                {
+                    lvContaReceber.Items.Clear();
+                    for (int i = 0; i < CondicaoPagamento.listaParcela.Count; i++)
+                    {
+                        var desconto = Double.Parse("0" + txtDescontos.Text) / 100;
+                        double valorDesconto = 0;
+                        if (desconto > 0)
+                        {
+                            var totalItens = Double.Parse(txtValorItens.Text, NumberStyles.Any);
+                            valorDesconto = desconto * totalItens;
+                        }
+
+                        var parcela = CondicaoPagamento.listaParcela.ElementAt(i);
+                        var dtVencimento = Convert.ToDateTime(txtData.Text);
+                        dtVencimento = dtVencimento.AddDays(parcela.nrDia);
+                        var valorTot = Double.Parse(txtValorItens.Text, NumberStyles.Any) - valorDesconto;
+                        var valorParcela = valorTot * (parcela.porcentagem / 100);
+
+                        string[] row = { txtNumeroVenda.Text + "/" + Convert.ToString(parcela.nrParcela), dtVencimento.ToString("dd/MM/yyyy"), valorParcela.ToString("C", CultureInfo.CurrentCulture) };
+                        var lvi = new ListViewItem(row);
+                        lvContaReceber.Items.Add(lvi);
+                    }
+                }
+                else
+                {
+                    CondicaoPagamento.listaParcela = aux;
+                    lvContaReceber.Items.Clear();
+                    for (int i = 0; i < CondicaoPagamento.listaParcela.Count; i++)
+                    {
+                        var desconto = Double.Parse("0" + txtDescontos.Text) / 100;
+                        double valorDesconto = 0;
+                        if (desconto > 0)
+                        {
+                            var totalItens = Double.Parse(txtValorItens.Text, NumberStyles.Any);
+                            valorDesconto = desconto * totalItens;
+                        }
+                        var parcela = CondicaoPagamento.listaParcela.ElementAt(i);
+                        var dtVencimento = Convert.ToDateTime(txtData.Text);
+                        dtVencimento = dtVencimento.AddDays(parcela.nrDia);
+                        var valorTot = valorDesconto - Double.Parse(txtValorTotal.Text, NumberStyles.Any);
+                        var valorParcela = valorTot * (parcela.porcentagem / 100);
+
+                        string[] row = { txtNumeroVenda.Text + "/" + Convert.ToString(parcela.nrParcela), dtVencimento.ToString("dd/MM/yyyy"), valorParcela.ToString("C", CultureInfo.CurrentCulture) };
+                        var lvi = new ListViewItem(row);
+                        lvContaReceber.Items.Add(lvi);
+                    }
+                }
+            }
+               
+        }
+
         private void CarregaCondicao()
         { 
             if (CondPagamento != null)
@@ -418,21 +475,13 @@ namespace EquipMotos.View
                 txtModelo.Focus();
                 return false;
             }
-            //if (txtNumeroVenda.Text == String.Empty)
-            //{
-            //    MessageBox.Show("Faltou informar o Número da Nota", "Informe o Número da Nota!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            //    txtNrNota.Focus();
-            //    return false;
-            //}
-
-
+            
             if (txtSerie.Text == String.Empty)
             {
                 MessageBox.Show("Faltou informar Serie", "Informe a Serie!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txtSerie.Focus();
                 return false;
             }
-
 
             if (txtCodCliente.Text == String.Empty || (txtCliente.Text == String.Empty))
             {
@@ -455,22 +504,6 @@ namespace EquipMotos.View
             return true;
         }
 
-        //private bool ValidaEstoque()
-        //{
-        //    for (int i = 0; i < lvProdutosVenda.Items.Count; i++)
-        //    {
-        //        var idItem = Convert.ToInt32(lvProdutosVenda.Items[i].SubItems[0].Text);
-        //        var qtdItem = Convert.ToInt32(lvProdutosVenda.Items[i].SubItems[2].Text);
-        //        var Produto = CtrlProduto.BuscarPorID(idItem) as ProdutosServicos;
-        //        if (Produto.qtd < qtdItem)
-        //        {
-        //            MessageBox.Show( "Não há estoque para a venda de " + Produto.produto + ", o estoque atual é de "+ Produto.qtd , "Quantidade inválida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-        //            return false;
-        //        }
-        //    }
-        //    return true;
-        //}
-
         private void btnAddProduto_Click(object sender, EventArgs e)
         {
             try
@@ -478,13 +511,14 @@ namespace EquipMotos.View
                 Produtos prod = Produto as Produtos;
                 if (ValidaProduto())
                 {
-                    var preco = Double.Parse(txtValorProd.Text, NumberStyles.Any);
-                    var qtd = Convert.ToInt32(txtQtd.Text);
-                    var totalRow = (qtd * preco).ToString("C", CultureInfo.CurrentCulture);
-                    var codigo = prod.codigo;
-                    if (ValidaEstoque(codigo, qtd))
-                    {
-
+                    if (VerificaProdutoNaLista(prod.codigo))
+                    { 
+                        var preco = Double.Parse(txtValorProd.Text, NumberStyles.Any);
+                        var qtd = Convert.ToInt32(txtQtd.Text);
+                        var totalRow = (qtd * preco).ToString("C", CultureInfo.CurrentCulture);
+                        var codigo = prod.codigo;
+                        if (ValidaEstoque(codigo, qtd))
+                        {
                             string[] row = { Convert.ToString(prod.codigo), prod.produto, txtQtd.Text, (prod.precoVenda).ToString("C", CultureInfo.CurrentCulture), Convert.ToString(totalRow) };
                             var lvi = new ListViewItem(row);
                             lvProdutosVenda.Items.Add(lvi);
@@ -492,34 +526,61 @@ namespace EquipMotos.View
                             var vlTotalItens = Double.Parse(txtValorItens.Text, NumberStyles.Any);
                             if (vlTotalItens <= 0)
                             {
-                                txtValorItens.Text = lvProdutosVenda.Items[0].SubItems[4].Text;
+                                var vlr = Double.Parse(lvProdutosVenda.Items[0].SubItems[3].Text, NumberStyles.Any) * Double.Parse(lvProdutosVenda.Items[0].SubItems[2].Text);
+                                txtValorItens.Text = vlr.ToString("C", CultureInfo.CurrentCulture);
+                                txtValorTotal.Text = lvProdutosVenda.Items[0].SubItems[4].Text;
                             }
                             else
                             {
-                                var vltotal = Double.Parse(txtValorItens.Text, NumberStyles.Any);
+                                double vltotal = 0;
                                 for (int i = 0; i < lvProdutosVenda.Items.Count; i++)
                                 {
-                                    txtValorItens.Text = Double.Parse(lvProdutosVenda.Items[i].SubItems[4].Text, NumberStyles.Any).ToString("C", CultureInfo.CurrentCulture);
+                                    vltotal += Double.Parse(lvProdutosVenda.Items[i].SubItems[4].Text, NumberStyles.Any);
                                 }
-                                //vltotal + txtvalortoal
-                                var vlTotalGrid = Double.Parse(txtValorItens.Text, NumberStyles.Any);
-                                var ValorTotal = vltotal + vlTotalGrid;
-                                txtValorTotal.Text = ValorTotal.ToString("C", CultureInfo.CurrentCulture);
+                                double vltotalItens = 0;
+                                for (int i = 0; i < lvProdutosVenda.Items.Count; i++)
+                                {
+                                    vltotalItens += Double.Parse(lvProdutosVenda.Items[i].SubItems[3].Text, NumberStyles.Any) * Double.Parse(lvProdutosVenda.Items[i].SubItems[2].Text);
+                                }
+                            
+                            txtValorItens.Text = vltotalItens.ToString("C", CultureInfo.CurrentCulture);
+                            txtValorTotal.Text = vltotal.ToString("C", CultureInfo.CurrentCulture);
                             }
-                           // SomaTotal();
+                            // SomaTotal();
                             txtCodProduto.Text = "";
                             txtProduto.Text = "";
                             txtQtd.Text = "";
                             txtValorProd.Text = "R$ 0.00";
                             Produto = null;
+                            GeraParcelas();
+                        }
                     }
                 }
-                
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private bool VerificaProdutoNaLista(int codigo)
+        {
+            if (lvProdutosVenda.Items.Count > 0)
+            {
+                for (var i = 0; i < lvProdutosVenda.Items.Count; i++)
+                {
+                    if (codigo == int.Parse(lvProdutosVenda.Items[i].SubItems[0].Text))
+                    {
+                        MessageBox.Show("Não foi possivel adicionar o mesmo item", "Erro, remova o item da lista", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        txtCodProduto.Text = "";
+                        txtProduto.Text = "";
+                        txtQtd.Text = "";
+                        txtValorProd.Text = "";
+                        return false;
+                    }
+                }
+            }
+            return true;
         }
 
         private void btnRemProduto_Click(object sender, EventArgs e)
@@ -596,6 +657,13 @@ namespace EquipMotos.View
         private void frmCadastroVenda_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void CarregarModeloSerieNota()
+        {
+            txtModelo.Text = "65";
+            txtSerie.Text = "01";
+            txtNumeroVenda.Text = CtrlVenda.SelecionarUltNota().ToString();
         }
 
         private void txtCodCliente_KeyPress(object sender, KeyPressEventArgs e)
@@ -718,6 +786,7 @@ namespace EquipMotos.View
             if (Convert.ToInt32("0" + txtCodProduto.Text) < 1)
                 return;
             Produtos prod = CtrlProduto.BuscarPorID(Convert.ToInt32(txtCodProduto.Text)) as Produtos;
+            Produto = prod;
             if (prod == null)
             {
                 MessageBox.Show("Nenhum resultado");
@@ -767,39 +836,204 @@ namespace EquipMotos.View
 
         }
 
-        private Boolean ValidarContasReceber(object modelo, object serie, object nrNota, object codCliente)
-        {
-            var listaContaReceber = CtrlVenda.BuscarContaReceber(modelo, serie, nrNota, codCliente);
-            bool valida = true;
-            foreach (var conta in listaContaReceber)
-            {
-                if (conta.pago)
-                {
-                    valida = false;
-                }
-
-            }
-            return valida;
-        }
-
         private void btnExcluir_Click(object sender, EventArgs e)
         {
-            if ((MessageBox.Show("Será necessario informar o usuario Administrador do sistema.", "Deseja cancelar?", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes) & txtModelo.Text != null)
-            {
-                frmConfirmaAdmin frmConfirma = new frmConfirmaAdmin();
-                if (frmConfirma.ShowDialog() == DialogResult.OK)
-                {
-                    if (ValidarContasReceber(txtModelo.Text, txtSerie.Text, txtNumeroVenda.Text, txtCodCliente.Text))
-                    {
-                        CtrlVenda.Desativar(txtModelo.Text, txtSerie.Text, txtNumeroVenda.Text, txtCodCliente.Text);
-                    }
-                    else
-                    {
-                        MessageBox.Show("Não foi possivel cancelar a venda, pois teve contas a receber vinculadas pagas.", "Parcelas vinculadas recebidas!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    }
+            
+        }
 
-                }
+        private void label34_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblUsuario_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtUsuario_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblAlteracao_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblDtCadastro_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label28_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtCondPagamento_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label27_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label26_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtValorTotal_TextChanged(object sender, EventArgs e)
+        {
+            if (int.Parse(txtValorTotal.Text, NumberStyles.Any) > 0)
+            {
+                txtDescontos.Enabled = true;
             }
+            else
+            {
+                txtDescontos.Enabled = false;
+            }
+            
+        }
+
+        private void txtDescontos_TextChanged(object sender, EventArgs e)
+        {
+            if(int.Parse(txtValorTotal.Text, NumberStyles.Any) > 0)
+            {
+                var desconto = int.Parse(txtDescontos.Text);
+                var porcentagem = desconto / 100;
+                var totalPagar = int.Parse(txtValorTotal.Text, NumberStyles.Any);
+                var totalComDesconto = porcentagem * totalPagar;
+                txtValorTotal.Text = totalComDesconto.ToString("C", CultureInfo.CurrentCulture);
+            }
+        }
+
+        private void label24_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtValorItens_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label16_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtValorProd_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label15_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label14_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtProduto_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label13_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtCliente_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtNumeroVenda_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtDtCadastro_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
+        {
+
+        }
+
+        private void txtDtAlteracao_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
+        {
+
+        }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtData_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lvContaReceber_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label7_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label8_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtModelo_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label9_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtSerie_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

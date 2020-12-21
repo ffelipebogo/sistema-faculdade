@@ -82,7 +82,7 @@ namespace EquipMotos.DAO
 
                 DataTable dtCategorias = new DataTable();
                 da.Fill(dtCategorias);
-
+                conexao.Close();
                 return dtCategorias;
             }
         }
@@ -118,6 +118,7 @@ namespace EquipMotos.DAO
 
                     this.categorias = cat;
                 }
+                conexao.Close();
                 return categorias;
             }
         }
@@ -146,7 +147,7 @@ namespace EquipMotos.DAO
 
                 DataTable dtCategoria = new DataTable();
                 da.Fill(dtCategoria);
-
+                conexao.Close();
                 return dtCategoria;
             }
         }

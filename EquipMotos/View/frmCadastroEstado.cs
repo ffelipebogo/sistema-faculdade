@@ -19,6 +19,7 @@ namespace EquipMotos.View
         //Paises paises = new Paises();
         Estados est = new Estados();
         CtrlEstados CtrlEstado = new CtrlEstados();
+        CtrlPaises CtrlPais = new CtrlPaises();
         public static object paises;
         public frmCadastroEstado()
         {
@@ -150,6 +151,30 @@ namespace EquipMotos.View
         private void frmCadastroEstado_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void txtCodPais_TextChanged(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtCodPais.Text))
+                return;
+            //if (Convert.ToInt32("0" + txtIdCidade.Text) < 1)
+            //    return;
+            Paises pais = CtrlPais.BuscarPorID(Convert.ToInt32(txtCodPais.Text)) as Paises;
+            if (pais == null)
+            {
+                MessageBox.Show("Nenhum resultado");
+                txtPais.Clear();
+                txtCodPais.Clear();
+                txtPais.Enabled = true;
+                txtCodPais.Enabled = true;
+                txtCodPais.Focus();
+            }
+            else
+            {
+                txtPais.Text = pais.pais;
+                txtPais.Enabled = false;
+                txtCodPais.Focus();
+            }
         }
     }
 }

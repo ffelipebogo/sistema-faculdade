@@ -86,7 +86,7 @@ namespace EquipMotos.DAO
 
                 DataTable dtCidades = new DataTable();
                 da.Fill(dtCidades);
-
+                conexao.Close();
                 return dtCidades;
             }
 
@@ -123,6 +123,7 @@ namespace EquipMotos.DAO
 
                     this.cidade = cid;
                 }
+                conexao.Close();
                 return cidade;
             }
         }
@@ -154,7 +155,7 @@ namespace EquipMotos.DAO
 
                 DataTable dtCidade = new DataTable();
                 da.Fill(dtCidade);
-
+                conexao.Close();
                 return dtCidade;
             }
         }

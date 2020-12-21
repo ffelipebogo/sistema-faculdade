@@ -103,7 +103,7 @@ namespace EquipMotos.DAO
 
                 DataTable dtContaPAgar = new DataTable();
                 da.Fill(dtContaPAgar);
-
+                conexao.Close();
                 return dtContaPAgar;
             }
         }
@@ -159,11 +159,12 @@ namespace EquipMotos.DAO
                     contaReceber.usuario = Convert.ToString(row["usuario"]);
                     conta = contaReceber;
                 }
+                conexao.Close();
                 return conta;
             }
         }
 
-        public DataTable BuscarCompra_Filtro(object nota, object cliente, object formaPagamento, DateTime dateMin, DateTime dateMax)
+        public DataTable BuscarConta_Filtro(object nota, object cliente, object formaPagamento, DateTime dateMin, DateTime dateMax)
         {
             using (SqlConnection conexao = Conecta.CreateConnection())
             {

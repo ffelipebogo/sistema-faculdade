@@ -12,10 +12,9 @@
               <DbSource ConnectionRef="ConnectionStringSistemaMoto2 (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT   servicos.codigo, servicos.servico, servicos.codCategoria, servicos.precoVenda, servicos.valorUnitario, servicos.precoCusto, servicos.codFuncionario, servicos.comissao, 
-                         servicos.observacoes, servicos.dtCadastro, servicos.dtAlteracao, servicos.usuario, funcionarios.funcionario, categorias.categoria
-FROM         servicos INNER JOIN
-                         categorias ON servicos.codCategoria = categorias.codigo INNER JOIN
+                    <CommandText>SELECT        servicos.codigo, servicos.servico, servicos.precoVenda, servicos.valorUnitario, servicos.precoCusto, servicos.codFuncionario, servicos.comissao, servicos.observacoes, servicos.dtCadastro, servicos.dtAlteracao, 
+                         servicos.usuario, funcionarios.funcionario
+FROM            servicos INNER JOIN
                          funcionarios ON servicos.codFuncionario = funcionarios.codigo</CommandText>
                     <Parameters />
                   </DbCommand>
@@ -25,7 +24,6 @@ FROM         servicos INNER JOIN
             <Mappings>
               <Mapping SourceColumn="codigo" DataSetColumn="codigo" />
               <Mapping SourceColumn="servico" DataSetColumn="servico" />
-              <Mapping SourceColumn="codCategoria" DataSetColumn="codCategoria" />
               <Mapping SourceColumn="precoVenda" DataSetColumn="precoVenda" />
               <Mapping SourceColumn="valorUnitario" DataSetColumn="valorUnitario" />
               <Mapping SourceColumn="precoCusto" DataSetColumn="precoCusto" />
@@ -36,7 +34,6 @@ FROM         servicos INNER JOIN
               <Mapping SourceColumn="dtAlteracao" DataSetColumn="dtAlteracao" />
               <Mapping SourceColumn="usuario" DataSetColumn="usuario" />
               <Mapping SourceColumn="funcionario" DataSetColumn="funcionario" />
-              <Mapping SourceColumn="categoria" DataSetColumn="categoria" />
             </Mappings>
             <Sources />
           </TableAdapter>
@@ -52,18 +49,17 @@ FROM         servicos INNER JOIN
           <xs:complexType>
             <xs:sequence>
               <xs:element name="codigo" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columncodigo" msprop:Generator_ColumnPropNameInRow="codigo" msprop:Generator_ColumnPropNameInTable="codigoColumn" msprop:Generator_UserColumnName="codigo" type="xs:int" />
-              <xs:element name="servico" msprop:Generator_ColumnVarNameInTable="columnservico" msprop:Generator_ColumnPropNameInRow="servico" msprop:Generator_ColumnPropNameInTable="servicoColumn" msprop:Generator_UserColumnName="servico" minOccurs="0">
+              <xs:element name="servico" msprop:Generator_ColumnVarNameInTable="columnservico" msprop:Generator_ColumnPropNameInRow="servico" msprop:Generator_ColumnPropNameInTable="servicoColumn" msprop:Generator_UserColumnName="servico">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="100" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="codCategoria" msprop:Generator_ColumnVarNameInTable="columncodCategoria" msprop:Generator_ColumnPropNameInRow="codCategoria" msprop:Generator_ColumnPropNameInTable="codCategoriaColumn" msprop:Generator_UserColumnName="codCategoria" type="xs:int" minOccurs="0" />
-              <xs:element name="precoVenda" msprop:Generator_ColumnVarNameInTable="columnprecoVenda" msprop:Generator_ColumnPropNameInRow="precoVenda" msprop:Generator_ColumnPropNameInTable="precoVendaColumn" msprop:Generator_UserColumnName="precoVenda" type="xs:decimal" minOccurs="0" />
+              <xs:element name="precoVenda" msprop:Generator_ColumnVarNameInTable="columnprecoVenda" msprop:Generator_ColumnPropNameInRow="precoVenda" msprop:Generator_ColumnPropNameInTable="precoVendaColumn" msprop:Generator_UserColumnName="precoVenda" type="xs:decimal" />
               <xs:element name="valorUnitario" msprop:Generator_ColumnVarNameInTable="columnvalorUnitario" msprop:Generator_ColumnPropNameInRow="valorUnitario" msprop:Generator_ColumnPropNameInTable="valorUnitarioColumn" msprop:Generator_UserColumnName="valorUnitario" type="xs:decimal" minOccurs="0" />
               <xs:element name="precoCusto" msprop:Generator_ColumnVarNameInTable="columnprecoCusto" msprop:Generator_ColumnPropNameInRow="precoCusto" msprop:Generator_ColumnPropNameInTable="precoCustoColumn" msprop:Generator_UserColumnName="precoCusto" type="xs:decimal" minOccurs="0" />
-              <xs:element name="codFuncionario" msprop:Generator_ColumnVarNameInTable="columncodFuncionario" msprop:Generator_ColumnPropNameInRow="codFuncionario" msprop:Generator_ColumnPropNameInTable="codFuncionarioColumn" msprop:Generator_UserColumnName="codFuncionario" type="xs:int" minOccurs="0" />
+              <xs:element name="codFuncionario" msprop:Generator_ColumnVarNameInTable="columncodFuncionario" msprop:Generator_ColumnPropNameInRow="codFuncionario" msprop:Generator_ColumnPropNameInTable="codFuncionarioColumn" msprop:Generator_UserColumnName="codFuncionario" type="xs:int" />
               <xs:element name="comissao" msprop:Generator_ColumnVarNameInTable="columncomissao" msprop:Generator_ColumnPropNameInRow="comissao" msprop:Generator_ColumnPropNameInTable="comissaoColumn" msprop:Generator_UserColumnName="comissao" type="xs:decimal" minOccurs="0" />
               <xs:element name="observacoes" msprop:Generator_ColumnVarNameInTable="columnobservacoes" msprop:Generator_ColumnPropNameInRow="observacoes" msprop:Generator_ColumnPropNameInTable="observacoesColumn" msprop:Generator_UserColumnName="observacoes" minOccurs="0">
                 <xs:simpleType>
@@ -72,9 +68,9 @@ FROM         servicos INNER JOIN
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="dtCadastro" msprop:Generator_ColumnVarNameInTable="columndtCadastro" msprop:Generator_ColumnPropNameInRow="dtCadastro" msprop:Generator_ColumnPropNameInTable="dtCadastroColumn" msprop:Generator_UserColumnName="dtCadastro" type="xs:dateTime" minOccurs="0" />
-              <xs:element name="dtAlteracao" msprop:Generator_ColumnVarNameInTable="columndtAlteracao" msprop:Generator_ColumnPropNameInRow="dtAlteracao" msprop:Generator_ColumnPropNameInTable="dtAlteracaoColumn" msprop:Generator_UserColumnName="dtAlteracao" type="xs:dateTime" minOccurs="0" />
-              <xs:element name="usuario" msprop:Generator_ColumnVarNameInTable="columnusuario" msprop:Generator_ColumnPropNameInRow="usuario" msprop:Generator_ColumnPropNameInTable="usuarioColumn" msprop:Generator_UserColumnName="usuario" minOccurs="0">
+              <xs:element name="dtCadastro" msprop:Generator_ColumnVarNameInTable="columndtCadastro" msprop:Generator_ColumnPropNameInRow="dtCadastro" msprop:Generator_ColumnPropNameInTable="dtCadastroColumn" msprop:Generator_UserColumnName="dtCadastro" type="xs:dateTime" />
+              <xs:element name="dtAlteracao" msprop:Generator_ColumnVarNameInTable="columndtAlteracao" msprop:Generator_ColumnPropNameInRow="dtAlteracao" msprop:Generator_ColumnPropNameInTable="dtAlteracaoColumn" msprop:Generator_UserColumnName="dtAlteracao" type="xs:dateTime" />
+              <xs:element name="usuario" msprop:Generator_ColumnVarNameInTable="columnusuario" msprop:Generator_ColumnPropNameInRow="usuario" msprop:Generator_ColumnPropNameInTable="usuarioColumn" msprop:Generator_UserColumnName="usuario">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="100" />
@@ -82,13 +78,6 @@ FROM         servicos INNER JOIN
                 </xs:simpleType>
               </xs:element>
               <xs:element name="funcionario" msprop:Generator_ColumnVarNameInTable="columnfuncionario" msprop:Generator_ColumnPropNameInRow="funcionario" msprop:Generator_ColumnPropNameInTable="funcionarioColumn" msprop:Generator_UserColumnName="funcionario" minOccurs="0">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="100" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="categoria" msprop:Generator_ColumnVarNameInTable="columncategoria" msprop:Generator_ColumnPropNameInRow="categoria" msprop:Generator_ColumnPropNameInTable="categoriaColumn" msprop:Generator_UserColumnName="categoria" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="100" />

@@ -90,7 +90,7 @@ namespace EquipMotos.DAO
 
                 DataTable dtFormaPagamentos = new DataTable();
                 da.Fill(dtFormaPagamentos);
-
+                conexao.Close();
                 return dtFormaPagamentos;
             }
 
@@ -125,6 +125,7 @@ namespace EquipMotos.DAO
 
                     this.formaPagamento = condPag;
                 }
+                conexao.Close();
                 return formaPagamento;
             }
         }
@@ -153,7 +154,7 @@ namespace EquipMotos.DAO
                 da = new SqlDataAdapter(comando);
                 DataTable dtForma = new DataTable();
                 da.Fill(dtForma);
-
+                conexao.Close();
                 return dtForma;
             }
         }

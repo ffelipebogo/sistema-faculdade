@@ -93,7 +93,7 @@ namespace EquipMotos.DAO
 
                 DataTable dtEstados = new DataTable();
                 da.Fill(dtEstados);
-
+                conexao.Close();
                 return dtEstados;
             }
 
@@ -134,6 +134,7 @@ namespace EquipMotos.DAO
 
                     this.estado = est;
                 }
+                conexao.Close();
                 return estado;
             }
         }
@@ -168,7 +169,7 @@ namespace EquipMotos.DAO
 
                 DataTable dtEstado = new DataTable();
                 da.Fill(dtEstado);
-
+                conexao.Close();
                 return dtEstado;
             }
         }

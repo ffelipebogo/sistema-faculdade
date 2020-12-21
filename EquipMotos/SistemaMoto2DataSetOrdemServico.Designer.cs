@@ -323,6 +323,8 @@ namespace EquipMotos {
             
             private global::System.Data.DataColumn columnveiculo;
             
+            private global::System.Data.DataColumn columnnrNota1;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public ordemServicosDataTable() {
@@ -534,6 +536,14 @@ namespace EquipMotos {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn nrNota1Column {
+                get {
+                    return this.columnnrNota1;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -590,7 +600,8 @@ namespace EquipMotos {
                         string usuario, 
                         string condicao, 
                         string cliente, 
-                        string veiculo) {
+                        string veiculo, 
+                        string nrNota1) {
                 ordemServicosRow rowordemServicosRow = ((ordemServicosRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
@@ -614,7 +625,8 @@ namespace EquipMotos {
                         usuario,
                         condicao,
                         cliente,
-                        veiculo};
+                        veiculo,
+                        nrNota1};
                 rowordemServicosRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowordemServicosRow);
                 return rowordemServicosRow;
@@ -666,6 +678,7 @@ namespace EquipMotos {
                 this.columncondicao = base.Columns["condicao"];
                 this.columncliente = base.Columns["cliente"];
                 this.columnveiculo = base.Columns["veiculo"];
+                this.columnnrNota1 = base.Columns["nrNota1"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -715,8 +728,12 @@ namespace EquipMotos {
                 base.Columns.Add(this.columncliente);
                 this.columnveiculo = new global::System.Data.DataColumn("veiculo", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnveiculo);
+                this.columnnrNota1 = new global::System.Data.DataColumn("nrNota1", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnnrNota1);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnnrNota}, true));
+                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint2", new global::System.Data.DataColumn[] {
+                                this.columnnrNota1}, false));
                 this.columnnrNota.AutoIncrement = true;
                 this.columnnrNota.AutoIncrementSeed = -1;
                 this.columnnrNota.AutoIncrementStep = -1;
@@ -740,6 +757,10 @@ namespace EquipMotos {
                 this.columncliente.AllowDBNull = false;
                 this.columncliente.MaxLength = 50;
                 this.columnveiculo.MaxLength = 100;
+                this.columnnrNota1.AllowDBNull = false;
+                this.columnnrNota1.Unique = true;
+                this.columnnrNota1.Caption = "nrNota";
+                this.columnnrNota1.MaxLength = 5;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1199,6 +1220,17 @@ namespace EquipMotos {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string nrNota1 {
+                get {
+                    return ((string)(this[this.tableordemServicos.nrNota1Column]));
+                }
+                set {
+                    this[this.tableordemServicos.nrNota1Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool IsanoNull() {
                 return this.IsNull(this.tableordemServicos.anoColumn);
             }
@@ -1537,7 +1569,6 @@ namespace EquipMotos.SistemaMoto2DataSetOrdemServicoTableAdapters {
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
             tableMapping.DataSetTable = "ordemServicos";
-            tableMapping.ColumnMappings.Add("nrNota", "nrNota");
             tableMapping.ColumnMappings.Add("modelo", "modelo");
             tableMapping.ColumnMappings.Add("serie", "serie");
             tableMapping.ColumnMappings.Add("codCliente", "codCliente");
@@ -1559,6 +1590,7 @@ namespace EquipMotos.SistemaMoto2DataSetOrdemServicoTableAdapters {
             tableMapping.ColumnMappings.Add("condicao", "condicao");
             tableMapping.ColumnMappings.Add("cliente", "cliente");
             tableMapping.ColumnMappings.Add("veiculo", "veiculo");
+            tableMapping.ColumnMappings.Add("nrNota", "nrNota1");
             this._adapter.TableMappings.Add(tableMapping);
         }
         

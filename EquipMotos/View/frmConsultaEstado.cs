@@ -41,23 +41,38 @@ namespace EquipMotos.View
         private object SelecionaEstado()
         {
             estado = null;
-            var estRow = gvEstado.CurrentRow.DataBoundItem as DataRowView;
-            
-            estado = CtrlEstado.BuscarPorID(estRow["codigo"]) as Estados;
-            return estado;
+            if (gvEstado.CurrentRow != null)
+            {
+                var estRow = gvEstado.CurrentRow.DataBoundItem as DataRowView;
+
+                estado = CtrlEstado.BuscarPorID(estRow["codigo"]) as Estados;
+                return estado;
+            }
+            else
+            {
+                MessageBox.Show("Nenhum estado selecionado");
+                return null;
+            }
         }
 
         private void BtnExcluir_Click(object sender, EventArgs e)
         {
             try
             {
-                var estRow = gvEstado.CurrentRow.DataBoundItem as DataRowView;
-                var id = estRow["codigo"];
+                if (gvEstado.CurrentRow != null)
+                {
+                    var estRow = gvEstado.CurrentRow.DataBoundItem as DataRowView;
+                    var id = estRow["codigo"];
 
-                CtrlEstado.Excluir(id);
-                MessageBox.Show("Estado foi excluido!");
+                    CtrlEstado.Excluir(id);
+                    MessageBox.Show("Estado foi excluido!");
 
-                gvEstado.DataSource = CtrlEstado.ListarTodos();
+                    gvEstado.DataSource = CtrlEstado.ListarTodos();
+                }
+                else
+                {
+                    MessageBox.Show("Nenhum estado foi selecionado");
+                }
             }
             catch (Exception)
             {
@@ -70,8 +85,7 @@ namespace EquipMotos.View
             try
             {
                 if (gvEstado.CurrentRow != null)
-                {
-
+                { 
                     frmCadastroEstado frmCadEstado = new frmCadastroEstado();
                     var estRow = gvEstado.CurrentRow.DataBoundItem as DataRowView;
 
@@ -90,7 +104,7 @@ namespace EquipMotos.View
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("Não foi possivel alterar o estado");
             }
         }
 

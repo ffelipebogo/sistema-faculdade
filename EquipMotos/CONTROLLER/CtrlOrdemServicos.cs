@@ -14,5 +14,10 @@ namespace EquipMotos.CONTROLLER
         {
             this.DaoOrdemServico = (OrdemServicosDAO)this.Dao;
         }
+
+        public object SelecionaUltimoID()
+        {
+            return DaoOrdemServico.SelecionaUltimoID();
+        }
     }
 }

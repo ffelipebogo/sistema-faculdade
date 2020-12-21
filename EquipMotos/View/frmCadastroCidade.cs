@@ -19,6 +19,8 @@ namespace EquipMotos.View
 
         Cidades cid = new Cidades();
         CtrlCidades CtrlCidade = new CtrlCidades();
+        CtrlEstados CtrlEstado = new CtrlEstados();
+
         public frmCadastroCidade()
         {
             InitializeComponent();
@@ -117,6 +119,31 @@ namespace EquipMotos.View
         private void frmCadastroCidade_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void txtCodEstado_TextChanged(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtCodEstado.Text))
+                return;
+             
+            Estados estad = CtrlEstado.BuscarPorID(Convert.ToInt32(txtCodEstado.Text)) as Estados;
+            if (estad == null)
+            {
+                MessageBox.Show("Nenhum resultado");
+                txtEstado.Clear();
+                txtCodEstado.Clear();
+                txtEstado.Enabled = true;
+                txtCodEstado.Enabled = true;
+                txtCodEstado.Focus();
+
+            }
+            else
+            {
+                estado = estad;
+                txtEstado.Text = estad.estado;
+                txtEstado.Enabled = false;
+                txtCodEstado.Focus();
+            }
         }
     }
 }

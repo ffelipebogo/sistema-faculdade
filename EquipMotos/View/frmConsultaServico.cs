@@ -24,9 +24,7 @@ namespace EquipMotos.VIEW
 
         private void frmConsultaServico_Load(object sender, EventArgs e)
         {
-            // TODO: esta linha de código carrega dados na tabela 'sistemaMoto2DataSetServicos.servicos'. Você pode movê-la ou removê-la conforme necessário.
-            this.servicosTableAdapter.Fill(this.sistemaMoto2DataSetServicos.servicos);
-
+            gvServico.DataSource = CtrlServico.ListarTodos();
         }
 
         private void btnBuscar_Click(object sender, EventArgs e)
@@ -88,18 +86,24 @@ namespace EquipMotos.VIEW
         {
             try
             {
-                var servRow = gvServico.CurrentRow.DataBoundItem as DataRowView;
-                var codigo = servRow["codigo"];
+                if (gvServico.CurrentRow != null)
+                {
+                    var servRow = gvServico.CurrentRow.DataBoundItem as DataRowView;
+                    var codigo = servRow["codigo"];
 
-                CtrlServico.Excluir(codigo);
-                MessageBox.Show("Produto foi excluido!");
+                    CtrlServico.Excluir(codigo);
+                    MessageBox.Show("Produto foi excluido!");
 
-                gvServico.DataSource = CtrlServico.ListarTodos();
-                
+                    gvServico.DataSource = CtrlServico.ListarTodos();
+                }
+                else
+                {
+                    MessageBox.Show("Nenhum serviço foi selecionado");
+                }
             }
             catch (Exception)
             {
-                MessageBox.Show("Não foi possivel excluir o Produto!");
+                MessageBox.Show("Não foi possivel excluir o serviço!");
             }
         }
 
@@ -131,15 +135,12 @@ namespace EquipMotos.VIEW
             if (gvServico.CurrentRow != null)
             {
                 var proRow = gvServico.CurrentRow.DataBoundItem as DataRowView;
-                 
-
-                 Servicos Serv = CtrlServico.BuscarPorID(proRow["codigo"]) as  Servicos;
-                
-
+                Servicos Serv = CtrlServico.BuscarPorID(proRow["codigo"]) as  Servicos;
                 return Servico = Serv;
             }
             else
             {
+                MessageBox.Show("Nenhum serviço foi selecionado");
                 return null;
             }
         }

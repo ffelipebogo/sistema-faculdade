@@ -82,7 +82,7 @@ namespace EquipMotos.DAO
             {
                 MessageBox.Show(ex.Message);
                 MessageBox.Show("Erro ao cadastrar o Cliente!");
-                conexao.Close();
+                
             }
             finally
             {
@@ -143,6 +143,7 @@ namespace EquipMotos.DAO
                 da = new SqlDataAdapter(comando);
                 DataTable dtCliente = new DataTable();
                 da.Fill(dtCliente);
+                conexao.Close();
                 return dtCliente;
             }
         }
@@ -223,12 +224,15 @@ namespace EquipMotos.DAO
 
                         this.cliente = Cliente;
                     }
+                    conexao.Close();
                     return cliente;
                 }
                 else
                 {
+                    conexao.Close();
                     return null;
                 }
+
             }
         }
 
@@ -427,6 +431,7 @@ namespace EquipMotos.DAO
                     cli.estrangeiro = Convert.ToBoolean(row["estrangeiro"]);
                     cliente = cli;
                 }
+                conexao.Close();
                 return cliente;
             }
         }
@@ -454,7 +459,7 @@ namespace EquipMotos.DAO
 
                 DataTable dtCliente = new DataTable();
                 da.Fill(dtCliente);
-
+                conexao.Close();
                 return dtCliente;
             }
         }
@@ -484,7 +489,7 @@ namespace EquipMotos.DAO
 
                 DataTable dtCliente = new DataTable();
                 da.Fill(dtCliente);
-
+                conexao.Close();
                 return dtCliente;
             }
         }

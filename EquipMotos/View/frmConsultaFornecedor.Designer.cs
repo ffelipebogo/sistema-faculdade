@@ -42,10 +42,6 @@
             this.btnAlterar = new MaterialSkin.Controls.MaterialRaisedButton();
             this.btnNovo = new MaterialSkin.Controls.MaterialRaisedButton();
             this.gvFornecedor = new System.Windows.Forms.DataGridView();
-            this.btnBuscarFornecedor = new System.Windows.Forms.PictureBox();
-            this.fornecedoresBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.sistemaMoto2DataSetFornecedor = new EquipMotos.SistemaMoto2DataSetFornecedor();
-            this.fornecedoresTableAdapter = new EquipMotos.SistemaMoto2DataSetFornecedorTableAdapters.fornecedoresTableAdapter();
             this.codigoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -76,10 +72,14 @@
             this.fisicoDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.rgDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.numero1DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fornecedoresBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.sistemaMoto2DataSetFornecedor = new EquipMotos.SistemaMoto2DataSetFornecedor();
+            this.btnBuscarFornecedor = new System.Windows.Forms.PictureBox();
+            this.fornecedoresTableAdapter = new EquipMotos.SistemaMoto2DataSetFornecedorTableAdapters.fornecedoresTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.gvFornecedor)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnBuscarFornecedor)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fornecedoresBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sistemaMoto2DataSetFornecedor)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnBuscarFornecedor)).BeginInit();
             this.SuspendLayout();
             // 
             // btnVoltar
@@ -87,7 +87,7 @@
             this.btnVoltar.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnVoltar.Depth = 0;
             this.btnVoltar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnVoltar.Location = new System.Drawing.Point(647, 545);
+            this.btnVoltar.Location = new System.Drawing.Point(831, 519);
             this.btnVoltar.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnVoltar.Name = "btnVoltar";
             this.btnVoltar.Primary = true;
@@ -101,7 +101,7 @@
             // 
             this.txtPesquisar.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtPesquisar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPesquisar.Location = new System.Drawing.Point(14, 104);
+            this.txtPesquisar.Location = new System.Drawing.Point(12, 95);
             this.txtPesquisar.Margin = new System.Windows.Forms.Padding(2);
             this.txtPesquisar.Name = "txtPesquisar";
             this.txtPesquisar.Size = new System.Drawing.Size(301, 23);
@@ -114,7 +114,7 @@
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(11, 82);
+            this.label1.Location = new System.Drawing.Point(9, 73);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(165, 20);
@@ -128,7 +128,7 @@
             this.btnExcluir.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnExcluir.Image = global::EquipMotos.Properties.Resources._1398756469_Erase;
             this.btnExcluir.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnExcluir.Location = new System.Drawing.Point(536, 545);
+            this.btnExcluir.Location = new System.Drawing.Point(720, 519);
             this.btnExcluir.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnExcluir.Name = "btnExcluir";
             this.btnExcluir.Primary = true;
@@ -146,7 +146,7 @@
             this.btnAlterar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAlterar.Image = global::EquipMotos.Properties.Resources._1398756462_Modify;
             this.btnAlterar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAlterar.Location = new System.Drawing.Point(455, 545);
+            this.btnAlterar.Location = new System.Drawing.Point(639, 519);
             this.btnAlterar.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnAlterar.Name = "btnAlterar";
             this.btnAlterar.Primary = true;
@@ -164,7 +164,7 @@
             this.btnNovo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnNovo.Image = global::EquipMotos.Properties.Resources._1398756346_1;
             this.btnNovo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnNovo.Location = new System.Drawing.Point(374, 545);
+            this.btnNovo.Location = new System.Drawing.Point(558, 519);
             this.btnNovo.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnNovo.Name = "btnNovo";
             this.btnNovo.Primary = true;
@@ -227,43 +227,12 @@
             this.numero1DataGridViewTextBoxColumn});
             this.gvFornecedor.DataSource = this.fornecedoresBindingSource;
             this.gvFornecedor.EnableHeadersVisualStyles = false;
-            this.gvFornecedor.Location = new System.Drawing.Point(10, 148);
+            this.gvFornecedor.Location = new System.Drawing.Point(8, 133);
             this.gvFornecedor.Name = "gvFornecedor";
             this.gvFornecedor.ReadOnly = true;
             this.gvFornecedor.RowHeadersWidth = 51;
-            this.gvFornecedor.Size = new System.Drawing.Size(750, 366);
+            this.gvFornecedor.Size = new System.Drawing.Size(947, 366);
             this.gvFornecedor.TabIndex = 24;
-            // 
-            // btnBuscarFornecedor
-            // 
-            this.btnBuscarFornecedor.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnBuscarFornecedor.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnBuscarFornecedor.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.btnBuscarFornecedor.ErrorImage = global::EquipMotos.Properties.Resources._1398754683_xmag;
-            this.btnBuscarFornecedor.Image = global::EquipMotos.Properties.Resources._1398754683_xmag;
-            this.btnBuscarFornecedor.InitialImage = global::EquipMotos.Properties.Resources._1398754683_xmag;
-            this.btnBuscarFornecedor.Location = new System.Drawing.Point(318, 91);
-            this.btnBuscarFornecedor.Margin = new System.Windows.Forms.Padding(2);
-            this.btnBuscarFornecedor.Name = "btnBuscarFornecedor";
-            this.btnBuscarFornecedor.Size = new System.Drawing.Size(38, 41);
-            this.btnBuscarFornecedor.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.btnBuscarFornecedor.TabIndex = 258;
-            this.btnBuscarFornecedor.TabStop = false;
-            this.btnBuscarFornecedor.Click += new System.EventHandler(this.BtnBuscarFornecedor_Click);
-            // 
-            // fornecedoresBindingSource
-            // 
-            this.fornecedoresBindingSource.DataMember = "fornecedores";
-            this.fornecedoresBindingSource.DataSource = this.sistemaMoto2DataSetFornecedor;
-            // 
-            // sistemaMoto2DataSetFornecedor
-            // 
-            this.sistemaMoto2DataSetFornecedor.DataSetName = "SistemaMoto2DataSetFornecedor";
-            this.sistemaMoto2DataSetFornecedor.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // fornecedoresTableAdapter
-            // 
-            this.fornecedoresTableAdapter.ClearBeforeFill = true;
             // 
             // codigoDataGridViewTextBoxColumn
             // 
@@ -501,6 +470,7 @@
             this.rgDataGridViewTextBoxColumn.HeaderText = "rg";
             this.rgDataGridViewTextBoxColumn.Name = "rgDataGridViewTextBoxColumn";
             this.rgDataGridViewTextBoxColumn.ReadOnly = true;
+            this.rgDataGridViewTextBoxColumn.Visible = false;
             // 
             // numero1DataGridViewTextBoxColumn
             // 
@@ -510,11 +480,42 @@
             this.numero1DataGridViewTextBoxColumn.ReadOnly = true;
             this.numero1DataGridViewTextBoxColumn.Visible = false;
             // 
+            // fornecedoresBindingSource
+            // 
+            this.fornecedoresBindingSource.DataMember = "fornecedores";
+            this.fornecedoresBindingSource.DataSource = this.sistemaMoto2DataSetFornecedor;
+            // 
+            // sistemaMoto2DataSetFornecedor
+            // 
+            this.sistemaMoto2DataSetFornecedor.DataSetName = "SistemaMoto2DataSetFornecedor";
+            this.sistemaMoto2DataSetFornecedor.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // btnBuscarFornecedor
+            // 
+            this.btnBuscarFornecedor.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnBuscarFornecedor.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnBuscarFornecedor.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.btnBuscarFornecedor.ErrorImage = global::EquipMotos.Properties.Resources._1398754683_xmag;
+            this.btnBuscarFornecedor.Image = global::EquipMotos.Properties.Resources._1398754683_xmag;
+            this.btnBuscarFornecedor.InitialImage = global::EquipMotos.Properties.Resources._1398754683_xmag;
+            this.btnBuscarFornecedor.Location = new System.Drawing.Point(316, 82);
+            this.btnBuscarFornecedor.Margin = new System.Windows.Forms.Padding(2);
+            this.btnBuscarFornecedor.Name = "btnBuscarFornecedor";
+            this.btnBuscarFornecedor.Size = new System.Drawing.Size(38, 41);
+            this.btnBuscarFornecedor.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.btnBuscarFornecedor.TabIndex = 258;
+            this.btnBuscarFornecedor.TabStop = false;
+            this.btnBuscarFornecedor.Click += new System.EventHandler(this.BtnBuscarFornecedor_Click);
+            // 
+            // fornecedoresTableAdapter
+            // 
+            this.fornecedoresTableAdapter.ClearBeforeFill = true;
+            // 
             // frmConsultaFornecedor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(772, 593);
+            this.ClientSize = new System.Drawing.Size(966, 566);
             this.ControlBox = false;
             this.Controls.Add(this.btnBuscarFornecedor);
             this.Controls.Add(this.gvFornecedor);
@@ -529,9 +530,9 @@
             this.Text = "Consultar Fornecedores";
             this.Load += new System.EventHandler(this.frmConsultaFornecedor_Load);
             ((System.ComponentModel.ISupportInitialize)(this.gvFornecedor)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnBuscarFornecedor)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.fornecedoresBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.sistemaMoto2DataSetFornecedor)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnBuscarFornecedor)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

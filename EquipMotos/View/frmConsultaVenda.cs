@@ -41,8 +41,9 @@ namespace EquipMotos.View
                     var compraRow = gvVendas.CurrentRow.DataBoundItem as DataRowView;
 
                     var nrNota = compraRow["nrNota"];
+                    var serie = compraRow["serie"];
 
-                    frmCadVenda.Carregar(nrNota);
+                    frmCadVenda.Carregar(nrNota, serie);
                     frmCadVenda.DisableView();
                     if (frmCadVenda.ShowDialog() == DialogResult.OK)
                     {
@@ -64,33 +65,53 @@ namespace EquipMotos.View
             }
         }
 
-        
+        private Boolean ValidarContasReceber(object modelo, object serie, object nrNota, object codCliente)
+        {
+            var listaContaReceber = CtrlVenda.BuscarContaReceber(modelo, serie, nrNota, codCliente);
+            bool valida = true;
+            foreach (var conta in listaContaReceber)
+            {
+                if (conta.pago)
+                {
+                    valida = false;
+                }
+
+            }
+            return valida;
+        }
 
         private void BtnExcluir_Click(object sender, EventArgs e)
         {
-            var vendaRow = gvVendas.CurrentRow.DataBoundItem as DataRowView;
-
-            var modelo = vendaRow["modelo"];
-            var serie = vendaRow["serie"];
-            var nrNota = vendaRow["nrNota"];
-            var codCliente = vendaRow["codCliente"];
-
-            if ((MessageBox.Show("Será necessario informar o usuario Administrador do sistema.", "Deseja cancelar?", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes) & modelo != null)
+            if (gvVendas.CurrentRow != null)
             {
-                frmConfirmaAdmin frmConfirma = new frmConfirmaAdmin();
-                if (frmConfirma.ShowDialog() == DialogResult.OK)
-                {
-                    if (ValidarContasReceber(modelo, serie, nrNota, codCliente))
-                    {
-                        CtrlVenda.Desativar(modelo, serie, nrNota, codCliente);
-                        gvVendas.DataSource = CtrlVenda.ListarTodos();
-                    }
-                    else
-                    {
-                        MessageBox.Show("Não foi possivel cancelar a venda, pois teve contas a receber vinculadas pagas.", "Parcelas vinculadas recebidas!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    }
+                var vendaRow = gvVendas.CurrentRow.DataBoundItem as DataRowView;
 
+                var modelo = vendaRow["modelo"];
+                var serie = vendaRow["serie"];
+                var nrNota = vendaRow["nrNota"];
+                var codCliente = vendaRow["codCliente"];
+
+                if ((MessageBox.Show("Será necessario informar o usuario Administrador do sistema", "Deseja cancelar ?", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes) & modelo != null)
+                {
+                    frmConfirmaAdmin frmConfirma = new frmConfirmaAdmin();
+                    if (frmConfirma.ShowDialog() == DialogResult.OK)
+                    {
+                        if (ValidarContasReceber(modelo, serie, nrNota, codCliente))
+                        {
+                            CtrlVenda.Desativar(modelo, serie, nrNota, codCliente);
+                            gvVendas.DataSource = CtrlVenda.ListarTodos();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Não foi possivel cancelar a venda, pois teve contas a receber vinculadas pagas.", "Parcelas vinculadas recebidas!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+
+                    }
                 }
+            }
+            else
+            {
+                MessageBox.Show("Nenhuma venda foi selecionada");
             }
         }
 
@@ -100,9 +121,8 @@ namespace EquipMotos.View
         }
 
         private void frmConsultaVenda_Load(object sender, EventArgs e)
-        {
-            // TODO: esta linha de código carrega dados na tabela 'sistemaMoto2DataSetVenda.vendas'. Você pode movê-la ou removê-la conforme necessário.
-            this.vendasTableAdapter.Fill(this.sistemaMoto2DataSetVenda.vendas);
+        { 
+            gvVendas.DataSource = CtrlVenda.ListarTodos();
         }
 
         private void btnBuscarVenda_Click(object sender, EventArgs e)

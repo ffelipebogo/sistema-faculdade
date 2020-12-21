@@ -84,33 +84,43 @@ namespace EquipMotos.View
             Close();
         }
 
-      
+        private Boolean ValidarContasPagar(object modelo, object serie, object nrNota, object codFornecedor)
+        {
+            var listaContaPagar = CtrlCompra.BuscarContaPagar(modelo, serie, nrNota, codFornecedor);
+            bool valida = true;
+            foreach (var conta in listaContaPagar)
+            {
+                if (conta.pago)
+                {
+                    valida = false;
+                }
+
+            }
+            return valida;
+        }
 
         private void BtnExcluir_Click(object sender, EventArgs e)
         {
-            var compraRow = gvCompra.CurrentRow.DataBoundItem as DataRowView;
-
-            var modelo = compraRow["modelo"];
-            var serie = compraRow["serie"];
-            var nrNota = compraRow["nrNota"];
-            var codFornecedor = compraRow["codFornecedor"];
-
-            if ((MessageBox.Show("Será necessario informar o usuario Administrador do sistema.", "Deseja cancelar?",  MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes) & modelo != null)
+            frmCadastroCompra frmCadCompra = new frmCadastroCompra();
+            frmCadCompra.btnExcluir.Visible = true;
+            if (gvCompra.CurrentRow != null)
             {
-                frmConfirmaAdmin frmConfirma = new frmConfirmaAdmin();
-                if(frmConfirma.ShowDialog() == DialogResult.OK)
+                var compraRow = gvCompra.CurrentRow.DataBoundItem as DataRowView;
+
+                var modelo = compraRow["modelo"];
+                var serie = compraRow["serie"];
+                var nrNota = compraRow["nrNota"];
+                var codFornecedor = compraRow["codFornecedor"];
+
+                frmCadCompra.Carregar(modelo, serie, nrNota, codFornecedor);
+                frmCadCompra.DisableView();
+                if (frmCadCompra.ShowDialog() == DialogResult.OK)
                 {
-
-                    if(ValidarContasPagar(modelo, serie, nrNota, codFornecedor))
+                    var lista = CtrlCompra.ListarTodos();
+                    if (lista != null)
                     {
-                        CtrlCompra.Desativar(modelo, serie, nrNota, codFornecedor);
-                        gvCompra.DataSource = CtrlCompra.ListarTodos();
+                        gvCompra.DataSource = lista;
                     }
-                    else
-                    {
-                        MessageBox.Show("Não foi possivel cancelar a compra, pois teve contas a pagar vinculadas pagas.", "Parcelas vinculadas pagas!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    }
-
                 }
             }
         }

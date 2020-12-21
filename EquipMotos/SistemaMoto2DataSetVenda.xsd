@@ -9,13 +9,14 @@
         <Tables>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="vendasTableAdapter" GeneratorDataComponentClassName="vendasTableAdapter" Name="vendas" UserDataComponentName="vendasTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="ConnectionStringSistemaMoto2 (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="ConnectionStringSistemaMoto2 (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT        vendas.modelo, vendas.serie, vendas.nrNota, vendas.codCliente, vendas.codCondPagamento, vendas.dtEmissao, vendas.desconto, vendas.observacoes, vendas.dtCadastro, vendas.dtAlteracao, vendas.usuario, clientes.cliente, condicaoPagamento.condicao
-FROM            vendas 
-                        INNER JOIN clientes ON vendas.codCliente = clientes.codigo 
-                        INNER JOIN condicaoPagamento ON vendas.codCondPagamento = condicaoPagamento.codigo</CommandText>
+                    <CommandText>SELECT        vendas.modelo, vendas.serie, vendas.nrNota, vendas.codCliente, vendas.codCondPagamento, vendas.dtEmissao, vendas.desconto, vendas.observacoes, vendas.dtCadastro, vendas.dtAlteracao, vendas.usuario, 
+                         clientes.cliente, condicaoPagamento.condicao, vendas.totalReceber, vendas.situacao
+FROM            vendas INNER JOIN
+                         clientes ON vendas.codCliente = clientes.codigo INNER JOIN
+                         condicaoPagamento ON vendas.codCondPagamento = condicaoPagamento.codigo</CommandText>
                     <Parameters />
                   </DbCommand>
                 </SelectCommand>
@@ -35,6 +36,8 @@ FROM            vendas
               <Mapping SourceColumn="usuario" DataSetColumn="usuario" />
               <Mapping SourceColumn="cliente" DataSetColumn="cliente" />
               <Mapping SourceColumn="condicao" DataSetColumn="condicao" />
+              <Mapping SourceColumn="totalReceber" DataSetColumn="totalReceber" />
+              <Mapping SourceColumn="situacao" DataSetColumn="situacao" />
             </Mappings>
             <Sources />
           </TableAdapter>
@@ -98,6 +101,8 @@ FROM            vendas
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
+              <xs:element name="totalReceber" msprop:Generator_ColumnVarNameInTable="columntotalReceber" msprop:Generator_ColumnPropNameInRow="totalReceber" msprop:Generator_ColumnPropNameInTable="totalReceberColumn" msprop:Generator_UserColumnName="totalReceber" type="xs:decimal" minOccurs="0" />
+              <xs:element name="situacao" msprop:Generator_ColumnVarNameInTable="columnsituacao" msprop:Generator_ColumnPropNameInRow="situacao" msprop:Generator_ColumnPropNameInTable="situacaoColumn" msprop:Generator_UserColumnName="situacao" type="xs:boolean" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

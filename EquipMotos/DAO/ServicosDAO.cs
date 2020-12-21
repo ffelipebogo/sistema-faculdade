@@ -21,44 +21,40 @@ namespace EquipMotos.DAO
         #region Inserir ProdutosServicos 
         public override void Inserir(object obj)
         {
+            
+            SqlConnection conexao = Conecta.CreateConnection();
+            try
             {
-                SqlConnection conexao = Conecta.CreateConnection();
-                try
-                {
-                   Servicos servico = obj as Servicos;
-                    string sql = @"INSERT into servicos (
-                                            servico, codCategoria, precoCusto, precoVenda, codFuncionario, comissao, observacoes, dtCadastro, dtAlteracao, usuario,
-                                        ) values (@servico, @codCategoria, @precoCusto, @precoVenda,  @codFuncionario, @comissao,  @observacoes, @dtCadastro, @dtAlteracao, @usuario)";
+                Servicos servico = obj as Servicos;
+                string sql = @"INSERT into servicos (
+                                        servico, precoCusto, precoVenda, codFuncionario, comissao, observacoes, dtCadastro, dtAlteracao, usuario
+                                    ) values (@servico,  @precoCusto, @precoVenda,  @codFuncionario, @comissao,  @observacoes, @dtCadastro, @dtAlteracao, @usuario)";
 
+                SqlCommand comando = new SqlCommand(sql, conexao);
+                    comando.Parameters.AddWithValue("@servico", servico.servico);
+                    comando.Parameters.AddWithValue("@precoCusto", servico.custo);
+                    comando.Parameters.AddWithValue("@precoVenda", servico.precoVenda);
 
-                    SqlCommand comando = new SqlCommand(sql, conexao);
+                    comando.Parameters.AddWithValue("@codFuncionario", servico.Funcionario.codigo);
+                    comando.Parameters.AddWithValue("@comissao", servico.comissao);
 
-                  
-                        comando.Parameters.AddWithValue("@servico", servico.servico);
-                        comando.Parameters.AddWithValue("@codCategoria", servico.Categoria.codigo);
-                        comando.Parameters.AddWithValue("@precoCusto", servico.custo);
-                        comando.Parameters.AddWithValue("@precoVenda", servico.precoVenda);
+                    comando.Parameters.AddWithValue("@observacoes", servico.observacoes);
+                    comando.Parameters.AddWithValue("@dtCadastro", servico.dtCadastro);
+                    comando.Parameters.AddWithValue("@dtAlteracao", servico.dtAlteracao);
+                    comando.Parameters.AddWithValue("@usuario", servico.usuario);
 
-                        comando.Parameters.AddWithValue("@codFuncionario", servico.Funcionario.codigo);
-                        comando.Parameters.AddWithValue("@comissao", servico.comissao);
-
-                        comando.Parameters.AddWithValue("@observacoes", servico.observacoes);
-                        comando.Parameters.AddWithValue("@dtCadastro", servico.dtCadastro);
-                        comando.Parameters.AddWithValue("@dtAlteracao", servico.dtAlteracao);
-                        comando.Parameters.AddWithValue("@usuario", servico.usuario);
-
-                    conexao.Open();
-                    comando.ExecuteNonQuery();
-                }
-                catch (SqlException e)
-                {
-                    MessageBox.Show(e.Message);
-                }
-                finally
-                {
-                    conexao.Close();
-                }
+                conexao.Open();
+                comando.ExecuteNonQuery();
             }
+            catch (SqlException e)
+            {
+                MessageBox.Show(e.Message);
+            }
+            finally
+            {
+                conexao.Close();
+            }
+            
         }
         #endregion
 
@@ -72,26 +68,23 @@ namespace EquipMotos.DAO
                 bool isNumeric = int.TryParse(servico, out int n);
                 if (servico.Length <= 4 && isNumeric)
                 {
-                    sql = @"SELECT   servicos.*, funcionarios.funcionario, categorias.categoria
+                    sql = @"SELECT   servicos.*, funcionarios.funcionario
                                 FROM    servicos INNER JOIN
-                             categorias ON servicos.codCategoria = categorias.codigo INNER JOIN
-                             funcionarios ON servicos.codFuncionario= funcionarios.codigo WHERE codigo = @servico";
+                             funcionarios ON servicos.codFuncionario = funcionarios.codigo WHERE servicos.codigo = @servico";
                 }
                 else
                 {
                     if (isNumeric)
                     {
-                        sql = @"SELECT   servicos.*, funcionarios.funcionario, categorias.categoria
+                        sql = @"SELECT   servicos.*, funcionarios.funcionario
                                 FROM    servicos INNER JOIN
-                             categorias ON servicos.codCategoria = categorias.codigo INNER JOIN
-                             funcionarios ON servicos.codFuncionario= funcionarios.codigo WHERE servico like '%'+ @servico +'%'";
+                             funcionarios ON servicos.codFuncionario = funcionarios.codigo WHERE servicos.servico like '%'+ @servico +'%'";
                     }
                     else
                     {
-                        sql = @"SELECT   servicos.*, funcionarios.funcionario, categorias.categoria
+                        sql = @"SELECT   servicos.*, funcionarios.funcionario
                                 FROM    servicos INNER JOIN
-                             categorias ON servicos.codCategoria = categorias.codigo INNER JOIN
-                             funcionarios ON servicos.codFuncionario= funcionarios.codigo WHERE servico like '%'+ @servico + '%' ";
+                             funcionarios ON servicos.codFuncionario = funcionarios.codigo WHERE servicos.servico like '%'+ @servico + '%' ";
                     }
                 }
                 SqlCommand comando = new SqlCommand(sql, conexao);
@@ -103,7 +96,7 @@ namespace EquipMotos.DAO
                 da = new SqlDataAdapter(comando);
                 DataTable dtServico = new DataTable();
                 da.Fill(dtServico);
-
+                conexao.Close();
                 return dtServico;
             }
         }
@@ -120,7 +113,6 @@ namespace EquipMotos.DAO
                     Servicos proServ = obj as Servicos;
                     string sql = @"UPDATE servicos set 
                                 servico = @servico,
-                                codCategoria = @codCategoria, 
 
                                 precoCusto = @precoCusto,
                                 precoVenda = @precoVenda,
@@ -131,7 +123,7 @@ namespace EquipMotos.DAO
                                 observacoes = @observacoes,
                                 dtCadastro = @dtCadastro,
                                 dtAlteracao = @dtAlteracao,
-                                usuario = @usuario,
+                                usuario = @usuario
 
                                 WHERE codigo = @codigo";
 
@@ -139,7 +131,6 @@ namespace EquipMotos.DAO
 
                    
                     comando.Parameters.AddWithValue("@servico", proServ.servico);
-                    comando.Parameters.AddWithValue("@codCategoria", proServ.Categoria.codigo);
                     comando.Parameters.AddWithValue("@precoCusto", proServ.custo);
                     comando.Parameters.AddWithValue("@precoVenda", proServ.precoVenda);
 
@@ -204,9 +195,8 @@ namespace EquipMotos.DAO
             using (SqlConnection conexao = Conecta.CreateConnection())
             {
                 SqlDataAdapter da;
-                string sql = @"SELECT   servicos.*, funcionarios.funcionario, categorias.categoria
+                string sql = @"SELECT   servicos.*, funcionarios.funcionario
                                 FROM    servicos INNER JOIN
-                             categorias ON servicos.codCategoria = categorias.codigo INNER JOIN
                              funcionarios ON servicos.codFuncionario= funcionarios.codigo
                              WHERE servicos.codigo = @codigo";
 
@@ -223,7 +213,6 @@ namespace EquipMotos.DAO
                    
                     serv.codigo = Convert.ToInt32(row["codigo"]);
                     serv.servico = Convert.ToString(row["servico"]);
-                    serv.Categoria = DaoCategoria.BuscarPorID(Convert.ToInt32(row["codCategoria"])) as Categorias;
                     serv.custo = Convert.ToDecimal(row["precoCusto"]);
                     serv.precoVenda = Convert.ToDecimal(row["precoVenda"]);
 
@@ -237,6 +226,7 @@ namespace EquipMotos.DAO
                     this.Servico = serv;
                     
                 }
+                conexao.Close();
                 return Servico;
             }
         }
@@ -248,9 +238,8 @@ namespace EquipMotos.DAO
             using (SqlConnection conexao = Conecta.CreateConnection())
             {
                 SqlDataAdapter da;
-                string sql = @"SELECT   servicos.*, funcionarios.funcionario, categorias.categoria
+                string sql = @"SELECT   servicos.*, funcionarios.funcionario
                                 FROM    servicos INNER JOIN
-                             categorias ON servicos.codCategoria = categorias.codigo INNER JOIN
                              funcionarios ON servicos.codFuncionario= funcionarios.codigo";
                 SqlCommand comando = new SqlCommand(sql, conexao);
 
@@ -276,11 +265,10 @@ namespace EquipMotos.DAO
             {
                 Servicos serv = obj as Servicos;
                 SqlDataAdapter da;
-                string sql = @"SELECT   servicos.*, funcionarios.funcionario, categorias.categoria
+                string sql = @"SELECT   servicos.*, funcionarios.funcionario
                                 FROM    servicos INNER JOIN
-                             categorias ON servicos.codCategoria = categorias.codigo INNER JOIN
                              funcionarios ON servicos.codFuncionario= funcionarios.codigo
-                               WHERE servicos.nome = @nome";
+                               WHERE servicos.servico = @nome";
 
                 SqlCommand comando = new SqlCommand(sql, conexao);
                 comando.Parameters.AddWithValue("@nome", serv.servico);
@@ -290,7 +278,7 @@ namespace EquipMotos.DAO
 
                 DataTable dtServico = new DataTable();
                 da.Fill(dtServico);
-
+                conexao.Close();
                 return dtServico;
             }
         }

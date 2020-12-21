@@ -40,23 +40,25 @@
             this.label1 = new System.Windows.Forms.Label();
             this.btnBuscar = new System.Windows.Forms.PictureBox();
             this.gvProdutos = new System.Windows.Forms.DataGridView();
+            this.produtosBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.sistemaMoto2DataSetProdutos = new EquipMotos.SistemaMoto2DataSetProdutos();
             this.btnExcluir = new MaterialSkin.Controls.MaterialRaisedButton();
             this.btnVoltar = new MaterialSkin.Controls.MaterialRaisedButton();
             this.btnAlterar = new MaterialSkin.Controls.MaterialRaisedButton();
             this.btnNovo = new MaterialSkin.Controls.MaterialRaisedButton();
-            this.produtosBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.sistemaMoto2DataSetProdutos = new EquipMotos.SistemaMoto2DataSetProdutos();
             this.produtosTableAdapter = new EquipMotos.SistemaMoto2DataSetProdutosTableAdapters.produtosTableAdapter();
             this.codigoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.produtoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.unidadeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.codBarraDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.codCategoriaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.categoria = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fornecedor = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.qtdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.precoVendaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.valorUnitarioDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.precoCustoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.codFornecedorDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.codCategoriaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.codBarraDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.custoUltCompraDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dtUltCompraDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.comissaoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -74,7 +76,7 @@
             // 
             this.txtPesquisaProduto.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtPesquisaProduto.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPesquisaProduto.Location = new System.Drawing.Point(24, 112);
+            this.txtPesquisaProduto.Location = new System.Drawing.Point(11, 116);
             this.txtPesquisaProduto.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtPesquisaProduto.Name = "txtPesquisaProduto";
             this.txtPesquisaProduto.Size = new System.Drawing.Size(400, 23);
@@ -86,7 +88,7 @@
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(19, 90);
+            this.label1.Location = new System.Drawing.Point(11, 89);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(147, 20);
             this.label1.TabIndex = 13;
@@ -100,8 +102,8 @@
             this.btnBuscar.ErrorImage = global::EquipMotos.Properties.Resources._1398754683_xmag;
             this.btnBuscar.Image = global::EquipMotos.Properties.Resources._1398754683_xmag;
             this.btnBuscar.InitialImage = global::EquipMotos.Properties.Resources._1398754683_xmag;
-            this.btnBuscar.Location = new System.Drawing.Point(431, 95);
-            this.btnBuscar.Margin = new System.Windows.Forms.Padding(4);
+            this.btnBuscar.Location = new System.Drawing.Point(417, 98);
+            this.btnBuscar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(51, 50);
             this.btnBuscar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
@@ -132,13 +134,15 @@
             this.codigoDataGridViewTextBoxColumn,
             this.produtoDataGridViewTextBoxColumn,
             this.unidadeDataGridViewTextBoxColumn,
-            this.codBarraDataGridViewTextBoxColumn,
-            this.codCategoriaDataGridViewTextBoxColumn,
+            this.categoria,
+            this.fornecedor,
             this.qtdDataGridViewTextBoxColumn,
             this.precoVendaDataGridViewTextBoxColumn,
             this.valorUnitarioDataGridViewTextBoxColumn,
             this.precoCustoDataGridViewTextBoxColumn,
             this.codFornecedorDataGridViewTextBoxColumn,
+            this.codCategoriaDataGridViewTextBoxColumn,
+            this.codBarraDataGridViewTextBoxColumn,
             this.custoUltCompraDataGridViewTextBoxColumn,
             this.dtUltCompraDataGridViewTextBoxColumn,
             this.comissaoDataGridViewTextBoxColumn,
@@ -148,13 +152,23 @@
             this.usuarioDataGridViewTextBoxColumn});
             this.gvProdutos.DataSource = this.produtosBindingSource;
             this.gvProdutos.EnableHeadersVisualStyles = false;
-            this.gvProdutos.Location = new System.Drawing.Point(16, 162);
-            this.gvProdutos.Margin = new System.Windows.Forms.Padding(4);
+            this.gvProdutos.Location = new System.Drawing.Point(12, 156);
+            this.gvProdutos.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.gvProdutos.Name = "gvProdutos";
             this.gvProdutos.ReadOnly = true;
             this.gvProdutos.RowHeadersWidth = 51;
-            this.gvProdutos.Size = new System.Drawing.Size(1000, 450);
+            this.gvProdutos.Size = new System.Drawing.Size(1017, 450);
             this.gvProdutos.TabIndex = 278;
+            // 
+            // produtosBindingSource
+            // 
+            this.produtosBindingSource.DataMember = "produtos";
+            this.produtosBindingSource.DataSource = this.sistemaMoto2DataSetProdutos;
+            // 
+            // sistemaMoto2DataSetProdutos
+            // 
+            this.sistemaMoto2DataSetProdutos.DataSetName = "SistemaMoto2DataSetProdutos";
+            this.sistemaMoto2DataSetProdutos.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // btnExcluir
             // 
@@ -162,8 +176,8 @@
             this.btnExcluir.Depth = 0;
             this.btnExcluir.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnExcluir.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnExcluir.Location = new System.Drawing.Point(696, 656);
-            this.btnExcluir.Margin = new System.Windows.Forms.Padding(4);
+            this.btnExcluir.Location = new System.Drawing.Point(704, 628);
+            this.btnExcluir.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnExcluir.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnExcluir.Name = "btnExcluir";
             this.btnExcluir.Primary = true;
@@ -179,8 +193,8 @@
             this.btnVoltar.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnVoltar.Depth = 0;
             this.btnVoltar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnVoltar.Location = new System.Drawing.Point(880, 656);
-            this.btnVoltar.Margin = new System.Windows.Forms.Padding(4);
+            this.btnVoltar.Location = new System.Drawing.Point(888, 628);
+            this.btnVoltar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnVoltar.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnVoltar.Name = "btnVoltar";
             this.btnVoltar.Primary = true;
@@ -196,8 +210,8 @@
             this.btnAlterar.Depth = 0;
             this.btnAlterar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAlterar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAlterar.Location = new System.Drawing.Point(588, 656);
-            this.btnAlterar.Margin = new System.Windows.Forms.Padding(4);
+            this.btnAlterar.Location = new System.Drawing.Point(596, 628);
+            this.btnAlterar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnAlterar.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnAlterar.Name = "btnAlterar";
             this.btnAlterar.Primary = true;
@@ -214,8 +228,8 @@
             this.btnNovo.Depth = 0;
             this.btnNovo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnNovo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnNovo.Location = new System.Drawing.Point(480, 656);
-            this.btnNovo.Margin = new System.Windows.Forms.Padding(4);
+            this.btnNovo.Location = new System.Drawing.Point(488, 628);
+            this.btnNovo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnNovo.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnNovo.Name = "btnNovo";
             this.btnNovo.Primary = true;
@@ -225,16 +239,6 @@
             this.btnNovo.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnNovo.UseVisualStyleBackColor = true;
             this.btnNovo.Click += new System.EventHandler(this.btnNovo_Click);
-            // 
-            // produtosBindingSource
-            // 
-            this.produtosBindingSource.DataMember = "produtos";
-            this.produtosBindingSource.DataSource = this.sistemaMoto2DataSetProdutos;
-            // 
-            // sistemaMoto2DataSetProdutos
-            // 
-            this.sistemaMoto2DataSetProdutos.DataSetName = "SistemaMoto2DataSetProdutos";
-            this.sistemaMoto2DataSetProdutos.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // produtosTableAdapter
             // 
@@ -266,28 +270,26 @@
             this.unidadeDataGridViewTextBoxColumn.ReadOnly = true;
             this.unidadeDataGridViewTextBoxColumn.Width = 50;
             // 
-            // codBarraDataGridViewTextBoxColumn
+            // categoria
             // 
-            this.codBarraDataGridViewTextBoxColumn.DataPropertyName = "codBarra";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.codBarraDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle3;
-            this.codBarraDataGridViewTextBoxColumn.HeaderText = "Cod_Barra";
-            this.codBarraDataGridViewTextBoxColumn.Name = "codBarraDataGridViewTextBoxColumn";
-            this.codBarraDataGridViewTextBoxColumn.ReadOnly = true;
+            this.categoria.DataPropertyName = "categoria";
+            this.categoria.HeaderText = "Categoria";
+            this.categoria.Name = "categoria";
+            this.categoria.ReadOnly = true;
             // 
-            // codCategoriaDataGridViewTextBoxColumn
+            // fornecedor
             // 
-            this.codCategoriaDataGridViewTextBoxColumn.DataPropertyName = "codCategoria";
-            this.codCategoriaDataGridViewTextBoxColumn.HeaderText = "codCategoria";
-            this.codCategoriaDataGridViewTextBoxColumn.Name = "codCategoriaDataGridViewTextBoxColumn";
-            this.codCategoriaDataGridViewTextBoxColumn.ReadOnly = true;
-            this.codCategoriaDataGridViewTextBoxColumn.Visible = false;
+            this.fornecedor.DataPropertyName = "fornecedor";
+            this.fornecedor.HeaderText = "Fornecedor";
+            this.fornecedor.Name = "fornecedor";
+            this.fornecedor.ReadOnly = true;
+            this.fornecedor.Visible = false;
             // 
             // qtdDataGridViewTextBoxColumn
             // 
             this.qtdDataGridViewTextBoxColumn.DataPropertyName = "qtd";
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.qtdDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.qtdDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle3;
             this.qtdDataGridViewTextBoxColumn.HeaderText = "QTD";
             this.qtdDataGridViewTextBoxColumn.Name = "qtdDataGridViewTextBoxColumn";
             this.qtdDataGridViewTextBoxColumn.ReadOnly = true;
@@ -296,8 +298,8 @@
             // precoVendaDataGridViewTextBoxColumn
             // 
             this.precoVendaDataGridViewTextBoxColumn.DataPropertyName = "precoVenda";
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.precoVendaDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.precoVendaDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle4;
             this.precoVendaDataGridViewTextBoxColumn.HeaderText = "Preço_Venda";
             this.precoVendaDataGridViewTextBoxColumn.Name = "precoVendaDataGridViewTextBoxColumn";
             this.precoVendaDataGridViewTextBoxColumn.ReadOnly = true;
@@ -306,18 +308,19 @@
             // valorUnitarioDataGridViewTextBoxColumn
             // 
             this.valorUnitarioDataGridViewTextBoxColumn.DataPropertyName = "valorUnitario";
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.valorUnitarioDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.valorUnitarioDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle5;
             this.valorUnitarioDataGridViewTextBoxColumn.HeaderText = "Vlr_Unit.";
             this.valorUnitarioDataGridViewTextBoxColumn.Name = "valorUnitarioDataGridViewTextBoxColumn";
             this.valorUnitarioDataGridViewTextBoxColumn.ReadOnly = true;
+            this.valorUnitarioDataGridViewTextBoxColumn.Visible = false;
             this.valorUnitarioDataGridViewTextBoxColumn.Width = 60;
             // 
             // precoCustoDataGridViewTextBoxColumn
             // 
             this.precoCustoDataGridViewTextBoxColumn.DataPropertyName = "precoCusto";
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.precoCustoDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.precoCustoDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle6;
             this.precoCustoDataGridViewTextBoxColumn.HeaderText = "Preço_Custo";
             this.precoCustoDataGridViewTextBoxColumn.Name = "precoCustoDataGridViewTextBoxColumn";
             this.precoCustoDataGridViewTextBoxColumn.ReadOnly = true;
@@ -330,6 +333,24 @@
             this.codFornecedorDataGridViewTextBoxColumn.Name = "codFornecedorDataGridViewTextBoxColumn";
             this.codFornecedorDataGridViewTextBoxColumn.ReadOnly = true;
             this.codFornecedorDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // codCategoriaDataGridViewTextBoxColumn
+            // 
+            this.codCategoriaDataGridViewTextBoxColumn.DataPropertyName = "codCategoria";
+            this.codCategoriaDataGridViewTextBoxColumn.HeaderText = "codCategoria";
+            this.codCategoriaDataGridViewTextBoxColumn.Name = "codCategoriaDataGridViewTextBoxColumn";
+            this.codCategoriaDataGridViewTextBoxColumn.ReadOnly = true;
+            this.codCategoriaDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // codBarraDataGridViewTextBoxColumn
+            // 
+            this.codBarraDataGridViewTextBoxColumn.DataPropertyName = "codBarra";
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.codBarraDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle7;
+            this.codBarraDataGridViewTextBoxColumn.HeaderText = "Cod_Barra";
+            this.codBarraDataGridViewTextBoxColumn.Name = "codBarraDataGridViewTextBoxColumn";
+            this.codBarraDataGridViewTextBoxColumn.ReadOnly = true;
+            this.codBarraDataGridViewTextBoxColumn.Visible = false;
             // 
             // custoUltCompraDataGridViewTextBoxColumn
             // 
@@ -391,7 +412,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1029, 730);
+            this.ClientSize = new System.Drawing.Size(1040, 683);
+            this.ControlBox = false;
             this.Controls.Add(this.btnExcluir);
             this.Controls.Add(this.btnVoltar);
             this.Controls.Add(this.btnAlterar);
@@ -400,6 +422,7 @@
             this.Controls.Add(this.txtPesquisaProduto);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnBuscar);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "frmConsultaProduto";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Consultar Produtos";
@@ -429,13 +452,15 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn codigoDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn produtoDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn unidadeDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn codBarraDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn codCategoriaDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn categoria;
+        private System.Windows.Forms.DataGridViewTextBoxColumn fornecedor;
         private System.Windows.Forms.DataGridViewTextBoxColumn qtdDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn precoVendaDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn valorUnitarioDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn precoCustoDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn codFornecedorDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn codCategoriaDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn codBarraDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn custoUltCompraDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn dtUltCompraDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn comissaoDataGridViewTextBoxColumn;

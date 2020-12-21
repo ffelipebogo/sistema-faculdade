@@ -24,9 +24,7 @@ namespace EquipMotos.VIEW
 
         private void frmConsultaProduto_Load(object sender, EventArgs e)
         {
-            // TODO: esta linha de código carrega dados na tabela 'sistemaMoto2DataSetProdutos.produtos'. Você pode movê-la ou removê-la conforme necessário.
-            this.produtosTableAdapter.Fill(this.sistemaMoto2DataSetProdutos.produtos);
-
+            gvProdutos.DataSource = CtrlProduto.ListarTodos();
         }
 
         private void btnBuscar_Click(object sender, EventArgs e)
@@ -85,11 +83,18 @@ namespace EquipMotos.VIEW
         {
             try
             {
-                var proRow = gvProdutos.CurrentRow.DataBoundItem as DataRowView;
-                var codigo = proRow["codigo"];
-                CtrlProduto.Excluir(codigo);
-                MessageBox.Show("Produto foi excluido!");
-                gvProdutos.DataSource = CtrlProduto.ListarTodos();
+                if (gvProdutos.CurrentRow != null)
+                {
+                    var proRow = gvProdutos.CurrentRow.DataBoundItem as DataRowView;
+                    var codigo = proRow["codigo"];
+                    CtrlProduto.Excluir(codigo);
+                    MessageBox.Show("Produto foi excluido!");
+                    gvProdutos.DataSource = CtrlProduto.ListarTodos();
+                }
+                else
+                {
+                    MessageBox.Show("Nenhum produto foi selecionado");
+                }
             }
             catch (Exception)
             {
@@ -131,6 +136,7 @@ namespace EquipMotos.VIEW
             }
             else
             {
+                MessageBox.Show("Nenhum produto foi selecionado");
                 return null;
             }
         }

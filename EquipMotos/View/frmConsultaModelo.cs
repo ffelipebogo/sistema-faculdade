@@ -64,13 +64,20 @@ namespace EquipMotos.View
         {
             try
             {
-                var modRow = gvModelo.CurrentRow.DataBoundItem as DataRowView;
-                var codigo = modRow["codigo"];
+                if (gvModelo.CurrentRow != null)
+                {
+                    var modRow = gvModelo.CurrentRow.DataBoundItem as DataRowView;
+                    var codigo = modRow["codigo"];
 
-                CtrlModelo.Excluir(codigo);
-                MessageBox.Show("Modelo foi excluido!");
+                    CtrlModelo.Excluir(codigo);
+                    MessageBox.Show("Modelo foi excluido!");
 
-                gvModelo.DataSource = CtrlModelo.ListarTodos();
+                    gvModelo.DataSource = CtrlModelo.ListarTodos();
+                }
+                else
+                {
+                    MessageBox.Show("Nenhum modelo foi selecionado");
+                }
             }
             catch (Exception)
             {
@@ -98,10 +105,18 @@ namespace EquipMotos.View
         {
             try
             {
-                modelo = null;
-                var modRow = gvModelo.CurrentRow.DataBoundItem as DataRowView;
-                modelo = CtrlModelo.BuscarPorID(modRow["codigo"]) as Modelos;
-                return modelo;
+                if (gvModelo.CurrentRow != null)
+                {
+                    modelo = null;
+                    var modRow = gvModelo.CurrentRow.DataBoundItem as DataRowView;
+                    modelo = CtrlModelo.BuscarPorID(modRow["codigo"]) as Modelos;
+                    return modelo;
+                }
+                else
+                {
+                    MessageBox.Show("Nenhum modelo foi selecionado");
+                    return null;
+                }
             }
             catch
             {

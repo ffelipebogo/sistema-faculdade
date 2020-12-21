@@ -96,8 +96,8 @@ namespace EquipMotos.DAO
 
                     this.marcas = marca;
                 }
+                conexao.Close();
                 return marcas;
-
             }
         }
 
@@ -115,7 +115,7 @@ namespace EquipMotos.DAO
 
                 DataTable dtMarcas = new DataTable();
                 da.Fill(dtMarcas);
-
+                conexao.Close();
                 return dtMarcas;
             }
 
@@ -145,7 +145,7 @@ namespace EquipMotos.DAO
                 da = new SqlDataAdapter(comando);
                 DataTable dtMarca = new DataTable();
                 da.Fill(dtMarca);
-
+                conexao.Close();
                 return dtMarca;
 
             }

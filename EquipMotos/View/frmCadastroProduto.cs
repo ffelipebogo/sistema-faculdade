@@ -21,9 +21,8 @@ namespace EquipMotos.VIEW
         Produtos Produto = new Produtos();
         CtrlProdutos CtrlProduto = new CtrlProdutos();
         CtrlCategorias CtrlCategoria = new CtrlCategorias();
-        CtrlFornecedores CtrlFornecedor = new CtrlFornecedores();
+        
         public static object categoria;
-        public static object fornecedor;
 
         public frmCadastroProduto()
         {
@@ -57,27 +56,11 @@ namespace EquipMotos.VIEW
             }
         }
 
-        private void btnBuscarFornecedor_Click(object sender, EventArgs e)
-        {
-
-            frmConsultaFornecedor frmConFornecedor = new frmConsultaFornecedor();
-            frmConFornecedor.btnVoltar.Text = "SELECIONAR";
-            if (frmConFornecedor.ShowDialog() == DialogResult.OK)
-            {
-                CarregaFornecedor();
-            }
-        }
+        
 
         private void CarregaFornecedor()
         {
-            if (fornecedor != null)
-            {
-                Fornecedores forn = fornecedor as Fornecedores;
-                txtCodFornecedor.Text = Convert.ToString(forn.codigo);
-                txtFornecedor.Text = forn.fornecedor;
-                txtCodFornecedor.Enabled = false;
-                txtFornecedor.Enabled = false;
-            }
+            
         }
 
         private void btnSalvar_Click(object sender, EventArgs e)
@@ -95,13 +78,12 @@ namespace EquipMotos.VIEW
                     Produto.qtd = Convert.ToInt32("0");
                     cat.codigo = Convert.ToInt32("0" + txtCodCategoria.Text);
                     Produto.Categoria = cat;
-                    forn.codigo = Convert.ToInt32("0" + txtCodFornecedor.Text);
-                    Produto.Fornecedor = forn;
+                    
                     Produto.precoVenda = Decimal.Parse(txtPrecoVenda.Text, NumberStyles.Any);
                     Produto.custoUltCompra = Decimal.Parse("0", NumberStyles.Any);
                     Produto.dtUltCompra = DateTime.Now;
                     Produto.observacoes = txtObservacao.Text;
-                    Produto.usuario = txtUsuario.Text;
+                    Produto.usuario = UsuarioLogado.Usuario; 
                     
                     Produto.comissao = Double.Parse("0" + txtComissao.Text, NumberStyles.Any);
                     Produto.observacoes = txtObservacao.Text;
@@ -127,12 +109,11 @@ namespace EquipMotos.VIEW
                 }
                 else
                 {
-                    // MessageBox.Show("Verifique se os campos foram preenchidos corretamente");
+                     //MessageBox.Show("Verifique se os campos foram preenchidos corretamente");
                 }
             }
             catch (Exception)
-            {
-
+            { 
                 MessageBox.Show("Verifique se todos os campos foram preenchidos corretamente");
             }
         }
@@ -155,8 +136,6 @@ namespace EquipMotos.VIEW
             txtCodBarra.Text = "";
             txtCodCategoria.Text = "";
             txtCategoriaGrupo.Text = "";
-            txtCodFornecedor.Text = "";
-            txtFornecedor.Text = "";
             txtPrecoVenda.Text = "R$ 0.00";
             txtCustoUltCompra.Text = "";
             txtDtUltCompra.Text = "";
@@ -206,19 +185,7 @@ namespace EquipMotos.VIEW
                 txtCategoriaGrupo.Focus();
                 return false;
             }
-            if (String.IsNullOrEmpty(txtCodFornecedor.Text.Trim()))
-            {
-                MessageBox.Show("Faltou informar o Código do Fornecedor", "Informe o Código do Fornecedor!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                txtCodFornecedor.Focus();
-                return false;
-            }
-            if (String.IsNullOrEmpty(txtFornecedor.Text.Trim()))
-            {
-                MessageBox.Show("Faltou informar o Fornecedor", "Informe o Fornecedor!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                txtFornecedor.Focus();
-                return false;
-            }
-            return true;
+           
             return true;
         }
 
@@ -228,8 +195,6 @@ namespace EquipMotos.VIEW
 
             txtUnidade.Text = Produto.unidade;
             txtCodBarra.Text = Convert.ToString(Produto.codBarra);
-            txtCodFornecedor.Text = Convert.ToString(Produto.Fornecedor.codigo);
-            txtFornecedor.Text = Convert.ToString(Produto.Fornecedor.fornecedor);
             txtCustoUltCompra.Text = Convert.ToString(Produto.custoUltCompra);
             txtDtUltCompra.Text = Convert.ToString(Produto.dtUltCompra);
            
@@ -249,28 +214,7 @@ namespace EquipMotos.VIEW
         String vlr;
         private void txtCodFornecedor_TextChanged(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(txtCodFornecedor.Text))
-            {
-                if (Convert.ToInt32("0" + txtCodFornecedor.Text) < 1)
-                return;
-                Fornecedores forn = CtrlFornecedor.BuscarPorID(Convert.ToInt32(txtCodFornecedor.Text)) as Fornecedores;
-                if (forn == null)
-                {
-                    MessageBox.Show("Nenhum resultado");
-                    txtFornecedor.Text = "";
-                    txtCodFornecedor.Text = "";
-                    txtFornecedor.Enabled = true;
-                    txtCodFornecedor.Enabled = true;
-                }
-                else
-                {
-                    txtFornecedor.Text = forn.fornecedor;
-                    txtFornecedor.Enabled = false;
-                    txtCodFornecedor.Enabled = false;
-                }
-                forn = null;
-                
-            }
+           
         }
 
         private void txtCodCategoria_TextChanged(object sender, EventArgs e)
@@ -401,12 +345,6 @@ namespace EquipMotos.VIEW
                     txtProduto.Focus();
                 }
                 else
-                if (txtFornecedor.Text.Trim().Length > 100)
-                {
-                    MessageBox.Show("Produto inválido!", "Informe o produto com menos de 100 caracteres!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    txtProduto.Focus();
-                }
-                else
                 if (String.IsNullOrEmpty(txtProduto.Text.Trim()))
                 {
                     MessageBox.Show("Faltou informar o Produto", "Informe o produto!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -464,10 +402,7 @@ namespace EquipMotos.VIEW
 
         private void txtCodFornecedor_Leave(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(txtProduto.Text))
-            {
-
-            }
+           
         }
 
         private void txtDtUltCompra_Leave(object sender, EventArgs e)

@@ -17,21 +17,32 @@ namespace EquipMotos.DAO
         List<ItensVenda> ListaItem = new List<ItensVenda>();
         ClientesDAO DaoCliente = new ClientesDAO();
         CondicaoPagamentoDAO DaoCondPagamento = new CondicaoPagamentoDAO();
-        ProdutosDAO DaoProduto = new ProdutosDAO();
+        ProdutosDAO DaoProduto = new ProdutosDAO(); 
 
-
-        private object SelecionaUltimoID(SqlTransaction transaction)
+        public object   SelecionaUltimoID()
         {
-            SqlCommand comando = this.CreateCommandTransaction(transaction);
-            comando.CommandText = "SELECT MAX(nrNota) ID FROM vendas";
-
-            var CondID = comando.ExecuteScalar();
-
-            if (String.IsNullOrEmpty(CondID.ToString()))
+            try
             {
-                CondID = 1;
+                conexao.Open();
+                SqlTransaction transaction = conexao.BeginTransaction("SampleTransacion");
+                SqlCommand comando = this.CreateCommandTransaction(transaction);
+                comando.CommandText = "SELECT MAX(nrNota) ID FROM vendas";
+
+                int CondID = int.Parse("0" + comando.ExecuteScalar().ToString());
+
+                if (String.IsNullOrEmpty(CondID.ToString()) || CondID <= 0)
+                {
+                    conexao.Close();
+                    return CondID = 1;
+                }
+                conexao.Close();
+                return CondID + 1;
             }
-            return CondID;
+            catch
+            {
+                MessageBox.Show("Erro ao selecionar nrNota!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return null;
+            }
         }
 
         public override void Inserir(object obj)
@@ -40,19 +51,20 @@ namespace EquipMotos.DAO
             SqlTransaction transaction = conexao.BeginTransaction("SampleTransacion");
             try
             {
-                Vendas venda = obj as Vendas;
-
+                Vendas venda = obj as Vendas; 
                 this.InserirVendaSql(venda, transaction);
-                var nrNota = this.SelecionaUltimoID(transaction);
                 foreach (ContasReceber conta in venda.listaContasReceber)
-                {
-
-                    this.InserirContasReceber(nrNota, conta, transaction);
+                { 
+                    this.InserirContasReceber(venda.nrNota, conta, transaction);
                 }
                 foreach (ItensVenda item in venda.listaItem)
-                {
+                { 
+                    this.InserirItemVenda(venda.nrNota, item, transaction);
+                }
 
-                    this.InserirItemVenda(nrNota, item, transaction);
+                foreach(ItensVenda item in venda.listaItem)
+                {
+                    this.BaixaEstoque(item, transaction);
                 }
                 transaction.Commit();
                 MessageBox.Show("Venda salvar com sucesso!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -69,23 +81,37 @@ namespace EquipMotos.DAO
             }
         }
 
+        public void BaixaEstoque(ItensVenda item, SqlTransaction transaction)
+        {
+
+            SqlCommand comando = this.CreateCommandTransaction(transaction);
+
+            comando.CommandText = @" IF 1 <= (select qtd from produtos where codigo = @codProduto )
+	                                    UPDATE produtos SET qtd = (qtd - @qtd) WHERE codigo = @codProduto ";
+
+            comando.Parameters.AddWithValue("@qtd", item.qtd);
+            comando.Parameters.AddWithValue("@codProduto", item.codigo);
+
+            comando.ExecuteNonQuery();
+
+        }
+
         private void InserirVendaSql(Vendas venda, SqlTransaction transaction)
         {
             SqlCommand comando = this.CreateCommandTransaction(transaction);
 
-            comando.CommandText = @"INSERT INTO vendas (modelo, serie,  codCliente, codCondPagamento, dtEmissao, situacao, totalReceber, desconto, dtCadastro, dtAlteracao, usuario)
-                                 VALUES (@modelo, @serie,  @codCliente, @codCondPagamento, @dtEmissao, @situacao, @totalReceber, @desconto, @dtCadastro, @dtAlteracao, @usuario)";
+            comando.CommandText = @"INSERT INTO vendas (nrNota, modelo, serie,  codCliente, codCondPagamento, dtEmissao, situacao, totalReceber, desconto, dtCadastro, dtAlteracao, usuario)
+                                 VALUES (@nrNota, @modelo, @serie,  @codCliente, @codCondPagamento, @dtEmissao, @situacao, @totalReceber, @desconto, @dtCadastro, @dtAlteracao, @usuario)";
 
+            comando.Parameters.AddWithValue("@nrNota", venda.nrNota);
             comando.Parameters.AddWithValue("@modelo", venda.modelo);
             comando.Parameters.AddWithValue("@serie", venda.serie);
-            //comando.Parameters.AddWithValue("@nrNota", venda.nrNota);
             comando.Parameters.AddWithValue("@codCliente", venda.cliente.codigo);
             comando.Parameters.AddWithValue("@codCondPagamento", venda.condPagamento.codigo);
             comando.Parameters.AddWithValue("@desconto", venda.desconto);
             comando.Parameters.AddWithValue("@dtEmissao", venda.dtEmissao);
             comando.Parameters.AddWithValue("@situacao", venda.situacao);
             comando.Parameters.AddWithValue("@totalReceber", venda.totalReceber);
-            comando.Parameters.AddWithValue("@observacoes", venda.observacoes);
             comando.Parameters.AddWithValue("@dtCadastro", venda.dtCadastro);
             comando.Parameters.AddWithValue("@dtAlteracao", venda.dtAlteracao);
             comando.Parameters.AddWithValue("@usuario", venda.usuario);
@@ -96,10 +122,9 @@ namespace EquipMotos.DAO
         private void InserirItemVenda(object nrNota, ItensVenda item, SqlTransaction transaction)
         {
             SqlCommand comando = this.CreateCommandTransaction(transaction);
-            var Produto = DaoProduto.BuscarPorID(item.codigo) as Produtos;
+            
             comando.CommandText = @"INSERT INTO itemVenda (  modelo, serie, nrNota, codCliente, codProduto, qtd, valorVenda, dtCadastro, dtAlteracao) 
-                                                    values ( @modelo, @serie, @nrNota, @codCliente,  @codProduto, @qtd ,  @valorVenda,  @dtCadastro, @dtAlteracao);
-                                    UPDATE  produtos set qtd = @qtdEstoque WHERE codigo = @codProduto ";
+                                                    values ( @modelo, @serie, @nrNota, @codCliente,  @codProduto, @qtd ,  @valorVenda,  @dtCadastro, @dtAlteracao)";
 
             comando.Parameters.AddWithValue("@modelo", item.modelo);
             comando.Parameters.AddWithValue("@serie", item.serie);
@@ -107,7 +132,6 @@ namespace EquipMotos.DAO
             comando.Parameters.AddWithValue("@codCliente", item.cliente.codigo);
             comando.Parameters.AddWithValue("@codProduto", item.codigo);
             comando.Parameters.AddWithValue("@qtd", item.qtd);
-            comando.Parameters.AddWithValue("@qtdEstoque", Produto.qtd - item.qtd);
             comando.Parameters.AddWithValue("@valorVenda", item.precoVenda);
             comando.Parameters.AddWithValue("@dtCadastro", item.dtCadastro);
             comando.Parameters.AddWithValue("@dtAlteracao", item.dtAlteracao);
@@ -119,8 +143,8 @@ namespace EquipMotos.DAO
         {
             SqlCommand comando = this.CreateCommandTransaction(transaction);
 
-            comando.CommandText = @"INSERT INTO contaReceber ( modelo, serie, nrNota, nrParcela, codCliente, codFormaPagamento, valorParcela, dtVencimento, dtEmissao, dtCadastro, dtAlteracao, usuario, observacoes, recebido) 
-                                                    values ( @modelo, @serie, @nrNota,  @nrParcela, @codCliente, @codFormaPagamento, @valorParcela, @dtVencimento, @dtEmissao, @dtCadastro, @dtAlteracao, @usuario, @observacoes, @recebido)";
+            comando.CommandText = @"INSERT INTO contaReceber ( modelo, serie, nrNota, nrParcela, codCliente, codFormaPagamento, valorParcela, dtVencimento, dtEmissao, dtCadastro, dtAlteracao, usuario, recebido) 
+                                                    values ( @modelo, @serie, @nrNota,  @nrParcela, @codCliente, @codFormaPagamento, @valorParcela, @dtVencimento, @dtEmissao, @dtCadastro, @dtAlteracao, @usuario, @recebido)";
 
             comando.Parameters.AddWithValue("@modelo", conta.modelo);
             comando.Parameters.AddWithValue("@serie", conta.serie);
@@ -134,51 +158,68 @@ namespace EquipMotos.DAO
             comando.Parameters.AddWithValue("@dtCadastro", conta.dtCadastro);
             comando.Parameters.AddWithValue("@dtAlteracao", conta.dtAlteracao);
             comando.Parameters.AddWithValue("@usuario", conta.usuario);
-            comando.Parameters.AddWithValue("@observacoes", conta.observacoes);
-            comando.Parameters.AddWithValue("@recebido", false);
+            if (conta.formaPagamento.codigo == 1 )
+            {
+                comando.Parameters.AddWithValue("@recebido", true);
+            }
+            else
+            {
+                comando.Parameters.AddWithValue("@recebido", false);
+            }
 
             comando.ExecuteNonQuery();
         }
 
         public void InserirVendaOS(object obj)
         {
+            
             conexao.Open();
             SqlTransaction transaction = conexao.BeginTransaction("SampleTransacion");
             try
             {
                 Vendas venda = obj as Vendas;
-                var nrNota = this.SelecionaUltimoID(transaction);
                 this.InserirVendaOSSql(venda, transaction);
 
                 foreach (ContasReceber conta in venda.listaContasReceberProdutos)
                 {
-                    conta.nrNota = nrNota.ToString();
+                    conta.nrNota = venda.nrNota;
                     this.InserirContasReceberProduto(conta, transaction);
                 }
                 foreach (ContasReceber conta in venda.listaContasReceberServicos)
                 {
-                    conta.nrNota = nrNota.ToString();
+                    conta.nrNota = venda.nrNota;
                     this.InserirContasReceberServico(conta, transaction);
                 }
                 foreach (ItensOrdemServico item in venda.listaItemProdutos)
                 {
-                    item.nrNota = nrNota.ToString();
+                    item.nrNota = venda.nrNota;
                     this.InserirItemVendaProduto(item, transaction);
                 }
                 foreach (ItensOrdemServico item in venda.listaItemServico)
                 {
-                    item.nrNota = nrNota.ToString();
+                    item.nrNota = venda.nrNota;
                     this.InserirItemVendaServico(item, transaction);
+                }
+                foreach (ContasReceber conta in venda.listaContasReceber)
+                {
+                    this.InserirContasReceber(venda.nrNota, conta, transaction);
+                }
+                foreach (ItensVenda item in venda.listaItem)
+                {
+                    this.InserirItemVenda(venda.nrNota, item, transaction);
+                }
+                foreach (ItensVenda item in venda.listaItem)
+                {
+                    this.BaixaEstoque(item, transaction);
                 }
                 MarcarFinalizada(venda, transaction);
                 transaction.Commit();
-                MessageBox.Show("Venda salvar com sucesso!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                //MessageBox.Show("Venda salvar com sucesso!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
             {
                 transaction.Rollback();
-                MessageBox.Show(ex.Message);
-                // MessageBox.Show("Este modelo, serie, nrNota e fornecedor já existe em outra Venda!", "Erro ao salvar a Venda!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                 MessageBox.Show("Não foi possivel finalizar a ordem de serviço","Erro ao gerar a Venda!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
@@ -187,30 +228,27 @@ namespace EquipMotos.DAO
         }
 
         public void MarcarFinalizada(Vendas venda, SqlTransaction transaction)
-        {
-
+        { 
             SqlCommand comando = this.CreateCommandTransaction(transaction);
 
-            comando.CommandText = "UPDATE ordemServico SET finalizada = @finalizada WHERE nrNota = @nrNota ";
+            comando.CommandText = "UPDATE ordemServicos SET finalizada = @finalizada WHERE nrNota = @nrNota ";
 
             comando.Parameters.AddWithValue("@nrNota", venda.nrNota);
             comando.Parameters.AddWithValue("@finalizada", 1);
 
-            comando.ExecuteNonQuery();
-
-        }
+            comando.ExecuteNonQuery(); 
+        } 
 
         private void InserirVendaOSSql(Vendas venda, SqlTransaction transaction)
         {
             SqlCommand comando = this.CreateCommandTransaction(transaction);
-
-
-            comando.CommandText = @"INSERT INTO vendas (modelo, serie,  codCliente, codCondPagamento, dtEmissao, situacao, totalReceber, desconto, dtCadastro, dtAlteracao, usuario)
-                                 VALUES (@modelo, @serie,  @codCliente, @codCondPagamento, @dtEmissao, @situacao, @totalReceber, @desconto, @dtCadastro, @dtAlteracao, @usuario)";
+             
+            comando.CommandText = @"INSERT INTO vendas (modelo, serie, nrNota, codCliente, codCondPagamento, dtEmissao, situacao, totalReceber, desconto, dtCadastro, dtAlteracao, usuario)
+                                 VALUES (@modelo, @serie, @nrNota,  @codCliente, @codCondPagamento, @dtEmissao, @situacao, @totalReceber, @desconto, @dtCadastro, @dtAlteracao, @usuario)";
 
             comando.Parameters.AddWithValue("@modelo", venda.modelo);
             comando.Parameters.AddWithValue("@serie", venda.serie);
-
+            comando.Parameters.AddWithValue("@nrNota", venda.nrNota); 
             comando.Parameters.AddWithValue("@codCliente", venda.cliente.codigo);
             comando.Parameters.AddWithValue("@codCondPagamento", venda.condPagamento.codigo);
             comando.Parameters.AddWithValue("@desconto", venda.desconto);
@@ -268,8 +306,7 @@ namespace EquipMotos.DAO
             comando.Parameters.AddWithValue("@dtAlteracao", conta.dtAlteracao);
             comando.Parameters.AddWithValue("@usuario", conta.usuario);
 
-            comando.ExecuteNonQuery();
-
+            comando.ExecuteNonQuery(); 
         }
 
         private void InserirItemVendaProduto(ItensOrdemServico item, SqlTransaction transaction)
@@ -334,7 +371,7 @@ namespace EquipMotos.DAO
 
                 DataTable dtVenda = new DataTable();
                 da.Fill(dtVenda);
-
+                conexao.Close();
                 return dtVenda;
             }
         }
@@ -386,12 +423,12 @@ namespace EquipMotos.DAO
 
                 DataTable dtVenda = new DataTable();
                 da.Fill(dtVenda);
-
+                conexao.Close();
                 return dtVenda;
             }
         }
 
-        public Vendas BuscarVenda_porID(object nrNota)
+        public Vendas BuscarVenda_porID(object nrNota, object serie)
         {
             using (SqlConnection conexao = Conecta.CreateConnection())
             {
@@ -401,11 +438,12 @@ namespace EquipMotos.DAO
                                 FROM vendas 
                                 INNER JOIN clientes ON vendas.codCliente = clientes.codigo 
                                 INNER JOIN condicaoPagamento ON vendas.codCondPagamento = condicaoPagamento.codigo
-                                WHERE  vendas.nrNota = @nrNota";
+                                WHERE  vendas.nrNota = @nrNota AND vendas.serie = @serie";
 
                 SqlCommand comando = new SqlCommand(sql, conexao);
 
                 comando.Parameters.AddWithValue("@nrNota", nrNota);
+                comando.Parameters.AddWithValue("@serie", serie);
 
                 conexao.Open();
                 da = new SqlDataAdapter(comando);
@@ -430,11 +468,12 @@ namespace EquipMotos.DAO
                     venda.dtCadastro = Convert.ToDateTime(row["dtCadastro"]);
                     venda.dtAlteracao = Convert.ToDateTime(row["dtAlteracao"]);
                     venda.usuario = Convert.ToString(row["usuario"]);
-                    venda.listaItem = BuscarItem(nrNota);
+                    venda.listaItem = BuscarItem(venda.modelo, nrNota, serie, venda.cliente.codigo);
                     venda.listaContasReceber = BuscarContasReceber( venda.modelo, venda.serie, nrNota, venda.cliente.codigo);
 
                     Venda = venda;
                 }
+                conexao.Close();
                 return Venda;
             }
         }
@@ -476,21 +515,24 @@ namespace EquipMotos.DAO
 
                     });
                 }
+                conexao.Close();
                 return ListaContaReceber;
             }
         }
 
-        public List<ItensVenda> BuscarItem(object nrNota)
+        public List<ItensVenda> BuscarItem(object modelo, object nrNota, object serie,  object codCliente)
         {
             using (SqlConnection conexao = Conecta.CreateConnection())
             {
-
                 SqlDataAdapter da;
-                string sql = @"SELECT * FROM itemVenda WHERE nrNota = @nrNota ";
+                string sql = @"SELECT * FROM itemVenda WHERE nrNota = @nrNota AND serie = @serie AND modelo = @modelo AND codCliente = @codCliente ";
 
                 SqlCommand comando = new SqlCommand(sql, conexao);
 
                 comando.Parameters.AddWithValue("@nrNota", nrNota);
+                comando.Parameters.AddWithValue("@serie", serie);
+                comando.Parameters.AddWithValue("@modelo", modelo);
+                comando.Parameters.AddWithValue("@codCliente", codCliente);
 
                 conexao.Open();
                 da = new SqlDataAdapter(comando);
@@ -512,6 +554,7 @@ namespace EquipMotos.DAO
                         dtCadastro = Convert.ToDateTime(row["dtCadastro"]),
                     });
                 }
+                conexao.Close();
                 return ListaItem;
             }
         }
@@ -534,8 +577,7 @@ namespace EquipMotos.DAO
                 comando.Parameters.AddWithValue("@codCliente", codCliente);
 
                 comando.ExecuteNonQuery();
-                transaction.Commit();
-
+                transaction.Commit(); 
             }
             catch (Exception ex)
             {

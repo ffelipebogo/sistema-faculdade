@@ -83,7 +83,7 @@ namespace EquipMotos.DAO
 
                 DataTable dtPaises = new DataTable();
                 da.Fill(dtPaises);
-
+                conexao.Close();
                 return dtPaises;
             }
         }
@@ -115,6 +115,7 @@ namespace EquipMotos.DAO
                     pais.usuario = Convert.ToString(row["usuario"]);
                     this.paises = pais;
                 }
+                conexao.Close();
                 return paises; //as object
             }
         }
@@ -143,7 +144,7 @@ namespace EquipMotos.DAO
 
                 DataTable dtPais = new DataTable();
                 da.Fill(dtPais);
-
+                conexao.Close();
                 return dtPais;
             }
         }

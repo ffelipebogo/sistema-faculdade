@@ -52,12 +52,9 @@ namespace EquipMotos.View
             {
                 frmCadastroOrdemServico frmCadOrdemServico = new frmCadastroOrdemServico();
                 if (gvOS.CurrentRow != null)
-                {
-
-                    var cliRow = gvOS.CurrentRow.DataBoundItem as DataRowView;
-
-                    var codigo = cliRow["nrNota"];
-
+                { 
+                    var cliRow = gvOS.CurrentRow.DataBoundItem as DataRowView; 
+                    var codigo = cliRow["nrNota"]; 
                     frmCadOrdemServico.Carregar(codigo);
                     if (frmCadOrdemServico.ShowDialog() == DialogResult.OK)
                     {
@@ -71,7 +68,7 @@ namespace EquipMotos.View
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+               // MessageBox.Show(ex.Message);
             }
         }
 
@@ -80,16 +77,21 @@ namespace EquipMotos.View
             try
             {
                 frmCadastroOrdemServico frmCadOrdemServico = new frmCadastroOrdemServico();
-
-                var cliRow = gvOS.CurrentRow.DataBoundItem as DataRowView;
-
-                var codigo = cliRow["nrNota"];
-
-                frmCadOrdemServico.Carregar(codigo);
-                frmCadOrdemServico.Disable();
-                if (frmCadOrdemServico.ShowDialog() == DialogResult.OK)
+                if (gvOS.CurrentRow != null)
                 {
-                    gvOS.DataSource = CtrlOrdemServico.ListarTodos();
+                    var cliRow = gvOS.CurrentRow.DataBoundItem as DataRowView;
+
+                    var codigo = cliRow["nrNota"];
+
+                    frmCadOrdemServico.CarregarFinalizar(codigo);
+                    if (frmCadOrdemServico.ShowDialog() == DialogResult.OK)
+                    {
+                        gvOS.DataSource = CtrlOrdemServico.ListarTodos();
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Selecione uma Ordem de Serviço");
                 }
             }
             catch (Exception)
@@ -104,10 +106,8 @@ namespace EquipMotos.View
         }
 
         private void frmConsultaOrdemServico_Load(object sender, EventArgs e)
-        {
-           
-            gvOS.DataSource = CtrlOrdemServico.ListarTodos();
-
+        { 
+            gvOS.DataSource = CtrlOrdemServico.ListarTodos(); 
         }
     }
 }

@@ -34,7 +34,6 @@ namespace EquipMotos.View
             {
                 SelecionaFornecedor();
                 frmCadastroContaPagar.fornecedor = this.fornecedor;
-                frmCadastroProduto.fornecedor = this.fornecedor;
                 frmCadastroCompra.Fornecedor = this.fornecedor;
                 this.DialogResult = DialogResult.OK;
                 Close();
@@ -50,10 +49,18 @@ namespace EquipMotos.View
         {
             try
             {
-                fornecedor = null;
-                var fornRow = gvFornecedor.CurrentRow.DataBoundItem as DataRowView;
-                fornecedor = CtrlFornecedor.BuscarPorID(fornRow["codigo"]) as Fornecedores;
-                return fornecedor;
+                if (gvFornecedor.CurrentRow != null)
+                {
+                    fornecedor = null;
+                    var fornRow = gvFornecedor.CurrentRow.DataBoundItem as DataRowView;
+                    fornecedor = CtrlFornecedor.BuscarPorID(fornRow["codigo"]) as Fornecedores;
+                    return fornecedor;
+                }
+                else
+                {
+                    MessageBox.Show("Nenhum fornecedor foi selecionado");
+                    return null;
+                }
             }
             catch
             {
@@ -83,8 +90,7 @@ namespace EquipMotos.View
             try
             {
                 if (gvFornecedor.CurrentRow != null)
-                {
-
+                { 
                     frmCadastroFornecedor frmCadFornecedor = new frmCadastroFornecedor();
                     var forRow = gvFornecedor.CurrentRow.DataBoundItem as DataRowView;
                     var id = forRow["codigo"];
@@ -109,11 +115,18 @@ namespace EquipMotos.View
         {
             try
             {
-                var forRow = gvFornecedor.CurrentRow.DataBoundItem as DataRowView;
-                var id = forRow["codigo"];
-                CtrlFornecedor.Excluir(id);
-                MessageBox.Show("Fornecedor foi excluido!");
-                gvFornecedor.DataSource = CtrlFornecedor.ListarTodos();
+                if (gvFornecedor.CurrentRow != null)
+                {
+                    var forRow = gvFornecedor.CurrentRow.DataBoundItem as DataRowView;
+                    var id = forRow["codigo"];
+                    CtrlFornecedor.Excluir(id);
+                    MessageBox.Show("Fornecedor foi excluido!");
+                    gvFornecedor.DataSource = CtrlFornecedor.ListarTodos();
+                }
+                else
+                {
+                    MessageBox.Show("Nenhum fornecedor foi selecionado");
+                }
             }
             catch (Exception)
             {

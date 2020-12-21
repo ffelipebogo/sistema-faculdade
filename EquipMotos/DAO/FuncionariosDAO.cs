@@ -15,6 +15,7 @@ namespace EquipMotos.DAO
 
         Funcionarios funcionario = new Funcionarios();
         CidadesDAO daoCid = new CidadesDAO();
+
         #region InserirFuncionario
         public override void Inserir(object obj)
         {
@@ -25,15 +26,13 @@ namespace EquipMotos.DAO
                     Funcionarios funcionario = obj as Funcionarios;
                     string sql = @"INSERT INTO funcionarios (
                                         funcionario, apelido, dtNascimento, sexo, cpf, rg, email, telefone, celular, endereco, complemento, numero, bairro, cep, codCidade,
-                                        cargo, salario, comissao,
-                                        carteiraTrabalho, serie, ufCt, dtEmissaoCt, pis,
-                                        cnh, emissor, ufCnh, dtExpedicao, dtValidade, dtPrimeiraCnh, categoria,
+                                        cargo, salario, carteiraTrabalho, cnh, categoria,
                                         observacoes, dtCadastro, dtAlteracao, usuario) 
                                   VALUES ( 
                                   @funcionario, @apelido, @dtNascimento, @sexo, @cpf, @rg, @email, @telefone, @celular, @endereco, @complemento, @numero, @bairro, @cep, @codCidade,
-                                  @cargo, @salario, @comissao,
-                                  @carteiraTrabalho, @serie, @ufCt, @dtEmissaoCt, @pis,
-                                  @cnh, @emissor, @ufCnh, @dtExpedicao, @dtValidade, @dtPrimeiraCnh, @categoria,
+                                  @cargo, @salario, 
+                                  @carteiraTrabalho, 
+                                  @cnh, @categoria,
                                   @observacoes, @dtCadastro, @dtAlteracao, @usuario )";
 
                     SqlCommand comando = new SqlCommand(sql, conexao);
@@ -56,20 +55,20 @@ namespace EquipMotos.DAO
                     
                     comando.Parameters.AddWithValue("@cargo", funcionario.cargo);
                     comando.Parameters.AddWithValue("@salario", funcionario.salario);
-                    comando.Parameters.AddWithValue("@comissao", funcionario.comissao);
+                    //comando.Parameters.AddWithValue("@comissao", funcionario.comissao);
 
                     comando.Parameters.AddWithValue("@carteiraTrabalho", funcionario.carteiraTrabalho);
-                    comando.Parameters.AddWithValue("@serie", funcionario.ctSerie);
-                    comando.Parameters.AddWithValue("@ufCt", funcionario.ctUf);
-                    comando.Parameters.AddWithValue("@dtEmissaoCt", funcionario.ctDtEmissao);
-                    comando.Parameters.AddWithValue("@pis", funcionario.ctPis);
+                    //comando.Parameters.AddWithValue("@serie", funcionario.ctSerie);
+                    //comando.Parameters.AddWithValue("@ufCt", funcionario.ctUf);
+                    //comando.Parameters.AddWithValue("@dtEmissaoCt", funcionario.ctDtEmissao);
+                    //comando.Parameters.AddWithValue("@pis", funcionario.ctPis);
 
                     comando.Parameters.AddWithValue("@cnh", funcionario.cnh);
-                    comando.Parameters.AddWithValue("@emissor", funcionario.cnhEmissor);
-                    comando.Parameters.AddWithValue("@ufCnh", funcionario.cnhUf);
-                    comando.Parameters.AddWithValue("@dtExpedicao", funcionario.cnhDtExpedicao);
-                    comando.Parameters.AddWithValue("@dtValidade", funcionario.cnhDtValidade);
-                    comando.Parameters.AddWithValue("@dtPrimeiraCnh", funcionario.cnhDtPrimeira);
+                    //comando.Parameters.AddWithValue("@emissor", funcionario.cnhEmissor);
+                    //comando.Parameters.AddWithValue("@ufCnh", funcionario.cnhUf);
+                    //comando.Parameters.AddWithValue("@dtExpedicao", funcionario.cnhDtExpedicao);
+                    //comando.Parameters.AddWithValue("@dtValidade", funcionario.cnhDtValidade);
+                    //comando.Parameters.AddWithValue("@dtPrimeiraCnh", funcionario.cnhDtPrimeira);
                     comando.Parameters.AddWithValue("@categoria", funcionario.cnhCategoria);
 
                     comando.Parameters.AddWithValue("@observacoes", funcionario.observacoes);
@@ -101,19 +100,31 @@ namespace EquipMotos.DAO
                 if (fun.Length <= 4 && isNumeric)
                 {
                     int id = Convert.ToInt32(fun);
-                    sql = @"SELECT * FROM funcionarios WHERE codigo = @fun";
+                    sql = @"SELECT     funcionarios.codigo, funcionarios.funcionario, funcionarios.apelido, funcionarios.dtNascimento, funcionarios.sexo, funcionarios.endereco, funcionarios.numero, funcionarios.complemento, funcionarios.bairro, funcionarios.cep, funcionarios.codCidade, funcionarios.codEstado, 
+                              funcionarios.telefone, funcionarios.celular, funcionarios.email, funcionarios.cpf, funcionarios.rg, funcionarios.cargo, funcionarios.salario,  funcionarios.carteiraTrabalho, funcionarios.cnh,  funcionarios.categoria, funcionarios.observacoes, funcionarios.dtCadastro, funcionarios.dtAlteracao,
+                                funcionarios.usuario, cidades.cidade
+                                FROM        funcionarios INNER JOIN
+                              cidades ON funcionarios.codCidade = cidades.codigo WHERE funcionarios.codigo = @fun";
                 }
                 else
                 {
                     if (isNumeric)
                     {
                         string cpf = fun;
-                        sql = @"SELECT * FROM funcionarios WHERE cpf like '%'+ @fun +'%'";
+                        sql = @"SELECT     funcionarios.codigo, funcionarios.funcionario, funcionarios.apelido, funcionarios.dtNascimento, funcionarios.sexo, funcionarios.endereco, funcionarios.numero, funcionarios.complemento, funcionarios.bairro, funcionarios.cep, funcionarios.codCidade, funcionarios.codEstado, 
+                                  funcionarios.telefone, funcionarios.celular, funcionarios.email, funcionarios.cpf, funcionarios.rg, funcionarios.cargo, funcionarios.salario,  funcionarios.carteiraTrabalho, funcionarios.cnh,  funcionarios.categoria, funcionarios.observacoes, funcionarios.dtCadastro, funcionarios.dtAlteracao,
+                                    funcionarios.usuario, cidades.cidade
+                                    FROM        funcionarios INNER JOIN
+                                  cidades ON funcionarios.codCidade = cidades.codigo WHERE funcionarios.cpf like '%'+ @fun +'%'";
                     }
                     else
                     {
                         string funcionario = fun;
-                        sql = @"SELECT * FROM funcionarios WHERE funcionario like '%'+ @fun + '%' ";
+                        sql = @"SELECT     funcionarios.codigo, funcionarios.funcionario, funcionarios.apelido, funcionarios.dtNascimento, funcionarios.sexo, funcionarios.endereco, funcionarios.numero, funcionarios.complemento, funcionarios.bairro, funcionarios.cep, funcionarios.codCidade, funcionarios.codEstado, 
+                                  funcionarios.telefone, funcionarios.celular, funcionarios.email, funcionarios.cpf, funcionarios.rg, funcionarios.cargo, funcionarios.salario,  funcionarios.carteiraTrabalho, funcionarios.cnh,  funcionarios.categoria, funcionarios.observacoes, funcionarios.dtCadastro, funcionarios.dtAlteracao,
+                                    funcionarios.usuario, cidades.cidade
+                                    FROM        funcionarios INNER JOIN
+                                  cidades ON funcionarios.codCidade = cidades.codigo WHERE funcionarios.funcionario like '%'+ @fun + '%' ";
 
                     }
                 }
@@ -127,7 +138,7 @@ namespace EquipMotos.DAO
 
                 DataTable dtFuncionario = new DataTable();
                 da.Fill(dtFuncionario);
-
+                conexao.Close();
                 return dtFuncionario;
             }
         }
@@ -147,39 +158,22 @@ namespace EquipMotos.DAO
                                 apelido = @apelido,
                                 dtNascimento = @dtNascimento,
                                 sexo = @sexo,
-
                                 endereco = @endereco,
                                 complemento = @complemento,
                                 numero = @numero,
                                 bairro = @bairro,
                                 cep = @cep,
                                 codCidade = @codCidade,
-
                                 telefone = @telefone,
                                 celular = @celular,
-                              
                                 email = @email,
                                 cpf = @cpf,
                                 rg = @rg,
-                                
                                 cargo = @cargo,
                                 salario = @salario,
-                                comissao = @comissao,
-
                                 carteiraTrabalho = @carteiraTrabalho,
-                                serie = @serie,
-                                ufCt = @ufCt,
-                                dtEmissaoCt = @dtEmissaoCt,
-                                pis = @pis,
-
                                 cnh = @cnh,
-                                emissor = @emissor,
-                                ufCnh = @ufCnh,
-                                dtExpedicao = @dtExpedicao,
-                                dtValidade = @dtValidade,
-                                dtPrimeiraCnh = @dtPrimeiraCnh,
                                 categoria = @categoria,
-                                
                                 observacoes = @observacoes,
                                 dtCadastro = @dtCadastro,
                                 dtAlteracao = @dtAlteracao,
@@ -207,20 +201,20 @@ namespace EquipMotos.DAO
 
                     comando.Parameters.AddWithValue("@cargo", funcionario.cargo);
                     comando.Parameters.AddWithValue("@salario", funcionario.salario);
-                    comando.Parameters.AddWithValue("@comissao", funcionario.comissao);
+                    //comando.Parameters.AddWithValue("@comissao", funcionario.comissao);
 
                     comando.Parameters.AddWithValue("@carteiraTrabalho", funcionario.carteiraTrabalho);
-                    comando.Parameters.AddWithValue("@serie", funcionario.ctSerie);
-                    comando.Parameters.AddWithValue("@ufCt", funcionario.ctUf);
-                    comando.Parameters.AddWithValue("@dtEmissaoCt", funcionario.ctDtEmissao);
-                    comando.Parameters.AddWithValue("@pis", funcionario.ctPis);
+                    //comando.Parameters.AddWithValue("@serie", funcionario.ctSerie);
+                    //comando.Parameters.AddWithValue("@ufCt", funcionario.ctUf);
+                    //comando.Parameters.AddWithValue("@dtEmissaoCt", funcionario.ctDtEmissao);
+                    //comando.Parameters.AddWithValue("@pis", funcionario.ctPis);
 
                     comando.Parameters.AddWithValue("@cnh", funcionario.cnh);
-                    comando.Parameters.AddWithValue("@emissor", funcionario.cnhEmissor);
-                    comando.Parameters.AddWithValue("@ufCnh", funcionario.cnhUf);
-                    comando.Parameters.AddWithValue("@dtExpedicao", funcionario.cnhDtExpedicao);
-                    comando.Parameters.AddWithValue("@dtValidade", funcionario.cnhDtValidade);
-                    comando.Parameters.AddWithValue("@dtPrimeiraCnh", funcionario.cnhDtPrimeira);
+                    //comando.Parameters.AddWithValue("@emissor", funcionario.cnhEmissor);
+                    //comando.Parameters.AddWithValue("@ufCnh", funcionario.cnhUf);
+                    //comando.Parameters.AddWithValue("@dtExpedicao", funcionario.cnhDtExpedicao);
+                    //comando.Parameters.AddWithValue("@dtValidade", funcionario.cnhDtValidade);
+                    //comando.Parameters.AddWithValue("@dtPrimeiraCnh", funcionario.cnhDtPrimeira);
                     comando.Parameters.AddWithValue("@categoria", funcionario.cnhCategoria);
 
                     comando.Parameters.AddWithValue("@observacoes", funcionario.observacoes);
@@ -284,8 +278,8 @@ namespace EquipMotos.DAO
             { 
                 SqlDataAdapter da;
                 string sql = @"SELECT     funcionarios.codigo, funcionarios.funcionario, funcionarios.apelido, funcionarios.dtNascimento, funcionarios.sexo, funcionarios.endereco, funcionarios.numero, funcionarios.complemento, funcionarios.bairro, funcionarios.cep, funcionarios.codCidade, funcionarios.codEstado, 
-                  funcionarios.telefone, funcionarios.celular, funcionarios.email, funcionarios.cpf, funcionarios.rg, funcionarios.cargo, funcionarios.salario, funcionarios.comissao, funcionarios.carteiraTrabalho, funcionarios.serie, funcionarios.ufCt, funcionarios.dtEmissaoCt, funcionarios.pis, 
-                  funcionarios.cnh, funcionarios.emissor, funcionarios.ufCnh, funcionarios.dtExpedicao, funcionarios.dtValidade, funcionarios.dtPrimeiraCnh, funcionarios.categoria, funcionarios.observacoes, funcionarios.dtCadastro, funcionarios.dtAlteracao, funcionarios.usuario, cidades.cidade
+                  funcionarios.telefone, funcionarios.celular, funcionarios.email, funcionarios.cpf, funcionarios.rg, funcionarios.cargo, funcionarios.salario,  funcionarios.carteiraTrabalho, funcionarios.cnh,  funcionarios.categoria, funcionarios.observacoes, funcionarios.dtCadastro, funcionarios.dtAlteracao,
+                    funcionarios.usuario, cidades.cidade
                     FROM        funcionarios INNER JOIN
                   cidades ON funcionarios.codCidade = cidades.codigo    
                     WHERE funcionarios.codigo = @codigo";
@@ -321,18 +315,18 @@ namespace EquipMotos.DAO
                     fun.rg = Convert.ToString(row["rg"]);
                     fun.cargo = Convert.ToString(row["cargo"]);
                     fun.salario = Convert.ToDecimal(row["salario"]);
-                    fun.comissao = Convert.ToDecimal(row["comissao"]);
+                    //fun.comissao = Convert.ToDecimal(row["comissao"]);
                     fun.carteiraTrabalho= Convert.ToString(row["carteiraTrabalho"]);
-                    fun.ctSerie = Convert.ToString(row["serie"]);
-                    fun.ctUf = Convert.ToString(row["ufCt"]);
-                    fun.ctDtEmissao = Convert.ToDateTime(row["dtEmissaoCt"]);
-                    fun.ctPis = Convert.ToString(row["pis"]);
+                    //fun.ctSerie = Convert.ToString(row["serie"]);
+                    //fun.ctUf = Convert.ToString(row["ufCt"]);
+                    //fun.ctDtEmissao = Convert.ToDateTime(row["dtEmissaoCt"]);
+                    //fun.ctPis = Convert.ToString(row["pis"]);
                     fun.cnh = Convert.ToString(row["cnh"]);
-                    fun.cnhEmissor = Convert.ToString(row["emissor"]);
-                    fun.cnhUf = Convert.ToString(row["ufCnh"]);
-                    fun.cnhDtExpedicao = Convert.ToDateTime(row["dtExpedicao"]);
-                    fun.cnhDtValidade = Convert.ToDateTime(row["dtValidade"]);
-                    fun.cnhDtPrimeira = Convert.ToDateTime(row["dtPrimeiraCnh"]);
+                    //fun.cnhEmissor = Convert.ToString(row["emissor"]);
+                    //fun.cnhUf = Convert.ToString(row["ufCnh"]);
+                    //fun.cnhDtExpedicao = Convert.ToDateTime(row["dtExpedicao"]);
+                    //fun.cnhDtValidade = Convert.ToDateTime(row["dtValidade"]);
+                    //fun.cnhDtPrimeira = Convert.ToDateTime(row["dtPrimeiraCnh"]);
                     fun.cnhCategoria = Convert.ToString(row["categoria"]);
                     fun.observacoes = Convert.ToString(row["observacoes"]);
                     fun.dtCadastro = Convert.ToDateTime(row["dtCadastro"]);
@@ -340,6 +334,7 @@ namespace EquipMotos.DAO
                     fun.usuario = Convert.ToString(row["usuario"]);
                     this.funcionario = fun;
                 }
+                conexao.Close();
                 return funcionario;
 
             }
@@ -353,8 +348,8 @@ namespace EquipMotos.DAO
             {
                 SqlDataAdapter da;
                 string sql = @"SELECT     funcionarios.codigo, funcionarios.funcionario, funcionarios.apelido, funcionarios.dtNascimento, funcionarios.sexo, funcionarios.endereco, funcionarios.numero, funcionarios.complemento, funcionarios.bairro, funcionarios.cep, funcionarios.codCidade, funcionarios.codEstado, 
-                  funcionarios.telefone, funcionarios.celular, funcionarios.email, funcionarios.cpf, funcionarios.rg, funcionarios.cargo, funcionarios.salario, funcionarios.comissao, funcionarios.carteiraTrabalho, funcionarios.serie, funcionarios.ufCt, funcionarios.dtEmissaoCt, funcionarios.pis, 
-                  funcionarios.cnh, funcionarios.emissor, funcionarios.ufCnh, funcionarios.dtExpedicao, funcionarios.dtValidade, funcionarios.dtPrimeiraCnh, funcionarios.categoria, funcionarios.observacoes, funcionarios.dtCadastro, funcionarios.dtAlteracao, funcionarios.usuario, cidades.cidade
+                  funcionarios.telefone, funcionarios.celular, funcionarios.email, funcionarios.cpf, funcionarios.rg, funcionarios.cargo, funcionarios.salario,  funcionarios.carteiraTrabalho, 
+                  funcionarios.cnh, funcionarios.categoria, funcionarios.observacoes, funcionarios.dtCadastro, funcionarios.dtAlteracao, funcionarios.usuario, cidades.cidade
                     FROM        funcionarios INNER JOIN
                   cidades ON funcionarios.codCidade = cidades.codigo  ";
 
@@ -365,7 +360,7 @@ namespace EquipMotos.DAO
                 da = new SqlDataAdapter(comando);
                 DataTable dtFuncionario = new DataTable();
                 da.Fill(dtFuncionario);
-
+                conexao.Close();
                 return dtFuncionario;
             }
         }
@@ -378,8 +373,8 @@ namespace EquipMotos.DAO
             {
                 SqlDataAdapter da;
                 string sql = @"SELECT     funcionarios.codigo, funcionarios.funcionario, funcionarios.apelido, funcionarios.dtNascimento, funcionarios.sexo, funcionarios.endereco, funcionarios.numero, funcionarios.complemento, funcionarios.bairro, funcionarios.cep, funcionarios.codCidade, funcionarios.codEstado, 
-                          funcionarios.telefone, funcionarios.celular, funcionarios.email, funcionarios.cpf, funcionarios.rg, funcionarios.cargo, funcionarios.salario, funcionarios.comissao, funcionarios.carteiraTrabalho, funcionarios.serie, funcionarios.ufCt, funcionarios.dtEmissaoCt, funcionarios.pis, 
-                          funcionarios.cnh, funcionarios.emissor, funcionarios.ufCnh, funcionarios.dtExpedicao, funcionarios.dtValidade, funcionarios.dtPrimeiraCnh, funcionarios.categoria, funcionarios.observacoes, funcionarios.dtCadastro, funcionarios.dtAlteracao, funcionarios.usuario, cidades.cidade
+                          funcionarios.telefone, funcionarios.celular, funcionarios.email, funcionarios.cpf, funcionarios.rg, funcionarios.cargo, funcionarios.salario, funcionarios.carteiraTrabalho,
+                          funcionarios.cnh,  funcionarios.categoria, funcionarios.observacoes, funcionarios.dtCadastro, funcionarios.dtAlteracao, funcionarios.usuario, cidades.cidade
                             FROM        funcionarios INNER JOIN
                           cidades ON funcionarios.codCidade = cidades.codigo   
                             WHERE funcionarios.nome = @nome";
@@ -392,7 +387,7 @@ namespace EquipMotos.DAO
 
                 DataTable dtFuncionario = new DataTable();
                 da.Fill(dtFuncionario);
-
+                conexao.Close();
                 return dtFuncionario;
             }
         }

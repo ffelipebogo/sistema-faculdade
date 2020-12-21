@@ -35,28 +35,6 @@ namespace EquipMotos.VIEW
 
         }
 
-        private void btnBuscarCategoria_Click(object sender, EventArgs e)
-        {
-            frmConsultaCategoria frmConCategoria = new frmConsultaCategoria();
-            frmConCategoria.btnVoltar.Text = "SELECIONAR";
-            if (frmConCategoria.ShowDialog() == DialogResult.OK)
-            {
-                CarregaCategoria();
-            }
-        }
-
-        private void CarregaCategoria()
-        {
-            if (categoria != null)
-            {
-                Categorias cat = categoria as Categorias;
-                txtCodCategoria.Text = Convert.ToString(cat.codigo);
-                txtCategoriaGrupo.Text = cat.categoria;
-                txtCodCategoria.Enabled = false;
-                txtCategoriaGrupo.Enabled = false;
-            }
-        }
-
         private void btnBuscarFornecedor_Click(object sender, EventArgs e)
         {
             frmConsultaFuncionario frmConFuncionario = new frmConsultaFuncionario();
@@ -87,15 +65,13 @@ namespace EquipMotos.VIEW
                     Categorias cat = new Categorias();
 
                     Servico.servico = txtServico.Text;
-                    cat.codigo = Convert.ToInt32(txtCodCategoria.Text);
-                    Servico.Categoria = cat;
                     func.codigo = Convert.ToInt32(txtCodFornecedor.Text);
                     Servico.precoVenda = Decimal.Parse(txtPrecoVenda.Text, NumberStyles.Any);
                     Servico.Funcionario = func;
                    
                     Servico.comissao = Double.Parse("0" + txtComissao.Text, NumberStyles.Any);
                     Servico.observacoes = txtObservacao.Text;
-                    Servico.usuario = txtUsuario.Text;
+                    Servico.usuario = UsuarioLogado.Usuario;
 
                     if (btnSalvar.Text == "ALTERAR")
                     {
@@ -150,12 +126,6 @@ namespace EquipMotos.VIEW
                 return false;
             }
 
-            if (String.IsNullOrEmpty(txtCategoriaGrupo.Text.Trim()))
-            {
-                MessageBox.Show("Faltou informar a Categoria", "Informe a Categoria!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                txtCategoriaGrupo.Focus();
-                return false;
-            }
             if (txtCodFornecedor.Text.Trim() == String.Empty & txtCodFornecedor.Text.Length < 2)
             {
                 MessageBox.Show("Faltou informar o Código do Funcionario", "Informe o Código do Funcionario!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -176,8 +146,6 @@ namespace EquipMotos.VIEW
         {
             txtCodigo.Text = "";
             txtServico.Text = "";
-            txtCodCategoria.Text = "";
-            txtCategoriaGrupo.Text = "";
             txtCodFornecedor.Text = "";
             txtFuncionario.Text = "";
             txtPrecoVenda.Text = "R$ 0.00";
@@ -198,8 +166,6 @@ namespace EquipMotos.VIEW
 
             txtCodigo.Text = Convert.ToString(Servico.codigo);
             txtServico.Text = Servico.servico;
-            txtCodCategoria.Text = Convert.ToString(Servico.Categoria.codigo);
-            txtCategoriaGrupo.Text = Convert.ToString(Servico.Categoria.categoria);
             txtComissao.Text = Convert.ToString(Servico.comissao);
             txtPrecoVenda.Text = Convert.ToString(Servico.precoVenda);
             txtObservacao.Text = Servico.observacoes;
@@ -254,43 +220,6 @@ namespace EquipMotos.VIEW
                 }
                 
             }
-        }
-
-        private void txtCodCategoria_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            MaskForm.TxtMask_Numero_KeyPress(sender, e);
-        }
-
-        private void txtCodCategoria_Leave(object sender, EventArgs e)
-        {
-            if (!string.IsNullOrEmpty(txtServico.Text))
-            {
-
-            }
-        }
-
-        private void txtCodCategoria_TextChanged(object sender, EventArgs e)
-        {
-            if (string.IsNullOrEmpty(txtCodCategoria.Text))
-                return;
-            if (Convert.ToInt32("0" + txtCodCategoria.Text) < 1)
-                return;
-            Categorias cat = CtrlCategoria.BuscarPorID(Convert.ToInt32(txtCodCategoria.Text)) as Categorias;
-            if (cat == null)
-            {
-                MessageBox.Show("Nenhum resultado");
-                txtCategoriaGrupo.Text = "";
-                txtCodCategoria.Text = "";
-                txtCategoriaGrupo.Enabled = true;
-                txtCodCategoria.Enabled = true;
-            }
-            else
-            {
-                txtCategoriaGrupo.Text = cat.categoria;
-                txtCategoriaGrupo.Enabled = false;
-                txtCodCategoria.Enabled = false;
-            }
-            cat = null;
         }
 
         private void txtCodFornecedor_KeyPress(object sender, KeyPressEventArgs e)

@@ -70,8 +70,7 @@ namespace EquipMotos.DAO
 	                                fornecedores.fornecedor, formaPagamento.forma
                                 FROM         contaPagar INNER JOIN
                                     fornecedores ON contaPagar.codFornecedor = fornecedores.codigo INNER JOIN
-                                    formaPagamento ON contaPagar.codFormaPagamento = formaPagamento.codigo 
-                            WHERE contaPagar.pago = 0";
+                                    formaPagamento ON contaPagar.codFormaPagamento = formaPagamento.codigo ";
 
                 SqlCommand comando = new SqlCommand(sql, conexao);
 
@@ -85,7 +84,7 @@ namespace EquipMotos.DAO
             }
         }
 
-        public DataTable BuscarCompra_Filtro(object nota, object fornecedor, object formaPagamento, DateTime dateMin, DateTime dateMax)
+        public DataTable BuscarConta_Filtro(object nota, object fornecedor, object formaPagamento, DateTime dateMin, DateTime dateMax)
         {
             using (SqlConnection conexao = Conecta.CreateConnection())
             {
@@ -93,7 +92,7 @@ namespace EquipMotos.DAO
                 string select = @"SELECT   contaPagar.modelo, contaPagar.serie, contaPagar.nrNota, contaPagar.codFornecedor, contaPagar.nrParcela, contaPagar.codFormaPagamento, contaPagar.dtEmissao, 
 	                                contaPagar.dtVencimento, contaPagar.valorParcela, contaPagar.observacoes, contaPagar.dtCadastro, contaPagar.dtAlteracao, contaPagar.usuario, contaPagar.pago, 
 	                                fornecedores.fornecedor, formaPagamento.forma
-                                FROM         contaPagar INNER JOIN
+                                  FROM  contaPagar INNER JOIN
                                     fornecedores ON contaPagar.codFornecedor = fornecedores.codigo INNER JOIN
                                     formaPagamento ON contaPagar.codFormaPagamento = formaPagamento.codigo ";
 
@@ -157,12 +156,11 @@ namespace EquipMotos.DAO
                                 FROM         contaPagar INNER JOIN
                                     fornecedores ON contaPagar.codFornecedor = fornecedores.codigo INNER JOIN
                                     formaPagamento ON contaPagar.codFormaPagamento = formaPagamento.codigo
-                            WHERE contaPagar.modelo = @modelo 
-                            AND contaPagar.serie = @serie 
-                            AND contaPagar.nrNota = @nrNota 
-                            AND contaPagar.codFornecedor = @codFornecedor   
-                            AND contaPagar.nrParcela = @nrParcela
-                                                        ";
+                                 WHERE contaPagar.modelo = @modelo 
+                                    AND contaPagar.serie = @serie 
+                                    AND contaPagar.nrNota = @nrNota 
+                                    AND contaPagar.codFornecedor = @codFornecedor   
+                                    AND contaPagar.nrParcela = @nrParcela ";
 
                 SqlCommand comando = new SqlCommand(sql, conexao);
 
@@ -197,6 +195,7 @@ namespace EquipMotos.DAO
                     contas.usuario = Convert.ToString(row["usuario"]);
                     conta = contas;
                 }
+                conexao.Close();
                 return conta;
             }
         }
@@ -224,7 +223,6 @@ namespace EquipMotos.DAO
             }
             catch (Exception ex)
             {
-                //MessageBox.Show(ex.Message);
                 transaction.Rollback();
                 conexao.Close();
                 MessageBox.Show("Nao foi possivel marcar como pago!");
@@ -246,21 +244,21 @@ namespace EquipMotos.DAO
                 if (conta.Length > 1 )
                 {
                     sql = @"SELECT   contaPagar.modelo, contaPagar.serie, contaPagar.nrNota, contaPagar.codFornecedor, contaPagar.nrParcela, contaPagar.codFormaPagamento, contaPagar.dtEmissao, 
-	                                contaPagar.dtVencimento, contaPagar.valorParcela, contaPagar.observacoes, contaPagar.dtCadastro, contaPagar.dtAlteracao, contaPagar.usuario, contaPagar.pago, 
-	                                fornecedores.fornecedor, formaPagamento.forma
-                                FROM         contaPagar INNER JOIN
-                                    fornecedores ON contaPagar.codFornecedor = fornecedores.codigo INNER JOIN
-                                    formaPagamento ON contaPagar.codFormaPagamento = formaPagamento.codigo
+	                            contaPagar.dtVencimento, contaPagar.valorParcela, contaPagar.observacoes, contaPagar.dtCadastro, contaPagar.dtAlteracao, contaPagar.usuario, contaPagar.pago, 
+	                            fornecedores.fornecedor, formaPagamento.forma
+                            FROM         contaPagar INNER JOIN
+                                fornecedores ON contaPagar.codFornecedor = fornecedores.codigo INNER JOIN
+                                formaPagamento ON contaPagar.codFormaPagamento = formaPagamento.codigo
                             WHERE contaPagar.modelo = @conta OR contaPagar.serie = @conta OR contaPagar.nrNota = @conta ";//WHERE pago = 0
                 }
                 else
                 {
                     sql = @"SELECT   contaPagar.modelo, contaPagar.serie, contaPagar.nrNota, contaPagar.codFornecedor, contaPagar.nrParcela, contaPagar.codFormaPagamento, contaPagar.dtEmissao, 
-	                                contaPagar.dtVencimento, contaPagar.valorParcela, contaPagar.observacoes, contaPagar.dtCadastro, contaPagar.dtAlteracao, contaPagar.usuario, contaPagar.pago, 
-	                                fornecedores.fornecedor, formaPagamento.forma
-                                FROM         contaPagar INNER JOIN
-                                    fornecedores ON contaPagar.codFornecedor = fornecedores.codigo INNER JOIN
-                                    formaPagamento ON contaPagar.codFormaPagamento = formaPagamento.codigo"; //WHERE pago = 0
+	                            contaPagar.dtVencimento, contaPagar.valorParcela, contaPagar.observacoes, contaPagar.dtCadastro, contaPagar.dtAlteracao, contaPagar.usuario, contaPagar.pago, 
+	                            fornecedores.fornecedor, formaPagamento.forma
+                            FROM         contaPagar INNER JOIN
+                                fornecedores ON contaPagar.codFornecedor = fornecedores.codigo INNER JOIN
+                                formaPagamento ON contaPagar.codFormaPagamento = formaPagamento.codigo"; //WHERE pago = 0
                 }
                
                 SqlCommand comando = new SqlCommand(sql, conexao);
@@ -272,7 +270,7 @@ namespace EquipMotos.DAO
 
                 DataTable dtContaPAgar = new DataTable();
                 da.Fill(dtContaPAgar);
-
+                conexao.Close();
                 return dtContaPAgar;
             }
         }

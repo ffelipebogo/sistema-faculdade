@@ -43,12 +43,12 @@
             this.eventLog1 = new System.Diagnostics.EventLog();
             this.btnVoltar = new MaterialSkin.Controls.MaterialRaisedButton();
             this.gvClientes = new System.Windows.Forms.DataGridView();
+            this.clientesBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.sistemaMoto2DataSetCliente = new EquipMotos.SistemaMoto2DataSetCliente();
             this.btnBuscarCliente = new System.Windows.Forms.PictureBox();
             this.btnExcluir = new MaterialSkin.Controls.MaterialRaisedButton();
             this.btnAlterar = new MaterialSkin.Controls.MaterialRaisedButton();
             this.btnNovo = new MaterialSkin.Controls.MaterialRaisedButton();
-            this.clientesBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.sistemaMoto2DataSetCliente = new EquipMotos.SistemaMoto2DataSetCliente();
             this.clientesTableAdapter = new EquipMotos.SistemaMoto2DataSetClienteTableAdapters.clientesTableAdapter();
             this.codigoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -83,9 +83,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.eventLog1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvClientes)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnBuscarCliente)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.clientesBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sistemaMoto2DataSetCliente)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnBuscarCliente)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -94,7 +94,8 @@
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(18, 89);
+            this.label1.Location = new System.Drawing.Point(16, 74);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(132, 20);
             this.label1.TabIndex = 1;
@@ -105,10 +106,10 @@
             this.txtPesquisar.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtPesquisar.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtPesquisar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPesquisar.Location = new System.Drawing.Point(22, 117);
-            this.txtPesquisar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtPesquisar.Location = new System.Drawing.Point(18, 97);
+            this.txtPesquisar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtPesquisar.Name = "txtPesquisar";
-            this.txtPesquisar.Size = new System.Drawing.Size(400, 23);
+            this.txtPesquisar.Size = new System.Drawing.Size(301, 23);
             this.txtPesquisar.TabIndex = 4;
             // 
             // directorySearcher1
@@ -130,12 +131,11 @@
             this.btnVoltar.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnVoltar.Depth = 0;
             this.btnVoltar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnVoltar.Location = new System.Drawing.Point(875, 679);
-            this.btnVoltar.Margin = new System.Windows.Forms.Padding(4);
+            this.btnVoltar.Location = new System.Drawing.Point(894, 496);
             this.btnVoltar.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnVoltar.Name = "btnVoltar";
             this.btnVoltar.Primary = true;
-            this.btnVoltar.Size = new System.Drawing.Size(115, 30);
+            this.btnVoltar.Size = new System.Drawing.Size(86, 24);
             this.btnVoltar.TabIndex = 10;
             this.btnVoltar.Text = "VOLTAR";
             this.btnVoltar.UseVisualStyleBackColor = true;
@@ -193,13 +193,22 @@
             this.usuarioDataGridViewTextBoxColumn});
             this.gvClientes.DataSource = this.clientesBindingSource;
             this.gvClientes.EnableHeadersVisualStyles = false;
-            this.gvClientes.Location = new System.Drawing.Point(13, 157);
-            this.gvClientes.Margin = new System.Windows.Forms.Padding(4);
+            this.gvClientes.Location = new System.Drawing.Point(12, 125);
             this.gvClientes.Name = "gvClientes";
             this.gvClientes.ReadOnly = true;
             this.gvClientes.RowHeadersWidth = 51;
-            this.gvClientes.Size = new System.Drawing.Size(1000, 450);
+            this.gvClientes.Size = new System.Drawing.Size(998, 356);
             this.gvClientes.TabIndex = 12;
+            // 
+            // clientesBindingSource
+            // 
+            this.clientesBindingSource.DataMember = "clientes";
+            this.clientesBindingSource.DataSource = this.sistemaMoto2DataSetCliente;
+            // 
+            // sistemaMoto2DataSetCliente
+            // 
+            this.sistemaMoto2DataSetCliente.DataSetName = "SistemaMoto2DataSetCliente";
+            this.sistemaMoto2DataSetCliente.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // btnBuscarCliente
             // 
@@ -209,10 +218,10 @@
             this.btnBuscarCliente.ErrorImage = global::EquipMotos.Properties.Resources._1398754683_xmag;
             this.btnBuscarCliente.Image = global::EquipMotos.Properties.Resources._1398754683_xmag;
             this.btnBuscarCliente.InitialImage = global::EquipMotos.Properties.Resources._1398754683_xmag;
-            this.btnBuscarCliente.Location = new System.Drawing.Point(428, 101);
-            this.btnBuscarCliente.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnBuscarCliente.Location = new System.Drawing.Point(344, 79);
+            this.btnBuscarCliente.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnBuscarCliente.Name = "btnBuscarCliente";
-            this.btnBuscarCliente.Size = new System.Drawing.Size(50, 50);
+            this.btnBuscarCliente.Size = new System.Drawing.Size(38, 41);
             this.btnBuscarCliente.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.btnBuscarCliente.TabIndex = 257;
             this.btnBuscarCliente.TabStop = false;
@@ -225,12 +234,11 @@
             this.btnExcluir.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnExcluir.Image = global::EquipMotos.Properties.Resources._1398756469_Erase;
             this.btnExcluir.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnExcluir.Location = new System.Drawing.Point(701, 679);
-            this.btnExcluir.Margin = new System.Windows.Forms.Padding(4);
+            this.btnExcluir.Location = new System.Drawing.Point(764, 496);
             this.btnExcluir.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnExcluir.Name = "btnExcluir";
             this.btnExcluir.Primary = true;
-            this.btnExcluir.Size = new System.Drawing.Size(100, 30);
+            this.btnExcluir.Size = new System.Drawing.Size(75, 24);
             this.btnExcluir.TabIndex = 11;
             this.btnExcluir.Text = "EXCLUIR";
             this.btnExcluir.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -244,12 +252,11 @@
             this.btnAlterar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAlterar.Image = global::EquipMotos.Properties.Resources._1398756462_Modify;
             this.btnAlterar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAlterar.Location = new System.Drawing.Point(593, 679);
-            this.btnAlterar.Margin = new System.Windows.Forms.Padding(4);
+            this.btnAlterar.Location = new System.Drawing.Point(683, 496);
             this.btnAlterar.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnAlterar.Name = "btnAlterar";
             this.btnAlterar.Primary = true;
-            this.btnAlterar.Size = new System.Drawing.Size(100, 30);
+            this.btnAlterar.Size = new System.Drawing.Size(75, 24);
             this.btnAlterar.TabIndex = 9;
             this.btnAlterar.Text = "ALTERAR";
             this.btnAlterar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -263,27 +270,16 @@
             this.btnNovo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnNovo.Image = global::EquipMotos.Properties.Resources._1398756346_1;
             this.btnNovo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnNovo.Location = new System.Drawing.Point(485, 679);
-            this.btnNovo.Margin = new System.Windows.Forms.Padding(4);
+            this.btnNovo.Location = new System.Drawing.Point(602, 496);
             this.btnNovo.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnNovo.Name = "btnNovo";
             this.btnNovo.Primary = true;
-            this.btnNovo.Size = new System.Drawing.Size(100, 30);
+            this.btnNovo.Size = new System.Drawing.Size(75, 24);
             this.btnNovo.TabIndex = 8;
             this.btnNovo.Text = "NOVO";
             this.btnNovo.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnNovo.UseVisualStyleBackColor = true;
             this.btnNovo.Click += new System.EventHandler(this.BtnNovo_Click);
-            // 
-            // clientesBindingSource
-            // 
-            this.clientesBindingSource.DataMember = "clientes";
-            this.clientesBindingSource.DataSource = this.sistemaMoto2DataSetCliente;
-            // 
-            // sistemaMoto2DataSetCliente
-            // 
-            this.sistemaMoto2DataSetCliente.DataSetName = "SistemaMoto2DataSetCliente";
-            this.sistemaMoto2DataSetCliente.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // clientesTableAdapter
             // 
@@ -355,6 +351,7 @@
             this.condicaoDataGridViewTextBoxColumn.HeaderText = "Condição_Pg";
             this.condicaoDataGridViewTextBoxColumn.Name = "condicaoDataGridViewTextBoxColumn";
             this.condicaoDataGridViewTextBoxColumn.ReadOnly = true;
+            this.condicaoDataGridViewTextBoxColumn.Visible = false;
             // 
             // dataGridViewTextBoxColumn14
             // 
@@ -396,6 +393,7 @@
             this.estrangeiroDataGridViewCheckBoxColumn.HeaderText = "Estrangeiro";
             this.estrangeiroDataGridViewCheckBoxColumn.Name = "estrangeiroDataGridViewCheckBoxColumn";
             this.estrangeiroDataGridViewCheckBoxColumn.ReadOnly = true;
+            this.estrangeiroDataGridViewCheckBoxColumn.Visible = false;
             this.estrangeiroDataGridViewCheckBoxColumn.Width = 70;
             // 
             // dataGridViewTextBoxColumn10
@@ -536,9 +534,9 @@
             // 
             // frmConsultaCliente
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1030, 730);
+            this.ClientSize = new System.Drawing.Size(1021, 532);
             this.ControlBox = false;
             this.Controls.Add(this.btnBuscarCliente);
             this.Controls.Add(this.gvClientes);
@@ -548,7 +546,7 @@
             this.Controls.Add(this.btnNovo);
             this.Controls.Add(this.txtPesquisar);
             this.Controls.Add(this.label1);
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "frmConsultaCliente";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Consultar Cliente";
@@ -556,9 +554,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.eventLog1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvClientes)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnBuscarCliente)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.clientesBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.sistemaMoto2DataSetCliente)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnBuscarCliente)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

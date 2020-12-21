@@ -47,10 +47,6 @@
             this.lblDtUltCompra = new System.Windows.Forms.Label();
             this.lblCustoUltCompra = new System.Windows.Forms.Label();
             this.txtCustoUltCompra = new System.Windows.Forms.TextBox();
-            this.lblFornecedor = new System.Windows.Forms.Label();
-            this.txtFornecedor = new System.Windows.Forms.TextBox();
-            this.lblCodigoFornecedor = new System.Windows.Forms.Label();
-            this.txtCodFornecedor = new System.Windows.Forms.TextBox();
             this.lblCategoriaGrupo = new System.Windows.Forms.Label();
             this.txtCategoriaGrupo = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -63,9 +59,7 @@
             this.txtProduto = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.txtCodigo = new System.Windows.Forms.TextBox();
-            this.btnBuscarFornecedor = new System.Windows.Forms.PictureBox();
             this.btnBuscarCategoria = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.btnBuscarFornecedor)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnBuscarCategoria)).BeginInit();
             this.SuspendLayout();
             // 
@@ -74,7 +68,7 @@
             this.lblPrecoVenda.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblPrecoVenda.AutoSize = true;
             this.lblPrecoVenda.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.lblPrecoVenda.Location = new System.Drawing.Point(10, 258);
+            this.lblPrecoVenda.Location = new System.Drawing.Point(508, 151);
             this.lblPrecoVenda.Name = "lblPrecoVenda";
             this.lblPrecoVenda.Size = new System.Drawing.Size(108, 17);
             this.lblPrecoVenda.TabIndex = 314;
@@ -83,7 +77,7 @@
             // txtPrecoVenda
             // 
             this.txtPrecoVenda.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtPrecoVenda.Location = new System.Drawing.Point(14, 279);
+            this.txtPrecoVenda.Location = new System.Drawing.Point(512, 172);
             this.txtPrecoVenda.Name = "txtPrecoVenda";
             this.txtPrecoVenda.Size = new System.Drawing.Size(102, 23);
             this.txtPrecoVenda.TabIndex = 313;
@@ -98,7 +92,7 @@
             this.txtDtUltCompra.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtDtUltCompra.Enabled = false;
             this.txtDtUltCompra.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.txtDtUltCompra.Location = new System.Drawing.Point(217, 331);
+            this.txtDtUltCompra.Location = new System.Drawing.Point(227, 252);
             this.txtDtUltCompra.Name = "txtDtUltCompra";
             this.txtDtUltCompra.Size = new System.Drawing.Size(134, 23);
             this.txtDtUltCompra.TabIndex = 312;
@@ -109,7 +103,7 @@
             this.txtDtAlteracao.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtDtAlteracao.Enabled = false;
             this.txtDtAlteracao.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDtAlteracao.Location = new System.Drawing.Point(147, 473);
+            this.txtDtAlteracao.Location = new System.Drawing.Point(95, 476);
             this.txtDtAlteracao.Margin = new System.Windows.Forms.Padding(5);
             this.txtDtAlteracao.Mask = "00/00/0000";
             this.txtDtAlteracao.Name = "txtDtAlteracao";
@@ -122,7 +116,7 @@
             this.txtDtCadastro.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtDtCadastro.Enabled = false;
             this.txtDtCadastro.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDtCadastro.Location = new System.Drawing.Point(20, 473);
+            this.txtDtCadastro.Location = new System.Drawing.Point(24, 476);
             this.txtDtCadastro.Margin = new System.Windows.Forms.Padding(5);
             this.txtDtCadastro.Mask = "00/00/0000";
             this.txtDtCadastro.Name = "txtDtCadastro";
@@ -135,7 +129,7 @@
             this.btnLimpar.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnLimpar.Depth = 0;
             this.btnLimpar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLimpar.Location = new System.Drawing.Point(565, 466);
+            this.btnLimpar.Location = new System.Drawing.Point(448, 469);
             this.btnLimpar.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.btnLimpar.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnLimpar.Name = "btnLimpar";
@@ -151,7 +145,7 @@
             this.btnSalvar.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnSalvar.Depth = 0;
             this.btnSalvar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSalvar.Location = new System.Drawing.Point(453, 466);
+            this.btnSalvar.Location = new System.Drawing.Point(336, 469);
             this.btnSalvar.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.btnSalvar.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnSalvar.Name = "btnSalvar";
@@ -167,7 +161,7 @@
             this.btnVoltar.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnVoltar.Depth = 0;
             this.btnVoltar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnVoltar.Location = new System.Drawing.Point(740, 466);
+            this.btnVoltar.Location = new System.Drawing.Point(575, 469);
             this.btnVoltar.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.btnVoltar.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnVoltar.Name = "btnVoltar";
@@ -182,10 +176,10 @@
             // 
             this.txtObservacao.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtObservacao.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtObservacao.Location = new System.Drawing.Point(15, 396);
+            this.txtObservacao.Location = new System.Drawing.Point(11, 394);
             this.txtObservacao.Margin = new System.Windows.Forms.Padding(5);
             this.txtObservacao.Name = "txtObservacao";
-            this.txtObservacao.Size = new System.Drawing.Size(482, 40);
+            this.txtObservacao.Size = new System.Drawing.Size(307, 40);
             this.txtObservacao.TabIndex = 295;
             this.txtObservacao.Text = "";
             // 
@@ -195,7 +189,7 @@
             this.label22.AutoSize = true;
             this.label22.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label22.Location = new System.Drawing.Point(12, 374);
+            this.label22.Location = new System.Drawing.Point(8, 372);
             this.label22.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(92, 17);
@@ -208,7 +202,7 @@
             this.lblUsuario.AutoSize = true;
             this.lblUsuario.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.lblUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUsuario.Location = new System.Drawing.Point(271, 455);
+            this.lblUsuario.Location = new System.Drawing.Point(187, 458);
             this.lblUsuario.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lblUsuario.Name = "lblUsuario";
             this.lblUsuario.Size = new System.Drawing.Size(106, 13);
@@ -220,7 +214,7 @@
             this.txtUsuario.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtUsuario.Enabled = false;
             this.txtUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtUsuario.Location = new System.Drawing.Point(274, 473);
+            this.txtUsuario.Location = new System.Drawing.Point(190, 476);
             this.txtUsuario.Margin = new System.Windows.Forms.Padding(5);
             this.txtUsuario.Name = "txtUsuario";
             this.txtUsuario.Size = new System.Drawing.Size(120, 18);
@@ -232,7 +226,7 @@
             this.lblDtAlteracao.AutoSize = true;
             this.lblDtAlteracao.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.lblDtAlteracao.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDtAlteracao.Location = new System.Drawing.Point(143, 455);
+            this.lblDtAlteracao.Location = new System.Drawing.Point(92, 458);
             this.lblDtAlteracao.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lblDtAlteracao.Name = "lblDtAlteracao";
             this.lblDtAlteracao.Size = new System.Drawing.Size(77, 13);
@@ -245,7 +239,7 @@
             this.lblDtCadastro.AutoSize = true;
             this.lblDtCadastro.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.lblDtCadastro.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDtCadastro.Location = new System.Drawing.Point(15, 455);
+            this.lblDtCadastro.Location = new System.Drawing.Point(19, 458);
             this.lblDtCadastro.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lblDtCadastro.Name = "lblDtCadastro";
             this.lblDtCadastro.Size = new System.Drawing.Size(75, 13);
@@ -258,24 +252,26 @@
             this.lblComissao.AutoSize = true;
             this.lblComissao.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.lblComissao.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblComissao.Location = new System.Drawing.Point(419, 308);
+            this.lblComissao.Location = new System.Drawing.Point(434, 227);
             this.lblComissao.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lblComissao.Name = "lblComissao";
             this.lblComissao.Size = new System.Drawing.Size(95, 17);
             this.lblComissao.TabIndex = 304;
             this.lblComissao.Text = "Comissão (%)";
+            this.lblComissao.Visible = false;
             // 
             // txtComissao
             // 
             this.txtComissao.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtComissao.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtComissao.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtComissao.Location = new System.Drawing.Point(423, 333);
+            this.txtComissao.Location = new System.Drawing.Point(438, 252);
             this.txtComissao.Margin = new System.Windows.Forms.Padding(5);
             this.txtComissao.Name = "txtComissao";
             this.txtComissao.Size = new System.Drawing.Size(74, 23);
             this.txtComissao.TabIndex = 294;
             this.txtComissao.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtComissao.Visible = false;
             this.txtComissao.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtComissao_KeyPress);
             this.txtComissao.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtComissao_KeyUp);
             this.txtComissao.Leave += new System.EventHandler(this.txtComissao_Leave);
@@ -286,7 +282,7 @@
             this.lblDtUltCompra.AutoSize = true;
             this.lblDtUltCompra.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.lblDtUltCompra.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDtUltCompra.Location = new System.Drawing.Point(213, 310);
+            this.lblDtUltCompra.Location = new System.Drawing.Point(223, 231);
             this.lblDtUltCompra.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lblDtUltCompra.Name = "lblDtUltCompra";
             this.lblDtUltCompra.Size = new System.Drawing.Size(136, 17);
@@ -299,7 +295,7 @@
             this.lblCustoUltCompra.AutoSize = true;
             this.lblCustoUltCompra.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.lblCustoUltCompra.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCustoUltCompra.Location = new System.Drawing.Point(11, 310);
+            this.lblCustoUltCompra.Location = new System.Drawing.Point(15, 231);
             this.lblCustoUltCompra.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lblCustoUltCompra.Name = "lblCustoUltCompra";
             this.lblCustoUltCompra.Size = new System.Drawing.Size(142, 17);
@@ -312,7 +308,7 @@
             this.txtCustoUltCompra.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtCustoUltCompra.Enabled = false;
             this.txtCustoUltCompra.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCustoUltCompra.Location = new System.Drawing.Point(15, 331);
+            this.txtCustoUltCompra.Location = new System.Drawing.Point(19, 252);
             this.txtCustoUltCompra.Margin = new System.Windows.Forms.Padding(5);
             this.txtCustoUltCompra.Name = "txtCustoUltCompra";
             this.txtCustoUltCompra.Size = new System.Drawing.Size(100, 23);
@@ -323,65 +319,13 @@
             this.txtCustoUltCompra.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtCustoUltCompra_KeyUp);
             this.txtCustoUltCompra.Leave += new System.EventHandler(this.txtCustoUltCompra_Leave);
             // 
-            // lblFornecedor
-            // 
-            this.lblFornecedor.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.lblFornecedor.AutoSize = true;
-            this.lblFornecedor.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.lblFornecedor.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFornecedor.Location = new System.Drawing.Point(81, 195);
-            this.lblFornecedor.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            this.lblFornecedor.Name = "lblFornecedor";
-            this.lblFornecedor.Size = new System.Drawing.Size(90, 17);
-            this.lblFornecedor.TabIndex = 291;
-            this.lblFornecedor.Text = "Fornecedor *";
-            // 
-            // txtFornecedor
-            // 
-            this.txtFornecedor.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtFornecedor.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtFornecedor.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtFornecedor.Location = new System.Drawing.Point(84, 217);
-            this.txtFornecedor.Margin = new System.Windows.Forms.Padding(5);
-            this.txtFornecedor.Name = "txtFornecedor";
-            this.txtFornecedor.Size = new System.Drawing.Size(340, 23);
-            this.txtFornecedor.TabIndex = 292;
-            // 
-            // lblCodigoFornecedor
-            // 
-            this.lblCodigoFornecedor.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.lblCodigoFornecedor.AutoSize = true;
-            this.lblCodigoFornecedor.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.lblCodigoFornecedor.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCodigoFornecedor.Location = new System.Drawing.Point(12, 195);
-            this.lblCodigoFornecedor.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            this.lblCodigoFornecedor.Name = "lblCodigoFornecedor";
-            this.lblCodigoFornecedor.Size = new System.Drawing.Size(52, 17);
-            this.lblCodigoFornecedor.TabIndex = 289;
-            this.lblCodigoFornecedor.Text = "Código";
-            // 
-            // txtCodFornecedor
-            // 
-            this.txtCodFornecedor.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtCodFornecedor.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtCodFornecedor.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCodFornecedor.Location = new System.Drawing.Point(14, 217);
-            this.txtCodFornecedor.Margin = new System.Windows.Forms.Padding(5);
-            this.txtCodFornecedor.Name = "txtCodFornecedor";
-            this.txtCodFornecedor.Size = new System.Drawing.Size(60, 23);
-            this.txtCodFornecedor.TabIndex = 290;
-            this.txtCodFornecedor.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txtCodFornecedor.TextChanged += new System.EventHandler(this.txtCodFornecedor_TextChanged);
-            this.txtCodFornecedor.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCodFornecedor_KeyPress);
-            this.txtCodFornecedor.Leave += new System.EventHandler(this.txtCodFornecedor_Leave);
-            // 
             // lblCategoriaGrupo
             // 
             this.lblCategoriaGrupo.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblCategoriaGrupo.AutoSize = true;
             this.lblCategoriaGrupo.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.lblCategoriaGrupo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCategoriaGrupo.Location = new System.Drawing.Point(81, 139);
+            this.lblCategoriaGrupo.Location = new System.Drawing.Point(86, 150);
             this.lblCategoriaGrupo.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lblCategoriaGrupo.Name = "lblCategoriaGrupo";
             this.lblCategoriaGrupo.Size = new System.Drawing.Size(78, 17);
@@ -393,7 +337,7 @@
             this.txtCategoriaGrupo.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtCategoriaGrupo.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtCategoriaGrupo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCategoriaGrupo.Location = new System.Drawing.Point(84, 161);
+            this.txtCategoriaGrupo.Location = new System.Drawing.Point(89, 172);
             this.txtCategoriaGrupo.Margin = new System.Windows.Forms.Padding(5);
             this.txtCategoriaGrupo.Name = "txtCategoriaGrupo";
             this.txtCategoriaGrupo.Size = new System.Drawing.Size(340, 23);
@@ -405,7 +349,7 @@
             this.label5.AutoSize = true;
             this.label5.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(11, 139);
+            this.label5.Location = new System.Drawing.Point(16, 150);
             this.label5.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(52, 17);
@@ -417,7 +361,7 @@
             this.txtCodCategoria.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtCodCategoria.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtCodCategoria.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCodCategoria.Location = new System.Drawing.Point(14, 161);
+            this.txtCodCategoria.Location = new System.Drawing.Point(19, 172);
             this.txtCodCategoria.Margin = new System.Windows.Forms.Padding(5);
             this.txtCodCategoria.Name = "txtCodCategoria";
             this.txtCodCategoria.Size = new System.Drawing.Size(60, 23);
@@ -433,7 +377,7 @@
             this.lblCodigoBarra.AutoSize = true;
             this.lblCodigoBarra.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.lblCodigoBarra.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCodigoBarra.Location = new System.Drawing.Point(654, 73);
+            this.lblCodigoBarra.Location = new System.Drawing.Point(564, 76);
             this.lblCodigoBarra.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lblCodigoBarra.Name = "lblCodigoBarra";
             this.lblCodigoBarra.Size = new System.Drawing.Size(111, 17);
@@ -445,11 +389,12 @@
             this.txtCodBarra.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtCodBarra.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtCodBarra.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCodBarra.Location = new System.Drawing.Point(657, 95);
+            this.txtCodBarra.Location = new System.Drawing.Point(567, 98);
             this.txtCodBarra.Margin = new System.Windows.Forms.Padding(5);
             this.txtCodBarra.Name = "txtCodBarra";
             this.txtCodBarra.Size = new System.Drawing.Size(127, 23);
             this.txtCodBarra.TabIndex = 282;
+            this.txtCodBarra.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtCodBarra.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCodBarra_KeyPress);
             this.txtCodBarra.Leave += new System.EventHandler(this.txtCodBarra_Leave);
             // 
@@ -459,7 +404,7 @@
             this.lblUnidade.AutoSize = true;
             this.lblUnidade.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.lblUnidade.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUnidade.Location = new System.Drawing.Point(558, 73);
+            this.lblUnidade.Location = new System.Drawing.Point(460, 76);
             this.lblUnidade.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lblUnidade.Name = "lblUnidade";
             this.lblUnidade.Size = new System.Drawing.Size(70, 17);
@@ -471,7 +416,7 @@
             this.txtUnidade.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtUnidade.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtUnidade.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtUnidade.Location = new System.Drawing.Point(561, 95);
+            this.txtUnidade.Location = new System.Drawing.Point(463, 98);
             this.txtUnidade.Margin = new System.Windows.Forms.Padding(5);
             this.txtUnidade.Name = "txtUnidade";
             this.txtUnidade.Size = new System.Drawing.Size(86, 23);
@@ -485,7 +430,7 @@
             this.lblProdutoServico.AutoSize = true;
             this.lblProdutoServico.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.lblProdutoServico.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblProdutoServico.Location = new System.Drawing.Point(81, 73);
+            this.lblProdutoServico.Location = new System.Drawing.Point(85, 76);
             this.lblProdutoServico.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lblProdutoServico.Name = "lblProdutoServico";
             this.lblProdutoServico.Size = new System.Drawing.Size(67, 17);
@@ -497,7 +442,7 @@
             this.txtProduto.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtProduto.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtProduto.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtProduto.Location = new System.Drawing.Point(84, 95);
+            this.txtProduto.Location = new System.Drawing.Point(88, 98);
             this.txtProduto.Margin = new System.Windows.Forms.Padding(5);
             this.txtProduto.Name = "txtProduto";
             this.txtProduto.Size = new System.Drawing.Size(365, 23);
@@ -511,7 +456,7 @@
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(11, 73);
+            this.label1.Location = new System.Drawing.Point(15, 76);
             this.label1.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(52, 17);
@@ -524,29 +469,12 @@
             this.txtCodigo.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtCodigo.Enabled = false;
             this.txtCodigo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCodigo.Location = new System.Drawing.Point(14, 95);
+            this.txtCodigo.Location = new System.Drawing.Point(18, 98);
             this.txtCodigo.Margin = new System.Windows.Forms.Padding(5);
             this.txtCodigo.Name = "txtCodigo";
             this.txtCodigo.Size = new System.Drawing.Size(60, 23);
             this.txtCodigo.TabIndex = 276;
             this.txtCodigo.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // btnBuscarFornecedor
-            // 
-            this.btnBuscarFornecedor.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnBuscarFornecedor.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnBuscarFornecedor.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.btnBuscarFornecedor.ErrorImage = global::EquipMotos.Properties.Resources._1398754683_xmag;
-            this.btnBuscarFornecedor.Image = global::EquipMotos.Properties.Resources._1398754683_xmag;
-            this.btnBuscarFornecedor.InitialImage = global::EquipMotos.Properties.Resources._1398754683_xmag;
-            this.btnBuscarFornecedor.Location = new System.Drawing.Point(434, 204);
-            this.btnBuscarFornecedor.Margin = new System.Windows.Forms.Padding(5);
-            this.btnBuscarFornecedor.Name = "btnBuscarFornecedor";
-            this.btnBuscarFornecedor.Size = new System.Drawing.Size(50, 50);
-            this.btnBuscarFornecedor.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.btnBuscarFornecedor.TabIndex = 311;
-            this.btnBuscarFornecedor.TabStop = false;
-            this.btnBuscarFornecedor.Click += new System.EventHandler(this.btnBuscarFornecedor_Click);
             // 
             // btnBuscarCategoria
             // 
@@ -556,7 +484,7 @@
             this.btnBuscarCategoria.ErrorImage = global::EquipMotos.Properties.Resources._1398754683_xmag;
             this.btnBuscarCategoria.Image = global::EquipMotos.Properties.Resources._1398754683_xmag;
             this.btnBuscarCategoria.InitialImage = global::EquipMotos.Properties.Resources._1398754683_xmag;
-            this.btnBuscarCategoria.Location = new System.Drawing.Point(433, 144);
+            this.btnBuscarCategoria.Location = new System.Drawing.Point(438, 155);
             this.btnBuscarCategoria.Margin = new System.Windows.Forms.Padding(5);
             this.btnBuscarCategoria.Name = "btnBuscarCategoria";
             this.btnBuscarCategoria.Size = new System.Drawing.Size(50, 50);
@@ -569,11 +497,11 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(865, 523);
+            this.ClientSize = new System.Drawing.Size(716, 523);
+            this.ControlBox = false;
             this.Controls.Add(this.lblPrecoVenda);
             this.Controls.Add(this.txtPrecoVenda);
             this.Controls.Add(this.txtDtUltCompra);
-            this.Controls.Add(this.btnBuscarFornecedor);
             this.Controls.Add(this.btnBuscarCategoria);
             this.Controls.Add(this.txtDtAlteracao);
             this.Controls.Add(this.txtDtCadastro);
@@ -591,10 +519,6 @@
             this.Controls.Add(this.lblDtUltCompra);
             this.Controls.Add(this.lblCustoUltCompra);
             this.Controls.Add(this.txtCustoUltCompra);
-            this.Controls.Add(this.lblFornecedor);
-            this.Controls.Add(this.txtFornecedor);
-            this.Controls.Add(this.lblCodigoFornecedor);
-            this.Controls.Add(this.txtCodFornecedor);
             this.Controls.Add(this.lblCategoriaGrupo);
             this.Controls.Add(this.txtCategoriaGrupo);
             this.Controls.Add(this.label5);
@@ -612,7 +536,6 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Cadastro de Produtos";
             this.Load += new System.EventHandler(this.frmCadastroProduto_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.btnBuscarFornecedor)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnBuscarCategoria)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -624,7 +547,6 @@
         private System.Windows.Forms.Label lblPrecoVenda;
         private System.Windows.Forms.TextBox txtPrecoVenda;
         private System.Windows.Forms.DateTimePicker txtDtUltCompra;
-        private System.Windows.Forms.PictureBox btnBuscarFornecedor;
         private System.Windows.Forms.PictureBox btnBuscarCategoria;
         private System.Windows.Forms.MaskedTextBox txtDtAlteracao;
         private System.Windows.Forms.MaskedTextBox txtDtCadastro;
@@ -642,10 +564,6 @@
         private System.Windows.Forms.Label lblDtUltCompra;
         private System.Windows.Forms.Label lblCustoUltCompra;
         private System.Windows.Forms.TextBox txtCustoUltCompra;
-        private System.Windows.Forms.Label lblFornecedor;
-        private System.Windows.Forms.TextBox txtFornecedor;
-        private System.Windows.Forms.Label lblCodigoFornecedor;
-        private System.Windows.Forms.TextBox txtCodFornecedor;
         private System.Windows.Forms.Label lblCategoriaGrupo;
         private System.Windows.Forms.TextBox txtCategoriaGrupo;
         private System.Windows.Forms.Label label5;

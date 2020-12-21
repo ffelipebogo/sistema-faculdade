@@ -82,16 +82,24 @@ namespace EquipMotos.View
         {
             try
             {
-                var condRow = gvCondPagamento.CurrentRow.DataBoundItem as DataRowView;
-                var codigo = condRow["codigo"];
-                if ((MessageBox.Show("Remover condição ?", "EXCLUIR", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes) & codigo != null)
+                if (gvCondPagamento.CurrentRow != null)
                 {
-                    
-                    CtrlCondPagamento.Excluir(codigo);
+                    var condRow = gvCondPagamento.CurrentRow.DataBoundItem as DataRowView;
+                    var codigo = condRow["codigo"];
+                    if ((MessageBox.Show("Remover condição ?", "EXCLUIR", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes) & codigo != null)
+                    {
+
+                        CtrlCondPagamento.Excluir(codigo);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Nenhuma condição de pagamento foi selecionada");
                 }
             }
             catch  
             {
+                MessageBox.Show("Não foi possivel excluir a condição de pagamento");
             }
             finally
             {
@@ -124,22 +132,30 @@ namespace EquipMotos.View
         {
             try
             {
-                condPagamento = null;
-                var condRow = gvCondPagamento.CurrentRow.DataBoundItem as DataRowView;
-                CondicaoPagamentoDAO dao = new CondicaoPagamentoDAO();
-                condPagamento = dao.BuscarPorID(condRow["codigo"]) as CondicaoPagamentos;
-                return condPagamento;
+                if (gvCondPagamento.CurrentRow != null)
+                {
+                    condPagamento = null;
+                    var condRow = gvCondPagamento.CurrentRow.DataBoundItem as DataRowView;
+                    CondicaoPagamentoDAO dao = new CondicaoPagamentoDAO();
+                    condPagamento = dao.BuscarPorID(condRow["codigo"]) as CondicaoPagamentos;
+                    return condPagamento;
+                }
+                else
+                {
+                    MessageBox.Show("Nenhuma condição de pagamento foi selecionada");
+                    return null;
+                }
             }
             catch
             {
+                MessageBox.Show("Nenhuma condição de pagamento foi selecionada");
                 return null;
             }
         }
 
         private void FrmConsultaCondicaoPagamento_Load(object sender, EventArgs e)
         {
-            // TODO: esta linha de código carrega dados na tabela 'sistemaMoto2DataSetCondicaoPagamento.condicaoPagamento'. Você pode movê-la ou removê-la conforme necessário.
-            this.condicaoPagamentoTableAdapter.Fill(this.sistemaMoto2DataSetCondicaoPagamento.condicaoPagamento);
+            gvCondPagamento.DataSource = CtrlCondPagamento.ListarTodos();
         }
     }
 }

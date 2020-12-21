@@ -26,7 +26,6 @@ FROM         ordemServicos INNER JOIN
               </DbSource>
             </MainSource>
             <Mappings>
-              <Mapping SourceColumn="nrNota" DataSetColumn="nrNota" />
               <Mapping SourceColumn="modelo" DataSetColumn="modelo" />
               <Mapping SourceColumn="serie" DataSetColumn="serie" />
               <Mapping SourceColumn="codCliente" DataSetColumn="codCliente" />
@@ -48,6 +47,7 @@ FROM         ordemServicos INNER JOIN
               <Mapping SourceColumn="condicao" DataSetColumn="condicao" />
               <Mapping SourceColumn="cliente" DataSetColumn="cliente" />
               <Mapping SourceColumn="veiculo" DataSetColumn="veiculo" />
+              <Mapping SourceColumn="nrNota" DataSetColumn="nrNota1" />
             </Mappings>
             <Sources />
           </TableAdapter>
@@ -59,7 +59,7 @@ FROM         ordemServicos INNER JOIN
   <xs:element name="SistemaMoto2DataSetOrdemServico" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="SistemaMoto2DataSetOrdemServico" msprop:Generator_UserDSName="SistemaMoto2DataSetOrdemServico">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="ordemServicos" msprop:Generator_TableClassName="ordemServicosDataTable" msprop:Generator_TableVarName="tableordemServicos" msprop:Generator_RowChangedName="ordemServicosRowChanged" msprop:Generator_TablePropName="ordemServicos" msprop:Generator_RowDeletingName="ordemServicosRowDeleting" msprop:Generator_RowChangingName="ordemServicosRowChanging" msprop:Generator_RowEvHandlerName="ordemServicosRowChangeEventHandler" msprop:Generator_RowDeletedName="ordemServicosRowDeleted" msprop:Generator_RowClassName="ordemServicosRow" msprop:Generator_UserTableName="ordemServicos" msprop:Generator_RowEvArgName="ordemServicosRowChangeEvent">
+        <xs:element name="ordemServicos" msprop:Generator_TableClassName="ordemServicosDataTable" msprop:Generator_TableVarName="tableordemServicos" msprop:Generator_TablePropName="ordemServicos" msprop:Generator_RowDeletingName="ordemServicosRowDeleting" msprop:Generator_RowChangingName="ordemServicosRowChanging" msprop:Generator_RowEvHandlerName="ordemServicosRowChangeEventHandler" msprop:Generator_RowDeletedName="ordemServicosRowDeleted" msprop:Generator_UserTableName="ordemServicos" msprop:Generator_RowChangedName="ordemServicosRowChanged" msprop:Generator_RowEvArgName="ordemServicosRowChangeEvent" msprop:Generator_RowClassName="ordemServicosRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="nrNota" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnnrNota" msprop:Generator_ColumnPropNameInRow="nrNota" msprop:Generator_ColumnPropNameInTable="nrNotaColumn" msprop:Generator_UserColumnName="nrNota" type="xs:int" />
@@ -150,6 +150,13 @@ FROM         ordemServicos INNER JOIN
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
+              <xs:element name="nrNota1" msdata:Caption="nrNota" msprop:Generator_ColumnVarNameInTable="columnnrNota1" msprop:Generator_ColumnPropNameInRow="nrNota1" msprop:Generator_ColumnPropNameInTable="nrNota1Column" msprop:Generator_UserColumnName="nrNota1">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="5" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
@@ -158,6 +165,10 @@ FROM         ordemServicos INNER JOIN
     <xs:unique name="Constraint1" msdata:PrimaryKey="true">
       <xs:selector xpath=".//mstns:ordemServicos" />
       <xs:field xpath="mstns:nrNota" />
+    </xs:unique>
+    <xs:unique name="Constraint2">
+      <xs:selector xpath=".//mstns:ordemServicos" />
+      <xs:field xpath="mstns:nrNota1" />
     </xs:unique>
   </xs:element>
 </xs:schema>

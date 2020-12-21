@@ -323,7 +323,7 @@ namespace EquipMotos.DAO
                 da = new SqlDataAdapter(comando);
                 DataTable dtFornecedor = new DataTable();
                 da.Fill(dtFornecedor);
-
+                conexao.Close();
                 return dtFornecedor;
             }
         }

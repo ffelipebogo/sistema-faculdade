@@ -12,10 +12,9 @@
               <DbSource ConnectionRef="ConnectionStringSistemaMoto2 (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT   compras.modelo, compras.serie, compras.nrNota, compras.codCondPagamento, compras.dtEmissao, compras.dtChegada, compras.cfi, compras.frete, compras.seguro, 
-                         compras.despesa, compras.situacao, compras.dtCadastro, compras.dtAlteracao, compras.usuario, compras.observacoes, compras.codFornecedor, fornecedores.fornecedor, 
-                         condicaoPagamento.condicao
-FROM         compras INNER JOIN
+                    <CommandText>SELECT        compras.modelo, compras.serie, compras.nrNota, compras.codCondPagamento, compras.dtEmissao, compras.dtChegada, compras.cfi, compras.frete, compras.seguro, compras.despesa, compras.situacao, 
+                         compras.dtCadastro, compras.dtAlteracao, compras.usuario, compras.observacoes, compras.codFornecedor, fornecedores.fornecedor, condicaoPagamento.condicao, compras.totalPagar
+FROM            compras INNER JOIN
                          fornecedores ON compras.codFornecedor = fornecedores.codigo INNER JOIN
                          condicaoPagamento ON compras.codCondPagamento = condicaoPagamento.codigo</CommandText>
                     <Parameters />
@@ -42,6 +41,7 @@ FROM         compras INNER JOIN
               <Mapping SourceColumn="seguro" DataSetColumn="seguro" />
               <Mapping SourceColumn="despesa" DataSetColumn="despesa" />
               <Mapping SourceColumn="situacao" DataSetColumn="situacao" />
+              <Mapping SourceColumn="totalPagar" DataSetColumn="totalPagar" />
             </Mappings>
             <Sources />
           </TableAdapter>
@@ -53,7 +53,7 @@ FROM         compras INNER JOIN
   <xs:element name="SistemaMoto2DataSetCompra" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="SistemaMoto2DataSetCompra" msprop:Generator_UserDSName="SistemaMoto2DataSetCompra">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="compras" msprop:Generator_TableClassName="comprasDataTable" msprop:Generator_TableVarName="tablecompras" msprop:Generator_RowChangedName="comprasRowChanged" msprop:Generator_TablePropName="compras" msprop:Generator_RowDeletingName="comprasRowDeleting" msprop:Generator_RowChangingName="comprasRowChanging" msprop:Generator_RowEvHandlerName="comprasRowChangeEventHandler" msprop:Generator_RowDeletedName="comprasRowDeleted" msprop:Generator_RowClassName="comprasRow" msprop:Generator_UserTableName="compras" msprop:Generator_RowEvArgName="comprasRowChangeEvent">
+        <xs:element name="compras" msprop:Generator_TableClassName="comprasDataTable" msprop:Generator_TableVarName="tablecompras" msprop:Generator_TablePropName="compras" msprop:Generator_RowDeletingName="comprasRowDeleting" msprop:Generator_RowChangingName="comprasRowChanging" msprop:Generator_RowEvHandlerName="comprasRowChangeEventHandler" msprop:Generator_RowDeletedName="comprasRowDeleted" msprop:Generator_UserTableName="compras" msprop:Generator_RowChangedName="comprasRowChanged" msprop:Generator_RowEvArgName="comprasRowChangeEvent" msprop:Generator_RowClassName="comprasRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="observacoes" msprop:Generator_ColumnVarNameInTable="columnobservacoes" msprop:Generator_ColumnPropNameInRow="observacoes" msprop:Generator_ColumnPropNameInTable="observacoesColumn" msprop:Generator_UserColumnName="observacoes" minOccurs="0">
@@ -110,6 +110,7 @@ FROM         compras INNER JOIN
               <xs:element name="seguro" msprop:Generator_ColumnVarNameInTable="columnseguro" msprop:Generator_ColumnPropNameInRow="seguro" msprop:Generator_ColumnPropNameInTable="seguroColumn" msprop:Generator_UserColumnName="seguro" type="xs:decimal" minOccurs="0" />
               <xs:element name="despesa" msprop:Generator_ColumnVarNameInTable="columndespesa" msprop:Generator_ColumnPropNameInRow="despesa" msprop:Generator_ColumnPropNameInTable="despesaColumn" msprop:Generator_UserColumnName="despesa" type="xs:decimal" minOccurs="0" />
               <xs:element name="situacao" msprop:Generator_ColumnVarNameInTable="columnsituacao" msprop:Generator_ColumnPropNameInRow="situacao" msprop:Generator_ColumnPropNameInTable="situacaoColumn" msprop:Generator_UserColumnName="situacao" type="xs:boolean" minOccurs="0" />
+              <xs:element name="totalPagar" msprop:Generator_ColumnVarNameInTable="columntotalPagar" msprop:Generator_ColumnPropNameInRow="totalPagar" msprop:Generator_ColumnPropNameInTable="totalPagarColumn" msprop:Generator_UserColumnName="totalPagar" type="xs:decimal" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

@@ -23,8 +23,8 @@ namespace EquipMotos.View
         }
 
         private void FrmConsultaContaPagar_Load(object sender, EventArgs e)
-        {
-            
+        { 
+            gvContaPagar.DataSource = CtrlContaPagar.ListarTodos();
         }
 
         private void BtnNovo_Click(object sender, EventArgs e)
@@ -59,9 +59,9 @@ namespace EquipMotos.View
 
                     var modelo = contaRow["modelo"];
                     var serie = contaRow["serie"];
-                    var nrNota = contaRow["Nota"];
+                    var nrNota = contaRow["nrNota"];
                     var codFornecedor = contaRow["codFornecedor"];
-                    var nrParcela = contaRow["Parcela"];
+                    var nrParcela = contaRow["nrParcela"];
 
                     frmCadConta.Carregar(modelo, serie, nrNota, codFornecedor, nrParcela);
                     frmCadConta.Disable();
@@ -79,7 +79,7 @@ namespace EquipMotos.View
                     MessageBox.Show("Selecione a conta que deseja!");
                 }
             }
-            catch
+            catch (Exception ex)
             {
                 MessageBox.Show("Selecione uma conta à pagar!", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
@@ -87,18 +87,25 @@ namespace EquipMotos.View
         
         private void BtnExcluir_Click(object sender, EventArgs e)
         {
-            var contaRow = gvContaPagar.CurrentRow.DataBoundItem as DataRowView;
-
-            var modelo = contaRow["modelo"];
-            var serie = contaRow["serie"];
-            var nrNota = contaRow["nrNota"];
-            var codFornecedor = contaRow["codFornecedor"];
-            var nrParcela = contaRow["nrParcela"];
-
-            if ((MessageBox.Show("Marcar como paga ?", "Atenção", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes) & modelo != null)
+            if (gvContaPagar.CurrentRow != null)
             {
-                CtrlContaPagar.MarcarPago(modelo, serie, nrNota, codFornecedor, nrParcela);
-                gvContaPagar.DataSource = CtrlContaPagar.ListarTodos();
+                var contaRow = gvContaPagar.CurrentRow.DataBoundItem as DataRowView;
+
+                var modelo = contaRow["modelo"];
+                var serie = contaRow["serie"];
+                var nrNota = contaRow["nrNota"];
+                var codFornecedor = contaRow["codFornecedor"];
+                var nrParcela = contaRow["nrParcela"];
+                var paga = contaRow["pago"];
+
+                if ( !bool.Parse(paga.ToString()))
+                {
+                    if ((MessageBox.Show("Marcar como paga ?", "Atenção", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes) & modelo != null)
+                    {
+                        CtrlContaPagar.MarcarPago(modelo, serie, nrNota, codFornecedor, nrParcela);
+                        gvContaPagar.DataSource = CtrlContaPagar.ListarTodos();
+                    }
+                }
             }
         }
 
@@ -110,12 +117,14 @@ namespace EquipMotos.View
             dtView.DataSource = CtrlContaPagar.Pesquisar(conta);
             if (dtView.DataSource == null)
             {
-                MessageBox.Show("Não encotrado");
+                MessageBox.Show("Não encotrado Conta a Pagar!");
             }
             else
             {
                 gvContaPagar.DataSource = dtView.DataSource;
             }
         }
+
+       
     }
 }

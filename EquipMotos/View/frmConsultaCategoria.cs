@@ -36,22 +36,28 @@ namespace EquipMotos.View
         {
             try
             {
-
-                frmCadastroCategoria frmCadCategoria = new frmCadastroCategoria();
-                var catRow = gvCategoria.CurrentRow.DataBoundItem as DataRowView;
-
-                var codigo = catRow["codigo"];
-
-                frmCadCategoria.Carregar(codigo);
-                if (frmCadCategoria.ShowDialog() == DialogResult.OK)
+                if (gvCategoria.CurrentRow != null)
                 {
-                    gvCategoria.DataSource = CtrlCategoria.ListarTodos();
+                    frmCadastroCategoria frmCadCategoria = new frmCadastroCategoria();
+                    var catRow = gvCategoria.CurrentRow.DataBoundItem as DataRowView;
+
+                    var codigo = catRow["codigo"];
+
+                    frmCadCategoria.Carregar(codigo);
+                    if (frmCadCategoria.ShowDialog() == DialogResult.OK)
+                    {
+                        gvCategoria.DataSource = CtrlCategoria.ListarTodos();
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Nenhuma categoria foi selecionada");
                 }
 
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("Não foi possivel alterar a categoria");
             }
 
         }
@@ -60,18 +66,24 @@ namespace EquipMotos.View
         {
             try
             {
+                if (gvCategoria.CurrentRow != null)
+                {
+                    var catRow = gvCategoria.CurrentRow.DataBoundItem as DataRowView;
+                    var codigo = catRow["codigo"];
 
-                var catRow = gvCategoria.CurrentRow.DataBoundItem as DataRowView;
-                var codigo = catRow["codigo"];
+                    CtrlCategoria.Excluir(codigo);
+                    MessageBox.Show("Categoria foi excluida!");
 
-                CtrlCategoria.Excluir(codigo);
-                MessageBox.Show("Categoria foi excluida!");
-
-                gvCategoria.DataSource = CtrlCategoria.ListarTodos();
+                    gvCategoria.DataSource = CtrlCategoria.ListarTodos();
+                }
+                else
+                {
+                    MessageBox.Show("Nenhuma categoria foi selecionada");
+                }
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("Não foi possivel exluir a categoria"); 
             }
         }
 
@@ -101,10 +113,18 @@ namespace EquipMotos.View
         public object SelecionaCategoria()
         {
             categoria = null;
-            var catRow = gvCategoria.CurrentRow.DataBoundItem as DataRowView;
+            if (gvCategoria.CurrentRow != null)
+            {
+                var catRow = gvCategoria.CurrentRow.DataBoundItem as DataRowView;
 
-            categoria = CtrlCategoria.BuscarPorID(catRow["codigo"]) as Categorias;
-            return categoria;
+                categoria = CtrlCategoria.BuscarPorID(catRow["codigo"]) as Categorias;
+                return categoria;
+            }
+            else
+            {
+                MessageBox.Show("Nenhuma categoria foi selecionada");
+                return null;
+            }
         }
 
         private void FrmConsultaCategoria_Load(object sender, EventArgs e)

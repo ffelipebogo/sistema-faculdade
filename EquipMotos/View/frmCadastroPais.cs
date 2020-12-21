@@ -44,13 +44,7 @@ namespace EquipMotos.View
                 if (ValidaCampo())
                 {
                     Pais.pais = txtPais.Text;
-                   // pais.dtCadastro = DateTime.Now;
-                    //pais.dtAlteracao = DateTime.Now;
-                    Pais.usuario = txtUsuario.Text;
-
-
-
-                    //dao.InserirPais(pais);
+                    Pais.usuario = UsuarioLogado.Usuario;
 
                     if (btnSalvar.Text == "ALTERAR")
                     {

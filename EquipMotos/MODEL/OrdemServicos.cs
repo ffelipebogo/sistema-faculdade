@@ -7,9 +7,7 @@ using System.Threading.Tasks;
 namespace EquipMotos.MODEL
 {
     class OrdemServicos : Base
-    {
-        public string modelo{ get; set; }
-        public string serie { get; set; }
+    { 
         public string NrNota { get; set; }
         public DateTime data { get; set; }
         public Clientes Cliente { get; set; }
@@ -29,6 +27,7 @@ namespace EquipMotos.MODEL
         public CondicaoPagamentos CondPagamento { get; set; }
         public List<ItensOrdemServico> ListaProduto { get; set; }
         public List<ItensOrdemServico> ListaServico { get; set; }
+        public bool finalizada { get; set; }
 
     }
 }

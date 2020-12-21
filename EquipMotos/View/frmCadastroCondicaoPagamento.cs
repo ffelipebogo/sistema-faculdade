@@ -71,7 +71,7 @@ namespace EquipMotos.View
 
         private void BtnSalvar_Click(object sender, EventArgs e)
         {
-            if (SomaPorcentagem() == 100) //TODO quando for 100 da true ainda
+            if (SomaPorcentagem() == 100) 
             {
                 condPagamento.condicao = txtCondicao.Text;
                 condPagamento.juros = Double.Parse(txtJuros.Text);
@@ -81,14 +81,11 @@ namespace EquipMotos.View
                 if (btnSalvar.Text == "ALTERAR")
                 {
                     condPagamento.codigo = Convert.ToInt32(txtCodigo.Text);
-                    condPagamento.dtAlteracao = DateTime.Now;
-                    //dao.ExcluirParcela(condPagamento.codigo);
+                    condPagamento.dtAlteracao = DateTime.Now; 
                     for (int i = 0; i < listviewParcelas.Items.Count; i++)
                     {
                         FormaPagamentos formaPag = new FormaPagamentos();
-                        formaPag.codigo = Convert.ToInt32(listviewParcelas.Items[i].SubItems[3].Text);
-                        var parce = listviewParcelas.Items[i];
-
+                        formaPag.codigo = Convert.ToInt32(listviewParcelas.Items[i].SubItems[3].Text); 
                         listaParcela.Add(new CondicaoParcelada()
                         {
                             nrParcela = Convert.ToInt32(listviewParcelas.Items[i].SubItems[0].Text),
@@ -177,7 +174,6 @@ namespace EquipMotos.View
                     if (listviewParcelas.Items.Count <= 11)
                     {
                         listviewParcelas.Items.Add(lvi);
-                        //Reorganiza(listviewParcelas);
                         txtNrParcelas.Text = "";
                         txtNrDias.Text = "";
                         txtPorcentagem.Text = "";
@@ -307,6 +303,7 @@ namespace EquipMotos.View
             }
             return vlr;
         }
+
         private bool ValidaPorcentagem()
         {
             var vl = SomaPorcentagem();

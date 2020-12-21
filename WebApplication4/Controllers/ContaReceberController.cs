@@ -54,7 +54,7 @@ namespace WebApplication4.Controllers
             ClientesDAO DaoCliente = new ClientesDAO();
             FormaPagamentoDAO DaoFormaPagamento = new FormaPagamentoDAO();
 
-            var lista = ContasReceberDAO.BuscarCompra_Filtro(nota, cliente, formaPagamento, dateMin, dateMax);
+            var lista = ContasReceberDAO.BuscarConta_Filtro(nota, cliente, formaPagamento, dateMin, dateMax);
             var convertedList = (from rw in lista.AsEnumerable()
                                  select new EquipMotos.MODEL.ContasReceber()
                                  {

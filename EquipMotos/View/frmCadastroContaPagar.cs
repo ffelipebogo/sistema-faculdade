@@ -81,7 +81,7 @@ namespace EquipMotos.View
             chkPaga.Enabled = false;
         }
 
-        internal void Carregar(object modelo, object serie, object nrNota, object idFornecedor, object nrParcela)
+        public void Carregar(object modelo, object serie, object nrNota, object idFornecedor, object nrParcela)
         {
             ContaPagar = CtrlContaPagar.BuscarContasPagar_porID(modelo, serie, nrNota, idFornecedor, nrParcela) as ContasPagar;
             txtModelo.Text = ContaPagar.modelo;
@@ -89,8 +89,8 @@ namespace EquipMotos.View
             txtNrNota.Text = ContaPagar.nrNota;
             txtNrParcela.Text = Convert.ToString(ContaPagar.nrParcela);
             txtValor.Text = ContaPagar.vlrParcela.ToString("C", CultureInfo.CurrentCulture); 
-            txtFornecedor.Text = Convert.ToString(ContaPagar.fornecedor.codigo);
-            txtCodFornecedor.Text = ContaPagar.fornecedor.fornecedor;
+            txtCodFornecedor.Text = Convert.ToString(ContaPagar.fornecedor.codigo);
+            txtFornecedor.Text = ContaPagar.fornecedor.fornecedor;
             txtDtEmissao.Text = Convert.ToString(ContaPagar.dtEmissao);
             txtDtVencimento.Text = Convert.ToString(ContaPagar.dtVencimento);
             txtCodFormaPagamento.Text = Convert.ToString(ContaPagar.formaPagamento.codigo);
@@ -192,7 +192,6 @@ namespace EquipMotos.View
 
         private void CarregaForma()
         {
-            
             if (formaPag != null)
             {
                 FormaPagamentos forma = formaPag as FormaPagamentos;

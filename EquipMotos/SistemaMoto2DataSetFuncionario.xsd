@@ -12,11 +12,11 @@
               <DbSource ConnectionRef="ConnectionStringSistemaMoto2 (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT     funcionarios.codigo, funcionarios.funcionario, funcionarios.apelido, funcionarios.dtNascimento, funcionarios.sexo, funcionarios.endereco, funcionarios.numero, funcionarios.complemento, funcionarios.bairro, funcionarios.cep, funcionarios.codCidade, funcionarios.codEstado, 
-                  funcionarios.telefone, funcionarios.celular, funcionarios.email, funcionarios.cpf, funcionarios.rg, funcionarios.cargo, funcionarios.salario, funcionarios.comissao, funcionarios.carteiraTrabalho, funcionarios.serie, funcionarios.ufCt, funcionarios.dtEmissaoCt, funcionarios.pis, 
-                  funcionarios.cnh, funcionarios.emissor, funcionarios.ufCnh, funcionarios.dtExpedicao, funcionarios.dtValidade, funcionarios.dtPrimeiraCnh, funcionarios.categoria, funcionarios.observacoes, funcionarios.dtCadastro, funcionarios.dtAlteracao, funcionarios.usuario, cidades.cidade
-FROM        funcionarios INNER JOIN
-                  cidades ON funcionarios.codCidade = cidades.codigo</CommandText>
+                    <CommandText>SELECT        funcionarios.codigo, funcionarios.funcionario, funcionarios.apelido, funcionarios.dtNascimento, funcionarios.sexo, funcionarios.endereco, funcionarios.numero, funcionarios.complemento, funcionarios.bairro, funcionarios.cep, 
+                         funcionarios.codCidade, funcionarios.codEstado, funcionarios.telefone, funcionarios.celular, funcionarios.email, funcionarios.cpf, funcionarios.rg, funcionarios.cargo, funcionarios.salario, funcionarios.carteiraTrabalho, 
+                         funcionarios.cnh, funcionarios.categoria, funcionarios.observacoes, funcionarios.dtCadastro, funcionarios.dtAlteracao, funcionarios.usuario, cidades.cidade
+FROM            funcionarios INNER JOIN
+                         cidades ON funcionarios.codCidade = cidades.codigo</CommandText>
                     <Parameters />
                   </DbCommand>
                 </SelectCommand>
@@ -42,18 +42,8 @@ FROM        funcionarios INNER JOIN
               <Mapping SourceColumn="rg" DataSetColumn="rg" />
               <Mapping SourceColumn="cargo" DataSetColumn="cargo" />
               <Mapping SourceColumn="salario" DataSetColumn="salario" />
-              <Mapping SourceColumn="comissao" DataSetColumn="comissao" />
               <Mapping SourceColumn="carteiraTrabalho" DataSetColumn="carteiraTrabalho" />
-              <Mapping SourceColumn="serie" DataSetColumn="serie" />
-              <Mapping SourceColumn="ufCt" DataSetColumn="ufCt" />
-              <Mapping SourceColumn="dtEmissaoCt" DataSetColumn="dtEmissaoCt" />
-              <Mapping SourceColumn="pis" DataSetColumn="pis" />
               <Mapping SourceColumn="cnh" DataSetColumn="cnh" />
-              <Mapping SourceColumn="emissor" DataSetColumn="emissor" />
-              <Mapping SourceColumn="ufCnh" DataSetColumn="ufCnh" />
-              <Mapping SourceColumn="dtExpedicao" DataSetColumn="dtExpedicao" />
-              <Mapping SourceColumn="dtValidade" DataSetColumn="dtValidade" />
-              <Mapping SourceColumn="dtPrimeiraCnh" DataSetColumn="dtPrimeiraCnh" />
               <Mapping SourceColumn="categoria" DataSetColumn="categoria" />
               <Mapping SourceColumn="observacoes" DataSetColumn="observacoes" />
               <Mapping SourceColumn="dtCadastro" DataSetColumn="dtCadastro" />
@@ -71,7 +61,7 @@ FROM        funcionarios INNER JOIN
   <xs:element name="SistemaMoto2DataSetFuncionario" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="SistemaMoto2DataSetFuncionario" msprop:Generator_UserDSName="SistemaMoto2DataSetFuncionario">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="funcionarios" msprop:Generator_TableClassName="funcionariosDataTable" msprop:Generator_TableVarName="tablefuncionarios" msprop:Generator_RowChangedName="funcionariosRowChanged" msprop:Generator_TablePropName="funcionarios" msprop:Generator_RowDeletingName="funcionariosRowDeleting" msprop:Generator_RowChangingName="funcionariosRowChanging" msprop:Generator_RowEvHandlerName="funcionariosRowChangeEventHandler" msprop:Generator_RowDeletedName="funcionariosRowDeleted" msprop:Generator_RowClassName="funcionariosRow" msprop:Generator_UserTableName="funcionarios" msprop:Generator_RowEvArgName="funcionariosRowChangeEvent">
+        <xs:element name="funcionarios" msprop:Generator_TableClassName="funcionariosDataTable" msprop:Generator_TableVarName="tablefuncionarios" msprop:Generator_TablePropName="funcionarios" msprop:Generator_RowDeletingName="funcionariosRowDeleting" msprop:Generator_RowChangingName="funcionariosRowChanging" msprop:Generator_RowEvHandlerName="funcionariosRowChangeEventHandler" msprop:Generator_RowDeletedName="funcionariosRowDeleted" msprop:Generator_UserTableName="funcionarios" msprop:Generator_RowChangedName="funcionariosRowChanged" msprop:Generator_RowEvArgName="funcionariosRowChangeEvent" msprop:Generator_RowClassName="funcionariosRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="codigo" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columncodigo" msprop:Generator_ColumnPropNameInRow="codigo" msprop:Generator_ColumnPropNameInTable="codigoColumn" msprop:Generator_UserColumnName="codigo" type="xs:int" />
@@ -171,30 +161,7 @@ FROM        funcionarios INNER JOIN
                 </xs:simpleType>
               </xs:element>
               <xs:element name="salario" msprop:Generator_ColumnVarNameInTable="columnsalario" msprop:Generator_ColumnPropNameInRow="salario" msprop:Generator_ColumnPropNameInTable="salarioColumn" msprop:Generator_UserColumnName="salario" type="xs:decimal" minOccurs="0" />
-              <xs:element name="comissao" msprop:Generator_ColumnVarNameInTable="columncomissao" msprop:Generator_ColumnPropNameInRow="comissao" msprop:Generator_ColumnPropNameInTable="comissaoColumn" msprop:Generator_UserColumnName="comissao" type="xs:decimal" minOccurs="0" />
               <xs:element name="carteiraTrabalho" msprop:Generator_ColumnVarNameInTable="columncarteiraTrabalho" msprop:Generator_ColumnPropNameInRow="carteiraTrabalho" msprop:Generator_ColumnPropNameInTable="carteiraTrabalhoColumn" msprop:Generator_UserColumnName="carteiraTrabalho" minOccurs="0">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="2147483647" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="serie" msprop:Generator_ColumnVarNameInTable="columnserie" msprop:Generator_ColumnPropNameInRow="serie" msprop:Generator_ColumnPropNameInTable="serieColumn" msprop:Generator_UserColumnName="serie" minOccurs="0">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="2147483647" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="ufCt" msprop:Generator_ColumnVarNameInTable="columnufCt" msprop:Generator_ColumnPropNameInRow="ufCt" msprop:Generator_ColumnPropNameInTable="ufCtColumn" msprop:Generator_UserColumnName="ufCt" minOccurs="0">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="2" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="dtEmissaoCt" msprop:Generator_ColumnVarNameInTable="columndtEmissaoCt" msprop:Generator_ColumnPropNameInRow="dtEmissaoCt" msprop:Generator_ColumnPropNameInTable="dtEmissaoCtColumn" msprop:Generator_UserColumnName="dtEmissaoCt" type="xs:dateTime" minOccurs="0" />
-              <xs:element name="pis" msprop:Generator_ColumnVarNameInTable="columnpis" msprop:Generator_ColumnPropNameInRow="pis" msprop:Generator_ColumnPropNameInTable="pisColumn" msprop:Generator_UserColumnName="pis" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="2147483647" />
@@ -208,23 +175,6 @@ FROM        funcionarios INNER JOIN
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="emissor" msprop:Generator_ColumnVarNameInTable="columnemissor" msprop:Generator_ColumnPropNameInRow="emissor" msprop:Generator_ColumnPropNameInTable="emissorColumn" msprop:Generator_UserColumnName="emissor" minOccurs="0">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="2147483647" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="ufCnh" msprop:Generator_ColumnVarNameInTable="columnufCnh" msprop:Generator_ColumnPropNameInRow="ufCnh" msprop:Generator_ColumnPropNameInTable="ufCnhColumn" msprop:Generator_UserColumnName="ufCnh" minOccurs="0">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="2" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="dtExpedicao" msprop:Generator_ColumnVarNameInTable="columndtExpedicao" msprop:Generator_ColumnPropNameInRow="dtExpedicao" msprop:Generator_ColumnPropNameInTable="dtExpedicaoColumn" msprop:Generator_UserColumnName="dtExpedicao" type="xs:dateTime" minOccurs="0" />
-              <xs:element name="dtValidade" msprop:Generator_ColumnVarNameInTable="columndtValidade" msprop:Generator_ColumnPropNameInRow="dtValidade" msprop:Generator_ColumnPropNameInTable="dtValidadeColumn" msprop:Generator_UserColumnName="dtValidade" type="xs:dateTime" minOccurs="0" />
-              <xs:element name="dtPrimeiraCnh" msprop:Generator_ColumnVarNameInTable="columndtPrimeiraCnh" msprop:Generator_ColumnPropNameInRow="dtPrimeiraCnh" msprop:Generator_ColumnPropNameInTable="dtPrimeiraCnhColumn" msprop:Generator_UserColumnName="dtPrimeiraCnh" type="xs:dateTime" minOccurs="0" />
               <xs:element name="categoria" msprop:Generator_ColumnVarNameInTable="columncategoria" msprop:Generator_ColumnPropNameInRow="categoria" msprop:Generator_ColumnPropNameInTable="categoriaColumn" msprop:Generator_UserColumnName="categoria" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">

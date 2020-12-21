@@ -283,8 +283,6 @@ namespace EquipMotos {
             
             private global::System.Data.DataColumn columnservico;
             
-            private global::System.Data.DataColumn columncodCategoria;
-            
             private global::System.Data.DataColumn columnprecoVenda;
             
             private global::System.Data.DataColumn columnvalorUnitario;
@@ -304,8 +302,6 @@ namespace EquipMotos {
             private global::System.Data.DataColumn columnusuario;
             
             private global::System.Data.DataColumn columnfuncionario;
-            
-            private global::System.Data.DataColumn columncategoria;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
@@ -353,14 +349,6 @@ namespace EquipMotos {
             public global::System.Data.DataColumn servicoColumn {
                 get {
                     return this.columnservico;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn codCategoriaColumn {
-                get {
-                    return this.columncodCategoria;
                 }
             }
             
@@ -446,14 +434,6 @@ namespace EquipMotos {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn categoriaColumn {
-                get {
-                    return this.columncategoria;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -489,12 +469,11 @@ namespace EquipMotos {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public servicosRow AddservicosRow(string servico, int codCategoria, decimal precoVenda, decimal valorUnitario, decimal precoCusto, int codFuncionario, decimal comissao, string observacoes, System.DateTime dtCadastro, System.DateTime dtAlteracao, string usuario, string funcionario, string categoria) {
+            public servicosRow AddservicosRow(string servico, decimal precoVenda, decimal valorUnitario, decimal precoCusto, int codFuncionario, decimal comissao, string observacoes, System.DateTime dtCadastro, System.DateTime dtAlteracao, string usuario, string funcionario) {
                 servicosRow rowservicosRow = ((servicosRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
                         servico,
-                        codCategoria,
                         precoVenda,
                         valorUnitario,
                         precoCusto,
@@ -504,8 +483,7 @@ namespace EquipMotos {
                         dtCadastro,
                         dtAlteracao,
                         usuario,
-                        funcionario,
-                        categoria};
+                        funcionario};
                 rowservicosRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowservicosRow);
                 return rowservicosRow;
@@ -537,7 +515,6 @@ namespace EquipMotos {
             internal void InitVars() {
                 this.columncodigo = base.Columns["codigo"];
                 this.columnservico = base.Columns["servico"];
-                this.columncodCategoria = base.Columns["codCategoria"];
                 this.columnprecoVenda = base.Columns["precoVenda"];
                 this.columnvalorUnitario = base.Columns["valorUnitario"];
                 this.columnprecoCusto = base.Columns["precoCusto"];
@@ -548,7 +525,6 @@ namespace EquipMotos {
                 this.columndtAlteracao = base.Columns["dtAlteracao"];
                 this.columnusuario = base.Columns["usuario"];
                 this.columnfuncionario = base.Columns["funcionario"];
-                this.columncategoria = base.Columns["categoria"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -558,8 +534,6 @@ namespace EquipMotos {
                 base.Columns.Add(this.columncodigo);
                 this.columnservico = new global::System.Data.DataColumn("servico", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnservico);
-                this.columncodCategoria = new global::System.Data.DataColumn("codCategoria", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columncodCategoria);
                 this.columnprecoVenda = new global::System.Data.DataColumn("precoVenda", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnprecoVenda);
                 this.columnvalorUnitario = new global::System.Data.DataColumn("valorUnitario", typeof(decimal), null, global::System.Data.MappingType.Element);
@@ -580,8 +554,6 @@ namespace EquipMotos {
                 base.Columns.Add(this.columnusuario);
                 this.columnfuncionario = new global::System.Data.DataColumn("funcionario", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnfuncionario);
-                this.columncategoria = new global::System.Data.DataColumn("categoria", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columncategoria);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columncodigo}, true));
                 this.columncodigo.AutoIncrement = true;
@@ -590,11 +562,16 @@ namespace EquipMotos {
                 this.columncodigo.AllowDBNull = false;
                 this.columncodigo.ReadOnly = true;
                 this.columncodigo.Unique = true;
+                this.columnservico.AllowDBNull = false;
                 this.columnservico.MaxLength = 100;
+                this.columnprecoVenda.AllowDBNull = false;
+                this.columncodFuncionario.AllowDBNull = false;
                 this.columnobservacoes.MaxLength = 150;
+                this.columndtCadastro.AllowDBNull = false;
+                this.columndtAlteracao.AllowDBNull = false;
+                this.columnusuario.AllowDBNull = false;
                 this.columnusuario.MaxLength = 100;
                 this.columnfuncionario.MaxLength = 100;
-                this.columncategoria.MaxLength = 100;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -750,12 +727,7 @@ namespace EquipMotos {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public string servico {
                 get {
-                    try {
-                        return ((string)(this[this.tableservicos.servicoColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("O valor da coluna \'servico\' na tabela \'servicos\' é DBNull.", e);
-                    }
+                    return ((string)(this[this.tableservicos.servicoColumn]));
                 }
                 set {
                     this[this.tableservicos.servicoColumn] = value;
@@ -764,30 +736,9 @@ namespace EquipMotos {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public int codCategoria {
-                get {
-                    try {
-                        return ((int)(this[this.tableservicos.codCategoriaColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("O valor da coluna \'codCategoria\' na tabela \'servicos\' é DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableservicos.codCategoriaColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public decimal precoVenda {
                 get {
-                    try {
-                        return ((decimal)(this[this.tableservicos.precoVendaColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("O valor da coluna \'precoVenda\' na tabela \'servicos\' é DBNull.", e);
-                    }
+                    return ((decimal)(this[this.tableservicos.precoVendaColumn]));
                 }
                 set {
                     this[this.tableservicos.precoVendaColumn] = value;
@@ -830,12 +781,7 @@ namespace EquipMotos {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public int codFuncionario {
                 get {
-                    try {
-                        return ((int)(this[this.tableservicos.codFuncionarioColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("O valor da coluna \'codFuncionario\' na tabela \'servicos\' é DBNull.", e);
-                    }
+                    return ((int)(this[this.tableservicos.codFuncionarioColumn]));
                 }
                 set {
                     this[this.tableservicos.codFuncionarioColumn] = value;
@@ -878,12 +824,7 @@ namespace EquipMotos {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public System.DateTime dtCadastro {
                 get {
-                    try {
-                        return ((global::System.DateTime)(this[this.tableservicos.dtCadastroColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("O valor da coluna \'dtCadastro\' na tabela \'servicos\' é DBNull.", e);
-                    }
+                    return ((global::System.DateTime)(this[this.tableservicos.dtCadastroColumn]));
                 }
                 set {
                     this[this.tableservicos.dtCadastroColumn] = value;
@@ -894,12 +835,7 @@ namespace EquipMotos {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public System.DateTime dtAlteracao {
                 get {
-                    try {
-                        return ((global::System.DateTime)(this[this.tableservicos.dtAlteracaoColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("O valor da coluna \'dtAlteracao\' na tabela \'servicos\' é DBNull.", e);
-                    }
+                    return ((global::System.DateTime)(this[this.tableservicos.dtAlteracaoColumn]));
                 }
                 set {
                     this[this.tableservicos.dtAlteracaoColumn] = value;
@@ -910,12 +846,7 @@ namespace EquipMotos {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public string usuario {
                 get {
-                    try {
-                        return ((string)(this[this.tableservicos.usuarioColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("O valor da coluna \'usuario\' na tabela \'servicos\' é DBNull.", e);
-                    }
+                    return ((string)(this[this.tableservicos.usuarioColumn]));
                 }
                 set {
                     this[this.tableservicos.usuarioColumn] = value;
@@ -936,58 +867,6 @@ namespace EquipMotos {
                 set {
                     this[this.tableservicos.funcionarioColumn] = value;
                 }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string categoria {
-                get {
-                    try {
-                        return ((string)(this[this.tableservicos.categoriaColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("O valor da coluna \'categoria\' na tabela \'servicos\' é DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableservicos.categoriaColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsservicoNull() {
-                return this.IsNull(this.tableservicos.servicoColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetservicoNull() {
-                this[this.tableservicos.servicoColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IscodCategoriaNull() {
-                return this.IsNull(this.tableservicos.codCategoriaColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetcodCategoriaNull() {
-                this[this.tableservicos.codCategoriaColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsprecoVendaNull() {
-                return this.IsNull(this.tableservicos.precoVendaColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetprecoVendaNull() {
-                this[this.tableservicos.precoVendaColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1016,18 +895,6 @@ namespace EquipMotos {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IscodFuncionarioNull() {
-                return this.IsNull(this.tableservicos.codFuncionarioColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetcodFuncionarioNull() {
-                this[this.tableservicos.codFuncionarioColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool IscomissaoNull() {
                 return this.IsNull(this.tableservicos.comissaoColumn);
             }
@@ -1052,42 +919,6 @@ namespace EquipMotos {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsdtCadastroNull() {
-                return this.IsNull(this.tableservicos.dtCadastroColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetdtCadastroNull() {
-                this[this.tableservicos.dtCadastroColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsdtAlteracaoNull() {
-                return this.IsNull(this.tableservicos.dtAlteracaoColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetdtAlteracaoNull() {
-                this[this.tableservicos.dtAlteracaoColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsusuarioNull() {
-                return this.IsNull(this.tableservicos.usuarioColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetusuarioNull() {
-                this[this.tableservicos.usuarioColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool IsfuncionarioNull() {
                 return this.IsNull(this.tableservicos.funcionarioColumn);
             }
@@ -1096,18 +927,6 @@ namespace EquipMotos {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetfuncionarioNull() {
                 this[this.tableservicos.funcionarioColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IscategoriaNull() {
-                return this.IsNull(this.tableservicos.categoriaColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetcategoriaNull() {
-                this[this.tableservicos.categoriaColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -1272,7 +1091,6 @@ namespace EquipMotos.SistemaMoto2DataSetServicosTableAdapters {
             tableMapping.DataSetTable = "servicos";
             tableMapping.ColumnMappings.Add("codigo", "codigo");
             tableMapping.ColumnMappings.Add("servico", "servico");
-            tableMapping.ColumnMappings.Add("codCategoria", "codCategoria");
             tableMapping.ColumnMappings.Add("precoVenda", "precoVenda");
             tableMapping.ColumnMappings.Add("valorUnitario", "valorUnitario");
             tableMapping.ColumnMappings.Add("precoCusto", "precoCusto");
@@ -1283,7 +1101,6 @@ namespace EquipMotos.SistemaMoto2DataSetServicosTableAdapters {
             tableMapping.ColumnMappings.Add("dtAlteracao", "dtAlteracao");
             tableMapping.ColumnMappings.Add("usuario", "usuario");
             tableMapping.ColumnMappings.Add("funcionario", "funcionario");
-            tableMapping.ColumnMappings.Add("categoria", "categoria");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -1300,10 +1117,9 @@ namespace EquipMotos.SistemaMoto2DataSetServicosTableAdapters {
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = @"SELECT   servicos.codigo, servicos.servico, servicos.codCategoria, servicos.precoVenda, servicos.valorUnitario, servicos.precoCusto, servicos.codFuncionario, servicos.comissao, 
-                         servicos.observacoes, servicos.dtCadastro, servicos.dtAlteracao, servicos.usuario, funcionarios.funcionario, categorias.categoria
-FROM         servicos INNER JOIN
-                         categorias ON servicos.codCategoria = categorias.codigo INNER JOIN
+            this._commandCollection[0].CommandText = @"SELECT        servicos.codigo, servicos.servico, servicos.precoVenda, servicos.valorUnitario, servicos.precoCusto, servicos.codFuncionario, servicos.comissao, servicos.observacoes, servicos.dtCadastro, servicos.dtAlteracao, 
+                         servicos.usuario, funcionarios.funcionario
+FROM            servicos INNER JOIN
                          funcionarios ON servicos.codFuncionario = funcionarios.codigo";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }

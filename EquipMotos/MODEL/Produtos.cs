@@ -15,7 +15,6 @@ namespace EquipMotos.MODEL
         public int qtd { get; set; }
         public decimal custo { get; set; }
         public decimal precoVenda { get; set; }
-        public Fornecedores Fornecedor { get; set; }
         public decimal custoUltCompra { get; set; }
         public DateTime? dtUltCompra { get; set; }
         public double comissao { get; set; }
